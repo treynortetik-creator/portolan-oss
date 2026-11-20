@@ -184,3 +184,121 @@ carry no tag.
 **Not run:** Sonnet 5.5 was probed with one call only (it answers); the strong model is used
 for consolidation retries and the audit, neither of which this run exercised. Haiku 4.5 was not
 run through the write path.
+
+## Entity accuracy on Haiku 5.5, 2026-11-20
+
+The live table above shows entity accuracy falling from 80.2% on Haiku 4.5 to 63.1% on Haiku
+5.5. That drop is the scorer, not the model. Under a corrected scorer Haiku 5.5 resolves 99.6%
+to 100% of checked mentions, and on the 17 sources where both models' mentions were read side
+by side it beats Haiku 4.5 (41 of 41 against 26 of 27).
+
+**What the number measures.** For every entry in the extractor's top-level `entities` list
+that carries a `registry_id` and whose `mention` is a name the truth table knows, the scorer
+compares the id with the truth table's id. It says nothing about the entities on each fact.
+
+**Why it was wrong.** The bench puts internal people into `registry_context` as
+`internal:<id>` (the prompt's own form) and the truth table keys the same people by the bare
+`<id>`. The comparison was plain string equality, so every internal person the model resolved
+exactly as instructed was scored wrong. Haiku 5.5 lists internal people far more often than
+Haiku 4.5 (18 of its 67 mentions on the 17-source sample against 7 of 50), so it was
+penalised more for doing more.
+
+**Every miss, classified.** The saved reports from the two runs above kept no mention list, so
+Haiku 5.5 was run again with the old prompt and every mention saved (323 checked, 115 misses
+under the old scorer):
+
+| Class | Haiku 5.5, full run | Haiku 4.5, 17 sources |
+|---|---|---|
+| Checked | 323 | 27 |
+| Scorer bug: `internal:<id>` against `<id>` | 115 | 6 |
+| Right entity, different surface form (legal or short name) | 0 | 0 |
+| Parent given for a child account, or the reverse | 0 | 1 |
+| Contact given for an account, or the reverse | 0 | 0 |
+| Some other wrong entity | 0 | 0 |
+| Known entity in registry context left with no id | 0 | 0 |
+
+Haiku 4.5's full run (42 misses of 212) cannot be classified after the fact; the 17-source
+rerun cost $0.95 and is the only direct evidence for it. The one real error there named a
+child hospital and gave its parent's id; the bench listed only the parent for that source.
+
+**Precision and distractor leakage are not model error either.** "Precision" is the planted
+share of everything produced, so it falls whenever a model finds more real facts. Of Haiku
+5.5's 528 unplanted facts in the first run, 519 carry a quote found word for word in the
+source, 2 a near-exact quote, and 7 come from the four sources the truth table marks as
+distractors; none is invented. Haiku 4.5: 381, 17, 3 with no quote match but supporting
+fragments, 5 from distractors. The leakage difference of 2 is one more fact from a ten-reply
+thread whose content is real, and one fact from a scheduling call ("new staff are still
+getting comfortable with the workflow") that the durability bar should have dropped. The
+second is a fair criticism of Haiku 5.5: it writes about 25% more facts per source, and some
+are thin.
+
+**A real entity error the bench could not see.** The prompt's worked examples name a made-up
+vendor. When a source never says who the seller is, both models sometimes wrote that made-up
+name into the claim. The quote check passes, because the quote is real. Counted across the
+saved runs: Haiku 4.5, 46 of 469 facts; Haiku 5.5, 13 of 595 and 7 of 571. Haiku 5.5 is the
+better of the two here as well.
+
+### What changed
+
+- `bench/extraction.py`, `bench/truth.py`: entity accuracy compares
+  `Truth.canonical_entity_id`, which unwraps `internal:<id>` only for a real internal person.
+  The old numerator is kept as `entity_accuracy_exact_id_correct` and printed on its own
+  line. Wrong resolutions are listed in `entity_wrong`. No other equivalence was added: a
+  parent for a child, or an unknown prefix, is still wrong.
+- Every mention is saved on the score (`entity_mentions`), and `--rescore-dir` recomputes
+  entity accuracy from it.
+- New count, `example_name_leaks`: facts whose claim or entities carry a name from the
+  prompt's examples that the source never says.
+- New default prompt, `v7-entity-names`: v6 plus one short block. Names in the examples are
+  made up; a name goes in a fact only when the source, registry context or company context
+  has it; an unnamed seller is "the vendor"; `mention` holds the name and never an id; a
+  listed parent's id is not its child's. The two CRM examples that spelled the made-up vendor
+  out now say "the vendor". The training teacher stays pinned to v6, which its labels were
+  made with.
+
+### Live numbers, Haiku 5.5, one run each
+
+| | Before (v6) | After (v7) | After, repeated |
+|---|---|---|---|
+| Entity accuracy, old scorer | 64.4% (208/323) | 63.2% (177/280) | 60.1% (179/298) |
+| Entity accuracy, new scorer | 100.0% (323/323) | 99.6% (279/280) | 99.7% (297/298) |
+| Facts naming the examples' vendor | 7 of 571 | 0 of 610 | 2 of 591 |
+| Mentions with an id in `mention` | 19 of 435 | 0 of 373 | 1 of 398 |
+| Recall, strict | 87.7% | 83.6% | 83.6% |
+| Recall, lenient | 98.6% | 98.6% | 98.6% |
+| Invented | 0 | 0 | 0 |
+| Precision | 11.8% | 10.5% | 10.7% |
+| Distractor leakage | 8 | 5 | 7 |
+| Planted facts missed on entities | 1 | 1 | 1 |
+| List-price cost | $0.54 | $0.62 | $0.58 |
+
+The old-scorer row is there for comparison with earlier reports and should not be read as
+accuracy. "After, repeated" includes the parent-and-child sentence, which the "After" run did
+not have. An earlier v7 run, before the CRM examples were reworded, scored 87.7% strict,
+98.6% lenient, 100.0% (265/265) and 4 facts naming the examples' vendor.
+
+The two wrong resolutions after the change are both parent and child: a child hospital given
+its listed parent's id (the same slip Haiku 4.5 made on the same source), and the short name
+"Larkspur" on a call with Larkspur Memorial Hospital given the hospital's id where the truth
+table reads the short name as the regional parent. The second is defensible in context and
+is still counted wrong.
+
+**Strict recall needs watching.** Two v7 runs scored 83.6% and the two runs before them 87.7%;
+the earlier v6 run in the table above scored 84.9%. That is three facts of 73, inside the
+single-run interval (78% to 93%), and lenient recall did not move. The misses differ from run
+to run and trace to paraphrase, a date written "February 2026" where the planted claim has
+"2026-02", and fact type; none involves "the vendor". One run each cannot separate that from
+a small real cost of the longer prompt. Three runs per variant would.
+
+**The one planted fact missed on entities** is about a distribution branch. Branches are not
+in the bench's registry context, and the model wrote the fact but listed only the account.
+
+**Recommendation: keep extraction on Haiku 5.5.** Against Haiku 4.5 it finds more planted
+facts, resolves entities at least as well, borrows the examples' vendor name a quarter to an
+eighth as often, invents nothing, and costs about a fifteenth at the price row in
+`pricing.py` (that row was not checked against a price sheet here). What it does worse is
+restraint: more facts per source, some below the durability bar.
+
+**Not done.** The bench's registry context lists a source's accounts but not their parents or
+children; production adds ancestors (`pipeline.build_registry_context`). Both parent-and-child
+slips happened where the bench listed only one of the two.
