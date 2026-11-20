@@ -379,3 +379,19 @@ def test_render_note_source_frontmatter_includes_corroborating_citations(db):
     frontmatter = body.split("---", 2)[1]
     assert "- s-call-a" in frontmatter
     assert "- s-ticket-b" in frontmatter
+
+
+def test_link_mentions_never_rewrites_the_inside_of_a_longer_word():
+    from portolan.notes.render import link_mentions
+
+    linked = link_mentions("Arcadia Hospital uses Arc daily.", [("Arc", "arc")])
+    assert linked == "Arcadia Hospital uses [[arc]] daily."
+    # No whole-word occurrence: appended, as for a paraphrased mention.
+    assert link_mentions("Arcadia Hospital called.", [("Arc", "arc")]) == (
+        "Arcadia Hospital called. ([[arc]])"
+    )
+    # A mention that only occurs inside an existing link is not linked twice over.
+    assert (
+        link_mentions("Tidewater T2 jammed.", [("Tidewater T2", "tidewater-t2"), ("t2", "t2-kit")])
+        == "[[tidewater-t2]] jammed. ([[t2-kit]])"
+    )

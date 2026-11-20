@@ -434,10 +434,10 @@ def _entity_description(entity, parent_slug: str | None) -> str:
     if entity.kind.value == "contact":
         return f"A contact tied to [[{parent_slug}]]." if parent_slug else "A contact."
     if entity.kind.value == "internal_person":
-        return "A Halvard team member."
+        return "A member of the vendor's own team."
     if entity.kind.value == "competitor":
         return "A named competitor."
-    return "A product Halvard sells."
+    return "A product on file."
 
 
 def ensure_entity_note(

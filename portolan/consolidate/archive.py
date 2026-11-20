@@ -73,8 +73,10 @@ def _cited_claim_ids(text: str) -> set[int]:
 
 
 def select_claims_to_archive(note: NoteRow, claims: list[Claim], *, threshold: int) -> list[Claim]:
-    """`len(claims) - threshold` claims to archive, oldest first, skipping
-    any claim `note.synthesis` (the current, pre-this-round prose) already
+    """`len(claims) - threshold` claims to archive: superseded ones first
+    (the dossier growth guard: "archive what is superseded or no longer
+    load-bearing, NOT simply the oldest"), then oldest first, skipping any
+    live claim `note.synthesis` (the current, pre-this-round prose) already
     cites via `[claim:<id>]` (module docstring, step 1). `[]` when
     `claims` is already at or under `threshold`."""
     excess = len(claims) - threshold
@@ -82,13 +84,16 @@ def select_claims_to_archive(note: NoteRow, claims: list[Claim], *, threshold: i
         return []
 
     load_bearing = _cited_claim_ids(note.synthesis or "")
-    ordered = sorted(claims, key=lambda c: (c.recorded, c.id or 0))
+    # Superseded claims go first, cited or not: the graph already corrected
+    # them, and the new synthesis is drafted from live claims only. Then the
+    # oldest live claims the current synthesis does not cite.
+    ordered = sorted(claims, key=lambda c: (c.superseded_at is None, c.recorded, c.id or 0))
 
     to_archive: list[Claim] = []
     for claim in ordered:
         if len(to_archive) >= excess:
             break
-        if claim.id is not None and claim.id in load_bearing:
+        if claim.superseded_at is None and claim.id is not None and claim.id in load_bearing:
             continue
         to_archive.append(claim)
 

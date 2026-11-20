@@ -18,8 +18,10 @@ from portolan.llm.fake import FakeLLMClient
 __all__ = ["main"]
 
 # Matches one line of `portolan.consolidate.draft._claim_line`:
-# "- claim 12 [complaint]: text here ^[slug @ locator]"
-_CLAIM_LINE_RE = re.compile(r"^- claim (\d+) \[([^\]]+)\]: (.*?) (\^\[[^\]]+\])\s*$", re.M)
+# "- claim 12 [complaint] (2026-08-04): text here ^[slug @ locator]"
+_CLAIM_LINE_RE = re.compile(
+    r"^- claim (\d+) \[([^\]]+)\](?: \([^)]*\))?: (.*?) (\^\[[^\]]+\])\s*$", re.M
+)
 
 
 def _fake_draft_responder(*, system, user, json_schema, model, surface):

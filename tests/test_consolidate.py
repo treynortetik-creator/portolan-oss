@@ -104,7 +104,9 @@ def _make_note(conn: psycopg.Connection, slug: str, *, crm_id: str = "A-9001") -
     return note
 
 
-_CLAIM_LINE_RE = re.compile(r"^- claim (\d+) \[([^\]]+)\]: (.*?) (\^\[[^\]]+\])\s*$", re.M)
+_CLAIM_LINE_RE = re.compile(
+    r"^- claim (\d+) \[([^\]]+)\](?: \([^)]*\))?: (.*?) (\^\[[^\]]+\])\s*$", re.M
+)
 
 
 def _echo_draft_responder(*, system, user, json_schema, model, surface):
@@ -891,3 +893,44 @@ def test_archive_note_keeps_a_claims_citations_across_a_second_archive_round(db)
     # primary one.
     assert "  - s-ticket-b" in archive_note_round2.body_md
     assert "  - s-call-a" in archive_note_round2.body_md
+
+
+# ---------------------------------------------------------------------------
+# Superseded claims: archived first, and never drafted from.
+# ---------------------------------------------------------------------------
+
+
+def test_superseded_claims_are_archived_first_and_kept_out_of_the_draft(db):
+    from datetime import UTC, datetime
+
+    from portolan.consolidate.archive import select_claims_to_archive
+    from portolan.consolidate.draft import _claim_line
+    from portolan.notes.models import Claim, NoteRow, NoteStatus, NoteType
+
+    def claim(cid: int, day: int, *, superseded: bool = False) -> Claim:
+        return Claim(
+            id=cid,
+            note_slug="n",
+            fact_type="decision",
+            claim_text=f"claim {cid}",
+            source_slug="s",
+            locator=f"p{cid}",
+            recorded=datetime(2026, 1, day, tzinfo=UTC),
+            superseded_at=datetime(2026, 2, 1, tzinfo=UTC) if superseded else None,
+        )
+
+    now = datetime(2026, 3, 1, tzinfo=UTC)
+    note = NoteRow(
+        slug="n",
+        type=NoteType.ACCOUNT,
+        title="N",
+        status=NoteStatus.LIVING,
+        created=now,
+        updated=now,
+        synthesis="Old state ^[s @ p3] [claim:3].",
+    )
+    # Claim 3 is newer than 1 and 2 and cited by the synthesis, but superseded.
+    claims = [claim(1, 1), claim(2, 2), claim(3, 3, superseded=True), claim(4, 4)]
+    assert [c.id for c in select_claims_to_archive(note, claims, threshold=2)] == [3, 1]
+
+    assert _claim_line(claim(4, 4)).startswith("- claim 4 [decision] (2026-01-04): claim 4 ")

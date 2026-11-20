@@ -74,14 +74,20 @@ DRAFT_SYSTEM = (
     "claim, fact, or entity not in the list.\n"
     "4. Durable, absolute language only -- no 'recently', 'currently', "
     "'this month', or any other relative-time phrase.\n"
-    "5. Keep the whole synthesis under 40 lines.\n\n"
+    "5. Keep the whole synthesis under 40 lines.\n"
+    "6. Each claim line carries the date it was true or recorded. When two "
+    "claims disagree, the one with the later date is the current state; say "
+    "what changed and when, with the dates written out.\n\n"
     "Reply with the synthesis prose only, nothing else."
 )
 
 
 def _claim_line(claim: Claim) -> str:
     marker = f"^[{claim.source_slug} @ {claim.locator}]"
-    return f"- claim {claim.id} [{claim.fact_type}]: {claim.claim_text} {marker}"
+    # The world date when the claim has one, else the day it was recorded:
+    # without it the model cannot order events or write absolute dates.
+    dated = claim.valid_from or claim.recorded.date()
+    return f"- claim {claim.id} [{claim.fact_type}] ({dated:%Y-%m-%d}): {claim.claim_text} {marker}"
 
 
 def draft_synthesis(llm, note: NoteRow, claims: list[Claim]) -> str:

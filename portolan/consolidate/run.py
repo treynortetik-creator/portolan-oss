@@ -3,7 +3,7 @@
 
     read note + claims
       -> select_claims_to_archive (oldest-first, skipping load-bearing ones)
-      -> draft (cheap model, over the REMAINING claims only) -> check
+      -> draft (cheap model, over the REMAINING, LIVE claims only) -> check
            -> ok?   write_note, THEN commit_archive
            -> fail? retry once (strong model) -> check
                 -> ok?   write_note, THEN commit_archive
@@ -91,15 +91,22 @@ def consolidate_note(
     to_archive = select_claims_to_archive(note, claims, threshold=claims_threshold)
     archive_ids = {c.id for c in to_archive}
     remaining = [c for c in claims if c.id not in archive_ids]
+    # The synthesis is the note's current state, so it is drafted from live
+    # claims only. A superseded claim still renders (struck through) in the
+    # claim list, but handing it to the model unmarked let the synthesis
+    # state a retired fact (the old renewal date) as current.
+    live = [c for c in remaining if c.superseded_at is None]
+    if not live:
+        return ConsolidationOutcome(note_slug=note_slug, status="skipped_no_claims")
 
-    draft = draft_synthesis(llm, note, remaining)
-    result = check(draft, remaining)
+    draft = draft_synthesis(llm, note, live)
+    result = check(draft, live)
     attempts = 1
     used_strong = False
 
     if not result.ok and strong_llm is not None:
-        draft = draft_synthesis(strong_llm, note, remaining)
-        result = check(draft, remaining)
+        draft = draft_synthesis(strong_llm, note, live)
+        result = check(draft, live)
         attempts = 2
         used_strong = True
 

@@ -133,13 +133,27 @@ def link_mentions(text: str, mention_slug_pairs: list[tuple[str, str]]) -> str:
         token = f"[[{slug}]]"
         if token in out:
             continue  # already linked (e.g. two mentions resolved to the same entity)
-        if mention and mention in out:
-            out = out.replace(mention, token, 1)
+        span = _find_whole_mention(out, mention) if mention else None
+        if span is not None:
+            out = out[: span[0]] + token + out[span[1] :]
         else:
             appended.append(token)
     if appended:
         out = f"{out} ({' '.join(appended)})"
     return out
+
+
+def _find_whole_mention(text: str, mention: str) -> tuple[int, int] | None:
+    """The first place `mention` stands in `text` as whole words, outside
+    any `[[...]]` already there. A bare substring match rewrote the inside
+    of longer words: the product "Arc" in "Arcadia Hospital uses Arc"
+    became "[[arc]]adia Hospital uses Arc"."""
+    linked = [m.span() for m in WIKILINK_RE.finditer(text)]
+    pattern = re.compile(rf"(?<![A-Za-z0-9]){re.escape(mention)}(?![A-Za-z0-9])")
+    for match in pattern.finditer(text):
+        if not any(start <= match.start() < end for start, end in linked):
+            return match.span()
+    return None
 
 
 # ---------------------------------------------------------------------
@@ -191,7 +205,7 @@ def _default_synthesis(note: NoteRow) -> str:
     if note.type == NoteType.CONTACT:
         return f"{note.title} is a contact on file (CRM {note.crm_id})."
     if note.type == NoteType.PRODUCT:
-        return f"{note.title} is a product Halvard sells."
+        return f"{note.title} is a product on file."
     if note.type == NoteType.COMPETITOR:
         return f"{note.title} is a named competitor."
     if note.type == NoteType.SIGNAL:
