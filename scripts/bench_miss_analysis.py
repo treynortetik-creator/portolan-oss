@@ -42,9 +42,7 @@ from portolan.bench.corpus_loader import load_prepared_source  # noqa: E402
 from portolan.bench.locators import parse_hhmmss, trailing_int  # noqa: E402
 from portolan.bench.truth import Truth  # noqa: E402
 
-DEFAULT_BENCH_ROOT = Path(
-    "var/bench/2026-09-18-corrected"
-)
+DEFAULT_BENCH_ROOT = Path("var/bench/2026-09-18-corrected")
 DEFAULT_TRUTH_TABLE = REPO_ROOT / "corpus" / "truth-table.yaml"
 DEFAULT_MANIFEST = REPO_ROOT / "corpus" / "out" / "manifest.json"
 DEFAULT_CORPUS_ROOT = REPO_ROOT / "corpus" / "out"

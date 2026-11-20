@@ -24,7 +24,6 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 require_repo_path(".git")
 
 
-
 def forbidden_pattern(names: str) -> re.Pattern[bytes] | None:
     parts = [re.escape(n.strip()) for n in names.split(",") if n.strip()]
     return re.compile("|".join(parts).encode(), re.IGNORECASE) if parts else None
@@ -124,7 +123,9 @@ def test_the_checks_catch_planted_files(tmp_path: Path) -> None:
         (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
         (tmp_path / rel).write_text(text, encoding="utf-8")
     files = sorted(planted)
-    assert mentions_over_allowance(files, tmp_path, forbidden_pattern("acme widgets,acmewidgets")) == {"notes/handoff.md": 1, "CLAUDE.md": 2}
+    assert mentions_over_allowance(
+        files, tmp_path, forbidden_pattern("acme widgets,acmewidgets")
+    ) == {"notes/handoff.md": 1, "CLAUDE.md": 2}
     assert misplaced_data_files(files, tmp_path) == [
         "exports/accounts.csv (data file)",
         f"notes/big.txt ({MAX_BYTES + 1:,} bytes)",
