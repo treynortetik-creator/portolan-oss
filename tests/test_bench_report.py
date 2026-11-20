@@ -389,3 +389,35 @@ def test_breakdown_table_matched_credit_column_matches_recall_percent() -> None:
                 f"{heading} row {row}: {credit_str}/{planted_str} = "
                 f"{expected_pct:.4f}% but recall column printed {recall_str}"
             )
+
+
+# --------------------------------------------------------------------
+# Read-path review 2026-11-20: the headline says how far to trust itself.
+# --------------------------------------------------------------------
+
+
+def test_wilson_interval_matches_known_values() -> None:
+    from portolan.bench.report import wilson_interval
+
+    low, high = wilson_interval(66.5, 73)
+    assert (round(low, 3), round(high, 3)) == (0.824, 0.957)
+    assert wilson_interval(0, 0) is None
+    low, high = wilson_interval(73, 73)
+    assert high > 0.999 and 0.94 < low < 0.96
+
+
+def test_headline_gives_recalls_interval_and_says_what_invented_counts() -> None:
+    from portolan.bench.report import wilson_interval
+
+    truth = _truth()
+    extraction_score = score_extraction(truth, lossy_results(truth, invent=2, seed=3))
+    report = BenchReport(backend="fake", date=dt.date(2026, 9, 12), extraction=extraction_score)
+
+    headline = render_markdown(report).split("## Extraction")[0]
+
+    low, high = wilson_interval(extraction_score.recall_credit_sum, extraction_score.planted_total)
+    assert (
+        f"| extraction recall (strict), 95% interval | {low * 100:.1f}% to {high * 100:.1f}% "
+        f"(n = {extraction_score.planted_total} planted facts) |"
+    ) in headline
+    assert "has no footing in its source" in headline

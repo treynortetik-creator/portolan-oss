@@ -76,6 +76,34 @@ def _pct(value: float | None) -> str:
     return "n/a" if value is None else f"{value * 100:.1f}%"
 
 
+def wilson_interval(successes: float, n: int, z: float = 1.96) -> tuple[float, float] | None:
+    """The Wilson score interval (95% by default) for `successes` of `n`.
+    The corpus plants a few dozen facts, so one fact is more than a point of
+    recall: the interval says how much of a difference between two runs is
+    the runs and how much is the size of the exam. `successes` may be
+    fractional (half credit for an adjacent fact type)."""
+    if n <= 0:
+        return None
+    p = min(1.0, max(0.0, successes / n))
+    denom = 1.0 + z * z / n
+    centre = (p + z * z / (2 * n)) / denom
+    half = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / denom
+    return max(0.0, centre - half), min(1.0, centre + half)
+
+
+# Printed under the headline. "invented" is decided by words, not meaning
+# (`portolan.bench.extraction._evidence_basis`): a verbatim or near-verbatim
+# quote, most of the claim's names and numbers, or most of its content words
+# inside three sentences of the source.
+INVENTED_FOOTNOTE = (
+    "*invented* counts a produced fact that has no footing in its source: no quote found "
+    "there, and neither its names and numbers nor its wording close together anywhere in "
+    "the text. A claim that misreads words the source does contain (the wrong account for "
+    "a real quote, a reversed meaning) is not counted here. Zero invented means nothing "
+    "was made up from nothing; it does not mean every claim is right."
+)
+
+
 def _fmt_credit(value: float) -> str:
     """One decimal place, always -- 2026-09-18 bench-provenance wave
     (01-spec/bench-provenance-2026-09-18.md). Every "pct (a / b)"
@@ -381,6 +409,14 @@ def render_markdown(report: BenchReport) -> str:
         lines.append("| | |")
         lines.append("|---|---|")
         lines.append(f"| extraction recall (strict) | {_pct(report.extraction.recall)} |")
+        interval = wilson_interval(
+            report.extraction.recall_credit_sum, report.extraction.planted_total
+        )
+        if interval is not None:
+            lines.append(
+                f"| extraction recall (strict), 95% interval | {_pct(interval[0])} to "
+                f"{_pct(interval[1])} (n = {report.extraction.planted_total} planted facts) |"
+            )
         lines.append(f"| extraction recall (lenient) | {_pct(report.extraction.lenient_recall)} |")
         lines.append(f"| extraction precision | {_pct(report.extraction.precision)} |")
         # Fix instructions item 3: precision isn't meaningful on a
@@ -400,6 +436,8 @@ def render_markdown(report: BenchReport) -> str:
                 f"| graph expectations | {report.graph.passed_count}/"
                 f"{report.graph.passed_count + report.graph.failed_count} passed |"
             )
+        lines.append("")
+        lines.append(INVENTED_FOOTNOTE)
         lines.append("")
     elif report.graph is not None:
         lines.append("## Headline")
