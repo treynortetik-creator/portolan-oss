@@ -20,6 +20,7 @@ import pytest
 
 from portolan.bench.demo_search import (
     DEMO_QUESTIONS,
+    HELDOUT_QUESTIONS,
     PARAPHRASE_QUESTIONS,
     evaluate_demo_search,
     fusion_weights,
@@ -29,7 +30,13 @@ from portolan.bench.demo_search import (
 from portolan.search import query as q
 from portolan.search.embed import FakeEmbedder
 
-MRR_FLOOR = 0.70
+# 0.963 since a keyword rank counts by the note's share of the question
+# (`KEYWORD_SHARE_FULL`, 2026-11-20); 0.839 before it.
+MRR_FLOOR = 0.90
+# The held-out set with this embedder, measured 2026-11-20: recall@10 87.5,
+# MRR@10 0.707 (before the change: 87.5 and 0.630).
+HELDOUT_RECALL_FLOOR = 83.0
+HELDOUT_MRR_FLOOR = 0.66
 # Measured 2026-09-23: 0.075 for the paraphrases, 0.750 for DEMO_QUESTIONS.
 PARAPHRASE_MEAN_OVERLAP_CEILING = 0.15
 
@@ -63,6 +70,24 @@ def test_paraphrase_questions_ask_about_the_graph_in_other_words(db, tmp_path):
 
     assert mean_overlap(PARAPHRASE_QUESTIONS) <= PARAPHRASE_MEAN_OVERLAP_CEILING
     assert mean_overlap(DEMO_QUESTIONS) >= 0.5
+
+
+def test_the_held_out_questions_keep_their_floor(db, tmp_path):
+    """Questions no search parameter was chosen on (`HELDOUT_QUESTIONS`)."""
+    embedder = FakeEmbedder()
+    seed_demo_graph(db, tmp_path, embedder)
+    with db.cursor() as cur:
+        cur.execute("SELECT slug FROM notes")
+        slugs = {row[0] for row in cur.fetchall()}
+    assert {s for x in HELDOUT_QUESTIONS for s in x.expected} <= slugs
+    assert len({x.qid for x in HELDOUT_QUESTIONS}) == len(HELDOUT_QUESTIONS) == 24
+    tuned_on = {x.question for x in (*DEMO_QUESTIONS, *PARAPHRASE_QUESTIONS)}
+    assert not tuned_on & {x.question for x in HELDOUT_QUESTIONS}
+
+    out = evaluate_demo_search(db, embedder, questions=HELDOUT_QUESTIONS)
+
+    assert out["overall"]["average_recall_pct"] >= HELDOUT_RECALL_FLOOR
+    assert out["overall"]["ours_mrr_at_10"] >= HELDOUT_MRR_FLOOR
 
 
 def test_fusion_weights_sets_and_always_restores_the_rrf_weights():

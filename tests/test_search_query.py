@@ -720,3 +720,55 @@ def test_title_boost_does_not_match_a_short_fragment_inside_a_longer_word():
 def test_title_boost_still_matches_a_real_whole_word():
     assert _title_boost(["ashgrove"], "Ashgrove Regional", 1.0) == TITLE_BOOST_ALL * 1.0
     assert _title_boost(["t2026"], "Quarterly 2026 T2026 review", 1.0) == TITLE_BOOST_ALL * 1.0
+
+
+# ---------------------------------------------------------------------
+# `query_terms_unmatched` is read as "the graph has nothing on this word",
+# so a word the keyword leg matched in another form is not unmatched.
+# ---------------------------------------------------------------------
+
+
+def test_a_word_matched_in_another_form_is_not_reported_unmatched(db):
+    with db.cursor() as cur:
+        cur.execute(
+            "INSERT INTO notes (slug, type, title, description, body_md) VALUES "
+            "('renewal-terms', 'signal', 'Contract terms', 'Terms.', "
+            "'The customer asked for a discount at renewal.\n\n"
+            "## Later\n\nThe pumps were delivered on schedule.')"
+        )
+    reindex_all(db, FakeEmbedder())
+
+    result = search(db, FakeEmbedder(), "renewals discounts zanzibar", k=3)
+
+    assert [h.note_slug for h in result.hits] == ["renewal-terms"]
+    assert result.query_terms_unmatched == ["zanzibar"]
+
+
+def test_a_word_elsewhere_in_a_returned_note_is_not_reported_unmatched(db):
+    with db.cursor() as cur:
+        cur.execute(
+            "INSERT INTO notes (slug, type, title, description, body_md) VALUES "
+            "('renewal-terms', 'signal', 'Contract terms', 'Terms.', "
+            "'The customer asked for a discount at renewal.\n\n"
+            "## Later\n\nThe pumps were delivered on schedule.')"
+        )
+    reindex_all(db, FakeEmbedder())
+
+    result = search(db, FakeEmbedder(), "discount renewal schedule", k=3)
+
+    # "schedule" is in the note's other chunk, not the one shown.
+    assert "schedule" not in result.hits[0].best_chunk.lower()
+    assert result.query_terms_unmatched == []
+
+
+def test_hits_carry_their_sources_in_one_read(db, corpus):
+    result = search(db, FakeEmbedder(), "late Tidewater deliveries", k=5)
+    with db.cursor() as cur:
+        cur.execute(
+            "SELECT from_slug, array_agg(to_slug ORDER BY to_slug) FROM links "
+            "WHERE kind = 'provenance' GROUP BY from_slug"
+        )
+        expected = dict(cur.fetchall())
+    assert result.hits
+    for hit in result.hits:
+        assert hit.source_slugs == expected.get(hit.note_slug, [])

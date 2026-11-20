@@ -14,10 +14,11 @@ and index text both pass through `portolan_search_text` (migration 0035), so
 "Link/Epic" is the words "link" and "epic" on both sides.
 
 `search()` is `_legs` (the two retrieval legs) then `_rank` (fusion, title
-boost, recency, and two optional steps, both settings, both off by default:
-per-query fusion weights, `_route_weights`, and a local cross-encoder over the
-fused pool, `portolan/search/rerank.py`). Bench write-up, "Reranker and query
-routing".
+boost, recency, and two steps behind settings: per-query fusion weights,
+`_route_weights`, on by default, and a local cross-encoder over the fused
+pool, `portolan/search/rerank.py`, off by default). Within the keyword leg a
+note's rank counts by the share of the query it holds (`KEYWORD_SHARE_FULL`).
+Bench write-up, "Reranker and query routing".
 
 Dates: `since=` reads `notes.content_date`, the newest `recorded` date among
 the note's live claims, falling back to the note's last write
@@ -33,7 +34,7 @@ import contextlib
 import math
 import re
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, date, datetime, time
 from typing import TYPE_CHECKING, Literal, NamedTuple
 from zoneinfo import ZoneInfo
@@ -70,6 +71,17 @@ VECTOR_WEIGHT = 1.0
 ROUTE_COVERAGE_THRESHOLD = 0.3
 ROUTE_KEYWORD_WEIGHTS = (1.0, 0.2)
 ROUTE_SEMANTIC_WEIGHTS = (1.0, 1.0)
+# A keyword-leg note's rank counts in full when the note holds at least this
+# share of the query's idf, and in proportion below it (`_keyword_scale`).
+# Rank alone cannot tell the note that matched the question's rare words from
+# one that shares a single stray word with it; fused by rank alone, a note
+# found weakly by both legs outranked the vector leg's first hit, which is how
+# a question worded unlike its note was lost. Chosen on the demo and paraphrase
+# questions (0.3 to 1.0 all beat rank-only fusion on both) and checked on the
+# held-out set (`portolan.bench.demo_search.HELDOUT_QUESTIONS`;
+# docs/reviews/REVIEW-read-path.md). 0 turns it off.
+KEYWORD_SHARE_FULL = 0.5
+KEYWORD_SHARE_FLOOR = 0.0
 FTS_CANDIDATE_POOL = 30  # floor on FTS candidates, like recall.py's max(k*3, 30)
 VECTOR_FETCH_MULTIPLIER = 3  # "fetching 3k" per the contract
 # Okapi BM25 with Lucene's defaults, the parameters of the BM25 baseline
@@ -421,6 +433,29 @@ def _fts_leg(
     since: date | None = None,
     include_superseded: bool = False,
 ) -> tuple[list[str], dict[str, tuple[str | None, str]], float]:
+    """`_keyword_leg` without its per-note shares."""
+    ranked, chunks, coverage, _share = _keyword_leg(
+        conn,
+        query,
+        limit,
+        scope=scope,
+        types=types,
+        since=since,
+        include_superseded=include_superseded,
+    )
+    return ranked, chunks, coverage
+
+
+def _keyword_leg(
+    conn: psycopg.Connection,
+    query: str,
+    limit: int,
+    *,
+    scope: set[str] | None = None,
+    types: list[str] | None = None,
+    since: date | None = None,
+    include_superseded: bool = False,
+) -> tuple[list[str], dict[str, tuple[str | None, str]], float, dict[str, float]]:
     """The keyword leg: notes ranked by Okapi BM25 over `notes.search`
     (title, description and body), OR semantics, so a question matching
     some of a note's words still finds it.
@@ -455,7 +490,9 @@ def _fts_leg(
     any chunk contains one. `coverage` is the query routing signal
     (`_route_weights`): the largest share of the query's idf that one
     candidate note holds, a lexeme found in no note counting at the idf of
-    document frequency 0; 0.0 when nothing matched.
+    document frequency 0; 0.0 when nothing matched. `share` is the same
+    figure per ranked note: the part of the query's idf that note holds, which
+    `_rank` uses to weigh the note's keyword rank (`KEYWORD_SHARE_FULL`).
     """
     scope_list = list(scope) if scope is not None else None
     status_values = _STATUS_ALL if include_superseded else _STATUS_LIVING_ONLY
@@ -467,14 +504,14 @@ def _fts_leg(
         cur.execute(f"SELECT lexeme FROM unnest({QUERY_TSVECTOR_SQL}) ORDER BY lexeme", (query,))
         lexemes = [row[0] for row in cur.fetchall()]
         if not lexemes or limit <= 0:
-            return [], {}, 0.0
+            return [], {}, 0.0, {}
         literals = [_tsquery_literal(lx) for lx in lexemes]
 
         candidates, doc_freq, n_notes = _keyword_pool(
             cur, lexemes, literals, where, params, max(KEYWORD_RESCORE_POOL, limit)
         )
         if not candidates:
-            return [], {}, 0.0
+            return [], {}, 0.0, {}
         idf = {lex: _bm25_idf(n_notes, int(df)) for lex, df in doc_freq.items()}
         query_lexemes = sorted(idf)
 
@@ -493,9 +530,10 @@ def _fts_leg(
         )
         stats = [(slug, int(dl), lx or [], tf or []) for slug, dl, lx, tf in cur.fetchall()]
         if not stats:
-            return [], {}, 0.0
+            return [], {}, 0.0, {}
         query_idf = sum(idf.get(lx, _bm25_idf(n_notes, 0)) for lx in lexemes)
-        coverage = max(sum(idf[lx] for lx in lxs) for _s, _dl, lxs, _t in stats) / query_idf
+        held = {slug: sum(idf[lx] for lx in lxs) / query_idf for slug, _dl, lxs, _t in stats}
+        coverage = max(held.values())
         avg_len = sum(max(1, dl) for _s, dl, _l, _t in stats) / len(stats)
         scores: dict[str, float] = {}
         for slug, dl, lxs, tfs in stats:
@@ -508,7 +546,7 @@ def _fts_leg(
         # order must depend only on the data (tests P1-3).
         ranked = sorted((s for s in scores if scores[s] > 0), key=lambda s: (-scores[s], s))[:limit]
         if not ranked:
-            return [], {}, 0.0
+            return [], {}, 0.0, {}
 
         cur.execute(
             """
@@ -527,7 +565,7 @@ def _fts_leg(
         )
         chunk_lookup = {slug: (heading, text) for slug, heading, text in cur.fetchall()}
 
-    return ranked, chunk_lookup, coverage
+    return ranked, chunk_lookup, coverage, {slug: held[slug] for slug in ranked}
 
 
 def _vector_candidates(
@@ -603,18 +641,24 @@ def _vector_candidates(
 
 def _rrf(
     lists_with_weights: list[tuple[list[str], float, str]],
+    *,
+    scale: dict[str, dict[str, float]] | None = None,
 ) -> tuple[list[str], dict[str, set[str]], dict[str, float]]:
     """Reciprocal Rank Fusion: each ranked list contributes
     `weight / (RRF_K + rank)` (rank 0-based) to every slug in it. `via`
     records which named lists each slug appeared in (the source of
     `SearchHit.via`). Sorted by `(-score, slug)` so ties are deterministic
     (tests P1-3).
+
+    `scale`, `{list name: {slug: factor}}`, multiplies one slug's
+    contribution from one list (a slug not named counts in full).
     """
     score: dict[str, float] = defaultdict(float)
     via: dict[str, set[str]] = defaultdict(set)
     for lst, weight, name in lists_with_weights:
+        factors = (scale or {}).get(name) or {}
         for rank, slug in enumerate(lst):
-            score[slug] += weight * (1.0 / (RRF_K + rank))
+            score[slug] += weight * factors.get(slug, 1.0) * (1.0 / (RRF_K + rank))
             via[slug].add(name)
     ordered = sorted(score, key=lambda s: (-score[s], s))
     return ordered, via, dict(score)
@@ -675,13 +719,39 @@ def _load_notes_meta(conn: psycopg.Connection, slugs: list[str]) -> dict[str, _N
 
 
 def _source_slugs_for(conn: psycopg.Connection, note_slug: str) -> list[str]:
+    return _source_slugs(conn, [note_slug])[note_slug]
+
+
+def _source_slugs(conn: psycopg.Connection, note_slugs: list[str]) -> dict[str, list[str]]:
+    """`{note_slug: its provenance sources, sorted}` for every slug given, in
+    one read."""
+    out: dict[str, list[str]] = {slug: [] for slug in note_slugs}
+    if not note_slugs:
+        return out
     with conn.cursor() as cur:
         cur.execute(
-            "SELECT to_slug FROM links WHERE from_slug = %s AND kind = 'provenance' "
-            "ORDER BY to_slug",
-            (note_slug,),
+            "SELECT from_slug, to_slug FROM links "
+            "WHERE from_slug = ANY(%s) AND kind = 'provenance' ORDER BY from_slug, to_slug",
+            (list(note_slugs),),
         )
-        return [row[0] for row in cur.fetchall()]
+        for from_slug, to_slug in cur.fetchall():
+            out[from_slug].append(to_slug)
+    return out
+
+
+def _fallback_chunks(
+    conn: psycopg.Connection, note_slugs: list[str]
+) -> dict[str, tuple[str | None, str]]:
+    """`_fallback_chunk` for several notes in one read."""
+    if not note_slugs:
+        return {}
+    with conn.cursor() as cur:
+        cur.execute(
+            "SELECT DISTINCT ON (note_slug) note_slug, heading, text FROM chunks "
+            "WHERE note_slug = ANY(%s) ORDER BY note_slug, id",
+            (list(note_slugs),),
+        )
+        return {slug: (heading, text) for slug, heading, text in cur.fetchall()}
 
 
 def _fallback_chunk(conn: psycopg.Connection, note_slug: str) -> tuple[str | None, str]:
@@ -752,11 +822,17 @@ def _build_hit(
     chunk_lookup: dict[str, tuple[str | None, str]],
     *,
     expanded_from: str | None = None,
+    sources: dict[str, list[str]] | None = None,
 ) -> SearchHit:
+    """`sources` is `_source_slugs` already read for a batch of hits; without
+    it, or for a slug it does not name, the hit's sources are read here."""
     meta = notes_meta[slug]
     heading, text = chunk_lookup.get(slug) or _fallback_chunk(conn, slug)
     if not text:
         heading, text = _fallback_chunk(conn, slug)
+    source_slugs = (sources or {}).get(slug)
+    if source_slugs is None:
+        source_slugs = _source_slugs_for(conn, slug)
     return SearchHit(
         note_slug=slug,
         title=meta.title,
@@ -765,7 +841,7 @@ def _build_hit(
         best_chunk=text,
         heading=heading,
         updated=_world_day(meta.updated),
-        source_slugs=_source_slugs_for(conn, slug),
+        source_slugs=source_slugs,
         expanded_from=expanded_from,
         content_date=_world_day(meta.content_date),
         content_date_source=meta.content_date_source,  # type: ignore[arg-type]
@@ -841,6 +917,10 @@ class Legs:
     vector_rank: list[str]
     vector_chunks: dict[str, tuple[str | None, str]]
     coverage: float  # `_fts_leg`'s routing signal
+    # {note_slug: the share of the query's idf that note holds}, for the keyword
+    # leg's notes (`_keyword_leg`). Empty (legs recorded before it existed):
+    # every keyword rank counts in full.
+    fts_share: dict[str, float] = field(default_factory=dict)
 
 
 def search(
@@ -948,7 +1028,7 @@ def _legs(
     ef_search: int | None = None,
 ) -> Legs:
     """Both retrieval legs for `search(k=k)`, filters already resolved."""
-    fts_rank, fts_chunks, coverage = _fts_leg(
+    fts_rank, fts_chunks, coverage, fts_share = _keyword_leg(
         conn,
         query,
         max(k * 3, FTS_CANDIDATE_POOL),
@@ -970,7 +1050,19 @@ def _legs(
         include_superseded=include_superseded,
         ef_search=ef_search,
     )
-    return Legs(query, fts_rank, fts_chunks, vector_rank, vector_chunks, coverage)
+    return Legs(query, fts_rank, fts_chunks, vector_rank, vector_chunks, coverage, fts_share)
+
+
+def _keyword_scale(share: dict[str, float]) -> dict[str, float]:
+    """Each keyword-leg note's factor on its own keyword rank: its share of
+    the query's idf over `KEYWORD_SHARE_FULL`, at most 1 and at least
+    `KEYWORD_SHARE_FLOOR`."""
+    if not KEYWORD_SHARE_FULL:
+        return {}
+    return {
+        slug: max(KEYWORD_SHARE_FLOOR, min(1.0, held / KEYWORD_SHARE_FULL))
+        for slug, held in share.items()
+    }
 
 
 def _route_weights(coverage: float) -> tuple[float, float]:
@@ -1039,7 +1131,8 @@ def _rank(
         _route_weights(legs.coverage) if fusion_routing else (FTS_WEIGHT, VECTOR_WEIGHT)
     )
     fused_slugs, via_map, rrf_scores = _rrf(
-        [(legs.fts_rank, fts_weight, "fts"), (legs.vector_rank, vector_weight, "vector")]
+        [(legs.fts_rank, fts_weight, "fts"), (legs.vector_rank, vector_weight, "vector")],
+        scale={"fts": _keyword_scale(legs.fts_share)},
     )
 
     notes_meta = _load_notes_meta(conn, fused_slugs)
@@ -1086,14 +1179,24 @@ def _rank(
         # recency still multiplies. Past the pool nothing is reranked or returned.
         scored = sorted(
             (
-                (slug, rel * _recency_multiplier(notes_meta[slug][2], now=now))
+                (
+                    slug,
+                    rel
+                    * _note_recency(notes_meta[slug], now=now, content_date=recency_content_date),
+                )
                 for slug, rel in zip(head, relevance, strict=True)
             ),
             key=lambda pair: (-pair[1], pair[0]),
         )
 
+    top = [slug for slug, _score in scored[:k]]
+    # One read each for the hits' sources and for the chunk of any hit neither
+    # leg matched at chunk level, not one per hit.
+    sources = _source_slugs(conn, top)
+    missing = [slug for slug in top if not (chunk_lookup.get(slug) or (None, ""))[1]]
+    chunk_lookup.update(_fallback_chunks(conn, missing))
     hits = [
-        _build_hit(conn, slug, score, via_map[slug], notes_meta, chunk_lookup)
+        _build_hit(conn, slug, score, via_map[slug], notes_meta, chunk_lookup, sources=sources)
         for slug, score in scored[:k]
     ]
 
@@ -1106,9 +1209,38 @@ def _rank(
         blob = f"{hit.title} {hit.best_chunk}".lower()
         blob_words = set(_TOKEN_RE.findall(blob))
         matched_terms |= {t for t in query_terms if t in blob_words}
-    unmatched = sorted(set(query_terms) - matched_terms)
+    unmatched = _terms_in_no_note(
+        conn, sorted(set(query_terms) - matched_terms), [h.note_slug for h in hits]
+    )
 
     return SearchResult(hits=hits, control_ok=True, query_terms_unmatched=unmatched)
+
+
+def _terms_in_no_note(
+    conn: psycopg.Connection, terms: list[str], note_slugs: list[str]
+) -> list[str]:
+    """The `terms` that none of `note_slugs` holds anywhere (title,
+    description or body), compared as the keyword leg compares them
+    (`notes.search` lexemes), so "renewals" is found in a note that says
+    "renewal" and a word in a chunk other than the one shown still counts. A
+    caller reads an unmatched term as "nothing on file about this"."""
+    if not terms or not note_slugs:
+        return terms
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT t.term
+            FROM unnest(%s::text[]) AS t(term)
+            CROSS JOIN LATERAL plainto_tsquery('english', portolan_search_text(t.term)) AS tq
+            WHERE numnode(tq) > 0
+              AND NOT EXISTS (
+                  SELECT 1 FROM notes n WHERE n.slug = ANY(%s) AND n.search @@ tq
+              )
+            ORDER BY t.term
+            """,
+            (terms, note_slugs),
+        )
+        return [row[0] for row in cur.fetchall()]
 
 
 def explain(result: SearchResult) -> str:

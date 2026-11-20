@@ -50,15 +50,17 @@ from portolan.search.query import (
     BM25_B,
     BM25_K1,
     FTS_WEIGHT,
-    RRF_K,
+    QUERY_TSVECTOR_SQL,
     VECTOR_MIN_SIMILARITY,
     VECTOR_WEIGHT,
     SearchHit,
     SearchResult,
     _bm25_idf,
     _build_hit,
+    _keyword_scale,
     _load_notes_meta,
     _note_recency,
+    _rrf,
     _terms,
     _title_boost,
     _tsquery_literal,
@@ -440,17 +442,16 @@ class _QueryVectorCache:
 
 def _bm25_rank(
     conn: psycopg.Connection, query: str, slugs: list[str], statuses: list[str]
-) -> tuple[list[str], dict[str, tuple[str | None, str]]]:
+) -> tuple[list[str], dict[str, tuple[str | None, str]], dict[str, float]]:
     """Okapi BM25 (the keyword leg's parameters) for `slugs` only, with document
     frequencies over every note of an allowed status, so a candidate set never changes
-    a word's weight. Returns (ranked slugs with a positive score, {slug: best chunk})."""
+    a word's weight. Returns (ranked slugs with a positive score, {slug: best chunk},
+    {slug: the share of the query's idf the note holds}, as `_keyword_leg` reports it)."""
     with conn.cursor() as cur:
-        cur.execute(
-            "SELECT lexeme FROM unnest(to_tsvector('english', %s)) ORDER BY lexeme", (query,)
-        )
+        cur.execute(f"SELECT lexeme FROM unnest({QUERY_TSVECTOR_SQL}) ORDER BY lexeme", (query,))
         lexemes = [r[0] for r in cur.fetchall()]
         if not lexemes or not slugs:
-            return [], {}
+            return [], {}, {}
         cur.execute(
             """
             SELECT t.lx, (SELECT count(*) FROM notes n
@@ -464,7 +465,7 @@ def _bm25_rank(
         n_notes = int(rows[0][2]) if rows else 0
         idf = {lx: _bm25_idf(n_notes, int(df)) for lx, df, _n in rows if df}
         if not idf:
-            return [], {}
+            return [], {}, {}
         query_lexemes = sorted(idf)
         cur.execute(
             """
@@ -481,7 +482,9 @@ def _bm25_rank(
         )
         stats = [(s, int(dl), lx or [], tf or []) for s, dl, lx, tf in cur.fetchall()]
         if not stats:
-            return [], {}
+            return [], {}, {}
+        query_idf = sum(idf.get(lx, _bm25_idf(n_notes, 0)) for lx in lexemes)
+        share = {s: sum(idf[lx] for lx in lxs) / query_idf for s, _dl, lxs, _t in stats}
         avg_len = sum(max(1, dl) for _s, dl, _l, _t in stats) / len(stats)
         scores: dict[str, float] = {}
         for slug, dl, lxs, tfs in stats:
@@ -492,7 +495,7 @@ def _bm25_rank(
             )
         ranked = sorted((s for s in scores if scores[s] > 0), key=lambda s: (-scores[s], s))
         if not ranked:
-            return [], {}
+            return [], {}, {}
         cur.execute(
             """
             SELECT DISTINCT ON (c.note_slug) c.note_slug, c.heading, c.text
@@ -509,7 +512,7 @@ def _bm25_rank(
             (BM25_K1, query_lexemes, [idf[lx] for lx in query_lexemes], ranked),
         )
         chunks = {slug: (heading, text) for slug, heading, text in cur.fetchall()}
-    return ranked, chunks
+    return ranked, chunks, {s: share[s] for s in ranked}
 
 
 def _vector_rank(
@@ -547,19 +550,19 @@ def _text_scores(
     candidates: list[str],
     statuses: list[str],
 ) -> _Scored:
-    """`search()`'s scoring (BM25 and vector legs, RRF, title boost, recency) over
-    `candidates`, divided by the best candidate's score."""
+    """`search()`'s scoring (BM25 and vector legs, RRF with each keyword rank scaled by
+    the note's share of the query, title boost, recency) over `candidates`, divided by
+    the best candidate's score."""
     if not candidates:
         return _Scored({}, {}, {})
-    fts_rank, fts_chunks = _bm25_rank(conn, query, candidates, statuses)
+    fts_rank, fts_chunks, fts_share = _bm25_rank(conn, query, candidates, statuses)
     [qvec] = embedder.embed([query])
     vec_rank, vec_chunks = _vector_rank(conn, qvec, candidates)
-    rrf: dict[str, float] = defaultdict(float)
-    via: dict[str, set[str]] = defaultdict(set)
-    for lst, weight, name in ((fts_rank, FTS_WEIGHT, "fts"), (vec_rank, VECTOR_WEIGHT, "vector")):
-        for rank, slug in enumerate(lst):
-            rrf[slug] += weight / (RRF_K + rank)
-            via[slug].add(name)
+    _order, via_sets, rrf = _rrf(
+        [(fts_rank, FTS_WEIGHT, "fts"), (vec_rank, VECTOR_WEIGHT, "vector")],
+        scale={"fts": _keyword_scale(fts_share)},
+    )
+    via: dict[str, set[str]] = dict(via_sets)
     chunks = {**vec_chunks, **fts_chunks}
     if not rrf:
         return _Scored({}, {}, chunks)

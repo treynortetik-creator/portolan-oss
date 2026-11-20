@@ -719,11 +719,15 @@ def fuse(
     *,
     fts_weight: float | None = None,
     vector_weight: float | None = None,
+    fts_share: dict[str, float] | None = None,
 ) -> list[str]:
     """Portolan's own fusion arithmetic (`_rrf`, then the title boost scaled
     by the top RRF score, then `(-score, slug)`; recency is a constant here,
     see INGEST_TIMESTAMP) over two externally supplied candidate lists.
-    Weights default to `search()`'s own."""
+    Weights default to `search()`'s own. `fts_share` is the keyword leg's
+    per-note share of the query (`_keyword_leg`), which `search()` scales each
+    keyword rank by; without it (a list from another engine) every rank
+    counts in full."""
     from portolan.search import query as q
 
     fused, _via, scores = q._rrf(
@@ -734,7 +738,8 @@ def fuse(
                 q.VECTOR_WEIGHT if vector_weight is None else vector_weight,
                 "vector",
             ),
-        ]
+        ],
+        scale={"fts": q._keyword_scale(fts_share or {})},
     )
     if not fused:
         return []
@@ -1120,7 +1125,7 @@ def run_exact_passes(
     `exact_vector_scan` (keyed by question id) instead of a pgvector query.
 
     `fused_exact` is `portolan.search.search()`'s ranking, step for step:
-    the real keyword leg (`_fts_leg`, pool 30), the vector leg's
+    the real keyword leg (`_keyword_leg`, pool 30), the vector leg's
     first 30 chunks deduped to notes (`search(k=10)` fetches 3k = 30),
     `_rrf` with `search()`'s weights (per query from `_route_weights` when
     `fusion_routing` is on; None reads `search_fusion_routing`), `_title_boost`,
@@ -1152,7 +1157,7 @@ def run_exact_passes(
         qid = question["question_id"]
         text = question["question"]
         t0 = time.monotonic()
-        fts_rank, fts_chunks, coverage = q._fts_leg(conn, text, fts_pool)
+        fts_rank, fts_chunks, coverage, fts_share = q._keyword_leg(conn, text, fts_pool)
         dt_fts = time.monotonic() - t0
         fts_zero += int(not fts_rank)
         rows["portolan_fts"].append(_row(question, fts_rank, dt_fts))
@@ -1164,7 +1169,9 @@ def run_exact_passes(
         fts_w, vec_w = (
             q._route_weights(coverage) if fusion_routing else (q.FTS_WEIGHT, q.VECTOR_WEIGHT)
         )
-        fused = fuse(fts_rank, vec_list, levels, fts_weight=fts_w, vector_weight=vec_w)[:TOP_K]
+        fused = fuse(
+            fts_rank, vec_list, levels, fts_weight=fts_w, vector_weight=vec_w, fts_share=fts_share
+        )[:TOP_K]
         via = {s: [] for s in fused}
         for s in fused:
             if s in fts_rank:
@@ -1185,7 +1192,12 @@ def run_exact_passes(
         dt = dt_fts + (time.monotonic() - t0)
         rows["fused_exact"].append(_row(question, fused, dt))
         _gate_question(gate, via_counts, question, hits, original_text)
-        legs[qid] = {"keyword": fts_rank, "vector": vec_list, "title_levels": levels}
+        legs[qid] = {
+            "keyword": fts_rank,
+            "vector": vec_list,
+            "title_levels": levels,
+            "keyword_share": {s: round(v, 4) for s, v in fts_share.items()},
+        }
 
         vec102 = [h.note_slug for h in notes_from_chunks(plain[qid], 3 * VECTOR_ONLY_K)]
         rows["portolan_vector_exact"].append(_row(question, vec102, 0.0))
@@ -1239,6 +1251,7 @@ def fusion_rows(
             leg["title_levels"],
             fts_weight=fts_weight,
             vector_weight=vector_weight,
+            fts_share=leg.get("keyword_share") if keyword_leg == "keyword" else None,
         )
         out.append(_row(question, ranked[:TOP_K], 0.0))
     return out

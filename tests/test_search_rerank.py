@@ -251,3 +251,78 @@ def test_real_model_prefers_the_answering_passage(key):
     assert scores[1] > 0.5 > max(scores[0], scores[2])
     # batching (fp32 files) or not (int8, Qwen), a pair's score is its own
     assert model.score(question, [answer])[0] == pytest.approx(scores[1], abs=1e-5)
+
+
+# ---------------------------------------------------------------------
+# A note's keyword rank counts by how much of the question it holds.
+# ---------------------------------------------------------------------
+
+
+def _share_legs(fts_share: dict[str, float]) -> q.Legs:
+    # The keyword leg's first hit against the vector leg's first two.
+    return q.Legs(
+        query="x",
+        fts_rank=["renewal-date", "invoice-dispute"],
+        fts_chunks={},
+        vector_rank=["pump-alarm-alpha", "recall-notice", "invoice-dispute"],
+        vector_chunks={},
+        coverage=max(fts_share.values(), default=0.0),
+        fts_share=fts_share,
+    )
+
+
+def _order(legs: q.Legs, graph) -> list[str]:
+    result = q._rank(graph, legs, k=6, fusion_routing=False, reranker=False)
+    return [h.note_slug for h in result.hits]
+
+
+def test_a_keyword_hit_sharing_one_stray_word_ranks_below_the_vector_legs_hits(graph):
+    weak = {"renewal-date": 0.05, "invoice-dispute": 0.04}
+    assert _order(_share_legs(weak), graph) == [
+        "invoice-dispute",  # on both legs
+        "pump-alarm-alpha",
+        "recall-notice",
+        "renewal-date",
+    ]
+    # With no shares recorded every keyword rank counts in full, as before:
+    # the keyword leg's first hit is level with the vector leg's first.
+    assert _order(_share_legs({}), graph) == [
+        "invoice-dispute",
+        "pump-alarm-alpha",
+        "renewal-date",
+        "recall-notice",
+    ]
+
+
+def test_a_note_holding_the_questions_words_keeps_its_full_keyword_rank(graph):
+    strong = {"renewal-date": 0.9, "invoice-dispute": 0.6}
+    assert _order(_share_legs(strong), graph) == _order(_share_legs({}), graph)
+    assert q._keyword_scale({"a": q.KEYWORD_SHARE_FULL, "b": 1.0}) == {"a": 1.0, "b": 1.0}
+    assert q._keyword_scale({"a": q.KEYWORD_SHARE_FULL / 2})["a"] == pytest.approx(0.5)
+
+
+def test_search_records_each_keyword_notes_share(graph):
+    legs = q._legs(graph, FakeEmbedder(), "Corvane pulled its pump zanzibar", 5)
+    assert set(legs.fts_share) == set(legs.fts_rank)
+    assert legs.fts_share["recall-notice"] == pytest.approx(legs.coverage)
+    assert 0.0 < legs.fts_share["pump-alarm-alpha"] < legs.fts_share["recall-notice"]
+
+
+def test_a_reranked_hit_takes_its_recency_from_the_same_date_as_an_unranked_one(graph):
+    # A note written this week whose newest claim is years old.
+    with graph.cursor() as cur:
+        cur.execute("UPDATE notes SET updated = now()")
+        cur.execute(
+            "UPDATE notes SET content_date_claims = '2019-01-01' WHERE slug = 'pump-alarm-charlie'"
+        )
+    fixed = _Fixed({"charlie": 0.9})
+    by_write = search(
+        graph, FakeEmbedder(), "pump alarm", k=3, reranker=fixed, recency_content_date=False
+    )
+    by_claim = search(
+        graph, FakeEmbedder(), "pump alarm", k=3, reranker=fixed, recency_content_date=True
+    )
+    top = {r.hits[0].note_slug for r in (by_write, by_claim)}
+    assert top == {"pump-alarm-charlie"}
+    assert by_write.hits[0].score == pytest.approx(0.9, abs=0.001)  # written today
+    assert by_claim.hits[0].score == pytest.approx(0.9 * q.RECENCY_FLOOR, abs=0.001)
