@@ -336,7 +336,8 @@ def create_server(
         """Fused full-text + vector search over the knowledge graph's notes.
 
         Returns `{"hits": [...], "control_ok": bool,
-        "query_terms_unmatched": [...]}`. Each hit carries the note's
+        "query_terms_unmatched": [...], "today": "YYYY-MM-DD"}`; `today`
+        is the deployment's own date, to read each hit's dates against. Each hit carries the note's
         `note_slug`, `title`, `updated` date (last write), `content_date`
         (the newest date a source recorded among the note's live claims)
         and `content_date_source` (`claims_recorded`, or `note_updated`

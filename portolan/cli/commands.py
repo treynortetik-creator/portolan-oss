@@ -197,6 +197,7 @@ def cmd_search(ctx: Ctx, args: argparse.Namespace) -> Result:
                 "slug": h["note_slug"],
                 "title": h["title"],
                 "updated": h.get("updated"),
+                "content_date": h.get("content_date"),
                 "snippet": _clip(h.get("best_chunk") or "", 200),
                 "via": h.get("via"),
             }

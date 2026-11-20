@@ -48,6 +48,7 @@ from portolan.mcp_server.server import TOOL_NAMES, build_http_app, create_server
 from portolan.search.embed import FakeEmbedder
 from portolan.search.index import reindex_all
 from portolan.store import LocalStore
+from portolan.util import clock as clock_module
 from portolan.web.app import create_app
 
 TENANT = "test-mcp"
@@ -132,7 +133,8 @@ def test_search_finds_an_indexed_note(corpus):
     conn, embedder = corpus
     result = tools.tool_search(conn, embedder, tenant=TENANT, query="Cobalt Ridge late deliveries")
 
-    assert set(result.keys()) == {"hits", "control_ok", "query_terms_unmatched"}
+    assert set(result.keys()) == {"hits", "control_ok", "query_terms_unmatched", "today"}
+    assert result["today"] == clock_module.today().isoformat()
     slugs = [h["note_slug"] for h in result["hits"]]
     assert NOTE_SLUG in slugs
     hit = next(h for h in result["hits"] if h["note_slug"] == NOTE_SLUG)
@@ -144,9 +146,12 @@ def test_search_finds_an_indexed_note(corpus):
         "best_chunk",
         "heading",
         "updated",
+        "content_date",
+        "content_date_source",
         "source_slugs",
         "expanded_from",
     } <= set(hit.keys())
+    assert hit["content_date"] is not None
     assert SOURCE_SLUG in hit["source_slugs"]
 
 

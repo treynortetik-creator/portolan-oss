@@ -424,6 +424,8 @@ def tool_search(
         "hits": hits,
         "control_ok": result.control_ok,
         "query_terms_unmatched": result.query_terms_unmatched,
+        # Each hit's `content_date` only means something against a today.
+        "today": clock_module.today().isoformat(),
     }
 
 
