@@ -321,9 +321,54 @@ def test_missing_api_key_raises_clear_runtime_error() -> None:
 def test_default_models() -> None:
     fake_sdk = FakeAnthropicSDKClient(_message())
     client = AnthropicAPIClient(client=fake_sdk, sink=InMemorySink())
-    assert client.default_model == "claude-haiku-4-5"
+    assert client.default_model == "claude-haiku-5-5"
 
     strong_client = AnthropicAPIClient(
         client=fake_sdk, sink=InMemorySink(), default_model="claude-sonnet-5"
     )
     assert strong_client.default_model == "claude-sonnet-5"
+
+
+# ---------------------------------------------------------------------------
+# Current-generation request shapes (Haiku 5.5, Sonnet 5.5).
+# ---------------------------------------------------------------------------
+
+
+def test_haiku_5_5_thinks_adaptively_and_is_sent_no_temperature() -> None:
+    """Haiku 5.5 answers a non-default sampling parameter with a 400; the
+    old "any haiku: no thinking, temperature 0" rule would have failed every
+    extraction call on it."""
+    fake_sdk = FakeAnthropicSDKClient(_message())
+    _client(fake_sdk).complete(system="s", user="u", surface="extract", model="claude-haiku-5-5")
+    request = fake_sdk.messages.calls[0]
+    assert request["thinking"] == {"type": "adaptive"}
+    assert "temperature" not in request
+
+
+def test_a_thinking_model_gets_room_for_its_answer() -> None:
+    fake_sdk = FakeAnthropicSDKClient(_message())
+    client = _client(fake_sdk)
+    client.complete(system="s", user="u", surface="extract", model="claude-haiku-5-5")
+    client.complete(
+        system="s", user="u", surface="extract", model="claude-haiku-5-5", max_tokens=32_000
+    )
+    client.complete(system="s", user="u", surface="extract", model="claude-haiku-4-5")
+    assert [c["max_tokens"] for c in fake_sdk.messages.calls] == [16_000, 32_000, 4096]
+
+
+def test_the_compare_verdict_runs_at_low_effort_alongside_the_schema() -> None:
+    fake_sdk = FakeAnthropicSDKClient(_message(text='{"greeting": "x"}'))
+    _client(fake_sdk).complete(
+        system="s", user="u", surface="merge", model="claude-haiku-5-5", json_schema=SCHEMA
+    )
+    output_config = fake_sdk.messages.calls[0]["output_config"]
+    assert output_config["effort"] == "low"
+    assert output_config["format"]["type"] == "json_schema"
+
+
+def test_a_reply_cut_off_at_max_tokens_is_not_parsed_as_whole() -> None:
+    fake_sdk = FakeAnthropicSDKClient(_message(text='{"greeting": "x', stop_reason="max_tokens"))
+    with pytest.raises(LLMJsonError, match="cut off at max_tokens"):
+        _client(fake_sdk).complete(
+            system="s", user="u", surface="extract", model="claude-haiku-5-5", json_schema=SCHEMA
+        )

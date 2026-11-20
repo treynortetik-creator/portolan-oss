@@ -4,8 +4,13 @@ an API key, so a hosted deployment has Claude without a logged-in CLI.
 
 Request shapes follow the `claude-api` skill docs:
 - `system` carries an ephemeral `cache_control` breakpoint (prompt caching).
-- `thinking={"type": "adaptive"}` for every model except Haiku 4.5, which
-  has no adaptive mode, so no `thinking` field is sent for it.
+- `thinking={"type": "adaptive"}` for every current model (Haiku 5.5
+  included). Only Haiku 4.5 and older have no adaptive mode; they get no
+  `thinking` field and are the only models sent a `temperature`: every
+  current model answers a non-default sampling parameter with a 400.
+- Thinking is billed out of `max_tokens`, so a thinking model's cap is
+  raised to `MIN_THINKING_MAX_TOKENS`; a reply cut off at the cap raises
+  rather than being parsed as if it were whole.
 - `output_config={"format": {"type": "json_schema", ...}}` for a raw JSON
   Schema (the caller passes a dict, not a Pydantic model).
 - `stop_reason == "refusal"` raises `LLMRefusal`; no fallback is attempted.
@@ -18,13 +23,28 @@ from __future__ import annotations
 
 from typing import Any
 
-from portolan.llm.base import LLMError, LLMJsonError, LLMResult, resolve_temperature
+from portolan.llm.base import (
+    LLMError,
+    LLMJsonError,
+    LLMResult,
+    claude_takes_sampling_params,
+    resolve_temperature,
+)
 from portolan.llm.json_util import extract_and_validate
 from portolan.metering import InMemorySink, Surface, UsageSink, metered
 from portolan.pricing import UnknownModelError, estimate_cost_with_cache
 
-DEFAULT_EXTRACTION_MODEL = "claude-haiku-4-5"
-DEFAULT_STRONG_MODEL = "claude-sonnet-5"
+DEFAULT_EXTRACTION_MODEL = "claude-haiku-5-5"
+DEFAULT_STRONG_MODEL = "claude-sonnet-5-5"
+
+# Callers' `max_tokens` defaults (4096) were sized for the answer alone.
+# Adaptive thinking spends from the same cap, so a dense source's facts
+# were cut off mid-JSON; a thinking model gets at least this much.
+MIN_THINKING_MAX_TOKENS = 16_000
+
+# `output_config.effort` by surface, where the answer is short and closed.
+# Everything else takes the model's own default.
+SURFACE_EFFORT: dict[str, str] = {"merge": "low"}
 
 
 class LLMRefusal(LLMError):
@@ -33,16 +53,12 @@ class LLMRefusal(LLMError):
     """
 
 
-def _is_haiku(model_key: str) -> bool:
-    return "haiku" in model_key.lower()
-
-
 def _thinking_config(model_key: str) -> dict[str, Any] | None:
-    """`None` means "send no `thinking` field". Haiku 4.5 has no adaptive
-    mode (only a fixed `budget_tokens`), so thinking stays off for it; every
-    other model gets adaptive thinking.
+    """`None` means "send no `thinking` field". Haiku 4.5 and older have no
+    adaptive mode (only a fixed `budget_tokens`), so thinking stays off for
+    them; every current model, Haiku 5.5 included, gets adaptive thinking.
     """
-    if _is_haiku(model_key):
+    if claude_takes_sampling_params(model_key):
         return None
     return {"type": "adaptive"}
 
@@ -116,15 +132,22 @@ class AnthropicAPIClient:
         thinking = _thinking_config(model_key)
         if thinking is not None:
             request["thinking"] = thinking
+            request["max_tokens"] = max(max_tokens, MIN_THINKING_MAX_TOKENS)
+            effort = SURFACE_EFFORT.get(surface)
+            if effort is not None:
+                request["output_config"] = {"effort": effort}
 
-        # Temperature is omitted whenever thinking is on: the API requires it to
-        # be 1 or absent then, so only Haiku calls here ever carry one.
+        # Temperature is omitted whenever thinking is on: current models
+        # reject a non-default one, so only Haiku 4.5 calls ever carry one.
         effective_temperature = resolve_temperature(temperature, surface)
         if effective_temperature is not None and thinking is None:
             request["temperature"] = effective_temperature
 
         if json_schema is not None:
-            request["output_config"] = {"format": {"type": "json_schema", "schema": json_schema}}
+            request.setdefault("output_config", {})["format"] = {
+                "type": "json_schema",
+                "schema": json_schema,
+            }
 
         with metered(self.sink, self.tenant, surface, model_key) as usage:
             # Streaming, because long outputs time out on a plain messages.create().
@@ -168,6 +191,14 @@ class AnthropicAPIClient:
             text = "".join(
                 block.text for block in response.content if getattr(block, "type", None) == "text"
             )
+
+            if json_schema is not None and response.stop_reason == "max_tokens":
+                usage.extra["truncated"] = True
+                raise LLMJsonError(
+                    f"AnthropicAPIClient: the reply was cut off at max_tokens="
+                    f"{request['max_tokens']} before the JSON was complete "
+                    f"(surface={surface!r}, model={model_key!r})"
+                )
 
             data = None
             if json_schema is not None:

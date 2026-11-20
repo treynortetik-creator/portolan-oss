@@ -144,3 +144,24 @@ def test_bedrock_client_constructs_without_credentials_anthropic() -> None:
 def test_bedrock_client_accepts_explicit_model_key() -> None:
     client = BedrockClient("some-future-model-id", region="us-east-1", model_key="gpt-oss-120b")
     assert client.model_key == "gpt-oss-120b"
+
+
+def test_a_model_that_rejects_forced_tool_choice_gets_auto_and_an_instruction() -> None:
+    """Sonnet 5.5, Opus 5.5 and Fable 5.2 answer `tool_choice: {"type":
+    "tool"}` with a 400: the tool stays strict and the prompt asks for it."""
+    request = build_anthropic_json_request("u", "s", {"type": "object"}, force_tool=False)
+    assert request["tool_choice"] == {"type": "auto"}
+    assert request["tools"][0]["strict"] is True
+    assert GENERIC_TOOL_NAME in request["system"] and request["system"].startswith("s")
+
+
+def test_infer_model_key_tells_current_models_from_their_predecessors() -> None:
+    from portolan.extract.backends import infer_model_key
+    from portolan.pricing import PRICING
+
+    assert infer_model_key("anthropic.claude-sonnet-5-5") == "claude-sonnet-5-5"
+    assert infer_model_key("anthropic.claude-sonnet-5") == "claude-sonnet-5"
+    assert infer_model_key("anthropic.claude-haiku-5-5") == "claude-haiku-5-5"
+    for key in ("claude-haiku-5-5", "claude-sonnet-5-5", "claude-opus-5-5", "claude-fable-5-2"):
+        assert key in PRICING
+    assert PRICING["claude-haiku-5-5"].input_per_million == 0.10

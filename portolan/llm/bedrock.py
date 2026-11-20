@@ -19,7 +19,12 @@ from portolan.extract.backends import (
     _extract_converse_tool_input,
     infer_model_key,
 )
-from portolan.llm.base import LLMResult, resolve_temperature
+from portolan.llm.base import (
+    LLMResult,
+    claude_takes_forced_tool_choice,
+    claude_takes_sampling_params,
+    resolve_temperature,
+)
 from portolan.metering import InMemorySink, Surface, UsageSink, metered
 
 GENERIC_TOOL_NAME = "emit_json"
@@ -95,15 +100,22 @@ def build_anthropic_json_request(
     tool_name: str = GENERIC_TOOL_NAME,
     max_tokens: int = DEFAULT_MAX_TOKENS,
     temperature: float | None = None,
+    force_tool: bool = True,
 ) -> dict[str, Any]:
     """Same shape as `portolan.extract.backends.build_anthropic_bedrock_request`
     for an arbitrary schema; that function's docstring says why a strict
-    forced tool, not `output_config`, gets JSON on Bedrock. `temperature` is
-    a top-level field in this (Messages API) shape; omitted when `None`.
+    forced tool, not `output_config`, gets JSON on Bedrock, and what
+    `force_tool=False` does. `temperature` is a top-level field in this
+    (Messages API) shape; omitted when `None`.
     """
     request: dict[str, Any] = {
         "max_tokens": max_tokens,
-        "system": system_prompt,
+        "system": (
+            system_prompt
+            if force_tool
+            else f"{system_prompt}\n\nAnswer by calling the `{tool_name}` tool exactly once. "
+            "Write no text outside the tool call."
+        ),
         "messages": [{"role": "user", "content": user_message}],
         "tools": [
             {
@@ -113,7 +125,7 @@ def build_anthropic_json_request(
                 "strict": True,
             }
         ],
-        "tool_choice": {"type": "tool", "name": tool_name},
+        "tool_choice": {"type": "tool", "name": tool_name} if force_tool else {"type": "auto"},
     }
     if temperature is not None:
         request["temperature"] = temperature
@@ -263,9 +275,17 @@ class BedrockClient:
         temperature: float | None = None,
     ) -> tuple[str, dict[str, Any] | None, dict[str, Any]]:
         client = self._get_anthropic_client()
+        # Current Claude models reject a non-default temperature outright.
+        if not claude_takes_sampling_params(model_id):
+            temperature = None
         if json_schema is not None:
             request = build_anthropic_json_request(
-                user, system, json_schema, max_tokens=max_tokens, temperature=temperature
+                user,
+                system,
+                json_schema,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                force_tool=claude_takes_forced_tool_choice(model_id),
             )
         else:
             request = build_anthropic_text_request(

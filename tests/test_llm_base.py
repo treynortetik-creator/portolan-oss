@@ -12,6 +12,8 @@ from portolan.llm.base import (
     LLMError,
     LLMJsonError,
     LLMResult,
+    claude_takes_forced_tool_choice,
+    claude_takes_sampling_params,
     resolve_temperature,
 )
 
@@ -61,16 +63,36 @@ def _isolated_temperature_env(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.delenv(TEMPERATURE_ENV_VAR, raising=False)
 
 
-def test_deterministic_surfaces_are_extract_and_audit() -> None:
-    assert DETERMINISTIC_TEMPERATURE_SURFACES == frozenset({"extract", "audit"})
+def test_deterministic_surfaces_are_extract_audit_and_merge() -> None:
+    # `merge`: the compare verdict decides what is written to the graph.
+    assert DETERMINISTIC_TEMPERATURE_SURFACES == frozenset({"extract", "audit", "merge"})
 
 
-@pytest.mark.parametrize("surface", ["extract", "audit"])
+@pytest.mark.parametrize(
+    ("model", "sampling", "forced_tool"),
+    [
+        ("claude-haiku-4-5", True, True),
+        ("anthropic.claude-haiku-4-5", True, True),
+        ("claude-haiku-5-5", False, True),
+        ("claude-sonnet-5", False, True),
+        ("claude-sonnet-5-5", False, False),
+        ("claude-opus-5-5", False, False),
+        ("anthropic.claude-opus-5-5", False, False),
+        ("claude-fable-5-2", False, False),
+        ("claude-fable-5", False, True),
+    ],
+)
+def test_claude_request_shape_by_model(model: str, sampling: bool, forced_tool: bool) -> None:
+    assert claude_takes_sampling_params(model) is sampling
+    assert claude_takes_forced_tool_choice(model) is forced_tool
+
+
+@pytest.mark.parametrize("surface", ["extract", "audit", "merge"])
 def test_resolve_temperature_defaults_to_zero_for_deterministic_surfaces(surface: str) -> None:
     assert resolve_temperature(None, surface) == DEFAULT_DETERMINISTIC_TEMPERATURE == 0.0
 
 
-@pytest.mark.parametrize("surface", ["report", "chat", "merge", "consolidate", "embed"])
+@pytest.mark.parametrize("surface", ["report", "chat", "consolidate", "embed"])
 def test_resolve_temperature_is_none_for_every_other_surface(surface: str) -> None:
     assert resolve_temperature(None, surface) is None
 

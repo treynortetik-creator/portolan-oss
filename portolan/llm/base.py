@@ -107,9 +107,10 @@ class LLMClient(Protocol):
 # One temperature rule for every client, decided from `surface`, so the
 # clients cannot drift apart.
 
-#: Surfaces that default to a deterministic temperature (extraction and the
-#: judge). Every other surface resolves to `None` unless the caller asks.
-DETERMINISTIC_TEMPERATURE_SURFACES: frozenset[Surface] = frozenset({"extract", "audit"})
+#: Surfaces that default to a deterministic temperature (extraction, the
+#: judge, and merge's compare verdict, which decides what is written). Every
+#: other surface resolves to `None` unless the caller asks.
+DETERMINISTIC_TEMPERATURE_SURFACES: frozenset[Surface] = frozenset({"extract", "audit", "merge"})
 
 #: Read fresh on every call; the bench CLI's `--temperature` flag sets it so
 #: the value reaches the client without a new call-site parameter.
@@ -138,6 +139,37 @@ def resolve_temperature(explicit: float | None, surface: Surface) -> float | Non
         except ValueError:
             pass
     return DEFAULT_DETERMINISTIC_TEMPERATURE
+
+
+# Claude request shapes differ by generation, and every client that talks to
+# Claude (first-party API, Bedrock) needs the same answer.
+
+_LEGACY_SAMPLING_CLAUDE = ("claude-haiku-4-5", "claude-haiku-3", "claude-3")
+_NO_FORCED_TOOL_CLAUDE = (
+    "claude-sonnet-5-5",
+    "claude-opus-5-5",
+    "claude-fable-5",
+    "claude-mythos-5",
+)
+
+
+def claude_takes_sampling_params(model_id: str) -> bool:
+    """Whether a Claude model accepts `temperature` (and has no adaptive
+    thinking). True only for Haiku 4.5 and older; every current model
+    (Haiku 5.5, Sonnet 5 and 5.5, the Opus and Fable lines) answers a
+    non-default sampling parameter with a 400 and thinks adaptively."""
+    lowered = model_id.lower()
+    return any(marker in lowered for marker in _LEGACY_SAMPLING_CLAUDE)
+
+
+def claude_takes_forced_tool_choice(model_id: str) -> bool:
+    """Whether `tool_choice: {"type": "tool"}` is accepted. Sonnet 5.5, Opus
+    5.5 and the Fable 5.1+ line answer it with a 400; they need
+    `{"type": "auto"}` with a strict tool and an instruction to call it."""
+    lowered = model_id.lower()
+    if "claude-fable-5" in lowered and "claude-fable-5-" not in lowered:
+        return True  # Fable 5 itself still accepts it
+    return not any(marker in lowered for marker in _NO_FORCED_TOOL_CLAUDE)
 
 
 class LLMError(Exception):

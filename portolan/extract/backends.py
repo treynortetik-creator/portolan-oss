@@ -36,6 +36,7 @@ from portolan.extract.schema import (
     SourceEnvelope,
     extraction_result_json_schema,
 )
+from portolan.llm.base import claude_takes_forced_tool_choice
 from portolan.metering import UsageSink, metered
 
 if TYPE_CHECKING:
@@ -93,6 +94,11 @@ _MODEL_KEY_HINTS: list[tuple[str, str]] = [
     ("gpt-oss-20b", "gpt-oss-20b"),
     ("5.6-luna", "gpt-5.6-luna"),
     ("5-6-luna", "gpt-5.6-luna"),
+    # Most specific first: "claude-sonnet-5" is a prefix of "claude-sonnet-5-5".
+    ("claude-haiku-5-5", "claude-haiku-5-5"),
+    ("claude-sonnet-5-5", "claude-sonnet-5-5"),
+    ("claude-opus-5-5", "claude-opus-5-5"),
+    ("claude-fable-5-2", "claude-fable-5-2"),
     ("claude-haiku-4-5", "claude-haiku-4-5"),
     ("claude-sonnet-5", "claude-sonnet-5"),
     ("claude-opus-5", "claude-opus-5"),
@@ -310,9 +316,14 @@ def build_anthropic_bedrock_request(
     system_prompt: str,
     tool_name: str = TOOL_NAME,
     max_tokens: int = DEFAULT_MAX_TOKENS,
+    force_tool: bool = True,
 ) -> dict[str, Any]:
     """Pure function: envelope + system prompt -> the keyword arguments for
     `client.messages.create(model=..., **this)` on `AnthropicBedrockMantle`.
+
+    `force_tool=False` for a model that rejects a forced `tool_choice`
+    (`portolan.llm.base.claude_takes_forced_tool_choice`): the tool stays
+    strict, the choice is `auto`, and the system prompt says to call it.
 
     Uses strict tool use with a forced `tool_choice`, not
     `output_config={"format": ...}`. That is a deliberate deviation from a
@@ -325,7 +336,9 @@ def build_anthropic_bedrock_request(
     """
     return {
         "max_tokens": max_tokens,
-        "system": system_prompt,
+        "system": system_prompt
+        if force_tool
+        else system_prompt + _call_tool_instruction(tool_name),
         "messages": [{"role": "user", "content": build_user_message(envelope)}],
         "tools": [
             {
@@ -335,8 +348,15 @@ def build_anthropic_bedrock_request(
                 "strict": True,
             }
         ],
-        "tool_choice": {"type": "tool", "name": tool_name},
+        "tool_choice": ({"type": "tool", "name": tool_name} if force_tool else {"type": "auto"}),
     }
+
+
+def _call_tool_instruction(tool_name: str) -> str:
+    return (
+        f"\n\nAnswer by calling the `{tool_name}` tool exactly once. Write no text "
+        "outside the tool call."
+    )
 
 
 def _extract_anthropic_tool_input(response: Any, tool_name: str) -> dict[str, Any]:
@@ -601,8 +621,9 @@ class AnthropicBedrockBackend:
         # shape (Group 3 of the review fix wave) -- identical here, just
         # over the Anthropic Bedrock Mantle client's request/response shape.
         client = self._get_client()
+        force_tool = claude_takes_forced_tool_choice(self.model_id)
         request = build_anthropic_bedrock_request(
-            envelope, system_prompt, max_tokens=self.max_tokens
+            envelope, system_prompt, max_tokens=self.max_tokens, force_tool=force_tool
         )
 
         with metered(sink, tenant, "extract", self.model_key) as usage:
@@ -622,7 +643,7 @@ class AnthropicBedrockBackend:
             return result
 
         retry_request = build_anthropic_bedrock_request(
-            envelope, system_prompt, max_tokens=self.max_tokens
+            envelope, system_prompt, max_tokens=self.max_tokens, force_tool=force_tool
         )
         retry_request["messages"][0]["content"] = _build_retry_message(
             request["messages"][0]["content"], usage.extra["validation_error"]
