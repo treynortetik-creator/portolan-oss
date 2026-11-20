@@ -4,8 +4,9 @@
 Two things live here, both upstream of writing anything:
 
 1. `resolve_fact_entities` -- turn `fact.entities` (mention strings or
-   already-resolved registry ids) into `ResolvedMention`s, queuing unknowns
-   and ambiguous-without-a-shared-parent mentions to `review_queue`.
+   already-resolved registry ids) into `ResolvedMention`s, and
+   `park_unresolved` -- park unknowns and ambiguous-without-a-shared-parent
+   mentions in `review_queue`, with the whole fact.
 2. `select_home` -- the Merge section's "pick the home note" table, plus a
    fallback for the gap it leaves: an account-anchored fact with no account
    entity (e.g. a competitor's own recall, no customer named) homes on the
@@ -21,6 +22,7 @@ import psycopg
 
 from portolan.extract.schema import EntityKind, Fact, FactType
 from portolan.ingest.models import SourceRow
+from portolan.merge.util import fact_payload
 from portolan.registry import Registry
 from portolan.registry import queue_unknown as registry_queue_unknown
 from portolan.registry.models import Resolution
@@ -85,63 +87,35 @@ def _context_ids(source: SourceRow, registry: Registry) -> list[str]:
     return list(dict.fromkeys(ids))
 
 
-def _queue_ambiguous(
-    conn: psycopg.Connection,
-    mention: str,
-    source_slug: str,
-    candidates: list[str],
-    fact: Fact,
-    *,
-    commit: bool = True,
-) -> None:
-    """Park an ambiguous mention with no shared parent (spec sec 3: "or
-    parks in the review queue") as kind `ambiguous_entity`.
+@dataclass
+class UnresolvedMention:
+    """A name in `fact.entities` the registry could not settle: `unknown`,
+    or `ambiguous` between `candidates` with no shared parent."""
 
-    The fact's claim, quote, locator and type are saved on the row so a
-    reviewer can act on it. One open row per mention (`park_mention`): a
-    later source is added to its `occurrences`; a repeat of the same source
-    is a no-op.
-    """
-    occurrence = {
-        "fact_type": fact.type.value,
-        "claim": fact.claim,
-        "quote": fact.quote,
-        "locator": fact.locator,
-        "valid_from": fact.valid_from.isoformat() if fact.valid_from else None,
-    }
-    park_mention(
-        conn,
-        kind="ambiguous_entity",
-        mention=mention,
-        source_slug=source_slug,
-        payload={"mention": mention, "candidates": candidates, **occurrence},
-        occurrence=occurrence,
-    )
-    if commit:
-        conn.commit()
+    mention: str
+    status: str  # "unknown" | "ambiguous"
+    candidates: list[str]
 
 
 def resolve_fact_entities(
-    conn: psycopg.Connection,
     registry: Registry,
     fact: Fact,
     source: SourceRow,
     *,
     ambiguous_mentions: list[str],
-    commit: bool = True,
-) -> tuple[list[ResolvedMention], int]:
-    """Resolve every mention in `fact.entities`. Unknowns are queued
-    (`registry.queue_unknown`); ambiguous mentions with a shared parent are
-    attached to that parent and their mention text appended to
-    `ambiguous_mentions` (caller marks the claim text, per the Merge
-    section); ambiguous mentions with no shared parent are queued
-    separately and dropped from the result -- facts are never dropped
-    (spec sec 3), only the one mention's contribution to home-note
-    selection and linking.
+) -> tuple[list[ResolvedMention], list[UnresolvedMention]]:
+    """Resolve every mention in `fact.entities`; writes nothing.
+
+    Ambiguous mentions with a shared parent are attached to that parent and
+    their mention text appended to `ambiguous_mentions` (the caller marks
+    the claim text, per the Merge section). Unknown mentions, and ambiguous
+    ones with no shared parent, come back as `UnresolvedMention`s for
+    `park_unresolved`, which the caller runs once it knows whether the fact
+    found a home without them.
     """
     context_ids = _context_ids(source, registry)
     resolved: list[ResolvedMention] = []
-    queued = 0
+    unresolved: list[UnresolvedMention] = []
     # When the fact was said: its own world date when that is earlier than
     # the source (a CRM export recording a July departure), else the source.
     dates = [d for d in (fact.valid_from, source.source_date) if d is not None]
@@ -159,28 +133,65 @@ def resolve_fact_entities(
                 resolved.append(ResolvedMention(mention, entity.id, entity.kind, ambiguous=True))
                 ambiguous_mentions.append(mention)
         elif result.status == "ambiguous":
-            _queue_ambiguous(conn, mention, source.slug, result.candidates, fact, commit=commit)
-            queued += 1
-        else:  # unknown
+            unresolved.append(UnresolvedMention(mention, "ambiguous", list(result.candidates)))
+        else:
+            unresolved.append(UnresolvedMention(mention, "unknown", []))
+
+    return resolved, unresolved
+
+
+def park_unresolved(
+    conn: psycopg.Connection,
+    unresolved: list[UnresolvedMention],
+    fact: Fact,
+    source: SourceRow,
+    *,
+    blocking: bool,
+    commit: bool = True,
+) -> int:
+    """Park each unresolved mention with the whole fact (spec sec 3: "or
+    parks in the review queue"; facts are never dropped). `blocking`: the
+    fact found no home, so it lives only on these rows until a person maps
+    a name (`portolan.merge.replay`). Returns the number of mentions parked.
+
+    One live row per mention (`park_mention`): a later source or fact is
+    added to it; a repeat of the same source and fact is a no-op.
+    """
+    whole_fact = fact_payload(fact)
+    summary = {
+        "fact_type": fact.type.value,
+        "claim": fact.claim,
+        "quote": fact.quote,
+        "locator": fact.locator,
+        "valid_from": fact.valid_from.isoformat() if fact.valid_from else None,
+    }
+    for item in unresolved:
+        if item.status == "ambiguous":
+            park_mention(
+                conn,
+                kind="ambiguous_entity",
+                mention=item.mention,
+                source_slug=source.slug,
+                payload={"mention": item.mention, "candidates": item.candidates, **summary},
+                occurrence=summary,
+                fact=whole_fact,
+                blocking=blocking,
+            )
+        else:
             # The fact's own text goes on the row; `fact.id` alone cannot be
             # looked up later.
             registry_queue_unknown(
                 conn,
-                mention,
+                item.mention,
                 source.slug,
-                {
-                    "fact_id": fact.id,
-                    "fact_type": fact.type.value,
-                    "claim": fact.claim,
-                    "quote": fact.quote,
-                    "locator": fact.locator,
-                    "valid_from": fact.valid_from.isoformat() if fact.valid_from else None,
-                },
-                commit=commit,
+                {"fact_id": fact.id, **summary},
+                commit=False,
+                fact=whole_fact,
+                blocking=blocking,
             )
-            queued += 1
-
-    return resolved, queued
+    if commit and unresolved:
+        conn.commit()
+    return len(unresolved)
 
 
 def select_home(fact: Fact, resolved: list[ResolvedMention]) -> HomeChoice | None:

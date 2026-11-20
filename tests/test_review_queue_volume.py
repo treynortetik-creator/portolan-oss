@@ -12,8 +12,9 @@ backup, one or more per measured cause:
 
 The same flood run against main at 54c1f40 left 25 open rows (14 unknown
 names, 3 possible contradictions, 8 rejected report sentences);
-`test_the_flood_leaves_only_the_rows_a_person_must_answer` pins the 6 left
-after the fix, row by row."""
+`test_the_flood_leaves_only_the_rows_a_person_must_answer` pinned the 6 left
+after that fix, row by row; 4 are open now, since an unknown name that blocks
+no fact waits as `watching` until it recurs (migration 0039)."""
 
 from __future__ import annotations
 
@@ -428,10 +429,6 @@ def test_the_flood_leaves_only_the_rows_a_person_must_answer(db: psycopg.Connect
 
     assert by_label == Counter(
         {
-            # A genuinely new name, from a news item.
-            ("unknown_entity", "Renata Solis"): 1,
-            # One row for a name two sources used.
-            ("unknown_entity", "Riverside Clinic"): 1,
             # The vendor's own news, with no customer to file it under.
             ("other", "no_home_note"): 1,
             # Late in July, "behind us" in September: two sources, undated.
@@ -444,7 +441,15 @@ def test_the_flood_leaves_only_the_rows_a_person_must_answer(db: psycopg.Connect
             ("other", "resolved_language_without_a_resolved_theme"): 2,
         }
     ), rows
-    assert len(rows) == 6
+    assert len(rows) == 4
+
+    # Two unknown names on facts that were filed anyway, seen in one and two
+    # sources: kept, not yet asked about (`registry.park_mention`).
+    with db.cursor() as cur:
+        cur.execute(
+            "SELECT payload ->> 'mention' FROM review_queue WHERE status = 'watching' ORDER BY 1"
+        )
+        assert [r[0] for r in cur.fetchall()] == ["Renata Solis", "Riverside Clinic"]
 
 
 def test_the_second_source_naming_an_unknown_name_joins_its_row(db: psycopg.Connection) -> None:

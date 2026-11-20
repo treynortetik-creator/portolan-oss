@@ -5,8 +5,9 @@ The pipeline, per fact:
 1. Resolve entities (`portolan.merge.resolve.resolve_fact_entities`).
 2. Pick a home note (`portolan.merge.resolve.select_home`); when every
    name resolved to the vendor's own side, the source's account
-   (`fallback_account_id`); no home -> `queued_unknown` (each unknown
-   mention, or the whole fact via `_queue_no_home`, is parked for review).
+   or the fact named nobody, the source's account (`fallback_account_id`);
+   no home -> `queued_unknown` (the whole fact is parked on each unknown
+   mention's row, or via `_queue_no_home`).
 3. Ensure the home note exists (an entity note from the registry, wrapped
    in a `signal-<fact_type>-<anchor>` note unless the home is a contact),
    and every other resolved entity's note too, so every mention can be
@@ -41,8 +42,13 @@ from portolan.ingest.models import SourceRow
 from portolan.llm.base import LLMClient
 from portolan.merge.gate import COMPARE_SYSTEM, GATE_SKIP_THRESHOLD, build_compare_prompt, gate
 from portolan.merge.models import CompareVerdict, MergeOutcome, compare_verdict_json_schema
-from portolan.merge.resolve import ResolvedMention, resolve_fact_entities, select_home
-from portolan.merge.util import recorded_dt
+from portolan.merge.resolve import (
+    ResolvedMention,
+    park_unresolved,
+    resolve_fact_entities,
+    select_home,
+)
+from portolan.merge.util import fact_payload, recorded_dt
 from portolan.notes import (
     Claim,
     NoteRow,
@@ -411,8 +417,8 @@ def _queue_no_home(
     *,
     commit: bool = True,
 ) -> bool:
-    """Park a fact that names only the vendor's own side, from a source
-    with no account to file it under (`merge_fact`'s `fallback_account_id`).
+    """Park a fact that names only the vendor's own side, or nobody, from a
+    source with no account to file it under (`merge_fact`'s `fallback_account_id`).
     A repeat merge of the same source and claim is a no-op. Returns whether
     a row was written."""
     with conn.cursor() as cur:
@@ -431,6 +437,7 @@ def _queue_no_home(
             "quote": fact.quote,
             "locator": fact.locator,
             "valid_from": fact.valid_from.isoformat() if fact.valid_from else None,
+            "fact": fact_payload(fact),
         }
         cur.execute(
             "INSERT INTO review_queue (kind, payload, source_slug) VALUES ('other', %s::jsonb, %s)",
@@ -460,10 +467,11 @@ def merge_fact(
     open `conn.transaction()`, so a failure partway through rolls back every
     row the source wrote; `True` commits each write as it goes.
 
-    `fallback_account_id`: the home for a fact whose names all resolved,
-    but only to the vendor's own side (e.g. "Halvard Support will send the
-    delivery details" on a customer's ticket). With none, the fact is parked
-    for a person (`_queue_no_home`), never dropped."""
+    `fallback_account_id`: the home for a fact with nothing to anchor a
+    note and nothing waiting on a person: its names all resolved, but only
+    to the vendor's own side (e.g. "Halvard Support will send the delivery
+    details" on a customer's ticket), or it named nobody. With none, the
+    fact is parked for a person (`_queue_no_home`), never dropped."""
     notes_created: list[str] = []
     notes_touched: list[str] = []
     ambiguous_mentions: list[str] = []
@@ -478,29 +486,33 @@ def merge_fact(
             reason="already recorded from an earlier version of this source",
         )
 
-    resolved, queue_rows_from_resolution = resolve_fact_entities(
-        conn, registry, fact, source, ambiguous_mentions=ambiguous_mentions, commit=commit
+    resolved, unresolved = resolve_fact_entities(
+        registry, fact, source, ambiguous_mentions=ambiguous_mentions
     )
 
     home = select_home(fact, resolved)
-    if home is None and resolved and queue_rows_from_resolution == 0:
-        if fallback_account_id is not None:
-            home = select_home(fact, [ResolvedMention("", fallback_account_id, EntityKind.ACCOUNT)])
-        else:
-            parked = _queue_no_home(conn, fact, source, resolved, commit=commit)
-            return MergeOutcome(
-                fact_id=fact.id,
-                status="queued_unknown",
-                reason="every name resolved to the vendor's own side and the source has no account",
-                queue_rows=1 if parked else 0,
-            )
+    if home is None and not unresolved and fallback_account_id is not None:
+        # Nothing in the fact can anchor a note and nothing is waiting on a
+        # person: it named only the vendor's own side, or nobody at all.
+        home = select_home(fact, [ResolvedMention("", fallback_account_id, EntityKind.ACCOUNT)])
+    # Parked with the whole fact; `blocking` when these rows are the only
+    # place the fact now lives.
+    queue_rows_from_resolution = park_unresolved(
+        conn, unresolved, fact, source, blocking=home is None, commit=commit
+    )
+    if home is None and not unresolved:
+        parked = _queue_no_home(conn, fact, source, resolved, commit=commit)
+        return MergeOutcome(
+            fact_id=fact.id,
+            status="queued_unknown",
+            reason=("nothing in fact.entities can anchor a note and the source has no account"),
+            queue_rows=1 if parked else 0,
+        )
     if home is None:
         return MergeOutcome(
             fact_id=fact.id,
             status="queued_unknown",
-            reason=(
-                "no entity in fact.entities resolved to an account, contact, product or competitor"
-            ),
+            reason="the fact waits on a name the registry does not know",
             queue_rows=queue_rows_from_resolution,
         )
 

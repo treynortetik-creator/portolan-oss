@@ -28,6 +28,7 @@ nothing: never fuzzy-match, never guess.
 from __future__ import annotations
 
 import json
+import os
 from collections.abc import Sequence
 from datetime import date
 from pathlib import Path
@@ -364,6 +365,19 @@ def add_alias(conn, entity_id: str, alias: str, source: str) -> None:
     conn.commit()
 
 
+#: Distinct sources after which a name that blocks nothing is still worth
+#: a person's answer (`park_mention`). Read from the environment per call.
+PROMOTE_AFTER_SOURCES_ENV = "PORTOLAN_MENTION_PROMOTE_AFTER"
+DEFAULT_PROMOTE_AFTER_SOURCES = 3
+
+
+def _promote_after_sources() -> int:
+    try:
+        return max(1, int(os.environ.get(PROMOTE_AFTER_SOURCES_ENV, "")))
+    except ValueError:
+        return DEFAULT_PROMOTE_AFTER_SOURCES
+
+
 def park_mention(
     conn,
     *,
@@ -372,62 +386,127 @@ def park_mention(
     source_slug: str,
     payload: dict,
     occurrence: dict,
+    fact: dict | None = None,
+    blocking: bool = True,
 ) -> None:
-    """One open `review_queue` row per `(kind, mention)`, compared trimmed
+    """One live `review_queue` row per `(kind, mention)`, compared trimmed
     and case-insensitively: a person answers "who is this name" once, and
     one alias covers every source. The first source writes `payload` as a
     new row; each later source is appended to that row's
-    `payload.occurrences` as `{"source_slug": ..., **occurrence}`, so its
-    fact is still kept. A source already parked under this name, on any
-    row in any status, is a no-op. Never commits."""
+    `payload.occurrences` as `{"source_slug": ..., **occurrence}`.
+
+    `fact`: the whole fact that named the mention. Every such fact is kept
+    on the row under `payload.facts` as `{"source_slug", "blocking",
+    "fact"}`, once per `(source, locator, claim)`, so
+    `portolan.merge.replay.replay_parked_facts` can merge it after a person
+    maps the name. Without it a source's second fact under one unknown name
+    had no record anywhere.
+
+    `blocking`: the fact could not be filed without this name. A row is
+    `open` (a person is asked) when the name blocks a fact, or once it has
+    appeared in `PORTOLAN_MENTION_PROMOTE_AFTER` distinct sources (default
+    3); until then it is `watching`, which changes nothing in the graph.
+
+    A source already parked under this name on a row a person closed
+    (resolved or dismissed) is a no-op. Never commits."""
     key = mention.strip().lower()
+    occurrence_json = json.dumps([{"source_slug": source_slug}])
+    fact_entry = (
+        {"source_slug": source_slug, "blocking": blocking, "fact": fact}
+        if fact is not None
+        else None
+    )
     with conn.cursor() as cur:
         cur.execute(
             """
-            SELECT 1 FROM review_queue
-            WHERE kind = %s AND lower(btrim(payload ->> 'mention')) = %s
-              AND (source_slug = %s OR payload -> 'occurrences' @> %s::jsonb)
-            LIMIT 1
-            """,
-            (kind, key, source_slug, json.dumps([{"source_slug": source_slug}])),
-        )
-        if cur.fetchone() is not None:
-            return
-        cur.execute(
-            """
-            SELECT id FROM review_queue
-            WHERE kind = %s AND status = 'open' AND lower(btrim(payload ->> 'mention')) = %s
+            SELECT id, status, source_slug, payload FROM review_queue
+            WHERE kind = %s AND status IN ('open', 'watching')
+              AND lower(btrim(payload ->> 'mention')) = %s
             ORDER BY id LIMIT 1
+            FOR UPDATE
             """,
             (kind, key),
         )
         row = cur.fetchone()
-        if row is not None:
+        if row is None:
             cur.execute(
                 """
-                UPDATE review_queue
-                SET payload = jsonb_set(
-                    payload, '{occurrences}',
-                    COALESCE(payload -> 'occurrences', '[]'::jsonb) || %s::jsonb
-                )
-                WHERE id = %s
+                SELECT 1 FROM review_queue
+                WHERE kind = %s AND lower(btrim(payload ->> 'mention')) = %s
+                  AND (source_slug = %s OR payload -> 'occurrences' @> %s::jsonb)
+                LIMIT 1
                 """,
-                (json.dumps([{"source_slug": source_slug, **occurrence}]), row[0]),
+                (kind, key, source_slug, occurrence_json),
+            )
+            if cur.fetchone() is not None:
+                return
+            new_payload = dict(payload)
+            if fact_entry is not None:
+                new_payload["facts"] = [fact_entry]
+            status = "open" if blocking or _promote_after_sources() <= 1 else "watching"
+            cur.execute(
+                "INSERT INTO review_queue (kind, payload, source_slug, status) "
+                "VALUES (%s, %s::jsonb, %s, %s)",
+                (kind, json.dumps(new_payload), source_slug, status),
             )
             return
-        cur.execute(
-            "INSERT INTO review_queue (kind, payload, source_slug) VALUES (%s, %s::jsonb, %s)",
-            (kind, json.dumps(payload), source_slug),
-        )
+
+        row_id, status, row_source, row_payload = row
+        row_payload = dict(row_payload or {})
+        occurrences = list(row_payload.get("occurrences") or [])
+        seen_sources = {row_source} | {o.get("source_slug") for o in occurrences}
+        changed = False
+        if source_slug not in seen_sources:
+            occurrences.append({"source_slug": source_slug, **occurrence})
+            row_payload["occurrences"] = occurrences
+            seen_sources.add(source_slug)
+            changed = True
+        if fact_entry is not None:
+            facts = list(row_payload.get("facts") or [])
+            identity = (source_slug, fact.get("locator"), fact.get("claim"))
+            known = {
+                (
+                    f.get("source_slug"),
+                    (f.get("fact") or {}).get("locator"),
+                    (f.get("fact") or {}).get("claim"),
+                ): index
+                for index, f in enumerate(facts)
+            }
+            if identity not in known:
+                facts.append(fact_entry)
+                row_payload["facts"] = facts
+                changed = True
+            elif blocking and not facts[known[identity]].get("blocking"):
+                facts[known[identity]]["blocking"] = True
+                row_payload["facts"] = facts
+                changed = True
+        new_status = status
+        if status == "watching" and (
+            blocking or len(seen_sources - {None}) >= _promote_after_sources()
+        ):
+            new_status = "open"
+        if changed or new_status != status:
+            cur.execute(
+                "UPDATE review_queue SET payload = %s::jsonb, status = %s WHERE id = %s",
+                (json.dumps(row_payload), new_status, row_id),
+            )
 
 
 def queue_unknown(
-    conn, mention: str, source_slug: str, context: dict, *, commit: bool = True
+    conn,
+    mention: str,
+    source_slug: str,
+    context: dict,
+    *,
+    commit: bool = True,
+    fact: dict | None = None,
+    blocking: bool = True,
 ) -> None:
     """Park an unresolved mention in `review_queue` (kind `unknown_entity`).
-    Facts are never dropped, only flagged (spec sec 3). One open row per
-    name (`park_mention`): a second source naming it is added to that row;
-    a second call for the same source is a no-op.
+    Facts are never dropped, only flagged (spec sec 3). One live row per
+    name (`park_mention`, which also explains `fact` and `blocking`): a
+    second source naming it is added to that row; a second call for the
+    same source and fact is a no-op.
 
     Pass `commit=False` from inside a `with conn.transaction():` block,
     where psycopg refuses a manual `conn.commit()`."""
@@ -438,6 +517,8 @@ def queue_unknown(
         source_slug=source_slug,
         payload={"mention": mention, "context": context},
         occurrence={"context": context},
+        fact=fact,
+        blocking=blocking,
     )
     if commit:
         conn.commit()

@@ -187,10 +187,13 @@ def merge_extraction(
             report.notes_created = len(created)
             report.notes_updated = len(updated)
 
-            # `summary` only; never `extraction_status` (module docstring).
+            # `summary` only; never `extraction_status` (module docstring). A
+            # blank summary (a single parked fact merged later) keeps the
+            # one the source's extraction wrote.
             with conn.cursor() as cur:
                 cur.execute(
-                    "UPDATE sources SET summary = %s WHERE slug = %s",
+                    "UPDATE sources SET summary = COALESCE(NULLIF(%s, ''), summary) "
+                    "WHERE slug = %s",
                     (result.summary, source.slug),
                 )
 

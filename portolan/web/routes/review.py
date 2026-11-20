@@ -21,6 +21,7 @@ from portolan.ingest.intake import SOURCE_COLUMNS, row_to_source_row
 from portolan.ingest.models import SourceRow
 from portolan.llm.base import LLMClient
 from portolan.merge import merge_extraction
+from portolan.merge.replay import replay_parked_facts
 from portolan.registry import Registry, add_alias
 from portolan.registry.owners import confirm_owner_proposal
 from portolan.report.action_done import confirm_action_done
@@ -86,6 +87,7 @@ _NOTICES = {
         "That name is already mapped to a different record, so nothing was changed "
         "— a name keeps its first mapping. See the note on the card below."
     ),
+    "alias_facts_filed": "Mapped — the facts that were waiting on that name are now filed.",
     # `quote_unsupported` "Keep as claim" (`_keep_quote_unsupported_fact`).
     "kept_as_claim": "Kept — this fact is now on the graph as a claim.",
     "kept_unresolved": (
@@ -834,9 +836,12 @@ def review_add_alias(
     entity_id: str = Form(...),
     session: Session = Depends(require_editor),
     conn: psycopg.Connection = Depends(get_conn),
+    llm: LLMClient = Depends(get_llm_dep),
+    embedder: Embedder = Depends(get_embedder_dep),
 ) -> object:
     """Map the row's mention to `entity_id` (spec sec 3: "a human maps a
-    name once; it sticks"). Refused, with no change, when the row is no
+    name once; it sticks"), then merge the facts that were waiting on that
+    name (`portolan.merge.replay`). Refused, with no change, when the row is no
     longer open or the mention already maps to a different entity (the
     `registry_aliases` key does not prevent that)."""
     row = _get_row(conn, row_id)
@@ -868,9 +873,13 @@ def review_add_alias(
         add_alias(conn, entity_id, mention, source="human")
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+    # The facts parked whole on this row now have a home. A failure here
+    # leaves the alias saved and the row open, so it can be retried.
+    replayed = replay_parked_facts(conn, llm, embedder, Registry.load(conn), row_id)
     _resolve_row(conn, row_id, "resolved", session.editor)
     _record_decision(conn, session.editor, row_id, "add_alias", row["kind"], None)
-    return RedirectResponse(url="/review", status_code=303)
+    url = "/review?notice=alias_facts_filed" if replayed.replayed else "/review"
+    return RedirectResponse(url=url, status_code=303)
 
 
 __all__ = ["router"]
