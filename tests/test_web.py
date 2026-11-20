@@ -1215,7 +1215,7 @@ def test_chat_uses_chat_model_setting_falling_back_to_strong_model(
     )
 
 
-def test_resolve_chat_model_agent_sdk_defaults_to_claude_sonnet_5(
+def test_resolve_chat_model_agent_sdk_defaults_to_claude_sonnet_5_5(
     db_url: str, store_root: Path
 ) -> None:
     """Owner verdict 2026-09-18 ("make chat use a more capable model"):
@@ -1228,7 +1228,7 @@ def test_resolve_chat_model_agent_sdk_defaults_to_claude_sonnet_5(
     """
     from portolan.web.routes.chat import DEFAULT_AGENT_SDK_CHAT_MODEL, resolve_chat_model
 
-    assert DEFAULT_AGENT_SDK_CHAT_MODEL == "claude-sonnet-5"
+    assert DEFAULT_AGENT_SDK_CHAT_MODEL == "claude-sonnet-5-5"
 
     # CHAT_MODEL unset -> the Claude default, not strong_model (which, on
     # this exact checkout's own .env, is an OpenRouter-shaped id).
@@ -1239,14 +1239,14 @@ def test_resolve_chat_model_agent_sdk_defaults_to_claude_sonnet_5(
         chat_model=None,
         strong_model="openai/gpt-5.6-luna",
     )
-    assert resolve_chat_model(unset) == "claude-sonnet-5"
+    assert resolve_chat_model(unset) == "claude-sonnet-5-5"
 
     # CHAT_MODEL set to a non-Claude (OpenRouter-shaped) id -> still the
     # Claude default, never handed to the Agent SDK as-is.
     non_claude = _settings(
         db_url, store_root, llm_provider="agent_sdk", chat_model="deepseek/deepseek-v4-flash-0731"
     )
-    assert resolve_chat_model(non_claude) == "claude-sonnet-5"
+    assert resolve_chat_model(non_claude) == "claude-sonnet-5-5"
 
     # CHAT_MODEL set to a real Claude id -> honored exactly, not
     # overridden by the default.
