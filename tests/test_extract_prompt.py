@@ -515,11 +515,13 @@ def test_v7_entity_names_is_v6_plus_one_block_after_entity_kinds() -> None:
     assert v7.index("## Entity kinds") < start < v7.index("## Worked examples")
 
     block = v7[start:end]
-    assert len(block) < 900
-    # The three things it says: example names are made up, the fallback
-    # word for an unnamed seller, and what goes in `mention`.
+    assert len(block) < 1100
+    # The four things it says: example names are made up, the fallback
+    # word for an unnamed seller, what goes in `mention`, and that a
+    # listed parent's id is not its child's.
     assert "made up" in block
     assert '"the vendor"' in block
     assert "never goes in `mention`" in block
+    assert "even when its parent is listed" in block
     # It names no example company itself, so it cannot teach the leak.
     assert "Veltrona" not in block

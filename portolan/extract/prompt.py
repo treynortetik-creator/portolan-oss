@@ -194,8 +194,10 @@ def _variant_features(variant: str) -> frozenset[str]:
 # accuracy"). Two things seen on a live run: 1 to 10 percent of facts named
 # this prompt's made-up vendor as the seller, because the source never said
 # who the seller was and the CRM example spells one out; and about 5
-# percent of top-level mentions carried an id in `mention`. The block names
-# no example company, so it cannot teach the first one itself.
+# percent of top-level mentions carried an id in `mention`. A third, once
+# per run on both Haiku 4.5 and 5.5: a child site given its listed parent's
+# id. The block names no example company, so it cannot teach the first one
+# itself.
 _ENTITY_NAMES_TEXT = (
     "## Names: only the ones this source gives you\n"
     "Every company, person and product named in this prompt's examples is "
@@ -207,7 +209,9 @@ _ENTITY_NAMES_TEXT = (
     "In the top-level `entities` list, `mention` is the name the way the "
     "source writes it and `registry_id` holds the id. An id never goes in "
     "`mention`. Copy a registry id exactly as registry context prints it, "
-    "prefix included."
+    "prefix included. An id belongs to the exact entity it is listed for: "
+    "a hospital, site or subsidiary that registry context does not list "
+    "keeps its own name and gets no id, even when its parent is listed."
 )
 
 _CRM_EXAMPLE_NAMED = "annual recurring revenue with Veltrona is"
