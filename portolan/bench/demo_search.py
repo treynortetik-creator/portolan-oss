@@ -28,6 +28,7 @@ from portolan.bench.erb import TOP_K, aggregate, document_recall_pct, first_gold
 
 __all__ = [
     "DEMO_QUESTIONS",
+    "HELDOUT_QUESTIONS",
     "PARAPHRASE_QUESTIONS",
     "DemoQuestion",
     "evaluate_demo_search",
@@ -243,6 +244,144 @@ PARAPHRASE_QUESTIONS: tuple[DemoQuestion, ...] = (
             "signal-commitment-cobalt-ridge-medical-center",
             "action-3-cobalt-ridge-medical-center-agreed-to-pilot-two-tidewater-t3",
         ),
+    ),
+)
+
+
+# Held out. Written 2026-11-20 from the demo graph's claims, before any of
+# that day's search changes were measured, and never used to choose a
+# parameter: `DEMO_QUESTIONS` and `PARAPHRASE_QUESTIONS` set the fusion
+# weights, so a change tuned on them is checked here. Sixteen ask in other
+# words, eight name the account or person. A change that only helps the two
+# tuning sets and not this one moved the goalposts.
+HELDOUT_QUESTIONS: tuple[DemoQuestion, ...] = (
+    DemoQuestion(
+        "held_01",
+        "Who took over as practice administrator at Vireo after the previous one departed?",
+        ("nina-vale",),
+    ),
+    DemoQuestion(
+        "held_02",
+        "Which customer was approached by a competitor's salesperson but declined to meet?",
+        ("signal-competitor_mention-anchor-bay-surgical-partners",),
+    ),
+    DemoQuestion(
+        "held_03",
+        "Has any hospital had to borrow supplies from a neighbouring site?",
+        ("signal-complaint-cobalt-ridge-medical-center",),
+    ),
+    DemoQuestion(
+        "held_04",
+        "What staffing change at the distribution depot was made to fix shipping?",
+        ("signal-decision-ashgrove-medical-center",),
+    ),
+    DemoQuestion(
+        "held_05",
+        "Who asked for instructions translated into another language?",
+        ("signal-request-st-aldric-health",),
+    ),
+    DemoQuestion(
+        "held_06",
+        "Which account wants its automatic restocking level looked at?",
+        ("signal-request-driftwood-community-hospital",),
+    ),
+    DemoQuestion(
+        "held_07",
+        "How much does Ashgrove Health pay us per year?",
+        ("signal-other-ashgrove-health",),
+    ),
+    DemoQuestion(
+        "held_08",
+        "Who was promoted to run facilities at Northlake?",
+        ("derek-hollis",),
+    ),
+    DemoQuestion(
+        "held_09",
+        "Which surgical practice has no pumps in its recovery area?",
+        ("signal-usage-vireo-surgical-group",),
+    ),
+    DemoQuestion(
+        "held_10",
+        "Did the threat to bring in another supplier at Larkspur Memorial go away?",
+        ("signal-praise-larkspur-memorial-hospital",),
+    ),
+    DemoQuestion(
+        "held_11",
+        "Where did a new tower prompt a look at a rival's pumps?",
+        ("signal-competitor_mention-northlake-health-system",),
+    ),
+    DemoQuestion(
+        "held_12",
+        "Who praised how quickly our technician reacted to an alarm fault?",
+        ("signal-praise-larkspur-memorial-hospital",),
+    ),
+    DemoQuestion(
+        "held_13",
+        "What regular meeting did we agree to hold with Northlake?",
+        (
+            "signal-commitment-northlake-health-system",
+            "action-1-dana-whitlock-committed-to-a-quarterly-business-review-with-",
+        ),
+    ),
+    DemoQuestion(
+        "held_14",
+        "Which small practice asked for cheaper supplies because money is tight?",
+        ("signal-pricing-anchor-bay-surgical-partners",),
+    ),
+    DemoQuestion(
+        "held_15",
+        "Will the finance chief at Ashgrove bring up shipping problems when the contract is "
+        "renegotiated?",
+        ("signal-risk-ashgrove-health",),
+    ),
+    DemoQuestion(
+        "held_16",
+        "Who changed jobs from purchasing to clinical operations?",
+        ("maria-chen",),
+    ),
+    DemoQuestion(
+        "held_17",
+        "How many pumps does Larkspur Memorial have?",
+        ("signal-usage-larkspur-memorial-hospital",),
+    ),
+    DemoQuestion(
+        "held_18",
+        "Which hospital got three overdue shipments of the newer pump in under a month?",
+        ("signal-complaint-northlake-general-hospital",),
+    ),
+    DemoQuestion(
+        "held_19",
+        "Who replaced Tom Ridley?",
+        ("tom-ridley",),
+    ),
+    DemoQuestion(
+        "held_20",
+        "What test plan did we owe Wrenfield?",
+        (
+            "signal-commitment-wrenfield-health",
+            "action-4-priya-natarajan-promised-wrenfield-health-a-tidewater-link-e",
+        ),
+    ),
+    DemoQuestion(
+        "held_21",
+        "Which pharmacy lead hinted they were shopping around for alternatives?",
+        ("signal-competitor_mention-meadowbrook-community-hospital",),
+    ),
+    DemoQuestion(
+        "held_22",
+        "Which customer changed its mind and now wants the records-system hookup started "
+        "right away?",
+        ("signal-request-wrenfield-health",),
+    ),
+    DemoQuestion(
+        "held_23",
+        "Was a joint call promised to go over why deliveries slipped?",
+        ("signal-commitment-larkspur-memorial-hospital",),
+    ),
+    DemoQuestion(
+        "held_24",
+        "Which community hospital once compared a competitor's devices but dropped the idea?",
+        ("signal-competitor_mention-driftwood-community-hospital",),
     ),
 )
 

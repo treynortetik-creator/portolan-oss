@@ -26,6 +26,7 @@ from urllib.parse import urlsplit
 from portolan import db as db_module
 from portolan.bench.demo_search import (
     DEMO_QUESTIONS,
+    HELDOUT_QUESTIONS,
     PARAPHRASE_QUESTIONS,
     evaluate_demo_search,
     fusion_weights,
@@ -35,7 +36,11 @@ from portolan.bench.demo_search import (
 from portolan.search.embed import FakeEmbedder, FastEmbedEmbedder
 from portolan.util.redact import redact_dsn
 
-QUESTION_SETS = {"demo": DEMO_QUESTIONS, "paraphrase": PARAPHRASE_QUESTIONS}
+QUESTION_SETS = {
+    "demo": DEMO_QUESTIONS,
+    "paraphrase": PARAPHRASE_QUESTIONS,
+    "heldout": HELDOUT_QUESTIONS,
+}
 
 
 def _weights(spec: str) -> list[tuple[float, float] | None]:
