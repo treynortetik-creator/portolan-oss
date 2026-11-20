@@ -1,0 +1,259 @@
+[00:00:00] Sam Okafor: Hey Rob, thanks for jumping on today. How's the unit treating you this week?
+[00:00:06] Rob Tallis: Oh, you know, Wednesday. We had a wild overnight but today's actually been pretty quiet, which I will absolutely take.
+[00:00:15] Sam Okafor: I'll take quiet too, honestly. How's the family doing? Didn't you have a trip planned for the Fourth?
+[00:00:23] Rob Tallis: We did, yeah, we did the whole Grand Canyon thing. Kids survived the heat, barely. My wife says never again in July, but we'll see.
+[00:00:34] Sam Okafor: Ha, yeah, July down there is no joke. Did you guys hike or mostly just look at it from the rim?
+[00:00:43] Rob Tallis: Mostly rim, honestly. We did a short trail with the kids but nothing crazy. It was like a hundred and five, we weren't about to be heroes.
+[00:00:55] Sam Okafor: Smart move. I don't think I'd survive that with my kids either, they'd mutiny within twenty minutes.
+[00:01:03] Rob Tallis: Ha, probably. How old are yours again, I forget.
+[00:01:07] Sam Okafor: Six and nine. So we're firmly in the whining-in-the-car-for-four-hours phase of life.
+[00:01:12] Rob Tallis: Oh, I remember that phase well. It gets better, sort of.
+[00:01:17] Sam Okafor: That's what everyone tells me. This heat is something else lately too, huh? I don't think I've felt anything like this in years around here.
+[00:01:28] Rob Tallis: Oh, it's brutal. We had like nine days straight over a hundred and five a couple weeks back, hottest stretch I can remember in a long time.
+[00:01:39] Sam Okafor: That's rough, I don't miss single-digit humidity but I also don't miss actual triple digits for that long either, if that makes sense.
+[00:01:49] Rob Tallis: Ha, it does. There's no winning with weather here in the summer, honestly, you just kind of suffer through it until October.
+[00:01:59] Sam Okafor: True enough. At least the unit's air conditioning holds up okay, I'd imagine, hospitals usually have that dialed in pretty well.
+[00:02:08] Rob Tallis: Yeah, thankfully, that's one thing I never have to worry about, the building itself stays cold no matter what's happening outside.
+[00:02:17] Sam Okafor: Small mercies.
+[00:02:19] Rob Tallis: Exactly.
+[00:02:20] Sam Okafor: Anyway, how are you doing otherwise, work aside?
+[00:02:24] Rob Tallis: Good, good. Trying to get some yard stuff done before it gets even hotter, but that's a losing battle in July around here.
+[00:02:34] Sam Okafor: Tell me about it. So hey, before we really dig in, I wanted to give you a heads-up. Dana Whitlock is going to hop on with us here in a few minutes. She runs customer success for our Midwest and Central regions, and it's honestly been a little while since she's connected with your team directly, so she wanted to sit in on this one.
+[00:03:01] Rob Tallis: Yeah, no problem at all. Always good to put a voice to a name instead of just reading emails.
+[00:03:10] Sam Okafor: Exactly. She should be dialing in any minute. While we wait, how's staffing been going on your end? Last time we talked you guys were still down a couple positions, right?
+[00:03:23] Rob Tallis: We were, yeah. We've actually filled two of the three open slots since then, which has helped a lot. Still working on the third, it's a night-shift position and those are always brutal to fill.
+[00:03:38] Sam Okafor: Yeah, nights are rough to staff pretty much everywhere right now, from what I hear.
+[00:03:45] Rob Tallis: Everywhere, yeah, it's not just us. But we're definitely in better shape than we were back in the spring.
+[00:03:53] Sam Okafor: That's good to hear. Retention's been such a struggle industry-wide the last couple years.
+[00:03:59] Rob Tallis: It has. I mean, it's still a grind some weeks, don't get me wrong, but it's trending the right direction at least.
+[00:04:09] Sam Okafor: That's really all you can ask for, honestly, some forward movement.
+[00:04:14] Rob Tallis: Exactly. Small wins.
+[00:04:16] Sam Okafor: So how's the unit itself doing, physically I mean, any renovations or anything going on that I should know about?
+[00:04:26] Rob Tallis: Not on our end, no. I think facilities has some longer-term talk about doing something with the surgical side but that's nothing concrete, that's like a two-years-out conversation if it even happens at all.
+[00:04:40] Sam Okafor: Got it, good to know. We'll just keep an ear out on our end in case that turns into something real down the line.
+[00:04:51] Rob Tallis: Yeah, I'll let you know if it moves anywhere.
+[00:04:55] Sam Okafor: Appreciate it. Oh, hey, one second, I think I see Dana joining now.
+[00:05:01] Dana Whitlock: Hey guys, sorry, I was wrapping up another call. Am I interrupting anything?
+[00:05:08] Sam Okafor: No, perfect timing actually. Rob, this is Dana Whitlock, she leads customer success for the Midwest and Central regions on our side.
+[00:05:17] Dana Whitlock: Hi Rob, nice to actually get you on the phone. I've seen your name come through in our notes plenty of times, but I don't think we've ever actually talked directly.
+[00:05:31] Rob Tallis: No, I don't think we have either. Nice to meet you, Dana.
+[00:05:37] Dana Whitlock: You too. I'll mostly just be listening in for most of this, but if anything comes up on the service or account side, feel free to loop me in directly going forward instead of it always routing through Sam.
+[00:05:53] Rob Tallis: Will do, that's helpful to know.
+[00:05:56] Dana Whitlock: How long have you been in your role over there, if you don't mind me asking? I want to say I've seen your name on the account for a couple years now.
+[00:06:10] Rob Tallis: About four years now as nurse manager, though I was a bedside nurse in the ICU for probably eight years before that.
+[00:06:19] Dana Whitlock: Oh wow, so you really know the unit from the ground up then.
+[00:06:25] Rob Tallis: Yeah, I like to think that helps. I still remember what it's like to actually be the one pushing the pump around, so to speak.
+[00:06:35] Dana Whitlock: That's a good perspective to have in your seat, honestly. A lot of managers lose that over time.
+[00:06:43] Rob Tallis: I try not to. Keeps me honest when people complain to me about stuff.
+[00:06:49] Dana Whitlock: Ha, fair enough.
+[00:06:51] Sam Okafor: Alright, well, why don't we just start with kind of a general check-in. Rob, how's everything running over at Ashgrove these days, big picture?
+[00:07:02] Rob Tallis: Yeah, so overall, pretty good. Um, for context, since Dana probably hasn't dug too deep into our specific setup, we've got two ICUs here at Ashgrove, a medical ICU and a surgical ICU, they're actually right next to each other on the same floor, which is convenient for staffing flexibility. ⟦F25⟧As of today we're running eleven Tidewater T3 pumps total, split across those two units.⟦/F25⟧ We finished converting the whole fleet over from the old pumps earlier this year, so at this point it's T3s everywhere in critical care, no leftover older units floating around.
+[00:07:41] Sam Okafor: That's right, yeah, Ashgrove was actually one of our earlier full conversions in the region, if I remember correctly.
+[00:07:49] Rob Tallis: We were, yeah. It was a whole project getting all of the staff trained up on the new interface, took a few months to really get everybody comfortable, but I think the nurses are pretty happy with them at this point.
+[00:08:06] Dana Whitlock: That's good to hear. And just so I have it noted correctly on our side, that's eleven units total, combined between the medical and surgical ICU?
+[00:08:17] Rob Tallis: Correct, yep. I think it's six in the medical side and five in surgical, something like that, it shifts a little depending on what's out for maintenance at any given time, but eleven's the total fleet number for us right now.
+[00:08:35] Dana Whitlock: Perfect, thank you, that's helpful to have confirmed directly instead of just going off what's in the system.
+[00:08:43] Rob Tallis: Yeah, of course.
+[00:08:45] Sam Okafor: And are both units running the same configuration, or is there any difference between how the medical and surgical sides have things set up?
+[00:08:55] Rob Tallis: Pretty much the same configuration across both, honestly. We tried to keep it consistent on purpose so nurses who float between the two units aren't relearning anything.
+[00:09:07] Sam Okafor: That makes a lot of sense, especially with how much floating happens these days.
+[00:09:13] Rob Tallis: Exactly, it would be a nightmare otherwise. Can you imagine a nurse picking up a shift on one side and the pumps are set up totally differently than what they're used to? That's just asking for a mistake.
+[00:09:30] Dana Whitlock: Definitely, consistency like that is smart from a safety standpoint too.
+[00:09:35] Rob Tallis: That's exactly the thinking behind it.
+[00:09:38] Sam Okafor: So how have the T3s actually been performing for you day to day? Any hiccups, anything you want to flag on the equipment side?
+[00:09:49] Rob Tallis: Honestly, no, they've been solid. I mean, machines are machines, we've had the occasional thing where a pump needs a battery swap sooner than expected, but nothing that's caused any real problems for us.
+[00:10:04] Sam Okafor: Good, good, that's what we like to hear.
+[00:10:08] Rob Tallis: The nurses actually like the screen on the T3 a lot better than what we had before, that's come up a bunch in our unit meetings. It's just easier to read from across the room, especially at a glance when you're busy with something else.
+[00:10:26] Dana Whitlock: That's great feedback, I'll make sure that gets passed along to the product team, they always like hearing specifics like that.
+[00:10:35] Rob Tallis: Yeah, for sure, I can tell them that if it helps.
+[00:10:40] Dana Whitlock: It does, actually, specific comments like that carry more weight than just general positive feedback.
+[00:10:47] Rob Tallis: Good to know, I'll keep that in mind going forward.
+[00:10:52] Sam Okafor: What about training-wise, are you guys in decent shape there? I know it's been a while since your last formal session.
+[00:11:01] Rob Tallis: We did a refresher back in the spring for some of the newer hires, that seemed to go pretty well.
+[00:11:10] Sam Okafor: Was that the session with one of our clinical trainers, I want to say it might've been Priya, or maybe I'm thinking of a different account.
+[00:11:22] Rob Tallis: I honestly don't remember the name off the top of my head, sorry. It was a good session though, it was hands-on, not just a slideshow, which I appreciated.
+[00:11:34] Sam Okafor: Good, that's the format we push for internally too. Slides put everybody to sleep by about minute ten.
+[00:11:42] Rob Tallis: Truly, nobody wants death by PowerPoint at seven in the morning before a twelve-hour shift.
+[00:11:49] Dana Whitlock: Ha, no kidding. Rob, how's the unit doing staffing-wise overall, separate from the equipment piece? I know Sam mentioned earlier you guys had some open positions.
+[00:12:01] Rob Tallis: Yeah, like I was saying, we were down three positions back in the spring, we've filled two of them since then. Still hunting for a night-shift RN, those are always the toughest to fill, seems like nobody wants nights anymore.
+[00:12:17] Dana Whitlock: That's been a pretty universal complaint lately, from what I hear across a lot of our accounts. Retention's been rough industry-wide.
+[00:12:26] Rob Tallis: It really has. I mean, it's still a grind some weeks, but we're definitely better off than we were a few months back, so I'll take it.
+[00:12:38] Dana Whitlock: Do you find it's mostly experienced nurses leaving for other opportunities, or is it more new grads not sticking around?
+[00:12:47] Rob Tallis: Honestly, a mix, but if I had to guess, more of it's been experienced folks moving into travel positions the last couple years, chasing the pay bumps. New grads we've actually done okay retaining, surprisingly.
+[00:13:01] Dana Whitlock: That's interesting, that's kind of the opposite of what I hear from some other accounts, where it's usually the new grads who bail within the first year.
+[00:13:13] Rob Tallis: Yeah, I think our residency program for new hires has helped with that honestly, gives them more support early on than they'd get some other places.
+[00:13:25] Dana Whitlock: That's great, sounds like a solid program.
+[00:13:28] Rob Tallis: It's helped a lot, yeah, I'm pretty proud of it actually, we've tweaked it a few times over the years to get it where it is now.
+[00:13:40] Sam Okafor: That's good to hear, glad something's working in this whole staffing mess industry-wide.
+[00:13:46] Rob Tallis: Right, gotta take the wins where you can get them these days.
+[00:13:51] Sam Okafor: Anything on the equipment side you want us thinking about for the account, like are you guys planning any unit changes, adding beds, anything like that we should have on our radar?
+[00:14:05] Rob Tallis: Not that I've heard of specifically. Like I mentioned, facilities has some longer-term talk about expanding the surgical footprint, but that's nothing concrete right now, more of a maybe-someday conversation.
+[00:14:17] Sam Okafor: Got it, we'll just keep an ear out in case that moves.
+[00:14:23] Dana Whitlock: And how's the biomed team finding the T3s from a maintenance standpoint? Do you get much feedback from that side of the house?
+[00:14:33] Rob Tallis: I don't talk to biomed directly all that often, honestly, but from what filters up to me it's been fine. I haven't heard any complaints bubble up, and usually if there's a real issue with equipment I hear about it pretty fast, one way or another.
+[00:14:52] Dana Whitlock: Good, that's reassuring to hear.
+[00:14:55] Sam Okafor: Alright, well, before we get into supply stuff, random question, are you guys still doing that annual user conference thing? The summit?
+[00:15:04] Rob Tallis: We are, yeah, I mean I don't run it obviously, but our education department still sends people most years.
+[00:15:13] Sam Okafor: I think the invites for this year are going out soon actually, I want to say it's in October.
+[00:15:22] Rob Tallis: Nice, I went myself a couple years back, it was pretty good actually. Might try to get one of my charge nurses to go this time instead of me.
+[00:15:35] Sam Okafor: You should, honestly, it's good for them to see that side of things, meet other units doing similar work at different hospitals.
+[00:15:45] Rob Tallis: Yeah, I'll think about it. Wasn't it in Nashville last time, or am I misremembering?
+[00:15:51] Sam Okafor: I want to say Denver this year, but don't quote me on that, I'd have to double check with marketing.
+[00:16:00] Rob Tallis: Ha, fair enough, no pressure.
+[00:16:03] Dana Whitlock: I can send you the details once everything's finalized, if that would be helpful, Rob.
+[00:16:10] Rob Tallis: Yeah, that'd be great, thank you.
+[00:16:13] Dana Whitlock: No problem at all.
+[00:16:16] Sam Okafor: Oh, hey, random thing, did you guys see the construction they started on the parking garage? I drove by last time I was on site and it looked like a mess.
+[00:16:29] Rob Tallis: Oh, don't get me started. It's been a nightmare for day shift trying to find parking, honestly. They're redoing like half the deck at once, don't ask me why they didn't stagger it.
+[00:16:43] Sam Okafor: That's rough. Hopefully it's done before winter at least.
+[00:16:47] Rob Tallis: That's the hope. We'll see, these things always take longer than they say.
+[00:16:53] Dana Whitlock: Ha, sounds like the situation at our regional office, honestly. Construction never actually ends, it just moves to a different corner of the building.
+[00:17:04] Rob Tallis: It really doesn't. There's always something.
+[00:17:07] Sam Okafor: How's patient volume been for you guys lately, is it about what you'd expect for this time of year, or has it been unusually busy?
+[00:17:18] Rob Tallis: Actually about normal for summer, honestly, we tend to see a bit of a dip this time of year compared to winter, fewer respiratory admissions obviously, though we still get plenty of surgical overflow from the OR.
+[00:17:33] Sam Okafor: Makes sense, yeah, winter's usually the crunch time for ICUs from what I hear across most of our accounts.
+[00:17:42] Rob Tallis: Definitely, flu season is always the worst stretch for us, beds fill up fast and stay full for months.
+[00:17:51] Dana Whitlock: I imagine that puts a lot of strain on everything, not just staffing but equipment too, having that many pumps in constant rotation.
+[00:18:01] Rob Tallis: It does, yeah, that's usually when we feel it the most if anything's going to go wrong, just because everything's running flat out for so long.
+[00:18:12] Dana Whitlock: That's helpful context for us too, honestly, knowing when your peak periods are helps us plan on our end for things like support staffing and inventory positioning.
+[00:18:24] Rob Tallis: Yeah, that makes sense. Winter's definitely our crunch, no question, by a wide margin honestly.
+[00:18:31] Sam Okafor: Good to know, I'll keep that in mind going forward when we're thinking about timing for things throughout the year.
+[00:18:40] Rob Tallis: Sounds good.
+[00:18:41] Sam Okafor: Oh, and unrelated, but did your unit end up doing anything for nurses week this year? I remember some accounts do like a whole thing.
+[00:18:52] Rob Tallis: We did a little something, yeah, hospital provided lunch for a few days and there was a raffle, nothing too crazy, but the nurses appreciated it.
+[00:19:04] Sam Okafor: That's nice, better than nothing at least.
+[00:19:07] Rob Tallis: Definitely, they work hard, it's the least we can do to make a fuss over them for a week.
+[00:19:15] Dana Whitlock: Completely agree, that's a nice gesture. Our team does something similar actually, a smaller version obviously since we're not clinical, but we try to mark it too.
+[00:19:26] Rob Tallis: That's nice that you guys do that too, shows some awareness at least.
+[00:19:33] Dana Whitlock: We try.
+[00:19:35] Sam Okafor: Alright, well, should we get into the supply side of things? I know that's been kind of a topic lately.
+[00:19:44] Rob Tallis: Yeah, let's do it.
+[00:19:46] Sam Okafor: So how's the ordering been going the last month or so? Any issues with fulfillment, lead times, anything like that on your end?
+[00:19:56] Rob Tallis: Mostly fine, actually, I don't want to make it sound worse than it is overall. But I will say, the week of the twenty-seventh, so last week, we had a couple of hiccups.
+[00:20:10] Sam Okafor: Okay, what happened?
+[00:20:13] Rob Tallis: ⟦F01⟧Two shipments showed up days late.⟦/F01⟧ It was our regular T2 consumables order, the tubing and administration sets, and we were cutting it close on the surgical side before the second one finally showed up.
+[00:20:27] Sam Okafor: Ugh, I'm really sorry to hear that. Do you happen to know roughly which days those were?
+[00:20:35] Rob Tallis: I want to say we were expecting them Monday, and the first one didn't actually land until Thursday, and then the second one came Friday. So a few days late on each, give or take.
+[00:20:49] Dana Whitlock: That's definitely not the experience we want you having, Rob. Do you know if your team put in a ticket or called anyone when it didn't show up on time?
+[00:21:02] Rob Tallis: One of my supply techs called somebody, I honestly don't remember exactly who she talked to, but yeah, she followed up when it hadn't arrived by Tuesday.
+[00:21:14] Sam Okafor: Okay, good, that helps me trace what actually happened. I'll dig into it on my end and figure out where the delay came from.
+[00:21:24] Dana Whitlock: Yeah, I want to look into this too, on our side. Rob, did it actually cause you to run short on anything, or did you all make it through okay in the end?
+[00:21:38] Rob Tallis: We made it through. It was tight on the surgical side for about a day, we ended up borrowing some sets from the medical side to cover the gap, but nobody actually went without anything.
+[00:21:53] Dana Whitlock: Okay, that's good to hear, but obviously we don't want you having to do that kind of shuffling in the first place, that shouldn't be necessary.
+[00:22:04] Rob Tallis: Yeah, I mean, stuff happens, I get it, I just wanted to flag it since it was two in the same week, which felt like more than the usual amount for us.
+[00:22:18] Sam Okafor: No, that's completely fair, and honestly I appreciate you flagging it directly rather than just quietly dealing with it and letting it slide. Let me look into what's going on with that order flow and I'll circle back to you by end of week.
+[00:22:37] Rob Tallis: Sounds good, I appreciate that, thank you.
+[00:22:40] Dana Whitlock: I'll loop in with Sam on the back end too, so we're coordinated on it and it doesn't fall through the cracks.
+[00:22:50] Sam Okafor: In the meantime, is there anything I can do right now to make sure you're covered for this week's order? I don't want you guys white-knuckling it again if something else slips.
+[00:23:04] Rob Tallis: I think we're okay for this week, our next scheduled order isn't until Wednesday, so there's a little bit of cushion built in.
+[00:23:13] Sam Okafor: Okay, well, keep an eye on it, and if anything looks like it's running late again, call me directly, don't wait for it to actually become a real problem before you flag it.
+[00:23:27] Rob Tallis: Will do, I appreciate that, I will.
+[00:23:31] Dana Whitlock: And I'll make sure this whole thing gets logged properly on our side, so it's not just floating around informally. Sometimes that's half the problem honestly, things get mentioned on a call and then there's no actual paper trail anywhere.
+[00:23:48] Rob Tallis: That makes sense, yeah, that's happened before I'm sure.
+[00:23:53] Dana Whitlock: I'll send you both a short recap after this call too, just so there's something in writing that we can all point back to.
+[00:24:03] Sam Okafor: Perfect, that's helpful, thank you.
+[00:24:06] Rob Tallis: Yeah, no, I appreciate you both taking it seriously. It wasn't like a huge crisis or anything, just annoying, you know, more than anything else.
+[00:24:16] Sam Okafor: Totally fair, and honestly even the annoying stuff is worth fixing before it turns into an actual crisis down the road.
+[00:24:26] Rob Tallis: Agreed, completely.
+[00:24:27] Dana Whitlock: Alright, well, I think between the two of us we've got it covered from here. Sam, anything else on the supply side before we move on to other stuff?
+[00:24:39] Sam Okafor: I don't think so on my end, unless Rob's got anything else to add.
+[00:24:46] Rob Tallis: No, I think that covers it for now, I'll let you know if anything else comes up before your next order cycle hits.
+[00:24:55] Sam Okafor: Please do, seriously, don't sit on it.
+[00:24:59] Rob Tallis: I won't, I promise.
+[00:25:01] Dana Whitlock: Good. Well, I feel better having actually talked through it directly instead of it just being a line in a report somewhere.
+[00:25:11] Rob Tallis: Yeah, me too, honestly. Appreciate you guys being on it.
+[00:25:16] Sam Okafor: Of course, that's what we're here for.
+[00:25:20] Sam Okafor: So switching gears a little, I wanted to check in on how the HalvardCare service side has been going generally. Any calls into support recently, anything like that come up?
+[00:25:32] Rob Tallis: Not that I'm aware of, actually, it's been pretty quiet on that front the last couple of months.
+[00:25:41] Sam Okafor: Good, that's what we like to hear.
+[00:25:44] Dana Whitlock: Yeah, our system doesn't show anything open on our end for your account either, so that lines up with what you're saying.
+[00:25:53] Rob Tallis: Good, glad it's consistent at least.
+[00:25:57] Sam Okafor: I know your annual service review is coming up in a few months, we'll get that scheduled once we're a little closer to it.
+[00:26:07] Rob Tallis: Sounds good, just let me know when and I'll make sure I'm available.
+[00:26:13] Dana Whitlock: We usually try to do those about sixty days out from the renewal date, so you'll probably hear from us sometime in September to get something on the calendar.
+[00:26:26] Rob Tallis: Works for me, just send an invite whenever.
+[00:26:30] Sam Okafor: How's the Tidewater Link setup treating you, by the way? I know that's been live for you guys for a while now at this point.
+[00:26:41] Rob Tallis: It's been fine, honestly, it's kind of become invisible at this point, which I think is actually a good sign for something like that. Nobody complains about it, it just works quietly in the background and does its thing.
+[00:26:57] Sam Okafor: That's usually the best compliment a piece of integration software can get, honestly. Nobody talking about it means it's not breaking on anybody.
+[00:27:07] Rob Tallis: Exactly, no news is good news with that stuff.
+[00:27:12] Dana Whitlock: Has your IT team had any involvement with it lately, any updates or changes on that side that you know of?
+[00:27:21] Rob Tallis: Not that's been flagged to me directly. I think there was some kind of routine update a while back, but I wasn't really looped into the details of it, that's more of an IT conversation than a nursing one on our end.
+[00:27:39] Dana Whitlock: That makes sense, that tracks with what I'd generally expect for something like that.
+[00:27:45] Sam Okafor: Alright, good, nothing to chase down there then. Let's see, what else did I have on my list here. Oh, I wanted to ask, are you guys still doing the monthly super-user meetings? The ones where a handful of the nurses get together and talk pump stuff?
+[00:28:05] Rob Tallis: We are, yeah, they're still happening, though attendance is kind of hit or miss depending on the month, honestly. Summer's always rough because everybody's trying to burn through their vacation time before it expires.
+[00:28:19] Sam Okafor: Sure, that makes total sense, we see that pattern everywhere this time of year.
+[00:28:26] Rob Tallis: But the core group is pretty consistent, at least. It's a good little forum honestly, stuff comes up there that I wouldn't necessarily hear about otherwise, through normal channels.
+[00:28:38] Dana Whitlock: That's a great model, honestly, a lot of accounts don't have anything like that set up at all.
+[00:28:46] Rob Tallis: Yeah, it's worked out well for us over time. One of my senior nurses basically runs the whole thing at this point, I mostly just show up and listen.
+[00:28:59] Sam Okafor: Ha, that's the dream, honestly, when something like that just runs itself without you having to manage it.
+[00:29:06] Rob Tallis: Truly, it is. I try not to mess with a good thing.
+[00:29:12] Dana Whitlock: Smart move. Do the notes from those meetings ever make their way back to us, or is that more of an internal thing for you guys?
+[00:29:23] Rob Tallis: Mostly internal, honestly, though if something specific comes up that seems worth flagging to you all, I'll usually bring it up myself on one of these calls, like today.
+[00:29:35] Dana Whitlock: That's a good system, honestly, keeps it from getting lost in translation through too many layers.
+[00:29:42] Rob Tallis: That's the idea, yeah.
+[00:29:45] Sam Okafor: Oh, random one, did they ever finish redoing the cafeteria? I remember somebody mentioning that a while back.
+[00:29:53] Rob Tallis: They did, actually, finally, it took forever but it's done now. New seating, better food options honestly, it was worth the wait I guess.
+[00:30:04] Sam Okafor: Nice, that's always a good sign when a hospital actually invests in that stuff for staff.
+[00:30:11] Rob Tallis: Yeah, morale-wise it's helped a little, small thing but people notice it, especially on long shifts when that's basically your only break.
+[00:30:21] Dana Whitlock: Definitely, having a decent place to actually sit down and eat matters more than people realize when you're doing twelve-hour shifts.
+[00:30:30] Rob Tallis: Exactly, it's a small thing but it adds up over a long day.
+[00:30:37] Sam Okafor: Glad to hear it, good for you guys.
+[00:30:41] Rob Tallis: Anyway, um, what's your guys' summer been looking like? Are you traveling at all before it gets crazy again with school starting back up?
+[00:30:52] Sam Okafor: We're doing a short trip up north in a couple of weeks, nothing major, just trying to get out of the heat for a few days before things get busy again.
+[00:31:06] Rob Tallis: Smart, honestly, I don't blame you one bit.
+[00:31:09] Dana Whitlock: I'm actually off next week myself, first real vacation I've taken in a while, to be honest.
+[00:31:17] Rob Tallis: Good for you, going anywhere fun, or just relaxing?
+[00:31:21] Dana Whitlock: Just staying pretty local, honestly, mostly I just want to not look at my inbox for a few days straight.
+[00:31:30] Rob Tallis: Ha, respect, that's a vacation in itself these days, not looking at email.
+[00:31:36] Sam Okafor: Truly, it really is.
+[00:31:38] Rob Tallis: My wife keeps telling me I need to actually take time off instead of just checking my phone the whole time I'm supposedly on vacation.
+[00:31:49] Dana Whitlock: Ha, that's a very common problem, especially in healthcare, from what I've noticed talking to folks in your role.
+[00:31:57] Rob Tallis: Yeah, it's hard to fully unplug when you know your unit's still running without you, you know? There's always a little voice in the back of your head.
+[00:32:10] Sam Okafor: I get that, I feel the same way honestly, even outside of healthcare. Hard to fully check out.
+[00:32:18] Rob Tallis: It's a whole thing, yeah. Anyway, how's, um, how's the rest of the territory looking for you these days, Sam? Are you swamped this time of year, or is summer usually a little slower for you guys?
+[00:32:33] Sam Okafor: Bit of both, honestly, it ebbs and flows. Some weeks are packed with account visits, other weeks are pretty quiet, especially with everybody taking time off.
+[00:32:45] Rob Tallis: Makes sense.
+[00:32:47] Sam Okafor: Keeps things interesting at least, never quite the same week twice.
+[00:32:52] Rob Tallis: That's true of my job too, honestly, no two shifts are ever really the same in the ICU.
+[00:33:01] Dana Whitlock: I imagine not, that sounds like a much higher-stakes version of what we deal with on our side, honestly.
+[00:33:09] Rob Tallis: Ha, maybe, though I'm sure you guys have your own version of chaos on the business side of things.
+[00:33:17] Dana Whitlock: Oh, absolutely, just a different flavor of it.
+[00:33:21] Rob Tallis: Fair enough.
+[00:33:23] Rob Tallis: Any big weekend plans coming up for either of you, or just recovering from the week?
+[00:33:30] Sam Okafor: Nothing too exciting on my end, probably just yard work and maybe a barbecue with some neighbors if the weather cooperates.
+[00:33:40] Dana Whitlock: I've got a friend's birthday thing Saturday, otherwise pretty low-key for me too.
+[00:33:46] Rob Tallis: Sounds nice, honestly, low-key sounds great to me right about now.
+[00:33:51] Sam Okafor: Ha, I bet, your job doesn't really have a low-key setting, does it.
+[00:33:57] Rob Tallis: Not really, no, there's always something happening somewhere in that unit.
+[00:34:03] Dana Whitlock: I don't know how you all do it, honestly, the pace of it.
+[00:34:08] Rob Tallis: You just kind of get used to it after a while, I guess. Or you don't, and you find a different job.
+[00:34:18] Sam Okafor: Ha, fair enough.
+[00:34:20] Rob Tallis: Oh, hey, did I mention we're finally getting a new coffee machine in the break room? Little thing, but the old one's been broken for like two months.
+[00:34:32] Sam Okafor: Ha, the important stuff. That's great news, honestly, hospital cafeteria coffee is one thing, break room coffee is a whole different sacred thing.
+[00:34:42] Rob Tallis: Exactly, morale killer when that thing's down, especially on night shift.
+[00:34:47] Dana Whitlock: Ha, that's very relatable, our office had a coffee machine saga a while back too, took forever to get fixed.
+[00:34:56] Rob Tallis: It's always something, right? Small stuff like that actually matters more than people think.
+[00:35:02] Sam Okafor: Completely agree.
+[00:35:04] Sam Okafor: Alright, well, we're coming up on time here I think, but before we do, anything else on your radar we haven't covered?
+[00:35:13] Rob Tallis: I don't think so, I think that's everything I had rattling around.
+[00:35:19] Dana Whitlock: Same on my end, this was a good one, thanks for being so thorough, Rob.
+[00:35:26] Rob Tallis: Of course, appreciate you both listening.
+[00:35:29] Sam Okafor: Alright, well, I think that's most of what I had on my end for today. Rob, anything else on your side before we wrap up? Anything from the unit you wanted to make sure got raised while we're all here?
+[00:35:46] Rob Tallis: Actually, yeah, one thing. This has come up a few times now in our unit meetings, so I wanted to make sure I actually said it out loud today instead of just letting it sit in my notes somewhere. ⟦F19⟧Our ICU nurses have been asking for a night-mode option for the alarm volume on the T3.⟦/F19⟧ Basically something where overnight the pump alarms come in a little quieter, or at least give us the option to dim things down at night, kind of similar to how a lot of our other equipment already handles it.
+[00:36:25] Sam Okafor: Okay, yeah, that's a good one to flag, thanks for bringing that up. Is that mainly a patient-sleep issue, or is it more about the nurses themselves being affected?
+[00:36:38] Rob Tallis: Bit of both, honestly. Patients trying to actually sleep with three pumps beeping at full volume isn't great for anybody, obviously, but it's also just, at three in the morning a loud alarm hits differently than it does at three in the afternoon, you know? Everybody's a little more on edge overnight in general.
+[00:37:00] Dana Whitlock: That makes a lot of sense, and honestly it's not the first time I've heard something like that come up in a general sense, though I don't think anyone's brought it to me quite that specifically before. I'll make sure it gets written up properly and passed along to the right team on our side.
+[00:37:23] Rob Tallis: I appreciate that. I don't know if it's a quick fix or a bigger lift on your end technically, I just wanted it on the record that it's something our nurses actually want and have asked about more than once.
+[00:37:40] Sam Okafor: No, that's exactly the kind of feedback that's genuinely useful for us to have, even if it doesn't turn into something overnight, so to speak. I'll make sure it's captured on my end too, along with Dana.
+[00:37:55] Rob Tallis: Great, thanks, I appreciate you both taking it seriously.
+[00:38:00] Dana Whitlock: Well, I don't want to keep you both much longer, I know you've got a unit to get back to, Rob. Really appreciate you making the time today, and again, sorry we hadn't connected directly before now.
+[00:38:15] Rob Tallis: No worries at all, honestly, this was good, glad we finally got a chance to actually talk.
+[00:38:23] Sam Okafor: Yeah, this was helpful all around. I'll follow up on the shipping thing by end of week like I said. Dana, you'll send that recap out?
+[00:38:34] Dana Whitlock: Yep, I'll get that out today or tomorrow morning at the latest.
+[00:38:40] Rob Tallis: Sounds good, thank you both, appreciate you taking the time.
+[00:38:44] Sam Okafor: Of course, thanks for making time, Rob. Enjoy the rest of your week, and try to get some of that yard work done before it gets even hotter out there.
+[00:38:58] Rob Tallis: Ha, I'll try, no promises though.
+[00:39:01] Dana Whitlock: Good luck with that third night position too, hope it fills soon.
+[00:39:07] Rob Tallis: Thanks, me too, fingers crossed. Take care, bye now.
+[00:39:11] Dana Whitlock: Bye, Rob, have a good rest of your week.
+[00:39:15] Rob Tallis: You too, bye.

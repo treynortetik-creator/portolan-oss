@@ -1,0 +1,72 @@
+{# One sidebar conversation row: the display view (title, a muted relative
+   time, and a hover-revealed "..." menu), a hidden inline rename form, and
+   a hidden inline delete-confirmation block -- "delete with a confirm that
+   is not a JavaScript confirm() dialog" (build instructions). Shown/hidden
+   by the delegated click handler in chat.html's own script (data-action
+   attributes); only the actual mutations (rename submit, archive, delete
+   confirm) round-trip to the server, as HTMX POSTs that swap this whole
+   `<li>` (`hx-target="closest .conv-item"`) for the server's fresh render
+   of it. Included both from chat.html's sidebar loop (`with context`, so
+   it sees the loop's `c` and the page's `active_id`) and rendered
+   directly by the CRUD routes in routes/chat.py for an HTMX response.
+
+   Restyle wave 2026-09-18 (owner verdict: "you can rename it, archive it,
+   and delete it ... it all just kind of looks like shit"): the three
+   actions used to sit in an always-visible text-label strip next to every
+   title. They now live behind one "..." button that only shows on hover/
+   focus (chat.html's own `.conv-menu-btn` CSS), opening a small popover
+   menu -- the normal chat-app pattern. The routes, hidden fields, and
+   HTMX wiring underneath are unchanged; only what's visible by default
+   changed. #}
+<li class="conv-item{% if active_id and c.id == active_id %} active{% endif %}" data-id="{{ c.id }}">
+  <div class="conv-view">
+    <a class="conv-title" href="/c/{{ c.id }}" title="{{ c.title }}">{{ c.title }}</a>
+    <span class="conv-time muted mono" title="{{ c.updated|date('%Y-%m-%d %H:%M') }}">{{ c.updated|relative_time }}</span>
+    <span class="conv-menu-wrap">
+      <button type="button" class="icon-btn conv-menu-btn" data-action="toggle-menu"
+              aria-haspopup="true" aria-expanded="false" aria-label="Conversation actions">⋯</button>
+      <div class="conv-menu" role="menu" hidden>
+        <button type="button" class="conv-menu-item" data-action="show-rename" role="menuitem">Rename</button>
+        <form class="conv-menu-form" hx-post="/conversations/{{ c.id }}/{{ 'unarchive' if c.archived else 'archive' }}"
+              hx-target="closest .conv-item" hx-swap="outerHTML"
+              hx-indicator="find .htmx-indicator"
+              action="/conversations/{{ c.id }}/{{ 'unarchive' if c.archived else 'archive' }}" method="post">
+          <!-- Review finding 17: round-trips the page's own active_id back
+               to the server so the swapped-in row (routes/chat.py's
+               _set_archived_route) can keep this row's "active" highlight
+               when it's the currently-open conversation, instead of the
+               hardcoded None that used to drop it. -->
+          <input type="hidden" name="current_conversation_id" value="{{ active_id or '' }}">
+          <button type="submit" class="conv-menu-item" role="menuitem">{{ 'Unarchive' if c.archived else 'Archive' }}</button>
+          <span class="htmx-indicator mono muted small" aria-live="polite">&hellip;</span>
+        </form>
+        <button type="button" class="conv-menu-item conv-menu-item-danger" data-action="show-delete" role="menuitem">Delete</button>
+      </div>
+    </span>
+  </div>
+  <form class="conv-rename-form" hidden
+        hx-post="/conversations/{{ c.id }}/rename" hx-target="closest .conv-item" hx-swap="outerHTML"
+        hx-indicator="find .htmx-indicator"
+        action="/conversations/{{ c.id }}/rename" method="post">
+    <input type="hidden" name="current_conversation_id" value="{{ active_id or '' }}">
+    <!-- Enter saves natively (a lone text input submits its form on
+         Enter); Escape cancels via chat.html's own keydown listener,
+         scoped to whichever element currently has focus. -->
+    <input type="text" name="title" value="{{ c.title }}" maxlength="60" minlength="1" required aria-label="Conversation title">
+    <div class="conv-form-row">
+      <button type="submit" class="btn chip primary">Save</button>
+      <button type="button" class="btn chip" data-action="cancel-rename">Cancel</button>
+      <span class="htmx-indicator mono muted small" aria-live="polite">Saving&hellip;</span>
+    </div>
+  </form>
+  <div class="conv-delete-confirm" hidden>
+    <p class="muted conv-confirm-text">Delete this chat? This can't be undone.</p>
+    <form hx-post="/conversations/{{ c.id }}/delete" hx-target="closest .conv-item" hx-swap="outerHTML"
+          hx-indicator="find .htmx-indicator"
+          action="/conversations/{{ c.id }}/delete" method="post">
+      <button type="submit" class="btn chip primary">Yes, delete</button>
+      <button type="button" class="btn chip" data-action="cancel-delete">Cancel</button>
+      <span class="htmx-indicator mono muted small" aria-live="polite">Deleting&hellip;</span>
+    </form>
+  </div>
+</li>

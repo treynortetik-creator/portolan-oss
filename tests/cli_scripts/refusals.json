@@ -1,0 +1,19 @@
+{
+  "name": "Seeded local app: the fixed exit codes",
+  "steps": [
+    {"do": "note no-such-note", "exit": 3},
+    {"do": "account \"No Such Account\"", "exit": 1},
+    {
+      "do": "open \"/originals/S-call-011?at=00%3A03%3A21\" --quote \"words that appear nowhere xyzzy\"",
+      "exit": 1,
+      "expect": {"ok": false, "quote_match": "none", "block_found": true}
+    },
+    {"do": "open /notes/tidewater-t3", "exit": 2},
+    {"do": "review decide 1 accept", "exit": 2},
+    {"do": "review decide 999999 accept --yes", "exit": 3},
+    {"do": "mcp call search 'not json'", "exit": 2},
+    {"do": "search \"Tidewater\" --since last-week", "exit": 2},
+    {"do": "no-such-command", "exit": 2},
+    {"do": "health", "expect": {"ok": true}}
+  ]
+}

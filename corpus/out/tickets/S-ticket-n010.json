@@ -1,0 +1,19 @@
+{
+  "id": "S-ticket-n010",
+  "requester": "Derek Hollis",
+  "account": "Northlake Health System",
+  "created": "2026-03-02",
+  "subject": "Confirming a scheduled preventive-maintenance visit",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Derek Hollis",
+      "body": "That resolved it, appreciate the help."
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "Wanted to flag this for tracking, nothing urgent."
+    }
+  ]
+}

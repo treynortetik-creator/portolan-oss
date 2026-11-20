@@ -1,0 +1,5 @@
+opportunity_id,account_crm_id,name,stage,close_date,amount,export_date
+O-3001,A-1010,Ashgrove Health — HalvardCare renewal,negotiation,2027-06-30,2350000,2026-08-21
+O-3002,A-1002,Larkspur Regional Health — Tidewater T2 consumables renewal,negotiation,2027-06-30,1420000,2026-08-21
+O-3003,A-1030,Northlake Health System — Tidewater T3 tower expansion,qualification,2027-01-31,300000,2026-08-21
+O-3004,A-1080,Kestrel Medical Group — HalvardCare renewal,closed_lost,2026-02-15,0,2026-08-21

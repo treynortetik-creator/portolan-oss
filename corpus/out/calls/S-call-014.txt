@@ -1,0 +1,903 @@
+[09:00:00] Sam Okafor: Good morning, Aisha. Can you hear me all right?
+
+[09:00:07] Aisha Bell: I can hear you. Morning, Sam. Give me one second, I’m just closing another window.
+
+[09:00:16] Sam Okafor: No problem. I appreciate you making the time.
+
+[09:00:24] Aisha Bell: It’s been one of those mornings already. The receiving dock called about a pallet that apparently arrived before the paperwork did, so everybody’s excited.
+
+[09:00:34] Sam Okafor: That sounds familiar. We had a driver call us yesterday because the labels were facing the wrong direction on three cartons, and apparently that was the crisis of the afternoon.
+
+[09:00:43] Aisha Bell: At least it was a solvable crisis.
+
+[09:00:48] Sam Okafor: Exactly. I wanted to use today mostly as a working session. We can go through the open items, the service notes, and the equipment discussion. I know you had a few questions after the last review.
+
+[09:00:58] Aisha Bell: I do. I made notes, although they’re not in the order you probably want them.
+
+[09:01:05] Sam Okafor: That’s fine. We’ll make our own order. Before we get into the larger items, is the current line still behaving itself?
+
+[09:01:14] Aisha Bell: Mostly. The west-side unit had a brief alert Tuesday, but the technician cleared it remotely. I’m waiting for the written explanation because “transient communication issue” is a little broad for my taste.
+
+[09:01:24] Sam Okafor: I saw that ticket. The field team said they’re checking the event log and the network handshake. I’ll chase the note after this call.
+
+[09:01:33] Aisha Bell: Please do. It isn’t stopping production, but if it happens again I want the operators to know whether they should pause or continue.
+
+[09:01:42] Sam Okafor: Understood. We can put that in the follow-up. Also, the replacement sensor kit is moving through the warehouse. I don’t have the carrier scan in front of me, so I don’t want to overstate where it is.
+
+[09:01:50] Aisha Bell: That’s all right. I’d rather have a careful answer than a confident guess.
+
+[09:01:55] Sam Okafor: Same here. Now, on the consumables side, I saw your note about the revised usage estimate.
+
+[09:02:02] Aisha Bell: Yes. The estimate changed because the outpatient schedule shifted. We’re not using as much on that side this month, but the emergency department is busier, and that affects the way we think about the next quarter.
+
+[09:02:14] Sam Okafor: Is the change temporary, or should we build it into the planning model?
+
+[09:02:21] Aisha Bell: I’d call it a planning signal, not a firm forecast. We’ve had several staffing changes, and the department is still adjusting.
+
+[09:02:29] Sam Okafor: That makes sense. I can keep the forecast flexible and mark the estimate as provisional.
+
+[09:02:36] Aisha Bell: Good. The last thing I need is a number that becomes “the number” just because it appeared in a spreadsheet.
+
+[09:02:43] Sam Okafor: I’ve seen that happen. Somebody types a draft figure into a planning tab, and six weeks later everyone is defending it as if it came down from the mountain.
+
+[09:02:52] Aisha Bell: Exactly.
+
+[09:02:57] Sam Okafor: How are things with the new procurement review? I remember you said the committee was changing its intake process.
+
+[09:03:05] Aisha Bell: It is changing. They want more documentation earlier, especially around training, maintenance, and what happens if a unit is unavailable. None of that is surprising, but it does add another pass.
+
+[09:03:13] Sam Okafor: We can help assemble the standard material. I can send the current service overview, the training outline, and the implementation checklist.
+
+[09:03:20] Aisha Bell: Send the checklist first. The committee likes to see the sequence before they read the detail.
+
+[09:03:26] Sam Okafor: I’ll do that. Do they need a formal business case as well?
+
+[09:03:32] Aisha Bell: Eventually, yes, but I don’t want to build it until the operating group agrees on the scope. Otherwise, we’ll revise it three times.
+
+[09:03:39] Sam Okafor: Fair. Let’s talk scope, then. The T3 discussion came up in the last meeting, and I wanted to understand where it stands.
+
+[09:03:48] Aisha Bell: It’s still under review. The clinical engineering group wants a clear picture of the installation requirements, and the emergency department wants to know how the units would fit into the existing workflow.
+
+[09:03:57] Sam Okafor: We can arrange a workflow session with one of our implementation specialists. It doesn’t need to be a formal presentation.
+
+[09:04:04] Aisha Bell: That would be better. The nurses don’t want a slide deck. They want to walk through an actual shift and point out where something would slow them down.
+
+[09:04:12] Sam Okafor: That’s usually the most useful format. We can bring a sample layout and talk through access, cleaning, handoff, and escalation.
+
+[09:04:20] Aisha Bell: Include cleaning. That question always comes up late if nobody addresses it early.
+
+[09:04:27] Sam Okafor: Noted.
+
+[09:04:31] Aisha Bell: And don’t make the installation sound easier than it is. If there’s a power or network dependency, I want it on the table before anyone gets attached to a date.
+
+[09:04:40] Sam Okafor: Agreed. I’ll ask our technical team for the exact requirements and any site-readiness assumptions.
+
+[09:04:47] Aisha Bell: Good.
+
+[09:04:51] Sam Okafor: There was also a question about training coverage. Would the department prefer a single session, or something spread over a few days?
+
+[09:04:58] Aisha Bell: Probably a short initial session with floor support afterward. People learn better when they can ask questions in context.
+
+[09:05:06] Sam Okafor: That’s consistent with what we recommend. We can discuss the number of staff and the shift pattern once the project group confirms the operating model.
+
+[09:05:14] Aisha Bell: Right now, the shift pattern is still moving around. I don’t want to give you a neat answer that stops being true next week.
+
+[09:05:20] Sam Okafor: Understood. We’ll keep that as an open planning item.
+
+[09:05:25] Aisha Bell: What else did you have?
+
+[09:05:29] Sam Okafor: I wanted to ask about the service review. You mentioned wanting more visibility into response times, but I wasn’t sure whether you wanted a monthly report or just exception notices.
+
+[09:05:38] Aisha Bell: Monthly is useful, but only if it’s readable. I don’t need a twenty-page report with every timestamp if the point gets buried.
+
+[09:05:46] Sam Okafor: We can make it a one-page summary with exceptions, open items, and any recurring pattern.
+
+[09:05:53] Aisha Bell: That would help. Put the detail behind it rather than in front of it.
+
+[09:05:58] Sam Okafor: I’ll have the team draft a format for your review.
+
+[09:06:04] Aisha Bell: Thanks.
+
+[09:06:08] Sam Okafor: Before we move on, any concerns about the current supply position?
+
+[09:06:15] Aisha Bell: Nothing urgent. I’m watching lead times because the end of the year always gets strange. People disappear, carriers get busy, and suddenly an ordinary order becomes a scheduling exercise.
+
+[09:06:23] Sam Okafor: We can look ahead without treating it as a hard order. If you give me a rough range, I can check capacity and come back with options.
+
+[09:06:31] Aisha Bell: I can give you a range after I meet with finance. They’re asking us to separate required volume from contingency volume.
+
+[09:06:39] Sam Okafor: That distinction is useful. We can model both.
+
+[09:06:44] Aisha Bell: Exactly. Required volume is easier. Contingency depends on how cautious the group wants to be.
+
+[09:06:50] Sam Okafor: Does the finance review happen this week?
+
+[09:06:55] Aisha Bell: It’s on Friday afternoon. Which means I’ll probably get the questions Thursday evening.
+
+[09:07:02] Sam Okafor: I know that rhythm.
+
+[09:07:06] Aisha Bell: You do?
+
+[09:07:09] Sam Okafor: Absolutely. A request marked “quick question” arrives at 4:58, and then it contains nine attachments.
+
+[09:07:17] Aisha Bell: That is not a quick question.
+
+[09:07:21] Sam Okafor: It never is.
+
+[09:07:26] Aisha Bell: All right, let’s go back to the T3 topic. I have a little more clarity than I had when we last spoke.
+
+[09:07:33] Sam Okafor: Great. What changed?
+
+[09:07:38] Aisha Bell: The operating group completed its discussion. They were concerned about committing before seeing the workflow, but they don’t want to wait indefinitely either.
+
+[09:07:47] Sam Okafor: That sounds like movement in the right direction.
+
+[09:07:51] Aisha Bell: It is. The clinical engineering lead also reviewed the preliminary requirements and said the site can support the evaluation, subject to the readiness check.
+
+[09:07:59] Sam Okafor: That’s encouraging. Did they specify how they want to structure the evaluation?
+
+[09:08:05] Aisha Bell: They want it limited to the emergency department initially, with a defined review point afterward. They don’t want the first stage spread across multiple departments.
+
+[09:08:14] Sam Okafor: That should make the measurement cleaner. We can focus on the workflow and gather feedback from the people actually using the units.
+
+[09:08:20] Aisha Bell: Yes, and they want the measures agreed before the equipment arrives. Otherwise, every person will judge it by a different standard.
+
+[09:08:28] Sam Okafor: We can propose a short list, then let your team edit it.
+
+[09:08:34] Aisha Bell: Please do. Include operational measures, not just technical ones. If the unit works perfectly but creates extra steps for the staff, that matters.
+
+[09:08:42] Sam Okafor: Absolutely. We can include setup time, handoff issues, interruptions, and any support requests.
+
+[09:08:49] Aisha Bell: And training questions. Those can show whether the process is clear.
+
+[09:08:55] Sam Okafor: Good point.
+
+[09:08:59] Aisha Bell: I also want a named person on your side for the evaluation. Not a general inbox, not a rotating queue.
+
+[09:09:05] Sam Okafor: We can assign one account contact and one technical backup.
+
+[09:09:10] Aisha Bell: That works. People need to know who owns the question.
+
+[09:09:14] Sam Okafor: I’ll confirm the names in the follow-up.
+
+[09:09:19] Aisha Bell: Fine.
+
+[09:09:22] Sam Okafor: Do you have a target window in mind?
+
+[09:09:28] Aisha Bell: We’ve been discussing early October, but I don’t want to call it final until the readiness check and the committee note are done.
+
+[09:09:37] Sam Okafor: Understood. If the date is early October, we should start the logistics work soon, even if the paperwork follows.
+
+[09:09:44] Aisha Bell: Yes. That’s why I wanted this call. I don’t want logistics to become the reason the clinical group has to move its plans.
+
+[09:09:50] Sam Okafor: We can prepare the draft schedule, identify the site contacts, and leave the final approval gates visible.
+
+[09:09:56] Aisha Bell: Good.
+
+[09:10:00] Sam Okafor: How many units are they considering?
+
+[09:10:05] Aisha Bell: The current discussion is two. That gives them enough coverage to test the workflow without making the first stage too large.
+
+[09:10:13] Sam Okafor: Two units in the department?
+
+[09:10:17] Aisha Bell: Yes, that’s what they’re discussing.
+
+[09:10:22] Sam Okafor: And would they be positioned in the same area or separate zones?
+
+[09:10:29] Aisha Bell: The placement is not decided. They want to walk the space with the implementation specialist before choosing.
+
+[09:10:35] Sam Okafor: That’s sensible. Placement can affect everything from access to cleaning routes.
+
+[09:10:40] Aisha Bell: Exactly.
+
+[09:10:43] Sam Okafor: I’m going to pause for a second because I have another window opening. All right, I’m back.
+
+[09:10:50] Aisha Bell: No problem.
+
+[09:10:54] Sam Okafor: Given the timing, I can ask our operations team to reserve the evaluation inventory while the site work proceeds. I’ll describe it as planning, not a release.
+
+[09:11:02] Aisha Bell: That’s fine. I just don’t want anything shipped before the readiness review.
+
+[09:11:09] Sam Okafor: We won’t ship before the release points are clear.
+
+[09:11:13] Aisha Bell: Good.
+
+[09:11:17] Sam Okafor: Are there any contracting issues that could block the evaluation?
+
+[09:11:23] Aisha Bell: There may be a short addendum. Legal is looking at the language, particularly around support and return conditions.
+
+[09:11:31] Sam Okafor: I can send the standard evaluation language again, with the support section highlighted.
+
+[09:11:37] Aisha Bell: Please send the clean version, not the one with all the internal comments.
+
+[09:11:42] Sam Okafor: I’ll make sure it’s clean.
+
+[09:11:46] Aisha Bell: Thanks.
+
+[09:11:49] Sam Okafor: Has the department identified an internal project lead?
+
+[09:11:54] Aisha Bell: Not formally. There are two people being considered, and I don’t want to name one before the manager confirms.
+
+[09:12:01] Sam Okafor: That’s fine. We can address the material to the department for now.
+
+[09:12:06] Aisha Bell: Yes.
+
+[09:12:09] Sam Okafor: Let me ask about the review point. Are they thinking a fixed number of weeks, or a milestone-based review?
+
+[09:12:16] Aisha Bell: They haven’t settled that. The preference is to review after there’s enough real use to make the discussion meaningful, rather than choosing an arbitrary calendar date.
+
+[09:12:24] Sam Okafor: We can recommend a minimum usage threshold and a review conversation.
+
+[09:12:30] Aisha Bell: That would help, as long as the threshold isn’t so complicated that nobody tracks it.
+
+[09:12:35] Sam Okafor: We’ll keep it practical.
+
+[09:12:39] Aisha Bell: Good.
+
+[09:12:42] Sam Okafor: I want to make sure I capture the key decision correctly. Is this still an exploratory conversation, or has the group made a commitment?
+
+[09:12:50] Aisha Bell: It’s a commitment at the pilot level. Cobalt Ridge Medical Center agreed to pilot two Tidewater T3 units in its emergency department from 2026-10-01.
+
+[09:12:59] Sam Okafor: That’s clear. Thank you. I’ll record it as a pilot commitment beginning October first, with the readiness and documentation steps still to complete.
+
+[09:13:06] Aisha Bell: That’s the right way to frame it. The commitment is real, but the practical work still matters.
+
+[09:13:12] Sam Okafor: Understood. I’ll avoid presenting it as a full deployment or a broader expansion.
+
+[09:13:18] Aisha Bell: Please do. The department wants a focused evaluation first.
+
+[09:13:22] Sam Okafor: I’ll make that distinction explicit.
+
+[09:13:25] Aisha Bell: And I need the draft schedule quickly. Once the internal note goes out, people will start asking what happens next.
+
+[09:13:31] Sam Okafor: I can send a first draft tomorrow. It will include the site walk, readiness review, delivery coordination, training, support coverage, and the initial review discussion.
+
+[09:13:40] Aisha Bell: That sequence sounds right. Put dependencies beside each step.
+
+[09:13:46] Sam Okafor: Will do.
+
+[09:13:49] Aisha Bell: Also identify what you need from us. I don’t want a list of requests arriving one at a time.
+
+[09:13:55] Sam Okafor: I’ll consolidate them into one section.
+
+[09:13:59] Aisha Bell: Perfect.
+
+[09:14:02] Sam Okafor: For the site walk, who should attend from your side?
+
+[09:14:08] Aisha Bell: Someone from clinical engineering, someone from the emergency department, and me or my delegate. Facilities may join depending on the installation questions.
+
+[09:14:16] Sam Okafor: That’s enough to make the discussion useful without turning it into a committee meeting.
+
+[09:14:22] Aisha Bell: Exactly. Too many people and nobody wants to make a decision.
+
+[09:14:27] Sam Okafor: We’ll keep it focused.
+
+[09:14:30] Aisha Bell: What do you need for the network review?
+
+[09:14:35] Sam Okafor: We’ll provide the technical checklist. Your team can tell us who owns the relevant network and security questions.
+
+[09:14:42] Aisha Bell: I can identify those contacts. The security group prefers to receive questions in writing before joining a call.
+
+[09:14:50] Sam Okafor: That’s fine. We’ll send the questions ahead of time.
+
+[09:14:55] Aisha Bell: Good.
+
+[09:14:58] Sam Okafor: How much notice does the department need for training?
+
+[09:15:04] Aisha Bell: At least a couple of weeks if they want good attendance. Anything shorter and people are technically invited but practically unavailable.
+
+[09:15:11] Sam Okafor: I’ll make that visible in the schedule.
+
+[09:15:15] Aisha Bell: Thanks.
+
+[09:15:18] Sam Okafor: Would you prefer the training materials before the session or afterward?
+
+[09:15:23] Aisha Bell: Beforehand, but not too far before. If they get them a month early, they’ll disappear into someone’s inbox.
+
+[09:15:29] Sam Okafor: We can send a short preview ahead of time and the full reference package closer to the session.
+
+[09:15:36] Aisha Bell: That’s better.
+
+[09:15:39] Sam Okafor: I’ll include that as two separate tasks.
+
+[09:15:42] Aisha Bell: All right.
+
+[09:15:45] Sam Okafor: Let’s revisit the current service alert briefly. If the written explanation arrives today, do you want me to send it directly to you or route it through the service coordinator?
+
+[09:15:53] Aisha Bell: Send it to me and copy the coordinator. I want to see it before it gets summarized.
+
+[09:15:59] Sam Okafor: I’ll do that.
+
+[09:16:02] Aisha Bell: And if the alert repeats, I want a call, not just a ticket update.
+
+[09:16:07] Sam Okafor: Understood. I’ll note that escalation preference.
+
+[09:16:11] Aisha Bell: Good.
+
+[09:16:14] Sam Okafor: There’s one more item from my side: the quarterly account review. We can either fold the pilot planning into that meeting or keep it separate.
+
+[09:16:21] Aisha Bell: Keep it separate. The quarterly review has too many subjects already, and the pilot needs people who won’t be there for the broader account discussion.
+
+[09:16:29] Sam Okafor: That makes sense. I’ll propose a dedicated session.
+
+[09:16:34] Aisha Bell: Make it practical, like today. I don’t need a presentation about how exciting the opportunity is.
+
+[09:16:41] Sam Okafor: I promise not to use the phrase “exciting opportunity.”
+
+[09:16:45] Aisha Bell: Thank you.
+
+[09:16:48] Sam Okafor: Although now I’m tempted to put it in the subject line just to see whether you notice.
+
+[09:16:54] Aisha Bell: I would notice immediately, and then I would delete the email.
+
+[09:16:59] Sam Okafor: Message received.
+
+[09:17:03] Aisha Bell: Good.
+
+[09:17:05] Sam Okafor: For the dedicated session, should we invite finance?
+
+[09:17:11] Aisha Bell: Not initially. They can join once there’s a defined cost view. Bringing them into the workflow discussion too early will pull us sideways.
+
+[09:17:18] Sam Okafor: I’ll leave them off the first invite and circulate the summary afterward.
+
+[09:17:23] Aisha Bell: That works.
+
+[09:17:26] Sam Okafor: What about legal?
+
+[09:17:30] Aisha Bell: Include them only if the addendum has unresolved questions. Otherwise, send them the draft separately.
+
+[09:17:36] Sam Okafor: Got it.
+
+[09:17:39] Aisha Bell: I’m trying to keep the first meeting small enough that people can actually work.
+
+[09:17:44] Sam Okafor: That’s usually the difference between a decision meeting and a status meeting.
+
+[09:17:49] Aisha Bell: Exactly.
+
+[09:17:52] Sam Okafor: On the equipment itself, are there any concerns about moving the units between rooms during the evaluation?
+
+[09:17:58] Aisha Bell: They don’t want routine movement. The preference is to establish a stable location and leave it there unless there’s a clear operational reason to change it.
+
+[09:18:05] Sam Okafor: That helps. We can set up the evaluation around fixed locations and document any change.
+
+[09:18:11] Aisha Bell: Yes. Otherwise the feedback becomes a mix of equipment questions and location questions.
+
+[09:18:17] Sam Okafor: I’ll include location stability in the workflow plan.
+
+[09:18:21] Aisha Bell: Good.
+
+[09:18:24] Sam Okafor: Do they want the same users involved throughout, or should participation be broad?
+
+[09:18:30] Aisha Bell: Broad enough to reflect the department, but with a core group that can give consistent feedback. If everyone uses it once, we won’t learn much.
+
+[09:18:38] Sam Okafor: We can suggest a core group plus a wider feedback channel.
+
+[09:18:44] Aisha Bell: That sounds right.
+
+[09:18:47] Sam Okafor: How should feedback be collected?
+
+[09:18:52] Aisha Bell: Keep it simple. A short form for immediate comments, then a weekly conversation with the core group.
+
+[09:18:58] Sam Okafor: We can provide a draft form.
+
+[09:19:02] Aisha Bell: Please make the questions neutral. I don’t want something that nudges people toward a positive answer.
+
+[09:19:08] Sam Okafor: Agreed. We’ll ask what worked, what didn’t, and what would need to change.
+
+[09:19:14] Aisha Bell: Good.
+
+[09:19:17] Sam Okafor: Do you want a formal final report?
+
+[09:19:22] Aisha Bell: A concise summary, yes. It should support a decision, not become a document that sits in a folder.
+
+[09:19:28] Sam Okafor: We can structure it around findings, open issues, staff feedback, and the recommendation.
+
+[09:19:35] Aisha Bell: Include the evidence behind the recommendation.
+
+[09:19:40] Sam Okafor: Of course.
+
+[09:19:43] Aisha Bell: And separate facts from opinions. People tend to blend those when they’re enthusiastic.
+
+[09:19:49] Sam Okafor: We’ll distinguish observations from conclusions.
+
+[09:19:53] Aisha Bell: Good.
+
+[09:19:56] Sam Okafor: I think we have the main shape. Let me check my notes.
+
+[09:20:02] Aisha Bell: Take your time.
+
+[09:20:05] Sam Okafor: I have: focused emergency department pilot, two T3 units, start date of October first, readiness review before shipment, a site walk, workflow measures, named contacts, training with floor support, and a defined review point.
+
+[09:20:15] Aisha Bell: Add the support escalation path and the clean evaluation language.
+
+[09:20:20] Sam Okafor: Right, support escalation and contract language.
+
+[09:20:24] Aisha Bell: Also add the network questions in advance.
+
+[09:20:28] Sam Okafor: I have that under site readiness.
+
+[09:20:31] Aisha Bell: Fine.
+
+[09:20:34] Sam Okafor: Anything missing around supplies?
+
+[09:20:39] Aisha Bell: Not for the pilot discussion. Keep supplies in the separate planning track.
+
+[09:20:44] Sam Okafor: Good distinction.
+
+[09:20:47] Aisha Bell: I don’t want the pilot conversation to get tangled with the broader forecast.
+
+[09:20:51] Sam Okafor: I’ll keep them separate in the notes.
+
+[09:20:55] Aisha Bell: Thanks.
+
+[09:20:58] Sam Okafor: I’m going to ask one slightly boring question: who should receive the schedule when it’s ready?
+
+[09:21:05] Aisha Bell: Send it to me first. I’ll route it to the internal group and come back with one consolidated response.
+
+[09:21:12] Sam Okafor: That’s helpful. I’ll avoid creating multiple parallel comment threads.
+
+[09:21:16] Aisha Bell: Please. Parallel threads are how small questions become archaeology.
+
+[09:21:22] Sam Okafor: That’s a good phrase.
+
+[09:21:25] Aisha Bell: I’m sure you can put it in a report.
+
+[09:21:28] Sam Okafor: I’ll restrain myself.
+
+[09:21:31] Aisha Bell: Much appreciated.
+
+[09:21:34] Sam Okafor: Do you want the first draft schedule in a spreadsheet or a document?
+
+[09:21:39] Aisha Bell: Spreadsheet for the working version. We can turn it into a cleaner document once the dates are confirmed.
+
+[09:21:44] Sam Okafor: That works.
+
+[09:21:47] Aisha Bell: Use separate columns for owner, dependency, and status.
+
+[09:21:53] Sam Okafor: I’ll include all three.
+
+[09:21:56] Aisha Bell: And don’t hide the unresolved items at the bottom.
+
+[09:22:01] Sam Okafor: I’ll put them near the top.
+
+[09:22:04] Aisha Bell: Good.
+
+[09:22:07] Sam Okafor: Once your team reviews it, how quickly can you return comments?
+
+[09:22:14] Aisha Bell: If it arrives tomorrow morning, I can get an initial read to you by the following afternoon. A full group response may take longer.
+
+[09:22:21] Sam Okafor: That’s enough to keep moving.
+
+[09:22:25] Aisha Bell: I’ll mark what is a correction, what is a question, and what needs another person’s decision.
+
+[09:22:31] Sam Okafor: Excellent. That will save time.
+
+[09:22:34] Aisha Bell: I’m trying.
+
+[09:22:37] Sam Okafor: You’re succeeding.
+
+[09:22:40] Aisha Bell: Don’t jinx it.
+
+[09:22:43] Sam Okafor: Fair.
+
+[09:22:46] Aisha Bell: What’s the current lead time for the implementation specialist?
+
+[09:22:51] Sam Okafor: I need to confirm the calendar. I know there’s availability in the next couple of weeks, but I don’t want to give you a slot that’s already been taken.
+
+[09:22:58] Aisha Bell: Send me two or three options.
+
+[09:23:03] Sam Okafor: I will.
+
+[09:23:06] Aisha Bell: Prefer mornings if possible. The department gets harder to coordinate later in the day.
+
+[09:23:12] Sam Okafor: I’ll look for morning options.
+
+[09:23:15] Aisha Bell: Good.
+
+[09:23:18] Sam Okafor: Would a remote preparation call before the site walk be useful?
+
+[09:23:23] Aisha Bell: Yes, but keep it short. Fifteen or twenty minutes to make sure everyone knows what the walk is for.
+
+[09:23:29] Sam Okafor: I can schedule that after the attendees are identified.
+
+[09:23:34] Aisha Bell: Fine.
+
+[09:23:37] Sam Okafor: I’ll also send a brief agenda for the walk.
+
+[09:23:40] Aisha Bell: Include time for questions. If the agenda is packed wall to wall, people won’t raise anything until afterward.
+
+[09:23:48] Sam Okafor: Good point. I’ll leave room at the end.
+
+[09:23:51] Aisha Bell: Thanks.
+
+[09:23:54] Sam Okafor: How formal should the readiness signoff be?
+
+[09:24:00] Aisha Bell: Formal enough that everyone knows what was checked, but not a fifteen-page ceremony. A checklist with named owners should do it.
+
+[09:24:07] Sam Okafor: We have a standard checklist we can adapt.
+
+[09:24:11] Aisha Bell: Adapt it to the actual site. Generic checklists are useful until they ask for something nobody has.
+
+[09:24:17] Sam Okafor: I’ll make it site-specific.
+
+[09:24:20] Aisha Bell: Good.
+
+[09:24:23] Sam Okafor: Do you want a copy of the technical specifications for the clinical engineering group now?
+
+[09:24:28] Aisha Bell: Yes, send them with the checklist. They can review in parallel.
+
+[09:24:33] Sam Okafor: I’ll include the installation assumptions as a separate page.
+
+[09:24:38] Aisha Bell: Perfect.
+
+[09:24:41] Sam Okafor: I’m aware we’re getting into a lot of detail, but this is exactly the kind of detail that prevents a last-minute surprise.
+
+[09:24:48] Aisha Bell: That’s why I wanted the call. The broad decision is easy to state. The small dependencies are what make or break it.
+
+[09:24:55] Sam Okafor: Completely agree.
+
+[09:24:58] Aisha Bell: And if something looks uncertain, label it uncertain.
+
+[09:25:03] Sam Okafor: I will.
+
+[09:25:06] Aisha Bell: I’d rather see an open question than a polished assumption.
+
+[09:25:10] Sam Okafor: That’s a useful rule.
+
+[09:25:14] Aisha Bell: It’s one we learned the hard way.
+
+[09:25:17] Sam Okafor: I won’t ask for the story.
+
+[09:25:20] Aisha Bell: Good, because it involves three departments and a spreadsheet nobody could open.
+
+[09:25:24] Sam Okafor: Then I definitely won’t ask.
+
+[09:25:27] Aisha Bell: Wise.
+
+[09:25:30] Sam Okafor: Let’s talk about the internal announcement. Do you want to tell the emergency department first, or wait until the schedule is drafted?
+
+[09:25:37] Aisha Bell: Tell the leadership group first, then the department once the schedule has enough shape. I don’t want staff hearing a date without knowing what it means.
+
+[09:25:44] Sam Okafor: That’s reasonable.
+
+[09:25:47] Aisha Bell: The message should say it’s a focused pilot and that feedback is expected. It shouldn’t sound like a finished decision about future expansion.
+
+[09:25:53] Sam Okafor: I’ll use that language in the draft materials.
+
+[09:25:58] Aisha Bell: Good.
+
+[09:26:01] Sam Okafor: Do you want us to review the announcement before it goes out?
+
+[09:26:06] Aisha Bell: Yes, for accuracy. I’ll own the internal tone.
+
+[09:26:12] Sam Okafor: That’s fair.
+
+[09:26:15] Aisha Bell: Send it with the schedule, not as a separate request.
+
+[09:26:20] Sam Okafor: I’ll bundle it.
+
+[09:26:23] Aisha Bell: Thanks.
+
+[09:26:26] Sam Okafor: I’ve got another question on support coverage. Should the support contact be available only during business hours, or do they expect coverage across the department’s full operating pattern?
+
+[09:26:33] Aisha Bell: Ask the department what they need. I don’t want to promise a coverage model before we know when the units will actually be used.
+
+[09:26:40] Sam Okafor: I’ll put that question into the workflow discussion.
+
+[09:26:44] Aisha Bell: Good.
+
+[09:26:47] Sam Okafor: We can then match the support plan to actual use rather than guessing.
+
+[09:26:51] Aisha Bell: Exactly.
+
+[09:26:54] Sam Okafor: Would the department want an after-hours escalation number listed on the unit?
+
+[09:27:00] Aisha Bell: Probably, but confirm the format with them. Different areas have different preferences.
+
+[09:27:05] Sam Okafor: I’ll ask.
+
+[09:27:08] Aisha Bell: Fine.
+
+[09:27:11] Sam Okafor: What about consumable storage near the units?
+
+[09:27:16] Aisha Bell: That will be part of the site walk. Storage is limited, and I don’t want supplies parked where they interfere with normal movement.
+
+[09:27:24] Sam Okafor: We’ll look at it with the team.
+
+[09:27:28] Aisha Bell: Good.
+
+[09:27:31] Sam Okafor: If the storage question affects placement, we’ll document both options.
+
+[09:27:35] Aisha Bell: Yes.
+
+[09:27:38] Sam Okafor: Do they have a preferred way to label the pilot equipment?
+
+[09:27:43] Aisha Bell: They’ll want clear identification, but I don’t know the exact label format. The department can tell us during the walk.
+
+[09:27:50] Sam Okafor: We’ll leave that as a site decision.
+
+[09:27:54] Aisha Bell: Fine.
+
+[09:27:57] Sam Okafor: I’m checking the clock. We still have time, but I don’t want to keep you past the hour if we’ve covered the important parts.
+
+[09:28:03] Aisha Bell: I have another meeting at ten, so we have a little room.
+
+[09:28:08] Sam Okafor: Then I’ll use it for the items most likely to cause delay.
+
+[09:28:12] Aisha Bell: That’s the right priority.
+
+[09:28:15] Sam Okafor: Contract language, site readiness, attendee list, schedule, and support ownership.
+
+[09:28:21] Aisha Bell: Also the evaluation measures. If those come late, people will disagree about what they’re observing.
+
+[09:28:27] Sam Okafor: I’ll send a first draft of the measures with the schedule.
+
+[09:28:31] Aisha Bell: Keep it to a manageable number.
+
+[09:28:34] Sam Okafor: Maybe six or seven to start?
+
+[09:28:38] Aisha Bell: That sounds reasonable, as long as each one is understandable without a glossary.
+
+[09:28:43] Sam Okafor: We’ll write them in plain language.
+
+[09:28:47] Aisha Bell: Good.
+
+[09:28:50] Sam Okafor: Should the measures include a comparison to the current process?
+
+[09:28:56] Aisha Bell: Yes, where we can make a fair comparison. Otherwise, people may say something felt better without knowing whether it changed anything.
+
+[09:29:03] Sam Okafor: We can establish a simple baseline from the current workflow.
+
+[09:29:08] Aisha Bell: Do that before the units arrive if possible.
+
+[09:29:12] Sam Okafor: I’ll include baseline capture as an early task.
+
+[09:29:15] Aisha Bell: Good.
+
+[09:29:18] Sam Okafor: Does the department already track those current-process measures?
+
+[09:29:23] Aisha Bell: Some of them, but not consistently. We may need to agree on a lightweight way to collect the rest.
+
+[09:29:30] Sam Okafor: We can propose something that doesn’t add much burden.
+
+[09:29:34] Aisha Bell: Please. If it takes ten minutes per event, nobody will keep doing it.
+
+[09:29:39] Sam Okafor: Understood.
+
+[09:29:42] Aisha Bell: And make sure the pilot doesn’t create a second documentation system that has to be maintained forever.
+
+[09:29:48] Sam Okafor: We’ll define what is temporary and what belongs in the normal process.
+
+[09:29:53] Aisha Bell: Exactly.
+
+[09:29:56] Sam Okafor: I’ll ask our implementation lead to address that in the preparation call.
+
+[09:30:01] Aisha Bell: Good.
+
+[09:30:04] Sam Okafor: Let’s cover what happens if one unit is unavailable during the evaluation.
+
+[09:30:10] Aisha Bell: That needs to be clear in the support plan. The department wants to know whether they pause the evaluation, continue with one unit, or use an alternate process.
+
+[09:30:18] Sam Okafor: We’ll document the options and the escalation threshold.
+
+[09:30:22] Aisha Bell: And don’t assume one unit being unavailable is automatically a failure. It depends on the cause and the duration.
+
+[09:30:27] Sam Okafor: That’s fair.
+
+[09:30:30] Aisha Bell: The review should distinguish equipment issues from process issues.
+
+[09:30:35] Sam Okafor: We’ll make that distinction in the issue log.
+
+[09:30:39] Aisha Bell: Good.
+
+[09:30:42] Sam Okafor: Would you like a shared issue log, or should we maintain it and send updates?
+
+[09:30:48] Aisha Bell: Shared, but controlled. I don’t want everyone editing the same file without ownership.
+
+[09:30:54] Sam Okafor: We can set up a controlled tracker with assigned owners.
+
+[09:30:58] Aisha Bell: That works.
+
+[09:31:01] Sam Okafor: I’ll include access and update rules in the follow-up.
+
+[09:31:05] Aisha Bell: Fine.
+
+[09:31:08] Sam Okafor: What cadence would you prefer for the pilot check-ins?
+
+[09:31:14] Aisha Bell: Weekly at first. If the process settles down, we can reduce the frequency.
+
+[09:31:20] Sam Okafor: Weekly check-ins with the core group?
+
+[09:31:24] Aisha Bell: Yes, short and focused.
+
+[09:31:27] Sam Okafor: I’ll suggest thirty minutes.
+
+[09:31:30] Aisha Bell: That should be enough if the issue log is current.
+
+[09:31:34] Sam Okafor: Exactly.
+
+[09:31:37] Aisha Bell: If the log isn’t current, even an hour won’t help.
+
+[09:31:41] Sam Okafor: I’ll make ownership explicit.
+
+[09:31:44] Aisha Bell: Good.
+
+[09:31:47] Sam Okafor: Do you expect the weekly call to include your procurement team?
+
+[09:31:52] Aisha Bell: Not every week. Invite them when there’s a contract or supply question they need to answer.
+
+[09:31:57] Sam Okafor: I’ll keep the core invitation small.
+
+[09:32:00] Aisha Bell: Thanks.
+
+[09:32:03] Sam Okafor: I’ll also distinguish operational issues from commercial issues in the agenda.
+
+[09:32:08] Aisha Bell: That will help.
+
+[09:32:11] Sam Okafor: We’ve talked about the start date, but not the setup window. How much time does the department need before October first?
+
+[09:32:18] Aisha Bell: That depends on the site findings. I’d like the equipment in place with enough time for checks and training, but I don’t want it sitting unused for weeks.
+
+[09:32:26] Sam Okafor: We can work backward from the start date once the readiness requirements are known.
+
+[09:32:31] Aisha Bell: Yes.
+
+[09:32:34] Sam Okafor: I’ll show the setup window as a range rather than a fixed promise.
+
+[09:32:38] Aisha Bell: Good.
+
+[09:32:41] Sam Okafor: Are there any blackout dates we should avoid?
+
+[09:32:46] Aisha Bell: There may be a departmental training day near the end of September. I’ll confirm after I check the calendar.
+
+[09:32:52] Sam Okafor: Please send that when you have it.
+
+[09:32:55] Aisha Bell: I will.
+
+[09:32:58] Sam Okafor: And if the training day conflicts, we can adjust the sequence without moving the whole plan.
+
+[09:33:03] Aisha Bell: That’s what I’m hoping.
+
+[09:33:06] Sam Okafor: We’ll build some flexibility in.
+
+[09:33:09] Aisha Bell: Good.
+
+[09:33:12] Sam Okafor: Let’s talk about the handoff at the end. Who decides whether the pilot moves to a broader recommendation?
+
+[09:33:18] Aisha Bell: The internal operating group will make the recommendation, with input from clinical engineering, the department, and procurement.
+
+[09:33:25] Sam Okafor: Does senior leadership approve the final recommendation?
+
+[09:33:30] Aisha Bell: They approve the business decision, but the operating group needs to produce a clear recommendation first.
+
+[09:33:36] Sam Okafor: Understood.
+
+[09:33:39] Aisha Bell: I want the final discussion to be based on the agreed measures, not whoever speaks most confidently in the room.
+
+[09:33:44] Sam Okafor: That’s a good safeguard.
+
+[09:33:47] Aisha Bell: We need a record people can understand later.
+
+[09:33:51] Sam Okafor: We’ll make sure the final summary shows the measures, the evidence, and the unresolved questions.
+
+[09:33:56] Aisha Bell: Good.
+
+[09:33:59] Sam Okafor: Would you like our team to attend the final review?
+
+[09:34:04] Aisha Bell: Yes, for questions and clarification, but not to lead the conclusion.
+
+[09:34:10] Sam Okafor: That’s appropriate.
+
+[09:34:13] Aisha Bell: The recommendation needs to be theirs.
+
+[09:34:16] Sam Okafor: We’ll support the discussion without taking it over.
+
+[09:34:19] Aisha Bell: Exactly.
+
+[09:34:22] Sam Okafor: I think that gives us a solid framework.
+
+[09:34:26] Aisha Bell: It does.
+
+[09:34:29] Sam Okafor: I’ll recap the immediate actions now, and you can interrupt me if I miss anything.
+
+[09:34:34] Aisha Bell: Go ahead.
+
+[09:34:37] Sam Okafor: First, I’ll send the clean evaluation language and the technical requirements.
+
+[09:34:42] Aisha Bell: Yes.
+
+[09:34:44] Sam Okafor: Second, I’ll send two or three morning options for the site walk and a short preparation call.
+
+[09:34:49] Aisha Bell: Yes.
+
+[09:34:51] Sam Okafor: Third, I’ll draft the working schedule with owners, dependencies, status, and unresolved items.
+
+[09:34:56] Aisha Bell: Yes.
+
+[09:34:58] Sam Okafor: Fourth, I’ll include draft measures, baseline capture, the support path, and the issue-log approach.
+
+[09:35:03] Aisha Bell: Yes.
+
+[09:35:05] Sam Okafor: Fifth, you’ll identify the internal attendees and confirm any late-September calendar constraints.
+
+[09:35:10] Aisha Bell: Correct.
+
+[09:35:12] Sam Okafor: Sixth, you’ll route the draft to the internal group and return consolidated comments.
+
+[09:35:17] Aisha Bell: That’s right.
+
+[09:35:19] Sam Okafor: I’ll also ask operations to hold the evaluation inventory pending the readiness review.
+
+[09:35:25] Aisha Bell: Good. Make sure “hold” doesn’t get interpreted as “ship.”
+
+[09:35:29] Sam Okafor: I’ll use explicit language.
+
+[09:35:32] Aisha Bell: Thank you.
+
+[09:35:35] Sam Okafor: Anything else for the immediate list?
+
+[09:35:40] Aisha Bell: Include the support escalation preference and the request for a named contact.
+
+[09:35:45] Sam Okafor: I have both.
+
+[09:35:48] Aisha Bell: Then I think that’s it.
+
+[09:35:51] Sam Okafor: Great.
+
+[09:35:54] Aisha Bell: I’m relieved we got the scope narrowed.
+
+[09:35:58] Sam Okafor: Narrow scope makes the next steps much easier.
+
+[09:36:01] Aisha Bell: It also makes it harder for anyone to hide behind general statements.
+
+[09:36:06] Sam Okafor: True. Specific plans create specific questions.
+
+[09:36:09] Aisha Bell: Which is what we need.
+
+[09:36:12] Sam Okafor: I’ll make the follow-up specific.
+
+[09:36:15] Aisha Bell: Good.
+
+[09:36:18] Sam Okafor: One small question before we close: should the subject line mention the pilot date?
+
+[09:36:23] Aisha Bell: Yes, but label it as the working plan and include the readiness conditions.
+
+[09:36:29] Sam Okafor: I’ll do that.
+
+[09:36:32] Aisha Bell: That way nobody forwards it as if the date exists in isolation.
+
+[09:36:36] Sam Okafor: Exactly.
+
+[09:36:39] Aisha Bell: And please use the full department name. We have too many abbreviations floating around.
+
+[09:36:44] Sam Okafor: I’ll spell it out.
+
+[09:36:47] Aisha Bell: Thanks.
+
+[09:36:50] Sam Okafor: I’ll send everything tomorrow morning.
+
+[09:36:54] Aisha Bell: That works.
+
+[09:36:57] Sam Okafor: If I hit a technical question I can’t answer, I’ll mark it as pending rather than fill the gap.
+
+[09:37:03] Aisha Bell: Good. That’s exactly what I want.
+
+[09:37:06] Sam Okafor: I appreciate the clarity today.
+
+[09:37:10] Aisha Bell: It helps when we talk through it instead of trading fragments of email.
+
+[09:37:14] Sam Okafor: Agreed. Email is useful after the decision, not always for making the decision.
+
+[09:37:18] Aisha Bell: That’s my view too.
+
+[09:37:21] Sam Okafor: All right, I’ll let you get ready for the next meeting.
+
+[09:37:25] Aisha Bell: Thank you, Sam. I’ll watch for the materials.
+
+[09:37:28] Sam Okafor: Thanks, Aisha. Have a good rest of the morning.
+
+[09:37:32] Aisha Bell: You too. And good luck with the nine-attachment quick question.
+
+[09:37:35] Sam Okafor: I’ll need it. Talk soon.
+
+[09:37:38] Aisha Bell: Talk soon.

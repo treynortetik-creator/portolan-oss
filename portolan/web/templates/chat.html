@@ -1,0 +1,814 @@
+{% extends "base.html" %}
+{% block title %}{% if conversation %}{{ conversation.title }} — {% endif %}Chat — Portolan{% endblock %}
+{% block head %}
+<style>
+  /* Restyle wave 2026-09-18 (owner verdict: "make it look like a normal
+     chat interface, like a screen grab of a chat interface from Claude
+     or ChatGPT ... what you have really sucks"): two-pane shell laid out
+     like Claude.ai/ChatGPT -- a fixed-width conversation sidebar and a
+     centred message column -- inside Portolan's own chart-paper/serif/
+     rhumb-line tokens, not a copy of anyone else's visual style. Kept
+     entirely inside this file's own head/script blocks per the build
+     instructions (other agents are editing base.html in parallel); zero
+     edits to base.html itself.
+
+     >=800px: `.chat-shell` is a bordered panel that fills the space
+     under the header, sidebar and message column each scrolling
+     independently, composer pinned at the bottom of the message column.
+     <800px: the panel constraint drops -- the page scrolls as a whole,
+     the sidebar collapses behind a toggle button, and the composer
+     stays pinned to the viewport bottom via `position: sticky`. */
+  .chat-shell {
+    display: flex; align-items: stretch; gap: 0;
+    border: 1px solid var(--pl-line); border-radius: 6px; overflow: hidden;
+  }
+  .chat-sidebar-toggle { display: none; margin-bottom: 10px; }
+  .chat-sidebar {
+    width: 260px; flex: 0 0 260px; display: flex; flex-direction: column;
+    border-right: 1px solid var(--pl-line); background: var(--pl-ground);
+  }
+  .chat-sidebar-top { flex: 0 0 auto; padding: 14px 12px 8px; }
+  .chat-sidebar-scroll { flex: 1 1 auto; overflow-y: auto; padding: 0 12px 8px; min-height: 0; }
+  .chat-shared-note {
+    flex: 0 0 auto; margin: 0; padding: 8px 12px 12px; font-size: 11px;
+    line-height: 1.4; border-top: 1px solid var(--pl-line);
+  }
+  .chat-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+
+  @media (min-width: 800px) {
+    .chat-shell { height: calc(100vh - 150px); min-height: 480px; }
+  }
+  @media (max-width: 799px) {
+    .chat-shell { flex-direction: column; border: none; border-radius: 0; overflow: visible; }
+    .chat-sidebar-toggle { display: inline-flex; }
+    .chat-sidebar {
+      display: none; width: 100%; flex: none; border-right: none;
+      border: 1px solid var(--pl-line); border-radius: 6px; margin-bottom: 14px;
+      max-height: 60vh;
+    }
+    .chat-shell.sidebar-open .chat-sidebar { display: flex; }
+    .chat-sidebar-scroll { overflow-y: visible; }
+    .chat-main { min-height: calc(100vh - 220px); }
+  }
+
+  /* ---- sidebar: new chat, conversation list, archived ------------------ */
+  .new-chat-btn { width: 100%; }
+  .conv-list { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+  .conv-item { position: relative; border-radius: 5px; padding: 7px 8px; }
+  .conv-item:hover, .conv-item:focus-within { background: color-mix(in srgb, var(--pl-ink) 5%, transparent); }
+  .conv-item.active { background: color-mix(in srgb, var(--pl-accent) 9%, transparent); }
+  .conv-item.active:hover, .conv-item.active:focus-within { background: color-mix(in srgb, var(--pl-accent) 12%, transparent); }
+  .conv-view { display: flex; align-items: center; gap: 6px; }
+  .conv-title {
+    flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; font-size: 13px; text-decoration: none; color: var(--pl-ink);
+  }
+  .conv-item.active .conv-title { color: var(--pl-accent); font-weight: 600; }
+  .conv-time { flex: 0 0 auto; font-size: 11px; }
+  .conv-menu-wrap { position: relative; flex: 0 0 auto; }
+  .conv-menu-btn {
+    font-size: 14px; line-height: 1; padding: 3px 6px;
+    opacity: 0; pointer-events: none; transition: opacity 100ms ease;
+  }
+  .conv-item:hover .conv-menu-btn, .conv-item:focus-within .conv-menu-btn,
+  .conv-menu-btn[aria-expanded="true"] { opacity: 1; pointer-events: auto; }
+  .conv-menu {
+    position: absolute; right: 0; top: calc(100% + 2px); z-index: 30;
+    min-width: 136px; padding: 4px; display: flex; flex-direction: column; gap: 1px;
+    background: var(--pl-ground); border: 1px solid var(--pl-line); border-radius: 5px;
+  }
+  /* Real bug found while screenshotting the pre-restyle template for
+     comparison: the UA stylesheet's `[hidden] { display: none }` and an
+     author rule that also sets `display` (here, `.conv-menu`'s and
+     `.conv-rename-form`'s own `display: flex`) have EQUAL specificity
+     (0,1,0 vs 0,1,0), and author origin beats user-agent origin on a tie
+     -- so `hidden` alone did nothing on either element, and both a fresh
+     page load's rename forms AND every "..." menu rendered permanently
+     open. This bug already existed in the pre-restyle template (same
+     `.conv-rename-form { display: flex; ... }` pattern, proven against
+     a real render of it) -- unnoticed because nobody had reason to
+     screenshot a freshly loaded sidebar with a rename form supposedly
+     hidden. `#ask-status[hidden]` (composer, below) already had this
+     exact guard; these two never did. */
+  .conv-menu[hidden], .conv-rename-form[hidden] { display: none; }
+  .conv-menu-item, .conv-menu-form { display: block; width: 100%; }
+  .conv-menu-item {
+    font-family: var(--pl-display); font-size: 12px; text-align: left;
+    padding: 7px 8px; border: none; background: none; color: var(--pl-ink);
+    cursor: pointer; border-radius: 3px;
+  }
+  .conv-menu-item:hover { background: color-mix(in srgb, var(--pl-ink) 7%, transparent); }
+  .conv-menu-item-danger { color: var(--pl-accent); }
+  .conv-rename-form { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+  .conv-rename-form input { font-size: 13px; padding: 4px 6px; }
+  .conv-form-row { display: flex; gap: 6px; }
+  .conv-delete-confirm { margin-top: 4px; }
+  .conv-confirm-text { font-size: 12px; margin: 0 0 4px; }
+  .archived-toggle { margin-top: 10px; }
+  .archived-toggle summary { cursor: pointer; font-size: 12px; color: var(--pl-muted); padding: 2px 4px; }
+
+  /* ---- empty state, centred, chip questions ----------------------------- */
+  .chat-empty { max-width: 480px; margin: 10% auto 0; text-align: center; }
+  .chat-empty .eyebrow { text-align: center; }
+  .chat-empty h1 { margin-top: 0; }
+  /* This is the one empty state that gets the mark at a larger size
+     (build instructions, 2026-09-19: "about 96px") -- every other empty
+     state keeps base.html's default 64px .empty-mascot. */
+  .empty-mascot-lg { width: 96px; height: 96px; }
+  .example-questions {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 18px;
+  }
+  .example-q {
+    font-family: var(--pl-body); font-size: 13px; color: var(--pl-ink);
+    background: var(--pl-ground); border: 1px solid var(--pl-line); border-radius: 999px;
+    padding: 8px 15px; cursor: pointer; text-align: left; max-width: 100%;
+  }
+  .example-q:hover { border-color: var(--pl-muted); }
+
+  /* ---- message thread ---------------------------------------------------- */
+  .chat-scroll { flex: 1 1 auto; overflow-y: auto; min-height: 0; padding: 20px 24px 10px; }
+  .chat-thread { display: flex; flex-direction: column; gap: 22px; max-width: 760px; margin: 0 auto; }
+  .msg { max-width: 82%; }
+  .msg-user {
+    align-self: flex-end;
+    background: color-mix(in srgb, var(--pl-accent) 8%, var(--pl-ground));
+    border: 1px solid var(--pl-line); border-radius: 16px; padding: 10px 14px;
+  }
+  .msg-text { white-space: pre-wrap; margin: 0; }
+  .msg-assistant {
+    align-self: flex-start; max-width: 100%; width: 100%;
+    position: relative; padding-left: 27px;
+  }
+  /* The "small Portolan mark" (build instructions) next to every
+     assistant message -- the brand mark's own path data (04-brand/
+     wordmark.svg's mark block, same shapes portolan/web/static/icon.svg
+     ships as the favicon), applied as a CSS mask so it inherits
+     `--pl-muted` and the live theme automatically, with no extra DOM
+     node: the JS-built streaming message and the server-rendered
+     reloaded message share this exact rule with nothing to keep in sync
+     between them. */
+  .msg-assistant::before {
+    content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px;
+    background-color: var(--pl-muted);
+    -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMiwzMiBBMzAsMzAgMCAxLDAgNjIsMzIgQTMwLDMwIDAgMSwwIDIsMzIgWiBNNi41LDMyIEEyNS41LDI1LjUgMCAxLDAgNTcuNSwzMiBBMjUuNSwyNS41IDAgMSwwIDYuNSwzMiBaIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iNSIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyLDMyKSByb3RhdGUoNDUpIj48cGF0aCBkPSJNNi41LC0xLjUgSDEyLjUgVjEuNSBINi41IFoiLz48Y2lyY2xlIGN4PSIxNy41IiBjeT0iMCIgcj0iNS41Ii8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyLDMyKSByb3RhdGUoMTM1KSI+PHBhdGggZD0iTTYuNSwtMS41IEgxMi41IFYxLjUgSDYuNSBaIi8+PGNpcmNsZSBjeD0iMTcuNSIgY3k9IjAiIHI9IjUuNSIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMiwzMikgcm90YXRlKDIyNSkiPjxwYXRoIGQ9Ik02LjUsLTEuNSBIMTIuNSBWMS41IEg2LjUgWiIvPjxjaXJjbGUgY3g9IjE3LjUiIGN5PSIwIiByPSI1LjUiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIsMzIpIHJvdGF0ZSgzMTUpIj48cGF0aCBkPSJNNi41LC0xLjUgSDEyLjUgVjEuNSBINi41IFoiLz48Y2lyY2xlIGN4PSIxNy41IiBjeT0iMCIgcj0iNS41Ii8+PC9nPjwvc3ZnPg==") center / contain no-repeat;
+            mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMiwzMiBBMzAsMzAgMCAxLDAgNjIsMzIgQTMwLDMwIDAgMSwwIDIsMzIgWiBNNi41LDMyIEEyNS41LDI1LjUgMCAxLDAgNTcuNSwzMiBBMjUuNSwyNS41IDAgMSwwIDYuNSwzMiBaIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iNSIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyLDMyKSByb3RhdGUoNDUpIj48cGF0aCBkPSJNNi41LC0xLjUgSDEyLjUgVjEuNSBINi41IFoiLz48Y2lyY2xlIGN4PSIxNy41IiBjeT0iMCIgcj0iNS41Ii8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyLDMyKSByb3RhdGUoMTM1KSI+PHBhdGggZD0iTTYuNSwtMS41IEgxMi41IFYxLjUgSDYuNSBaIi8+PGNpcmNsZSBjeD0iMTcuNSIgY3k9IjAiIHI9IjUuNSIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMiwzMikgcm90YXRlKDIyNSkiPjxwYXRoIGQ9Ik02LjUsLTEuNSBIMTIuNSBWMS41IEg2LjUgWiIvPjxjaXJjbGUgY3g9IjE3LjUiIGN5PSIwIiByPSI1LjUiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzIsMzIpIHJvdGF0ZSgzMTUpIj48cGF0aCBkPSJNNi41LC0xLjUgSDEyLjUgVjEuNSBINi41IFoiLz48Y2lyY2xlIGN4PSIxNy41IiBjeT0iMCIgcj0iNS41Ii8+PC9nPjwvc3ZnPg==") center / contain no-repeat;
+  }
+  .chat-sentence { display: block; margin-bottom: 6px; }
+  .chat-sentence:last-child { margin-bottom: 0; }
+  .chat-sentence code { font-family: var(--pl-mono); font-size: 0.92em; background: color-mix(in srgb, var(--pl-ink) 7%, transparent); padding: 1px 4px; border-radius: 3px; }
+
+  /* Copy/Regenerate: hidden until the message is hovered or focused
+     (build instructions: "appear under an assistant message on hover"),
+     never hidden from a keyboard user -- pointer-events is what mouse
+     hover uses to reveal them, but a focused button is still reachable
+     and activatable by Tab/Enter regardless of opacity/pointer-events. */
+  .msg-actions {
+    margin-top: 8px; display: flex; gap: 4px;
+    opacity: 0; pointer-events: none; transition: opacity 100ms ease;
+  }
+  .msg-assistant:hover .msg-actions, .msg-assistant:focus-within .msg-actions { opacity: 1; pointer-events: auto; }
+  .answering-with { margin: 8px 0 0; }
+  .answer-feedback { margin-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+  .answer-feedback input { flex: 0 1 260px; min-width: 0; font-size: 12px; padding: 3px 6px; }
+  .answer-feedback button[aria-pressed="true"] { border-color: var(--pl-accent); color: var(--pl-accent); }
+
+  /* Streaming indicator: the pulsing spyglass mascot (build instructions,
+     2026-09-18: "a small version as the streaming indicator ... gentle
+     1.5s pulse") inside the growing assistant bubble while no sentence
+     has arrived yet (removed the moment the first one does), plus the
+     existing aria-live #ask-status line for anyone not watching the
+     screen. Sizing/animation is the shared `.pulse-mascot` rule in
+     base.html; `.typing-indicator` here is just the wrapping span the
+     JS below creates and later removes. */
+  .typing-indicator { display: inline-flex; align-items: center; gap: 8px; padding: 6px 0 2px; }
+
+  /* ---- composer: auto-growing textarea, round send button --------------- */
+  .composer-wrap { flex: 0 0 auto; border-top: 1px solid var(--pl-line); padding: 12px 24px 16px; }
+  @media (max-width: 799px) { .composer-wrap { position: sticky; bottom: 0; background: var(--pl-ground); } }
+  .composer {
+    max-width: 760px; margin: 0 auto; display: flex; align-items: flex-end; gap: 8px;
+    border: 1px solid var(--pl-line); border-radius: 20px; padding: 8px 8px 8px 16px;
+    background: var(--pl-ground);
+  }
+  .composer:focus-within { border-color: var(--pl-muted); }
+  .composer textarea {
+    flex: 1 1 auto; border: none; resize: none; overflow-y: auto;
+    min-height: 24px; max-height: 192px; padding: 6px 2px; line-height: 1.5;
+    font-size: 15px; background: none;
+  }
+  .composer textarea:focus-visible { outline: none; }
+  .send-btn {
+    flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--pl-ink); background: var(--pl-ink); color: var(--pl-ground);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    font-family: var(--pl-display); font-size: 16px; line-height: 1;
+  }
+  .send-btn:hover:not(:disabled) { border-color: var(--pl-accent); background: var(--pl-accent); }
+  .send-btn:disabled { opacity: .4; cursor: default; }
+  /* UX eval 2026-09-12, punch item 10: clicking Send used to produce no
+     spinner, no disabled button, no text. #ask-status is hidden until
+     the composer's submit handler shows it, announced via aria-live. */
+  #ask-status[hidden] { display: none; }
+  #ask-status { margin: 6px 0 0; max-width: 760px; margin-left: auto; margin-right: auto; }
+
+  @media (max-width: 480px) {
+    .msg { max-width: 92%; }
+    .chat-scroll { padding: 14px 14px 6px; }
+    .composer-wrap { padding: 10px 14px 14px; }
+  }
+</style>
+{% endblock %}
+{% block content %}
+{% if spyglass_small_svg %}
+<!-- Mascot pulse template (build instructions: "a small version as the
+     streaming indicator"): the JS below clones this <template>'s content
+     into the growing assistant bubble instead of building the SVG
+     markup as a JS string -- avoids re-escaping spyglass-small.svg's own
+     quotes into that string, and keeps the markup itself here, next to
+     every other template fragment on this page. Never rendered on its
+     own ("template" content is inert until cloned). -->
+<template id="pulse-mascot-tpl"><span class="pulse-mascot" aria-hidden="true">{{ spyglass_small_svg|safe }}</span></template>
+{% endif %}
+<div class="chat-shell" id="chat-shell">
+  <button type="button" id="sidebar-toggle" class="btn quiet chat-sidebar-toggle"
+          aria-expanded="false" aria-controls="chat-sidebar">☰ Chats</button>
+
+  <aside class="chat-sidebar" id="chat-sidebar" aria-label="Conversations">
+    <div class="chat-sidebar-top">
+      <form method="post" action="/conversations">
+        <button type="submit" class="btn primary new-chat-btn">+ New chat</button>
+      </form>
+    </div>
+    <div class="chat-sidebar-scroll">
+      <ul id="conv-list" class="conv-list">
+        {% for c in conversations %}
+          {% set active_id = conversation.id if conversation else none %}
+          {% include "_conversation_item.html" %}
+        {% endfor %}
+        {% if not conversations %}
+          <li class="muted" style="padding:8px 4px;font-size:13px;">No conversations yet.</li>
+        {% endif %}
+      </ul>
+      {% if archived_conversations %}
+      <details class="archived-toggle">
+        <summary>Archived ({{ archived_conversations|length }})</summary>
+        <ul class="conv-list">
+          {% for c in archived_conversations %}
+            {% set active_id = conversation.id if conversation else none %}
+            {% include "_conversation_item.html" %}
+          {% endfor %}
+        </ul>
+      </details>
+      {% endif %}
+    </div>
+    <!-- Review finding 10: a conversation's owner is whatever display
+         name a reader typed at login (auth.py), not a per-person
+         account -- two people who log in with the same name share one
+         chat history. Kept, per the build instructions, small and muted
+         rather than removed. -->
+    <p class="field-hint muted chat-shared-note">Chat history here is shared by everyone who logs in with this same name — there are no per-person accounts in this version.</p>
+  </aside>
+
+  <section class="chat-main">
+    <div class="chat-scroll" id="chat-scroll">
+      {% if not conversation %}
+        <div class="chat-empty">
+          <p class="eyebrow">New chat</p>
+          <h1>Ask what your customers actually said.</h1>
+          <p class="muted">Every sentence below cites the note it came from. A sentence with
+            nothing real behind it is not shown.</p>
+          {% if examples %}
+          {% if spyglass_svg %}
+          <div class="empty-mascot empty-mascot-lg" aria-hidden="true">{{ spyglass_svg|safe }}</div>
+          <p class="caption">Point it at any account.</p>
+          {% endif %}
+          <div class="example-questions" role="group" aria-label="example questions">
+            {% for q in examples %}
+              <button type="button" class="example-q">{{ q }}</button>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div id="thread" class="chat-thread">
+        {% for m in messages %}
+          {% if m.role == 'user' %}
+            <div class="msg msg-user">
+              <p class="msg-text">{{ m.content_md }}</p>
+            </div>
+          {% else %}
+            <div class="msg msg-assistant" data-message-id="{{ m.id }}">
+              <div class="msg-text">
+                {% set message_id = m.id %}
+                {% for sentence in m.citations %}
+                  {% include "_chat_sentence.html" with context %}
+                {% endfor %}
+              </div>
+              {% if m.usage and m.usage.model %}
+                <p class="mono muted small answering-with">Answering with {{ m.usage.model }}{% if m.usage.numerals_dropped %} · {{ m.usage.numerals_dropped }} sentence{{ 's' if m.usage.numerals_dropped != 1 else '' }} withheld: unverified number{{ 's' if m.usage.numerals_dropped != 1 else '' }}{% endif %}{% if m.usage.uncited_dropped %} · {{ m.usage.uncited_dropped }} sentence{{ 's' if m.usage.uncited_dropped != 1 else '' }} withheld: no citation{% endif %}</p>
+              {% endif %}
+              <div class="msg-actions">
+                <button type="button" class="btn chip quiet" data-action="copy-message">Copy</button>
+                {% if loop.last and conversation %}
+                  <button type="button" class="btn chip quiet" data-action="regenerate"
+                          data-conversation-id="{{ conversation.id }}">Regenerate</button>
+                {% endif %}
+              </div>
+              {% set feedback = message_feedback.get(m.id) %}
+              {% include "_answer_feedback.html" with context %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="composer-wrap">
+      <form id="composer" class="composer" data-conversation-id="{{ conversation.id if conversation else 'new' }}">
+        <label for="question" class="sr-only">Question</label>
+        <textarea id="question" name="question" required rows="1"
+          placeholder="Ask a question, e.g. what has Larkspur said about renewal?"></textarea>
+        <button type="submit" class="send-btn" aria-label="Send">↑</button>
+      </form>
+      <p id="ask-status" class="muted small" aria-live="polite" hidden>Searching the graph…</p>
+    </div>
+  </section>
+</div>
+
+<script nonce="{{ csp_nonce(request) }}">
+(function () {
+  var shell = document.getElementById('chat-shell');
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  var composer = document.getElementById('composer');
+  var textarea = document.getElementById('question');
+  var thread = document.getElementById('thread');
+  var chatScroll = document.getElementById('chat-scroll');
+  var convList = document.getElementById('conv-list');
+  var askStatus = document.getElementById('ask-status');
+  var submitBtn = composer.querySelector('button[type="submit"]');
+
+  // ---- sidebar toggle, <800px only (CSS hides this button >=800px) -----
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', function () {
+      var open = shell.classList.toggle('sidebar-open');
+      sidebarToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  // ---- auto-growing textarea (build instructions: "1 to about 8 lines") -
+  var TEXTAREA_MAX_HEIGHT = 192; // ~8 lines at this font-size/line-height
+  function autoGrow() {
+    textarea.style.height = 'auto';
+    textarea.style.height = Math.min(textarea.scrollHeight, TEXTAREA_MAX_HEIGHT) + 'px';
+  }
+  textarea.addEventListener('input', autoGrow);
+  autoGrow();
+
+  function setBusy(busy, doneText) {
+    submitBtn.disabled = busy;
+    textarea.disabled = busy;
+    if (busy) {
+      askStatus.hidden = false;
+      askStatus.textContent = 'Searching the graph…';
+    } else if (doneText) {
+      askStatus.hidden = false;
+      askStatus.textContent = doneText;
+    } else {
+      askStatus.hidden = true;
+    }
+  }
+
+  // Enter sends; Shift+Enter inserts a newline (build instructions).
+  textarea.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      if (typeof composer.requestSubmit === 'function') composer.requestSubmit();
+      else composer.dispatchEvent(new Event('submit', {cancelable: true}));
+    }
+  });
+
+  document.querySelectorAll('.example-q').forEach(function (b) {
+    b.addEventListener('click', function () {
+      textarea.value = b.textContent.trim();
+      textarea.focus();
+      autoGrow();
+    });
+  });
+
+  // Review finding 22 (grouped nits): shared with graph.html now --
+  // base.html loads it on every page. See static/js/escape-html.js.
+  var escapeHtml = window.PortolanEscapeHtml;
+
+  // Review finding 15: `.chat-thread` has no `overflow` of its own in the
+  // pre-restyle layout -- kept true here too (`.chat-scroll`, its parent,
+  // is the actual scroll container now). `scrollIntoView` on the element
+  // that just changed works regardless of which ancestor ends up being
+  // the real scroll container.
+  function scrollIntoViewAtEnd(el) {
+    el.scrollIntoView({ block: 'end' });
+  }
+
+  function appendUserBubble(text) {
+    var div = document.createElement('div');
+    div.className = 'msg msg-user';
+    div.innerHTML = '<p class="msg-text"></p>';
+    div.querySelector('.msg-text').textContent = text;
+    thread.appendChild(div);
+    scrollIntoViewAtEnd(div);
+  }
+
+  function parseSseChunk(chunk) {
+    var eventType = 'message';
+    var dataLine = '';
+    chunk.split('\n').forEach(function (line) {
+      if (line.indexOf('event:') === 0) eventType = line.slice(6).trim();
+      else if (line.indexOf('data:') === 0) dataLine = line.slice(5).trim();
+    });
+    return { event: eventType, data: dataLine };
+  }
+
+  function streamAnswer(url, formData, onDone) {
+    var assistantDiv = document.createElement('div');
+    assistantDiv.className = 'msg msg-assistant';
+    var textWrap = document.createElement('div');
+    textWrap.className = 'msg-text';
+    // Streaming indicator (build instructions: "a small version [of the
+    // spyglass] as the streaming indicator ... gentle 1.5s pulse"): the
+    // pulse-mascot-tpl <template> above cloned into the bubble, removed
+    // the moment the first real sentence arrives below. Falls back to a
+    // bare empty span (still aria-hidden, still removed the same way) if
+    // the template isn't on the page for some reason -- never blocks the
+    // answer itself on a decorative icon.
+    var typing = document.createElement('span');
+    typing.className = 'typing-indicator';
+    typing.setAttribute('aria-hidden', 'true');
+    var mascotTpl = document.getElementById('pulse-mascot-tpl');
+    if (mascotTpl && mascotTpl.content) {
+      typing.appendChild(mascotTpl.content.cloneNode(true));
+    }
+    textWrap.appendChild(typing);
+    assistantDiv.appendChild(textWrap);
+    thread.appendChild(assistantDiv);
+    scrollIntoViewAtEnd(assistantDiv);
+    setBusy(true);
+
+    // Bug hunt 2026-09-18, finding 3: this used to render `resp.text()`
+    // -- the server's raw JSON error body (`{"detail":"..."}`) -- straight
+    // into the answer bubble, escaped but still exactly the bytes a
+    // reader was never meant to see. A 401 (session expired) now sends
+    // the reader to `/login` instead of showing them anything here at
+    // all; a 404 (the conversation this composer still points at was
+    // deleted, e.g. in another tab) gets its own plain sentence with a
+    // way back; everything else gets `.detail` out of the JSON body when
+    // there is one, or one generic sentence when there isn't -- never the
+    // raw body -- plus a Retry button that resends this exact request.
+    function showComposerError(status, rawBody, retry) {
+      if (status === 401) {
+        location.href = '/login?next=' + encodeURIComponent(location.pathname);
+        return;
+      }
+      if (status === 404) {
+        textWrap.innerHTML = '<p class="flag">This chat no longer exists.</p>' +
+          '<p><a class="btn chip quiet" href="/">New chat</a></p>';
+        setBusy(false);
+        return;
+      }
+      var message = 'Something went wrong. Try again.';
+      if (rawBody) {
+        try {
+          var parsedBody = JSON.parse(rawBody);
+          if (parsedBody && typeof parsedBody.detail === 'string' && parsedBody.detail) {
+            message = parsedBody.detail;
+          }
+        } catch (e) { /* not JSON -- keep the generic message, never show raw body */ }
+      }
+      var p = document.createElement('p');
+      p.className = 'flag';
+      p.textContent = message;
+      textWrap.innerHTML = '';
+      textWrap.appendChild(p);
+      if (retry) {
+        var retryBtn = document.createElement('button');
+        retryBtn.type = 'button';
+        retryBtn.className = 'btn chip quiet';
+        retryBtn.textContent = 'Retry';
+        retryBtn.addEventListener('click', retry);
+        var retryWrap = document.createElement('p');
+        retryWrap.appendChild(retryBtn);
+        textWrap.appendChild(retryWrap);
+      }
+      setBusy(false);
+    }
+
+    fetch(url, { method: 'POST', body: formData })
+      .then(function (resp) {
+        if (!resp.ok) {
+          return resp.text().then(function (t) {
+            showComposerError(resp.status, t, function () {
+              assistantDiv.remove();
+              streamAnswer(url, formData, onDone);
+            });
+          });
+        }
+        var reader = resp.body.getReader();
+        var decoder = new TextDecoder();
+        var buffer = '';
+        function pump() {
+          return reader.read().then(function (result) {
+            if (result.done) return;
+            buffer += decoder.decode(result.value, { stream: true });
+            var parts = buffer.split('\n\n');
+            buffer = parts.pop();
+            parts.forEach(function (part) {
+              if (!part.trim()) return;
+              var parsed = parseSseChunk(part);
+              if (!parsed.data) return;
+              var payload;
+              try { payload = JSON.parse(parsed.data); } catch (e) { return; }
+              if (parsed.event === 'progress' && payload.text) {
+                // Agent mode's "Searching…" / "Reading <note>…" line, beside
+                // the pulse; replaced by the next one, removed with it.
+                var progressLine = typing.querySelector('.progress-line');
+                if (!progressLine) {
+                  progressLine = document.createElement('span');
+                  progressLine.className = 'progress-line mono muted small';
+                  typing.appendChild(progressLine);
+                }
+                progressLine.textContent = payload.text;
+                if (askStatus) askStatus.textContent = payload.text;
+              } else if (parsed.event === 'sentence' && payload.html) {
+                if (typing.parentNode) typing.remove();
+                var wrap = document.createElement('div');
+                wrap.innerHTML = payload.html;
+                textWrap.appendChild(wrap);
+                scrollIntoViewAtEnd(assistantDiv);
+              } else if (parsed.event === 'done') {
+                if (typing.parentNode) typing.remove();
+                assistantDiv.setAttribute('data-message-id', payload.message_id);
+                var citationCount = textWrap.querySelectorAll('.citation-link').length;
+                setBusy(false, 'Answered · ' + citationCount + ' citation' + (citationCount === 1 ? '' : 's'));
+                if (payload.model) {
+                  var modelNote = document.createElement('p');
+                  modelNote.className = 'mono muted small answering-with';
+                  var modelNoteText = 'Answering with ' + payload.model;
+                  // Review finding 12: same footnote the reloaded page
+                  // renders from messages.usage.numerals_dropped -- one
+                  // field, both paths, so the live and reloaded note
+                  // never disagree (same pattern as `model` itself).
+                  if (payload.numerals_dropped) {
+                    var n = payload.numerals_dropped;
+                    modelNoteText += ' · ' + n + ' sentence' + (n === 1 ? '' : 's') +
+                      ' withheld: unverified number' + (n === 1 ? '' : 's');
+                  }
+                  if (payload.uncited_dropped) {
+                    var u = payload.uncited_dropped;
+                    modelNoteText += ' · ' + u + ' sentence' + (u === 1 ? '' : 's') +
+                      ' withheld: no citation';
+                  }
+                  modelNote.textContent = modelNoteText;
+                  assistantDiv.insertBefore(modelNote, assistantDiv.querySelector('.msg-actions'));
+                }
+                // Review finding 14: a streamed answer never got a
+                // .msg-actions row at all -- Copy/Regenerate only showed
+                // up after a full page reload, since this function only
+                // ever built .msg-text. Built here now, in the same
+                // shape the server-rendered template gives a reloaded
+                // message. Any Regenerate button on an earlier turn is
+                // removed first, matching the template's own "only the
+                // last turn gets Regenerate" rule (loop.last) -- without
+                // a reload, this newest turn is the only place that
+                // invariant can be re-checked from the client side.
+                if (payload.conversation_id) {
+                  thread.querySelectorAll('[data-action="regenerate"]').forEach(function (btn) {
+                    btn.remove();
+                  });
+                  var actions = document.createElement('div');
+                  actions.className = 'msg-actions';
+                  var copyBtn = document.createElement('button');
+                  copyBtn.type = 'button';
+                  copyBtn.className = 'btn chip quiet';
+                  copyBtn.setAttribute('data-action', 'copy-message');
+                  copyBtn.textContent = 'Copy';
+                  actions.appendChild(copyBtn);
+                  var regenBtn = document.createElement('button');
+                  regenBtn.type = 'button';
+                  regenBtn.className = 'btn chip quiet';
+                  regenBtn.setAttribute('data-action', 'regenerate');
+                  regenBtn.setAttribute('data-conversation-id', String(payload.conversation_id));
+                  regenBtn.textContent = 'Regenerate';
+                  actions.appendChild(regenBtn);
+                  assistantDiv.appendChild(actions);
+                }
+                if (payload.feedback_html) {
+                  var feedbackWrap = document.createElement('div');
+                  feedbackWrap.innerHTML = payload.feedback_html;
+                  if (feedbackWrap.firstElementChild) assistantDiv.appendChild(feedbackWrap.firstElementChild);
+                }
+                if (onDone) onDone(payload, assistantDiv);
+              } else if (parsed.event === 'error') {
+                if (typing.parentNode) typing.remove();
+                textWrap.innerHTML = '<p class="flag">' + escapeHtml(payload.detail || 'Something went wrong.') + '</p>';
+                setBusy(false);
+              }
+            });
+            return pump();
+          });
+        }
+        return pump();
+      })
+      .catch(function () {
+        if (typing.parentNode) typing.remove();
+        showComposerError(0, null, function () {
+          assistantDiv.remove();
+          streamAnswer(url, formData, onDone);
+        });
+      });
+  }
+
+  composer.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = textarea.value.trim();
+    if (!q) return;
+    var convId = composer.getAttribute('data-conversation-id');
+    appendUserBubble(q);
+    textarea.value = '';
+    autoGrow();
+    var body = new FormData();
+    body.append('question', q);
+    streamAnswer('/chat/' + convId + '/stream', body, function (payload) {
+      if (convId === 'new' && payload.conversation_id) {
+        composer.setAttribute('data-conversation-id', String(payload.conversation_id));
+        history.replaceState(null, '', '/c/' + payload.conversation_id);
+        if (convList) {
+          var placeholder = convList.querySelector('li.muted');
+          if (placeholder) placeholder.remove();
+          convList.querySelectorAll('.conv-item.active').forEach(function (el) {
+            el.classList.remove('active');
+          });
+          var newLi;
+          // Bug hunt 2026-09-18, finding 7: this row used to be a
+          // hand-built stub with just a title link -- no Rename/Archive/
+          // Delete menu, no rename form, no delete-confirm block, so a
+          // conversation you'd just started had no controls until a
+          // reload re-rendered it from `_conversation_item.html` like
+          // every other row. The `done` event now carries that exact
+          // template's own render for this row (`conversation_item_html`)
+          // -- dropped in as-is rather than rebuilt by hand, so it can
+          // never drift from what a reload would show.
+          if (payload.conversation_item_html) {
+            var wrap = document.createElement('div');
+            wrap.innerHTML = payload.conversation_item_html;
+            newLi = wrap.firstElementChild;
+          }
+          if (!newLi) {
+            newLi = document.createElement('li');
+            newLi.className = 'conv-item active';
+            newLi.setAttribute('data-id', payload.conversation_id);
+            newLi.innerHTML = '<div class="conv-view"><a class="conv-title" href="/c/' + payload.conversation_id + '"></a>' +
+              '<span class="conv-time muted mono">just now</span></div>';
+            newLi.querySelector('.conv-title').textContent = payload.title;
+          }
+          convList.insertBefore(newLi, convList.firstChild);
+        }
+        var empty = document.querySelector('.chat-empty');
+        if (empty) empty.remove();
+      }
+    });
+  });
+
+  // ---- sidebar row menu / inline rename / inline delete-confirm --------
+  function closeAllMenus(except) {
+    document.querySelectorAll('.conv-menu').forEach(function (m) {
+      if (m === except || m.hidden) return;
+      m.hidden = true;
+      var btn = m.parentElement ? m.parentElement.querySelector('.conv-menu-btn') : null;
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    var target = e.target;
+
+    // Any click outside an open menu's own wrapper closes every open
+    // menu first -- checked before the specific data-action branches
+    // below so a click ON the toggle button (inside .conv-menu-wrap)
+    // still reaches its own branch afterward.
+    if (!target.closest('.conv-menu-wrap')) closeAllMenus();
+
+    var toggleMenu = target.closest('[data-action="toggle-menu"]');
+    if (toggleMenu) {
+      var menu = toggleMenu.nextElementSibling;
+      var wasOpen = menu && !menu.hidden;
+      closeAllMenus(wasOpen ? null : menu);
+      if (menu && !wasOpen) {
+        menu.hidden = false;
+        toggleMenu.setAttribute('aria-expanded', 'true');
+      } else if (menu) {
+        menu.hidden = true;
+        toggleMenu.setAttribute('aria-expanded', 'false');
+      }
+      return;
+    }
+
+    var showRename = target.closest('[data-action="show-rename"]');
+    if (showRename) {
+      var item1 = showRename.closest('.conv-item');
+      closeAllMenus();
+      item1.querySelector('.conv-rename-form').hidden = false;
+      item1.querySelector('.conv-delete-confirm').hidden = true;
+      item1.querySelector('.conv-rename-form input').focus();
+      item1.querySelector('.conv-rename-form input').select();
+      return;
+    }
+    var cancelRename = target.closest('[data-action="cancel-rename"]');
+    if (cancelRename) {
+      cancelRename.closest('.conv-item').querySelector('.conv-rename-form').hidden = true;
+      return;
+    }
+    var showDelete = target.closest('[data-action="show-delete"]');
+    if (showDelete) {
+      var item2 = showDelete.closest('.conv-item');
+      closeAllMenus();
+      item2.querySelector('.conv-delete-confirm').hidden = false;
+      item2.querySelector('.conv-rename-form').hidden = true;
+      return;
+    }
+    var cancelDelete = target.closest('[data-action="cancel-delete"]');
+    if (cancelDelete) {
+      cancelDelete.closest('.conv-item').querySelector('.conv-delete-confirm').hidden = true;
+      return;
+    }
+    var copyBtn = target.closest('[data-action="copy-message"]');
+    if (copyBtn) {
+      var msg = copyBtn.closest('.msg-assistant');
+      var text = msg ? msg.querySelector('.msg-text').innerText : '';
+      // Bug hunt 2026-09-18, finding 11: this used to flip the button to
+      // "Copied" unconditionally, even when `navigator.clipboard` doesn't
+      // exist at all -- true on any non-secure origin (a plain
+      // `http://<lan-ip>`, the exact case `PORTOLAN_COOKIE_SECURE=false`
+      // exists for) -- so the button claimed success while copying
+      // nothing. The label now only changes once a copy actually
+      // happened: the async Clipboard API on success, a hidden-textarea
+      // `execCommand('copy')` fallback when that API isn't there, and
+      // "Copy failed" (never "Copied") when neither works.
+      var flashLabel = function (label) {
+        copyBtn.textContent = label;
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flashLabel('Copied'); },
+          function () { flashLabel('Copy failed'); }
+        );
+      } else {
+        var ok = false;
+        try {
+          var scratch = document.createElement('textarea');
+          scratch.value = text;
+          scratch.style.position = 'fixed';
+          scratch.style.opacity = '0';
+          document.body.appendChild(scratch);
+          scratch.focus();
+          scratch.select();
+          ok = document.execCommand('copy');
+          document.body.removeChild(scratch);
+        } catch (e) { ok = false; }
+        flashLabel(ok ? 'Copied' : 'Copy failed');
+      }
+      return;
+    }
+    var regenBtn = target.closest('[data-action="regenerate"]');
+    if (regenBtn) {
+      var msgDiv = regenBtn.closest('.msg-assistant');
+      var convId2 = regenBtn.getAttribute('data-conversation-id');
+      // Fix wave 2026-09-13 (review finding 3): the old bubble used to be
+      // removed up front, before the replacement even started streaming
+      // -- a transient model failure (the server now leaves the old
+      // message in place for exactly this reason) left the reader with
+      // nothing on screen at all. The old bubble now stays until the
+      // replacement's `done` event actually fires; on an error it stays
+      // untouched, with the new (error) bubble appended below it.
+      streamAnswer('/chat/' + convId2 + '/regenerate', new FormData(), function () {
+        if (msgDiv) msgDiv.remove();
+      });
+    }
+  });
+
+  // Enter saves a conversation's inline rename (native form submit on a
+  // lone text input); Escape cancels it -- scoped to whichever element
+  // currently has focus, so it never fires while, say, the composer
+  // textarea has focus. Escape with no rename form focused instead closes
+  // any open "..." menu (a normal menu convention).
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var active = document.activeElement;
+    var renameForm = active && active.closest ? active.closest('.conv-rename-form') : null;
+    if (renameForm) {
+      renameForm.hidden = true;
+      return;
+    }
+    closeAllMenus();
+  });
+})();
+</script>
+{% endblock %}

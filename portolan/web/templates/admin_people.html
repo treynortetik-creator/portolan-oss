@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}People — Portolan{% endblock %}
+{% block content %}
+<p class="eyebrow">Admin</p>
+<h1 style="margin-top:0;">People</h1>
+<p class="muted">Everyone who has signed in. Editors can edit notes, decide review items and confirm actions; viewers can read and ask. Everyone sees everything. Admins are set by <span class="mono">PORTOLAN_ADMIN_EMAILS</span>. <a href="/admin/usage">Pilot usage</a></p>
+<div class="card">
+  <div class="table-scroll" tabindex="0" role="region" aria-label="People">
+  <table id="people">
+    <tr><th>Name</th><th>Email</th><th>Role</th><th>Last sign-in (UTC)</th><th>Sign-ins</th><th>Change</th></tr>
+    {% for p in people %}
+    <tr>
+      <td>{{ p.name or "—" }}</td>
+      <td class="mono">{{ p.email }}{% if p.email in admins %} <span class="muted small">(admin)</span>{% endif %}</td>
+      <td class="role">{{ p.role }}</td>
+      <td class="mono">{{ p.last_sign_in.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td class="mono">{{ p.sign_in_count }}</td>
+      <td>
+        {% set other = "viewer" if p.role == "editor" else "editor" %}
+        <form method="post" action="/admin/people/role" style="display:inline">
+          <input type="hidden" name="email" value="{{ p.email }}">
+          <input type="hidden" name="role" value="{{ other }}">
+          <button type="submit" class="btn">Make {{ other }}</button>
+        </form>
+      </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="6" class="muted">Nobody has signed in yet.</td></tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+{% endblock %}

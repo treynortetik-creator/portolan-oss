@@ -1,0 +1,194 @@
+[00:00:00] Priya Natarajan: Hey Paul, thanks for hopping on today, how's your week going?
+[00:00:05] Paul Strand: Not bad, actually, a little quieter than last week, which I'll take. How about you, how's the territory treating you this summer?
+[00:00:15] Priya Natarajan: Busy, lots of driving, but good busy. I was actually up near you last week for another account, wish I'd known, could've stopped by in person.
+[00:00:26] Paul Strand: Next time, for sure. We could've at least grabbed coffee.
+[00:00:31] Priya Natarajan: Deal. How's the family doing, didn't you have a trip planned for early summer?
+[00:00:38] Paul Strand: We did, got back from the lake a couple weeks ago actually. Good trip, kids are already asking when we're going back, which I take as a good sign.
+[00:00:50] Priya Natarajan: That's always the sign of a good vacation, when it's immediately followed by demands for a repeat.
+[00:00:58] Paul Strand: Exactly. How about you, get any time off this summer, or is it wall-to-wall accounts?
+[00:01:05] Priya Natarajan: A little bit, took a long weekend a few weeks back, nothing major. Mostly just trying to stay ahead of everyone's summer schedules, half my contacts seem to be out at any given time.
+[00:01:20] Paul Strand: That's fair, hospital schedules don't exactly slow down for summer, but a lot of the administrative side does, so the timing can get weird.
+[00:01:30] Priya Natarajan: Oh, one more thing before we start, I meant to ask, how'd the softball league end up going this year? Didn't you mention your department had a team?
+[00:01:42] Paul Strand: Ha, we did, we finished middle of the pack, which honestly is about where we always land. Nobody on our team is particularly athletic, we're mostly there for the post-game snacks.
+[00:01:56] Priya Natarajan: Sounds like the right priorities to me. Before we get into the substance, quick logistics question, are you the right person for me to loop in if I ever need to reach your team outside of these regular check-ins, or is there someone else I should have on my radar too?
+[00:02:17] Paul Strand: I'm usually the right first stop, yeah. If it's something urgent outside business hours, my analyst Renata is the backup contact, but day to day, route it through me.
+[00:02:30] Priya Natarajan: Good to know, I'll make sure that's noted on our side.
+[00:02:35] Paul Strand: Appreciate that, saves everyone time when the routing's clear upfront.
+[00:02:40] Priya Natarajan: Definitely noticed that pattern. Alright, well, I don't have a huge agenda today, mostly wanted to check in, see how things are looking on your end, any updates since we last talked.
+[00:02:54] Paul Strand: Sure, happy to run through it. Things have been steady clinically, nothing dramatic. Mostly I want to give you a heads-up on something happening on the finance side that's going to shape the rest of our year.
+[00:03:10] Priya Natarajan: Okay, go ahead, I'm listening.
+[00:03:13] Paul Strand: ⟦F14⟧Our capital committee put a freeze on any new equipment purchases starting July first, and it's going to stay in place through the end of the year.⟦/F14⟧
+[00:03:25] Priya Natarajan: Got it, thanks for the heads-up, I appreciate you telling me directly instead of me finding out secondhand somewhere down the line.
+[00:03:35] Paul Strand: Yeah, I didn't want you to be surprised if conversations about new equipment just kind of stall out over the next few months. It's not personal, it's system-wide, every department's in the same boat right now, not just nursing or informatics.
+[00:03:52] Priya Natarajan: Understood, appreciate the context. Does it affect ongoing projects too, or just anything net-new?
+[00:03:59] Paul Strand: Just net-new capital requests, from what finance has told us. Anything already approved and in flight before this isn't getting clawed back. It's really aimed at anything that would've required a fresh capital request this cycle.
+[00:04:14] Priya Natarajan: Okay, good to know, at least what's already moving stays moving.
+[00:04:19] Paul Strand: Right. Honestly I don't have a full new-equipment ask on my radar for you right now anyway, so it's more just context for why I might go quiet on anything hardware-related for a while.
+[00:04:34] Priya Natarajan: Appreciate you flagging it either way. Do you know roughly what drove the timing on it, or is that above your visibility?
+[00:04:44] Paul Strand: A bit above my visibility on the specifics, honestly. My read is finance tightened things up after this last quarter came in softer than they'd wanted, and capital spend was the easiest lever to pull system-wide. But that's more my read than anything official.
+[00:05:02] Priya Natarajan: That tracks with what I've heard from a couple other systems this year too, unfortunately, it's not just you.
+[00:05:11] Paul Strand: Small comfort, but comfort nonetheless.
+[00:05:14] Priya Natarajan: Does this get revisited at all before it lifts, or is it just locked in for the rest of the year regardless?
+[00:05:24] Paul Strand: As far as I know it's locked in through year end. I haven't heard anything about an early review, though I suppose if something changed materially on the finance side that could shift.
+[00:05:38] Priya Natarajan: Makes sense. Well, I'll keep that in mind and won't push anything hardware-related your way for a while.
+[00:05:46] Paul Strand: Appreciate that, genuinely. It's nice not having to say the same thing to every vendor separately, so thanks for making it easy.
+[00:05:56] Priya Natarajan: Is this the kind of freeze where even small stuff, replacement parts, minor accessories, gets swept in, or is it really aimed at the bigger capital-scale purchases?
+[00:06:08] Paul Strand: Really the bigger capital-scale stuff. Routine parts and consumables replenishment through existing contracts isn't caught up in it, from what finance has told the department heads. It's new equipment purchases specifically.
+[00:06:21] Priya Natarajan: Good distinction, that's helpful to understand.
+[00:06:25] Paul Strand: Yeah, I figured you'd want that nuance rather than a blanket no on everything.
+[00:06:31] Priya Natarajan: Definitely. Are other departments reacting to it about the way you'd expect, or has it caused more friction than usual?
+[00:06:40] Paul Strand: About what you'd expect, some grumbling, a few projects getting pushed to next fiscal year, but nothing dramatic. Everyone kind of saw the writing on the wall given how the year's gone financially.
+[00:06:54] Priya Natarajan: That's a healthier reaction than I sometimes hear about with these things.
+[00:07:00] Paul Strand: We're a pretty pragmatic group, generally. Anyway, that's the main thing I wanted to flag today.
+[00:07:08] Priya Natarajan: Is there anything specific you're worried might get squeezed by this, or is it more just a general belt-tightening across the board for now?
+[00:07:18] Paul Strand: Mostly general belt-tightening. There's nothing acute I'm worried about losing sleep over, it's more that any wishlist item just moves to next year's conversation by default.
+[00:07:30] Priya Natarajan: That's a healthier way to frame it than some of the panic I sometimes hear from other systems going through something similar.
+[00:07:39] Paul Strand: I try to keep my team from spiraling about it. Realistically, most of what we'd want falls into the nice-to-have category rather than anything mission critical, so it's a manageable ask to just wait it out.
+[00:07:55] Priya Natarajan: Good perspective. Do you expect finance to communicate anything further as the year goes on, or is this pretty much the final word until it lifts?
+[00:08:06] Paul Strand: I'd expect quarterly updates at most, mostly just confirming the freeze is still in effect. I don't anticipate any surprises either direction between now and year end.
+[00:08:18] Priya Natarajan: Makes sense, I'll plan around that cadence on my end too then.
+[00:08:24] Paul Strand: Appreciate you being flexible about it, honestly. Some vendors get pretty pushy when budget conversations come up, and it makes an already awkward conversation worse.
+[00:08:35] Priya Natarajan: That's not really how I like to operate. Pushing on something that's genuinely not happening just burns trust for when there's something that actually matters to bring up.
+[00:08:47] Paul Strand: Exactly, and that's part of why I don't mind being upfront with you about stuff like this.
+[00:08:55] Priya Natarajan: I appreciate that, genuinely.
+[00:08:57] Priya Natarajan: While we're mid-call, I realized I should ask, has anything changed on your end organizationally, any new leadership above you that might affect how these vendor relationships get managed going forward?
+[00:09:11] Paul Strand: Nothing recent, no. Same CNO, same CMIO, org chart's been stable for a while now on our side.
+[00:09:19] Priya Natarajan: Good, stability helps on my end too, easier to keep context when the same people are in the room year over year.
+[00:09:29] Paul Strand: Definitely, I imagine re-explaining a whole environment to a brand new contact would slow both sides down.
+[00:09:37] Priya Natarajan: It really does, I've had accounts where I basically start from scratch every year and it's rough.
+[00:09:44] Paul Strand: I believe it. Well, hopefully you don't have to worry about that here anytime soon.
+[00:09:51] Priya Natarajan: Hopefully not. Of course. So, since it sounds like the hardware side is quiet for now, let's talk about how things are running day to day operationally. How's Link been?
+[00:10:04] Paul Strand: Actually really glad you asked, because I wanted to give you some positive feedback on that specifically.
+[00:10:12] Priya Natarajan: I'll take positive feedback any day, go ahead.
+[00:10:16] Paul Strand: So, as you know we went live on the HL7 interface a while back now, and honestly I was bracing for the usual post-go-live cleanup, dropped messages, mapping errors, the whole thing that usually comes with a new interface.
+[00:10:33] Priya Natarajan: That's usually a fair assumption with any new interface, unfortunately, even good ones.
+[00:10:39] Paul Strand: Right, but it just hasn't materialized here. My team pulled the interface engine logs again this morning actually, ahead of this call, because I wanted current numbers in front of me before I said anything to you.
+[00:10:55] Priya Natarajan: And what'd you find?
+[00:10:58] Paul Strand: Clean. No dropped messages, no mapping errors we've had to chase down, nothing sitting in an error queue anywhere. It's honestly been about as uneventful as an interface go-live can be.
+[00:11:11] Priya Natarajan: That's great to hear, genuinely, that's not the norm in my experience.
+[00:11:17] Priya Natarajan: Do you happen to track any specific uptime metric on the interface engine itself, or is it more just message-level monitoring?
+[00:11:26] Paul Strand: Both, actually. IT gives me a monthly uptime figure for the interface engine as part of their standard reporting, and separately my team watches message-level stuff like volume and error queues day to day.
+[00:11:41] Priya Natarajan: Good to know you've got both layers covered. Has IT ever flagged anything on the uptime side even if it hasn't translated into a clinical issue?
+[00:11:52] Paul Strand: Nothing worth mentioning, honestly. There was a scheduled maintenance window a while back that took the interface down briefly, but that was planned and communicated well in advance, not an unplanned outage.
+[00:12:06] Priya Natarajan: That's the kind of downtime nobody minds, planned and predictable.
+[00:12:11] Paul Strand: Exactly, it's the surprise stuff that causes problems, and we just haven't had any of that here.
+[00:12:19] Priya Natarajan: Do you also get visibility into audit logging for compliance purposes, or is that handled entirely on the IT side?
+[00:12:28] Paul Strand: We get read access to the audit trail through the same reporting dashboard, mostly for when compliance or risk management wants to trace a specific dose event back through the system. Hasn't come up often, but it's there when needed.
+[00:12:45] Priya Natarajan: Good to know that's accessible without a big lift when it does come up.
+[00:12:51] Paul Strand: Right, that was actually one of the things we specifically asked about during implementation planning, having that trail accessible without needing IT to pull it manually every time.
+[00:13:03] Priya Natarajan: Has the disaster recovery side of things ever actually been tested, or is that still theoretical at this point?
+[00:13:12] Paul Strand: IT ran a failover test a few months back as part of their standard DR exercises, interface came back up within the expected window. I wasn't in the room for it personally, but it made it into the after-action report without any red flags.
+[00:13:31] Priya Natarajan: That's reassuring, a lot of systems don't actually test DR until they're forced to for real.
+[00:13:38] Paul Strand: Agreed, our IT director's pretty disciplined about running those exercises on a regular cadence regardless of whether anything's actively broken.
+[00:13:47] Priya Natarajan: Do you get any direct feedback loop from nursing staff about the interface, or does everything route through IT first?
+[00:13:56] Paul Strand: A bit of both. Charge nurses will mention things to their unit educators if something feels off, and that eventually gets to me, but for anything system-level IT is really the first stop.
+[00:14:10] Priya Natarajan: Has anything ever come up that way that didn't show up in the formal monitoring?
+[00:14:17] Paul Strand: Not that I can think of, actually. If anything, staff-reported issues have lined up with what the monitoring already caught, which is reassuring in its own way, means the two channels agree.
+[00:14:31] Priya Natarajan: That's a good sign, means nothing's slipping through unnoticed on either side.
+[00:14:37] Paul Strand: Exactly. Before Link, we didn't really have a clean way to correlate those two things, so it's honestly a nice improvement just from a governance standpoint, separate from the clinical benefit.
+[00:14:50] Priya Natarajan: That's a good point, I hadn't thought about the governance angle specifically.
+[00:14:56] Paul Strand: Yeah, it's not something I would've predicted mattering as much as it has, but it's turned out to be genuinely useful for our own internal reporting.
+[00:15:07] Priya Natarajan: How often does your team formally review interface performance, is that a standing meeting or more ad hoc?
+[00:15:16] Paul Strand: We've got a standing monthly review with IT where interface performance is one line item among several, nothing dedicated just to Link specifically, but it gets covered every time.
+[00:15:28] Priya Natarajan: Makes sense, good that it's part of a routine rather than something that only comes up when there's a problem.
+[00:15:37] Paul Strand: Right, that was intentional on our part, we didn't want it to only get attention when something broke.
+[00:15:45] Priya Natarajan: Since your team's had some turnover, has onboarding new informatics analysts onto the Link environment specifically been straightforward, or is there a learning curve there?
+[00:15:56] Paul Strand: There's a bit of a learning curve just because the interface engine itself takes some getting used to, but nothing specific to your platform that's been a bottleneck. Most of the ramp-up time is just general familiarity with our own environment.
+[00:16:14] Priya Natarajan: Good to know, let us know if documentation would help speed that up at all, we've got onboarding materials we can share if useful.
+[00:16:24] Paul Strand: I might take you up on that actually, could be useful for whoever we eventually hire into that open req.
+[00:16:33] Priya Natarajan: I'll send some materials over regardless, no harm having them on hand.
+[00:16:39] Paul Strand: Appreciate that. Alright, sounds like the technical side is in a genuinely solid spot.
+[00:16:46] Priya Natarajan: It really does sound that way.
+[00:16:49] Paul Strand: ⟦F24⟧I'll just say it plainly, the HL7 feed on Tidewater Link has been flawless since go-live.⟦/F24⟧
+[00:16:57] Priya Natarajan: I'm going to pass that along, that kind of feedback doesn't happen every day, and the implementation team will genuinely appreciate hearing it directly.
+[00:17:07] Paul Strand: Please do, they earned it. I remember how much prep went into the mapping work before we ever flipped the switch on this, weekly calls for a couple months leading up to it, and it shows now.
+[00:17:23] Priya Natarajan: It really does help when a customer validates that the extra time upfront was worth it. We sometimes get internal pushback about how long the mapping phase takes compared to other vendors.
+[00:17:37] Paul Strand: Well, tell whoever needs to hear it that the extra weeks paid off. My nursing staff don't even think about the interface at this point, which honestly is the best compliment I can give a piece of integration technology, nobody notices it, it just works in the background.
+[00:17:57] Priya Natarajan: That's exactly the goal, invisible infrastructure. Anything on the informatics side you're keeping an eye on even if it's not a problem yet?
+[00:18:07] Paul Strand: Nothing urgent. We do periodic spot-checks on message volume just to make sure nothing's silently degrading over time, but so far the trend line's been flat, no surprises.
+[00:18:19] Priya Natarajan: Good. Are you tracking any particular message types more closely than others, or is it a general volume check?
+[00:18:28] Paul Strand: Mostly a general volume check across ADT and orders, those are the two that would cause the most noise clinically if something broke. We haven't needed to drill in deeper than that so far.
+[00:18:43] Priya Natarajan: Makes sense, that's usually where problems show up first if something's going to break.
+[00:18:49] Paul Strand: Exactly, so that's where we watch closest.
+[00:18:53] Priya Natarajan: How's your team's bandwidth generally, are you fully staffed on informatics right now?
+[00:18:59] Paul Strand: Mostly, we've got one open req that's been sitting a while, hard market for informatics analysts right now, but the core team's solid and we're managing fine day to day.
+[00:19:12] Priya Natarajan: Any open support tickets on our side I should be tracking, even minor ones?
+[00:19:19] Paul Strand: Nothing open right now, actually. We had one ticket a couple months back about an alert threshold being too sensitive, but your support team resolved that quickly and it hasn't recurred since.
+[00:19:33] Priya Natarajan: Good to hear. I'll still check the ticket history on my end after this call just to make sure nothing's sitting unassigned somewhere.
+[00:19:43] Paul Strand: Appreciate that, always good to have someone double-checking from your side too, extra set of eyes never hurts.
+[00:19:51] Priya Natarajan: Switching gears a little, any changes coming on the nursing informatics priorities for the rest of the year, now that the freeze is going to shape a lot of what departments can and can't do?
+[00:20:06] Paul Strand: Mostly we're shifting focus toward process and workflow optimization rather than anything requiring new spend, since that's really the only lever left available to us for the next several months.
+[00:20:19] Priya Natarajan: That makes sense given the constraint. Is there anything on the workflow side where our existing tools could help, even without new purchases?
+[00:20:29] Paul Strand: Possibly, actually. I've been meaning to ask if there's a way to get more detailed reporting out of the existing Link install, dashboards, trend reports, that kind of thing, without it counting as a new capital request on our end.
+[00:20:46] Priya Natarajan: That's worth exploring, a lot of the reporting functionality is more of a configuration or licensing conversation than a hardware purchase, so it might not even touch the freeze at all.
+[00:21:00] Paul Strand: That would be ideal. Can you find out for sure and get back to me on it?
+[00:21:07] Priya Natarajan: Absolutely, I'll check with our solutions team this week and follow up with specifics.
+[00:21:14] Paul Strand: Appreciate it, that's actually probably the most useful thing that could come out of this call for me.
+[00:21:22] Priya Natarajan: Happy to help. While we're on it, is there anyone else on your team I should loop in on that conversation, or do you want to stay the single point of contact?
+[00:21:36] Paul Strand: Keep it through me for now, I'll pull in my analysts once there's something concrete to actually look at together.
+[00:21:45] Priya Natarajan: Works for me, I'll try to get you something concrete by the end of the week.
+[00:21:52] Paul Strand: No rush on my end, whenever it's ready is fine.
+[00:21:57] Priya Natarajan: While I've got you, are you all gearing up for any accreditation surveys this year? I know some of our other systems have been heads-down on documentation prep.
+[00:22:10] Paul Strand: We are, actually, our survey window opens later this year. Nothing formal from informatics specifically yet, but I expect we'll get pulled into some documentation review closer to the date.
+[00:22:23] Priya Natarajan: Makes sense, is there anything on the interface side that typically comes up during those reviews?
+[00:22:30] Paul Strand: Usually just confirming that our documentation matches what's actually configured, data flow diagrams, that kind of thing. Nothing that's ever been a problem for us specifically, but it's always good to have it current going in.
+[00:22:45] Priya Natarajan: If it'd help, we can provide updated system documentation for Link ahead of your survey window, sometimes that saves a step if surveyors ask about a specific vendor system.
+[00:22:58] Paul Strand: That would actually be useful, let me check with our accreditation liaison on timing and I'll let you know if we need it.
+[00:23:08] Priya Natarajan: Sounds good, just flag it whenever, we keep that documentation current on our end so it shouldn't be a scramble.
+[00:23:17] Paul Strand: Appreciate that, one less thing to chase down closer to the date.
+[00:23:23] Priya Natarajan: Has the survey prep process gotten any easier over the years, or does it always feel like starting from scratch?
+[00:23:32] Paul Strand: A little easier each cycle, honestly, mostly because we've gotten better about keeping documentation current year-round instead of scrambling right before. Doesn't make it fun, but it's more manageable than it used to be.
+[00:23:47] Priya Natarajan: That's a good habit to have built, a lot of places don't get there until after a rough survey experience forces the issue.
+[00:23:57] Paul Strand: We had exactly that kind of rough experience a while back, honestly, that's what pushed us to change how we handle it going forward.
+[00:24:07] Priya Natarajan: Lesson learned the hard way, but learned at least. Well, let me know if there's anything I can do to make that easier this cycle.
+[00:24:18] Paul Strand: Will do, appreciate you offering.
+[00:24:21] Priya Natarajan: While I've got you, just out of curiosity, how's charting compliance looking generally on the units using Link?
+[00:24:30] Paul Strand: Hard to say definitively, it's not something we've formally measured recently, but anecdotally nurses seem to have adjusted okay now that some of the infusion data populates automatically.
+[00:24:42] Priya Natarajan: That's good to hear, adoption's usually the trickiest part early on.
+[00:24:47] Paul Strand: Yeah, it took some time, but people settled into it. Nothing I'd call a formal study, just a general sense from rounding on the units.
+[00:24:58] Priya Natarajan: That's a fair way to gauge it informally.
+[00:25:02] Paul Strand: How's the rest of your book looking this summer, are you slammed on your end?
+[00:25:09] Priya Natarajan: Pretty steady. A few renewals coming up in the next couple months across the territory, nothing dramatic, mostly just staying on top of check-ins like this one.
+[00:25:21] Paul Strand: Makes sense. You still covering the same territory footprint, or has that shifted at all?
+[00:25:28] Priya Natarajan: Same footprint for now. There's been some talk of realigning territories next year, but nothing official yet, so I wouldn't put much weight on it.
+[00:25:39] Paul Strand: Well, selfishly I hope you stay on our account either way, continuity's nice when you don't have to re-explain your whole environment to somebody new every year.
+[00:25:51] Priya Natarajan: I appreciate that, feeling's mutual. Are you headed to the informatics conference in the fall this year?
+[00:25:59] Paul Strand: Planning on it, assuming the freeze doesn't somehow extend to travel budgets too, which, knock on wood, I don't think it will.
+[00:26:09] Priya Natarajan: Let's plan to grab time there if you go, easier than always doing these over the phone.
+[00:26:16] Paul Strand: Agreed, I'll keep you posted once my travel's actually approved. Speaking of bandwidth, actually, separate from anything with you all, my team's got an internal project going on alert fatigue that's eating a fair amount of my time lately, more about our own EHR alert tuning generally.
+[00:26:36] Priya Natarajan: Oh, interesting, is that a nursing-driven initiative or coming from somewhere else on your end?
+[00:26:43] Paul Strand: Nursing-driven mostly, staff have been vocal about alert volume for a while, so we finally got the time, at least, to actually study it properly this year.
+[00:26:55] Priya Natarajan: That's a good problem to tackle, alert fatigue seems to come up at almost every system I work with in some form.
+[00:27:05] Paul Strand: It's universal, I think. Anyway, that's eating a chunk of my bandwidth outside of anything related to you all, just context for why I might be a touch slower to respond some weeks.
+[00:27:19] Priya Natarajan: No problem at all, appreciate you flagging it. How's the rest of your team handling the workload with that added on top?
+[00:27:29] Paul Strand: Managing okay so far. We reprioritized a couple lower-urgency items to make room for it, nothing that affects anything we do with Halvard specifically.
+[00:27:39] Priya Natarajan: Good to know. Separately, are you still covering the same responsibilities on your end, or has your role shifted at all this year?
+[00:27:50] Paul Strand: Mostly the same, though I did pick up oversight of a couple of smaller ambulatory sites this spring, so my scope's a little wider than it was last time we talked.
+[00:28:03] Priya Natarajan: Got it, good to know, I'll make a note of that on my end so I'm not out of date on your scope.
+[00:28:13] Paul Strand: Appreciate you keeping track of that.
+[00:28:17] Priya Natarajan: One other routine item before we wrap, we've got a minor software patch going out across the Link customer base later this quarter, nothing that changes functionality, mostly under-the-hood stability fixes. You'll get the standard advance notice from our support team before it's scheduled.
+[00:28:35] Paul Strand: Good to know, appreciate the heads-up now rather than just getting the notice cold when it shows up.
+[00:28:43] Priya Natarajan: Of course, it shouldn't require any downtime on your end, but I always like customers to hear about it from a person first rather than just an email.
+[00:28:56] Paul Strand: That's the right instinct, unexpected patch notices make my team nervous even when they're totally routine.
+[00:29:03] Priya Natarajan: Totally fair, I feel the same way when vendors do it to me.
+[00:29:09] Paul Strand: Ha, fair point.
+[00:29:11] Priya Natarajan: One last thing before we wrap, are you still planning to do an annual business review with us later this year, or did that fall by the wayside with everything else going on?
+[00:29:26] Paul Strand: No, let's still do it, I think it's useful even in a quiet year like this one's shaping up to be on the equipment side.
+[00:29:37] Priya Natarajan: Agreed, it's a good chance to zoom out from the day-to-day stuff. Any preference on timing, or should I just propose a few dates once we're closer to it?
+[00:29:49] Paul Strand: Propose a few dates whenever makes sense for you, I'd just say let's avoid doing it too close to the accreditation survey window we just talked about, my calendar's going to be a mess around then.
+[00:30:05] Priya Natarajan: Noted, I'll steer clear of that stretch.
+[00:30:08] Paul Strand: Appreciate it. Anything typically change about the format of those reviews, or is it the same structure as last year?
+[00:30:17] Priya Natarajan: Pretty similar structure, usage trends, any support history, a look at the roadmap, though I'll tailor it given the freeze so we're not spending half the meeting on things that aren't actionable this year.
+[00:30:32] Paul Strand: That's a good call, no sense reviewing options we can't act on anyway right now.
+[00:30:39] Priya Natarajan: Exactly, we'll keep it focused on what's actually useful given where things stand.
+[00:30:45] Paul Strand: Sounds good. I'll keep an eye out for the scheduling email whenever you send it.
+[00:30:52] Priya Natarajan: Will do, probably a few months out at this point, no rush.
+[00:30:58] Paul Strand: Works for me.
+[00:31:00] Priya Natarajan: Anything else on your list for today, or did we cover what you needed?
+[00:31:07] Paul Strand: I think that covers it, honestly. The main things were the budget context and getting your read on the reporting question.
+[00:31:16] Priya Natarajan: Perfect, I'll follow up by end of week on the reporting piece, and I'll keep the budget situation in mind so I'm not pushing anything that's a non-starter right now.
+[00:31:29] Paul Strand: Appreciate that. It's not a no forever, just a no for a while.
+[00:31:35] Priya Natarajan: Understood completely. I'll check back in with you in a few weeks either way, even if it's just a quick note to say hello.
+[00:31:46] Paul Strand: Sounds good, always good talking with you, Priya.
+[00:31:50] Priya Natarajan: You too, Paul. Enjoy the rest of your week, talk soon.
+[00:31:56] Paul Strand: You as well, take care, bye now.

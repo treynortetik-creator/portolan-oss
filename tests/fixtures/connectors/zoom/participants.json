@@ -1,0 +1,9 @@
+{
+  "page_count": 1,
+  "page_size": 30,
+  "total_records": 2,
+  "participants": [
+    {"id": "P-1", "user_id": "U-1", "name": "Sam Okafor", "user_email": "s.okafor@halvardmedical.com", "email": "s.okafor@halvardmedical.com", "join_time": "2026-08-04T14:00:02Z", "leave_time": "2026-08-04T14:30:00Z"},
+    {"id": "P-2", "user_id": "U-2", "name": "Rob Tallis", "user_email": "rtallis@ashgrovehealth.org", "email": "rtallis@ashgrovehealth.org", "join_time": "2026-08-04T14:00:05Z", "leave_time": "2026-08-04T14:29:50Z"}
+  ]
+}

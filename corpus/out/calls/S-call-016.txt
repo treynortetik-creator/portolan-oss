@@ -1,0 +1,147 @@
+[09:02:11] Priya Natarajan: Good morning, Yolanda. Thanks for making time. Can you hear me all right?
+
+[09:02:18] Yolanda Pierce: I can. Can you hear me?
+
+[09:02:23] Priya Natarajan: Yes, loud and clear. How is your morning going?
+
+[09:02:31] Yolanda Pierce: Busy already. We had a couple of receiving questions come in before eight, and I am trying to get through the rest of my notes before the next meeting.
+
+[09:02:42] Priya Natarajan: I understand. I will keep us moving. I wanted to check in on the Tidewater Link and Epic integration discussion, and then make sure we are aligned on the equipment picture and anything your team needs from us.
+
+[09:02:55] Yolanda Pierce: Sure. On the integration discussion, I do not think we have the bandwidth to take that forward this year. Let's revisit that in 2027.
+
+[09:03:08] Priya Natarajan: Understood. I will note that timing and avoid pushing the technical conversation while your team is focused elsewhere.
+
+[09:03:16] Yolanda Pierce: That would help. There are too many projects competing for the same people right now.
+
+[09:03:23] Priya Natarajan: Is the main constraint staffing, the current clinical systems work, or a combination?
+
+[09:03:30] Yolanda Pierce: Combination. Our information systems group is tied up with existing priorities, and supply chain is working through several operational items. We need to be selective about anything that creates another review cycle.
+
+[09:03:42] Priya Natarajan: That makes sense. We can leave the integration material in the background and pick it up when the timing is better.
+
+[09:03:50] Yolanda Pierce: Yes. I do not want the team spending time on a discussion that we cannot act on soon.
+
+[09:03:58] Priya Natarajan: All right. I also wanted to ask about the pump population, since that may be more immediately useful for our planning. Are you still looking at the same units across the hospital?
+
+[09:04:06] Yolanda Pierce: Broadly, yes. The ICU and the med-surg floors are the areas I am thinking about.
+
+[09:04:15] Priya Natarajan: We can review the current footprint without getting into any integration work. Sometimes it is useful just to confirm what is in service and where.
+
+[09:04:22] Yolanda Pierce: Agreed. The operations team has been trying to keep that information consistent across the floor contacts.
+
+[09:04:31] Priya Natarajan: I appreciate that. We have seen different counts in older notes, so I would rather rely on your current view than carry forward an outdated figure.
+
+[09:04:39] Yolanda Pierce: That is fair. Some of those older notes were assembled for different purposes.
+
+[09:04:47] Priya Natarajan: While we are on it, are the ICU and med-surg teams using the same process for requests, or does each area handle them differently?
+
+[09:04:55] Yolanda Pierce: There are some local differences, but the basic review goes through the same operational channel.
+
+[09:05:04] Priya Natarajan: That is helpful. We can keep any follow-up concise and route it through you rather than creating separate threads.
+
+[09:05:12] Yolanda Pierce: Please do. Separate threads tend to multiply quickly.
+
+[09:05:21] Priya Natarajan: I know the feeling. One question on timing: would a short written recap be useful after this call, just covering the deferred integration discussion and the equipment scope?
+
+[09:05:30] Yolanda Pierce: Yes, a short recap would be fine. Nothing elaborate.
+
+[09:05:38] Priya Natarajan: I will keep it brief. I will also make clear that the integration topic is not an active near-term workstream.
+
+[09:05:46] Yolanda Pierce: Good. That wording will help when I circulate it internally.
+
+[09:05:55] Priya Natarajan: Before we move on, is there anything urgent from the clinical areas that you want us to be aware of?
+
+[09:06:03] Yolanda Pierce: Nothing urgent from my side this morning. We are watching routine availability and making sure the floor teams know whom to contact.
+
+[09:06:12] Priya Natarajan: Understood. Do you want us to include a contact reminder in the recap, or would that be unnecessary?
+
+[09:06:19] Yolanda Pierce: You can include it, but keep it to one line.
+
+[09:06:27] Priya Natarajan: Will do. I am taking notes now. Let me confirm the current equipment count for my internal record: Wrenfield Medical Center runs eighteen Tidewater T2 pumps across its ICU and med-surg floors as of 2026-08-11. That is the current footprint, correct?
+
+[09:06:45] Yolanda Pierce: Yes, that is the current footprint.
+
+[09:06:52] Priya Natarajan: Thanks for confirming. I will use that number rather than the older figures.
+
+[09:06:59] Yolanda Pierce: Good. The floor managers will appreciate not having to reconcile another version.
+
+[09:07:06] Priya Natarajan: Of course. Are those pumps all being managed under the same service arrangement, or should I leave that detail out for now?
+
+[09:07:15] Yolanda Pierce: Leave that detail out for now. The count and locations are enough for this conversation.
+
+[09:07:23] Priya Natarajan: Got it. I will not add extra operational detail to the recap.
+
+[09:07:31] Yolanda Pierce: Thank you.
+
+[09:07:39] Priya Natarajan: On the 2027 revisit, would you prefer that I reach out early in the year, or should I wait for you to initiate?
+
+[09:07:47] Yolanda Pierce: A light touch early in the year is fine. I cannot promise the schedule will open immediately, but a check-in would be reasonable.
+
+[09:07:56] Priya Natarajan: That works. I can send a simple note rather than proposing a meeting right away.
+
+[09:08:04] Yolanda Pierce: Yes, a note is better. We can decide then whether a meeting makes sense.
+
+[09:08:12] Priya Natarajan: Understood. I will put a reminder on my side and leave the timing flexible.
+
+[09:08:21] Yolanda Pierce: Good.
+
+[09:08:28] Priya Natarajan: Since we are not moving the integration work now, is there any background material you want us to maintain, or should we treat the existing material as sufficient?
+
+[09:08:36] Yolanda Pierce: Existing material is sufficient. If something changes materially, we will let you know.
+
+[09:08:44] Priya Natarajan: That is clear. We will avoid sending revised documents unless there is a reason.
+
+[09:08:52] Yolanda Pierce: I appreciate that. Our inboxes are full enough.
+
+[09:09:00] Priya Natarajan: I hear you. We have had the same problem on our side with routine notices and calendar updates.
+
+[09:09:08] Yolanda Pierce: Exactly. Sometimes finding the important message is the work.
+
+[09:09:16] Priya Natarajan: Then I will make the recap easy to scan: a short opening, the timing note, the current footprint, and the contact reminder.
+
+[09:09:24] Yolanda Pierce: That format works.
+
+[09:09:32] Priya Natarajan: Is there a preferred subject line for the recap?
+
+[09:09:40] Yolanda Pierce: Something plain is fine. Maybe “Wrenfield follow-up,” without making it sound like a new project.
+
+[09:09:48] Priya Natarajan: That is a good distinction. I will keep the subject neutral.
+
+[09:09:56] Yolanda Pierce: Thanks.
+
+[09:10:04] Priya Natarajan: We have a few minutes left. I want to make sure I have not missed anything about the current floor setup that would affect our records.
+
+[09:10:13] Yolanda Pierce: Nothing else that needs to be captured today. ICU and med-surg are the relevant areas for the count.
+
+[09:10:21] Priya Natarajan: All right. I will keep the record at that level and not infer anything beyond what you confirmed.
+
+[09:10:29] Yolanda Pierce: Good.
+
+[09:10:37] Priya Natarajan: For the recap, I will say that the integration discussion is deferred, the current pump footprint is eighteen units across those areas, and we will reconnect with a light check-in next year.
+
+[09:10:46] Yolanda Pierce: That is accurate.
+
+[09:10:54] Priya Natarajan: Excellent. I will send it later today.
+
+[09:11:02] Yolanda Pierce: Fine. I should be able to look at it between meetings.
+
+[09:11:10] Priya Natarajan: I will not make it long. Before I let you go, how is the rest of the week looking?
+
+[09:11:18] Yolanda Pierce: Full, but manageable. We have a planning review and then some work on the next replenishment cycle.
+
+[09:11:26] Priya Natarajan: That sounds like enough to keep you occupied.
+
+[09:11:34] Yolanda Pierce: It is. But at least the priorities are clear.
+
+[09:11:42] Priya Natarajan: That helps. Thanks again for the time and for confirming the footprint.
+
+[09:11:50] Yolanda Pierce: You are welcome.
+
+[09:11:58] Priya Natarajan: I will send the short recap and leave the integration topic quiet until the later check-in.
+
+[09:12:06] Yolanda Pierce: Sounds good.
+
+[09:12:14] Priya Natarajan: Have a good rest of the morning, Yolanda.
+
+[09:12:22] Yolanda Pierce: You too, Priya. Take care.

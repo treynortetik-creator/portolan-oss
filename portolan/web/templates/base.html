@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A living chart of what your customers actually said.">
+<!-- Fix wave 2026-09-15 (v3): the SVG failed to parse (icon.svg's own
+     comment used to have a literal double hyphen, three times, which the
+     xmllint no-output check caught), so Chrome fell back to the generic
+     globe and cached that failure per-origin. The `?v=2` query string
+     busts that cache once the SVG is fixed; PNG fallbacks cover
+     browsers/contexts that don't support an SVG favicon at all (some
+     pinned-tab/bookmark UIs, and Apple's home-screen icon, which never
+     reads the SVG). Bumped to `?v=3` 2026-09-18: the mark recolored from
+     ink to rhumb-line red, same per-origin favicon cache concern. -->
+<link rel="icon" type="image/svg+xml" href="/static/icon.svg?v=3">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/icon-32.png?v=3">
+<link rel="apple-touch-icon" href="/static/apple-touch-icon.png?v=3">
+<script nonce="{{ csp_nonce(request) }}">
+// Dark mode, three states: system (default, no attribute -- brand-tokens.css's
+// @media (prefers-color-scheme: dark) block decides), "light", "dark" (forced
+// via [data-theme], brand-tokens.css's :root[data-theme="dark"] block). Reads
+// localStorage and sets the attribute on <html> synchronously, before the
+// <style> block below is ever applied -- a tiny inline script in <head>, per
+// the build instructions, "to avoid a flash" of the wrong theme on load.
+(function () {
+  try {
+    var saved = localStorage.getItem('portolan-theme');
+    if (saved === 'light' || saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  } catch (e) { /* localStorage blocked (private mode, etc.) -- system default */ }
+})();
+</script>
+<title>{% block title %}Portolan{% endblock %}</title>
+<!-- Review finding 9: a pinned exact version is not an integrity check --
+     `integrity=` + `crossorigin="anonymous"` below is a real one: the
+     hash is computed from these exact bytes (sha384, the strength SRI's
+     own spec recommends), so a compromised or MITM'd CDN response that
+     doesn't hash to this value is refused by the browser before it ever
+     executes, instead of silently running. Recompute if the pinned
+     version ever changes -- the hash is tied to the file, not the URL. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.12/htmx.min.js"
+        integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+        crossorigin="anonymous"></script>
+<!-- Review finding 22 (grouped nits): one shared escapeHtml for both JS
+     islands (chat.html, graph.html) instead of two divergent inline
+     copies -- see the file's own comment. Same-origin static asset, no
+     integrity= needed (SRI is for cross-origin CDN scripts). -->
+<script src="/static/js/escape-html.js"></script>
+<style>
+{# UX eval 2026-09-12, punch item 1 (critical): this MUST be |safe. Without
+   it, Jinja's autoescaper turns every " in brand-tokens.css into &#34;,
+   which breaks the quoted font stacks (--pl-display etc. resolved to the
+   literal string "&#34") and the data-theme="dark" attribute selector --
+   dark mode did nothing and every font fell back to Times. See
+   templating.py's comment on this global for the full story; safe for the
+   same reason wordmark_svg|safe is safe: a local, developer-controlled
+   file, never request/vendor/model data. #}
+{{ brand_tokens_css|safe }}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--pl-ground);
+  color: var(--pl-ink);
+  font-family: var(--pl-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/* UX eval 2026-09-12, punch item 3: the accent is reserved for exactly
+   four things app-wide (the active nav item, the one .btn.primary on a
+   page, the citation chip, the highlighted locator band) -- spending it
+   on every hyperlink drowns out all four. Plain links read as ink text,
+   underlined with a quiet --pl-line rule; only on hover/focus do they
+   pick up the accent, and only through colour, never a fourth thing
+   losing its accent to noise. */
+a { color: var(--pl-ink); text-decoration: underline; text-decoration-color: var(--pl-line); text-underline-offset: 2px; }
+a:visited { color: var(--pl-ink); }
+a:hover, a:focus-visible { color: var(--pl-accent); text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--pl-accent); outline-offset: 2px; }
+.mono { font-family: var(--pl-mono); }
+.muted { color: var(--pl-muted); }
+.small { font-size: 13px; }
+/* UX eval 2026-09-12, punch item 7: dates and source lines are the whole
+   product per BRAND.md and must never be decorative grey -- floored at a
+   real 13px (was 0.85em, ~13.6px off a 16px body but drifted smaller
+   wherever a parent set a smaller base) and never below it again. Every
+   "updated:"/"created:"/"recorded ..." stamp on any note reference uses
+   this class, so the size and colour stay consistent app-wide. */
+.updated { font-family: var(--pl-mono); color: var(--pl-muted); font-size: 13px; }
+/* Punch item 6: the note-detail page's own updated: stamp gets a fresh/
+   stale signal colour (still just the two brand tokens already reserved
+   for that -- secondary while inside stale_after, accent once past it);
+   every OTHER updated: reference (search hits, related, backlinks,
+   citation chips, reports list) stays plain muted -- this file doesn't
+   know whether that note is stale relative to it, so it doesn't guess. */
+.updated.fresh { color: var(--pl-secondary); }
+.updated.stale { color: var(--pl-accent); }
+mark {
+  background: color-mix(in srgb, var(--pl-secondary) 18%, transparent);
+  color: var(--pl-ink); border-radius: 2px; padding: 0 1px;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip:focus {
+  position: fixed; top: 8px; left: 8px; width: auto; height: auto; margin: 0;
+  clip: auto; overflow: visible; white-space: normal; z-index: 100;
+  background: var(--pl-ground); color: var(--pl-ink); border: 1px solid var(--pl-accent);
+  border-radius: 3px; padding: 8px 12px; font-family: var(--pl-display); font-size: 13px;
+}
+
+/* ---- header / nav ------------------------------------------------------ */
+header.site {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  padding: 14px 20px; border-bottom: 1px solid var(--pl-line);
+}
+header.site .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+header.site .brand svg { width: 120px; height: auto; display: block; color: var(--pl-ink); }
+#nav-toggle {
+  display: none; font-family: var(--pl-display); font-size: 13px;
+  color: var(--pl-ink); background: none; border: 1px solid var(--pl-line);
+  border-radius: 3px; padding: 6px 10px; cursor: pointer;
+}
+nav.site { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+nav.site a, nav.site button {
+  font-family: var(--pl-display); font-size: 13px; letter-spacing: .04em;
+  color: var(--pl-ink); text-decoration: none; padding: 6px 10px; border-radius: 3px;
+  border: 1px solid transparent; background: none; cursor: pointer;
+}
+nav.site a:hover, nav.site button:hover { border-color: var(--pl-line); }
+/* The one thing per page that gets the accent (brand pass, item 5): the
+   active top-level nav item. */
+nav.site a[aria-current="page"] {
+  color: var(--pl-accent); border-color: var(--pl-accent); font-weight: 600;
+}
+/* Half-wind green splash (the maintainer 2026-09-18: "just a splash of green
+   here and there... maybe just on the logout or something"). Logout is
+   the one nav control that intentionally isn't ink -- not the accent
+   (that's reserved for the active nav item), just a quiet secondary
+   tell that ending the session is a different kind of action. */
+nav.site .logout-btn { color: var(--pl-secondary); }
+nav.site .logout-btn:hover { border-color: var(--pl-secondary); }
+nav.site .who { color: var(--pl-muted); font-size: 12px; margin: 0 2px 0 6px; }
+nav.site .sep { width: 1px; align-self: stretch; background: var(--pl-line); margin: 0 2px; }
+#theme-toggle { font-size: 12px; color: var(--pl-muted); }
+
+@media (max-width: 720px) {
+  #nav-toggle { display: inline-flex; }
+  nav.site {
+    display: none; flex-basis: 100%; flex-direction: column; align-items: stretch;
+    gap: 2px; padding-top: 8px;
+  }
+  nav.site.open { display: flex; }
+  nav.site .sep { display: none; }
+  nav.site a, nav.site button { text-align: left; }
+}
+
+main.wrap { max-width: 1100px; margin: 0 auto; padding: 24px 20px 60px; }
+
+/* Type scale (design system: "display 28/20/16/13/11px"), applied to the
+   three heading levels the shell actually uses -- h1 the page's own
+   title, h2 a card-group/section heading, h3 a sub-heading inside one. */
+h1, h2, h3 {
+  font-family: var(--pl-display); font-weight: 600; letter-spacing: -.01em;
+}
+h1 { font-size: 28px; line-height: 1.2; }
+h2 { font-size: 20px; line-height: 1.25; }
+h3 { font-size: 16px; line-height: 1.3; }
+.eyebrow {
+  font-family: var(--pl-display); font-size: 12px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--pl-muted); margin: 0 0 6px;
+}
+
+.card {
+  border: 1px solid var(--pl-line); border-radius: 4px; padding: 16px 18px;
+  background: var(--pl-ground); margin-bottom: 16px;
+}
+/* Note card (design system): a card whose first line is an eyebrow, whose
+   title is a 20px display heading (h2, not the page's own h1), followed
+   by a .meta-row (badges + updated:/created:/stale-after/version) and a
+   16px serif body -- the shape search hits, the notes index, and
+   "related"/backlinks lists all share. */
+.note-card .note-card-title { margin: 0 0 4px; }
+.note-card .note-card-body { margin: 6px 0 0; }
+
+/* Metadata row (punch item 6): badges, then updated:, then created/
+   stale-after/version -- separated by a muted "·" rather than run
+   together with no grouping, and wrapping on its own row on a phone
+   rather than truncating. */
+.meta-row {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; row-gap: 6px;
+  margin: 8px 0 16px;
+}
+.meta-row .sep { color: var(--pl-line); }
+
+/* Claim line (design system, punch item 8): claim text on its own line,
+   a mono citation line below it, then one accent chip that is the whole
+   point of the page -- "Dig deeper" into the exact source moment. */
+.claim { padding: 12px 0; border-bottom: 1px solid var(--pl-line); }
+.claim:last-child { border-bottom: none; }
+.claim-text { margin: 0 0 6px; font-size: 16px; }
+.claim-cite {
+  font-family: var(--pl-mono); font-size: 13px; color: var(--pl-muted);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 6px;
+}
+.claim-quote { margin: 0 0 8px; font-size: 14px; font-style: italic; color: var(--pl-muted); }
+/* Generic inline button row (a claim's actions, an error page's two
+   escape links, pagination controls) -- one flex recipe reused wherever
+   a line of .btn/.btn.chip elements needs to wrap cleanly. */
+.btn-row, .claim-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* Review queue row (punch item 13): 12px between the alias-picker row and
+   the resolve/dismiss row, so two forms stacked in one card don't read as
+   one control. */
+.alias-form { margin: 10px 0 12px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.review-actions { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.review-choice { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* Review card (owner review 2026-09-18, "make this usable by a human
+   being"): every row now reads as a small brief -- a plain-language
+   headline, an evidence block (claim, quote, surrounding context), a
+   "why it matters" line, plain-word choices, and a collapsed technical
+   fold for the raw ids nobody but a developer needs. */
+.review-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.review-filters .review-filter[aria-pressed="true"] { border-color: var(--pl-accent); color: var(--pl-accent); font-weight: 600; }
+.review-headline { font-size: 16px; margin: 0 0 8px; }
+.review-evidence { border-left: 2px solid var(--pl-line); padding-left: 12px; margin: 8px 0; }
+.review-quote { margin: 6px 0; padding: 0; border: none; font-size: 15px; font-style: italic; }
+.review-candidates { margin: 4px 0 8px; padding-left: 20px; }
+.review-reasons { margin: 4px 0 8px; padding-left: 20px; }
+.review-rejected { font-size: 14px; margin: 4px 0; }
+/* The offending numeral(s) get the accent, not the default secondary
+   <mark> tint app-wide -- this is specifically a rejection, not a
+   highlight of something found (search hits, etc). */
+.review-rejected mark {
+  background: color-mix(in srgb, var(--pl-accent) 18%, transparent); color: var(--pl-ink);
+}
+.review-why { font-size: 14px; color: var(--pl-muted); margin: 10px 0; }
+.review-technical { margin-top: 12px; }
+.review-technical summary {
+  cursor: pointer; font-family: var(--pl-display); font-size: 12px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--pl-muted);
+}
+.review-technical summary:hover { color: var(--pl-ink); }
+.review-technical dl.payload-dl { margin-top: 10px; }
+
+/* Alias picker (P0 fix, bug hunt 2026-09-18 finding 1): a small type-
+   ahead combobox that replaces the old full-registry <select> -- a text
+   input plus a floating result list positioned under it, filled from
+   GET /review/registry?q= as the reader types (portolan/web/templates/
+   review.html's own script). */
+.alias-picker { position: relative; display: inline-block; }
+.alias-picker-input { min-width: 240px; }
+.alias-picker-results {
+  position: absolute; z-index: 5; top: calc(100% + 2px); left: 0; right: 0;
+  margin: 0; padding: 4px 0; max-height: 220px; overflow-y: auto; list-style: none;
+  background: var(--pl-ground); border: 1px solid var(--pl-line); border-radius: 4px;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--pl-ink) 12%, transparent);
+}
+.alias-picker-option { padding: 6px 10px; font-size: 13px; cursor: pointer; }
+.alias-picker-option:hover { background: var(--pl-line); }
+
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--pl-line); font-size: 14px; }
+th { font-family: var(--pl-display); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--pl-muted); }
+/* Punch item 5 (coverage overflowed at 400px) applied app-wide, per the
+   design system ("Tables ... Always inside .table-scroll"): a horizontal
+   scroll region at any width, PLUS a responsive stacked-card layout below
+   720px so nothing needs sideways scrolling on a phone at all -- every
+   `<td>` carries `data-label` (its column header text) so the CSS-only
+   reflow below can label each value without a second render. */
+.table-scroll { overflow-x: auto; }
+.table-scroll table { min-width: 560px; }
+@media (max-width: 720px) {
+  .table-scroll { overflow-x: visible; }
+  .table-scroll table, .table-scroll thead, .table-scroll tbody,
+  .table-scroll th, .table-scroll td, .table-scroll tr {
+    display: block; width: auto; min-width: 0;
+  }
+  .table-scroll thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .table-scroll tbody tr {
+    border: 1px solid var(--pl-line); border-radius: 4px; padding: 8px 10px; margin-bottom: 10px;
+  }
+  .table-scroll tbody td {
+    border-bottom: none; padding: 3px 0; display: flex; gap: 10px; justify-content: space-between;
+    align-items: baseline; text-align: right;
+  }
+  .table-scroll tbody td[data-label]::before {
+    content: attr(data-label); font-family: var(--pl-display); font-size: 12px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--pl-muted); text-align: left; flex: 1 1 auto;
+  }
+}
+
+.btn {
+  font-family: var(--pl-display); font-size: 13px; letter-spacing: .04em;
+  color: var(--pl-ink); background: var(--pl-ground);
+  border: 1px solid var(--pl-line); border-radius: 3px;
+  padding: 7px 12px; cursor: pointer; text-decoration: none; display: inline-block;
+  min-height: 32px; line-height: 1.3;
+}
+.btn:hover { border-color: var(--pl-muted); }
+.btn.primary { border-color: var(--pl-accent); color: var(--pl-accent); font-weight: 600; }
+/* Secondary: a positive, non-primary action (add alias, save a rename) --
+   the half-wind green, never the one-per-page accent. */
+.btn.secondary { border-color: var(--pl-secondary); color: var(--pl-secondary); }
+/* Quiet: a tertiary, low-emphasis action (Edit, Cancel) -- no border, just
+   muted text that picks up ink on hover. Never the only way to reach
+   something important. */
+.btn.quiet {
+  border-color: transparent; background: none; color: var(--pl-muted);
+  font-size: 13px; padding: 4px 6px; min-height: auto;
+}
+.btn.quiet:hover { color: var(--pl-ink); text-decoration: underline; text-decoration-color: var(--pl-line); }
+.btn.chip { padding: 4px 10px; font-size: 12px; min-height: 28px; }
+/* The one recurring accent chip: "open the original at <locator>" --
+   provenance-chain link 4, the single most important control on a claim
+   line (punch item 8). Named apart from plain .btn.chip (used for
+   colour-neutral small actions like the chat sidebar's Save/Cancel) so
+   giving it the accent never bleeds onto those. */
+.btn.dig {
+  border-color: var(--pl-accent); color: var(--pl-accent); font-family: var(--pl-mono);
+}
+.btn.dig:hover { background: color-mix(in srgb, var(--pl-accent) 10%, transparent); border-color: var(--pl-accent); }
+
+input[type=text], input[type=password], textarea, select {
+  font-family: var(--pl-body); font-size: 15px; padding: 8px 10px;
+  border: 1px solid var(--pl-line); border-radius: 3px; background: var(--pl-ground);
+  color: var(--pl-ink); width: 100%; min-height: 40px;
+}
+input[type=text]:focus-visible, input[type=password]:focus-visible, textarea:focus-visible,
+select:focus-visible { outline: 2px solid var(--pl-accent); outline-offset: 2px; }
+textarea { min-height: 90px; }
+label { font-family: var(--pl-display); font-size: 12px; letter-spacing: .04em; color: var(--pl-muted); display: block; margin-bottom: 4px; }
+form .field { margin-bottom: 12px; }
+.field-hint { font-size: 12px; color: var(--pl-muted); margin: 4px 0 0; }
+/* Definition list for a payload/metadata dump that must never render as a
+   raw dict repr (punch item 13: the review queue) -- key/value pairs,
+   each on their own row so a long value never crowds its label. */
+dl.payload-dl { margin: 8px 0; display: flex; flex-direction: column; gap: 6px; }
+dl.payload-dl > div { display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline; }
+dl.payload-dl dt {
+  font-family: var(--pl-display); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--pl-muted); margin: 0; flex: 0 0 auto;
+}
+dl.payload-dl dd { font-family: var(--pl-mono); font-size: 13px; color: var(--pl-ink); margin: 0; }
+.context-quote { font-size: 14px; font-style: italic; color: var(--pl-muted); margin: 6px 0; }
+
+/* Empty state (design system): eyebrow, one plain sentence, one .btn --
+   never a bare grey line. `.empty.flag` variant signals "the index looks
+   broken", not merely "nothing recorded" (atlas.html, coverage.html
+   already draw this distinction in copy; this makes it visible too). */
+.empty { padding: 4px 0; }
+.empty .eyebrow { margin-bottom: 8px; }
+.empty p { margin: 0 0 12px; font-size: 16px; }
+
+/* Mascot (build instructions, 2026-09-18 -- the maintainer: "Portolan makes me
+   think of old ships"): a brass spyglass, `portolan/web/static/
+   spyglass.svg`, inlined once as the `spyglass_svg` global (portolan.web.
+   templating) so its `currentColor` strokes and `var(--pl-brass)` bands
+   take the live page's tokens in both themes -- a plain image reference
+   would get neither. One shared size/space rule so every empty state (chat, atlas,
+   review, reports, coverage) places it the same way; `inline-block` so
+   it still honours an ancestor's `text-align: center` (chat-empty)
+   without needing its own centering rule. Never used in the header or
+   the favicon -- the red mark stays the one logo. */
+.empty-mascot { display: inline-block; width: 64px; height: 64px; margin: 0 0 14px; color: var(--pl-ink); }
+.empty-mascot svg { width: 100%; height: 100%; display: block; }
+.empty-mascot + .caption { margin: -8px 0 14px; font-size: 13px; color: var(--pl-muted); }
+
+/* Streaming pulse (build instructions: "a small version as the
+   streaming indicator ... gentle 1.5s pulse, prefers-reduced-motion
+   respected"): `spyglass_small_svg`, the 32px monochrome variant,
+   inlined into the typing indicator (chat.html's own script builds the
+   bubble) -- sized and animated here so nothing in that script has to
+   duplicate the rule. Opacity only, never scale/position, so it never
+   nudges surrounding text while an answer streams in. */
+.pulse-mascot {
+  display: inline-block; width: 18px; height: 18px; color: var(--pl-muted);
+  vertical-align: middle; animation: pl-mascot-pulse 1.5s ease-in-out infinite;
+}
+.pulse-mascot svg { width: 100%; height: 100%; display: block; }
+@keyframes pl-mascot-pulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .pulse-mascot { animation: none; opacity: .7; }
+}
+
+/* Loading indicator for HTMX swaps (punch item 10): hidden until htmx
+   marks the request in flight, per htmx's own convention -- any element
+   with this class inside (or targeted by) an in-flight request's
+   `hx-indicator` becomes visible. */
+.htmx-indicator { opacity: 0; transition: opacity 100ms ease-in; }
+.htmx-indicator.htmx-request, .htmx-request.htmx-indicator { opacity: 1; }
+
+/* Citation chip (design system, UX eval 2026-09-12): the one place besides
+   the active nav item and .btn.primary that gets the accent. Never
+   underlined -- it reads as a tag, not a hyperlink. */
+.citation-link {
+  font-family: var(--pl-mono); font-size: 12px; padding: 1px 8px; border-radius: 10px;
+  border: 1px solid var(--pl-accent); color: var(--pl-accent); text-decoration: none;
+  display: inline-block; line-height: 1.6;
+}
+.citation-link:hover, .citation-link:focus-visible {
+  background: color-mix(in srgb, var(--pl-accent) 10%, transparent);
+  color: var(--pl-accent); text-decoration: none;
+}
+/* Badge set (design system, punch item 7 floors this at 12px -- was 11px):
+   fresh/superseded/note-level/ambiguous are the four semantic variants
+   the eval names; type-* badges (already here) are the closed note-type
+   list. */
+.badge {
+  font-family: var(--pl-mono); font-size: 12px; padding: 2px 8px; border-radius: 10px;
+  border: 1px solid var(--pl-line); color: var(--pl-muted); display: inline-block;
+}
+.badge.type-account, .badge.type-report { border-color: var(--pl-accent); color: var(--pl-accent); }
+.badge.type-signal { border-color: var(--pl-secondary); color: var(--pl-secondary); }
+/* fresh: a claim that hasn't been superseded. */
+.badge.fresh { border-color: var(--pl-secondary); color: var(--pl-secondary); }
+/* superseded: line border, muted text; the date it wraps (not the badge
+   itself) carries the strike-through, per the design system. */
+.badge.superseded { border-color: var(--pl-line); color: var(--pl-muted); }
+.badge.superseded del { text-decoration: line-through; }
+/* note-level: a citation that traces to the note as a whole, not one
+   recorded claim -- always paired with a title= explaining that. */
+.badge.note-level { border-color: var(--pl-accent); color: var(--pl-accent); }
+/* passage: a citation that quotes the note's matched text, not a recorded
+   claim; the quote follows it (`.passage-quote`). */
+.badge.passage { border-color: var(--pl-secondary); color: var(--pl-secondary); }
+.passage-quote { font-style: italic; color: var(--pl-muted); }
+/* ambiguous: an entity mention the registry couldn't resolve to one
+   candidate -- prefixed "?" wherever it's used. */
+.badge.ambiguous { border-color: var(--pl-accent); color: var(--pl-accent); }
+
+/* Signals fold (weekly-report wave 2, owner review 2026-09-18: "you
+   can't actually see what the signals are ... maybe add some drop-
+   downs"): a report's "N signals"/"N accounts" line gets an expandable
+   `<details>` right under it (`portolan.web.markdown._render_signals_
+   fold`) -- the `<summary>` reuses the `.badge` chip so it reads as the
+   same small pill every other citation/type marker already uses, with a
+   native `title=` tooltip (a plain-text preview of the first few
+   signals) doing the "hover to see what they are" the owner asked for.
+   Global (not scoped to `.report-body`) so the same fold looks right on
+   a report page, a note page, and the graph note panel alike -- every
+   surface that renders a note body through `portolan.web.markdown.
+   render_note_body`. */
+details.signals-fold { margin: 4px 0 4px 0; }
+details.signals-fold > summary.badge {
+  cursor: pointer; list-style: none; user-select: none;
+}
+details.signals-fold > summary.badge::-webkit-details-marker { display: none; }
+details.signals-fold[open] > summary.badge { border-color: var(--pl-accent); color: var(--pl-accent); }
+details.signals-fold > ul { margin-top: 8px; padding-left: 1.2em; }
+details.signals-fold li { margin: 6px 0; }
+/* A fold sits as the sole child of its own nested <li> (`_signals_fold_
+   block`'s "  - TOKEN" line, `portolan.web.markdown._extract_signals_
+   folds`'s own docstring) -- that wrapper <li>'s own bullet marker
+   would otherwise sit redundantly next to the chip. Screenshot review,
+   weekly-report wave 2: hidden here, on exactly that shape, so an
+   ordinary nested bullet elsewhere in a note body keeps its marker. */
+li:has(> details.signals-fold) { list-style: none; margin-left: -1.2em; }
+
+/* .flag: an error/broken-index state, never colour alone -- every use
+   carries the literal word "Error" or an equivalent plain statement of
+   what's wrong (form validation messages, the search index's own
+   "looks broken" case), so a colour-blind reader isn't relying on the
+   accent border to know something failed. */
+.flag {
+  border: 1px solid var(--pl-accent); color: var(--pl-accent); border-radius: 3px;
+  padding: 8px 10px; font-size: 13px; margin-bottom: 14px;
+}
+
+footer.site-footer {
+  max-width: 1100px; margin: 40px auto 0; padding: 14px 20px 30px;
+  border-top: 1px solid var(--pl-line);
+  font-family: var(--pl-mono); font-size: 12px; color: var(--pl-muted);
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  header.site { padding: 10px 14px; }
+  main.wrap { padding: 16px 16px 40px; }
+  footer.site-footer { padding: 14px 16px 24px; }
+}
+</style>
+{% block head %}{% endblock %}
+</head>
+<body>
+{% set session = get_session(request) %}
+{% set path = request.url.path %}
+<a class="skip sr-only" href="#main">Skip to content</a>
+<header class="site">
+  <a class="brand" href="/">{{ wordmark_svg|safe }}<span class="sr-only">Portolan home</span></a>
+  {% if session %}
+    <button type="button" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">☰ Menu</button>
+  {% endif %}
+  <nav class="site" id="site-nav">
+    {% if session %}
+      <a href="/" {% if path == '/' or path.startswith('/c/') %}aria-current="page"{% endif %}>Chat</a>
+      <a href="/atlas" {% if path.startswith('/atlas') %}aria-current="page"{% endif %}>Atlas</a>
+      <a href="/graph" {% if path.startswith('/graph') %}aria-current="page"{% endif %}>Graph</a>
+      <a href="/reports" {% if path.startswith('/reports') %}aria-current="page"{% endif %}>Reports</a>
+      <a href="/actions" {% if path.startswith('/actions') %}aria-current="page"{% endif %}>Actions</a>
+      <a href="/coverage" {% if path.startswith('/coverage') %}aria-current="page"{% endif %}>Coverage</a>
+      <a href="/review" {% if path.startswith('/review') %}aria-current="page"{% endif %}>Review</a>
+      <a href="/how-it-works" {% if path.startswith('/how-it-works') %}aria-current="page"{% endif %}>How it works</a>
+      <span class="sep" aria-hidden="true"></span>
+      <button type="button" id="theme-toggle" aria-label="Toggle color theme">Theme: System</button>
+      <span class="who">{{ session.display_name }}</span>
+      <form method="post" action="/logout" style="display:inline">
+        <button type="submit" class="logout-btn">Log out</button>
+      </form>
+    {% else %}
+      <a href="/how-it-works" {% if path.startswith('/how-it-works') %}aria-current="page"{% endif %}>How it works</a>
+      <button type="button" id="theme-toggle" aria-label="Toggle color theme">Theme: System</button>
+      <a href="/login">Log in</a>
+    {% endif %}
+  </nav>
+</header>
+<main class="wrap" id="main">
+{% block content %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <span>Working name · design as of 2026-09-12</span>
+  <span class="mono">v{{ app_version }}</span>
+</footer>
+<script nonce="{{ csp_nonce(request) }}">
+(function () {
+  // ---- theme toggle: system -> light -> dark -> system ------------------
+  var ORDER = ['system', 'light', 'dark'];
+  var LABELS = { system: 'Theme: System', light: 'Theme: Light', dark: 'Theme: Dark' };
+
+  function currentTheme() {
+    try { return localStorage.getItem('portolan-theme') || 'system'; }
+    catch (e) { return 'system'; }
+  }
+  function applyTheme(t) {
+    if (t === 'light' || t === 'dark') {
+      document.documentElement.setAttribute('data-theme', t);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try { localStorage.setItem('portolan-theme', t); } catch (e) { /* ignore */ }
+    var btn = document.getElementById('theme-toggle');
+    if (btn) {
+      btn.textContent = LABELS[t] || LABELS.system;
+      btn.setAttribute('aria-label', 'Toggle color theme, currently ' + t);
+    }
+  }
+  var themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = ORDER[(ORDER.indexOf(currentTheme()) + 1) % ORDER.length];
+      applyTheme(next);
+    });
+  }
+  applyTheme(currentTheme());
+
+  // ---- hamburger nav, under 720px ---------------------------------------
+  var toggle = document.getElementById('nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Review finding 22 (grouped nits): the UX eval's nav requirement
+    // asked for Escape to close the mobile nav; only a second tap on the
+    // hamburger did. Only acts while the nav is actually open, and
+    // returns focus to the toggle so a keyboard user isn't dropped.
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

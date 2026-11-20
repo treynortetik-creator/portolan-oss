@@ -1,0 +1,4615 @@
+{
+  "generator_version": "0.1.0",
+  "schema_version": "0.1",
+  "mode": "openrouter",
+  "reduced": false,
+  "generated_at": "2026-09-13T15:34:31.664175+00:00",
+  "truth_table_hash": "25a31edc6cca09acd8f656f4431040b6755c0850825fd7ed5b03c36a370f6208",
+  "sources": [
+    {
+      "id": "S-call-002",
+      "type": "call",
+      "path": "calls/S-call-002.txt",
+      "date": "2026-03-19",
+      "participants": [
+        "nina-vale",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "vireo"
+      ],
+      "token_estimate": 493,
+      "is_noise": false,
+      "is_distractor": true,
+      "distractor_id": "D04",
+      "facts": []
+    },
+    {
+      "id": "S-call-003",
+      "type": "call",
+      "path": "calls/S-call-003.txt",
+      "date": "2026-04-14",
+      "participants": [
+        "maria-chen",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "ashgrove"
+      ],
+      "token_estimate": 5605,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F11",
+          "locator": "09:00:27",
+          "line_or_comment": "9",
+          "excerpt": "Ashgrove Health's HalvardCare contract renews on 2027-03-31."
+        }
+      ]
+    },
+    {
+      "id": "S-call-004",
+      "type": "call",
+      "path": "calls/S-call-004.txt",
+      "date": "2026-06-17",
+      "participants": [
+        "derek-hollis",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 10155,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F22",
+          "locator": "00:06:31",
+          "line_or_comment": "135",
+          "excerpt": "Does the Tidewater T3 support Cerner integration?"
+        },
+        {
+          "fact_id": "F15",
+          "locator": "00:28:09",
+          "line_or_comment": "979",
+          "excerpt": "We're not shopping around."
+        }
+      ]
+    },
+    {
+      "id": "S-call-005",
+      "type": "call",
+      "path": "calls/S-call-005.txt",
+      "date": "2026-06-09",
+      "participants": [
+        "gwen-marsh",
+        "felix-arden",
+        "sam-okafor",
+        "kenji-mori"
+      ],
+      "accounts": [
+        "larkspur"
+      ],
+      "token_estimate": 7497,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F31",
+          "locator": "00:01:01",
+          "line_or_comment": "19",
+          "excerpt": "Larkspur Regional Health decided today, June 9, 2026, to standardise both hospitals on the Tidewater T3 by June 2027."
+        },
+        {
+          "fact_id": "F12",
+          "locator": "00:08:54",
+          "line_or_comment": "177",
+          "excerpt": "we'd be looking for something around twelve points off on Tidewater T2 consumables at the 2027 renewal."
+        },
+        {
+          "fact_id": "F20",
+          "locator": "00:21:25",
+          "line_or_comment": "517",
+          "excerpt": "Larkspur Regional Health asked for Tidewater Link integration with its Epic instance by January 2027."
+        }
+      ]
+    },
+    {
+      "id": "S-call-006",
+      "type": "call",
+      "path": "calls/S-call-006.txt",
+      "date": "2026-07-08",
+      "participants": [
+        "paul-strand",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 3853,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F14",
+          "locator": "09:01:17",
+          "line_or_comment": "17",
+          "excerpt": "Sable Valley Health froze new capital equipment purchases from 2026-07-01 through the end of 2026."
+        },
+        {
+          "fact_id": "F24",
+          "locator": "09:09:15",
+          "line_or_comment": "149",
+          "excerpt": "On July 8, 2026, Sable Valley Health\u2019s nursing informatics director called Tidewater Link\u2019s HL7 feed \u201cflawless since go-live.\u201d"
+        }
+      ]
+    },
+    {
+      "id": "S-call-007",
+      "type": "call",
+      "path": "calls/S-call-007.txt",
+      "date": "2026-07-30",
+      "participants": [
+        "rob-tallis",
+        "sam-okafor",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 1223,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F25",
+          "locator": "09:00:45",
+          "line_or_comment": "13",
+          "excerpt": "As of today, Ashgrove Medical Center runs eleven Tidewater T3 pumps across two ICUs."
+        },
+        {
+          "fact_id": "F01",
+          "locator": "09:01:51",
+          "line_or_comment": "29",
+          "excerpt": "\u201cTwo shipments showed up days late\u201d during the week of July twenty-seventh, and both were Tidewater T2 consumables."
+        },
+        {
+          "fact_id": "F19",
+          "locator": "09:03:13",
+          "line_or_comment": "53",
+          "excerpt": "The ICU asked for a night-mode alarm volume on the Tidewater T3."
+        }
+      ]
+    },
+    {
+      "id": "S-call-008",
+      "type": "call",
+      "path": "calls/S-call-008.txt",
+      "date": "2026-07-15",
+      "participants": [
+        "june-park",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "meadowbrook"
+      ],
+      "token_estimate": 7645,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F17",
+          "locator": "09:10:55",
+          "line_or_comment": "167",
+          "excerpt": "I\u2019ll put it plainly: \u201cWe\u2019ve been looking at some other options\u201d for pumps."
+        }
+      ]
+    },
+    {
+      "id": "S-call-009",
+      "type": "call",
+      "path": "calls/S-call-009.txt",
+      "date": "2026-08-05",
+      "participants": [
+        "felix-arden",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 7336,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F02",
+          "locator": "09:01:33",
+          "line_or_comment": "15",
+          "excerpt": "Regarding that late order last week, Larkspur Memorial Hospital reported a Tidewater T2 consumable delivery arriving four days late on 2026-08-04."
+        },
+        {
+          "fact_id": "F10",
+          "locator": "09:24:49",
+          "line_or_comment": "275",
+          "excerpt": "On 2026-08-05, Larkspur Memorial's biomed lead said that Halvard's field engineer response to the July pump alarm issue was \"the fastest we've had from any ven\u2026"
+        },
+        {
+          "fact_id": "F26",
+          "locator": "10:01:48",
+          "line_or_comment": "727",
+          "excerpt": "Larkspur Memorial Hospital has forty Tidewater T2 pumps and is trialling four T3 units as of 2026-08-05."
+        }
+      ]
+    },
+    {
+      "id": "S-call-011",
+      "type": "call",
+      "path": "calls/S-call-011.txt",
+      "date": "2026-08-14",
+      "participants": [
+        "derek-hollis",
+        "sam-okafor",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 2624,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F32",
+          "locator": "00:00:43",
+          "line_or_comment": "17",
+          "excerpt": "I will set up a quarterly business review with Northlake Health System starting in October 2026."
+        },
+        {
+          "fact_id": "F04",
+          "locator": "00:02:46",
+          "line_or_comment": "59",
+          "excerpt": "Northlake General Hospital received a Tidewater T3 delivery two days late on August 11, 2026."
+        },
+        {
+          "fact_id": "F04",
+          "locator": "00:03:21",
+          "line_or_comment": "75",
+          "excerpt": "Northlake General Hospital received a second Tidewater T3 three days late on August 13, 2026."
+        },
+        {
+          "fact_id": "F15b",
+          "locator": "00:07:13",
+          "line_or_comment": "187",
+          "excerpt": "We've had Corvane in to demo for the tower."
+        }
+      ]
+    },
+    {
+      "id": "S-call-013",
+      "type": "call",
+      "path": "calls/S-call-013.txt",
+      "date": "2026-08-20",
+      "participants": [
+        "helen-ozoro",
+        "maria-chen",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "ashgrove"
+      ],
+      "token_estimate": 8008,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F11b",
+          "locator": "09:11:56",
+          "line_or_comment": "279",
+          "excerpt": "Ashgrove Health's HalvardCare renewal was moved to 2027-06-30 at Ashgrove's request on 2026-08-20."
+        },
+        {
+          "fact_id": "F09",
+          "locator": "09:25:24",
+          "line_or_comment": "697",
+          "excerpt": "I promise Ashgrove Health a written delivery root-cause summary by 2026-08-28."
+        },
+        {
+          "fact_id": "F06",
+          "locator": "09:27:31",
+          "line_or_comment": "771",
+          "excerpt": "this is going to come up when we talk about next year"
+        }
+      ]
+    },
+    {
+      "id": "S-call-014",
+      "type": "call",
+      "path": "calls/S-call-014.txt",
+      "date": "2026-08-28",
+      "participants": [
+        "aisha-bell",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 8319,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F33",
+          "locator": "09:12:50",
+          "line_or_comment": "239",
+          "excerpt": "Cobalt Ridge Medical Center agreed to pilot two Tidewater T3 units in its emergency department from 2026-10-01."
+        }
+      ]
+    },
+    {
+      "id": "S-call-015",
+      "type": "call",
+      "path": "calls/S-call-015.txt",
+      "date": "2026-08-12",
+      "participants": [
+        "owen-castellane",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 14208,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F39",
+          "locator": "09:00:42",
+          "line_or_comment": "15",
+          "excerpt": "Their team asked, \u201ccould the Link module talk to our Epic instance?\u201d"
+        }
+      ]
+    },
+    {
+      "id": "S-call-016",
+      "type": "call",
+      "path": "calls/S-call-016.txt",
+      "date": "2026-08-10",
+      "participants": [
+        "yolanda-pierce",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "wrenfield"
+      ],
+      "token_estimate": 1823,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F40",
+          "locator": "09:02:55",
+          "line_or_comment": "11",
+          "excerpt": "Let's revisit that in 2027."
+        },
+        {
+          "fact_id": "F41",
+          "locator": "09:06:27",
+          "line_or_comment": "61",
+          "excerpt": "That is the current footprint, correct?"
+        }
+      ]
+    },
+    {
+      "id": "S-call-017",
+      "type": "call",
+      "path": "calls/S-call-017.txt",
+      "date": "2026-08-13",
+      "participants": [
+        "carlos-nunez",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "driftwood"
+      ],
+      "token_estimate": 9509,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F42",
+          "locator": "09:46:10",
+          "line_or_comment": "359",
+          "excerpt": "Driftwood Community Hospital said on 2026-08-13 that it had briefly compared Corvane Systems pumps last year but it \"never went anywhere.\""
+        },
+        {
+          "fact_id": "F43",
+          "locator": "10:55:53",
+          "line_or_comment": "899",
+          "excerpt": "The pharmacy director at Driftwood Community Hospital called the Tidewater T2's dosing accuracy \"spot on every time.\""
+        }
+      ]
+    },
+    {
+      "id": "S-call-018",
+      "type": "call",
+      "path": "calls/S-call-018.txt",
+      "date": "2026-08-19",
+      "participants": [
+        "felix-arden",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 7029,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F47",
+          "locator": "09:23:30",
+          "line_or_comment": "693",
+          "excerpt": "we'd need to look at a second supplier for consumables"
+        },
+        {
+          "fact_id": "F48",
+          "locator": "09:24:08",
+          "line_or_comment": "711",
+          "excerpt": "I am committing to a joint call with Halvard's operations team and Larkspur Memorial by August 27 to review the delivery root cause."
+        }
+      ]
+    },
+    {
+      "id": "S-call-019",
+      "type": "call",
+      "path": "calls/S-call-019.txt",
+      "date": "2026-08-24",
+      "participants": [
+        "aisha-bell",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 5981,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F52",
+          "locator": "00:01:14",
+          "line_or_comment": "25",
+          "excerpt": "We'd expect some kind of credit on the account after last month."
+        }
+      ]
+    },
+    {
+      "id": "S-call-020",
+      "type": "call",
+      "path": "calls/S-call-020.txt",
+      "date": "2026-08-24",
+      "participants": [
+        "yolanda-pierce",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "wrenfield"
+      ],
+      "token_estimate": 4232,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F40b",
+          "locator": "09:02:51",
+          "line_or_comment": "47",
+          "excerpt": "We need to move on the Epic integration now, not next year."
+        },
+        {
+          "fact_id": "F57",
+          "locator": "09:15:16",
+          "line_or_comment": "367",
+          "excerpt": "I promise Wrenfield Health that I will provide a Tidewater Link/Epic integration test plan by September 10, 2026."
+        }
+      ]
+    },
+    {
+      "id": "S-call-021",
+      "type": "call",
+      "path": "calls/S-call-021.txt",
+      "date": "2026-08-31",
+      "participants": [
+        "rob-tallis",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 969,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F61",
+          "locator": "09:02:39",
+          "line_or_comment": "5",
+          "excerpt": "we brought on two more drivers out of Dayton"
+        },
+        {
+          "fact_id": "F62",
+          "locator": "09:08:40",
+          "line_or_comment": "59",
+          "excerpt": "the last two Tidewater T2 deliveries came in right on schedule"
+        }
+      ]
+    },
+    {
+      "id": "S-call-n01",
+      "type": "call",
+      "path": "calls/S-call-n01.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "felix-arden",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 2145,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-call-n02",
+      "type": "call",
+      "path": "calls/S-call-n02.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "maria-chen",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "ashgrove"
+      ],
+      "token_estimate": 8355,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-call-n03",
+      "type": "call",
+      "path": "calls/S-call-n03.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 3259,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-call-n04",
+      "type": "call",
+      "path": "calls/S-call-n04.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 7443,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-call-n05",
+      "type": "call",
+      "path": "calls/S-call-n05.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "marcus-diallo",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "wrenfield-medical"
+      ],
+      "token_estimate": 5225,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-call-n06",
+      "type": "call",
+      "path": "calls/S-call-n06.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "owen-castellane",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 8195,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-019",
+      "type": "ticket",
+      "path": "tickets/S-ticket-019.json",
+      "date": "2026-05-12",
+      "participants": [
+        "owen-castellane"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 176,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F13",
+          "locator": "S-ticket-019#1",
+          "line_or_comment": "1",
+          "excerpt": "That's a duplicated line item of $4,800 on the invoice dated 2026-05-01, and we'd like it corrected before we remit payment."
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-024",
+      "type": "ticket",
+      "path": "tickets/S-ticket-024.json",
+      "date": "2026-07-09",
+      "participants": [
+        "felix-arden"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 216,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F23",
+          "locator": "S-ticket-024#1",
+          "line_or_comment": "1",
+          "excerpt": "three Tidewater T2 pumps at Larkspur North throwing occlusion alarms with no actual occlusion, all within the last couple of weeks this July"
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-027",
+      "type": "ticket",
+      "path": "tickets/S-ticket-027.json",
+      "date": "2026-07-31",
+      "participants": [
+        "rob-tallis"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 143,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F19",
+          "locator": "S-ticket-027#1",
+          "line_or_comment": "1",
+          "excerpt": "our ICU would like a night-mode option that lowers the Tidewater T3's alarm volume during overnight hours"
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-031",
+      "type": "ticket",
+      "path": "tickets/S-ticket-031.json",
+      "date": "2026-08-05",
+      "participants": [
+        "felix-arden"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 112,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F02",
+          "locator": "S-ticket-031#1",
+          "line_or_comment": "1",
+          "excerpt": "Our Tidewater T2 consumable order that was due August 1st didn't arrive until August 4th \u2014 4 days late"
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-038",
+      "type": "ticket",
+      "path": "tickets/S-ticket-038.json",
+      "date": "2026-08-18",
+      "participants": [
+        "june-park"
+      ],
+      "accounts": [
+        "meadowbrook"
+      ],
+      "token_estimate": 120,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F05",
+          "locator": "S-ticket-038#1",
+          "line_or_comment": "1",
+          "excerpt": "The Tidewater T2 consumable order we placed on August 12th didn't show up until five days after it was due"
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-039",
+      "type": "ticket",
+      "path": "tickets/S-ticket-039.json",
+      "date": "2026-08-11",
+      "participants": [
+        "aisha-bell"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 63,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F37",
+          "locator": "S-ticket-039#1",
+          "line_or_comment": "1",
+          "excerpt": "another late shipment, four days out"
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-040",
+      "type": "ticket",
+      "path": "tickets/S-ticket-040.json",
+      "date": "2026-08-19",
+      "participants": [
+        "maria-chen"
+      ],
+      "accounts": [
+        "ashgrove-riverside"
+      ],
+      "token_estimate": 83,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F44",
+          "locator": "S-ticket-040#1",
+          "line_or_comment": "1",
+          "excerpt": "The Tidewater T2 consumable delivery for Ashgrove Riverside Hospital arrived five days late on 2026-08-18."
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-041",
+      "type": "ticket",
+      "path": "tickets/S-ticket-041.json",
+      "date": "2026-08-18",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "northlake-general"
+      ],
+      "token_estimate": 88,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F49",
+          "locator": "S-ticket-041#1",
+          "line_or_comment": "1",
+          "excerpt": "The Northlake General Hospital Tidewater T3 order placed on 2026-08-15 arrived three days late, making it the third late delivery in three weeks."
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-042",
+      "type": "ticket",
+      "path": "tickets/S-ticket-042.json",
+      "date": "2026-08-22",
+      "participants": [
+        "aisha-bell"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 72,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F51",
+          "locator": "S-ticket-042#2",
+          "line_or_comment": "2",
+          "excerpt": "Cobalt Ridge Medical Center's second late Tidewater T2 delivery in three weeks arrived on 2026-08-22, four days behind schedule."
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-043",
+      "type": "ticket",
+      "path": "tickets/S-ticket-043.json",
+      "date": "2026-08-26",
+      "participants": [
+        "renee-castillo"
+      ],
+      "accounts": [
+        "anchor-bay"
+      ],
+      "token_estimate": 83,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F54",
+          "locator": "S-ticket-043#1",
+          "line_or_comment": "1",
+          "excerpt": "Hello, I\u2019m reviewing our upcoming supply budget and wanted to ask whether Anchor Bay Surgical Partners can receive a small-volume discount on Tidewater T2 cons\u2026"
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-044",
+      "type": "ticket",
+      "path": "tickets/S-ticket-044.json",
+      "date": "2026-09-03",
+      "participants": [
+        "aisha-bell"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 61,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F64",
+          "locator": "S-ticket-044#1",
+          "line_or_comment": "1",
+          "excerpt": "Cobalt Ridge Medical Center's materials manager said on 2026-09-03 that its last Tidewater T2 order \"showed up exactly when promised.\""
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-045",
+      "type": "ticket",
+      "path": "tickets/S-ticket-045.json",
+      "date": "2026-09-01",
+      "participants": [
+        "renee-castillo"
+      ],
+      "accounts": [
+        "anchor-bay"
+      ],
+      "token_estimate": 59,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F66",
+          "locator": "S-ticket-045#1",
+          "line_or_comment": "1",
+          "excerpt": "Anchor Bay Surgical Partners uses six Tidewater T2 pumps across two operating rooms as of 2026-09-01."
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-046",
+      "type": "ticket",
+      "path": "tickets/S-ticket-046.json",
+      "date": "2026-08-06",
+      "participants": [
+        "carlos-nunez"
+      ],
+      "accounts": [
+        "driftwood"
+      ],
+      "token_estimate": 57,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F71",
+          "locator": "S-ticket-046#1",
+          "line_or_comment": "1",
+          "excerpt": "Driftwood Community Hospital asked on 2026-08-06 for a review of its bulk-consumables reorder threshold."
+        }
+      ]
+    },
+    {
+      "id": "S-ticket-n001",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n001.json",
+      "date": "2026-03-02",
+      "participants": [
+        "marcus-diallo"
+      ],
+      "accounts": [
+        "wrenfield-medical"
+      ],
+      "token_estimate": 43,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n002",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n002.json",
+      "date": "2026-03-02",
+      "participants": [
+        "sophie-lund"
+      ],
+      "accounts": [
+        "wrenfield-east"
+      ],
+      "token_estimate": 43,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n003",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n003.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 64,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n004",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n004.json",
+      "date": "2026-03-02",
+      "participants": [
+        "rob-tallis"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 45,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n005",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n005.json",
+      "date": "2026-03-02",
+      "participants": [
+        "rob-tallis"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 29,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n006",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n006.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 59,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n007",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n007.json",
+      "date": "2026-03-02",
+      "participants": [
+        "owen-castellane"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 40,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n008",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n008.json",
+      "date": "2026-03-02",
+      "participants": [
+        "owen-castellane"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 29,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n009",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n009.json",
+      "date": "2026-03-02",
+      "participants": [
+        "maria-chen"
+      ],
+      "accounts": [
+        "ashgrove"
+      ],
+      "token_estimate": 40,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n010",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n010.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 25,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n011",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n011.json",
+      "date": "2026-03-02",
+      "participants": [
+        "helen-ozoro"
+      ],
+      "accounts": [
+        "ashgrove"
+      ],
+      "token_estimate": 33,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n012",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n012.json",
+      "date": "2026-03-02",
+      "participants": [
+        "owen-castellane"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 23,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n013",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n013.json",
+      "date": "2026-03-02",
+      "participants": [
+        "felix-arden"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 37,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n014",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n014.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 45,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n015",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n015.json",
+      "date": "2026-03-02",
+      "participants": [
+        "marcus-diallo"
+      ],
+      "accounts": [
+        "wrenfield-medical"
+      ],
+      "token_estimate": 59,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n016",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n016.json",
+      "date": "2026-03-02",
+      "participants": [
+        "rob-tallis"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 64,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n017",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n017.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "ashgrove-riverside"
+      ],
+      "token_estimate": 44,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n018",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n018.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 47,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n019",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n019.json",
+      "date": "2026-03-02",
+      "participants": [
+        "aisha-bell"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 44,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n020",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n020.json",
+      "date": "2026-03-02",
+      "participants": [
+        "yolanda-pierce"
+      ],
+      "accounts": [
+        "wrenfield"
+      ],
+      "token_estimate": 45,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n021",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n021.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 31,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n022",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n022.json",
+      "date": "2026-03-02",
+      "participants": [
+        "tom-ridley"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 31,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n023",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n023.json",
+      "date": "2026-03-02",
+      "participants": [
+        "nina-vale"
+      ],
+      "accounts": [
+        "vireo"
+      ],
+      "token_estimate": 64,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n024",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n024.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 28,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n025",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n025.json",
+      "date": "2026-03-02",
+      "participants": [
+        "aisha-bell"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 59,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n026",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n026.json",
+      "date": "2026-03-02",
+      "participants": [
+        "carlos-nunez"
+      ],
+      "accounts": [
+        "driftwood"
+      ],
+      "token_estimate": 37,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n027",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n027.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 36,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n028",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n028.json",
+      "date": "2026-03-02",
+      "participants": [
+        "aisha-bell"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 31,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n029",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n029.json",
+      "date": "2026-03-02",
+      "participants": [
+        "maria-chen"
+      ],
+      "accounts": [
+        "ashgrove"
+      ],
+      "token_estimate": 29,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n030",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n030.json",
+      "date": "2026-03-02",
+      "participants": [
+        "owen-castellane"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 25,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n031",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n031.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "ashgrove-riverside"
+      ],
+      "token_estimate": 48,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n032",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n032.json",
+      "date": "2026-03-02",
+      "participants": [
+        "carlos-nunez"
+      ],
+      "accounts": [
+        "driftwood"
+      ],
+      "token_estimate": 64,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n033",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n033.json",
+      "date": "2026-03-02",
+      "participants": [
+        "nina-vale"
+      ],
+      "accounts": [
+        "vireo"
+      ],
+      "token_estimate": 44,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n034",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n034.json",
+      "date": "2026-03-02",
+      "participants": [
+        "marcus-diallo"
+      ],
+      "accounts": [
+        "wrenfield-medical"
+      ],
+      "token_estimate": 44,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n035",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n035.json",
+      "date": "2026-03-02",
+      "participants": [
+        "june-park"
+      ],
+      "accounts": [
+        "meadowbrook"
+      ],
+      "token_estimate": 35,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n036",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n036.json",
+      "date": "2026-03-02",
+      "participants": [
+        "paul-strand"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 59,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n037",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n037.json",
+      "date": "2026-03-02",
+      "participants": [
+        "owen-castellane"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 48,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n038",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n038.json",
+      "date": "2026-03-02",
+      "participants": [
+        "paul-strand"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 41,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n039",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n039.json",
+      "date": "2026-03-02",
+      "participants": [
+        "felix-arden"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 55,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n040",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n040.json",
+      "date": "2026-03-02",
+      "participants": [
+        "marcus-diallo"
+      ],
+      "accounts": [
+        "wrenfield-medical"
+      ],
+      "token_estimate": 41,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n041",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n041.json",
+      "date": "2026-03-02",
+      "participants": [
+        "paul-strand"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 44,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n042",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n042.json",
+      "date": "2026-03-02",
+      "participants": [
+        "rob-tallis"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 45,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n043",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n043.json",
+      "date": "2026-03-02",
+      "participants": [
+        "june-park"
+      ],
+      "accounts": [
+        "meadowbrook"
+      ],
+      "token_estimate": 29,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n044",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n044.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "northlake-general"
+      ],
+      "token_estimate": 32,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n045",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n045.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "larkspur-north"
+      ],
+      "token_estimate": 29,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n046",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n046.json",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis"
+      ],
+      "accounts": [
+        "ashgrove-riverside"
+      ],
+      "token_estimate": 37,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n047",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n047.json",
+      "date": "2026-03-02",
+      "participants": [
+        "tom-ridley"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 40,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n048",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n048.json",
+      "date": "2026-03-02",
+      "participants": [
+        "tom-ridley"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 59,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n049",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n049.json",
+      "date": "2026-03-02",
+      "participants": [
+        "marcus-diallo"
+      ],
+      "accounts": [
+        "wrenfield-medical"
+      ],
+      "token_estimate": 64,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-ticket-n050",
+      "type": "ticket",
+      "path": "tickets/S-ticket-n050.json",
+      "date": "2026-03-02",
+      "participants": [
+        "tom-ridley"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 43,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-005",
+      "type": "email",
+      "path": "email/S-email-005.txt",
+      "date": "2026-03-04",
+      "participants": [
+        "priya-natarajan",
+        "dana-whitlock"
+      ],
+      "accounts": [],
+      "token_estimate": 121,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F34",
+          "locator": "S-email-005@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "Kestrel Medical Group has confirmed they're not renewing \u2014 they've moved to Brightline Medical for their infusion pumps, effective this past February."
+        }
+      ]
+    },
+    {
+      "id": "S-email-021",
+      "type": "email",
+      "path": "email/S-email-021.txt",
+      "date": "2026-04-22",
+      "participants": [
+        "owen-castellane",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 75,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F21",
+          "locator": "S-email-021@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "could Halvard put together a Spanish-language version of the Tidewater T2 quick-start card? We have a growing number of staff who'd benefit from having it in S\u2026"
+        }
+      ]
+    },
+    {
+      "id": "S-email-030",
+      "type": "email",
+      "path": "email/S-email-030.txt",
+      "date": "2026-05-20",
+      "participants": [
+        "nina-vale",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "vireo"
+      ],
+      "token_estimate": 121,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F16",
+          "locator": "S-email-030@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "We got a proposal from Brightline Medical last week that came in about 15 percent cheaper than what we're currently paying Halvard for consumables."
+        },
+        {
+          "fact_id": "F27",
+          "locator": "S-email-030@halvardmedical.com#p3",
+          "line_or_comment": "3",
+          "excerpt": "right now we run Tidewater T2 pumps in both of our operating rooms, and we don't have any in recovery at the moment."
+        }
+      ]
+    },
+    {
+      "id": "S-email-040",
+      "type": "email",
+      "path": "email/S-email-040.txt",
+      "date": "2026-06-30",
+      "participants": [
+        "owen-castellane",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 71,
+      "is_noise": false,
+      "is_distractor": true,
+      "distractor_id": "D02",
+      "facts": []
+    },
+    {
+      "id": "S-email-052",
+      "type": "email",
+      "path": "email/S-email-052.txt",
+      "date": "2026-08-07",
+      "participants": [
+        "aisha-bell",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "cobalt-ridge"
+      ],
+      "token_estimate": 129,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F28",
+          "locator": "S-email-052@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "I'm taking over from Tom here at Cobalt Ridge as Materials Manager \u2014 he left the hospital last month, and I'll be your point of contact going forward."
+        },
+        {
+          "fact_id": "F03",
+          "locator": "S-email-052@halvardmedical.com#p3",
+          "line_or_comment": "3",
+          "excerpt": "our Tidewater T2 delivery that was due Wednesday didn't show up until three days late, and we ended up borrowing consumables from Larkspur just to get through\u2026"
+        }
+      ]
+    },
+    {
+      "id": "S-email-058",
+      "type": "email",
+      "path": "email/S-email-058.txt",
+      "date": "2026-08-24",
+      "participants": [
+        "maria-chen-personal",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "ashgrove"
+      ],
+      "token_estimate": 85,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F30",
+          "locator": "S-email-058@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "I've moved from Director of Procurement into a new role as Director of Clinical Operations here at Ashgrove Health, effective this month."
+        }
+      ]
+    },
+    {
+      "id": "S-email-061",
+      "type": "email",
+      "path": "email/S-email-061.txt",
+      "date": "2026-08-22",
+      "participants": [
+        "luis-ferreira",
+        "dana-whitlock",
+        "sam-okafor"
+      ],
+      "accounts": [],
+      "token_estimate": 113,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F07",
+          "locator": "S-email-061@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "Dayton has been down two delivery drivers since July 27th, and that gap is still open as of today"
+        }
+      ]
+    },
+    {
+      "id": "S-email-062",
+      "type": "email",
+      "path": "email/S-email-062.txt",
+      "date": "2026-08-25",
+      "participants": [
+        "luis-ferreira",
+        "dana-whitlock"
+      ],
+      "accounts": [],
+      "token_estimate": 76,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F08",
+          "locator": "S-email-062@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "Columbus switched line-haul carriers on August 3rd for outbound Tidewater consumables, and the new carrier's pickup windows are tighter but so far running on t\u2026"
+        }
+      ]
+    },
+    {
+      "id": "S-email-063",
+      "type": "email",
+      "path": "email/S-email-063.txt",
+      "date": "2026-08-11",
+      "participants": [
+        "felix-arden",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 65,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F38",
+          "locator": "S-email-063@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "Larkspur North Hospital's Tidewater T2 consumable order placed 2026-08-08 arrived three days late."
+        }
+      ]
+    },
+    {
+      "id": "S-email-064",
+      "type": "email",
+      "path": "email/S-email-064.txt",
+      "date": "2026-08-20",
+      "participants": [
+        "june-park",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "meadowbrook"
+      ],
+      "token_estimate": 99,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F45",
+          "locator": "S-email-064@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "Meadowbrook Community Hospital had a second late Tidewater T2 delivery, arriving four days late on 2026-08-19."
+        }
+      ]
+    },
+    {
+      "id": "S-email-065",
+      "type": "email",
+      "path": "email/S-email-065.txt",
+      "date": "2026-08-21",
+      "participants": [
+        "luis-ferreira",
+        "dana-whitlock",
+        "sam-okafor"
+      ],
+      "accounts": [],
+      "token_estimate": 88,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F46",
+          "locator": "S-email-065@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "The Dayton distribution branch's on-time delivery rate fell to 61 percent for the two weeks ending 2026-08-20, per Halvard's operations manager."
+        }
+      ]
+    },
+    {
+      "id": "S-email-066",
+      "type": "email",
+      "path": "email/S-email-066.txt",
+      "date": "2026-08-21",
+      "participants": [
+        "owen-castellane",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 64,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F50",
+          "locator": "S-email-066@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "St. Aldric Health followed up on 2026-08-21 asking for a firm timeline on the Tidewater Link Epic integration, the second of three such requests."
+        }
+      ]
+    },
+    {
+      "id": "S-email-067",
+      "type": "email",
+      "path": "email/S-email-067.txt",
+      "date": "2026-08-25",
+      "participants": [
+        "gwen-marsh",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "larkspur"
+      ],
+      "token_estimate": 79,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F53",
+          "locator": "S-email-067@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "on August 25, 2026, Larkspur Regional Health\u2019s VP Supply Chain reiterated that the 12 percent volume discount \u201cisn't optional anymore\u201d given the delivery issue\u2026"
+        }
+      ]
+    },
+    {
+      "id": "S-email-068",
+      "type": "email",
+      "path": "email/S-email-068.txt",
+      "date": "2026-08-27",
+      "participants": [
+        "carlos-nunez",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "driftwood"
+      ],
+      "token_estimate": 77,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F56",
+          "locator": "S-email-068@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "I\u2019m writing on August 27, 2026, to request a Tidewater Link connection to Driftwood Community Hospital\u2019s Epic instance; this is our third such request."
+        }
+      ]
+    },
+    {
+      "id": "S-email-069",
+      "type": "email",
+      "path": "email/S-email-069.txt",
+      "date": "2026-08-28",
+      "participants": [
+        "dana-whitlock",
+        "carlos-nunez"
+      ],
+      "accounts": [
+        "driftwood"
+      ],
+      "token_estimate": 75,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F58",
+          "locator": "S-email-069@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "I\u2019ll send Driftwood Community Hospital a formal Tidewater Link project timeline by 2026-09-05."
+        }
+      ]
+    },
+    {
+      "id": "S-email-070",
+      "type": "email",
+      "path": "email/S-email-070.txt",
+      "date": "2026-08-29",
+      "participants": [
+        "diego-ramos",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "vireo"
+      ],
+      "token_estimate": 72,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F60",
+          "locator": "S-email-070@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "I\u2019m stepping in for Nina as the practice administrator for Vireo Surgical Group. I wanted to introduce myself and make sure I\u2019m the right contact for anything\u2026"
+        }
+      ]
+    },
+    {
+      "id": "S-email-071",
+      "type": "email",
+      "path": "email/S-email-071.txt",
+      "date": "2026-09-02",
+      "participants": [
+        "felix-arden",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 108,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F63",
+          "locator": "S-email-071@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "our biomed lead confirmed today, September 2, 2026, that deliveries had been on time for two straight weeks and he was \u201cdropping the second-supplier idea for n\u2026"
+        }
+      ]
+    },
+    {
+      "id": "S-email-072",
+      "type": "email",
+      "path": "email/S-email-072.txt",
+      "date": "2026-09-04",
+      "participants": [
+        "june-park",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "meadowbrook"
+      ],
+      "token_estimate": 84,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F65",
+          "locator": "S-email-072@halvardmedical.com#p3",
+          "line_or_comment": "3",
+          "excerpt": "On September 4, 2026, Meadowbrook Community Hospital's pharmacy director said that the delivery issues from August \"seem to be behind us.\""
+        }
+      ]
+    },
+    {
+      "id": "S-email-073",
+      "type": "email",
+      "path": "email/S-email-073.txt",
+      "date": "2026-09-05",
+      "participants": [
+        "sophie-lund",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "wrenfield-east"
+      ],
+      "token_estimate": 61,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F67",
+          "locator": "S-email-073@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "The thread ends without a reply from Halvard."
+        }
+      ]
+    },
+    {
+      "id": "S-email-074",
+      "type": "email",
+      "path": "email/S-email-074.txt",
+      "date": "2026-08-15",
+      "participants": [
+        "renee-castillo",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "anchor-bay"
+      ],
+      "token_estimate": 63,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F70",
+          "locator": "S-email-074@halvardmedical.com#p2",
+          "line_or_comment": "2",
+          "excerpt": "\u201cwe haven't taken a meeting.\u201d"
+        }
+      ]
+    },
+    {
+      "id": "S-email-n001",
+      "type": "email",
+      "path": "email/S-email-n001.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "kenji-mori",
+        "sam-okafor"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n002",
+      "type": "email",
+      "path": "email/S-email-n002.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n003",
+      "type": "email",
+      "path": "email/S-email-n003.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n004",
+      "type": "email",
+      "path": "email/S-email-n004.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sophie-lund",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "wrenfield-east"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n005",
+      "type": "email",
+      "path": "email/S-email-n005.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "priya-natarajan",
+        "luis-ferreira"
+      ],
+      "accounts": [],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n006",
+      "type": "email",
+      "path": "email/S-email-n006.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "june-park",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "meadowbrook"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n007",
+      "type": "email",
+      "path": "email/S-email-n007.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "priya-natarajan",
+        "kenji-mori"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n008",
+      "type": "email",
+      "path": "email/S-email-n008.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "luis-ferreira",
+        "dana-whitlock"
+      ],
+      "accounts": [],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n009",
+      "type": "email",
+      "path": "email/S-email-n009.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "carlos-nunez",
+        "luis-ferreira"
+      ],
+      "accounts": [
+        "driftwood"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n010",
+      "type": "email",
+      "path": "email/S-email-n010.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "kenji-mori"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n011",
+      "type": "email",
+      "path": "email/S-email-n011.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "diego-ramos",
+        "kenji-mori"
+      ],
+      "accounts": [
+        "vireo"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n012",
+      "type": "email",
+      "path": "email/S-email-n012.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sam-okafor",
+        "luis-ferreira"
+      ],
+      "accounts": [],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n013",
+      "type": "email",
+      "path": "email/S-email-n013.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sam-okafor",
+        "luis-ferreira"
+      ],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n014",
+      "type": "email",
+      "path": "email/S-email-n014.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "felix-arden",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n015",
+      "type": "email",
+      "path": "email/S-email-n015.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "kenji-mori"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n016",
+      "type": "email",
+      "path": "email/S-email-n016.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "paul-strand",
+        "luis-ferreira"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n017",
+      "type": "email",
+      "path": "email/S-email-n017.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "renee-castillo",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "anchor-bay"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n018",
+      "type": "email",
+      "path": "email/S-email-n018.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "kenji-mori"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n019",
+      "type": "email",
+      "path": "email/S-email-n019.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "gwen-marsh",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "larkspur"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n020",
+      "type": "email",
+      "path": "email/S-email-n020.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "paul-strand",
+        "kenji-mori"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n021",
+      "type": "email",
+      "path": "email/S-email-n021.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "paul-strand",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n022",
+      "type": "email",
+      "path": "email/S-email-n022.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "paul-strand",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n023",
+      "type": "email",
+      "path": "email/S-email-n023.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n024",
+      "type": "email",
+      "path": "email/S-email-n024.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sam-okafor",
+        "sam-okafor"
+      ],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n025",
+      "type": "email",
+      "path": "email/S-email-n025.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "renee-castillo",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "anchor-bay"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n026",
+      "type": "email",
+      "path": "email/S-email-n026.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "kenji-mori",
+        "sam-okafor"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n027",
+      "type": "email",
+      "path": "email/S-email-n027.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sophie-lund",
+        "luis-ferreira"
+      ],
+      "accounts": [
+        "wrenfield-east"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n028",
+      "type": "email",
+      "path": "email/S-email-n028.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "kenji-mori",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n029",
+      "type": "email",
+      "path": "email/S-email-n029.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sam-okafor",
+        "dana-whitlock"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n030",
+      "type": "email",
+      "path": "email/S-email-n030.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n031",
+      "type": "email",
+      "path": "email/S-email-n031.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "priya-natarajan",
+        "dana-whitlock"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n032",
+      "type": "email",
+      "path": "email/S-email-n032.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sophie-lund",
+        "luis-ferreira"
+      ],
+      "accounts": [
+        "wrenfield-east"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n033",
+      "type": "email",
+      "path": "email/S-email-n033.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "kenji-mori",
+        "dana-whitlock"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n034",
+      "type": "email",
+      "path": "email/S-email-n034.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "kenji-mori",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n035",
+      "type": "email",
+      "path": "email/S-email-n035.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "priya-natarajan",
+        "sam-okafor"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n036",
+      "type": "email",
+      "path": "email/S-email-n036.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "kenji-mori",
+        "luis-ferreira"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n037",
+      "type": "email",
+      "path": "email/S-email-n037.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n038",
+      "type": "email",
+      "path": "email/S-email-n038.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "rob-tallis",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n039",
+      "type": "email",
+      "path": "email/S-email-n039.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "rob-tallis",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "ashgrove-medical"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n040",
+      "type": "email",
+      "path": "email/S-email-n040.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "nina-vale",
+        "luis-ferreira"
+      ],
+      "accounts": [
+        "vireo"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n041",
+      "type": "email",
+      "path": "email/S-email-n041.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "luis-ferreira",
+        "sam-okafor"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n042",
+      "type": "email",
+      "path": "email/S-email-n042.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n043",
+      "type": "email",
+      "path": "email/S-email-n043.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "owen-castellane",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n044",
+      "type": "email",
+      "path": "email/S-email-n044.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "carlos-nunez",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "driftwood"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n045",
+      "type": "email",
+      "path": "email/S-email-n045.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "marcus-diallo",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "wrenfield-medical"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n046",
+      "type": "email",
+      "path": "email/S-email-n046.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "luis-ferreira",
+        "sam-okafor"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n047",
+      "type": "email",
+      "path": "email/S-email-n047.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "maria-chen",
+        "luis-ferreira"
+      ],
+      "accounts": [
+        "ashgrove"
+      ],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n048",
+      "type": "email",
+      "path": "email/S-email-n048.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "kenji-mori",
+        "luis-ferreira"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n049",
+      "type": "email",
+      "path": "email/S-email-n049.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sam-okafor",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n050",
+      "type": "email",
+      "path": "email/S-email-n050.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "kenji-mori",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n051",
+      "type": "email",
+      "path": "email/S-email-n051.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "owen-castellane",
+        "kenji-mori"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n052",
+      "type": "email",
+      "path": "email/S-email-n052.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "priya-natarajan",
+        "luis-ferreira"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n053",
+      "type": "email",
+      "path": "email/S-email-n053.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "luis-ferreira"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n054",
+      "type": "email",
+      "path": "email/S-email-n054.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "felix-arden",
+        "sam-okafor"
+      ],
+      "accounts": [
+        "larkspur-memorial"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n055",
+      "type": "email",
+      "path": "email/S-email-n055.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "derek-hollis",
+        "dana-whitlock"
+      ],
+      "accounts": [
+        "northlake"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n056",
+      "type": "email",
+      "path": "email/S-email-n056.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n057",
+      "type": "email",
+      "path": "email/S-email-n057.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sam-okafor",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n058",
+      "type": "email",
+      "path": "email/S-email-n058.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "sam-okafor",
+        "luis-ferreira"
+      ],
+      "accounts": [],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n059",
+      "type": "email",
+      "path": "email/S-email-n059.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "renee-castillo",
+        "kenji-mori"
+      ],
+      "accounts": [
+        "anchor-bay"
+      ],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n060",
+      "type": "email",
+      "path": "email/S-email-n060.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "luis-ferreira",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n061",
+      "type": "email",
+      "path": "email/S-email-n061.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "renee-castillo",
+        "priya-natarajan"
+      ],
+      "accounts": [
+        "anchor-bay"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n062",
+      "type": "email",
+      "path": "email/S-email-n062.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "kenji-mori"
+      ],
+      "accounts": [],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n063",
+      "type": "email",
+      "path": "email/S-email-n063.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "priya-natarajan",
+        "dana-whitlock"
+      ],
+      "accounts": [],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n064",
+      "type": "email",
+      "path": "email/S-email-n064.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "paul-strand",
+        "luis-ferreira"
+      ],
+      "accounts": [
+        "sable-valley"
+      ],
+      "token_estimate": 21,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-n065",
+      "type": "email",
+      "path": "email/S-email-n065.txt",
+      "date": "2026-03-02",
+      "participants": [
+        "dana-whitlock",
+        "priya-natarajan"
+      ],
+      "accounts": [],
+      "token_estimate": 19,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-email-021-thread",
+      "type": "email",
+      "path": "email/S-email-021-thread.txt",
+      "date": "2026-04-23",
+      "participants": [
+        "priya-natarajan",
+        "owen-castellane"
+      ],
+      "accounts": [
+        "st-aldric"
+      ],
+      "token_estimate": 339,
+      "is_noise": false,
+      "is_distractor": true,
+      "distractor_id": "D03",
+      "facts": []
+    },
+    {
+      "id": "S-rss-002",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-06-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 51,
+      "is_noise": false,
+      "is_distractor": true,
+      "distractor_id": "D01",
+      "facts": []
+    },
+    {
+      "id": "S-rss-004",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-08-26",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 44,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F18",
+          "locator": "url:https://feeds.example-newswire.test/portolan-corpus/s-rss-004 2026-08-26",
+          "line_or_comment": "S-rss-004",
+          "excerpt": "Corvane Systems issued a voluntary recall of its C-40 infusion pump line on 2026-08-26, citing a software defect identified during post-market surveillance. The"
+        }
+      ]
+    },
+    {
+      "id": "S-rss-006",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-09-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 37,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F29",
+          "locator": "url:https://feeds.example-newswire.test/portolan-corpus/s-rss-006 2026-09-02",
+          "line_or_comment": "S-rss-006",
+          "excerpt": "Larkspur Regional Health announced Renata Solis as its new Chief Financial Officer, effective September 1, 2026, succeeding the system's outgoing finance lead a"
+        }
+      ]
+    },
+    {
+      "id": "S-rss-007",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-08-25",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 32,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F59",
+          "locator": "url:https://feeds.example-newswire.test/portolan-corpus/s-rss-007 2026-08-25",
+          "line_or_comment": "S-rss-007",
+          "excerpt": "Northlake Health System announced that Derek Hollis, formerly its Director of Clinical Engineering, has been promoted to Vice President of Facilities, effective"
+        }
+      ]
+    },
+    {
+      "id": "S-rss-n001",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n002",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 11,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n003",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n004",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 11,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n005",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n006",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 11,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n007",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 11,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n008",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n009",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 11,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n010",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n011",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n012",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n013",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n014",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n015",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n016",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 11,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n017",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n018",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n019",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n020",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n021",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n022",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n023",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 11,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n024",
+      "type": "rss",
+      "path": "rss/linkedin-larkspur.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-rss-n025",
+      "type": "rss",
+      "path": "rss/industry-news.json",
+      "date": "2026-03-02",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 15,
+      "is_noise": true,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": []
+    },
+    {
+      "id": "S-crm-A1002",
+      "type": "crm",
+      "path": "crm/accounts.csv",
+      "date": "2026-09-11",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 0,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F36",
+          "locator": "crm/accounts.csv#A-1002",
+          "line_or_comment": "A-1002",
+          "excerpt": "Larkspur Regional Health is owned by Pinecrest Health Partners."
+        }
+      ]
+    },
+    {
+      "id": "S-crm-A1010",
+      "type": "crm",
+      "path": "crm/accounts.csv",
+      "date": "2026-09-11",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 0,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F35",
+          "locator": "crm/accounts.csv#A-1010",
+          "line_or_comment": "A-1010",
+          "excerpt": "Ashgrove Health's annual recurring revenue with Halvard is 2,350,000 dollars as of 2026-09-11."
+        }
+      ]
+    },
+    {
+      "id": "S-crm-A1080",
+      "type": "crm",
+      "path": "crm/accounts.csv",
+      "date": "2026-09-11",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 0,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F34",
+          "locator": "crm/accounts.csv#A-1080",
+          "line_or_comment": "A-1080",
+          "excerpt": "Kestrel Medical Group ended its Halvard relationship in 2026-02 after moving to Brightline Medical."
+        }
+      ]
+    },
+    {
+      "id": "S-crm-opp-A1010",
+      "type": "crm",
+      "path": "crm/opportunities.csv",
+      "date": "2026-04-15",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 0,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F11",
+          "locator": "crm/opportunities.csv#O-3001",
+          "line_or_comment": "O-3001",
+          "excerpt": "Ashgrove Health's HalvardCare contract renews on 2027-03-31."
+        }
+      ]
+    },
+    {
+      "id": "S-crm-opp-A1010-v2",
+      "type": "crm",
+      "path": "crm/opportunities-2026-08-21.csv",
+      "date": "2026-08-21",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 0,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F11b",
+          "locator": "crm/opportunities-2026-08-21.csv#O-3001",
+          "line_or_comment": "O-3001",
+          "excerpt": "Ashgrove Health's HalvardCare renewal was moved to 2027-06-30 at Ashgrove's request on 2026-08-20."
+        }
+      ]
+    },
+    {
+      "id": "S-crm-A1090",
+      "type": "crm",
+      "path": "crm/accounts.csv",
+      "date": "2026-09-11",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 0,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F68",
+          "locator": "crm/accounts.csv#A-1090",
+          "line_or_comment": "A-1090",
+          "excerpt": "Wrenfield Health's annual recurring revenue with Halvard is 1,410,000 dollars as of 2026-09-11."
+        }
+      ]
+    },
+    {
+      "id": "S-crm-A1091",
+      "type": "crm",
+      "path": "crm/accounts.csv",
+      "date": "2026-09-11",
+      "participants": [],
+      "accounts": [],
+      "token_estimate": 0,
+      "is_noise": false,
+      "is_distractor": false,
+      "distractor_id": null,
+      "facts": [
+        {
+          "fact_id": "F69",
+          "locator": "crm/accounts.csv#A-1091",
+          "line_or_comment": "A-1091",
+          "excerpt": "Wrenfield Medical Center is owned by Wrenfield Health."
+        }
+      ]
+    }
+  ],
+  "facts": {
+    "F11": [
+      {
+        "source_id": "S-call-003",
+        "locator": "09:00:27",
+        "line_or_comment": "9",
+        "excerpt": "Ashgrove Health's HalvardCare contract renews on 2027-03-31."
+      },
+      {
+        "source_id": "S-crm-opp-A1010",
+        "locator": "crm/opportunities.csv#O-3001",
+        "line_or_comment": "O-3001",
+        "excerpt": "Ashgrove Health's HalvardCare contract renews on 2027-03-31."
+      }
+    ],
+    "F22": [
+      {
+        "source_id": "S-call-004",
+        "locator": "00:06:31",
+        "line_or_comment": "135",
+        "excerpt": "Does the Tidewater T3 support Cerner integration?"
+      }
+    ],
+    "F15": [
+      {
+        "source_id": "S-call-004",
+        "locator": "00:28:09",
+        "line_or_comment": "979",
+        "excerpt": "We're not shopping around."
+      }
+    ],
+    "F31": [
+      {
+        "source_id": "S-call-005",
+        "locator": "00:01:01",
+        "line_or_comment": "19",
+        "excerpt": "Larkspur Regional Health decided today, June 9, 2026, to standardise both hospitals on the Tidewater T3 by June 2027."
+      }
+    ],
+    "F12": [
+      {
+        "source_id": "S-call-005",
+        "locator": "00:08:54",
+        "line_or_comment": "177",
+        "excerpt": "we'd be looking for something around twelve points off on Tidewater T2 consumables at the 2027 renewal."
+      }
+    ],
+    "F20": [
+      {
+        "source_id": "S-call-005",
+        "locator": "00:21:25",
+        "line_or_comment": "517",
+        "excerpt": "Larkspur Regional Health asked for Tidewater Link integration with its Epic instance by January 2027."
+      }
+    ],
+    "F14": [
+      {
+        "source_id": "S-call-006",
+        "locator": "09:01:17",
+        "line_or_comment": "17",
+        "excerpt": "Sable Valley Health froze new capital equipment purchases from 2026-07-01 through the end of 2026."
+      }
+    ],
+    "F24": [
+      {
+        "source_id": "S-call-006",
+        "locator": "09:09:15",
+        "line_or_comment": "149",
+        "excerpt": "On July 8, 2026, Sable Valley Health\u2019s nursing informatics director called Tidewater Link\u2019s HL7 feed \u201cflawless since go-live.\u201d"
+      }
+    ],
+    "F25": [
+      {
+        "source_id": "S-call-007",
+        "locator": "09:00:45",
+        "line_or_comment": "13",
+        "excerpt": "As of today, Ashgrove Medical Center runs eleven Tidewater T3 pumps across two ICUs."
+      }
+    ],
+    "F01": [
+      {
+        "source_id": "S-call-007",
+        "locator": "09:01:51",
+        "line_or_comment": "29",
+        "excerpt": "\u201cTwo shipments showed up days late\u201d during the week of July twenty-seventh, and both were Tidewater T2 consumables."
+      }
+    ],
+    "F19": [
+      {
+        "source_id": "S-call-007",
+        "locator": "09:03:13",
+        "line_or_comment": "53",
+        "excerpt": "The ICU asked for a night-mode alarm volume on the Tidewater T3."
+      },
+      {
+        "source_id": "S-ticket-027",
+        "locator": "S-ticket-027#1",
+        "line_or_comment": "1",
+        "excerpt": "our ICU would like a night-mode option that lowers the Tidewater T3's alarm volume during overnight hours"
+      }
+    ],
+    "F17": [
+      {
+        "source_id": "S-call-008",
+        "locator": "09:10:55",
+        "line_or_comment": "167",
+        "excerpt": "I\u2019ll put it plainly: \u201cWe\u2019ve been looking at some other options\u201d for pumps."
+      }
+    ],
+    "F02": [
+      {
+        "source_id": "S-call-009",
+        "locator": "09:01:33",
+        "line_or_comment": "15",
+        "excerpt": "Regarding that late order last week, Larkspur Memorial Hospital reported a Tidewater T2 consumable delivery arriving four days late on 2026-08-04."
+      },
+      {
+        "source_id": "S-ticket-031",
+        "locator": "S-ticket-031#1",
+        "line_or_comment": "1",
+        "excerpt": "Our Tidewater T2 consumable order that was due August 1st didn't arrive until August 4th \u2014 4 days late"
+      }
+    ],
+    "F10": [
+      {
+        "source_id": "S-call-009",
+        "locator": "09:24:49",
+        "line_or_comment": "275",
+        "excerpt": "On 2026-08-05, Larkspur Memorial's biomed lead said that Halvard's field engineer response to the July pump alarm issue was \"the fastest we've had from any ven\u2026"
+      }
+    ],
+    "F26": [
+      {
+        "source_id": "S-call-009",
+        "locator": "10:01:48",
+        "line_or_comment": "727",
+        "excerpt": "Larkspur Memorial Hospital has forty Tidewater T2 pumps and is trialling four T3 units as of 2026-08-05."
+      }
+    ],
+    "F32": [
+      {
+        "source_id": "S-call-011",
+        "locator": "00:00:43",
+        "line_or_comment": "17",
+        "excerpt": "I will set up a quarterly business review with Northlake Health System starting in October 2026."
+      }
+    ],
+    "F04": [
+      {
+        "source_id": "S-call-011",
+        "locator": "00:02:46",
+        "line_or_comment": "59",
+        "excerpt": "Northlake General Hospital received a Tidewater T3 delivery two days late on August 11, 2026."
+      },
+      {
+        "source_id": "S-call-011",
+        "locator": "00:03:21",
+        "line_or_comment": "75",
+        "excerpt": "Northlake General Hospital received a second Tidewater T3 three days late on August 13, 2026."
+      }
+    ],
+    "F15b": [
+      {
+        "source_id": "S-call-011",
+        "locator": "00:07:13",
+        "line_or_comment": "187",
+        "excerpt": "We've had Corvane in to demo for the tower."
+      }
+    ],
+    "F11b": [
+      {
+        "source_id": "S-call-013",
+        "locator": "09:11:56",
+        "line_or_comment": "279",
+        "excerpt": "Ashgrove Health's HalvardCare renewal was moved to 2027-06-30 at Ashgrove's request on 2026-08-20."
+      },
+      {
+        "source_id": "S-crm-opp-A1010-v2",
+        "locator": "crm/opportunities-2026-08-21.csv#O-3001",
+        "line_or_comment": "O-3001",
+        "excerpt": "Ashgrove Health's HalvardCare renewal was moved to 2027-06-30 at Ashgrove's request on 2026-08-20."
+      }
+    ],
+    "F09": [
+      {
+        "source_id": "S-call-013",
+        "locator": "09:25:24",
+        "line_or_comment": "697",
+        "excerpt": "I promise Ashgrove Health a written delivery root-cause summary by 2026-08-28."
+      }
+    ],
+    "F06": [
+      {
+        "source_id": "S-call-013",
+        "locator": "09:27:31",
+        "line_or_comment": "771",
+        "excerpt": "this is going to come up when we talk about next year"
+      }
+    ],
+    "F33": [
+      {
+        "source_id": "S-call-014",
+        "locator": "09:12:50",
+        "line_or_comment": "239",
+        "excerpt": "Cobalt Ridge Medical Center agreed to pilot two Tidewater T3 units in its emergency department from 2026-10-01."
+      }
+    ],
+    "F39": [
+      {
+        "source_id": "S-call-015",
+        "locator": "09:00:42",
+        "line_or_comment": "15",
+        "excerpt": "Their team asked, \u201ccould the Link module talk to our Epic instance?\u201d"
+      }
+    ],
+    "F40": [
+      {
+        "source_id": "S-call-016",
+        "locator": "09:02:55",
+        "line_or_comment": "11",
+        "excerpt": "Let's revisit that in 2027."
+      }
+    ],
+    "F41": [
+      {
+        "source_id": "S-call-016",
+        "locator": "09:06:27",
+        "line_or_comment": "61",
+        "excerpt": "That is the current footprint, correct?"
+      }
+    ],
+    "F42": [
+      {
+        "source_id": "S-call-017",
+        "locator": "09:46:10",
+        "line_or_comment": "359",
+        "excerpt": "Driftwood Community Hospital said on 2026-08-13 that it had briefly compared Corvane Systems pumps last year but it \"never went anywhere.\""
+      }
+    ],
+    "F43": [
+      {
+        "source_id": "S-call-017",
+        "locator": "10:55:53",
+        "line_or_comment": "899",
+        "excerpt": "The pharmacy director at Driftwood Community Hospital called the Tidewater T2's dosing accuracy \"spot on every time.\""
+      }
+    ],
+    "F47": [
+      {
+        "source_id": "S-call-018",
+        "locator": "09:23:30",
+        "line_or_comment": "693",
+        "excerpt": "we'd need to look at a second supplier for consumables"
+      }
+    ],
+    "F48": [
+      {
+        "source_id": "S-call-018",
+        "locator": "09:24:08",
+        "line_or_comment": "711",
+        "excerpt": "I am committing to a joint call with Halvard's operations team and Larkspur Memorial by August 27 to review the delivery root cause."
+      }
+    ],
+    "F52": [
+      {
+        "source_id": "S-call-019",
+        "locator": "00:01:14",
+        "line_or_comment": "25",
+        "excerpt": "We'd expect some kind of credit on the account after last month."
+      }
+    ],
+    "F40b": [
+      {
+        "source_id": "S-call-020",
+        "locator": "09:02:51",
+        "line_or_comment": "47",
+        "excerpt": "We need to move on the Epic integration now, not next year."
+      }
+    ],
+    "F57": [
+      {
+        "source_id": "S-call-020",
+        "locator": "09:15:16",
+        "line_or_comment": "367",
+        "excerpt": "I promise Wrenfield Health that I will provide a Tidewater Link/Epic integration test plan by September 10, 2026."
+      }
+    ],
+    "F61": [
+      {
+        "source_id": "S-call-021",
+        "locator": "09:02:39",
+        "line_or_comment": "5",
+        "excerpt": "we brought on two more drivers out of Dayton"
+      }
+    ],
+    "F62": [
+      {
+        "source_id": "S-call-021",
+        "locator": "09:08:40",
+        "line_or_comment": "59",
+        "excerpt": "the last two Tidewater T2 deliveries came in right on schedule"
+      }
+    ],
+    "F13": [
+      {
+        "source_id": "S-ticket-019",
+        "locator": "S-ticket-019#1",
+        "line_or_comment": "1",
+        "excerpt": "That's a duplicated line item of $4,800 on the invoice dated 2026-05-01, and we'd like it corrected before we remit payment."
+      }
+    ],
+    "F23": [
+      {
+        "source_id": "S-ticket-024",
+        "locator": "S-ticket-024#1",
+        "line_or_comment": "1",
+        "excerpt": "three Tidewater T2 pumps at Larkspur North throwing occlusion alarms with no actual occlusion, all within the last couple of weeks this July"
+      }
+    ],
+    "F05": [
+      {
+        "source_id": "S-ticket-038",
+        "locator": "S-ticket-038#1",
+        "line_or_comment": "1",
+        "excerpt": "The Tidewater T2 consumable order we placed on August 12th didn't show up until five days after it was due"
+      }
+    ],
+    "F37": [
+      {
+        "source_id": "S-ticket-039",
+        "locator": "S-ticket-039#1",
+        "line_or_comment": "1",
+        "excerpt": "another late shipment, four days out"
+      }
+    ],
+    "F44": [
+      {
+        "source_id": "S-ticket-040",
+        "locator": "S-ticket-040#1",
+        "line_or_comment": "1",
+        "excerpt": "The Tidewater T2 consumable delivery for Ashgrove Riverside Hospital arrived five days late on 2026-08-18."
+      }
+    ],
+    "F49": [
+      {
+        "source_id": "S-ticket-041",
+        "locator": "S-ticket-041#1",
+        "line_or_comment": "1",
+        "excerpt": "The Northlake General Hospital Tidewater T3 order placed on 2026-08-15 arrived three days late, making it the third late delivery in three weeks."
+      }
+    ],
+    "F51": [
+      {
+        "source_id": "S-ticket-042",
+        "locator": "S-ticket-042#2",
+        "line_or_comment": "2",
+        "excerpt": "Cobalt Ridge Medical Center's second late Tidewater T2 delivery in three weeks arrived on 2026-08-22, four days behind schedule."
+      }
+    ],
+    "F54": [
+      {
+        "source_id": "S-ticket-043",
+        "locator": "S-ticket-043#1",
+        "line_or_comment": "1",
+        "excerpt": "Hello, I\u2019m reviewing our upcoming supply budget and wanted to ask whether Anchor Bay Surgical Partners can receive a small-volume discount on Tidewater T2 cons\u2026"
+      }
+    ],
+    "F64": [
+      {
+        "source_id": "S-ticket-044",
+        "locator": "S-ticket-044#1",
+        "line_or_comment": "1",
+        "excerpt": "Cobalt Ridge Medical Center's materials manager said on 2026-09-03 that its last Tidewater T2 order \"showed up exactly when promised.\""
+      }
+    ],
+    "F66": [
+      {
+        "source_id": "S-ticket-045",
+        "locator": "S-ticket-045#1",
+        "line_or_comment": "1",
+        "excerpt": "Anchor Bay Surgical Partners uses six Tidewater T2 pumps across two operating rooms as of 2026-09-01."
+      }
+    ],
+    "F71": [
+      {
+        "source_id": "S-ticket-046",
+        "locator": "S-ticket-046#1",
+        "line_or_comment": "1",
+        "excerpt": "Driftwood Community Hospital asked on 2026-08-06 for a review of its bulk-consumables reorder threshold."
+      }
+    ],
+    "F34": [
+      {
+        "source_id": "S-email-005",
+        "locator": "S-email-005@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "Kestrel Medical Group has confirmed they're not renewing \u2014 they've moved to Brightline Medical for their infusion pumps, effective this past February."
+      },
+      {
+        "source_id": "S-crm-A1080",
+        "locator": "crm/accounts.csv#A-1080",
+        "line_or_comment": "A-1080",
+        "excerpt": "Kestrel Medical Group ended its Halvard relationship in 2026-02 after moving to Brightline Medical."
+      }
+    ],
+    "F21": [
+      {
+        "source_id": "S-email-021",
+        "locator": "S-email-021@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "could Halvard put together a Spanish-language version of the Tidewater T2 quick-start card? We have a growing number of staff who'd benefit from having it in S\u2026"
+      }
+    ],
+    "F16": [
+      {
+        "source_id": "S-email-030",
+        "locator": "S-email-030@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "We got a proposal from Brightline Medical last week that came in about 15 percent cheaper than what we're currently paying Halvard for consumables."
+      }
+    ],
+    "F27": [
+      {
+        "source_id": "S-email-030",
+        "locator": "S-email-030@halvardmedical.com#p3",
+        "line_or_comment": "3",
+        "excerpt": "right now we run Tidewater T2 pumps in both of our operating rooms, and we don't have any in recovery at the moment."
+      }
+    ],
+    "F28": [
+      {
+        "source_id": "S-email-052",
+        "locator": "S-email-052@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "I'm taking over from Tom here at Cobalt Ridge as Materials Manager \u2014 he left the hospital last month, and I'll be your point of contact going forward."
+      }
+    ],
+    "F03": [
+      {
+        "source_id": "S-email-052",
+        "locator": "S-email-052@halvardmedical.com#p3",
+        "line_or_comment": "3",
+        "excerpt": "our Tidewater T2 delivery that was due Wednesday didn't show up until three days late, and we ended up borrowing consumables from Larkspur just to get through\u2026"
+      }
+    ],
+    "F30": [
+      {
+        "source_id": "S-email-058",
+        "locator": "S-email-058@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "I've moved from Director of Procurement into a new role as Director of Clinical Operations here at Ashgrove Health, effective this month."
+      }
+    ],
+    "F07": [
+      {
+        "source_id": "S-email-061",
+        "locator": "S-email-061@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "Dayton has been down two delivery drivers since July 27th, and that gap is still open as of today"
+      }
+    ],
+    "F08": [
+      {
+        "source_id": "S-email-062",
+        "locator": "S-email-062@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "Columbus switched line-haul carriers on August 3rd for outbound Tidewater consumables, and the new carrier's pickup windows are tighter but so far running on t\u2026"
+      }
+    ],
+    "F38": [
+      {
+        "source_id": "S-email-063",
+        "locator": "S-email-063@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "Larkspur North Hospital's Tidewater T2 consumable order placed 2026-08-08 arrived three days late."
+      }
+    ],
+    "F45": [
+      {
+        "source_id": "S-email-064",
+        "locator": "S-email-064@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "Meadowbrook Community Hospital had a second late Tidewater T2 delivery, arriving four days late on 2026-08-19."
+      }
+    ],
+    "F46": [
+      {
+        "source_id": "S-email-065",
+        "locator": "S-email-065@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "The Dayton distribution branch's on-time delivery rate fell to 61 percent for the two weeks ending 2026-08-20, per Halvard's operations manager."
+      }
+    ],
+    "F50": [
+      {
+        "source_id": "S-email-066",
+        "locator": "S-email-066@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "St. Aldric Health followed up on 2026-08-21 asking for a firm timeline on the Tidewater Link Epic integration, the second of three such requests."
+      }
+    ],
+    "F53": [
+      {
+        "source_id": "S-email-067",
+        "locator": "S-email-067@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "on August 25, 2026, Larkspur Regional Health\u2019s VP Supply Chain reiterated that the 12 percent volume discount \u201cisn't optional anymore\u201d given the delivery issue\u2026"
+      }
+    ],
+    "F56": [
+      {
+        "source_id": "S-email-068",
+        "locator": "S-email-068@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "I\u2019m writing on August 27, 2026, to request a Tidewater Link connection to Driftwood Community Hospital\u2019s Epic instance; this is our third such request."
+      }
+    ],
+    "F58": [
+      {
+        "source_id": "S-email-069",
+        "locator": "S-email-069@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "I\u2019ll send Driftwood Community Hospital a formal Tidewater Link project timeline by 2026-09-05."
+      }
+    ],
+    "F60": [
+      {
+        "source_id": "S-email-070",
+        "locator": "S-email-070@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "I\u2019m stepping in for Nina as the practice administrator for Vireo Surgical Group. I wanted to introduce myself and make sure I\u2019m the right contact for anything\u2026"
+      }
+    ],
+    "F63": [
+      {
+        "source_id": "S-email-071",
+        "locator": "S-email-071@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "our biomed lead confirmed today, September 2, 2026, that deliveries had been on time for two straight weeks and he was \u201cdropping the second-supplier idea for n\u2026"
+      }
+    ],
+    "F65": [
+      {
+        "source_id": "S-email-072",
+        "locator": "S-email-072@halvardmedical.com#p3",
+        "line_or_comment": "3",
+        "excerpt": "On September 4, 2026, Meadowbrook Community Hospital's pharmacy director said that the delivery issues from August \"seem to be behind us.\""
+      }
+    ],
+    "F67": [
+      {
+        "source_id": "S-email-073",
+        "locator": "S-email-073@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "The thread ends without a reply from Halvard."
+      }
+    ],
+    "F70": [
+      {
+        "source_id": "S-email-074",
+        "locator": "S-email-074@halvardmedical.com#p2",
+        "line_or_comment": "2",
+        "excerpt": "\u201cwe haven't taken a meeting.\u201d"
+      }
+    ],
+    "F18": [
+      {
+        "source_id": "S-rss-004",
+        "locator": "url:https://feeds.example-newswire.test/portolan-corpus/s-rss-004 2026-08-26",
+        "line_or_comment": "S-rss-004",
+        "excerpt": "Corvane Systems issued a voluntary recall of its C-40 infusion pump line on 2026-08-26, citing a software defect identified during post-market surveillance. The"
+      }
+    ],
+    "F29": [
+      {
+        "source_id": "S-rss-006",
+        "locator": "url:https://feeds.example-newswire.test/portolan-corpus/s-rss-006 2026-09-02",
+        "line_or_comment": "S-rss-006",
+        "excerpt": "Larkspur Regional Health announced Renata Solis as its new Chief Financial Officer, effective September 1, 2026, succeeding the system's outgoing finance lead a"
+      }
+    ],
+    "F59": [
+      {
+        "source_id": "S-rss-007",
+        "locator": "url:https://feeds.example-newswire.test/portolan-corpus/s-rss-007 2026-08-25",
+        "line_or_comment": "S-rss-007",
+        "excerpt": "Northlake Health System announced that Derek Hollis, formerly its Director of Clinical Engineering, has been promoted to Vice President of Facilities, effective"
+      }
+    ],
+    "F36": [
+      {
+        "source_id": "S-crm-A1002",
+        "locator": "crm/accounts.csv#A-1002",
+        "line_or_comment": "A-1002",
+        "excerpt": "Larkspur Regional Health is owned by Pinecrest Health Partners."
+      }
+    ],
+    "F35": [
+      {
+        "source_id": "S-crm-A1010",
+        "locator": "crm/accounts.csv#A-1010",
+        "line_or_comment": "A-1010",
+        "excerpt": "Ashgrove Health's annual recurring revenue with Halvard is 2,350,000 dollars as of 2026-09-11."
+      }
+    ],
+    "F68": [
+      {
+        "source_id": "S-crm-A1090",
+        "locator": "crm/accounts.csv#A-1090",
+        "line_or_comment": "A-1090",
+        "excerpt": "Wrenfield Health's annual recurring revenue with Halvard is 1,410,000 dollars as of 2026-09-11."
+      }
+    ],
+    "F69": [
+      {
+        "source_id": "S-crm-A1091",
+        "locator": "crm/accounts.csv#A-1091",
+        "line_or_comment": "A-1091",
+        "excerpt": "Wrenfield Medical Center is owned by Wrenfield Health."
+      }
+    ]
+  }
+}

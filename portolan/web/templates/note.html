@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block title %}{{ note.title }} — Portolan{% endblock %}
+{% block head %}
+<style>
+  {# Owner report, 2026-09-15: the Synthesis card used to be a plain
+     `<p style="white-space:pre-wrap;">`, so `body_html` (now rendered
+     markdown, `portolan.web.markdown.render_note_body`) needs the same
+     heading/list/paragraph spacing `report.html`'s `.report-body` block
+     already gives report notes -- a note's own `### Heading` markdown is
+     the same shape `_render_body`/`weekly.py` writes, h3 once rendered. #}
+  .note-body h3 {
+    font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--pl-muted);
+    border-bottom: 1px solid var(--pl-line); padding-bottom: 6px; margin: 28px 0 12px;
+    font-family: var(--pl-display); font-weight: 600;
+  }
+  .note-body h3:first-child { margin-top: 0; }
+  .note-body ul, .note-body ol { padding-left: 1.2em; }
+  .note-body li { margin: 4px 0; }
+  .note-body p { margin: 8px 0; }
+  .note-body p:first-child { margin-top: 0; }
+</style>
+{% endblock %}
+{% block content %}
+<p class="eyebrow"><a href="{{ base_path }}">&larr; {{ base_path|trim('/')|capitalize }}</a></p>
+<h1 style="margin-top:0;">{{ note.title }}</h1>
+{# UX eval 2026-09-12, punch item 6: this used to be one run-on line with
+   no separators ("account living updated: ... created: ... stale after:
+   ... v7") -- badges and dates at the same weight, the updated: stamp
+   (the product's central promise) buried third. `.meta-row` groups
+   badges first, then updated: (coloured fresh/stale, punch item 6), then
+   the rest in muted mono, each separated by a quiet "·". #}
+<div class="meta-row">
+  <span class="badge type-{{ note.type.value }}">{{ note.type.value }}</span>
+  <span class="badge">{{ note.status.value }}</span>
+  <span class="sep" aria-hidden="true">·</span>
+  <span class="updated {{ 'stale' if is_stale else 'fresh' }}">updated: {{ note.updated|date }}</span>
+  <span class="sep" aria-hidden="true">·</span>
+  <span class="updated">created: {{ note.created|date }}</span>
+  {% if note.stale_after %}
+    <span class="sep" aria-hidden="true">·</span>
+    <span class="updated">stale after: {{ note.stale_after|date }}</span>
+  {% endif %}
+  <span class="sep" aria-hidden="true">·</span>
+  <span class="updated">v{{ note.version }}</span>
+</div>
+{% if note.crm_id %}<p class="mono muted small">crm_id: {{ note.crm_id }}</p>{% endif %}
+{% if note.parent_slug %}<p class="muted">Part of <a href="/notes/{{ note.parent_slug }}">{{ note.parent_slug }}</a></p>{% endif %}
+{% if note.type.value == 'account' %}
+  <p class="muted">Owner:
+    {% if owner and owner.note_slug %}
+      <a href="/notes/{{ owner.note_slug }}">{{ owner.name }}</a>
+    {% elif owner %}
+      {{ owner.name }}
+    {% else %}
+      unassigned
+    {% endif %}
+  </p>
+{% endif %}
+
+{# Action-note "Why" (follow-up build, 2026-09-20): when this action came
+   from a confirmed, gate-passed researched card (`why` is set --
+   `portolan.web.note_view.build_note_context`), this card replaces the
+   boilerplate "<title> is an open action." synthesis with what the
+   researcher actually proved: its inference sentences verbatim, the
+   evidence claims it cited (with source/locator and the same "Open the
+   original" link the Claims card below uses), what the finding tools
+   computed in plain words, and who proposed/confirmed it. An action with
+   no card (the extraction pipeline's `merge_action` -- most action
+   notes) falls straight through to the unchanged Synthesis card. #}
+{% if why %}
+{% set note_slug = note.slug %}
+{% include "_action_why.html" %}
+{% else %}
+<div class="card">
+  <p class="eyebrow">Synthesis</p>
+  <div class="note-body">{{ body_html }}</div>
+  <div class="btn-row">
+    <a class="btn quiet" href="/notes/{{ note.slug }}/edit">Edit</a>
+    <a class="btn quiet" href="/notes/{{ note.slug }}.md">Download .md</a>
+  </div>
+</div>
+{% endif %}
+
+{% if done %}
+{% include "_action_done.html" %}
+{% endif %}
+
+{% if related %}
+<div class="card">
+  <p class="eyebrow">Related</p>
+  <ul>
+    {% for r in related %}
+      <li><a href="/notes/{{ r.slug }}">{{ r.title }}</a> <span class="updated">updated: {{ r.updated|date }}</span></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% with actions_note=note, actions_rows=note_actions, link_base="/notes" %}
+{% include "_note_actions.html" %}
+{% endwith %}
+
+{# `claims_to_show` (`note_view.build_note_context`): a card-confirmed action
+   note lists its card's evidence claims, which live on other notes, then any
+   claim of its own. The Edit link below targets `claim.note_slug`, each
+   claim's own note. #}
+<div class="card">
+  <p class="eyebrow">Claims</p>
+  {% if not claims_to_show %}
+    <div class="empty"><p>No claims recorded yet.</p></div>
+  {% endif %}
+  {# UX eval 2026-09-12, punch item 8: fact type, source link, locator, a
+     ~18px "Dig deeper" chip, the recorded date and an equally weighted
+     "Edit" used to run together on one 12px line -- "Dig deeper" (link 4
+     of the provenance chain, the whole promise) was smaller than the
+     WCAG 2.2 AA 24x24 tap-target minimum. Now: claim text 16px on its own
+     line; a mono 13px `.claim-cite` line naming the source, locator and
+     recorded date, plus a fresh/superseded badge; one accent `.btn.dig`
+     chip (min-height 28px) that says exactly where it goes; Edit moved to
+     the end as a quiet, low-emphasis text button. #}
+  {% for claim in claims_to_show %}
+    <div id="claim-{{ claim.id }}" class="claim">
+      <p class="claim-text">{{ claim.claim_text|linkify_wikilinks }}</p>
+      <p class="claim-cite">
+        {{ claim.fact_type }} ·
+        <a href="/sources/{{ claim.source_slug }}">{{ claim.source_slug }}</a>
+        @ {{ claim.locator }} · recorded {{ claim.recorded|date }}
+        {% if claim.superseded_at %}
+          <span class="badge superseded">superseded <del>{{ claim.superseded_at|date }}</del></span>
+        {% else %}
+          <span class="badge fresh">fresh</span>
+        {% endif %}
+      </p>
+      {% if claim.quote %}<p class="claim-quote">&ldquo;{{ claim.quote }}&rdquo;</p>{% endif %}
+      <div class="claim-actions">
+        <a class="btn chip dig" href="/originals/{{ claim.source_slug }}?at={{ claim.locator|urlencode }}">Open the original at {{ claim.locator }} &rarr;</a>
+        <a class="btn quiet" href="/notes/{{ claim.note_slug }}/edit?claim_id={{ claim.id }}">Edit</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% if backlinks %}
+<div class="card">
+  <p class="eyebrow">Backlinks</p>
+  <ul>
+    {% for b in backlinks %}
+      <li><a href="/notes/{{ b.slug }}">{{ b.title }}</a> <span class="badge">{{ b.kind }}</span>
+        <span class="updated">updated: {{ b.updated|date }}</span></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% if versions %}
+<div class="card">
+  <p class="eyebrow">Version history</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Version history">
+  <table>
+    <tr><th>Version</th><th>Changed</th><th>By</th><th>Reason</th></tr>
+    {% for v in versions %}
+      <tr>
+        <td class="mono" data-label="Version">{{ v.version }}</td>
+        <td class="updated" data-label="Changed">{{ v.changed_at|date('%Y-%m-%d %H:%M') }}</td>
+        <td data-label="By">{{ v.changed_by or '' }}</td>
+        <td data-label="Reason">{{ v.reason or '' }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{
+  "from": "2026-08-01",
+  "to": "2026-08-31",
+  "meetings": [
+    {
+      "uuid": "AshgroveQBRcallUUID==",
+      "id": 91234567890,
+      "topic": "Ashgrove Medical Center — QBR",
+      "start_time": "2026-08-04T14:00:00Z",
+      "duration": 30,
+      "recording_files": [
+        {"id": "rf-1", "file_type": "MP4", "download_url": "https://zoom.us/rec/download/mp4-mock"},
+        {"id": "rf-2", "file_type": "TRANSCRIPT", "download_url": "https://zoom.us/rec/download/transcript-mock"}
+      ]
+    },
+    {
+      "uuid": "NoTranscriptMeetingUUID==",
+      "id": 91234500000,
+      "topic": "Internal sync, no transcript",
+      "start_time": "2026-08-05T09:00:00Z",
+      "duration": 15,
+      "recording_files": [
+        {"id": "rf-3", "file_type": "MP4", "download_url": "https://zoom.us/rec/download/mp4-mock-2"}
+      ]
+    }
+  ]
+}

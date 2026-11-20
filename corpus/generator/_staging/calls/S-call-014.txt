@@ -1,0 +1,154 @@
+[00:00:00] Sam Okafor: Hi Aisha, thanks for hopping on, good to finally get a proper call on the books with you.
+[00:00:07] Aisha Bell: Yeah, thank you, and thanks for your patience, it's been a bit of a whirlwind these last few weeks getting my arms around everything.
+[00:00:16] Sam Okafor: Totally understandable, taking over a materials management role mid-year is no small thing. How's the transition going overall?
+[00:00:24] Aisha Bell: It's going, I'd say. Carol left really thorough notes, which helps a lot, but there's still a difference between reading notes and actually knowing where all the bodies are buried, so to speak.
+[00:00:37] Sam Okafor: Ha, fair. Well, for what it's worth, on our side at least, the account's been pretty steady, so hopefully that's one less fire to put out while you're getting settled.
+[00:00:49] Aisha Bell: That's good to hear. Honestly Halvard was one of the accounts Carol specifically told me not to worry about, she said you all have generally been low maintenance compared to some of our other vendors.
+[00:01:03] Sam Okafor: Good to hear that reputation held up. Where were you before this, if you don't mind me asking, were you in materials management somewhere else, or is this a new direction for you?
+[00:01:16] Aisha Bell: I was actually on the clinical engineering side for about six years before this, biomedical equipment, so I know the devices themselves reasonably well, it's more the purchasing and vendor relationship side that's new to me.
+[00:01:30] Sam Okafor: That's actually a great background to bring into this seat, honestly, a lot of materials managers come from the finance or logistics side and don't have as much device-level context. That should serve you well.
+[00:01:44] Aisha Bell: I hope so. It's definitely a learning curve on the contracts and ordering side, but the equipment part feels familiar at least.
+[00:01:53] Sam Okafor: Well, however I can help make that ramp-up easier, just say the word. I'm happy to walk through anything, past orders, how our support escalation works, any of it.
+[00:02:05] Aisha Bell: I appreciate that, I'll definitely take you up on it. Can I ask, how long have you personally been the rep on this account? I want to know how much institutional memory I'm talking to.
+[00:02:19] Sam Okafor: About three and a half years now. I actually inherited it from someone else too, so I remember exactly what you're going through right now, minus the biomedical background you're bringing to it.
+[00:02:32] Aisha Bell: That's reassuring, actually, knowing you've been through your own version of this.
+[00:02:37] Sam Okafor: It's a real thing, that first few months of just trying to figure out where everything lives. It gets easier, I promise.
+[00:02:46] Aisha Bell: I hope so. Everyone keeps telling me that, so I'm choosing to believe it.
+[00:02:51] Sam Okafor: It's true, I promise, it just takes a few full cycles of ordering and renewals before it stops feeling like you're reading a foreign language.
+[00:03:01] Aisha Bell: That's basically where I am right now, half the acronyms in Carol's notes I'm still looking up.
+[00:03:08] Sam Okafor: If it helps, I can put together a quick glossary of the ones specific to our account, HalvardCare, the SKU naming conventions, that kind of thing, so at least our corner of the acronym soup is covered.
+[00:03:23] Aisha Bell: That would genuinely help, yes, please. Small thing, but it adds up when everything's unfamiliar at once.
+[00:03:30] Sam Okafor: No problem, I'll throw that together this week too, it's a five-minute job on my end and it'll save you probably an hour of context-switching to ask me what something means.
+[00:03:42] Sam Okafor: Ha, yeah, healthcare procurement loves an acronym. Where are you commuting in from, if you don't mind me asking, are you local to the hospital or is it a haul?
+[00:03:54] Aisha Bell: About twenty-five minutes most days, not bad unless there's construction on the parkway, which there has been more often than not lately.
+[00:04:03] Sam Okafor: That parkway construction has been going on forever, I swear.
+[00:04:07] Aisha Bell: Right? I keep hearing it's almost done, but I've heard that for at least a year now.
+[00:04:14] Sam Okafor: Well, for what it's worth, once you're through the initial ramp-up, most of what you'll deal with day to day on our side is pretty routine, reorders, occasional support tickets, nothing that requires putting out fires constantly.
+[00:04:28] Aisha Bell: That's reassuring. Carol did say Halvard was one of the calmer relationships on her plate.
+[00:04:34] Sam Okafor: I'd like to keep it that way, honestly, calm and boring is usually a compliment in this line of work.
+[00:04:42] Aisha Bell: I've got a list of things I wanted to ask you about today, actually, if now's a good time.
+[00:04:50] Sam Okafor: Perfect timing, that's exactly what I was hoping for. Let's get into it.
+[00:04:55] Aisha Bell: Okay, so first, just help me understand the lay of the land. What exactly do we have from Halvard right now, equipment-wise?
+[00:05:04] Sam Okafor: Sure, so Cobalt Ridge currently runs Tidewater T2 pumps across essentially the whole hospital, that's your general med-surg floors, ICU, and the emergency department. I don't have the exact unit count in front of me, but it's a fairly sizable fleet, you've been a T2 customer for, I want to say about five years now.
+[00:05:26] Aisha Bell: That matches what I've seen in the files. And do we have any of the other products, the integration piece, or the newer pump?
+[00:05:36] Sam Okafor: You do have Tidewater Link, the EHR integration module, that's been live for a couple of years now, so infusion data flows directly into the chart rather than nurses charting it manually. You don't currently have any T3 units, the newer pump line, anywhere in the building.
+[00:05:54] Aisha Bell: Okay, that helps a lot actually, having it all laid out like that instead of piecing it together from old emails. Is Link something most of the hospital touches, or mainly nursing?
+[00:06:07] Sam Okafor: Mainly nursing day to day, since it's their charting workflow it affects most directly, but pharmacy touches it too on the drug library and dosing side, and biomed occasionally when they're troubleshooting a device that isn't reporting correctly.
+[00:06:22] Aisha Bell: Got it. Has Link had any issues recently that I should know about, anything still lingering from before I started?
+[00:06:30] Sam Okafor: Nothing outstanding that I'm aware of. It's been stable for a while now, the last real hiccup was months ago and it was resolved quickly, nothing chronic.
+[00:06:41] Aisha Bell: Good, one less thing to inherit as a headache.
+[00:06:45] Sam Okafor: Definitely not a headache on that front. Alright, want me to keep going on the equipment side, or did you have other questions about what we've currently got?
+[00:06:56] Aisha Bell: No, keep going, this is exactly what I needed.
+[00:07:00] Aisha Bell: Got it. And is T3 meaningfully different, or is it more of an incremental update?
+[00:07:06] Sam Okafor: It's a meaningful step up in a few specific ways. The interface is redesigned to reduce the number of taps to program a common infusion, the smart pump drug library is easier to update and audit, and the battery life is noticeably better under continuous use. It's not a different category of device, but for high-volume areas it tends to make a real difference in day to day workflow.
+[00:07:33] Aisha Bell: Interesting. And has Carol, or anyone here, expressed any interest in it before now? I want to make sure I'm not walking into a conversation that's already happened without me.
+[00:07:45] Sam Okafor: There'd been some informal interest, mostly from a couple of the ED charge nurses who'd seen it at a conference, but nothing formal ever got proposed, no pilot, no eval, nothing on paper. So you're not walking into anything mid-stream, this would genuinely be a fresh conversation.
+[00:08:04] Aisha Bell: Do you know roughly how many of our peer hospitals in the region have already made the switch to T3, just so I have a sense of where we sit relative to everyone else?
+[00:08:18] Sam Okafor: I don't have an exact count for this specific region in front of me, but adoption has been picking up steadily over the last year or so, it's not a niche thing anymore, plenty of systems your size have at least a partial rollout somewhere in their building.
+[00:08:37] Aisha Bell: That's useful context. I don't love being the last one to move on something, but I also don't want to chase novelty for its own sake.
+[00:08:47] Sam Okafor: That's a healthy way to think about it, honestly. I'd rather you make the call based on what actually helps your nurses than based on what everyone else is doing.
+[00:08:59] Aisha Bell: Are any of the other hospitals in our own health system running T3 already? I'd actually rather compare notes with someone internal than an outside system if that's an option.
+[00:09:11] Sam Okafor: Not yet, no, you'd actually be the first in your system to pilot it, which could be an advantage, honestly, since whatever you learn could inform how the rest of the system thinks about it later.
+[00:09:26] Aisha Bell: That's an interesting way to look at it, being first instead of being behind.
+[00:09:31] Sam Okafor: Exactly, and I'd be glad to make sure whatever data comes out of your pilot gets shared appropriately if leadership across the system ever wants to compare notes.
+[00:09:42] Aisha Bell: Okay, that's helpful context, thank you.
+[00:09:45] Aisha Bell: Actually, on a related note, I've been trying to schedule time to just shadow a shift in a few different departments, ED included, since I've never actually watched how the pumps get used in real time versus reading about it. Any reason I shouldn't do that before the pilot starts?
+[00:10:05] Sam Okafor: No reason at all, honestly I think that's a great idea, and it'll probably make our pilot check-ins more useful too, since you'll already have a mental picture of the workflow instead of relying entirely on secondhand descriptions from nursing.
+[00:10:21] Aisha Bell: That's what I was hoping. I'll try to get that scheduled in the next couple of weeks, before things ramp up on the pilot side.
+[00:10:31] Sam Okafor: Good call, and if it's useful, I'm happy to join for part of it, sometimes having someone from the vendor side there helps answer device-specific questions on the spot.
+[00:10:42] Aisha Bell: I might take you up on that, I'll let you know once I have a date.
+[00:10:49] Sam Okafor: Sounds good. While we're talking scheduling, is there a standing meeting cadence you'd want to set up with me going forward, monthly, quarterly, or do you want to just play it by ear for now while you're getting settled?
+[00:11:04] Aisha Bell: Let's play it by ear for the next month or two, and then once the dust settles I'd probably like something regular on the calendar, monthly feels about right at a guess.
+[00:11:17] Sam Okafor: That works for me, I'll check back in with you in a few weeks and we can lock in a recurring cadence once you have a better sense of your own rhythm.
+[00:11:30] Aisha Bell: Can I ask a slightly different question while we're on T3? What does the maintenance and support side look like compared to T2, is it a different process, or the same HalvardCare umbrella?
+[00:11:43] Sam Okafor: Same umbrella, same support line, same escalation path, it's not a separate contract structure or anything. If you ever did bring T3 units in, they'd just get folded into the existing HalvardCare coverage you already have.
+[00:11:58] Aisha Bell: Good, that simplifies things in my head. I was worried it would mean tracking two parallel support relationships.
+[00:12:05] Sam Okafor: No, that's intentionally designed to not create that headache. One relationship, one contract, regardless of which pump generation is actually on the floor.
+[00:12:14] Aisha Bell: That's helpful to know going forward, even if nothing changes anytime soon.
+[00:12:19] Sam Okafor: Actually, since it's come up, can I make an actual proposal, or would you rather I hold off until you're further into ramping up?
+[00:12:28] Aisha Bell: No, go ahead, I'd rather hear it now while it's fresh than have you sit on it for two months out of politeness.
+[00:12:38] Sam Okafor: Fair enough. Given that interest already exists informally in the ED, and given that the ED tends to be where the workflow improvements in T3 show up most clearly, what I'd propose is a small pilot, just in that unit, so you can see the difference firsthand without committing to anything hospital-wide.
+[00:12:58] Aisha Bell: How small are we talking?
+[00:13:00] Sam Okafor: I was thinking two units to start. Enough that nursing can actually get comfortable with it and form a real opinion, but small enough that it's not a heavy lift logistically or from a training standpoint. We'd handle setup, initial training for the ED staff, and check in regularly during the pilot window.
+[00:13:22] Aisha Bell: That sounds pretty reasonable, honestly. What would the timing look like, hypothetically?
+[00:13:26] Sam Okafor: Whatever works for you, but if you wanted a clean starting point, the first of next month would be an easy line to draw, gives us about a month to get everything set up and trained before it's actually live on the floor.
+[00:13:44] Aisha Bell: The first of next month, so October 1st.
+[00:13:47] Sam Okafor: Right, October 1st.
+[00:13:48] Aisha Bell: Let me think out loud for a second. Two units, ED only, starting October 1st, that actually feels like a manageable way for me to get a first real look at T3 without it turning into a huge project during a month when I'm still learning where the light switches are, so to speak. ⟦F33⟧Okay, let's do it, we'll pilot two Tidewater T3 units in the ED starting October 1st.⟦/F33⟧
+[00:14:16] Sam Okafor: Great, I'm glad it lines up well. I'll get the paperwork started on our end and get you a point of contact for the training piece.
+[00:14:26] Aisha Bell: Sounds good. Should I loop in the ED nurse manager directly, or does that happen through you?
+[00:14:33] Sam Okafor: Either works, but it's usually smoothest if you introduce us over email and I take it from there for scheduling the training sessions.
+[00:14:42] Aisha Bell: I'll do that this week.
+[00:14:44] Sam Okafor: Appreciate it. One more thing on my end, do you want me loop in your director as well, or is that something you'll handle communicating upward?
+[00:14:55] Aisha Bell: I'll handle that internally, I think it's better coming from me the first time, especially since I'm still building trust in the role.
+[00:15:04] Sam Okafor: Makes sense, happy to support however's useful from the sidelines if you need anything in writing to share upward.
+[00:15:12] Aisha Bell: I might take you up on that actually, a short summary I could forward would probably help.
+[00:15:18] Sam Okafor: I can put something together, a one-page summary of the pilot scope, timeline, and what we're hoping to learn from it, so it reads as a real plan rather than just an idea in an email.
+[00:15:33] Sam Okafor: A few logistics things while we're on it. Do you want the two pilot units to replace two existing T2 units in the ED, or added alongside the current fleet?
+[00:15:45] Aisha Bell: I think alongside, at least at first. I don't want to pull capacity out of the ED while everyone's still learning the new pump, that seems like asking for trouble.
+[00:15:57] Sam Okafor: That's the safer call, I agree. We can always true that up later once staff are comfortable. On training, how many staff are we talking, roughly, who'd need to get hands-on time before go-live?
+[00:16:10] Aisha Bell: The ED runs somewhere around thirty nursing staff across all shifts, though obviously not everyone touches a pump on any given shift.
+[00:16:19] Sam Okafor: Understood, we'll plan for training sessions across shifts then, probably three or four sessions total to catch day, night, and weekend staff. I'll have our clinical trainer reach out to schedule those once your nurse manager is looped in.
+[00:16:35] Aisha Bell: How long does a typical training session run, just so I can help block time on people's schedules realistically?
+[00:16:42] Sam Okafor: Usually about forty-five minutes to an hour, hands-on with the actual units, plus a short quick-reference card people can keep at their station afterward.
+[00:16:52] Aisha Bell: That's manageable, I don't think that'll be a hard sell to get people to carve out.
+[00:16:58] Sam Okafor: It shouldn't be, most nursing staff actually enjoy it, it's a nice break from the usual routine, and the trainer's good about making it practical rather than a lecture.
+[00:17:10] Aisha Bell: That works. Is there anything you need from me before then, paperwork-wise?
+[00:17:15] Sam Okafor: Just the standard equipment loan agreement for the pilot units, I'll send that over this week, nothing complicated, mostly liability and return terms since these are on loan rather than purchased outright for now.
+[00:17:28] Aisha Bell: Since it's a loan and not a purchase, does that mean it sits outside our normal capital budget process, or does it still need its own cost code internally?
+[00:17:40] Sam Okafor: It's outside capital entirely, there's no purchase cost during the pilot, so from your side it should just be a loaner asset on the books rather than anything that needs budget committee sign-off.
+[00:17:53] Aisha Bell: That's good, one less approval loop to chase down during my first month.
+[00:17:58] Sam Okafor: Right, and if you do decide to move forward with a real purchase after the pilot, that's a separate conversation and a separate process at that point, nothing about the pilot itself commits you financially.
+[00:18:12] Aisha Bell: That's an important distinction, I want to make sure nobody upstream thinks we've already bought anything.
+[00:18:19] Aisha Bell: Got it, I'll keep an eye out for that.
+[00:18:22] Sam Okafor: And just so you know what to expect, partway through the pilot, maybe three or four weeks in, I'll check in with you and the nurse manager to see how it's landing, any friction points, anything nursing's flagging, that kind of thing.
+[00:18:39] Aisha Bell: That's helpful, I like having a checkpoint built in rather than just running it silently for months and then trying to remember details at the end.
+[00:18:50] Sam Okafor: Same, it also just makes the eventual decision easier, whichever way it goes, when there's actually documented feedback along the way instead of everyone relying on memory.
+[00:19:00] Aisha Bell: Can we switch gears for a second, I wanted to ask about the support process in general, just so I know how things work now that I own this relationship.
+[00:19:12] Sam Okafor: Of course, what do you want to know?
+[00:19:16] Aisha Bell: Mainly just, if something breaks or there's an issue with a pump, what's actually the fastest path to get it resolved? Carol's notes mention a support line but not much detail beyond that.
+[00:19:29] Sam Okafor: Sure, so there's a 24/7 clinical support line for anything urgent, an actual pump malfunction, alarm issue, anything patient-facing. For non-urgent stuff, ordering questions, documentation requests, general account things, that typically comes to me or gets logged through the account portal, and I make sure it gets to the right person.
+[00:19:49] Aisha Bell: Do you have a sense of average response time on the urgent line? Not that I'm expecting problems, just want to know what to tell nursing leadership if they ask.
+[00:20:01] Sam Okafor: For anything flagged urgent, our target is under thirty minutes for initial response, and typically same-day resolution or a loaner if it's a hardware issue that can't be fixed on the spot.
+[00:20:14] Aisha Bell: That's good to know, I'll pass that along so it's not a mystery to anyone.
+[00:20:20] Sam Okafor: Happy to send you something in writing on that too, actually, a one-pager on the support process in general might save you having to explain it verbally every time someone asks.
+[00:20:32] Aisha Bell: Good to know. And is there anything currently open, any tickets or issues sitting in a queue that I should be aware of as the new point of contact?
+[00:20:44] Sam Okafor: Let me think, nothing major right now that I'm aware of. There was a minor firmware update that rolled out to the T2 fleet a couple months back, but that would have already applied automatically, nothing pending on it.
+[00:21:00] Aisha Bell: Okay, good, one less thing to worry about. What about HalvardCare, the service contract, is there anything about that I should know as far as renewal timing or anything like that?
+[00:21:12] Sam Okafor: Nothing urgent there, your renewal isn't for a while yet, I can pull the exact date and send it over so you have it for reference, but there's nothing you need to act on right now.
+[00:21:26] Aisha Bell: Is there a written account plan or summary document Halvard keeps on file for Cobalt Ridge, something that lays out the full picture, equipment, contracts, history, all in one place? That would save me a lot of digging.
+[00:21:42] Sam Okafor: There is, actually, we keep an internal account summary for every hospital we work with. I don't usually share the raw internal version, but I can put together a clean version for you that covers the fleet, the contract terms, and recent history, so you have one document instead of piecing it together across calls like this.
+[00:22:04] Aisha Bell: That would genuinely be amazing, honestly, that's exactly the kind of thing I wish Carol had left behind, no offense to her notes.
+[00:22:14] Sam Okafor: None taken, I'll get that together this week along with the other stuff. Consider it a welcome packet, of sorts.
+[00:22:22] Aisha Bell: That would be helpful, just so I have it in my own notes rather than digging through Carol's files every time.
+[00:22:30] Sam Okafor: I'll send that along after this call.
+[00:22:33] Aisha Bell: Great. While we're on logistics, is there a standard ordering cadence for consumables, tubing, sensors, that kind of thing, or does that vary by department?
+[00:22:43] Sam Okafor: It's mostly standing orders at this point, set up years ago, that auto-replenish on a schedule. I can send you the current schedule so you have visibility into it rather than it just running in the background without you knowing.
+[00:22:59] Aisha Bell: I'd like that, yes. I'd rather know what's already automated than assume nothing is and duplicate someone's work.
+[00:23:06] Sam Okafor: Makes sense, I'll get that to you along with the renewal date.
+[00:23:11] Aisha Bell: One more logistics question, on the billing side, who handles invoicing questions if accounts payable ever has a discrepancy on an invoice? Is that you too, or a separate team?
+[00:23:23] Sam Okafor: Billing questions specifically go through our billing support line rather than through me directly, mostly because they need access to systems I don't have, but if it's ever something that's not getting resolved quickly enough, loop me in and I'll push on it from my side.
+[00:23:41] Aisha Bell: Good to know, I'll pass that along to our accounts payable contact so they know where to route things first.
+[00:23:49] Sam Okafor: That'll save everyone some back and forth. I can send you that billing contact information along with everything else this week.
+[00:23:58] Aisha Bell: I think that's most of what I had on my list for today, honestly this was really helpful just to get oriented.
+[00:24:06] Sam Okafor: Glad it was useful. Is there anything else on your mind, anything Carol flagged that you wanted a second opinion on?
+[00:24:15] Aisha Bell: Not that I can think of right now, I'm sure things will come up as I keep digging in, but I feel a lot better having actually talked through the account instead of just reading about it.
+[00:24:30] Sam Okafor: That's usually how it goes, the notes only get you so far. I'm glad we got this on the calendar.
+[00:24:38] Aisha Bell: Same. So just to recap so I've got it straight in my own notes, we're piloting two T3 units in the ED starting October 1st, alongside the existing T2 fleet, with training happening beforehand and a check-in partway through.
+[00:24:53] Sam Okafor: That's exactly right. I'll send the loan agreement paperwork this week, get the training scheduled once you've looped in your nurse manager, and I'll also send over the HalvardCare renewal date and the standing order schedule for your records.
+[00:25:09] Aisha Bell: Perfect, that all matches what I have. I'll reach out to the nurse manager today or tomorrow so we can keep things moving.
+[00:25:18] Sam Okafor: Sounds great. And honestly, welcome to the account, I'm looking forward to working with you on this.
+[00:25:25] Aisha Bell: Thank you, I appreciate that, and I appreciate you walking through all of this with me today instead of just sending me a stack of documents to figure out on my own.
+[00:25:38] Sam Okafor: Of course, that's not really how I like to do this anyway. Documents are fine as a reference, but a real conversation gets you oriented a lot faster.
+[00:25:49] Aisha Bell: I'll definitely take you up on more calls like this as things come up, rather than trying to guess my way through it.
+[00:25:58] Sam Okafor: Please do, that's genuinely the best way to use me as a resource, I'd rather answer five quick questions on a call than have you guess wrong on something and have to unwind it later.
+[00:26:12] Aisha Bell: Noted. I'm sure I'll have more questions once the pilot's actually underway too.
+[00:26:17] Sam Okafor: I'd expect nothing less, and that's genuinely a good thing, questions along the way beat silence followed by a surprise at the end.
+[00:26:26] Aisha Bell: That's a good way to put it. Okay, I think I've officially used up my whole list, thank you for being so thorough with all of this.
+[00:26:37] Sam Okafor: Of course, this is exactly what these calls are for. I'll get the welcome packet, the loan agreement, the renewal date, and the standing order schedule all over to you by the end of the week.
+[00:26:52] Aisha Bell: Perfect, I'll keep an eye out for all of that, and I'll get the nurse manager introduction sent your way in the next day or two.
+[00:27:02] Sam Okafor: Sounds great, I'll be watching for it.
+[00:27:05] Aisha Bell: Okay, I think that covers everything on my end for today.
+[00:27:09] Sam Okafor: Same here. I'll get that paperwork over this week, and we'll talk again once training's on the calendar.
+[00:27:16] Aisha Bell: Sounds good, thanks Sam.
+[00:27:18] Sam Okafor: Thanks, Aisha, talk soon.

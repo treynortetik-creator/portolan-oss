@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Actions — Portolan{% endblock %}
+{% block content %}
+<p class="eyebrow">Actions</p>
+<h1 style="margin-top:0;">Open actions</h1>
+<p class="muted">{{ total_open }} open, {{ total_overdue }} overdue, as of {{ today|date }}.</p>
+
+{% if not groups %}
+  <div class="card empty">
+    {% if spyglass_svg %}
+    <div class="empty-mascot" aria-hidden="true">{{ spyglass_svg|safe }}</div>
+    {% endif %}
+    <p class="eyebrow">Nothing open</p>
+    <p>No open actions right now.</p>
+  </div>
+{% else %}
+  {% for group in groups %}
+    <div class="card">
+      <p class="eyebrow">
+        {% if group.owner_note_slug %}
+          <a href="/notes/{{ group.owner_note_slug }}">{{ group.owner_name }}</a>
+        {% else %}
+          {{ group.owner_name }}
+        {% endif %}
+        <span class="muted small">({{ group.actions|length }})</span>
+      </p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="{{ group.owner_name }}'s open actions">
+      <table>
+        <tr><th>What</th><th>Account</th><th>Due</th><th>Source</th><th></th></tr>
+        {% for a in group.actions %}
+          <tr{% if a.overdue %} class="flag"{% endif %}>
+            <td data-label="What">
+              <a href="/notes/{{ a.note_slug }}">{{ a.what }}</a>
+              {% if a.why_summary %}<div class="muted small">{{ a.why_summary }}</div>{% endif %}
+            </td>
+            <td data-label="Account">
+              {% if a.account_slug %}<a href="/notes/{{ a.account_slug }}">{{ a.account_title }}</a>{% else %}—{% endif %}
+            </td>
+            <td data-label="Due" class="mono">
+              {{ a.due|date if a.due else '—' }}{% if a.overdue %} <span class="badge">overdue</span>{% endif %}
+            </td>
+            <td data-label="Source">
+              {% if a.source_slug %}<a href="/originals/{{ a.source_slug }}">source</a>{% else %}—{% endif %}
+            </td>
+            <td data-label="" class="btn-row" style="margin:0;">
+              <form method="post" action="/actions/{{ a.id }}/done" style="display:inline">
+                <button type="submit" class="btn chip">Done</button>
+              </form>
+              <form method="post" action="/actions/{{ a.id }}/dropped" style="display:inline">
+                <button type="submit" class="btn chip quiet">Dropped</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<div class="card">
+  <p class="eyebrow">Closed this week</p>
+  {% if not closed_this_week %}
+    <p class="muted">Nothing closed this week.</p>
+  {% else %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Actions closed this week">
+  <table>
+    <tr><th>What</th><th>Account</th><th>Owner</th><th>Closed</th><th>Status</th></tr>
+    {% for a in closed_this_week %}
+      <tr>
+        <td data-label="What"><a href="/notes/{{ a.note_slug }}">{{ a.what }}</a></td>
+        <td data-label="Account">
+          {% if a.account_slug %}<a href="/notes/{{ a.account_slug }}">{{ a.account_title }}</a>{% else %}—{% endif %}
+        </td>
+        <td data-label="Owner">{{ a.owner_name or 'Unassigned' }}</td>
+        <td data-label="Closed" class="mono">{{ a.closed_date|date }}</td>
+        <td data-label="Status"><span class="badge">{{ a.status }}</span></td>
+      </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

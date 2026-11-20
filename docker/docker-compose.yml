@@ -1,0 +1,26 @@
+# Container path used by `scripts/ci_local.py` (the docker step) and, by hand, the manual
+# `docker` workflow job: the same image and the same test suite as Railway runs.
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: portolan
+      POSTGRES_PASSWORD: portolan
+      POSTGRES_DB: portolan_test_compose
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portolan -d portolan_test_compose"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://portolan:portolan@db:5432/portolan_test_compose

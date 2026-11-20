@@ -1,0 +1,65 @@
+/* ==========================================================================
+   PORTOLAN — brand tokens v1 (2026-09-12)
+   Drop-in. Paste this block at the top of any stylesheet, then use the vars.
+   Six color tokens, three type stacks. No web fonts, no imports, no CDN.
+   Palette: chart paper, iron-gall ink, rhumb-line red, half-wind green.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* --- COLOR: light (default) ------------------------------------------- */
+  /* page/panel background — warm chart paper, never pure white */
+  --pl-ground:    #FAF8F4;
+  /* body text, wordmark, rules that must be read — iron-gall near-black */
+  --pl-ink:       #16191D;
+  /* ONE accent. Links, the active node, the single number that matters.
+     Madder red, the color of a portolan's quarter-wind lines. 5.2:1 on ground. */
+  --pl-accent:    #C0362C;
+  /* secondary signal. Verified / fresh / corroborated. Half-wind green. 5.7:1 */
+  --pl-secondary: #4A6B3C;
+  /* de-emphasized text: dates, source lines, captions. 5.1:1 — still AA body. */
+  --pl-muted:     #6B6A63;
+  /* hairlines, table rules, card borders. Structure only, never text. */
+  --pl-line:      #E2DCD2;
+  /* Mascot accent only (2026-09-18): the spyglass's brass draw-tube bands,
+     nowhere else. Muted antique brass, adjusted a step darker than the
+     round #B08D57 brief number to clear 3:1 against --pl-ground (2.91:1
+     at #B08D57, 3.79:1 here) since it sits directly on the page/card
+     background as a graphical accent. Never used for text. */
+  --pl-brass:     #9C7940;
+
+  /* --- TYPE ------------------------------------------------------------- */
+  /* display: geometric caps, the wordmark's own voice. Headings, labels,
+     small-caps nav. Set it with letter-spacing: .06em when uppercase. */
+  --pl-display: "Avenir Next", Avenir, Futura, "Century Gothic", "Segoe UI", system-ui, sans-serif;
+  /* body: warm serif for anything longer than a label. Holds up on a phone,
+     in print, and in an email attachment. */
+  --pl-body: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  /* mono: citations, note ids, paths, query strings, dates in tables. */
+  --pl-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* --- COLOR: dark, by system preference --------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pl-ground:    #0F1214; /* chart room at night */
+    --pl-ink:       #EDE8E0; /* paper-white, warm so it doesn't glare */
+    --pl-accent:    #D8543A; /* madder lifted for a dark ground — 4.7:1 */
+    --pl-secondary: #93BE7E; /* half-wind green lifted — 8.9:1 */
+    --pl-muted:     #9A958B; /* 6.4:1 */
+    --pl-line:      #262B2E;
+    --pl-brass:     #C9A66B; /* 8.2:1 on dark ground */
+  }
+}
+
+/* --- COLOR: dark, forced by attribute (wins in both directions) -------- */
+:root[data-theme="dark"] {
+  --pl-ground:    #0F1214;
+  --pl-ink:       #EDE8E0;
+  --pl-accent:    #D8543A;
+  --pl-secondary: #93BE7E;
+  --pl-muted:     #9A958B;
+  --pl-line:      #262B2E;
+  --pl-brass:     #C9A66B;
+}

@@ -1,0 +1,605 @@
+# EHR add-ons vertical pack -- WP2 (`01-spec/world-generator-v2-2026-09-22.md`
+# section 4). Validates against `corpus/generator/v2/packs/schema.py::VerticalPack`.
+
+id: ehr_addons
+name: EHR add-ons
+vendor_what: "clinical documentation, interoperability, e-prescribing and revenue-cycle add-on modules sold to health systems running third-party EHRs"
+
+products:
+  - kind: clinical_documentation_improvement
+    name_template: "{line}"
+    tiers: []
+    known_issue_pool:
+      - "template auto-save lag on long encounter notes"
+      - "coding-suggestion mismatches on complex encounters"
+  - kind: interoperability_engine
+    name_template: "{line} Connect"
+    tiers: []
+    known_issue_pool:
+      - "HL7 message queue delays during EHR maintenance windows"
+  - kind: e_prescribing_addon
+    name_template: "{line} {tier}"
+    tiers: ["Rx", "RxPlus"]
+    known_issue_pool:
+      - "formulary lookup timeouts during payer outages"
+  - kind: population_health_dashboard
+    name_template: "{line} Insights"
+    tiers: []
+    known_issue_pool: []
+  - kind: revenue_cycle_coding_assist
+    name_template: "{line} Code"
+    tiers: []
+    known_issue_pool:
+      - "coding suggestions occasionally lag a payer's updated fee schedule"
+
+roles:
+  - title: "CIO"
+    seniority: c_suite
+    is_champion_candidate: true
+  - title: "CMIO"
+    seniority: c_suite
+    is_champion_candidate: true
+  - title: "Director of Health Information Management"
+    seniority: director
+    is_champion_candidate: true
+  - title: "IT Integration Manager"
+    seniority: manager
+    is_champion_candidate: false
+  - title: "VP Revenue Cycle"
+    seniority: vp
+    is_champion_candidate: false
+  - title: "Physician Champion"
+    seniority: staff
+    is_champion_candidate: true
+  - title: "Compliance Officer"
+    seniority: manager
+    is_champion_candidate: false
+  - title: "CFO"
+    seniority: c_suite
+    is_champion_candidate: false
+
+event_templates:
+  - event_type: go_live
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{account} deployed {product} on {date} with {amount} users active in {days} days."
+        - "{person} from {vendor} confirmed {product} went live at {account} after {days} of training."
+        - "{product} at {account} is processing {amount} e-prescriptions daily since {date}."
+        - "{vendor} reported {account} expanded {product} usage to {amount} clinics by {date}."
+        - "{account} integrated {product} into {days} departments as of {date} per {person} notes."
+      complaint:
+        - "{person} from {vendor} received complaints about {product} crashing at {account} on {date}."
+        - "{account} reported {product} integration delays caused {days} of workflow disruption by {date}."
+        - "Users at {account} struggled with {product} documentation workflows since {date} launch."
+        - "{vendor} technicians addressed {product} interoperability issues at {account} over {days}."
+        - "{product} failed to process {amount} e-prescriptions at {account} during {date} go-live window."
+        - "{account} escalated {product} performance problems to {vendor} {person} on {date} citing {days} downtime."
+  - event_type: release
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{product} v{amount} was released to {account} on {date} with {days} of support prep."
+        - "{vendor} rolled out {product} dashboard updates to {account} on {date} via {person}."
+        - "{account} adopted {product} population health features on {date} after {days} testing."
+        - "{person} at {account} reported {product} API upgrades live on {date} with {amount} nodes."
+        - "{vendor} delivered {amount} new {product} templates to {account} by {date} per SLA."
+      praise:
+        - "{account} praised {vendor}'s {product} v{amount} updates during {date} call for improved workflow."
+        - "Director of HIM at {account} commended {product} dashboard enhancements released on {date} as per {person} notes."
+        - "{account} noted {product} API performance improvements in {date} metrics compared to previous release."
+        - "Pharmacists at {account} reported 30% faster e-prescribing since {product} v{amount} launched on {date}."
+        - "{person} from {vendor} received positive feedback from {account} about {product} scalability in {date} release."
+        - "CMIO at {account} highlighted {product} documentation accuracy gains in {date} presentation after {vendor} release."
+        - "{account} recognized {product} as \"most user-friendly\" during {date} health system showcase as per {person} report."
+        - "Health system at {account} noted {product} reduced clinician note time by {amount}% in {date} usage review."
+        - "IT at {account} commended {vendor} for resolving {product} interoperability issues in {date} post-release support."
+  - event_type: incident
+    weight: 1.6
+    claim_templates:
+      complaint:
+        - "{product} at {account} experienced {days} hours of downtime starting {date} per {person} log."
+        - "Pharmacists at {account} reported {product} e-prescription errors on {date} affecting {amount} orders."
+        - "{vendor} acknowledged {product} data sync failures at {account} between {date} and {date}."
+        - "{account} staff noted {product} dashboard inaccuracies since {date} requiring {days} to resolve."
+        - "{person} from {vendor} documented {product} API failures at {account} impacting {amount} transactions."
+        - "{account} filed an incident report about {product} crashing during {date} shift change."
+      risk:
+        - "{account} threatened to halt {product} payments due to {days} of unresolved issues as of {date}."
+        - "Budget cuts at {account} could jeopardize {product} renewal pending {date} funding decision."
+        - "{vendor} warned {account} about {product} compliance risks if {days} of audit gaps remain unfilled by {date}."
+  - event_type: escalation
+    weight: 1.2
+    claim_templates:
+      risk:
+        - "{vendor} highlighted {account}'s {product} implementation risks due to {days} of unresolved technical debt as of {date}."
+        - "{account}'s IT director flagged potential {product} downtime risks if {amount} budget cuts persist beyond {date}."
+        - "Regulatory changes effective {date} could expose {account} to {product}-related compliance risks without {days} of adjustment."
+        - "{vendor} noted {account} postponed {product} training for {days} amid concerns over e-prescribing module accuracy by {date}."
+      complaint:
+        - "{account} escalated {product} usability issues to {vendor} {person} on {date} citing {days} unresolved."
+        - "CMIO at {account} demanded {vendor} fix {product} interoperability by {date} after {days} delays."
+        - "{person} from {vendor} escalated {account}'s {product} performance complaints to senior engineering on {date}."
+        - "{account} reported {product} documentation errors caused {amount} revenue losses, prompting {date} escalation."
+        - "Director of HIM at {account} escalated {product} compliance concerns to {vendor} {person} on {date}."
+  - event_type: qbr
+    weight: 1.4
+    claim_templates:
+      usage:
+        - "{account} showed {amount}% growth in {product} utilization during {date} QBR."
+        - "{person} from {vendor} highlighted {days} of {product} uptime at {account} in {date} review."
+        - "{product} at {account} processed {amount} clinical documents in the last {days} per {date} metrics."
+        - "{vendor} presented {account} with {amount} new {product} adoption metrics during {date} QBR."
+        - "{account} achieved {days} consecutive error-free days in {product} as of {date} QBR data."
+      praise:
+        - "{account} appreciated {vendor}'s support in implementing {product} within {days} days for their {date} revenue cycle initiative."
+        - "{person} was acknowledged by {account} for the timely delivery of {product} enhancements ahead of the {date} compliance deadline."
+        - "Leadership at {account} praised {vendor}'s {product} for streamlining claim adjudication with a {amount}% reduction in delays reported on {date}."
+        - "The {date} evaluation revealed {product} from {vendor} cut data exchange errors by {amount}%, earning praise from {account}'s clinical team."
+        - "{account} acknowledged the value of {product} in improving physician handwriting recognition as described in the {date} feedback report by {person}."
+        - "Clinical staff at {account} praised the intuitive design of {product} deployed on {date}, citing a notable drop in training time."
+      question:
+        - "{account} asked about {product} scalability for {amount} additional clinics during {date} QBR."
+        - "CMIO at {account} inquired about {product} compliance updates needed for {date} regulatory changes."
+        - "{person} from {vendor} was asked to explain {product} API limitations in {date} QBR session."
+        - "Director of HIM at {account} questioned {product} data security protocols during {date} review."
+        - "{account} requested clarification about {product} pricing structure for {amount} new users in {date} meeting."
+        - "Pharmacists at {account} asked about e-prescribing error resolution in {product} during {date} QBR."
+        - "{account} sought visibility into {product} roadmap for next {days} at {date} business review."
+        - "{person} from {vendor} was challenged about {product} interoperability with EHR v{amount} in {date} QBR."
+        - "Billing team at {account} asked about {product} reporting features for revenue cycle audits during {date} session."
+        - "{account} requested documentation about {product} integration with legacy systems as discussed in {date} QBR."
+        - "CMIO at {account} asked about {product} training resources for new {amount} users in {date} discussion."
+        - "Director of IT at {account} questioned {product} support SLAs during {date} QBR session with {vendor} {person}."
+        - "{account} inquired about {product} customization options for {amount} specialty workflows in {date} meeting."
+        - "Pharmacists at {account} asked about e-prescribing formulary updates in {product} during {date} QBR."
+        - "{person} from {vendor} was asked to detail {product} maintenance schedule for next {days} during {date} review."
+        - "Health system at {account} questioned {product} data retention policies during {date} QBR with {vendor} {person}."
+        - "{account} requested proof of concept for {product} with {amount} new features as part of {date} QBR action items."
+        - "Director of HIM at {account} asked about {product} audit trail capabilities in {date} session with {vendor} {person}."
+  - event_type: renewal_step
+    weight: 1.0
+    claim_templates:
+      decision:
+        - "{account} approved {product} renewal for {amount} users with {vendor} effective {date} per {person} memo."
+        - "CMIO at {account} signed off on {product} expansion to {amount} new departments by {date} as documented."
+        - "{vendor} received formal approval from {account} to begin {product} renewal negotiations on {date}."
+        - "Director of HIM at {account} ratified {product} compliance updates in {date} memo for {amount} users."
+        - "{account} board voted to extend {product} contract for {days} additional period starting {date} as per {person} report."
+      pricing:
+        - "{account} received a revised pricing proposal for {product} from {vendor} on {date} reflecting {amount} cost reductions."
+        - "{vendor} presented a {days}-day trial pricing structure for the interoperability module to {account} on {date}."
+        - "{person} from {vendor} confirmed {amount} per-month pricing for {product} renewal during the {date} meeting with {account}."
+        - "During the {date} renewal discussion, {account} inquired about bundled pricing for e-prescribing and revenue-cycle modules from {vendor}."
+        - "{vendor} suggested a flat-rate renewal fee of {amount} for {account}\u2019s {product} usage following {days} of system integration."
+        - "On {date}, {account} negotiated {amount} in annual savings for {product} with {vendor} by committing to long-term support."
+        - "{vendor} proposed tiered pricing for {product} renewal at {account}, with {amount} discount if paid within {days} days by {date}."
+        - "{person} from {vendor} informed {account} of a {amount} late fee for {product} if renewal terms aren't met by {date}."
+        - "{account} negotiated a usage-based rate of {amount} per {days} for {product} during {date} renewal talks with {vendor}."
+        - "{vendor} offered {account} a bundled {product} and e-prescribing rate of {amount} for 12 months ending {date}."
+        - "{person} at {account} requested {vendor} to match a competitor's {amount} pricing for {product} during {date} review."
+        - "{account} agreed to a {days}-day extended support period for {product} with {vendor} at a cost of {amount} on {date}."
+  - event_type: price_negotiation
+    weight: 0.9
+    claim_templates:
+      pricing:
+        - "{account} requested 15% discount on {product} for {amount} additional users during {date} negotiations with {vendor}."
+        - "Director of Finance at {account} challenged {vendor}'s {product} licensing model during {date} pricing review."
+        - "{account} proposed payment plan for {product} renewal in {date} negotiations citing {amount} budget constraints."
+        - "{vendor} offered {account} volume discount for {amount} users under {product} in {date} proposal per {person} notes."
+        - "Pharmacists at {account} requested free e-prescribing module upgrade in {date} pricing discussion with {vendor}."
+        - "Director of IT at {account} requested deferred payment terms for {product} in {date} negotiation with {vendor}."
+      request:
+        - "{account} asked {vendor} to extend {product} trial period by {days} during {date} pricing discussion."
+        - "CMIO at {account} requested custom pricing for {product} specialty modules in {date} negotiation with {vendor}."
+        - "Director of HIM at {account} asked for volume-based discounts on {product} for {amount} new users in {date} meeting."
+        - "{account} proposed tiered pricing model for {product} based on usage metrics during {date} negotiation with {vendor}."
+        - "Pharmacists at {account} requested free e-prescribing integration with legacy systems in {date} pricing discussion."
+        - "{vendor} {person} was asked to provide cost analysis for {product} expansion to {amount} clinics in {date} session."
+        - "Director of Finance at {account} requested payment terms adjustment for {product} in {date} discussion with {vendor}."
+        - "CMIO at {account} asked about {product} API access costs for custom integrations during {date} pricing review."
+        - "{account} proposed co-development of {product} features in exchange for reduced pricing in {date} negotiation with {vendor}."
+        - "Director of IT at {account} requested transparent pricing for {product} maintenance in {date} meeting with {vendor} {person}."
+        - "Pharmacists at {account} asked for free training sessions on {product} in {date} pricing discussion with {vendor}."
+        - "CMIO at {account} asked about bundled pricing for {product} and {vendor}'s revenue cycle module during {date} session."
+        - "Director of HIM at {account} requested cost breakdown for {product} compliance features in {date} pricing review."
+        - "{account} proposed usage-based pricing model for {product} during {date} discussion with {vendor} {person}."
+        - "Pharmacists at {account} asked for free technical support during {product} onboarding in {date} pricing meeting."
+        - "{vendor} {person} was asked to waive setup fees for {product} in {date} negotiation with {account} per {person} notes."
+        - "Director of Finance at {account} requested multi-year discount for {product} in {date} pricing discussion with {vendor}."
+  - event_type: competitive_eval
+    weight: 0.8
+    claim_templates:
+      competitor_mention:
+        - "{account} evaluated {competitor}'s documentation solution during {date} RFP process against {vendor}'s {product}."
+        - "CMIO at {account} preferred {competitor}'s e-prescribing interface over {vendor}'s {product} as of {date} notes."
+        - "Director of HIM at {account} raised concerns about {competitor}'s interoperability costs compared to {product} in {date} review."
+        - "{account} requested {competitor} pricing for population health features during {date} competitive analysis with {vendor}."
+        - "Pharmacists at {account} considered {competitor}'s drug interaction checking module instead of {product} as of {date} discussion."
+        - "{vendor} {person} noted {competitor} submitted a lower bid for {product}-equivalent features in {account}'s {date} RFP."
+        - "IT at {account} compared {vendor}'s {product} API performance against {competitor}'s solution in {date} technical evaluation."
+        - "Director of Finance at {account} cited {competitor}'s pricing as a factor in delaying {product} renewal in {date} memo."
+        - "CMIO at {account} highlighted {competitor}'s faster deployment time versus {vendor}'s {product} in {date} presentation."
+        - "{account} requested {competitor} demonstration for revenue cycle features during {date} comparison with {vendor}'s {product}."
+        - "Director of HIM at {account} noted {competitor}'s stronger HIPAA compliance track record versus {product} in {date} analysis."
+        - "Pharmacists at {account} evaluated {competitor}'s drug formulary integration against {product} during {date} feature review."
+        - "{vendor} {person} documented {account} comparing {product} scalability against {competitor}'s cloud infrastructure in {date} notes."
+        - "CMIO at {account} raised concerns about {competitor}'s customer support SLAs versus {vendor}'s {product} in {date} meeting."
+        - "Director of IT at {account} requested {competitor} vs {product} interoperability testing metrics in {date} competitive analysis."
+        - "{account} requested {competitor} reference case studies for {product}-equivalent implementation in {date} RFP review."
+        - "Pharmacists at {account} considered {competitor}'s prescribing error alerts as a {product} alternative in {date} discussion."
+        - "Director of Finance at {account} highlighted {competitor}'s lower TCO for similar features versus {vendor}'s {product} in {date} report."
+      risk:
+        - "{account} is evaluating {competitor}'s interoperability solution alongside {vendor}'s {product} as of {date}."
+        - "{competitor}'s new e-prescribing module caused {account} to delay {vendor} {product} expansion by {days}."
+        - "CMIO at {account} prefers {competitor}'s documentation features over {vendor}'s {product} according to {date} notes."
+        - "{account} requested {competitor} pricing for population health features during {date} competitive review."
+        - "Director of HIM at {account} raised concerns about {competitor} integration speed versus {product} as of {date}."
+  - event_type: champion_departure
+    weight: 0.7
+    claim_templates:
+      contact_change:
+        - "Director of HIM {person} who drove {product} adoption at {account} left for academic position on {date} per internal note."
+        - "Pharmacists at {account} lost their {product} liaison {person} who resigned on {date} without clear replacement."
+        - "{vendor} {person} noted {account} replaced their {product} point person with {person} effective {date} in internal log."
+        - "CMIO {person} at {account} who supported {product} was reassigned to compliance role on {date} according to {vendor} records."
+        - "Health system {account} lost {product} advocate {person} who retired on {date} with no named successor in {vendor} logs."
+        - "{vendor} {person} documented {account} replacing their {product} champion {person} with {person} on {date} in internal records."
+        - "Pharmacists at {account} noted {product} liaison {person} transferred to regional office on {date} as per {vendor} notes."
+        - "Director of HIM {person} who managed {product} compliance at {account} resigned on {date} with unclear replacement in {vendor} log."
+        - "{vendor} {person} recorded {account} replacing their {product} contact {person} with {person} effective {date} in internal system."
+        - "Director of IT {person} at {account} who oversaw {product} migration departed on {date} with no immediate replacement noted."
+        - "Pharmacists at {account} reported {product} liaison {person} was reassigned to cybersecurity role on {date} in {vendor} notes."
+        - "{vendor} {person} noted {account} replaced {product} point person {person} with {person} on {date} in internal communication logs."
+        - "CMIO {person} at {account} who promoted {product} left for government position on {date} according to {vendor} documentation."
+        - "Clinical Informatics Manager {person} at {account}, key to {product} integration, transitioned to new role on {date} with no immediate successor in {vendor} records."
+        - "Revenue Cycle Manager {person} supporting {account}'s {product} adoption voluntarily departed on {date}; {vendor} noted {days} delay in appointing replacement."
+        - "{vendor} {person} logged {account}'s Interoperability Specialist {person} stepping down from {product} coordination on {date} without disclosing successor details."
+        - "Pharmacists at {account} reported {product} lead {person} left for consultancy on {date}, per {vendor} memo, with {amount} budget impact projected."
+        - "Healthcare IT Director {person} overseeing {account}'s {product} implementation departed on {date}; {vendor} tracked {days} before naming replacement {person}."
+      risk:
+        - "{person} departure from {account} in {date} raised concerns about {product} renewal commitment."
+        - "CMIO at {account} who championed {product} was replaced on {date} with no clear successor identified."
+        - "{vendor} noted {person} at {account} left their {product} oversight role effective {date} in internal notes."
+  - event_type: expansion
+    weight: 0.7
+    claim_templates:
+      decision:
+        - "{account} executive committee authorized {product} deployment expansion to {amount} new care sites by {date} per {person} analysis."
+        - "{vendor} secured {account} commitment to scale {product} user base by {amount} providers within {days} days as confirmed {date}."
+        - "Steering committee at {account} voted {date} to integrate {product} with {amount} additional third-party systems per {person} recommendation."
+        - "{product} expansion to {amount} ambulatory locations at {account} received final approval {date} following {person} evaluation."
+        - "{account} allocated {amount} budget for {vendor} to enhance {product} interoperability features by {date} as directed by {person} directive."
+      usage:
+        - "{account} added {amount} facilities to {product} deployment by {date} per {person} report."
+        - "{vendor} extended {product} licensing to {account} for {amount} users effective {date}."
+        - "{account} expanded {product} integration to {days} EHR modules by {date} as documented."
+        - "{person} confirmed {account} increased {product} usage by {amount}% since {date} expansion."
+        - "{product} at {account} now covers {amount} specialties following {date} expansion efforts."
+  - event_type: commitment_made
+    weight: 1.1
+    claim_templates:
+      commitment:
+        - "{account} committed to {product} renewal for {amount} users with {vendor} by {date} as per {person} memo."
+        - "CMIO at {account} vowed to expand {product} to {amount} clinics by {date} in {vendor} internal log."
+        - "{vendor} received written commitment from {account} to adopt {product} interoperability features by {date}."
+        - "Director of HIM at {account} assured {vendor} {product} compliance updates would be implemented by {date} in {person} notes."
+        - "{account} signed SLA confirming {product} minimum uptime of {amount}% by {date} as documented in {vendor} system."
+  - event_type: commitment_due
+    weight: 1.0
+    claim_templates:
+      commitment:
+        - "{account} agreed to complete {product} staff training by {date} as confirmed in {vendor}'s records."
+        - "{vendor} documented {account}'s pledge to implement {product} within {days} days of contract signing on {date}."
+        - "{person} at {account} confirmed {product} data migration to {vendor}'s platform would be finalized by {date}."
+        - "{account} committed to {vendor} that {product} integration with existing EHR will be tested by {date} in {person}'s report."
+        - "{vendor} received confirmation from {account} that {product} support will be extended for {amount} additional days beyond {date}."
+        - "{person} from {vendor} noted {account}'s commitment to allocate {amount} hours weekly for {product} optimization starting {date}."
+        - "{vendor} recorded {account}'s pledge to audit {product} system upgrades by {date} as outlined in {person} compliance report."
+        - "CFO at {account} approved {amount} funding for {product} expansion by {date} according to {vendor} financial tracking."
+        - "{vendor} noted {account}'s commitment to finalize {product} API integration by {date} per {person} development schedule."
+        - "{account} agreed to activate {product} AI analytics module by {date} with {vendor} support, documented in {person} project notes."
+        - "Director of Nursing at {account} confirmed {product} training for {amount} staff by {date} as per {vendor} internal logs."
+        - "{person} verified {account} will execute daily {product} system backups starting {date} under {vendor} service agreement terms."
+        - "{person} at {account} guaranteed {product} billing accuracy review by {date} as tracked in {vendor}'s audit log."
+      risk:
+        - "{account} may violate {product} contract terms if {days} past {date} milestone remains unaddressed."
+        - "{product} integration delays beyond {date} could incur {amount} penalties per {vendor} guidelines."
+        - "{account} faces {product} functionality risks if {days} post-{date} data migration issues aren't resolved."
+        - "{vendor} listed {account} as high-risk in {date} internal audit due to {days} overdue {product} compliance checks."
+  - event_type: decision
+    weight: 0.9
+    claim_templates:
+      decision:
+        - "{person} at {account} approved {vendor}'s {product} security certification by {date} for {amount} users."
+        - "Implementation committee at {account} mandated phased {product} rollout across {amount} facilities within {days} days as per {person} strategy."
+        - "{account} executives endorsed {vendor}-led {product} training for {amount} staff members by {date} following {person} proposal."
+        - "{vendor} was entrusted by {account} to migrate {amount} patient records to {product} by {date} as outlined in {person} plan."
+  - event_type: policy_change
+    weight: 0.6
+    claim_templates:
+      other:
+        - "{account} updated their data privacy policy affecting {vendor}'s {product} integration by {date} as per {person} notes."
+        - "CMIO at {account} mandated new documentation standards for {product} to be implemented by {date} in {vendor} records."
+        - "Director of HIM at {account} required {product} to comply with {amount} new HIPAA requirements by {date} according to {vendor} logs."
+        - "{vendor} {person} documented {account} changing billing policies for {product} effective {date} in internal system."
+        - "Pharmacists at {account} established new e-prescribing protocols for {product} to be enforced by {date} as per {vendor} notes."
+        - "Director of IT at {account} required {product} to support new EHR v{amount} API by {date} in {vendor} records."
+        - "{account} implemented new cybersecurity policy impacting {vendor}'s {product} access by {date} as noted in {vendor} system."
+        - "CMIO at {account} mandated {product} user training to be completed by {date} for all {amount} staff as per {vendor} records."
+        - "Director of Finance at {account} required revised payment terms for {product} by {date} in {vendor} documentation."
+        - "{vendor} {person} recorded {account} updating their audit policy to include {product} metrics by {date} in internal log."
+        - "Health system {account} required {product} to support new billing codes by {date} as per {vendor} notes."
+        - "Director of HIM at {account} established new data retention policies for {product} to be enforced by {date} in {vendor} records."
+        - "{vendor} {person} noted {account} changed their disaster recovery policy affecting {product} by {date} in internal system."
+        - "CMIO at {account} required {product} to display new clinical decision support alerts by {date} as documented in {vendor} logs."
+        - "Director of IT at {account} mandated {product} to use new authentication method by {date} in {vendor} records."
+        - "{account} implemented new interoperability standards for {product} to be adopted by {date} according to {vendor} notes."
+        - "Pharmacists at {account} established new workflow policy involving {product} by {date} as documented in {vendor} system."
+        - "Director of Finance at {account} required {product} to support new payment methods by {date} in {vendor} documentation."
+      decision:
+        - "{account} compliance team directed {vendor} to update {product} data governance protocols by {date} following {person} audit."
+        - "{vendor} was authorized by {account} to adjust {product} SLA terms for {amount} facilities effective {date} per {person} review."
+        - "Privacy officer at {account} mandated {product} encryption enhancements for {amount} patient datasets by {date} as outlined in {person} compliance report."
+        - "{account} executive council approved {vendor}'s proposal to extend {product} technical support for {days} beyond original contract ending {date} as documented."
+
+arcs:
+  - id: rocky_go_live_v1
+    arc_type: rocky_go_live
+    weight: 1.2
+    steps:
+      - {event_type: go_live, day_offset: 0}
+      - {event_type: incident, day_offset: 14}
+      - {event_type: escalation, day_offset: 30}
+      - {event_type: commitment_made, day_offset: 35}
+      - {event_type: commitment_due, day_offset: 60}
+      - {event_type: decision, day_offset: 75}
+  - id: renewal_price_pushback_v1
+    arc_type: renewal_price_pushback
+    weight: 1.3
+    steps:
+      - {event_type: renewal_step, day_offset: 0}
+      - {event_type: price_negotiation, day_offset: 10}
+      - {event_type: price_negotiation, day_offset: 20}
+      - {event_type: decision, day_offset: 35}
+  - id: competitive_eval_save_or_churn_v1
+    arc_type: competitive_eval_save_or_churn
+    weight: 1.0
+    steps:
+      - {event_type: competitive_eval, day_offset: 0}
+      - {event_type: escalation, day_offset: 15}
+      - {event_type: commitment_made, day_offset: 20}
+      - {event_type: decision, day_offset: 40}
+  - id: champion_transition_v1
+    arc_type: champion_transition
+    weight: 1.0
+    steps:
+      - {event_type: champion_departure, day_offset: 0}
+      - {event_type: qbr, day_offset: 20}
+      - {event_type: decision, day_offset: 30}
+  - id: expansion_v1
+    arc_type: expansion
+    weight: 1.0
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: expansion, day_offset: 20}
+      - {event_type: commitment_made, day_offset: 25}
+      - {event_type: decision, day_offset: 40}
+  - id: incident_escalation_exec_v1
+    arc_type: incident_escalation_exec
+    weight: 1.1
+    steps:
+      - {event_type: incident, day_offset: 0}
+      - {event_type: incident, day_offset: 7}
+      - {event_type: escalation, day_offset: 14}
+      - {event_type: commitment_made, day_offset: 18}
+      - {event_type: commitment_due, day_offset: 40}
+  - id: quiet_steady_v1
+    arc_type: quiet_steady
+    weight: 2.2
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: release, day_offset: 30}
+      - {event_type: qbr, day_offset: 60}
+      - {event_type: policy_change, day_offset: 75}
+
+topic_tree:
+  - name: "Product"
+    children:
+      - name: "Clinical documentation"
+      - name: "Interoperability"
+      - name: "Revenue-cycle coding"
+  - name: "Account"
+    children:
+      - name: "Billing"
+      - name: "Renewal"
+      - name: "Expansion"
+  - name: "Support"
+    children:
+      - name: "Incidents"
+      - name: "Training"
+  - name: "Competitive"
+    children:
+      - name: "Evaluations"
+  - name: "People"
+    children:
+      - name: "Contacts"
+      - name: "Champions"
+
+# One shared generic directive list, aliased into every fact type (section 4,
+# "Phrasing": a phrasing-style vocabulary applied across types, not
+# type-specific content -- same pattern as medical_devices.yaml).
+fact_directives:
+  complaint: &directives
+    - hedged
+    - numbers_spelled_out
+    - colloquial
+    - embedded_mid_sentence
+    - passive
+    - through_an_alias
+    - corrected_mid_sentence
+    - list_item
+    - terse
+    - rambling
+    - formal
+    - via_quoted_reply
+    - second_language_phrasing
+  request: *directives
+  praise: *directives
+  risk: *directives
+  competitor_mention: *directives
+  commitment: *directives
+  decision: *directives
+  contact_change: *directives
+  pricing: *directives
+  usage: *directives
+  question: *directives
+  other: *directives
+
+persona_bank:
+  - id: terse_ehr
+    speech_register: "health_it"
+    formality: neutral
+    typo_rate_range: [0.0, 0.01]
+    chat_style: short_fragments
+    signature_style: initials_only
+    hedging: false
+  - id: rambling_ops_ehr
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.01, 0.03]
+    chat_style: long_threads
+    signature_style: full_name_title
+    hedging: true
+  - id: formal_executive_ehr
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+  - id: typo_prone_frontline_ehr
+    speech_register: "health_it"
+    formality: informal
+    typo_rate_range: [0.03, 0.06]
+    chat_style: emoji_light
+    signature_style: first_name_only
+    hedging: false
+  - id: emoji_chat_ehr
+    speech_register: "health_it"
+    formality: informal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: emoji_heavy
+    signature_style: first_name_only
+    hedging: false
+  - id: second_language_procurement_ehr
+    speech_register: "procurement"
+    formality: formal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: measured
+    signature_style: full_block
+    hedging: true
+    second_language_features: ["article_drop", "present_tense_for_future"]
+  - id: formal_specialist_ehr
+    speech_register: "health_it_specialist"
+    formality: formal
+    typo_rate_range: [0.0, 0.01]
+    chat_style: precise
+    signature_style: full_name_title
+    hedging: false
+  - id: casual_it_ehr
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.02, 0.04]
+    chat_style: short_fragments
+    signature_style: none
+    hedging: false
+  - id: hedging_manager_ehr
+    speech_register: "operations"
+    formality: neutral
+    typo_rate_range: [0.0, 0.02]
+    chat_style: measured
+    signature_style: first_name_only
+    hedging: true
+  - id: direct_cfo_ehr
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+
+decoy_classes:
+  - id: hypothetical_ehr
+    near_type: risk
+    description: "A hypothetical framed as if it already happened."
+    example: "We tried switching to MeridianHealth last year but had to back out when their EHR sync didn't hold up during claims testing."
+  - id: negation_ehr
+    near_type: request
+    description: "Use a negation to indicate that no current action is necessary without implying any expectations or obligations."
+    example: "I\u2019m not looking to make any changes to our current setup right now, but I\u2019ll keep you in mind if things evolve."
+    forbidden_patterns: [competitor_evaluation]
+    text_source:
+      model: "qwen/qwen3-32b"
+      generated: "2026-09-23"
+      raw_response_sha256:
+        - "04b64331f6de942c7f1be28a0e81a6f5eb28e0b7f8e601ee571760d8118911b8"
+        - "9dcd3d39041513274e439972aa3ea1ba83c9fd4cdc99bae8d3b5bec7ff440c9b"
+        - "3aa2d1bc85aca07bd7c8d6704a1fceb00bcf860461a9b9779f9dde923ea447ce"
+  - id: hearsay_other_company_ehr
+    near_type: competitor_mention
+    description: "Something said to have happened to a different, unnamed customer."
+    example: "Hospitals in the Midwest say their vendor's dashboard crashed during last quarter's peak load period."
+  - id: generic_industry_talk_ehr
+    near_type: other
+    description: "Industry chatter with no account-specific claim."
+    example: "Many health systems are struggling with HL7 v2 compatibility when integrating third-party EHR add-ons these days."
+  - id: rhetorical_question_ehr
+    near_type: question
+    description: "A question asked for effect, not information, with no real open item."
+    example: "Who could've imagined e-prescribing would be this smooth with today's technology?"
+  - id: vendor_internal_speculation_ehr
+    near_type: risk
+    description: "Vendor-side speculation about a customer, not a customer statement."
+    example: "They might pause expansion if the recent compliance issues aren't resolved by Q3 metrics review."
+  - id: resolved_issue_as_history_ehr
+    near_type: complaint
+    description: "An already-resolved issue retold as past history, not a live complaint."
+    example: "Last year's sync failure with the old portal was eventually fixed with a patch, so we don't expect it to recur."
+  - id: commitment_decision_confusable_ehr
+    near_type: decision
+    description: "A vendor commitment restated in decision-shaped language, or a customer decision restated as if it were still an open vendor promise -- easy to mistype as the other fact type."
+    example: "We agreed to a 3-year contract extension for the e-prescribing module, which we'll decide on next month's QBR agenda."
+
+name_pool_refs:
+  account_suffixes_system: ["Health Informatics Network", "Integrated Health System", "Clinical Data Network"]
+  account_suffixes_facility: ["Ambulatory Care Center", "Outpatient Clinic", "Specialty Clinic"]
+  account_suffixes_standalone: ["Medical Group", "Physician Partners", "Clinical Associates"]
+  vendor_domain_tld: ".com"
+
+excluded_product_kinds: []
+held_out: false
+
+# Coordinator review of 7f779a3, 2026-09-22: every claim template above and
+# every decoy_classes[].example was written by this open-weight model, curated
+# (filtered/deduped, dropped when invalid, never rephrased) by scripts/data/
+# v2_gen_pack_templates.py -- not Claude-written, since this text reaches
+# training data. raw_response_sha256 points at the exact, unedited model
+# responses under var/data/v2_packs/raw/ (gitignored, not committed).
+claim_templates_source:
+  model: "qwen/qwen3-32b"
+  generated: "2026-09-22"
+  raw_response_sha256:
+    - "1c33a7d369b01a4a78e593feae684ad7663275ce628f838ce5903dc487c946b0"
+    - "e403b88a739a842807d5965d44f44133df25f814d152527a2d2d4f5c548eded5"
+    - "bd4609298ef9a126a90fc9ae9d70e828e4b5423b2d81929e461c33958c054676"
+    - "613c8c16442e618f1b44d1824ee8eb6c9335031c545886b46167310c27353d90"
+    - "242ea148654e3b7a07271c0a3f85b26e8b4d33112146a4fc52759697d7adc181"
+    - "1e4e2fa3a2fd468a71390d8de2ded8cff3ff04c3450ae75f9a8ffb2629ee273c"
+    - "ecc063cacf9a5519bf016dc898e73382cba35d8681f92c52b0e9e45626cbccab"
+    - "0ec66681c596d30244c570557356adf534bef495597ffce57df7055bc28d1f3f"
+    - "e5f2ee2bba57d94a79992b078727af553c0511838591e291a3fcc0e5f471d7fb"
+    - "53ecadd91d9431ad7fd8c412f85cda000a02c875f835dfbf92363995f7d72648"
+    - "e448bab8b3c9a94ac0ab6db59d6fb679734588de8e8e279ab48cc475418b056f"
+    - "418f2bb41c155f7d7beca8448cb1c5311632d643fd4ac9bc47a0bea25347deb2"
+    - "b320c8fb1a1e6a812a2b722c66d704e6adc2ff69675ab7a795167d322405f09a"

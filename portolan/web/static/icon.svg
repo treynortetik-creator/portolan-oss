@@ -1,0 +1,41 @@
+<!-- Favicon/app icon (UX eval 2026-09-12, punch item 16): the wordmark's
+     mark alone, one center node, four edges, four nodes, one horizon,
+     cropped to the 0 0 64 64 viewBox 04-brand/BRAND.md calls out for this
+     exact use, copied verbatim from 04-brand/wordmark.svg's own <g> mark
+     block. A standalone favicon has no page CSS to inherit a `color` from,
+     so this fills with the light-mode pl-ink token literally (#16191D)
+     rather than `currentColor`, which would default to plain black in an
+     un-themed <img>/favicon context.
+
+     Fix wave 2026-09-15 (v3): the comment above used to contain a
+     literal double hyphen, three times, which XML forbids inside
+     comments. The `xmllint` no-output check failed on it, so Chrome
+     silently fell back to the
+     generic globe instead of parsing this file at all. Rewritten with
+     commas in place of those dash breaks; the mark's own path and
+     circle data below is untouched. Also added: a prefers-color-scheme
+     media query so the dark near-black fill flips to a light warm-gray
+     on a dark tab strip, matching brand-tokens.css's own dark-mode ink
+     token swap (#E8E6E1) rather than staying invisible, dark on dark.
+
+     Recolor 2026-09-18 (the maintainer: "make that red, like the whole little
+     circle logo, I think that would look dope"): the fill below flips
+     from ink to the brand's one accent, rhumb-line red, light and dark
+     hex read straight off 04-brand/brand-tokens.css. A standalone
+     favicon still has no page CSS to read a custom property from, so
+     both values are baked in literally rather than referenced as
+     var(pl-accent), same reasoning as the ink fill this replaces. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"
+     fill="#C0362C" role="img" aria-label="Portolan">
+  <style>
+    @media (prefers-color-scheme: dark) { path, circle { fill: #D8543A; } }
+  </style>
+  <path fill-rule="evenodd"
+        d="M2,32 A30,30 0 1,0 62,32 A30,30 0 1,0 2,32 Z
+           M6.5,32 A25.5,25.5 0 1,0 57.5,32 A25.5,25.5 0 1,0 6.5,32 Z"/>
+  <circle cx="32" cy="32" r="5"/>
+  <g transform="translate(32,32) rotate(45)"><path d="M6.5,-1.5 H12.5 V1.5 H6.5 Z"/><circle cx="17.5" cy="0" r="5.5"/></g>
+  <g transform="translate(32,32) rotate(135)"><path d="M6.5,-1.5 H12.5 V1.5 H6.5 Z"/><circle cx="17.5" cy="0" r="5.5"/></g>
+  <g transform="translate(32,32) rotate(225)"><path d="M6.5,-1.5 H12.5 V1.5 H6.5 Z"/><circle cx="17.5" cy="0" r="5.5"/></g>
+  <g transform="translate(32,32) rotate(315)"><path d="M6.5,-1.5 H12.5 V1.5 H6.5 Z"/><circle cx="17.5" cy="0" r="5.5"/></g>
+</svg>

@@ -1,0 +1,11 @@
+{
+  "calls": [
+    {
+      "metaData": {"id": "7782342871234567890"},
+      "parties": [
+        {"id": "P-1", "name": "Sam Okafor", "emailAddress": "s.okafor@halvardmedical.com", "speakerId": "SPK-1"},
+        {"id": "P-2", "name": "Rob Tallis", "emailAddress": "rtallis@ashgrovehealth.org", "speakerId": "SPK-2"}
+      ]
+    }
+  ]
+}

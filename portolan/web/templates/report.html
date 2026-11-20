@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ note.title }} — Portolan{% endblock %}
+{% block head %}
+<style>
+  /* UX eval 2026-09-12, punch item 4: report section headings render as
+     the "chart legend" register the design system's other uppercase
+     labels use, at the size the eval specifies (14px -- the shell's own
+     h2 is 20px, sized for a note-list heading, not a report's own inline
+     sections). */
+  {# The report body's own markdown headings (`_render_body` in
+     `portolan/report/weekly.py`) are all `### `, i.e. h3 once rendered. #}
+  .report-body h3 {
+    font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--pl-muted);
+    border-bottom: 1px solid var(--pl-line); padding-bottom: 6px; margin: 28px 0 12px;
+    font-family: var(--pl-display); font-weight: 600;
+  }
+  .report-body h3:first-child { margin-top: 0; }
+  .report-body ul, .report-body ol { padding-left: 1.2em; }
+  .report-body li { margin: 4px 0; }
+  .report-body p { margin: 8px 0; }
+</style>
+{% endblock %}
+{% block content %}
+<p class="eyebrow"><a href="/reports">&larr; Reports</a></p>
+<h1 style="margin-top:0;">{{ note.title }}</h1>
+<p class="mono muted small">
+  {% if covers %}covers {{ covers[0].isoformat() }} – {{ covers[1].isoformat() }} · {% endif %}generated {{ note.updated|date }}
+</p>
+<p><a class="btn secondary" href="/reports/{{ note.slug }}.md">Download .md</a></p>
+
+<div class="card report-body">
+  {{ body_html }}
+</div>
+{% endblock %}

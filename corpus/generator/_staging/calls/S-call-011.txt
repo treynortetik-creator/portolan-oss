@@ -1,0 +1,270 @@
+[00:00:00] Sam Okafor: Derek, hey, thanks for making time. Dana, you're on too, good.
+[00:00:05] Dana Whitlock: Hey everyone. Derek, good to finally get on a call with you directly, I've mostly just seen your name in the account notes up to now.
+[00:00:16] Derek Hollis: Ha, good things I hope. Good to meet you, Dana. Sam's mentioned you a couple times, said you'd probably be reaching out at some point.
+[00:00:27] Dana Whitlock: All good, I promise. I run customer success on our side, so I tend to get looped in once an account's been live for a while and we want to make sure things are actually working the way they're supposed to, not just technically installed.
+[00:00:46] Derek Hollis: Makes sense. Well, we've been live for a bit now, so I guess that tracks.
+[00:00:53] Sam Okafor: How's everybody doing otherwise, before we get into it? Derek, didn't you just get back from vacation?
+[00:01:00] Derek Hollis: I did, yeah, two weeks ago now actually, feels like it never happened already. Took the family up to the lake for a week, which was nice, but coming back to two weeks of backlog kind of erased the relaxation pretty fast.
+[00:01:18] Sam Okafor: Ha, that's always how it goes. Which lake?
+[00:01:22] Derek Hollis: Up north, my wife's family has a place there, we go most summers. Kids love it, I mostly just fix things that break the whole time, but it's a change of scenery at least.
+[00:01:36] Dana Whitlock: Sounds nice regardless. I haven't taken real time off since spring, I'm a little jealous.
+[00:01:43] Derek Hollis: Take it while you can, honestly.
+[00:01:46] Sam Okafor: Ha, noted. Dana, how about you, any summer plans before things get busy again?
+[00:01:52] Dana Whitlock: Nothing exciting, honestly, just a long weekend at my parents' place a few weeks back. Mostly been heads down getting ready for a few account transitions on my end, so travel's been minimal this year.
+[00:02:07] Derek Hollis: That's the tradeoff I guess, some years are just heads-down years.
+[00:02:12] Dana Whitlock: Exactly. Speaking of which, Derek, I did want to say, I've read through your account history before this call, and it looks like things have generally been trending in a good direction over the last several months, which is nice to see coming in fresh.
+[00:02:31] Derek Hollis: Yeah, I think overall we're in a decent spot. Always a few things going on, but nothing that keeps me up at night these days, which is more than I could say a year or two ago honestly.
+[00:02:47] Sam Okafor: Glad to hear that, things were definitely bumpier back then if I remember right.
+[00:02:54] Derek Hollis: They were, yeah, that first year of the T3 transition planning was a lot, lots of moving pieces all at once.
+[00:03:03] Dana Whitlock: Well, hopefully today's call is a lot more routine by comparison.
+[00:03:09] Derek Hollis: Ha, we'll see, I've got a couple things on my list actually.
+[00:03:14] Sam Okafor: Uh oh, should I be worried?
+[00:03:17] Derek Hollis: Nothing dramatic, don't worry, just a couple operational things and one bigger-picture item near the end.
+[00:03:24] Sam Okafor: Fair enough, let's get into it then.
+[00:03:28] Dana Whitlock: Before we jump in, one more housekeeping thing — is this still the right group for these check-ins, or has anything changed on your organizational side? I want to make sure we're not missing anyone who should be looped in.
+[00:03:44] Derek Hollis: No, this is still the right group for now. If anything changes I'll let you know, but for the foreseeable future it's me on the clinical engineering side and then whoever from nursing or IT needs to join for specific topics.
+[00:04:01] Dana Whitlock: Perfect, that's helpful to have confirmed.
+[00:04:04] Sam Okafor: Alright, well, let's get into it. I know we've got a decent amount to cover today. Dana, you want to kick us off?
+[00:04:13] Dana Whitlock: Sure, happy to. So the main thing I wanted to raise today, Derek, is I'd like to set up a standing quarterly business review with your team going forward. We do these with most of our larger accounts, and given the size of the fleet you all have plus everything in flight between the pumps, the Link module, and the service contract, I think it'd genuinely help to have a recurring structured checkpoint rather than just ad hoc calls like this whenever something comes up.
+[00:04:48] Derek Hollis: Yeah, that's not a bad idea honestly. What would that actually look like, format-wise?
+[00:04:54] Dana Whitlock: Typically it's about an hour, we walk through utilization data, service history, any open issues, and then look ahead at what's coming up on both sides, budget cycles, planned rollouts, that kind of thing. I'd run point on it from our side, Sam would still be involved for anything account-specific, and we'd bring in whoever else makes sense depending on the topic, like an engineer if there's something technical to dig into.
+[00:05:24] Derek Hollis: That sounds useful actually. Who would you want in the room on our end?
+[00:05:31] Dana Whitlock: Ideally you, obviously, plus whoever else touches the account day to day, maybe someone from your nursing informatics side if the Link conversation warrants it that quarter. Doesn't need to be a huge group, just the right people.
+[00:05:47] Derek Hollis: Yeah, I can pull together the right folks depending on the agenda each time.
+[00:05:53] Dana Whitlock: Perfect. So, ⟦F32⟧let's go ahead and get the first one on the calendar for October, and I'll set it up as a recurring quarterly thing from there.⟦/F32⟧
+[00:06:05] Derek Hollis: Works for me. October's usually a little calmer before the holidays hit, so decent timing.
+[00:06:12] Sam Okafor: I'll help coordinate calendars once Dana's got a proposed date, make sure it doesn't collide with anything else we've already got on the books.
+[00:06:22] Dana Whitlock: Sounds good, I'll send something over in the next couple weeks with a few date options.
+[00:06:30] Derek Hollis: Appreciate it.
+[00:06:32] Sam Okafor: Great, glad that's settled. Okay, let's get into account stuff more broadly. Derek, anything top of mind for you before we run through our list?
+[00:06:43] Derek Hollis: A couple things actually. Nothing urgent, but let's see. First, just a general update, we finished the med-surg rollout of the last batch of T3 units a few weeks back, so that's fully done now, no outstanding units left to deploy from that original order.
+[00:07:02] Sam Okafor: Good, glad that wrapped up cleanly. Any issues during that final phase?
+[00:07:07] Derek Hollis: Nothing major, a couple minor configuration things our biomed team sorted out themselves, nothing that needed a ticket.
+[00:07:15] Sam Okafor: Good to hear. How's utilization looking on those newer med-surg units so far, any early signal one way or the other?
+[00:07:24] Derek Hollis: Early, but positive so far. We're seeing slightly higher daily utilization than we projected, which I think is mostly just because med-surg volumes have been up hospital-wide the last couple months, not necessarily anything specific to the units themselves.
+[00:07:40] Sam Okafor: Makes sense, good problem to have I guess, higher utilization generally.
+[00:07:46] Derek Hollis: Yeah, as long as we're not running anything into the ground, which so far we're not.
+[00:07:53] Sam Okafor: Good. Any feedback yet from the nursing staff on that floor specifically, now that they've had a few weeks with the new units?
+[00:08:03] Derek Hollis: Mostly positive, a little bit of the expected grumbling about the new interface taking some getting used to, but that's normal with any transition. Nothing that's made me worried.
+[00:08:15] Sam Okafor: Good, that tracks with what we usually see in the first month or so.
+[00:08:22] Derek Hollis: Yeah, exactly what I'd expect too.
+[00:08:26] Dana Whitlock: One thing I wanted to ask while we're on utilization, do you all have a Joint Commission survey coming up in the near term? I ask because a few of our other accounts have mentioned prepping for surveys this fall and wanted to see if that's on your radar too.
+[00:08:46] Derek Hollis: We do, actually, we're expecting them sometime in the next several months, though obviously they don't give exact notice. We've been doing our usual prep, making sure documentation's current, PM schedules are up to date, that kind of thing.
+[00:09:02] Dana Whitlock: If it'd help, we can put together a summary packet of service records and PM compliance specifically formatted for survey purposes, some hospitals find that saves a lot of scrambling when surveyors actually show up.
+[00:09:17] Derek Hollis: That would actually be really helpful, yeah. Let's do that.
+[00:09:22] Dana Whitlock: I'll get that started and have something to you well before you'd actually need it.
+[00:09:29] Derek Hollis: Appreciate it, that's one less thing to worry about.
+[00:09:34] Derek Hollis: The other thing, and this is more of a heads up than anything urgent, our CNO's office has been asking a lot of questions lately about total cost of ownership across all our equipment vendors, not just you all, this is hospital-wide. So don't be surprised if some of our questions over the next couple quarters are more finance-flavored than clinical.
+[00:09:58] Dana Whitlock: That's actually really useful to know ahead of time, thank you for flagging it. We can put together some TCO-oriented materials specifically for that audience if it'd help, rather than you having to translate our normal reporting into finance language yourself.
+[00:10:16] Derek Hollis: That would genuinely help, yeah. Half my job some weeks is translating vendor reports into whatever format finance actually wants to see.
+[00:10:26] Dana Whitlock: I hear that from a lot of folks in your seat. I'll put something together and get your take on it before it goes anywhere formal.
+[00:10:37] Derek Hollis: Appreciate that.
+[00:10:38] Derek Hollis: Actually, while we're talking finance-flavored stuff, is there any flexibility on how the HalvardCare contract gets invoiced? Right now it's a single annual lump sum, and our new finance process apparently prefers quarterly installments for anything over a certain dollar threshold going forward.
+[00:10:56] Dana Whitlock: I'd have to check on the specifics, but generally yes, we can usually accommodate a quarterly billing structure, it's just a matter of updating the contract terms at renewal rather than mid-term if that's easier.
+[00:11:11] Derek Hollis: That works, our renewal's not until next spring anyway, so there's time to build that in properly rather than rushing anything.
+[00:11:20] Dana Whitlock: Perfect, I'll make a note of that so it's already teed up when we get to renewal conversations, rather than something we're scrambling to add at the last minute.
+[00:11:32] Derek Hollis: Appreciate that, saves me from having to remember to bring it up again in six months.
+[00:11:39] Sam Okafor: Ha, we'll make sure it doesn't fall through the cracks on our end either.
+[00:11:45] Sam Okafor: That's a good flag, thanks Derek. While we're on the topic of internal changes, is Marcus still your primary contact on the finance side, or has that shifted at all? I want to make sure our paperwork routing is still going to the right person.
+[00:12:04] Derek Hollis: Actually, that changed, Marcus moved into a different role back in the spring, so it's now someone named Priya Anand handling capital equipment finance. I can get you her contact info after this if you don't already have it.
+[00:12:20] Sam Okafor: That'd be great, yeah, I don't think we've updated that on our end yet.
+[00:12:26] Derek Hollis: I'll send it over today.
+[00:12:29] Dana Whitlock: Appreciate that, always good to keep those routing details current, saves everybody headaches down the line when a renewal or invoice goes to the wrong inbox.
+[00:12:40] Derek Hollis: Definitely, we've had that happen with other vendors and it's always a mess to untangle.
+[00:12:47] Sam Okafor: Anything else changed organizationally that we should know about?
+[00:12:52] Derek Hollis: One other thing actually, we've got a new CNO starting next month, our previous one retired after almost twenty years here. I don't know her yet personally, but from what I've heard she's big on data-driven decision making, so I'd expect utilization reporting and outcomes data to get more attention going forward than it maybe has in the past.
+[00:13:16] Dana Whitlock: Good to know, that's actually really useful context for how we frame things in the QBR once we get that going, we can lean more heavily into the data side if that's going to resonate better with new leadership.
+[00:13:32] Derek Hollis: Yeah, I think that'd land well, honestly. She's apparently not someone who wants a lot of qualitative fluff, wants numbers.
+[00:13:41] Dana Whitlock: Has she said anything about equipment vendor relationships specifically, or is it too early for that kind of thing to even be on her radar yet?
+[00:13:52] Derek Hollis: Too early, honestly, she hasn't even fully moved in yet. I'd expect the first few months to be mostly listening and getting oriented before she starts weighing in on anything vendor-specific.
+[00:14:05] Dana Whitlock: Makes sense, that's usually how it goes with new leadership, better to let her settle in before pushing anything in front of her.
+[00:14:14] Derek Hollis: Exactly, no rush on our end either.
+[00:14:18] Sam Okafor: Well, once she is settled, happy to do a brief introduction call whenever that makes sense, no agenda, just so she knows who we are before anything formal comes up.
+[00:14:32] Derek Hollis: I'll keep that in mind, might be a good idea a few months down the line once she's found her footing.
+[00:14:41] Sam Okafor: Noted, we'll make sure whatever we put together leads with the data then.
+[00:14:47] Derek Hollis: Appreciate that.
+[00:14:48] Derek Hollis: One more small thing, not urgent at all, just want to mention it. We had a nurse manager ask if there's a quick-reference card or laminated cheat sheet for common T3 alarms, something she can post near the med station rather than having staff dig through the full manual every time.
+[00:15:09] Sam Okafor: Yeah, we actually have something like that already, a laminated quick-reference card, I just don't think I've sent it over to you all specifically. I'll get a box of those shipped over.
+[00:15:23] Derek Hollis: That'd be great, appreciate it.
+[00:15:26] Dana Whitlock: If it'd help, I can also send over a link to a short video walkthrough we made for common alarm scenarios, some floors like having both the physical card and something they can pull up on a phone or workstation.
+[00:15:43] Derek Hollis: That's useful too, yeah, send that along, I'll make sure it gets circulated to the right people.
+[00:15:51] Dana Whitlock: Will do.
+[00:15:52] Sam Okafor: Before we move on, Derek, how's the relationship with your nursing informatics team these days? I know earlier this year there was some friction about who owns troubleshooting on Link-related issues.
+[00:16:05] Derek Hollis: That's actually smoothed out quite a bit. We set up a clearer escalation path a few months back, basically anything that looks like a data or interface issue goes to informatics first, anything that looks like a device or connectivity issue comes to biomed first, and then we loop each other in as needed rather than both teams independently trying to figure out whose problem it is.
+[00:16:33] Sam Okafor: That's great, that kind of clarity usually solves ninety percent of the friction on stuff like that.
+[00:16:40] Derek Hollis: Yeah, it really did, honestly. Most of the friction before was just ambiguity about ownership, not any actual disagreement about how to fix things once someone actually looked at them.
+[00:16:53] Sam Okafor: Good to hear that's resolved, that used to come up a lot in our calls.
+[00:16:59] Derek Hollis: Yeah, glad to have that one off the list finally.
+[00:17:04] Dana Whitlock: With the new CNO starting and flu season coming up, anything you're anticipating needing extra support on from us, even informally? Sometimes it's easier to flag things now than scramble in November.
+[00:17:17] Derek Hollis: Nothing specific yet, but I appreciate you asking. I'd say just keep response times sharp through the fall, that's always our highest utilization stretch and the stretch where any delay actually hurts.
+[00:17:31] Dana Whitlock: Noted, I'll flag that internally so it's on people's radar heading into that period, not just something we react to once it's already busy.
+[00:17:41] Derek Hollis: Appreciate that, that's exactly the kind of thing that's useful to hear upfront.
+[00:17:47] Sam Okafor: Makes sense, we'll keep that in mind as we head into fall staffing on our side too.
+[00:17:55] Derek Hollis: Good, appreciate it.
+[00:17:57] Sam Okafor: Alright, I think we've covered the general stuff pretty thoroughly. Let's get into some of the more specific items now.
+[00:18:06] Derek Hollis: Sounds good, and actually, there is one item I wanted to raise directly before we move on. ⟦F04⟧We had a T3 delivery come in on the eleventh that showed up two days behind schedule.⟦/F04⟧ Wasn't a huge deal in isolation, but it pushed a floor-level rollout we had planned back by a couple days, which created some scheduling headaches for the in-service training we'd already lined up with nursing.
+[00:18:34] Sam Okafor: Yeah, I saw that come through, I'm sorry about that. Do you know if it was flagged as a specific carrier issue on our end, or was there any communication about it before it actually slipped?
+[00:18:50] Derek Hollis: Nobody proactively told us, honestly, we just noticed it hadn't arrived when it was supposed to and had to reach out ourselves to figure out what was going on.
+[00:19:02] Sam Okafor: That's on us, we should be proactively flagging that kind of thing before you have to chase it down. I'll look into what happened on that specific shipment and get back to you with an actual explanation, not just an apology.
+[00:19:19] Derek Hollis: I'd appreciate that. Like I said, not a disaster, we absorbed it, but I'd rather know ahead of time if something's going to slip so we can adjust our own scheduling instead of finding out the day of.
+[00:19:35] Dana Whitlock: That's completely fair, and honestly that's exactly the kind of thing our proactive notification system is supposed to catch. I'll flag this with our ops team too, because if it's not surfacing alerts correctly for your account specifically, that's worth fixing regardless of this one incident.
+[00:19:55] Derek Hollis: Appreciate you taking it seriously. It's not the end of the world, just annoying when it cascades into other stuff we've already scheduled around it.
+[00:20:05] Sam Okafor: Completely understood, we'll get you a real answer on it.
+[00:20:10] Sam Okafor: Alright, switching gears a bit, I wanted to check in on the Link integration. Last update I had was you all were still validating the interface with your new lab system.
+[00:20:23] Derek Hollis: Yeah, that's mostly resolved now actually. The lab values are flowing correctly into the pump-side dashboard, we did have to have a couple of back-and-forth sessions with your integration engineers and our own interface team to get the mapping exactly right, but it's been stable for a few weeks now.
+[00:20:44] Sam Okafor: Good, glad that settled out. Any lingering issues at all, even minor ones?
+[00:20:50] Derek Hollis: Nothing I'd call an issue exactly. There's a display quirk where certain units show a decimal place differently than others depending on which floor's workstation you're viewing it from, but it's cosmetic, doesn't affect the actual data, just looks slightly inconsistent if you're looking at two screens side by side.
+[00:21:11] Sam Okafor: I can have someone look at that anyway, even cosmetic stuff is worth cleaning up if it's confusing people.
+[00:21:20] Derek Hollis: Sure, wouldn't hurt, nobody's complained loudly about it, but it's on my list of small things to eventually ask about.
+[00:21:29] Dana Whitlock: I'll make a note of that for the engineering team, we can probably knock that out without much back and forth.
+[00:21:38] Derek Hollis: Appreciate it.
+[00:21:39] Derek Hollis: While we're talking about the dashboard, one of our analysts asked if there's a way to export utilization data directly to a CSV rather than only viewing it in the dashboard interface. Right now they're manually retyping numbers into their own spreadsheets, which is obviously not ideal.
+[00:21:59] Sam Okafor: I believe there's already an export function, but let me confirm the exact steps and send over instructions, might just be something that's not obvious in the interface if nobody's shown them where it lives.
+[00:22:14] Derek Hollis: That would help a lot, yeah, would save some real time for that team.
+[00:22:20] Sam Okafor: I'll get that sent over this week.
+[00:22:24] Dana Whitlock: If the export function turns out not to cover everything they need, let us know specifically what's missing, sometimes we can get product feedback like that into a future release if it's a common enough request across accounts.
+[00:22:39] Derek Hollis: Good to know, I'll ask them to be specific about what's missing if the current export doesn't fully cover it.
+[00:22:49] Sam Okafor: How about training? Any new staff coming through who'd need onboarding on either the T2 or T3 platforms?
+[00:22:57] Derek Hollis: We've got a handful of new nurses starting in the next month or so as part of normal seasonal hiring, nothing unusual there. Biomed side is stable right now, no new hires expected until at least the new year.
+[00:23:13] Sam Okafor: Got it, we can put together a nursing onboarding session whenever works for you, doesn't need to wait for anything specific.
+[00:23:22] Derek Hollis: Let's plan on sometime in September, I'll get you exact dates once I confirm with the nurse educators on their availability.
+[00:23:31] Sam Okafor: Sounds good, just send it over whenever you've got it.
+[00:23:36] Dana Whitlock: While we're on training, one thing I wanted to ask, has anyone from your team gone through the newer analytics dashboard training we rolled out a couple months back? I want to make sure that's actually landing with the people who'd use it day to day.
+[00:23:54] Derek Hollis: Honestly, I don't think so, or if they did I haven't heard about it. That might be worth setting up too, now that you mention it, I know a couple of my analysts have asked about pulling utilization reports themselves instead of asking us to generate them each time.
+[00:24:15] Dana Whitlock: Let's get that scheduled, I can have one of our analytics folks run a session, probably works well combined with or right after the nursing onboarding if that's easier logistically for everyone.
+[00:24:29] Derek Hollis: That'd be efficient, yeah, let's try to bundle those if the timing works out.
+[00:24:35] Sam Okafor: I'll help coordinate that once we've got dates locked in from both sides.
+[00:24:41] Derek Hollis: Appreciate it.
+[00:24:43] Dana Whitlock: How's the HalvardCare service experience been generally, separate from the shipment thing we already covered? Anything about the actual service visits, response times, that kind of day-to-day stuff?
+[00:24:55] Derek Hollis: Pretty solid overall, honestly. We had one T3 go down on a weekend a few weeks ago, field engineer got out same day even though it wasn't technically an emergency-tier issue, which we appreciated. No real complaints there.
+[00:25:10] Dana Whitlock: Good to hear, that's what we want. We're always looking for ways to tighten that further, but glad the baseline experience has been solid for you all.
+[00:25:22] Derek Hollis: Yeah, no complaints on that front specifically.
+[00:25:25] Dana Whitlock: On the HalvardCare side, are you all still using the online portal for submitting service requests, or is everyone calling in directly? I ask because we've seen the portal cut down response times pretty meaningfully for accounts that use it consistently.
+[00:25:42] Derek Hollis: It's a mix honestly, some of the newer techs use the portal, a couple of the more senior guys still just pick up the phone out of habit. I could probably push harder on getting everyone onto the portal if it actually makes a measurable difference.
+[00:26:01] Dana Whitlock: It generally does, even just a few minutes on average, but more importantly it creates a cleaner record on our end for tracking patterns like the shipment thing we discussed earlier.
+[00:26:14] Derek Hollis: That's a fair point, I'll mention it at our next team meeting, see if we can get better adoption across the board.
+[00:26:24] Sam Okafor: Happy to do a quick refresher on the portal for anyone who wants it, sometimes people just need a five-minute walkthrough to get comfortable with something new.
+[00:26:35] Derek Hollis: I'll take you up on that, probably easiest to fold into whatever training session we're already setting up in September.
+[00:26:44] Sam Okafor: Works for me, I'll add it to that agenda.
+[00:26:48] Sam Okafor: Good. While we're doing a general check-in, any feedback on the T2 fleet specifically? I know it's the bulk of what you're still running day to day even with the T3 rollout underway.
+[00:27:03] Derek Hollis: Nothing new really, they're workhorses at this point, we know them inside and out, staff are comfortable with them. Occasional consumable hiccups here and there but nothing structural.
+[00:27:15] Sam Okafor: Good to hear, that's the goal with a fleet that size, boring and reliable.
+[00:27:22] Derek Hollis: Exactly, boring is the dream in this line of work.
+[00:27:27] Dana Whitlock: Agreed completely. Alright, anything on the budget or planning side you want to flag while we're all here? I know it's a little early for next fiscal year conversations, but wanted to check.
+[00:27:40] Derek Hollis: Nothing formal yet, our budget cycle doesn't really kick into gear until later in the fall, but informally I'd expect we'll be looking at continuing the T3 transition on at least one more unit if things keep going the way they have been. Nothing decided, just the direction things seem to be leaning internally.
+[00:28:02] Dana Whitlock: Good to know, I'll keep that in mind for planning on our side too, and happy to put together some preliminary numbers whenever that'd be useful, no pressure or commitment implied.
+[00:28:15] Derek Hollis: Appreciate that, I'll reach out once things firm up a bit more on our end.
+[00:28:22] Dana Whitlock: On the budget side, is there any appetite to look at a formal preventive maintenance schedule upgrade for the T2 fleet given how long some of those units have been in service? Sometimes as a fleet ages a little, a slightly more frequent PM cadence pays for itself in fewer unplanned issues.
+[00:28:44] Derek Hollis: We've actually talked about that internally a little, nothing decided, but it's on the list of things to evaluate once we know more about the T3 transition timeline, since obviously that affects how much longer we're leaning on the T2 fleet as our primary workhorse.
+[00:29:03] Dana Whitlock: That makes sense, happy to put together some data on failure rates by age if that'd help inform that decision whenever you're ready to look at it seriously.
+[00:29:15] Derek Hollis: That'd be useful, yeah, let's revisit that once we have more clarity on the broader fleet direction.
+[00:29:22] Dana Whitlock: Sounds good, I'll have that ready whenever you want to dig into it.
+[00:29:28] Sam Okafor: Anything else on the fleet side before we keep moving?
+[00:29:33] Derek Hollis: Nothing else major, honestly, it's been a pretty steady stretch overall, which I'll happily take.
+[00:29:40] Sam Okafor: We'll take steady too.
+[00:29:43] Dana Whitlock: Agreed, steady is underrated in this line of work.
+[00:29:47] Derek Hollis: Exactly what I keep telling my team.
+[00:29:51] Sam Okafor: Oh, one thing I meant to mention, there's a minor firmware update rolling out to T3 units over the next month, mostly just some small alarm threshold refinements based on field feedback from other accounts. Nothing mandatory or urgent, but wanted you to have the heads up before it shows up as a scheduled task in the portal.
+[00:30:15] Derek Hollis: Appreciate the heads up, I'll let biomed know to expect it so it doesn't catch anyone off guard.
+[00:30:23] Sam Okafor: Sounds good, and if you want, we can schedule it for a specific low-volume window rather than just letting it roll out on the default timeline.
+[00:30:35] Derek Hollis: Yeah, let's do that, I'll check with the floor and get you a preferred window.
+[00:30:42] Sam Okafor: Derek, was there anything else on your list before we keep going? I know you mentioned a couple things earlier.
+[00:30:51] Derek Hollis: Actually, yeah, one more thing I wanted to circle back to. Remember I mentioned the delivery on the eleventh that came in two days late? We had a second one right behind it. ⟦F04⟧The next shipment, the one that came in on the thirteenth, ended up three days late, and that one actually bumped into a weekend, so it sat even longer before anyone on our side even realized it hadn't shown up yet.⟦/F04⟧
+[00:31:21] Sam Okafor: Wait, seriously, back to back like that? That's not great, I'm sorry, that's twice in the same week basically.
+[00:31:30] Derek Hollis: Yeah, essentially back to back, which is really what made it stand out to me rather than either one alone. One late shipment happens, fine, that's logistics. Two in a row starts to feel like a pattern rather than a fluke, at least from where I'm sitting.
+[00:31:50] Dana Whitlock: That's a completely fair read on it, and I want to be straight with you, two consecutive delays on the same account in the same week is exactly the kind of thing that should trigger a root cause review on our side, not just two separate one-off tickets getting closed independently.
+[00:32:11] Derek Hollis: That's kind of where my head's at too, honestly. I don't think anybody's doing anything wrong on purpose, but something in the process clearly isn't catching this before it becomes our problem to deal with on the receiving end.
+[00:32:28] Sam Okafor: Completely fair, and I'll make sure both of these get looked at together, not as two isolated incidents. I want an actual explanation for what happened across both, not just a shrug and an apology for each one separately.
+[00:32:44] Derek Hollis: I'd appreciate that. Again, we managed both times, nobody was without equipment, but it's the kind of thing where if it becomes a trend I'd have to start rethinking how much buffer stock and buffer equipment we carry locally, and that ties up budget I'd rather spend elsewhere.
+[00:33:05] Dana Whitlock: Understood completely, and I don't want you in that position either. Let me get with our logistics team this week specifically about your account, and I'll have Sam follow up with you directly once we've actually got answers, not just a status update saying it's being looked into.
+[00:33:25] Derek Hollis: That works, thank you both.
+[00:33:28] Sam Okafor: Of course, and thanks for being direct about it, that's exactly the kind of thing we'd rather hear from you straight than have you just quietly get more frustrated over time.
+[00:33:41] Derek Hollis: No, I'd rather just say it when it comes up. That's the whole point of these calls I'd think.
+[00:33:49] Dana Whitlock: Agreed, completely.
+[00:33:51] Sam Okafor: Alright, let's keep moving if that's okay, want to make sure we get through everything. Derek, how are things generally on the clinical side, any feedback from nursing leadership recently, good or bad?
+[00:34:05] Derek Hollis: Mostly positive, honestly. There was some grumbling early in the T3 rollout about the learning curve on the new interface, but that's settled down now that people have had a few months with it. Nothing structural, just the usual adjustment period you'd expect with any new equipment.
+[00:34:24] Sam Okafor: That tracks with what we usually hear, the adjustment period is real but temporary.
+[00:34:31] Derek Hollis: Yeah, exactly. A few of the charge nurses have actually come around to preferring the T3 now, which surprised me a little given how much grumbling there was initially.
+[00:34:44] Dana Whitlock: That's great to hear, sometimes it takes a full quarter or two before people really settle into new equipment and stop comparing it to muscle memory from the old one.
+[00:34:57] Derek Hollis: That's exactly it, yeah, muscle memory is a real thing with these nurses, some of them have been running the T2 for a decade plus.
+[00:35:08] Sam Okafor: Ha, that's a good problem to have, converts are always the best advocates for something new.
+[00:35:15] Derek Hollis: Exactly, a couple of them have actually started training other nurses informally, which wasn't something we planned but has been genuinely helpful for adoption.
+[00:35:26] Dana Whitlock: That's great, peer-to-peer training tends to land better than anything official anyway, people trust their coworkers' opinions more than a vendor rep, no offense to either of you.
+[00:35:38] Sam Okafor: None taken, it's true.
+[00:35:40] Derek Hollis: Ha, yeah, credibility matters, and mine as the guy who approved the purchase is not exactly neutral in their eyes.
+[00:35:49] Dana Whitlock: That's a great sign though, honestly, informal peer champions tend to stick around a lot longer than anything we could manufacture from our side.
+[00:35:59] Derek Hollis: Yeah, agreed, and it's not something I can really engineer, it just has to happen organically once people actually trust the equipment.
+[00:36:09] Sam Okafor: Makes sense. Any sense of how the T3 rollout has affected overall alarm volumes on that floor, now that there's been enough time to compare against the T2 baseline?
+[00:36:21] Derek Hollis: We haven't done a formal comparison yet, that's honestly something I'd love to bring into one of the QBRs once we've got a full quarter of T3 data to work with. Anecdotally it feels a little quieter, but I don't want to say that with any confidence until we've actually pulled the numbers.
+[00:36:43] Dana Whitlock: That's a perfect fit for the first QBR agenda actually, we can pull the alarm data on our side and lay it side by side with whatever your team has internally.
+[00:36:56] Derek Hollis: That'd be great, let's plan on that for October then.
+[00:37:01] Sam Okafor: I'll make a note to have that ready.
+[00:37:05] Dana Whitlock: While we're talking data, are you all still getting the monthly utilization summary email, or did that ever get routed to the wrong person after any of the staffing changes you mentioned?
+[00:37:19] Derek Hollis: Still coming to me directly, yeah, that one's fine. I do forward it to a couple of the analysts now too, which has actually been useful for them to see the raw numbers rather than just whatever summary I used to pull together manually.
+[00:37:37] Dana Whitlock: Good, glad that's landing with the right people now.
+[00:37:42] Derek Hollis: Yeah, small thing but it's helped.
+[00:37:45] Sam Okafor: Any other quick items before we get to that last bigger-picture thing you mentioned earlier?
+[00:37:51] Derek Hollis: I don't think so, that covers the operational stuff pretty well I think.
+[00:37:57] Sam Okafor: Alright, let's get to it then.
+[00:38:00] Dana Whitlock: Actually, one more small one from me, are you all still happy with the current escalation contacts list, or has anyone changed roles that would affect who gets called after hours?
+[00:38:13] Derek Hollis: That should still be accurate, I haven't made any changes there recently, but I'll double check with my team just to be safe and let you know if anything needs updating.
+[00:38:26] Dana Whitlock: Appreciate that, always good to verify those periodically.
+[00:38:31] Sam Okafor: Makes sense. Any other departments or floors we should be aware of, anything outside the usual units?
+[00:38:38] Derek Hollis: Not really, pretty consistent picture across the hospital right now. ICU's been stable, ED hasn't flagged anything, so it's really just the general fleet plus the ongoing T3 rollout that's been the main story this year.
+[00:38:53] Sam Okafor: Good, sounds like a pretty manageable stretch overall.
+[00:38:58] Derek Hollis: It has been, yeah, knock on wood. The only other thing on my radar, and this is more forward-looking than anything current, is the new tower project. That's been picking up steam internally over the last month or so.
+[00:39:14] Sam Okafor: Oh yeah, I remember you mentioning that was in early planning a while back. How's that progressing?
+[00:39:22] Derek Hollis: It's moving faster than I expected honestly, they've actually started bringing vendors in to look at options for the new build rather than just assuming we'd extend whatever we're already running. Equipment planning for a new tower is basically a clean slate exercise, so leadership wants to actually shop it properly instead of just defaulting to the incumbent.
+[00:39:46] Sam Okafor: That makes sense from a planning standpoint, though obviously I'd love for that shopping exercise to land back with us given the relationship we've already got.
+[00:39:57] Dana Whitlock: How far along is the timeline overall, roughly? Are we talking about a decision within months, or is this still a couple years out from actually needing equipment?
+[00:40:09] Derek Hollis: Construction itself is still a couple years out, realistically, but from what I understand leadership likes to lock in major equipment vendor relationships well ahead of actual occupancy, sometimes a year or more before anything's even close to move-in ready, so the evaluation process itself could start moving relatively soon even though nothing's urgent yet.
+[00:40:32] Dana Whitlock: That's helpful context, good to know the shape of the timeline even if the actual decision point is further out.
+[00:40:41] Derek Hollis: Yeah, exactly, still very early days, but wanted you both to know it's a live conversation internally rather than something purely hypothetical.
+[00:40:51] Sam Okafor: That makes sense, appreciate you giving us the lay of the land on it. Anyone specific driving the vendor evaluation on your side, or is that mostly coming from the C-suite level?
+[00:41:05] Derek Hollis: Mostly coming from the C-suite and the project steering committee at this point, my role is more advisory, giving clinical and biomed input rather than actually running the selection process myself.
+[00:41:18] Sam Okafor: Got it, still useful to know who's actually steering it though.
+[00:41:22] Dana Whitlock: Whenever you're ready to loop us in more formally on that, even just to understand what the committee's evaluation criteria look like, we'd welcome that conversation. No pressure, just want you to know we're glad to engage early rather than only showing up once there's already an RFP on the table.
+[00:41:44] Derek Hollis: Yeah, I'll keep that in mind. Honestly, I think it's still forming, I don't think there's a formal RFP process yet, more just information gathering at this stage from what I can tell.
+[00:41:58] Sam Okafor: That's usually the best time to be involved, honestly, before things calcify into a formal process with rigid criteria that might not reflect what actually matters clinically.
+[00:42:10] Derek Hollis: That's fair. I'll flag your interest to whoever's coordinating it on the steering committee side.
+[00:42:17] Sam Okafor: Appreciate that, genuinely. We obviously want to be part of that conversation given how long we've worked together on the rest of the fleet.
+[00:42:28] Derek Hollis: Understandable, and for what it's worth, the relationship on the existing fleet is a real factor, it's not like we're starting from zero on how we think about you all going into this.
+[00:42:42] Dana Whitlock: Good to hear, that context matters.
+[00:42:44] Derek Hollis: Sure, and don't read too much into this, it's very early, nothing's decided, but in the interest of being straight with you both since we're already being direct today, ⟦F15b⟧we've had Corvane in to demo for the tower, so that's officially part of the conversation now on our end.⟦/F15b⟧
+[00:43:05] Sam Okafor: Appreciate you telling us directly rather than us finding out secondhand later. Can I ask what's driving that specifically, is it something about the current relationship, or just standard due diligence for a big new build?
+[00:43:20] Derek Hollis: Honestly, mostly the latter. It's a big enough capital project that leadership wants to see options on the table regardless of how happy we are with an existing vendor, it'd look bad internally if we didn't at least shop it. This isn't really about anything specific you all have done wrong.
+[00:43:41] Dana Whitlock: That's helpful context, genuinely, and I appreciate you being upfront about it instead of letting us find out through the grapevine. Would it be useful for us to put together something specifically for the tower project, sized for what a from-scratch buildout would actually look like, rather than just our standard account materials?
+[00:44:03] Derek Hollis: Yeah, that would actually be really useful, honestly. If you can get us something concrete to bring into those conversations, that helps our case internally too, assuming it's competitive.
+[00:44:15] Sam Okafor: We'll get something built for that specifically, I'll loop in our capital projects team, they handle exactly this kind of large greenfield proposal.
+[00:44:25] Derek Hollis: Appreciate it, genuinely. I want to be clear, this isn't me shopping the rest of the relationship, it's specifically a new-build conversation for the tower.
+[00:44:36] Dana Whitlock: Understood, and we'll treat it that way. Thanks for being straight with us about it, that's exactly the kind of thing I'd rather hear directly from you in a call like this than piece together later.
+[00:44:51] Sam Okafor: Out of curiosity, is Corvane the only other vendor in the mix, or are there others being considered too?
+[00:45:00] Derek Hollis: I believe there's at least one more being looked at, I don't have full visibility into the whole list honestly, my involvement so far has just been the one demo session for Corvane specifically.
+[00:45:14] Sam Okafor: Got it, that's helpful to know regardless, even partial visibility is useful.
+[00:45:20] Derek Hollis: Sure, I'll share more if I hear more, but that's genuinely all I know at this point.
+[00:45:27] Dana Whitlock: Appreciate you sharing what you do know, that's more than a lot of accounts would volunteer.
+[00:45:34] Derek Hollis: Like I said, feels better to just be straightforward about it than to have you find out some other way and wonder why I didn't mention it.
+[00:45:45] Sam Okafor: We appreciate that a lot, genuinely, it makes it a lot easier for us to actually be useful rather than guessing at where things stand.
+[00:45:57] Dana Whitlock: Agreed completely.
+[00:45:58] Derek Hollis: Anyway, that's everything on my radar for now, big and small.
+[00:46:03] Sam Okafor: Well, we appreciate you walking us through all of it today, that was a lot more thorough than our usual check-ins, in a good way.
+[00:46:14] Derek Hollis: Figured since Dana was on, might as well cover everything at once rather than trickle it out over the next three calls.
+[00:46:23] Dana Whitlock: Efficient, I like it.
+[00:46:25] Derek Hollis: Of course, that's what these are for I think.
+[00:46:30] Dana Whitlock: One last thing on the tower topic before we move to wrap-up, would it help if I connected you with a couple of our reference accounts that went through a similar new-build evaluation process recently? Sometimes it helps internally to hear from a peer institution rather than just from us.
+[00:46:50] Derek Hollis: That could actually be really useful, yeah, especially if it's someone who evaluated multiple vendors and can speak to that process specifically rather than just being a happy customer.
+[00:47:03] Dana Whitlock: I'll see who's willing and get you a couple names, no pressure on their end either, just a conversation if it's useful.
+[00:47:12] Derek Hollis: Appreciate that, I think that'd carry some weight with the steering committee.
+[00:47:17] Sam Okafor: Alright, I think that's a good place to start wrapping up, we've covered a lot today. Let me just do a quick recap of next steps so we're all aligned. Dana's sending over QBR date options for October, I'm digging into both late shipments and following up with an actual explanation, we're scheduling the nursing onboarding and analytics training together sometime in September, and we'll get a tower-specific capital proposal built out for Derek to bring into those internal conversations, plus a couple of reference account contacts from Dana.
+[00:47:53] Derek Hollis: That all matches what I've got. I'll get back to you on the September training dates once I confirm with the nurse educators, and I'll send Priya's contact info over today like I mentioned earlier.
+[00:48:08] Dana Whitlock: Perfect, and I'll have the QBR options over within the next couple weeks like I said, plus the survey prep packet and the reference account names.
+[00:48:19] Sam Okafor: Great, and I'll follow up directly once we've actually got answers on the shipment stuff, not just a placeholder update, and I'll get that CSV export documentation and the quick-reference cards sent over this week too.
+[00:48:35] Derek Hollis: Sounds like a lot on everybody's plate, appreciate you both staying on top of all of it.
+[00:48:43] Dana Whitlock: Happy to, that's the job.
+[00:48:46] Sam Okafor: Alright, have a good rest of your week, Derek. Enjoy the last bit of summer before things get busy again.
+[00:48:55] Derek Hollis: You too, both of you. Thanks again for today, this was genuinely useful.
+[00:49:01] Dana Whitlock: Agreed, this was great, thanks for being so direct with us, Derek, it genuinely makes these calls more useful when people just say what's actually going on.
+[00:49:12] Derek Hollis: That's the only way I know how to do it, honestly.
+[00:49:18] Sam Okafor: Ha, we appreciate that. Talk soon.
+[00:49:20] Derek Hollis: Talk soon.
+[00:49:22] Dana Whitlock: Bye, everyone.

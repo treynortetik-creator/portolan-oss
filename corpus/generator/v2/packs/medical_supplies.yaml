@@ -1,0 +1,597 @@
+# Medical supplies vertical pack -- WP2 (`01-spec/world-generator-v2-2026-09-22.md`
+# section 4). Validates against `corpus/generator/v2/packs/schema.py::VerticalPack`.
+
+id: medical_supplies
+name: Medical supplies
+vendor_what: "consumable medical supplies, par-level inventory management and supply-chain analytics software sold to hospitals and surgery centers"
+
+products:
+  - kind: wound_care_supplies
+    name_template: "{line}"
+    tiers: []
+    known_issue_pool:
+      - "backorders on specialty dressing sizes during high-demand periods"
+      - "lot-tracking mismatches after a supplier substitution"
+  - kind: par_level_inventory_system
+    name_template: "{line} Par"
+    tiers: []
+    known_issue_pool:
+      - "par-count drift after a manual cycle count"
+  - kind: surgical_kitting
+    name_template: "{line} {tier}"
+    tiers: ["Kit", "KitPlus"]
+    known_issue_pool:
+      - "kit-pick errors on custom procedure trays"
+  - kind: supply_chain_analytics
+    name_template: "{line} Insights"
+    tiers: []
+    known_issue_pool: []
+  - kind: gpo_contract_management
+    name_template: "{line} Contracts"
+    tiers: []
+    known_issue_pool:
+      - "contract-tier pricing occasionally lags a GPO amendment"
+
+roles:
+  - title: "Materials Manager"
+    seniority: manager
+    is_champion_candidate: true
+  - title: "VP Supply Chain"
+    seniority: vp
+    is_champion_candidate: true
+  - title: "Director of Perioperative Services"
+    seniority: director
+    is_champion_candidate: true
+  - title: "CFO"
+    seniority: c_suite
+    is_champion_candidate: false
+  - title: "Central Sterile Processing Manager"
+    seniority: manager
+    is_champion_candidate: false
+  - title: "Procurement Director"
+    seniority: director
+    is_champion_candidate: false
+  - title: "Supply Chain Analyst"
+    seniority: staff
+    is_champion_candidate: false
+  - title: "COO"
+    seniority: c_suite
+    is_champion_candidate: false
+
+event_templates:
+  - event_type: go_live
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{account} implemented {product} on {date} for {amount} facilities."
+        - "{person} from {account} activated {product} on {date} after {days} of training."
+        - "{vendor}\u2019s {product} went live at {account} on {date} with {amount} users."
+        - "{account} integrated {product} into {amount} departments by {date} after {days} testing."
+        - "{product} was rolled out to {account}\u2019s {amount} surgical suites on {date}."
+      complaint:
+        - "{account} reported {product} delays of {days} days past the {date} launch."
+        - "{person} from {account} noted {amount} missing features in {product} on {date}."
+        - "{vendor}\u2019s {product} failed to sync with {account}\u2019s systems on {date}."
+        - "{account} cited {amount} errors in {product}\u2019s inventory reports by {date}."
+        - "{product}\u2019s onboarding at {account} was halted for {days} days due to {vendor} delays."
+        - "{person} at {account} claimed {product} was non-compliant with {amount} regulations as of {date}."
+  - event_type: release
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{account} adopted the {product} update on {date} to improve {amount} workflows."
+        - "{vendor} delivered a {product} feature to {account} on {date} after {days} of development."
+        - "{person} at {account} scheduled {product} training for {date} involving {amount} staff."
+        - "{account} upgraded {product} to version {amount} on {date} for {days} of performance gains."
+        - "{product}\u2019s new analytics module was deployed at {account} on {date} for {amount} facilities."
+      praise:
+        - "{account} praised {vendor}\u2019s {product} update for reducing waste by {amount}% since {date}."
+        - "{person} from {account} highlighted {product}\u2019s accuracy in the {date} release as a key differentiator."
+        - "{vendor}\u2019s {product} received {amount} positive reviews from {account}\u2019s staff during the {date} launch."
+        - "{account}\u2019s {date} audit credited {product} with {amount} hours saved in inventory management."
+        - "{product}\u2019s new analytics module at {account} improved forecasting by {amount}% per {person}\u2019s report on {date}."
+        - "{vendor}\u2019s {product} received accolades from {account} for its {date} integration with {amount} systems."
+        - "{account}\u2019s {date} case study featured {product}\u2019s role in cutting supply costs by {amount} dollars."
+        - "{person} at {account} cited {product}\u2019s {date} release as the most valuable tool for {amount} workflows."
+        - "{vendor}\u2019s {product} was lauded by {account} for reducing onboarding time to {amount} days in {date}."
+  - event_type: incident
+    weight: 1.6
+    claim_templates:
+      complaint:
+        - "{account} experienced {amount} system outages in {product} on {date}."
+        - "{vendor}\u2019s {product} incorrectly charged {account} {amount} dollars on {date}."
+        - "{person} from {account} reported {product} data loss on {date} after {days} uptime."
+        - "{account}\u2019s {product} integration with {vendor} failed on {date} during peak hours."
+        - "{product} at {account} displayed incorrect par levels for {amount} SKUs on {date}."
+        - "{person} at {account} noted {product}\u2019s API errors exceeded {amount} per day by {date}."
+        - "{account} found {amount} duplicate transactions in {product}\u2019s {date} batch."
+      risk:
+        - "{account}\u2019s {product} downtime on {date} risks missing {amount} compliance deadlines."
+        - "{vendor}\u2019s {product} delays at {account} could cost {amount} in penalties by {date}."
+        - "{product}\u2019s {amount} unresolved bugs at {account} may lead to {days} of lost productivity."
+        - "{account}\u2019s reliance on {product} without backup systems risks {amount} in operational costs."
+  - event_type: escalation
+    weight: 1.2
+    claim_templates:
+      risk:
+        - "{account}\u2019s unresolved {product} complaint risks contract termination by {date}."
+        - "{vendor}\u2019s failure to fix {product} at {account} by {date} may trigger {amount} in penalties."
+        - "{account}\u2019s {person} has threatened to switch vendors if {product} issues persist past {date}."
+        - "{product}\u2019s {amount} unresolved issues at {account} risk losing {vendor} a {days}-day renewal window."
+      complaint:
+        - "{account} escalated {product}\u2019s {amount} daily errors to {vendor} on {date}."
+        - "{person} from {vendor} acknowledged {account}\u2019s {product} complaint on {date} after {days} delay."
+        - "{account} threatened to pause {product} payments due to {amount} unresolved issues by {date}."
+        - "{vendor}\u2019s {product} support team failed to resolve {account}\u2019s issue after {days} on {date}."
+        - "{product}\u2019s {amount} critical bugs at {account} were unresolved by {date} per {person}\u2019s report."
+        - "{account} demanded a {vendor} executive review of {product}\u2019s {amount} recurring failures on {date}."
+  - event_type: qbr
+    weight: 1.4
+    claim_templates:
+      usage:
+        - "{account} reported {product} usage of {amount} units during the {date} quarterly review."
+        - "{person} from {vendor} confirmed {account}\u2019s {product} adoption rate at {amount}% by {date}."
+        - "{account} extended {product} deployment to {amount} additional sites in the {date} QBR."
+        - "{product} processed {amount} supply orders for {account} during the {date} review period."
+        - "{vendor}\u2019s {product} met {account}\u2019s {amount}% efficiency target in the {date} QBR."
+      praise:
+        - "{account} credited {vendor}\u2019s {product} with {amount}% efficiency gains in their {date} QBR."
+        - "{person} from {account} praised {product}\u2019s performance in the {date} review as exceeding expectations."
+        - "{vendor}\u2019s {product} achieved {amount} user adoption at {account} by the {date} QBR, per {person}\u2019s report."
+        - "{account}\u2019s {date} QBR highlighted {product}\u2019s {amount}% reduction in supply chain errors."
+        - "{product}\u2019s analytics module at {account} was praised for {amount} actionable insights during the {date} review."
+        - "{person} at {account} noted {product}\u2019s {date} update as the most impactful for {amount} departments."
+        - "{vendor}\u2019s {product} received {amount} positive feedback from {account}\u2019s leadership in the {date} QBR."
+        - "{account}\u2019s {date} QBR cited {product} as the reason for {amount} cost savings in their {vendor} partnership."
+        - "{product}\u2019s {date} performance at {account} was lauded for exceeding {amount} KPIs in the QBR."
+      question:
+        - "{account} asked how {vendor}\u2019s {product} could integrate with their {amount} new systems by {date}."
+        - "{person} from {account} inquired about {product}\u2019s scalability for {amount} additional users on {date}."
+        - "{account} questioned {vendor}\u2019s support timeline for {product}\u2019s {amount} pending updates during the {date} QBR."
+        - "{person} at {account} asked if {product} could handle {amount} concurrent users by {date} as per their QBR."
+        - "{account}\u2019s {date} QBR included a query about {product}\u2019s compliance with {amount} new regulations."
+        - "{vendor} was asked to clarify {product}\u2019s SLA terms for {amount} critical features by {person} at {account} on {date}."
+        - "{account} requested details on {product}\u2019s {amount} upcoming releases during their {date} QBR."
+        - "{person} from {account} asked about {product}\u2019s compatibility with {vendor}\u2019s {amount} legacy systems by {date}."
+        - "{account}\u2019s {date} QBR featured a question about {product}\u2019s ability to reduce {amount} supply costs."
+        - "{person} at {account} inquired about {product}\u2019s training resources for {amount} new staff by {date}."
+        - "{account} asked if {vendor} could add {amount} custom fields to {product} by {date} during their QBR."
+        - "{vendor} was questioned about {product}\u2019s {amount} downtime incidents during the {date} QBR by {person} at {account}."
+        - "{account}\u2019s {date} QBR included a query on {product}\u2019s integration with {amount} third-party vendors."
+        - "{person} from {account} asked about {product}\u2019s roadmap for {amount} high-priority features by {date}."
+        - "{account} requested a demo of {product}\u2019s {amount} new modules during their {date} QBR."
+        - "{vendor} was asked to explain {product}\u2019s {amount} pricing adjustments in the {date} QBR by {person} at {account}."
+        - "{account}\u2019s {date} QBR featured a question on {product}\u2019s ability to handle {amount} data volume."
+        - "{person} at {account} inquired about {product}\u2019s support for {amount} international compliance standards by {date}."
+  - event_type: renewal_step
+    weight: 1.0
+    claim_templates:
+      decision:
+        - "{account} approved {vendor}\u2019s {product} renewal for {amount} additional sites by {date}."
+        - "{person} from {account} confirmed {product}\u2019s {date} contract extension with {vendor} during the QBR."
+        - "{account}\u2019s {date} board meeting greenlit {product}\u2019s {amount} renewal budget."
+        - "{vendor} received {account}\u2019s formal {date} approval to proceed with {product}\u2019s renewal terms."
+        - "{person} at {account} signed the {product} renewal with {vendor} on {date} after {days} of review."
+      pricing:
+        - "{account} negotiated a {amount}% discount on {vendor}\u2019s {product} during their {date} renewal."
+        - "{person} from {account} proposed {product}\u2019s {amount} annual budget increase by {date}."
+        - "{vendor} offered {account} a {amount} one-time fee for {product}\u2019s {date} renewal."
+        - "{account} requested {vendor} to adjust {product}\u2019s pricing to {amount} per user by {date}."
+        - "{person} at {account} approved {product}\u2019s {amount} price increase during the {date} renewal meeting."
+        - "{vendor} quoted {account} {amount} for {product}\u2019s {date} contract extension with {days} terms."
+        - "{person} from {account} cited {product}\u2019s {amount} cost savings as a renewal factor on {date}."
+        - "{vendor} adjusted {product}\u2019s pricing to {amount} for {account}\u2019s {date} renewal after {days} negotiation."
+  - event_type: price_negotiation
+    weight: 0.9
+    claim_templates:
+      pricing:
+        - "{account} requested a {amount}% discount on {vendor}\u2019s {product} during their {date} meeting."
+        - "{person} from {account} proposed {product}\u2019s {amount} tiered pricing model by {date}."
+        - "{vendor} offered {account} {amount} in credits for {product}\u2019s {date} price increase."
+        - "{account} demanded {vendor} to cap {product}\u2019s annual price at {amount} by {date}."
+        - "{person} at {account} suggested {product}\u2019s {amount} per-unit pricing for {days} usage on {date}."
+        - "{vendor} countered {account}\u2019s {product} price request with {amount} in {date} negotiations."
+        - "{account}\u2019s {date} meeting with {vendor} included a {product} pricing model change to {amount} per month."
+        - "{person} from {account} negotiated {product}\u2019s {amount} discount for a {days} contract extension on {date}."
+        - "{vendor} adjusted {product}\u2019s pricing to {amount} for {account}\u2019s {date} renewal after {days} discussion."
+      request:
+        - "{account} asked for a custom payment plan for {vendor}\u2019s {product} by {date} to manage {amount} budget."
+        - "{person} from {account} requested a {amount}% discount on {product} to offset integration costs on {date}."
+        - "{account} inquired about {vendor}\u2019s {product} volume pricing for {amount} additional users by {date}."
+        - "{person} at {account} asked for {product}\u2019s {amount} one-time setup fee to be waived on {date}."
+        - "{vendor} was requested to provide {product}\u2019s {amount} early-bird pricing by {account} on {date}."
+        - "{account}\u2019s {date} meeting with {vendor} included a request for {product}\u2019s {amount} payment deferral."
+        - "{person} from {account} proposed {product}\u2019s {amount} per-year pricing for {days} access on {date}."
+        - "{person} at {account} requested {product}\u2019s {amount} price freeze for {days} during {date} negotiations."
+        - "{vendor} was asked to provide {product}\u2019s {amount} bulk pricing for {account}\u2019s {date} expansion."
+        - "{account} requested a {amount}% discount on {product} to cover {vendor}\u2019s {days} implementation costs by {date}."
+        - "{person} from {account} proposed {product}\u2019s {amount} tiered pricing based on {vendor}\u2019s {date} usage tiers."
+        - "{account} inquired about {vendor}\u2019s {product} payment plans for {amount} underfunded departments on {date}."
+        - "{vendor} was asked to extend {product}\u2019s {amount} trial period to {days} for {account}\u2019s {date} evaluation."
+        - "{person} at {account} requested {product}\u2019s {amount} early payment discount for {vendor}\u2019s {date} renewal."
+        - "{account}\u2019s {date} meeting included a request for {product}\u2019s {amount} free add-ons with {vendor}\u2019s base plan."
+        - "{vendor} was asked to provide {product}\u2019s {amount} per-user pricing for {account}\u2019s {date} expansion."
+        - "{person} from {account} proposed {product}\u2019s {amount} annual cap to reduce {vendor}\u2019s {date} costs."
+  - event_type: competitive_eval
+    weight: 0.8
+    claim_templates:
+      competitor_mention:
+        - "{account} is comparing {competitor}\u2019s inventory system to {vendor}\u2019s {product} for {date} RFP."
+        - "{person} from {account} cited {competitor}\u2019s {amount}% faster processing as a {product} benchmark on {date}."
+        - "{competitor}\u2019s analytics module is being evaluated by {account} against {vendor}\u2019s {product} for {days} use."
+        - "{account}\u2019s {date} RFP for {product} includes {competitor} as a vendor for {amount} features."
+        - "{person} at {account} noted {competitor}\u2019s {amount} integrations as a {product} gap on {date}."
+        - "{account} is testing {competitor}\u2019s {product} alternative in {amount} departments by {date}."
+        - "{competitor}\u2019s {product} pricing model is under review at {account} for {vendor} comparison on {date}."
+        - "{account}\u2019s {date} evaluation of {product} includes {competitor}\u2019s {amount} user capacity as a benchmark."
+        - "{person} from {account} mentioned {competitor}\u2019s {product} as a potential replacement for {vendor}\u2019s {amount} modules."
+        - "{competitor}\u2019s {product} integration with {vendor}\u2019s system is being considered by {account} for {amount} workflows."
+        - "{account}\u2019s {date} meeting with {vendor} included a discussion on {competitor}\u2019s {product} adoption rate of {amount}%."
+        - "{person} at {account} cited {competitor}\u2019s {product} as a reason to delay {vendor}\u2019s {date} renewal by {days}."
+        - "{account} is assessing {competitor}\u2019s {product} for {amount} cost savings compared to {vendor}\u2019s {date} offering."
+        - "{competitor}\u2019s {product} SLA terms are being compared to {vendor}\u2019s by {account} for {date} RFP."
+        - "{account}\u2019s {date} QBR included a {competitor}\u2019s {product} feature comparison for {amount} departments."
+        - "{person} from {account} noted {competitor}\u2019s {product} {amount} users as a growth threat to {vendor} on {date}."
+        - "{account} is considering {competitor}\u2019s {product} for {amount} of their {vendor}\u2019s {date} use cases."
+        - "{competitor}\u2019s {product} customer support is being evaluated by {account} against {vendor}\u2019s {date} SLA."
+      risk:
+        - "{account} is evaluating {competitor}\u2019s inventory system as an alternative to {vendor}\u2019s {product} by {date}."
+        - "{competitor}\u2019s analytics module is being compared to {vendor}\u2019s {product} at {account} for {amount} use cases."
+        - "{account}\u2019s {person} cited {competitor}\u2019s {amount}% faster processing as a {product} risk factor on {date}."
+        - "{competitor}\u2019s integration with {vendor}\u2019s {product} is under review at {account} to avoid {amount} in costs."
+        - "{account}\u2019s {date} RFP for {product} includes {competitor} as a potential vendor for {amount} features."
+  - event_type: champion_departure
+    weight: 0.7
+    claim_templates:
+      contact_change:
+        - "{account}\u2019s former {product} champion, {person}, has transitioned to a new role as of {date}."
+        - "{person} from {account} will no longer manage {product} after their {date} departure to {vendor}\u2019s competitor."
+        - "{account}\u2019s {product} liaison {person} left for a new opportunity on {date}, impacting {vendor}\u2019s {days} roadmap."
+        - "{person} at {account} resigned from their {product} oversight role on {date}, creating a {amount} gap."
+        - "{account}\u2019s {product} team is reassigning responsibilities after {person}\u2019s {date} exit to a rival firm."
+        - "{person} from {account} has transitioned to a non-{product} role as of {date}, affecting {vendor}\u2019s {amount} goals."
+        - "{person} at {account} will no longer be involved in {product} decisions after their {date} transfer to {vendor}\u2019s competitor."
+        - "{person} from {account} has been reassigned to a non-{product} role as of {date}, impacting {vendor}\u2019s {days} timeline."
+        - "{account}\u2019s {product} lead {person} left for a new role on {date}, creating a {amount} risk for {vendor}."
+        - "{person} at {account} has transitioned to a different department as of {date}, affecting {product}\u2019s {amount} roadmap."
+        - "{account}\u2019s {product} team is reorganizing after {person}\u2019s {date} departure to a rival vendor."
+        - "{person} from {account} will no longer be available for {product} discussions after their {date} resignation."
+        - "{vendor}\u2019s {product} at {account} faces uncertainty after {person}\u2019s {date} departure to a competitor\u2019s role."
+        - "The {account} is now seeking a new {product} contact following {person}'s {date} exit, potentially delaying {vendor}'s {amount} initiative."
+        - "{person} from {account} has shifted focus to non-{vendor} projects since {date}, disrupting current {product} workflows."
+        - "{vendor} may face a {days} delay in {product} updates at {account} after {person}'s {date} reassignment to another department."
+        - "The departure of {account}'s {product} advocate {person} on {date} requires immediate {vendor} account restructuring."
+        - "{account} is aligning {product} responsibilities with new leadership as of {date} following {person}'s {vendor} exit."
+      risk:
+        - "{account}\u2019s {product} champion, {person}, left for a competitor on {date}, risking {amount} in adoption."
+        - "{person}\u2019s departure from {account} on {date} may delay {vendor}\u2019s {product} expansion by {days}."
+        - "{account} lost their {product} liaison {person} to retirement on {date}, creating a {amount} risk."
+        - "{vendor}\u2019s {product} at {account} risks {amount} in churn after {person}\u2019s {date} exit to a rival firm."
+  - event_type: expansion
+    weight: 0.7
+    claim_templates:
+      decision:
+        - "{account} added {amount} new {product} users on {date} after {days} of evaluation."
+        - "{vendor}\u2019s {product} was expanded to {account}\u2019s {amount} regional facilities by {date}."
+        - "{person} from {account} authorized {product}\u2019s integration with {amount} new vendors on {date}."
+        - "{account} approved {vendor}\u2019s {product} for {amount} additional departments by {date}."
+        - "{product}\u2019s {amount} new features were adopted by {account} on {date} per {person}\u2019s directive."
+      usage:
+        - "{account} added {amount} new {product} users on {date} after {days} of onboarding."
+        - "{product} was expanded to {account}\u2019s {amount} outpatient clinics by {date}."
+        - "{vendor} upgraded {account}\u2019s {product} license to {amount} seats effective {date}."
+        - "{account} increased {product} usage by {amount}% in the {date} expansion phase."
+        - "{person} at {account} initiated {product} integration with {amount} new vendors on {date}."
+  - event_type: commitment_made
+    weight: 1.1
+    claim_templates:
+      commitment:
+        - "{account} committed to {vendor}\u2019s {product} for {amount} additional sites by {date}."
+        - "{person} from {account} confirmed a {date} deadline for {product}\u2019s {amount} integration."
+        - "{vendor} received {account}\u2019s formal {date} commitment to expand {product} by {amount} users."
+        - "{account}\u2019s {date} board meeting approved {product}\u2019s {amount} budget increase for {vendor}."
+        - "{person} at {account} signed a {date} commitment to retain {vendor}\u2019s {product} for {amount} years."
+        - "{account} pledged to extend {vendor}\u2019s {product} contract by {amount} months on {date}."
+        - "{vendor} was given {account}\u2019s {date} commitment to adopt {product}\u2019s {amount} new features."
+        - "{account}\u2019s {date} executive team approved {product}\u2019s {amount} budget increase for {vendor}\u2019s services."
+        - "{person} from {account} confirmed a {date} commitment to retain {vendor}\u2019s {product} for {amount} departments."
+  - event_type: commitment_due
+    weight: 1.0
+    claim_templates:
+      commitment:
+        - "{account}\u2019s {date} commitment to expand {vendor}\u2019s {product} is pending {amount} approvals."
+        - "{person} from {account} has not finalized the {product} commitment by {date}, risking {amount} revenue."
+        - "{vendor}\u2019s {product} contract at {account} is due by {date}, but {amount} terms remain unapproved."
+        - "{account}\u2019s {date} commitment to {vendor}\u2019s {product} requires {amount} sign-offs before renewal."
+        - "{person} at {account} must confirm the {product} commitment by {date} to avoid {amount} penalties."
+        - "{account}\u2019s {date} commitment to {vendor}\u2019s {product} is delayed by {amount} unresolved issues."
+        - "{vendor}\u2019s {product} renewal at {account} is pending {person}\u2019s {date} commitment to {amount} terms."
+        - "{account}\u2019s {date} decision on {product} pricing may result in a {amount} budget cut if delayed."
+        - "{person} from {account} needs to sign the {product} commitment by {date} to secure {vendor}\u2019s {amount} discount."
+      risk:
+        - "{account}\u2019s {date} commitment to expand {vendor}\u2019s {product} is at risk due to {amount} unresolved issues."
+        - "{person} from {account} has not signed the {product} renewal by {date}, risking {amount} in revenue."
+        - "{vendor}\u2019s {product} contract at {account} is due by {date}, but {amount} terms remain unapproved."
+        - "{account}\u2019s {date} decision on {product} pricing may result in a {amount} budget cut if delayed."
+  - event_type: decision
+    weight: 0.9
+    claim_templates:
+      decision:
+        - "{person} at {account} finalized {product}\u2019s implementation scope on {date} for {amount} departments."
+        - "{vendor} received {account}\u2019s {date} decision to extend {product}\u2019s contract by {amount} years."
+        - "{account}\u2019s {date} executive meeting approved {product}\u2019s {amount} budget increase."
+  - event_type: policy_change
+    weight: 0.6
+    claim_templates:
+      other:
+        - "{account} updated their {product} usage policy to require {amount} weekly audits by {date}."
+        - "{person} from {account} mandated {product}\u2019s {date} compliance with {amount} new regulations."
+        - "{vendor}\u2019s {product} was reclassified as {amount} priority system at {account} on {date}."
+        - "{account} revised their {product} access policy to restrict {amount} user roles by {date}."
+        - "{person} at {account} implemented {product}\u2019s {date} SLA for {amount} critical features."
+        - "{account}\u2019s {date} meeting approved {product}\u2019s {amount} data retention policy update."
+        - "{vendor}\u2019s {product} was added to {account}\u2019s {amount} high-risk systems list on {date}."
+        - "{account} revised their {product} onboarding policy to require {amount} training hours by {date}."
+        - "{person} from {account} mandated {product}\u2019s {date} integration with {amount} new compliance tools."
+        - "{account}\u2019s {date} executive team approved {product}\u2019s {amount} security audit requirements."
+        - "{vendor}\u2019s {product} was assigned {amount} compliance tags at {account} on {date}."
+        - "{account} updated their {product} usage policy to track {amount} metrics starting {date}."
+        - "{person} at {account} revised {product}\u2019s {date} access controls for {amount} departments."
+        - "{account}\u2019s {date} meeting approved {product}\u2019s {amount} data governance framework."
+        - "{vendor}\u2019s {product} was added to {account}\u2019s {amount} strategic systems list on {date}."
+        - "{account} revised their {product} usage policy to include {amount} new reporting requirements by {date}."
+        - "{person} from {account} mandated {product}\u2019s {date} alignment with {amount} industry standards."
+        - "{account}\u2019s {date} executive team approved {product}\u2019s {amount} budget increase for compliance."
+      decision:
+        - "{account} updated their {product} usage policy to require {amount} weekly audits by {date}."
+        - "{person} from {account} mandated {product}\u2019s {date} compliance with {amount} new regulations."
+        - "{vendor}\u2019s {product} was reclassified as {amount} priority system at {account} on {date}."
+        - "{account} revised their {product} access policy to restrict {amount} user roles by {date}."
+
+arcs:
+  - id: rocky_go_live_v1
+    arc_type: rocky_go_live
+    weight: 1.2
+    steps:
+      - {event_type: go_live, day_offset: 0}
+      - {event_type: incident, day_offset: 14}
+      - {event_type: escalation, day_offset: 30}
+      - {event_type: commitment_made, day_offset: 35}
+      - {event_type: commitment_due, day_offset: 60}
+      - {event_type: decision, day_offset: 75}
+  - id: renewal_price_pushback_v1
+    arc_type: renewal_price_pushback
+    weight: 1.3
+    steps:
+      - {event_type: renewal_step, day_offset: 0}
+      - {event_type: price_negotiation, day_offset: 10}
+      - {event_type: price_negotiation, day_offset: 20}
+      - {event_type: decision, day_offset: 35}
+  - id: competitive_eval_save_or_churn_v1
+    arc_type: competitive_eval_save_or_churn
+    weight: 1.0
+    steps:
+      - {event_type: competitive_eval, day_offset: 0}
+      - {event_type: escalation, day_offset: 15}
+      - {event_type: commitment_made, day_offset: 20}
+      - {event_type: decision, day_offset: 40}
+  - id: champion_transition_v1
+    arc_type: champion_transition
+    weight: 1.0
+    steps:
+      - {event_type: champion_departure, day_offset: 0}
+      - {event_type: qbr, day_offset: 20}
+      - {event_type: decision, day_offset: 30}
+  - id: expansion_v1
+    arc_type: expansion
+    weight: 1.0
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: expansion, day_offset: 20}
+      - {event_type: commitment_made, day_offset: 25}
+      - {event_type: decision, day_offset: 40}
+  - id: incident_escalation_exec_v1
+    arc_type: incident_escalation_exec
+    weight: 1.1
+    steps:
+      - {event_type: incident, day_offset: 0}
+      - {event_type: incident, day_offset: 7}
+      - {event_type: escalation, day_offset: 14}
+      - {event_type: commitment_made, day_offset: 18}
+      - {event_type: commitment_due, day_offset: 40}
+  - id: quiet_steady_v1
+    arc_type: quiet_steady
+    weight: 2.2
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: release, day_offset: 30}
+      - {event_type: qbr, day_offset: 60}
+      - {event_type: policy_change, day_offset: 75}
+
+topic_tree:
+  - name: "Product"
+    children:
+      - name: "Wound care supplies"
+      - name: "Par-level inventory"
+      - name: "Surgical kitting"
+  - name: "Account"
+    children:
+      - name: "Billing"
+      - name: "Renewal"
+      - name: "Expansion"
+  - name: "Support"
+    children:
+      - name: "Incidents"
+      - name: "Training"
+  - name: "Competitive"
+    children:
+      - name: "Evaluations"
+  - name: "People"
+    children:
+      - name: "Contacts"
+      - name: "Champions"
+
+# One shared generic directive list, aliased into every fact type (section 4,
+# "Phrasing": a phrasing-style vocabulary applied across types, not
+# type-specific content -- same pattern as medical_devices.yaml).
+fact_directives:
+  complaint: &directives
+    - hedged
+    - numbers_spelled_out
+    - colloquial
+    - embedded_mid_sentence
+    - passive
+    - through_an_alias
+    - corrected_mid_sentence
+    - list_item
+    - terse
+    - rambling
+    - formal
+    - via_quoted_reply
+    - second_language_phrasing
+  request: *directives
+  praise: *directives
+  risk: *directives
+  competitor_mention: *directives
+  commitment: *directives
+  decision: *directives
+  contact_change: *directives
+  pricing: *directives
+  usage: *directives
+  question: *directives
+  other: *directives
+
+persona_bank:
+  - id: terse_ms
+    speech_register: "supply_chain"
+    formality: neutral
+    typo_rate_range: [0.0, 0.01]
+    chat_style: short_fragments
+    signature_style: initials_only
+    hedging: false
+  - id: rambling_ops_ms
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.01, 0.03]
+    chat_style: long_threads
+    signature_style: full_name_title
+    hedging: true
+  - id: formal_executive_ms
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+  - id: typo_prone_frontline_ms
+    speech_register: "supply_chain"
+    formality: informal
+    typo_rate_range: [0.03, 0.06]
+    chat_style: emoji_light
+    signature_style: first_name_only
+    hedging: false
+  - id: emoji_chat_ms
+    speech_register: "supply_chain"
+    formality: informal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: emoji_heavy
+    signature_style: first_name_only
+    hedging: false
+  - id: second_language_procurement_ms
+    speech_register: "procurement"
+    formality: formal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: measured
+    signature_style: full_block
+    hedging: true
+    second_language_features: ["article_drop", "present_tense_for_future"]
+  - id: formal_specialist_ms
+    speech_register: "supply_chain_specialist"
+    formality: formal
+    typo_rate_range: [0.0, 0.01]
+    chat_style: precise
+    signature_style: full_name_title
+    hedging: false
+  - id: casual_it_ms
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.02, 0.04]
+    chat_style: short_fragments
+    signature_style: none
+    hedging: false
+  - id: hedging_manager_ms
+    speech_register: "operations"
+    formality: neutral
+    typo_rate_range: [0.0, 0.02]
+    chat_style: measured
+    signature_style: first_name_only
+    hedging: true
+  - id: direct_cfo_ms
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+
+decoy_classes:
+  - id: hypothetical_ms
+    near_type: risk
+    description: "A hypothetical framed as if it already happened."
+    example: "If the new analytics module crashes during peak hours, we could lose 20 hours of productivity a week."
+  - id: negation_ms
+    near_type: request
+    description: "A negation indicating no current action or requirement is necessary without stating any specific fact about the customer's situation."
+    example: "We don't need to adjust the par levels right now\u2014let's see how the next quarter's usage trends look first."
+    forbidden_patterns: [competitor_evaluation]
+    text_source:
+      model: "qwen/qwen3-32b"
+      generated: "2026-09-23"
+      raw_response_sha256:
+        - "3f19229c001cbea0da4981e118865fbb926d774bc2412b49d48900a15556229b"
+  - id: hearsay_other_company_ms
+    near_type: competitor_mention
+    description: "Something said to have happened to a different, unnamed customer."
+    example: "I heard that Mercy Hospital had issues with their supply chain software last quarter, but they haven\u2019t reached out to us yet."
+  - id: generic_industry_talk_ms
+    near_type: other
+    description: "Industry chatter with no account-specific claim."
+    example: "Many hospitals are moving towards AI-driven inventory systems to cut costs, though adoption is still slow."
+  - id: rhetorical_question_ms
+    near_type: question
+    description: "A question asked for effect, not information, with no real open item."
+    example: "Who would have thought that a simple barcode scanner could reduce supply waste by so much?"
+  - id: vendor_internal_speculation_ms
+    near_type: risk
+    description: "Vendor-side speculation about a customer, not a customer statement."
+    example: "We\u2019re concerned that the client might delay their implementation due to budget cuts, but they haven\u2019t confirmed it yet."
+  - id: resolved_issue_as_history_ms
+    near_type: complaint
+    description: "An already-resolved issue retold as past history, not a live complaint."
+    example: "Back in March, we had a sync issue with their billing system, but we fixed it and haven\u2019t had any problems since."
+  - id: commitment_decision_confusable_ms
+    near_type: decision
+    description: "A vendor commitment restated in decision-shaped language, or a customer decision restated as if it were still an open vendor promise -- easy to mistype as the other fact type."
+    example: "They\u2019ve decided to commit to the new contract by Q3, but we\u2019re still waiting on their final sign-off."
+
+name_pool_refs:
+  account_suffixes_system: ["Supply Chain Health System", "Regional Materials Network", "Health Materials Group"]
+  account_suffixes_facility: ["Surgery Center", "Acute Care Center", "Outpatient Surgery Center"]
+  account_suffixes_standalone: ["Supply Partners", "Materials Group", "Procurement Alliance"]
+  vendor_domain_tld: ".com"
+
+excluded_product_kinds: []
+held_out: false
+
+# Coordinator review of 7f779a3, 2026-09-22: every claim template above and
+# every decoy_classes[].example was written by this open-weight model, curated
+# (filtered/deduped, dropped when invalid, never rephrased) by scripts/data/
+# v2_gen_pack_templates.py -- not Claude-written, since this text reaches
+# training data. raw_response_sha256 points at the exact, unedited model
+# responses under var/data/v2_packs/raw/ (gitignored, not committed).
+claim_templates_source:
+  model: "qwen/qwen3-32b"
+  generated: "2026-09-22"
+  raw_response_sha256:
+    - "d4694be6de7e7e72ac43ba209d0f675881284e99bd611fdbd70e868cc8242ccc"
+    - "2f4e25847f9e72b21a9c4d24d11388331c28fab387533218db6bc868521219e4"

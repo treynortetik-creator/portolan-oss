@@ -1,0 +1,49 @@
+# gitleaks configuration (guardrails plan 2026-09-22, rank 5). The default rule set, three rules
+# for the secret shapes this repo actually holds, and allowlists for false positives, each one
+# narrow and each one named with where it was found. Never allowlist a real secret: rotate it
+# and ask before touching history. tests/test_gitleaks_rules.py runs these rules against
+# synthetic secrets; the same file is used by CI's `secrets` job and by the commit check in
+# .claude/hooks/no-secrets.py.
+
+[extend]
+useDefault = true
+
+# Both incidents (2026-09-12, 2026-09-13) were a Railway DSN with its password inline, which the
+# default rules do not match. A `$VAR`, `{placeholder}`, `<password>` or `***` in the password
+# slot is not an inline password, so the character class leaves those out. The entropy floor
+# separates generated passwords (Railway's are 32 random characters, entropy above 4.5) from the
+# hand-typed test fixtures in history (`pw`, `s3cr3t-pw`, `super-secret-password`: 1.0 to 3.4).
+[[rules]]
+id = "portolan-postgres-dsn-password"
+description = "Postgres DSN with an inline password"
+regex = '''postgres(?:ql)?(?:\+\w+)?://[^:@/\s'"`]+:([^@/\s'"`${}<>*]{8,})@[^/\s'"`:?#]+'''
+secretGroup = 1
+entropy = 3.5
+keywords = ["postgres"]
+
+[[rules.allowlists]]
+# CI's test service (.github/workflows/ci.yml) and the compose database (docker/docker-compose.yml).
+description = "The fixed local test credentials portolan:portolan on localhost or the compose db host"
+regexTarget = "match"
+regexes = ['''://portolan:portolan@(?:localhost|db)(?:[:/]|$)''']
+
+[[rules]]
+id = "portolan-openrouter-key"
+description = "OpenRouter API key"
+regex = '''sk-or-v1-[0-9a-f]{64}'''
+keywords = ["sk-or-v1-"]
+
+[[rules]]
+id = "portolan-anthropic-key"
+description = "Anthropic API key, any sk-ant- form"
+regex = '''sk-ant-[A-Za-z0-9_-]{20,}'''
+keywords = ["sk-ant-"]
+
+[[allowlists]]
+# First full-history scan, 2026-09-22 (commit 627ce45d6c, tests/test_web.py:2109): the SQL
+# upsert `ON CONFLICT (slug) DO UPDATE SET s3_key = EXCLUDED.s3_key` matched generic-api-key
+# on the column name. `= EXCLUDED.<column>` is Postgres upsert syntax, never a key.
+description = "Postgres upsert column assignment (col = EXCLUDED.col)"
+targetRules = ["generic-api-key"]
+regexTarget = "match"
+regexes = ['''=\s*EXCLUDED\.\w+''']

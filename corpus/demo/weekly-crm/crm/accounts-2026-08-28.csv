@@ -1,0 +1,21 @@
+crm_id,name,kind,parent_crm_id,domain,arr,region,status,owner_crm_id,branch,health
+A-1001,Pinecrest Health Partners,capital_partner,,pinecresthp.com,0,Midwest,,sam-okafor,,green
+A-1002,Larkspur Regional Health,system,A-1001,larkspurhealth.org,1420000,Midwest,,sam-okafor,,yellow
+A-1003,Larkspur Memorial Hospital,facility,A-1002,larkspurhealth.org,900000,Midwest,,sam-okafor,dayton,yellow
+A-1004,Larkspur North Hospital,facility,A-1002,larkspurhealth.org,520000,Midwest,,sam-okafor,dayton,green
+A-1010,Ashgrove Health,system,,ashgrovehealth.org,2350000,Midwest,,sam-okafor,,yellow
+A-1011,Ashgrove Medical Center,facility,A-1010,ashgrovehealth.org,1600000,Midwest,,sam-okafor,dayton,green
+A-1012,Ashgrove Riverside Hospital,facility,A-1010,ashgrovehealth.org,750000,Midwest,,sam-okafor,dayton,yellow
+A-1020,Cobalt Ridge Medical Center,facility,,cobaltridgemed.org,610000,Midwest,,sam-okafor,dayton,red
+A-1030,Northlake Health System,system,,northlakehs.org,1180000,Midwest,,sam-okafor,,green
+A-1031,Northlake General Hospital,facility,A-1030,northlakehs.org,1180000,Midwest,,sam-okafor,columbus,yellow
+A-1040,Meadowbrook Community Hospital,facility,,meadowbrookch.org,340000,Midwest,,sam-okafor,columbus,red
+A-1050,St. Aldric Health,system,,staldric.org,980000,Northeast,,priya-natarajan,,green
+A-1060,Vireo Surgical Group,facility,,vireosurgical.com,210000,Northeast,,priya-natarajan,hartford,green
+A-1070,Sable Valley Health,system,,sablevalley.org,720000,Northeast,,priya-natarajan,,green
+A-1080,Kestrel Medical Group,facility,,kestrelmed.com,0,Northeast,churned_2026-02,priya-natarajan,,
+A-1090,Wrenfield Health,system,,wrenfieldhealth.org,1410000,Northeast,,priya-natarajan,,yellow
+A-1091,Wrenfield Medical Center,facility,A-1090,wrenfieldhealth.org,980000,Northeast,,priya-natarajan,,green
+A-1092,Wrenfield East Hospital,facility,A-1090,wrenfieldhealth.org,430000,Northeast,,priya-natarajan,,green
+A-1100,Driftwood Community Hospital,facility,,driftwoodch.org,450000,Midwest,,dana-whitlock,,green
+A-1110,Anchor Bay Surgical Partners,facility,,anchorbaysurgical.com,150000,Midwest,,sam-okafor,,green

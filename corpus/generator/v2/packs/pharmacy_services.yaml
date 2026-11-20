@@ -1,0 +1,598 @@
+# Pharmacy services vertical pack -- WP2 (`01-spec/world-generator-v2-2026-09-22.md`
+# section 4). Validates against `corpus/generator/v2/packs/schema.py::VerticalPack`.
+
+id: pharmacy_services
+name: Pharmacy services
+vendor_what: "central-fill dispensing, medication synchronization, adherence packaging and specialty pharmacy software sold to health systems and pharmacies"
+
+products:
+  - kind: central_fill_dispensing
+    name_template: "{line}"
+    tiers: []
+    known_issue_pool:
+      - "occasional canister miscounts after a refill cycle"
+      - "queue backlog during month-end volume spikes"
+  - kind: medication_synchronization
+    name_template: "{line} Sync"
+    tiers: []
+    known_issue_pool:
+      - "sync-date reminders occasionally duplicate across household accounts"
+  - kind: adherence_packaging
+    name_template: "{line} {tier}"
+    tiers: ["Pouch", "Blister"]
+    known_issue_pool:
+      - "pouch-seal failures on high-humidity days"
+  - kind: specialty_pharmacy_program
+    name_template: "{line} Specialty"
+    tiers: []
+    known_issue_pool:
+      - "prior-authorization status sync lags the payer portal"
+  - kind: pharmacy_inventory_automation
+    name_template: "{line} Cabinet"
+    tiers: []
+    known_issue_pool: []
+
+roles:
+  - title: "Pharmacy Director"
+    seniority: director
+    is_champion_candidate: true
+  - title: "Chief Pharmacy Officer"
+    seniority: c_suite
+    is_champion_candidate: false
+  - title: "Pharmacy Operations Manager"
+    seniority: manager
+    is_champion_candidate: true
+  - title: "Clinical Pharmacist Lead"
+    seniority: staff
+    is_champion_candidate: true
+  - title: "Procurement Manager"
+    seniority: manager
+    is_champion_candidate: false
+  - title: "Compliance Officer"
+    seniority: manager
+    is_champion_candidate: false
+  - title: "CFO"
+    seniority: c_suite
+    is_champion_candidate: false
+  - title: "Inventory Manager"
+    seniority: staff
+    is_champion_candidate: false
+
+event_templates:
+  - event_type: go_live
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{account} implemented {product} on {date} to handle {amount} prescriptions daily."
+        - "On {date}, {person} at {account} activated {product} for {days} days of medication synchronization."
+        - "{product} was deployed at {account} on {date} to manage {amount} adherence packaging units weekly."
+        - "{vendor}'s {product} went live at {account} on {date}, processing {amount} specialty pharmacy orders."
+        - "{account}'s {product} system launched on {date} with {amount} pharmacy locations integrated."
+      complaint:
+        - "{person} reported {product} failed to dispense {amount} orders on {date} at {account}."
+        - "{account} experienced {days} days of downtime with {product} after {date} go-live."
+        - "On {date}, {account} noted {product} errors in {amount} medication synchronization batches."
+        - "{product} at {account} mislabeled {amount} adherence packages during {date} testing."
+        - "{vendor} was notified by {account} on {date} about {product} inventory tracking failures."
+        - "{person} at {account} cited {product} delays in {amount} specialty pharmacy orders post-launch."
+  - event_type: release
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{vendor} released {product} update to {account} on {date} with {amount} new features."
+        - "{account} adopted {vendor}'s {product} v{amount} on {date} for improved inventory tracking."
+        - "The {date} {product} rollout at {account} included {days} days of staff training."
+        - "{person} at {account} approved the {date} {product} release for {amount} pharmacy departments."
+        - "{vendor} delivered {product} version {amount} to {account} on {date} for clinical integration."
+      praise:
+        - "{person} at {account} praised {product} v{amount} for reducing errors by {amount}% on {date}."
+        - "On {date}, {account} commended {vendor}'s {product} for {amount} faster dispensing times."
+        - "{vendor} received {account}'s {date} feedback that {product} improved adherence by {amount}%"
+        - "{account} highlighted {product} inventory automation as a 2024 success in {date} review."
+        - "{person} at {account} noted {product} reduced medication sync failures to {amount} monthly on {date}."
+        - "The {date} {product} update helped {account} achieve {amount}% fewer prescription errors."
+        - "{account} shared {date} testimonials about {product}'s 99.9% uptime for specialty pharmacy."
+        - "{vendor} was recognized by {account} on {date} for {product}'s seamless integration with EHR."
+        - "{account} reported {product} cut adherence packaging errors by {amount} after {date} release."
+  - event_type: incident
+    weight: 1.6
+    claim_templates:
+      complaint:
+        - "{account} reported {product} data loss for {amount} prescriptions on {date}."
+        - "On {date}, {vendor} received {account}'s incident report about {product} sync failures."
+        - "{product} at {account} crashed {days} times during {date} medication dispensing."
+        - "{account} filed a {date} incident for {product} misrouting {amount} specialty orders."
+        - "The {date} {product} outage at {account} affected {amount} adherence packaging batches."
+        - "{person} at {account} alerted {vendor} to {product} billing errors on {date} impacting {amount} claims."
+      risk:
+        - "{account} is considering terminating {product} due to recurring {days} incidents since {date}."
+        - "On {date}, {account} warned {vendor} about potential {product} contract termination."
+        - "{product} failures at {account} have caused {amount} revenue loss as of {date}."
+  - event_type: escalation
+    weight: 1.2
+    claim_templates:
+      risk:
+        - "{account} threatened to pause {product} payments after {date} escalation unresolved."
+        - "{product} problems at {account} could delay {amount} expansion plans as of {date}."
+        - "{account} is negotiating a 20% discount for {product} due to ongoing {date} issues."
+      complaint:
+        - "{account} escalated {product} performance issues to {vendor} on {date} due to {amount} errors."
+        - "On {date}, {vendor} received {person}'s escalation about {product} failing {amount} sync batches."
+        - "{product} at {account} was down for {days} days, prompting {date} escalation to {vendor}."
+        - "{account} demanded an urgent fix for {product} inventory errors impacting {amount} orders on {date}."
+        - "{vendor} acknowledged {account}'s {date} escalation regarding {product} specialty pharmacy failures."
+        - "{person} at {account} escalated {product} mislabeling {amount} adherence packages to {vendor} on {date}."
+  - event_type: qbr
+    weight: 1.4
+    claim_templates:
+      usage:
+        - "{account} reported {product} usage of {amount} prescriptions processed during {date} QBR."
+        - "On {date}, {person} confirmed {product} handles {amount} medication syncs monthly at {account}."
+        - "{vendor} reviewed {account}'s {product} metrics showing {amount} adherence packages weekly."
+        - "{account} demonstrated {product} expansion to {amount} new pharmacies during {date} QBR."
+        - "{person} at {account} shared {product} utilization of {amount} specialty orders on {date}."
+      praise:
+        - "On {date}, {account} praised {product} for handling {amount} prescriptions error-free."
+        - "{person} at {account} commended {product}'s {days}-day sync accuracy during {date} QBR."
+        - "{vendor} received {date} QBR feedback from {account} that {product} reduced costs by {amount}%"
+        - "{account} highlighted {product}'s {amount}-minute dispensing speed in {date} review."
+        - "The {date} QBR with {account} included praise for {product}'s 98% inventory accuracy."
+        - "{account} shared {date} QBR results showing {product} improved patient adherence by {amount}%"
+        - "{person} at {account} noted {product} cut specialty pharmacy processing time by {amount} hours on {date}."
+        - "{vendor} was thanked by {account} on {date} for {product}'s 24/7 support during peak hours."
+        - "{account} reported {product} reduced medication errors by {amount} during {date} QBR."
+      question:
+        - "{person} at {account} asked if {product} can integrate with {vendor}'s inventory system by {date}."
+        - "On {date}, {account} inquired about {product} scalability for {amount} additional pharmacies."
+        - "{vendor} was questioned by {account} on {date} about {product} handling {amount} daily orders."
+        - "{account} requested {vendor} clarify {product} pricing for {amount} new locations during {date} QBR."
+        - "On {date}, {account} asked if {product} can handle {days}-day medication sync cycles."
+        - "{vendor} was asked by {account} on {date} about {product} compliance with new FDA regulations."
+        - "{person} at {account} questioned {product}'s ability to manage {amount} specialty pharmacy orders by {date}."
+        - "{account} inquired about {product} reporting features for {date} QBR performance metrics."
+        - "On {date}, {account} asked for {vendor}'s timeline to add {product} feature for refill alerts."
+        - "{vendor} was asked by {account} on {date} about {product} support for {amount} languages in packaging."
+        - "{person} at {account} requested details on {product} uptime guarantees for {date} expansion plans."
+        - "On {date}, {account} asked if {product} can process {amount} prescriptions hourly during peak times."
+        - "{vendor} was asked by {account} on {date} about {product} training resources for {days} new staff."
+        - "{account} requested {vendor} clarify {product} SLA terms for {date} QBR renewal discussions."
+        - "{vendor} was asked by {account} on {date} about {product} support for new medication types in 2025."
+  - event_type: renewal_step
+    weight: 1.0
+    claim_templates:
+      decision:
+        - "{account} decided to renew {product} contract for {amount} users by {date}."
+        - "On {date}, {vendor} received {account}'s decision to extend {product} for {days} months."
+        - "{person} at {account} confirmed {product} renewal decision on {date} with {amount} additional licenses."
+        - "{account} chose to renew {product} with a 20% increase in {amount} pharmacy locations by {date}."
+        - "The {date} decision by {account} includes {amount} new features in {product} renewal."
+      pricing:
+        - "{person} at {account} requested a 15% discount on {product} during {date} renewal."
+        - "On {date}, {vendor} received {account}'s pricing proposal for {product} renewal at {amount} USD."
+        - "{account} is budgeting {amount} for {product} renewal, down from {amount} last year on {date}."
+        - "{vendor} and {account} discussed {product} pricing adjustments for {amount} new users by {date}."
+        - "The {date} renewal discussions included {account} seeking {amount} in discounts for {product}."
+        - "{account} proposed {product} payment terms of {days} days net for {date} contract renewal."
+        - "On {date}, {vendor} received {account}'s invoice for {product} at {amount} with 10% early payment discount."
+        - "{account} is negotiating {product} pricing for {amount} pharmacies in {date} renewal."
+        - "{vendor} and {account} aligned on {product} pricing of {amount} per location for {date} renewal."
+  - event_type: price_negotiation
+    weight: 0.9
+    claim_templates:
+      pricing:
+        - "{person} at {account} asked for {product} pricing breakdown for {amount} pharmacies on {date}."
+        - "On {date}, {vendor} proposed {product} pricing at {amount} per month for {account}."
+        - "{account} requested {product} volume discount for {amount} locations during {date} negotiation."
+        - "{vendor} and {account} discussed {product} pricing adjustments for {amount} new features on {date}."
+        - "The {date} price negotiation included {account} seeking {amount} in savings for {product} renewal."
+        - "{account} proposed {product} payment terms of {days} days net for {date} contract."
+        - "On {date}, {vendor} received {account}'s offer to pay {amount} for {product} with 3-year commitment."
+        - "The {date} price negotiation included {account} requesting {amount} off {product} for early renewal."
+        - "{vendor} and {account} aligned on {product} pricing of {amount} per pharmacy for {date} agreement."
+        - "On {date}, {account} proposed {product} payment plan of {amount} upfront with {amount} monthly."
+        - "{account} is seeking {product} pricing flexibility for {amount} new locations in {date} discussions."
+        - "The {date} price negotiation included {account} asking for {product} at {amount} per user."
+        - "{vendor} and {account} discussed {product} pricing for {amount} specialty pharmacy orders on {date}."
+        - "On {date}, {account} requested {product} volume pricing for {amount} prescriptions monthly."
+        - "The {date} price negotiation included {account} seeking {product} at {amount} for 5-year contract."
+        - "{vendor} and {account} aligned on {product} pricing of {amount} per location for {date} agreement."
+      request:
+        - "{person} at {account} asked {vendor} to add a feature to {product} for automated refill alerts by {date}."
+        - "On {date}, {account} requested {vendor} provide a 3-year {product} pricing forecast."
+        - "{person} at {account} requested {vendor} extend {product} SLA to {days} days on {date}."
+        - "The {date} request from {account} includes adding {amount} new pharmacies to {product} pricing."
+        - "{account} asked {vendor} to create a custom {product} dashboard for {amount} metrics on {date}."
+        - "On {date}, {account} requested {vendor} reduce {product} setup fees for {amount} new locations."
+        - "The {date} request from {account} includes {product} reporting features for {amount} compliance metrics."
+        - "{account} asked {vendor} to provide {product} training for {amount} staff members on {date}."
+        - "On {date}, {account} requested {vendor} offer a 10% discount for {product} with 3-year commitment."
+        - "The {date} request from {account} includes {product} support for {amount} languages in adherence packaging."
+        - "{account} asked {vendor} to add {product} feature for real-time inventory alerts on {date}."
+        - "{person} at {account} wants {vendor} to extend {product} support hours to 24/7 by {date}."
+        - "The {date} request from {account} includes {product} integration with {amount} new medication databases."
+        - "{person} from {account} requested {vendor} adjust {product} pricing for {amount} orders processed weekly."
+        - "{account} is asking {vendor} for volume-based {product} discounts starting on {date}."
+        - "On {date}, {person} at {account} proposed renegotiating {product} fees based on {days} usage metrics."
+        - "The {date} request from {vendor} involves {product} cost reductions for orders above {amount} prescriptions monthly."
+        - "{account} asked {vendor} to restructure {product} payment terms for {amount} pharmacies as of {date}."
+  - event_type: competitive_eval
+    weight: 0.8
+    claim_templates:
+      competitor_mention:
+        - "{account} is evaluating {competitor}'s adherence packaging solution alongside {vendor}'s {product}."
+        - "On {date}, {account} requested a demo of {competitor}'s medication synchronization platform."
+        - "{vendor} learned {account} is considering {competitor} for {amount} specialty pharmacy orders."
+        - "{account} is benchmarking {competitor}'s inventory automation against {vendor}'s {product} as of {date}."
+        - "The {date} RFP from {account} includes {competitor} as a shortlisted vendor for pharmacy software."
+        - "{account} is piloting {competitor}'s system at {amount} pharmacies alongside {vendor}'s {product}."
+        - "On {date}, {vendor} received {account}'s request to compare {product} with {competitor}'s features."
+        - "{account} is considering {competitor} for {amount} new locations due to lower pricing as of {date}."
+        - "{vendor} learned {account} is evaluating {competitor}'s cloud-based pharmacy solution on {date}."
+        - "The {date} evaluation at {account} includes {competitor}'s medication tracking system as a potential replacement."
+        - "{account} is comparing {competitor}'s 24/7 support against {vendor}'s {product} SLA on {date}."
+        - "On {date}, {vendor} received {account}'s inquiry about {product} vs {competitor}'s integration capabilities."
+        - "{account} is considering {competitor} for {amount} specialty pharmacy orders due to faster processing times as of {date}."
+        - "{vendor} learned {account} is benchmarking {competitor}'s system for {days}-day medication sync cycles on {date}."
+        - "The {date} request from {account} includes a comparison of {product} pricing against {competitor}'s offering."
+        - "{account} is evaluating {competitor}'s adherence packaging for {amount} languages supported on {date}."
+        - "On {date}, {vendor} received {account}'s request to demonstrate {product} advantages over {competitor} in reporting."
+        - "{account} is considering {competitor}'s system for {amount} new pharmacies due to better EHR integration as of {date}."
+      risk:
+        - "{account} is piloting {competitor}'s system alongside {vendor}'s {product} as of {date}."
+        - "On {date}, {account} requested RFP for {competitor} to replace {vendor}'s {product}."
+        - "{product} is losing market share to {competitor} as noted in {account}'s {date} evaluation."
+        - "{vendor} learned {account} is considering {competitor} for {amount} specialty pharmacy work."
+        - "{account} is benchmarking {competitor} against {vendor}'s {product} for {date} renewal."
+  - event_type: champion_departure
+    weight: 0.7
+    claim_templates:
+      contact_change:
+        - "{account} promoted {person} to Director of Pharmacy on {date}, removing their {product} contact role."
+        - "On {date}, {vendor} learned {person} at {account} left their {product} champion position."
+        - "{account} replaced {person} with {person} as {product} point of contact on {date}."
+        - "The {date} contact change at {account} includes {person} stepping down from {product} decision-making."
+        - "{vendor} was notified on {date} that {person} at {account} is no longer involved in {product} decisions."
+        - "{account} reassigned {product} responsibilities to {person} after {person} left the company on {date}."
+        - "On {date}, {vendor} learned {person} at {account} transferred to a different department, affecting {product}."
+        - "{account} appointed {person} as new {product} contact after {person}'s departure on {date}."
+        - "The {date} contact change at {account} includes {person} resigning from their {product} lead role."
+        - "{vendor} was informed on {date} that {person} at {account} is no longer the {product} champion."
+        - "{account} reassigned {product} project ownership to {person} after {person} left the company on {date}."
+        - "On {date}, {vendor} learned {person} at {account} changed roles, impacting {product} implementation."
+        - "{account} replaced {person} with {person} as {product} lead following their {date} departure."
+        - "The {date} contact change at {account} includes {person} leaving their {product} coordination role."
+        - "{vendor} was notified on {date} that {person} at {account} is no longer the {product} point of contact."
+        - "{account} reassigned {product} responsibilities to {person} after {person} resigned on {date}."
+        - "On {date}, {vendor} learned {person} at {account} left their {product} management role."
+        - "{account} appointed {person} as new {product} champion after {person}'s departure on {date}."
+      risk:
+        - "{person} at {account} left their role on {date}, creating risk for {product} adoption."
+        - "The {date} departure of {person} has stalled {account}'s {product} expansion plans."
+        - "{account} lost their {product} champion {person} on {date}, delaying {amount} projects."
+        - "{vendor} noted {date} contact change at {account} affecting {product} decision-making."
+  - event_type: expansion
+    weight: 0.7
+    claim_templates:
+      decision:
+        - "{account} approved {product} expansion to {amount} new pharmacies by {date}."
+        - "On {date}, {vendor} received {account}'s decision to add {amount} locations to {product}."
+        - "{person} at {account} announced {product} expansion to {amount} clinics on {date}."
+        - "{account} decided to scale {product} to handle {amount} more prescriptions weekly by {date}."
+        - "The {date} decision by {account} increases {product} usage to {amount} specialty pharmacy orders."
+      usage:
+        - "{account} expanded {product} deployment to {amount} additional pharmacies on {date}."
+        - "On {date}, {vendor} activated {product} for {amount} new locations at {account}."
+        - "{account} increased {product} processing capacity to {amount} prescriptions daily by {date}."
+        - "{person} at {account} approved {product} expansion to {amount} clinics on {date}."
+        - "{vendor} upgraded {account}'s {product} system to handle {amount} more orders weekly as of {date}."
+  - event_type: commitment_made
+    weight: 1.1
+    claim_templates:
+      commitment:
+        - "{vendor} committed to deliver a new {product} module to {account} by {date}."
+        - "On {date}, {person} at {account} committed to expanding {product} to {amount} locations."
+        - "{vendor} agreed to provide {account} with {product} training for {amount} staff by {date}."
+        - "{account} committed to renew {product} for {amount} pharmacies with a 15% discount on {date}."
+        - "The {date} commitment from {vendor} includes adding {amount} new features to {product} for {account}."
+        - "{person} at {account} pledged to implement {product} at {amount} clinics by {date}."
+        - "On {date}, {vendor} committed to resolving {account}'s {product} integration issues within {days} days."
+        - "{account} committed to a 3-year {product} contract with {vendor} on {date}."
+  - event_type: commitment_due
+    weight: 1.0
+    claim_templates:
+      commitment:
+        - "{vendor} is due to deliver {product} update to {account} by {date} as committed."
+        - "On {date}, {account} is expected to finalize {product} expansion to {amount} locations."
+        - "{vendor} must provide {account} with {product} training by {date} as per their commitment."
+        - "{account} is due to commit to {product} renewal terms on {date} with {amount} pharmacies."
+        - "{person} at {account} is due to confirm {product} expansion to {amount} clinics by {date}."
+        - "On {date}, {vendor} must resolve {account}'s {product} integration issues as committed."
+        - "{account} is expected to commit to a 3-year {product} contract with {vendor} by {date}."
+        - "The {date} commitment from {vendor} requires {product} support for {amount} new features by {date}."
+      risk:
+        - "{account} failed to meet {date} commitment for {product} expansion to {amount} pharmacies."
+        - "On {date}, {vendor} received no response from {account} about {product} renewal."
+        - "{account} is late on {date} commitment to implement {product} at {amount} new locations."
+        - "{person} at {account} has not fulfilled {date} commitment for {product} training sessions."
+  - event_type: decision
+    weight: 0.9
+    claim_templates:
+      decision:
+        - "{account} decided to implement {product} at {amount} locations on {date}."
+        - "{person} at {account} made a {date} decision to adopt {product}'s adherence packaging."
+        - "{account} decided to switch {amount} pharmacies to {product} by {date}."
+  - event_type: policy_change
+    weight: 0.6
+    claim_templates:
+      other:
+        - "{account} updated their inventory policy to require {product} audit logs by {date}."
+        - "On {date}, {vendor} learned {account} mandated {product} for all medication syncs."
+        - "{person} at {account} implemented a new policy requiring {product} for specialty pharmacy."
+        - "{account} changed their policy to use {product} for {amount} prescriptions daily on {date}."
+        - "The {date} policy change at {account} includes {product} for all adherence packaging."
+        - "{vendor} was informed on {date} that {account} requires {product} for 24/7 dispensing."
+        - "{account} updated their compliance policy to include {product} reporting features by {date}."
+        - "On {date}, {vendor} learned {account} mandated {product} for all inventory automation."
+        - "{person} at {account} implemented a policy requiring {product} for {amount} specialty pharmacy orders."
+        - "The {date} policy change at {account} includes {product} for all medication synchronization."
+        - "{account} updated their data security policy to require {product} encryption by {date}."
+        - "On {date}, {vendor} learned {account} mandated {product} for all patient adherence tracking."
+        - "{account} changed their policy to use {product} for {amount} prescriptions weekly on {date}."
+        - "The {date} policy change at {account} includes {product} for all pharmacy operations."
+        - "{vendor} was informed on {date} that {account} requires {product} for 24/7 support."
+        - "{account} updated their quality assurance policy to include {product} metrics by {date}."
+        - "On {date}, {vendor} learned {account} mandated {product} for all medication dispensing."
+        - "{person} at {account} implemented a new policy requiring {product} for {amount} pharmacy locations."
+      decision:
+        - "{account} updated their inventory policy to require {product} audit logs by {date}."
+        - "On {date}, {vendor} learned {account} mandated {product} for all medication syncs."
+        - "{person} at {account} implemented a new policy requiring {product} for specialty pharmacy."
+        - "{account} changed their policy to use {product} for {amount} prescriptions daily on {date}."
+
+arcs:
+  - id: rocky_go_live_v1
+    arc_type: rocky_go_live
+    weight: 1.2
+    steps:
+      - {event_type: go_live, day_offset: 0}
+      - {event_type: incident, day_offset: 14}
+      - {event_type: escalation, day_offset: 30}
+      - {event_type: commitment_made, day_offset: 35}
+      - {event_type: commitment_due, day_offset: 60}
+      - {event_type: decision, day_offset: 75}
+  - id: renewal_price_pushback_v1
+    arc_type: renewal_price_pushback
+    weight: 1.3
+    steps:
+      - {event_type: renewal_step, day_offset: 0}
+      - {event_type: price_negotiation, day_offset: 10}
+      - {event_type: price_negotiation, day_offset: 20}
+      - {event_type: decision, day_offset: 35}
+  - id: competitive_eval_save_or_churn_v1
+    arc_type: competitive_eval_save_or_churn
+    weight: 1.0
+    steps:
+      - {event_type: competitive_eval, day_offset: 0}
+      - {event_type: escalation, day_offset: 15}
+      - {event_type: commitment_made, day_offset: 20}
+      - {event_type: decision, day_offset: 40}
+  - id: champion_transition_v1
+    arc_type: champion_transition
+    weight: 1.0
+    steps:
+      - {event_type: champion_departure, day_offset: 0}
+      - {event_type: qbr, day_offset: 20}
+      - {event_type: decision, day_offset: 30}
+  - id: expansion_v1
+    arc_type: expansion
+    weight: 1.0
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: expansion, day_offset: 20}
+      - {event_type: commitment_made, day_offset: 25}
+      - {event_type: decision, day_offset: 40}
+  - id: incident_escalation_exec_v1
+    arc_type: incident_escalation_exec
+    weight: 1.1
+    steps:
+      - {event_type: incident, day_offset: 0}
+      - {event_type: incident, day_offset: 7}
+      - {event_type: escalation, day_offset: 14}
+      - {event_type: commitment_made, day_offset: 18}
+      - {event_type: commitment_due, day_offset: 40}
+  - id: quiet_steady_v1
+    arc_type: quiet_steady
+    weight: 2.2
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: release, day_offset: 30}
+      - {event_type: qbr, day_offset: 60}
+      - {event_type: policy_change, day_offset: 75}
+
+topic_tree:
+  - name: "Product"
+    children:
+      - name: "Central-fill dispensing"
+      - name: "Medication synchronization"
+      - name: "Adherence packaging"
+  - name: "Account"
+    children:
+      - name: "Billing"
+      - name: "Renewal"
+      - name: "Expansion"
+  - name: "Support"
+    children:
+      - name: "Incidents"
+      - name: "Training"
+  - name: "Competitive"
+    children:
+      - name: "Evaluations"
+  - name: "People"
+    children:
+      - name: "Contacts"
+      - name: "Champions"
+
+# One shared generic directive list, aliased into every fact type (section 4,
+# "Phrasing": a phrasing-style vocabulary applied across types, not
+# type-specific content -- same pattern as medical_devices.yaml).
+fact_directives:
+  complaint: &directives
+    - hedged
+    - numbers_spelled_out
+    - colloquial
+    - embedded_mid_sentence
+    - passive
+    - through_an_alias
+    - corrected_mid_sentence
+    - list_item
+    - terse
+    - rambling
+    - formal
+    - via_quoted_reply
+    - second_language_phrasing
+  request: *directives
+  praise: *directives
+  risk: *directives
+  competitor_mention: *directives
+  commitment: *directives
+  decision: *directives
+  contact_change: *directives
+  pricing: *directives
+  usage: *directives
+  question: *directives
+  other: *directives
+
+persona_bank:
+  - id: terse_ph
+    speech_register: "pharmacy_ops"
+    formality: neutral
+    typo_rate_range: [0.0, 0.01]
+    chat_style: short_fragments
+    signature_style: initials_only
+    hedging: false
+  - id: rambling_ops_ph
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.01, 0.03]
+    chat_style: long_threads
+    signature_style: full_name_title
+    hedging: true
+  - id: formal_executive_ph
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+  - id: typo_prone_frontline_ph
+    speech_register: "pharmacy_ops"
+    formality: informal
+    typo_rate_range: [0.03, 0.06]
+    chat_style: emoji_light
+    signature_style: first_name_only
+    hedging: false
+  - id: emoji_chat_ph
+    speech_register: "pharmacy_ops"
+    formality: informal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: emoji_heavy
+    signature_style: first_name_only
+    hedging: false
+  - id: second_language_procurement_ph
+    speech_register: "procurement"
+    formality: formal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: measured
+    signature_style: full_block
+    hedging: true
+    second_language_features: ["article_drop", "present_tense_for_future"]
+  - id: formal_specialist_ph
+    speech_register: "pharmacy_ops_specialist"
+    formality: formal
+    typo_rate_range: [0.0, 0.01]
+    chat_style: precise
+    signature_style: full_name_title
+    hedging: false
+  - id: casual_it_ph
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.02, 0.04]
+    chat_style: short_fragments
+    signature_style: none
+    hedging: false
+  - id: hedging_manager_ph
+    speech_register: "operations"
+    formality: neutral
+    typo_rate_range: [0.0, 0.02]
+    chat_style: measured
+    signature_style: first_name_only
+    hedging: true
+  - id: direct_cfo_ph
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+
+decoy_classes:
+  - id: hypothetical_ph
+    near_type: risk
+    description: "A hypothetical framed as if it already happened."
+    example: "If Meridian Health Systems faced a 30% increase in specialty pharmacy orders, their current system might struggle to keep up."
+  - id: negation_ph
+    near_type: request
+    description: "A negation that politely states no current need for action without requesting, committing to, or updating any status."
+    example: "No need to finalize the current workflow adjustments just yet\u2014we can revisit it later."
+    forbidden_patterns: [competitor_evaluation]
+    text_source:
+      model: "qwen/qwen3-32b"
+      generated: "2026-09-23"
+      raw_response_sha256:
+        - "63f43ded296610b7ba7a3f811f1c1462313d98fe6e9c13a4d34acb8f26435f57"
+  - id: hearsay_other_company_ph
+    near_type: competitor_mention
+    description: "Something said to have happened to a different, unnamed customer."
+    example: "I heard that another health system had issues with MedPack\u2019s adherence packaging last year."
+  - id: generic_industry_talk_ph
+    near_type: other
+    description: "Industry chatter with no account-specific claim."
+    example: "Many pharmacies are moving towards centralized dispensing to improve efficiency and reduce errors."
+  - id: rhetorical_question_ph
+    near_type: question
+    description: "A question asked for effect, not information, with no real open item."
+    example: "Who could have imagined that medication synchronization would become such a critical part of pharmacy operations?"
+  - id: vendor_internal_speculation_ph
+    near_type: risk
+    description: "Vendor-side speculation about a customer, not a customer statement."
+    example: "Our team suspects that PharMax might delay their expansion plans due to internal budget constraints."
+  - id: resolved_issue_as_history_ph
+    near_type: complaint
+    description: "An already-resolved issue retold as past history, not a live complaint."
+    example: "Last year, we had a glitch with the inventory automation, but it was fixed after a patch release."
+  - id: commitment_decision_confusable_ph
+    near_type: decision
+    description: "A vendor commitment restated in decision-shaped language, or a customer decision restated as if it were still an open vendor promise -- easy to mistype as the other fact type."
+    example: "We\u2019ve committed to deploying the new adherence packaging software by Q3, just as the client decided to expand their operations."
+
+name_pool_refs:
+  account_suffixes_system: ["Pharmacy Health System", "Regional Pharmacy Network", "Health Pharmacy Group"]
+  account_suffixes_facility: ["Community Pharmacy", "Specialty Pharmacy Center", "Infusion Pharmacy"]
+  account_suffixes_standalone: ["Pharmacy Partners", "Pharmacy Care Group", "Compounding Pharmacy"]
+  vendor_domain_tld: ".com"
+
+excluded_product_kinds: []
+held_out: false
+
+# Coordinator review of 7f779a3, 2026-09-22: every claim template above and
+# every decoy_classes[].example was written by this open-weight model, curated
+# (filtered/deduped, dropped when invalid, never rephrased) by scripts/data/
+# v2_gen_pack_templates.py -- not Claude-written, since this text reaches
+# training data. raw_response_sha256 points at the exact, unedited model
+# responses under var/data/v2_packs/raw/ (gitignored, not committed).
+claim_templates_source:
+  model: "qwen/qwen3-32b"
+  generated: "2026-09-22"
+  raw_response_sha256:
+    - "280d38156f37a41d9da70c544f39cbec7e3f7995ac5287d4970c024621152f9c"
+    - "34412bd235c6232fb037783a1ba16d350d70facf0af8ba6ee76ab4a49b042e97"

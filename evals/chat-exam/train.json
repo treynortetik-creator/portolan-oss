@@ -1,0 +1,1264 @@
+[
+ {
+  "id": "d-ab-02",
+  "graph": "demo",
+  "type": "abstain",
+  "question": "Which accounts have ordered the Tidewater T4?",
+  "gold": [],
+  "origin": "demo:abstain",
+  "public": false
+ },
+ {
+  "id": "d-ab-04",
+  "graph": "demo",
+  "type": "abstain",
+  "question": "How many beds does Driftwood Community Hospital have?",
+  "gold": [],
+  "origin": "demo:abstain",
+  "public": false
+ },
+ {
+  "id": "d-ab-05",
+  "graph": "demo",
+  "type": "abstain",
+  "question": "What did Harriet Colvane at St. Aldric Health ask us for?",
+  "gold": [],
+  "origin": "demo:abstain",
+  "public": false
+ },
+ {
+  "id": "d-cc-02",
+  "graph": "demo",
+  "type": "crm_conflict",
+  "question": "Our CRM has Northlake's Tidewater T3 tower expansion in qualification. Do our conversations with Northlake suggest any risk to it?",
+  "gold": [
+   {
+    "text": "Northlake Health System began evaluating Corvane Systems pumps for Northlake General's new tower in 2026-08.",
+    "notes": [
+     "signal-competitor_mention-northlake-health-system"
+    ],
+    "claim_ids": [
+     17
+    ],
+    "ref": "F15b"
+   }
+  ],
+  "origin": "demo:crm_hand",
+  "public": true
+ },
+ {
+  "id": "d-cc-03",
+  "graph": "demo",
+  "type": "crm_conflict",
+  "question": "Our CRM marks Kestrel Medical Group as churned in 2026-02. What do our records say about why?",
+  "gold": [
+   {
+    "text": "Kestrel Medical Group ended its Halvard relationship in 2026-02 after moving to Brightline Medical.",
+    "notes": [
+     "signal-decision-kestrel-medical-group"
+    ],
+    "claim_ids": [
+     50
+    ],
+    "ref": "F34"
+   }
+  ],
+  "origin": "demo:crm_hand",
+  "public": true
+ },
+ {
+  "id": "d-mh_01",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Which Larkspur Regional Health hospitals reported late Tidewater T2 deliveries in August 2026?",
+  "gold": [
+   {
+    "text": "Larkspur Memorial Hospital had a Tidewater T2 delivery arrive late in August 2026.",
+    "notes": [
+     "signal-complaint-larkspur-memorial-hospital",
+     "signal-complaint-larkspur-north-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Larkspur North Hospital had a Tidewater T2 order arrive late in August 2026.",
+    "notes": [
+     "signal-complaint-larkspur-memorial-hospital",
+     "signal-complaint-larkspur-north-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_02",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Who owns the health system that Larkspur Memorial Hospital belongs to?",
+  "gold": [
+   {
+    "text": "Larkspur Memorial Hospital is part of Larkspur Regional Health.",
+    "notes": [
+     "larkspur-memorial-hospital",
+     "signal-other-larkspur-regional-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Larkspur Regional Health is owned by Pinecrest Health Partners.",
+    "notes": [
+     "larkspur-memorial-hospital",
+     "signal-other-larkspur-regional-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_03",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "What is the annual recurring revenue of the system that owns Wrenfield Medical Center, and how many pumps does Wrenfield Medical Center run?",
+  "gold": [
+   {
+    "text": "Wrenfield Medical Center is owned by Wrenfield Health.",
+    "notes": [
+     "signal-other-wrenfield-medical-center",
+     "signal-other-wrenfield-health",
+     "signal-usage-wrenfield-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Wrenfield Health's annual recurring revenue is $1,410,000.",
+    "notes": [
+     "signal-other-wrenfield-medical-center",
+     "signal-other-wrenfield-health",
+     "signal-usage-wrenfield-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Wrenfield Medical Center runs eighteen Tidewater T2 pumps.",
+    "notes": [
+     "signal-other-wrenfield-medical-center",
+     "signal-other-wrenfield-health",
+     "signal-usage-wrenfield-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_04",
+  "graph": "demo",
+  "type": "recency",
+  "question": "Ashgrove Health's CFO warned that late deliveries would come up at renewal. When is that renewal now, and what was the date before?",
+  "gold": [
+   {
+    "text": "Ashgrove Health's CFO said continued late deliveries would be raised at the 2027 renewal.",
+    "notes": [
+     "signal-risk-ashgrove-health",
+     "signal-decision-ashgrove-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "The HalvardCare renewal is now 2027-06-30.",
+    "notes": [
+     "signal-risk-ashgrove-health",
+     "signal-decision-ashgrove-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "The renewal was previously 2027-03-31.",
+    "notes": [
+     "signal-risk-ashgrove-health",
+     "signal-decision-ashgrove-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_05",
+  "graph": "demo",
+  "type": "recency",
+  "question": "Which Ashgrove Health hospitals had late Tidewater T2 deliveries, and did deliveries improve afterwards?",
+  "gold": [
+   {
+    "text": "Ashgrove Medical Center had late Tidewater T2 deliveries.",
+    "notes": [
+     "signal-complaint-ashgrove-medical-center",
+     "signal-complaint-ashgrove-riverside-hospital",
+     "signal-praise-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Ashgrove Riverside Hospital had a Tidewater T2 delivery arrive five days late.",
+    "notes": [
+     "signal-complaint-ashgrove-medical-center",
+     "signal-complaint-ashgrove-riverside-hospital",
+     "signal-praise-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "By 2026-08-31 Ashgrove Medical Center said recent deliveries were on schedule.",
+    "notes": [
+     "signal-complaint-ashgrove-medical-center",
+     "signal-complaint-ashgrove-riverside-hospital",
+     "signal-praise-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_06",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "What did Halvard promise Ashgrove Health about the delivery problems, who made the promise, and what operational fix followed?",
+  "gold": [
+   {
+    "text": "Sam Okafor made the promise.",
+    "notes": [
+     "signal-commitment-ashgrove-health",
+     "signal-decision-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "The promise was a written delivery root-cause summary by 2026-08-28.",
+    "notes": [
+     "signal-commitment-ashgrove-health",
+     "signal-decision-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "The Dayton distribution branch hired two additional drivers.",
+    "notes": [
+     "signal-commitment-ashgrove-health",
+     "signal-decision-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_07",
+  "graph": "demo",
+  "type": "recency",
+  "question": "Northlake Health System said in June 2026 that it was not evaluating other pump vendors. What changed, and what delivery problems was its hospital having?",
+  "gold": [
+   {
+    "text": "Northlake began evaluating Corvane Systems pumps in August 2026.",
+    "notes": [
+     "signal-competitor_mention-northlake-health-system",
+     "signal-complaint-northlake-general-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "The evaluation was for Northlake General's new tower.",
+    "notes": [
+     "signal-competitor_mention-northlake-health-system",
+     "signal-complaint-northlake-general-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Northlake General Hospital had several late Tidewater T3 deliveries in August 2026.",
+    "notes": [
+     "signal-competitor_mention-northlake-health-system",
+     "signal-complaint-northlake-general-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_08",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Which competitor's pumps is Northlake evaluating, and what happened to that competitor's pump line afterwards?",
+  "gold": [
+   {
+    "text": "Northlake is evaluating Corvane Systems pumps.",
+    "notes": [
+     "signal-competitor_mention-northlake-health-system",
+     "signal-competitor_mention-corvane-systems"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Corvane Systems issued a voluntary recall of its C-40 pump line on 2026-08-26.",
+    "notes": [
+     "signal-competitor_mention-northlake-health-system",
+     "signal-competitor_mention-corvane-systems"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_09",
+  "graph": "demo",
+  "type": "cross_account",
+  "question": "Which accounts have been in contact with Brightline Medical, and what came of each?",
+  "gold": [
+   {
+    "text": "Kestrel Medical Group moved to Brightline Medical.",
+    "notes": [
+     "signal-decision-kestrel-medical-group",
+     "signal-competitor_mention-vireo-surgical-group",
+     "signal-competitor_mention-anchor-bay-surgical-partners"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Vireo Surgical Group received a Brightline proposal about 15 percent cheaper.",
+    "notes": [
+     "signal-decision-kestrel-medical-group",
+     "signal-competitor_mention-vireo-surgical-group",
+     "signal-competitor_mention-anchor-bay-surgical-partners"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Anchor Bay Surgical Partners was contacted by a Brightline rep but had not taken a meeting.",
+    "notes": [
+     "signal-decision-kestrel-medical-group",
+     "signal-competitor_mention-vireo-surgical-group",
+     "signal-competitor_mention-anchor-bay-surgical-partners"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_10",
+  "graph": "demo",
+  "type": "cross_account",
+  "question": "What commitments has Dana Whitlock made, and to which accounts?",
+  "gold": [
+   {
+    "text": "Dana Whitlock committed to a quarterly business review with Northlake Health System.",
+    "notes": [
+     "signal-commitment-northlake-health-system",
+     "signal-commitment-driftwood-community-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Dana Whitlock committed to send Driftwood Community Hospital a formal Tidewater Link project timeline.",
+    "notes": [
+     "signal-commitment-northlake-health-system",
+     "signal-commitment-driftwood-community-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_11",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Driftwood Community Hospital asked for a Tidewater Link connection to Epic. What did Halvard commit to in response, and has Driftwood looked at competitors?",
+  "gold": [
+   {
+    "text": "Halvard committed to a formal Tidewater Link project timeline for Driftwood.",
+    "notes": [
+     "signal-request-driftwood-community-hospital",
+     "signal-commitment-driftwood-community-hospital",
+     "signal-competitor_mention-driftwood-community-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "The timeline was due by 2026-09-05.",
+    "notes": [
+     "signal-request-driftwood-community-hospital",
+     "signal-commitment-driftwood-community-hospital",
+     "signal-competitor_mention-driftwood-community-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Driftwood briefly compared Corvane Systems pumps, but it never went anywhere.",
+    "notes": [
+     "signal-request-driftwood-community-hospital",
+     "signal-commitment-driftwood-community-hospital",
+     "signal-competitor_mention-driftwood-community-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_12",
+  "graph": "demo",
+  "type": "recency",
+  "question": "How did Wrenfield Health's position on the Tidewater Link/Epic integration change, and what did Halvard promise it?",
+  "gold": [
+   {
+    "text": "Wrenfield Health first deferred the integration until 2027.",
+    "notes": [
+     "signal-request-wrenfield-health",
+     "signal-commitment-wrenfield-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Wrenfield Health then asked Halvard to begin the integration immediately.",
+    "notes": [
+     "signal-request-wrenfield-health",
+     "signal-commitment-wrenfield-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Priya Natarajan promised an integration test plan by 2026-09-10.",
+    "notes": [
+     "signal-request-wrenfield-health",
+     "signal-commitment-wrenfield-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_13",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Wrenfield Health asked for the Tidewater Link integration to start right away. Did any of its hospitals ask whether that timeline covered them, and did they get an answer?",
+  "gold": [
+   {
+    "text": "Wrenfield East Hospital asked whether the Tidewater Link timeline applied to it.",
+    "notes": [
+     "signal-question-wrenfield-east-hospital",
+     "signal-request-wrenfield-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "The question was not answered.",
+    "notes": [
+     "signal-question-wrenfield-east-hospital",
+     "signal-request-wrenfield-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_14",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Cobalt Ridge Medical Center expects a credit on its next invoice. Why, and who is the materials manager behind the request?",
+  "gold": [
+   {
+    "text": "Cobalt Ridge expects a delivery-delay credit on its next HalvardCare invoice.",
+    "notes": [
+     "signal-pricing-cobalt-ridge-medical-center",
+     "signal-complaint-cobalt-ridge-medical-center",
+     "tom-ridley"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Cobalt Ridge had several late Tidewater T2 deliveries in August 2026.",
+    "notes": [
+     "signal-pricing-cobalt-ridge-medical-center",
+     "signal-complaint-cobalt-ridge-medical-center",
+     "tom-ridley"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Aisha Bell is Cobalt Ridge's materials manager.",
+    "notes": [
+     "signal-pricing-cobalt-ridge-medical-center",
+     "signal-complaint-cobalt-ridge-medical-center",
+     "tom-ridley"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Aisha Bell replaced Tom Ridley.",
+    "notes": [
+     "signal-pricing-cobalt-ridge-medical-center",
+     "signal-complaint-cobalt-ridge-medical-center",
+     "tom-ridley"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_15",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Which hospital lent Tidewater T2 consumables to Cobalt Ridge, and what did that hospital's biomed lead say about switching suppliers?",
+  "gold": [
+   {
+    "text": "Cobalt Ridge borrowed consumables from Larkspur Memorial Hospital.",
+    "notes": [
+     "signal-complaint-cobalt-ridge-medical-center",
+     "signal-risk-larkspur-memorial-hospital",
+     "signal-praise-larkspur-memorial-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Larkspur Memorial's biomed lead threatened to recommend a second consumables supplier.",
+    "notes": [
+     "signal-complaint-cobalt-ridge-medical-center",
+     "signal-risk-larkspur-memorial-hospital",
+     "signal-praise-larkspur-memorial-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "He later dropped the second-supplier idea after deliveries were on time.",
+    "notes": [
+     "signal-complaint-cobalt-ridge-medical-center",
+     "signal-risk-larkspur-memorial-hospital",
+     "signal-praise-larkspur-memorial-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_16",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Larkspur Regional Health plans to standardise on the Tidewater T3. By when, and how many T2 pumps and T3 trial units does Larkspur Memorial have?",
+  "gold": [
+   {
+    "text": "Larkspur Regional Health will standardise on the Tidewater T3 by 2027-06.",
+    "notes": [
+     "signal-decision-larkspur-regional-health",
+     "signal-usage-larkspur-memorial-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Larkspur Memorial has forty Tidewater T2 pumps.",
+    "notes": [
+     "signal-decision-larkspur-regional-health",
+     "signal-usage-larkspur-memorial-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Larkspur Memorial is trialling four T3 units.",
+    "notes": [
+     "signal-decision-larkspur-regional-health",
+     "signal-usage-larkspur-memorial-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_17",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "What discount does Larkspur Regional Health expect at its 2027 renewal, and who became its CFO in September 2026?",
+  "gold": [
+   {
+    "text": "Larkspur Regional Health expects a 12 percent volume discount on Tidewater T2 consumables.",
+    "notes": [
+     "signal-pricing-larkspur-regional-health",
+     "signal-contact_change-larkspur-regional-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Renata Solis became Larkspur Regional Health's CFO.",
+    "notes": [
+     "signal-pricing-larkspur-regional-health",
+     "signal-contact_change-larkspur-regional-health"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_18",
+  "graph": "demo",
+  "type": "cross_account",
+  "question": "What questions or feature requests have customers raised about the Tidewater T3, and were any answered?",
+  "gold": [
+   {
+    "text": "Northlake Health System asked whether the Tidewater T3 supports Cerner integration.",
+    "notes": [
+     "signal-question-northlake-health-system",
+     "signal-request-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Northlake's question was not answered.",
+    "notes": [
+     "signal-question-northlake-health-system",
+     "signal-request-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Ashgrove Medical Center's ICU asked for a night-mode alarm volume on the T3.",
+    "notes": [
+     "signal-question-northlake-health-system",
+     "signal-request-ashgrove-medical-center"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_19",
+  "graph": "demo",
+  "type": "recency",
+  "question": "Meadowbrook Community Hospital's pharmacy director said they were looking at other pump options. What delivery problems did Meadowbrook have, and were they resolved?",
+  "gold": [
+   {
+    "text": "Meadowbrook had a Tidewater T2 order arrive five days late.",
+    "notes": [
+     "signal-competitor_mention-meadowbrook-community-hospital",
+     "signal-complaint-meadowbrook-community-hospital",
+     "signal-praise-meadowbrook-community-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Meadowbrook had a second late delivery, four days behind schedule.",
+    "notes": [
+     "signal-competitor_mention-meadowbrook-community-hospital",
+     "signal-complaint-meadowbrook-community-hospital",
+     "signal-praise-meadowbrook-community-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "By 2026-09-04 the pharmacy director said the delivery issues seemed to be behind them.",
+    "notes": [
+     "signal-competitor_mention-meadowbrook-community-hospital",
+     "signal-complaint-meadowbrook-community-hospital",
+     "signal-praise-meadowbrook-community-hospital"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-mh_20",
+  "graph": "demo",
+  "type": "multi_doc",
+  "question": "Who replaced Nina Vale at Vireo Surgical Group, and what competitor proposal had Vireo received while she was there?",
+  "gold": [
+   {
+    "text": "Diego Ramos succeeded Nina Vale.",
+    "notes": [
+     "nina-vale",
+     "signal-competitor_mention-vireo-surgical-group"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "Vireo received a Brightline Medical proposal.",
+    "notes": [
+     "nina-vale",
+     "signal-competitor_mention-vireo-surgical-group"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   },
+   {
+    "text": "The proposal was considered 15 percent cheaper than Halvard's.",
+    "notes": [
+     "nina-vale",
+     "signal-competitor_mention-vireo-surgical-group"
+    ],
+    "claim_ids": [],
+    "ref": ""
+   }
+  ],
+  "origin": "demo:multihop",
+  "public": true
+ },
+ {
+  "id": "d-sf-02",
+  "graph": "demo",
+  "type": "single_fact",
+  "question": "What did Sable Valley Health praise in July 2026?",
+  "gold": [
+   {
+    "text": "Sable Valley Health's nursing informatics director called Tidewater Link's HL7 feed \"flawless since go-live\" on 2026-07-08.",
+    "notes": [
+     "signal-praise-sable-valley-health"
+    ],
+    "claim_ids": [
+     8
+    ],
+    "ref": "F24"
+   }
+  ],
+  "origin": "demo:truth_single",
+  "public": false
+ },
+ {
+  "id": "d-sf-03",
+  "graph": "demo",
+  "type": "single_fact",
+  "question": "What usage update did Vireo Surgical Group give in May 2026?",
+  "gold": [
+   {
+    "text": "Vireo Surgical Group uses Tidewater T2 pumps in two operating rooms and none in recovery as of 2026-05-20.",
+    "notes": [
+     "signal-usage-vireo-surgical-group"
+    ],
+    "claim_ids": [
+     53
+    ],
+    "ref": "F27"
+   }
+  ],
+  "origin": "demo:truth_single",
+  "public": false
+ },
+ {
+  "id": "w-ab-05",
+  "graph": "world",
+  "type": "abstain",
+  "question": "How many licensed beds does Tanglewood Valley Community Hospital have?",
+  "gold": [],
+  "origin": "world:abstain_attribute",
+  "public": false
+ },
+ {
+  "id": "w-ab-07",
+  "graph": "world",
+  "type": "abstain",
+  "question": "Which EHR does Thornbury Central General Hospital run, Epic or Cerner?",
+  "gold": [],
+  "origin": "world:abstain_ehr",
+  "public": false
+ },
+ {
+  "id": "w-cc-02",
+  "graph": "world",
+  "type": "crm_conflict",
+  "question": "Our CRM says Tanglewood Valley Community Hospital's contract renews on 2026-05-16. Have our conversations with them said anything different about the renewal timing?",
+  "gold": [
+   {
+    "text": "Tanglewood Valley Community Hospital has initiated the renewal process for Lodepath Link with a decision expected by 2026-03-13.",
+    "notes": [
+     "signal-decision-tanglewood-valley-community-hospital"
+    ],
+    "claim_ids": [
+     169
+    ],
+    "ref": "F00279"
+   }
+  ],
+  "origin": "world:crm_renewal_date",
+  "public": false
+ },
+ {
+  "id": "w-cc-03",
+  "graph": "world",
+  "type": "crm_conflict",
+  "question": "Our CRM flags Thornbury Central General Hospital's renewal as at risk. What are the two most recent risks our conversations with them raised?",
+  "gold": [
+   {
+    "text": "Glacierhall Medical is being considered by Thornbury Central General Hospital for Lodepath Link replacement due to ongoing issues.",
+    "notes": [
+     "signal-risk-thornbury-central-general-hospital"
+    ],
+    "claim_ids": [
+     59
+    ],
+    "ref": "F00253"
+   },
+   {
+    "text": "Rumors within Thornbury Central General Hospital suggest Cedargrove Devices is being invited to a competitive evaluation due to Lodepath Link concerns.",
+    "notes": [
+     "signal-risk-thornbury-central-general-hospital"
+    ],
+    "claim_ids": [
+     80
+    ],
+    "ref": "F00245"
+   }
+  ],
+  "origin": "world:crm_stage",
+  "public": false
+ },
+ {
+  "id": "w-cc-05",
+  "graph": "world",
+  "type": "crm_conflict",
+  "question": "Our CRM flags Quarryisle West Community Hospital's renewal as at risk. What are the two most recent risks our conversations with them raised?",
+  "gold": [
+   {
+    "text": "Departure of the Stoneglade Infusion champion on 2026-07-01 could delay future Lodepath Link renewals.",
+    "notes": [
+     "signal-risk-quarryisle-west-community-hospital"
+    ],
+    "claim_ids": [
+     187
+    ],
+    "ref": "F00327"
+   },
+   {
+    "text": "The unresolved complaint at Quarryisle West Community Hospital for Lodepath has created reputational risk within the clinical team.",
+    "notes": [
+     "signal-risk-quarryisle-west-community-hospital"
+    ],
+    "claim_ids": [
+     119
+    ],
+    "ref": "F00141"
+   }
+  ],
+  "origin": "world:crm_stage",
+  "public": false
+ },
+ {
+  "id": "w-md-02",
+  "graph": "world",
+  "type": "multi_doc",
+  "question": "The account whose contract renews in February 2027: what is the most recent risk it has raised?",
+  "gold": [
+   {
+    "text": "Saltcreek General Hospital's contract renews on 2027-02-26.",
+    "notes": [
+     "signal-decision-saltcreek-general-hospital"
+    ],
+    "claim_ids": [
+     384
+    ],
+    "ref": "CF-acct-saltcreek-renewal_date-02"
+   },
+   {
+    "text": "An upcoming evaluation at Saltcreek General Hospital will focus on 17 days remaining to meet a Lodepath T3 commitment due on 2026-05-10.",
+    "notes": [
+     "signal-risk-saltcreek-general-hospital"
+    ],
+    "claim_ids": [
+     47
+    ],
+    "ref": "F00263"
+   }
+  ],
+  "origin": "world:crm_bridge",
+  "public": false
+ },
+ {
+  "id": "w-md-04",
+  "graph": "world",
+  "type": "multi_doc",
+  "question": "After the release with Lodepath Care at Thornbury Lakeside Medical Center in July 2026, what happened next?",
+  "gold": [
+   {
+    "text": "In the QBR on 2026-07-04, Bohua Al-Hadid confirmed ongoing use of Lodepath in 35% daily procedures.",
+    "notes": [
+     "signal-usage-thornbury-lakeside-medical-center"
+    ],
+    "claim_ids": [
+     81
+    ],
+    "ref": "F00049"
+   },
+   {
+    "text": "In the QBR on 2026-09-02, Calson Agueda confirmed ongoing use of Lodepath in 85% daily procedures.",
+    "notes": [
+     "signal-usage-thornbury-lakeside-medical-center"
+    ],
+    "claim_ids": [
+     315
+    ],
+    "ref": "F00054"
+   },
+   {
+    "text": "On 2026-09-17, a new 35% device limit was set for Lodepath T2 at Thornbury Lakeside Medical Center based on a recent policy audit.",
+    "notes": [
+     "signal-decision-thornbury-lakeside-medical-center"
+    ],
+    "claim_ids": [
+     292
+    ],
+    "ref": "F00058"
+   }
+  ],
+  "origin": "world:arc",
+  "public": false
+ },
+ {
+  "id": "w-rc-01",
+  "graph": "world",
+  "type": "recency",
+  "question": "What have we heard from Tanglewood Valley Community Hospital since 2026-09-04?",
+  "gold": [
+   {
+    "text": "The Stoneglade Infusion staff supported a recent policy implementation at Tanglewood Valley Community Hospital regarding Lodepath Link access during off-hours.",
+    "notes": [
+     "signal-other-lodepath-link"
+    ],
+    "claim_ids": [
+     195
+    ],
+    "ref": "F00288"
+   },
+   {
+    "text": "The QBR on 2026-08-26 included a question from Bojun Espera about how Stoneglade Infusion ensures data integrity for Lodepath users.",
+    "notes": [
+     "signal-question-tanglewood-valley-community-hospital"
+    ],
+    "claim_ids": [
+     211
+    ],
+    "ref": "F00024"
+   },
+   {
+    "text": "The regulatory team at Tanglewood Valley Community Hospital mandated a policy update for Lodepath Care tracking due to recent changes on 2026-09-10.",
+    "notes": [
+     "signal-other-lodepath-care"
+    ],
+    "claim_ids": [
+     212
+    ],
+    "ref": "F00025"
+   },
+   {
+    "text": "Deeish Grigyev from Tanglewood Valley Community Hospital informed Stoneglade Infusion of a policy change that will impact 3 of training needs for Lodepath Care.",
+    "notes": [
+     "signal-decision-tanglewood-valley-community-hospital"
+    ],
+    "claim_ids": [
+     213
+    ],
+    "ref": "F00026"
+   }
+  ],
+  "origin": "world:since",
+  "public": false
+ },
+ {
+  "id": "w-rc-02",
+  "graph": "world",
+  "type": "recency",
+  "question": "What have we heard from Saltcreek General Hospital since 2026-07-06?",
+  "gold": [
+   {
+    "text": "In response to Saltcreek General Hospital's price concerns, Stoneglade Infusion has proposed a new tiered model for Lodepath on 2026-07-06.",
+    "notes": [
+     "signal-pricing-saltcreek-general-hospital"
+    ],
+    "claim_ids": [
+     276
+    ],
+    "ref": "F00177"
+   },
+   {
+    "text": "The VP of Supply Chain at Saltcreek General Hospital requested a tailored pricing model for Lodepath based on deployment 10 and 50% devices.",
+    "notes": [
+     "signal-request-saltcreek-general-hospital"
+    ],
+    "claim_ids": [
+     62
+    ],
+    "ref": "F00178"
+   },
+   {
+    "text": "Stoneglade Infusion is now required to follow updated policy guidelines from Saltcreek General Hospital concerning Lodepath T2 data sharing.",
+    "notes": [
+     "signal-other-lodepath-t2"
+    ],
+    "claim_ids": [
+     288
+    ],
+    "ref": "F00391"
+   },
+   {
+    "text": "Danin Nikolvich from Saltcreek General Hospital informed Stoneglade Infusion of a policy change that will impact 19 of training needs for Lodepath T2.",
+    "notes": [
+     "signal-decision-saltcreek-general-hospital"
+    ],
+    "claim_ids": [
+     289
+    ],
+    "ref": "F00392"
+   }
+  ],
+  "origin": "world:since",
+  "public": false
+ },
+ {
+  "id": "w-rc-05",
+  "graph": "world",
+  "type": "recency",
+  "question": "What is the latest we have heard from Cloverglen Health Partners about Lodepath T3?",
+  "gold": [
+   {
+    "text": "During the QBR on 2026-08-06, Stoneglade Infusion promised to dispatch a Lodepath T3-specific support team to Cloverglen Health Partners within 15 days.",
+    "notes": [
+     "signal-commitment-cloverglen-health-partners"
+    ],
+    "claim_ids": [
+     146
+    ],
+    "ref": "F00113"
+   }
+  ],
+  "origin": "world:latest",
+  "public": false
+ },
+ {
+  "id": "w-sf-01",
+  "graph": "world",
+  "type": "single_fact",
+  "question": "What contact change happened at Tanglewood Valley Community Hospital in January 2026?",
+  "gold": [
+   {
+    "text": "Stoneglade Infusion has been advised by Danan Yu at Tanglewood Valley Community Hospital that they will no longer be the liaison for Lodepath Link decisions.",
+    "notes": [
+     "danan-yu"
+    ],
+    "claim_ids": [
+     317
+    ],
+    "ref": "F00300"
+   }
+  ],
+  "origin": "world:single",
+  "public": false
+ },
+ {
+  "id": "w-sf-02",
+  "graph": "world",
+  "type": "single_fact",
+  "question": "What did Tanglewood South General Hospital ask us for regarding Lodepath T2 in April 2026?",
+  "gold": [
+   {
+    "text": "Efewale Sun at Tanglewood South General Hospital has requested a formal budget projection for scaled Lodepath T2 pricing by 2026-04-12.",
+    "notes": [
+     "signal-request-tanglewood-south-general-hospital"
+    ],
+    "claim_ids": [
+     19
+    ],
+    "ref": "F00154"
+   }
+  ],
+  "origin": "world:single",
+  "public": false
+ },
+ {
+  "id": "w-sf-09",
+  "graph": "world",
+  "type": "single_fact",
+  "question": "What usage update did Cloverglen Health Partners give on Lodepath Link in June 2026?",
+  "gold": [
+   {
+    "text": "Cloverglen Health Partners has on 2026-04-29 completed training for 20% of its staff on Lodepath Link usage.",
+    "notes": [
+     "signal-usage-cloverglen-health-partners"
+    ],
+    "claim_ids": [
+     51
+    ],
+    "ref": "F00145"
+   }
+  ],
+  "origin": "world:single",
+  "public": false
+ },
+ {
+  "id": "w-xa-02",
+  "graph": "world",
+  "type": "cross_account",
+  "question": "Which accounts had contact changes affecting Lodepath Link in April 2026, and what did they say?",
+  "gold": [
+   {
+    "text": "A new Biomed Lead at Fallowbury General Hospital has taken over from Daniel Chernchuk, with the transition occurring on 2026-04-14, affecting 20 of Lodepath Link timelines.",
+    "notes": [
+     "daniel-chernchuk"
+    ],
+    "claim_ids": [
+     244
+    ],
+    "ref": "F00091"
+   },
+   {
+    "text": "Stoneglade Infusion has been advised by Chenxia Chindu at Thornbury Central General Hospital that they will no longer be the liaison for Lodepath Link decisions.",
+    "notes": [
+     "chenxia-chindu"
+    ],
+    "claim_ids": [
+     22
+    ],
+    "ref": "F00308"
+   }
+  ],
+  "origin": "world:type_product_month",
+  "public": false
+ },
+ {
+  "id": "w-xa-06",
+  "graph": "world",
+  "type": "cross_account",
+  "question": "Which accounts brought up Cedargrove Devices in April 2026, and in what context?",
+  "gold": [
+   {
+    "text": "Chenxia Chindu from Thornbury Central General Hospital has invited Cedargrove Devices to submit a quote for their proposed Lodepath Care integration.",
+    "notes": [
+     "signal-competitor_mention-thornbury-central-general-hospital"
+    ],
+    "claim_ids": [
+     239
+    ],
+    "ref": "F00224"
+   },
+   {
+    "text": "In competitive testing, Cloverglen Health Partners said Cedargrove Devices's Lodepath T2 offered better fault tolerance and response times.",
+    "notes": [
+     "signal-competitor_mention-cloverglen-health-partners"
+    ],
+    "claim_ids": [
+     247
+    ],
+    "ref": "F00226"
+   }
+  ],
+  "origin": "world:competitor",
+  "public": false
+ },
+ {
+  "id": "w-xa-07",
+  "graph": "world",
+  "type": "cross_account",
+  "question": "Which of Tanglewood Health System's facilities made requests in August 2026, and what did they say?",
+  "gold": [
+   {
+    "text": "Bojun Espera at Tanglewood Valley Community Hospital has requested a formal budget projection for scaled Lodepath pricing by 2026-08-05.",
+    "notes": [
+     "signal-request-tanglewood-valley-community-hospital"
+    ],
+    "claim_ids": [
+     113
+    ],
+    "ref": "F00160"
+   },
+   {
+    "text": "To justify ROI, Hadia Goldby from Tanglewood South General Hospital asked for a three-year cost projection for Lodepath T3 at the current 80% per unit rate.",
+    "notes": [
+     "signal-request-tanglewood-south-general-hospital"
+    ],
+    "claim_ids": [
+     96
+    ],
+    "ref": "F00170"
+   }
+  ],
+  "origin": "world:hierarchy",
+  "public": false
+ }
+]

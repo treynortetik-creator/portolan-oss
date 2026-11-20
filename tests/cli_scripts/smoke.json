@@ -1,0 +1,63 @@
+{
+  "name": "Seeded local app: every read path answers and cites",
+  "steps": [
+    {"do": "health", "expect": {"status": "ok", "auth": "ok"}},
+    {
+      "do": "ask \"Which hospital accounts had late deliveries in August, and what did they say?\"",
+      "expect": {
+        "outcome": "answered",
+        "citations": ">=1",
+        "broken_citations": "==0",
+        "cited_notes": "contains signal-",
+        "new_conversation": true
+      }
+    },
+    {
+      "do": "ask \"Are the delivery problems over?\"",
+      "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "new_conversation": false}
+    },
+    {
+      "do": "ask --new-conversation \"Which customers are pushing on price?\"",
+      "expect": {"new_conversation": true}
+    },
+    {
+      "do": "search \"Tidewater T3\"",
+      "expect": {"count": ">=3", "slugs": "contains tidewater-t3", "control_ok": true}
+    },
+    {
+      "do": "search \"Tidewater T3\" --k 3 --since 2026-08-01",
+      "expect": {"count": "<=3", "source": "contains MCP", "control_ok": true}
+    },
+    {
+      "do": "note signal-complaint-northlake-general-hospital",
+      "expect": {
+        "type": "signal",
+        "claims": ">=2",
+        "links": ">=1",
+        "backlinks": ">=1",
+        "claims.0.source": "contains S-call-011",
+        "claims.0.quote": "contains three days late"
+      }
+    },
+    {
+      "do": "open \"/originals/S-call-011?at=00%3A03%3A21\" --quote \"second Tidewater T3 three days late\"",
+      "expect": {"ok": true, "block_found": true, "quote_match": "exact", "quote_in_cited_block": true}
+    },
+    {"do": "accounts", "expect": {"total": ">=10"}},
+    {"do": "accounts Ashgrove", "expect": {"total": ">=1"}},
+    {
+      "do": "account \"Ashgrove Health\"",
+      "expect": {"slug": "ashgrove-health", "type": "account", "open_actions": ">=1"}
+    },
+    {"do": "actions", "expect": {"open": ">=4", "overdue": ">=1", "actions": ">=4"}},
+    {"do": "actions --owner sam", "expect": {"owner_filter": "sam", "actions": ">=1", "owners.0.owner": "Sam Okafor"}},
+    {"do": "review list", "expect": {"open": ">=2", "cards": ">=2"}},
+    {"do": "report list", "expect": {"count": ">=1", "reports.0.slug": "contains report-"}},
+    {"do": "usage", "expect": {"totals.questions": ">=3", "totals.active_users": ">=1"}},
+    {"do": "mcp tools", "expect": {"count": ">=9", "names": "contains open_note"}},
+    {
+      "do": "mcp call open_note '{\"slug\": \"tidewater-t3\"}'",
+      "expect": {"is_error": false, "result.title": "Tidewater T3"}
+    }
+  ]
+}

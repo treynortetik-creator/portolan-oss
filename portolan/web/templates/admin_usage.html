@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Pilot usage — Portolan{% endblock %}
+{% macro pct(x) %}{% if x is none %}—{% else %}{{ "%.0f"|format(x * 100) }}%{% endif %}{% endmacro %}
+{% macro num(x) %}{% if x is none %}—{% else %}{{ "%.1f"|format(x) }}{% endif %}{% endmacro %}
+{% block content %}
+<p class="eyebrow">Admin</p>
+<h1 style="margin-top:0;">Pilot usage</h1>
+<p class="muted">Last {{ dash.window_days }} days to {{ dash.now.strftime('%Y-%m-%d %H:%M') }} UTC. Weeks start Monday (UTC).</p>
+
+<div class="card">
+  <p class="eyebrow">Last {{ dash.window_days }} days</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Totals">
+  <table id="usage-totals">
+    <tr><th>Active users</th><th>Questions</th><th>Questions per user</th><th>Thumbs up</th><th>Thumbs down</th><th>Thumbs-up share</th><th>Citation click-through</th><th>Email opens</th><th>Email clicks</th><th>Eval cases waiting</th></tr>
+    <tr>
+      <td class="mono">{{ dash.totals.active_users }}</td>
+      <td class="mono">{{ dash.totals.questions }}</td>
+      <td class="mono">{{ num(dash.totals.questions_per_user) }}</td>
+      <td class="mono">{{ dash.totals.thumbs_up }}</td>
+      <td class="mono">{{ dash.totals.thumbs_down }}</td>
+      <td class="mono">{{ pct(dash.totals.thumbs_up_share) }}</td>
+      <td class="mono">{{ pct(dash.totals.click_through) }} <span class="muted small">({{ dash.totals.clicked_answers }} of {{ dash.totals.cited_answers }})</span></td>
+      <td class="mono">{{ dash.totals.email_opens }} <span class="muted small">({{ dash.totals.email_openers }} people)</span></td>
+      <td class="mono">{{ dash.totals.email_clicks }}</td>
+      <td class="mono">{{ dash.candidates_waiting }}</td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <p class="eyebrow">By week</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Weekly usage">
+  <table id="usage-weeks">
+    <tr><th>Week of</th><th>Active users</th><th>Questions</th><th>Per user</th><th>Thumbs up / down</th><th>Click-through</th><th>Email opens</th><th>Email clicks</th></tr>
+    {% for w in dash.weeks %}
+    <tr>
+      <td class="mono">{{ w.week_start.isoformat() }}</td>
+      <td class="mono">{{ w.active_users }}</td>
+      <td class="mono">{{ w.questions }}</td>
+      <td class="mono">{{ num(w.questions_per_user) }}</td>
+      <td class="mono">{{ w.thumbs_up }} / {{ w.thumbs_down }}</td>
+      <td class="mono">{{ pct(w.click_through) }}</td>
+      <td class="mono">{{ w.email_opens }}</td>
+      <td class="mono">{{ w.email_clicks }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <p class="eyebrow">Per person, last {{ dash.window_days }} days</p>
+  {% if not dash.per_user %}
+    <p class="muted">No one has used the app in this window.</p>
+  {% else %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Usage per person">
+  <table id="usage-people">
+    <tr><th>Name</th><th>Questions</th><th>Page views</th><th>Citation clicks</th><th>Thumbs up / down</th><th>Active days</th><th>Last seen (UTC)</th></tr>
+    {% for u in dash.per_user %}
+    <tr>
+      <td>{{ u.user_name }}</td>
+      <td class="mono">{{ u.questions }}</td>
+      <td class="mono">{{ u.page_views }}</td>
+      <td class="mono">{{ u.citation_clicks }}</td>
+      <td class="mono">{{ u.thumbs_up }} / {{ u.thumbs_down }}</td>
+      <td class="mono">{{ u.active_days }}</td>
+      <td class="mono">{{ u.last_seen.strftime('%Y-%m-%d %H:%M') }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% endif %}
+</div>
+
+<div class="card">
+  <p class="eyebrow">Top unanswered questions, last {{ dash.window_days }} days</p>
+  <p class="muted small">Questions whose answer carried no citation: "nothing recorded", "not in the graph yet", a broken index, or an error.</p>
+  {% if not dash.unanswered %}
+    <p class="muted">Every question in this window got a cited answer.</p>
+  {% else %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Unanswered questions">
+  <table id="usage-unanswered">
+    <tr><th>Question</th><th>Times asked</th><th>People</th><th>Outcome</th><th>Last asked (UTC)</th></tr>
+    {% for q in dash.unanswered %}
+    <tr>
+      <td>{{ q.question }}</td>
+      <td class="mono">{{ q.times_asked }}</td>
+      <td class="mono">{{ q.people }}</td>
+      <td class="mono small">{{ q.modes|reject('none')|join(', ') }}</td>
+      <td class="mono">{{ q.last_asked.strftime('%Y-%m-%d %H:%M') }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

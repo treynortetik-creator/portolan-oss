@@ -1,0 +1,367 @@
+[09:00:00] Priya Natarajan: Good morning, Yolanda. Can you hear me all right?
+
+[09:00:08] Yolanda Pierce: I can. Morning, Priya. Give me one second—my headset is doing that thing where it decides the microphone is optional.
+
+[09:00:18] Priya Natarajan: No problem. I hear you now.
+
+[09:00:24] Yolanda Pierce: Good. I’m in between two warehouse calls, so if you hear a door close, that’s not dramatic. It’s just the operations team moving around.
+
+[09:00:34] Priya Natarajan: Understood. I’ll keep us focused. I wanted to check in on the Tidewater Link discussion and make sure we’re aligned on what your team needs from us.
+
+[09:00:43] Yolanda Pierce: Yes, that’s the reason I asked for the time. We’ve had a few internal conversations since our last meeting, and the answer is different from where we left it.
+
+[09:00:54] Priya Natarajan: Okay. Different in what way?
+
+[09:00:58] Yolanda Pierce: The implementation group has been looking at the current workflow, the handoffs, and the reporting gaps. There’s more pressure now to get a connected view instead of continuing to reconcile things manually.
+
+[09:01:10] Priya Natarajan: That makes sense. Are the reporting gaps mainly around shipment status, or is it broader than that?
+
+[09:01:17] Yolanda Pierce: Broader. Shipment status is the piece everyone notices, but the issue is that information sits in several places. People are checking one system, then another, then asking somebody to confirm what should already be visible.
+
+[09:01:29] Priya Natarajan: Right.
+
+[09:01:32] Yolanda Pierce: And the timing is getting harder. We can tolerate a little manual work when volume is steady. We can’t tolerate it when there are substitutions, backorders, or a facility change happening at the same time.
+
+[09:01:42] Priya Natarajan: I remember you mentioning that during the spring review.
+
+[09:01:45] Yolanda Pierce: Yes, and at that point we were still treating this as a later modernization item. That assumption has shifted.
+
+[09:01:50] Priya Natarajan: I’m listening.
+
+[09:01:54] Yolanda Pierce: Before we get into the details, I want to be clear that I’m not asking for a broad redesign on this call. I’m asking whether we can start with the integration work and establish what the first usable connection would look like.
+
+[09:02:05] Priya Natarajan: We can absolutely talk through that. The first question for us would be scope. We’d need to understand the Epic environment, the interfaces available, the data elements you want in the initial exchange, and who owns validation on your side.
+
+[09:02:17] Yolanda Pierce: That’s reasonable. The clinical systems group can help with the Epic side. Supply chain can define the operational data. I can coordinate the business owners, although I’ll need somebody from your technical team in the room pretty quickly.
+
+[09:02:28] Priya Natarajan: We can arrange that. Do you already have an Epic integration contact identified?
+
+[09:02:34] Yolanda Pierce: We have a person who can get the right people together. I don’t want to overstate it as a fully staffed project team yet, but there is somebody accountable for getting the technical review started.
+
+[09:02:41] Priya Natarajan: That’s enough to begin discovery.
+
+[09:02:45] Yolanda Pierce: Good. Because the internal conversation became fairly direct this morning.
+
+[09:02:48] Priya Natarajan: In terms of urgency?
+
+[09:02:51] Yolanda Pierce: Yes. We need to stop treating this as something that waits behind every other initiative. We need to move on the Epic integration now, not next year.
+
+[09:03:01] Priya Natarajan: Understood. I’ll make sure that comes through clearly on our side.
+
+[09:03:05] Yolanda Pierce: I appreciate that. I’m not looking for a promise that everything is live next week. I am looking for movement, a technical path, and dates that people can work against.
+
+[09:03:12] Priya Natarajan: That’s a helpful distinction. We can start by documenting the current-state workflow and then map the minimum integration scope. Usually the first pass covers the systems involved, the direction of the data, the expected frequency, and the validation steps.
+
+[09:03:23] Yolanda Pierce: Exactly. And I want the first pass to include the operational exceptions, not just the happy path.
+
+[09:03:28] Priya Natarajan: Such as?
+
+[09:03:31] Yolanda Pierce: A canceled order, a changed delivery location, a partial fulfillment, a duplicate record, and an item that needs review rather than automatic processing.
+
+[09:03:40] Priya Natarajan: That’s useful. We’ll want those represented in the test cases.
+
+[09:03:44] Yolanda Pierce: Also permissions. We need to know who can see what, especially where patient-related information could appear alongside supply information.
+
+[09:03:53] Priya Natarajan: Yes, access boundaries will be part of the review. We’ll need your security and privacy contacts included before any real data is used.
+
+[09:04:00] Yolanda Pierce: Agreed. We can use nonproduction data for the first technical exercises.
+
+[09:04:04] Priya Natarajan: Good. That keeps the initial work contained.
+
+[09:04:06] Yolanda Pierce: There’s another point. The people who use the current process are tired of explaining it from scratch every time someone asks why a status changed.
+
+[09:04:13] Priya Natarajan: That kind of repeated explanation is usually a sign that the audit trail isn’t serving the users.
+
+[09:04:17] Yolanda Pierce: It isn’t. Sometimes the answer exists, but it takes three calls to find it.
+
+[09:04:21] Priya Natarajan: Then the integration should account for traceability, not only transfer.
+
+[09:04:25] Yolanda Pierce: Yes. If a value changes, the person reviewing it needs enough context to understand what happened without opening five unrelated screens.
+
+[09:04:32] Priya Natarajan: I’ll note that as a design requirement.
+
+[09:04:36] Yolanda Pierce: Please do. And don’t frame this as just an interface between two applications. The business process matters.
+
+[09:04:40] Priya Natarajan: I agree. We’ll separate the technical questions from the workflow questions, but keep them connected.
+
+[09:04:45] Yolanda Pierce: Good.
+
+[09:04:47] Priya Natarajan: Can I ask about timing from your side? When could your Epic contact and supply chain lead join a working session?
+
+[09:04:54] Yolanda Pierce: I need to check calendars, but I can get them into something this week if we keep the first meeting to an hour.
+
+[09:05:00] Priya Natarajan: That should work. We can send a short pre-read instead of spending the first half of the meeting explaining Tidewater Link.
+
+[09:05:05] Yolanda Pierce: Please do. Some of the technical people will know it, and some won’t. I’d rather not make the meeting a product presentation.
+
+[09:05:09] Priya Natarajan: Understood. We’ll keep it practical.
+
+[09:05:12] Yolanda Pierce: And include the questions you need answered. People prepare better when they know exactly what is being requested.
+
+[09:05:18] Priya Natarajan: I’ll include a checklist.
+
+[09:05:21] Yolanda Pierce: Good. I’m also going to ask the team to bring examples of the current exceptions. Not personal records, just the shape of the issue.
+
+[09:05:28] Priya Natarajan: That will help us understand the edge cases without bringing sensitive information into the discussion.
+
+[09:05:34] Yolanda Pierce: Right.
+
+[09:05:36] Priya Natarajan: Let me summarize what I’m hearing so far. You want to initiate discovery around Tidewater Link and Epic, define a minimum viable exchange, include exception handling and traceability, and establish a technical working session with your business, clinical systems, security, and supply chain contacts.
+
+[09:05:50] Yolanda Pierce: That’s accurate, with one adjustment. Security doesn’t need to be in the first minute of the first call, but they need to be engaged before any test data moves.
+
+[09:05:57] Priya Natarajan: That’s clear.
+
+[09:06:00] Yolanda Pierce: And I want the initial scope to be narrow enough that we can actually make progress. If we try to solve every downstream reporting question at once, we’ll spend three months debating the edges.
+
+[09:06:07] Priya Natarajan: I agree. We can define a first slice and keep a backlog for the rest.
+
+[09:06:12] Yolanda Pierce: Exactly.
+
+[09:06:14] Priya Natarajan: Are there particular data elements you already know must be included in the first slice?
+
+[09:06:18] Yolanda Pierce: Order identifier, facility, item, requested quantity, confirmed quantity, status, and the relevant date fields. I’d also like an indication when manual review is required.
+
+[09:06:28] Priya Natarajan: That’s a good starting set. We’ll confirm whether each field is available in the source and destination systems and whether the definitions match.
+
+[09:06:36] Yolanda Pierce: Definitions are important. We’ve had two teams use the same word to mean different things.
+
+[09:06:39] Priya Natarajan: That can create more trouble than a missing field.
+
+[09:06:43] Yolanda Pierce: Exactly. A status that looks complete to one person may mean the order is only partially confirmed to somebody else.
+
+[09:06:49] Priya Natarajan: We’ll include a glossary in the discovery notes.
+
+[09:06:53] Yolanda Pierce: Good.
+
+[09:06:55] Priya Natarajan: What would success look like for the first technical cycle?
+
+[09:06:59] Yolanda Pierce: A small set of representative records moving through the connection, with both sides able to confirm what happened. I don’t need a polished dashboard at that point.
+
+[09:07:09] Priya Natarajan: So demonstrable data flow and validation, rather than a final user interface.
+
+[09:07:13] Yolanda Pierce: Yes. And a list of what remains before we could consider a controlled pilot.
+
+[09:07:17] Priya Natarajan: We can structure the work that way.
+
+[09:07:19] Yolanda Pierce: I’d like that list to identify dependencies. If something is waiting on an Epic configuration, say so. If it’s waiting on our internal approval, say so. I don’t want a vague “next steps” section.
+
+[09:07:27] Priya Natarajan: We’ll make ownership and dependencies explicit.
+
+[09:07:31] Yolanda Pierce: Great.
+
+[09:07:33] Priya Natarajan: I’m checking my notes here. For the working session, would you prefer early morning or afternoon?
+
+[09:07:37] Yolanda Pierce: Afternoon is better for the clinical systems contact. Mornings are usually consumed by operational huddles.
+
+[09:07:43] Priya Natarajan: I can work with that.
+
+[09:07:46] Yolanda Pierce: And please avoid Friday afternoon. That’s when everyone remembers the issues they didn’t resolve during the week.
+
+[09:07:50] Priya Natarajan: Fair enough. Tuesday or Wednesday afternoon?
+
+[09:07:55] Yolanda Pierce: Either could work. Send me two options and I’ll get the right people aligned.
+
+[09:07:59] Priya Natarajan: Will do.
+
+[09:08:01] Yolanda Pierce: I want to talk about the transition from discovery to testing. That’s where projects like this sometimes lose momentum.
+
+[09:08:06] Priya Natarajan: What would help maintain it?
+
+[09:08:09] Yolanda Pierce: A visible decision log and a regular checkpoint. Not a large steering committee. Just a short meeting where open questions are either answered or assigned.
+
+[09:08:16] Priya Natarajan: We can set up a weekly checkpoint once the working group starts.
+
+[09:08:21] Yolanda Pierce: Keep it to thirty minutes if possible.
+
+[09:08:24] Priya Natarajan: That’s manageable.
+
+[09:08:27] Yolanda Pierce: And don’t let the meeting become a status recital. If there’s no decision needed, we can cancel it.
+
+[09:08:32] Priya Natarajan: Agreed. The purpose should be clearing blockers.
+
+[09:08:36] Yolanda Pierce: Good.
+
+[09:08:38] Priya Natarajan: On our side, we’ll need an owner for the interface questions and an owner for the test coordination. I can coordinate the account side, but I’m not the person who will make every technical determination.
+
+[09:08:46] Yolanda Pierce: I understand. I need named people, though. Otherwise questions get sent into a general mailbox and disappear.
+
+[09:08:52] Priya Natarajan: I’ll provide named contacts with the meeting invitation.
+
+[09:08:56] Yolanda Pierce: Thank you.
+
+[09:08:58] Priya Natarajan: Is there any concern that the Epic team will see this as competing with another integration effort?
+
+[09:09:04] Yolanda Pierce: There may be questions, but I don’t expect a conflict. The point is to make the operational data more usable, not to replace whatever they already maintain.
+
+[09:09:11] Priya Natarajan: That distinction will be helpful.
+
+[09:09:13] Yolanda Pierce: We should say that plainly. If people think we’re asking them to rebuild the whole environment, we’ll lose them before the first workshop.
+
+[09:09:18] Priya Natarajan: I’ll make sure the pre-read describes a bounded first step.
+
+[09:09:22] Yolanda Pierce: Good.
+
+[09:09:25] Priya Natarajan: Do you want the first step to include outbound and inbound exchanges, or should we focus on one direction?
+
+[09:09:32] Yolanda Pierce: Start with the direction that gives the team the clearest operational value. I’m open to your recommendation, but I want the rationale documented.
+
+[09:09:38] Priya Natarajan: We can compare the options based on data availability, validation effort, and how quickly users can see the result.
+
+[09:09:43] Yolanda Pierce: That’s the right way to frame it.
+
+[09:09:46] Priya Natarajan: If the first cycle uses synthetic or masked records, would your team be able to validate the outcomes?
+
+[09:09:51] Yolanda Pierce: Yes, provided the examples retain the relevant relationships. A completely simplified sample can hide the very issue we’re trying to test.
+
+[09:09:58] Priya Natarajan: Understood. We’ll ask for representative shapes, not actual sensitive content.
+
+[09:10:03] Yolanda Pierce: Exactly.
+
+[09:10:05] Priya Natarajan: We’re at about ten minutes. I want to make sure we leave enough time to cover commitments and immediate actions.
+
+[09:10:10] Yolanda Pierce: Good. I have another call after this, but I don’t want to rush the close.
+
+[09:10:13] Priya Natarajan: Let’s talk about what you need from us first.
+
+[09:10:17] Yolanda Pierce: I need a short written outline of the proposed discovery approach, the information you need from Wrenfield, and the people you want involved. I also need a clear indication of how the first integration test would be organized.
+
+[09:10:28] Priya Natarajan: We can send that after this call.
+
+[09:10:32] Yolanda Pierce: Include assumptions. If you’re assuming a particular Epic interface pattern or a particular frequency, I want that visible.
+
+[09:10:38] Priya Natarajan: Yes. We’ll label assumptions separately from confirmed information.
+
+[09:10:41] Yolanda Pierce: Good.
+
+[09:10:44] Priya Natarajan: From Wrenfield, we’d need the Epic environment details, the initial field list, sample process scenarios, the technical and business contacts, and any security requirements that affect the connection.
+
+[09:10:55] Yolanda Pierce: I can get the first four moving. Security requirements may come after the initial review, but I’ll bring the security lead into the thread.
+
+[09:11:02] Priya Natarajan: That works.
+
+[09:11:05] Yolanda Pierce: I also want to avoid a situation where the implementation team builds something and then the end users see it for the first time at the end.
+
+[09:11:11] Priya Natarajan: We can include an early walkthrough with representative scenarios.
+
+[09:11:16] Yolanda Pierce: Yes. The warehouse and replenishment people should have a chance to say, “that’s not how we use this,” before the design hardens.
+
+[09:11:22] Priya Natarajan: I’ll add a user review checkpoint.
+
+[09:11:26] Yolanda Pierce: Good.
+
+[09:11:28] Priya Natarajan: Are there any adoption concerns we should plan around?
+
+[09:11:33] Yolanda Pierce: People will adopt it if it removes work. They won’t adopt it if it adds another screen or requires duplicate entry.
+
+[09:11:38] Priya Natarajan: That’s a useful principle.
+
+[09:11:40] Yolanda Pierce: And if the system flags too many things for manual review, they’ll stop trusting the flags.
+
+[09:11:45] Priya Natarajan: Then we need to measure both the number of exceptions and whether the exception reason is understandable.
+
+[09:11:50] Yolanda Pierce: Correct.
+
+[09:11:52] Priya Natarajan: I’ll make that part of the test discussion.
+
+[09:11:55] Yolanda Pierce: Thanks.
+
+[09:11:57] Priya Natarajan: One question on governance: who makes the final business call if the technical group has two possible approaches?
+
+[09:12:03] Yolanda Pierce: For the first phase, I’ll make the business call, with the clinical systems lead and the supply chain process owner advising me.
+
+[09:12:10] Priya Natarajan: That gives us a clear escalation path.
+
+[09:12:12] Yolanda Pierce: Technical standards still need to be respected. I’m not going to override an architecture requirement just to make a date look good.
+
+[09:12:18] Priya Natarajan: Of course.
+
+[09:12:20] Yolanda Pierce: But I also don’t want architecture used as a reason to avoid making a decision.
+
+[09:12:25] Priya Natarajan: Fair point.
+
+[09:12:28] Yolanda Pierce: We have a tendency to hold a meeting until everyone feels one hundred percent comfortable. That isn’t realistic here.
+
+[09:12:34] Priya Natarajan: We can document open risks and move forward where the risk is understood.
+
+[09:12:38] Yolanda Pierce: Exactly.
+
+[09:12:40] Priya Natarajan: I’m going to read back the immediate actions. I’ll send the discovery outline, the contact list, the pre-read questions, and meeting options. You’ll confirm the Epic contact, the supply chain process owner, and the preferred session time. You’ll also start gathering representative scenarios and the initial field list.
+
+[09:12:54] Yolanda Pierce: Yes. Add one more item: identify the security review point, even if that person doesn’t attend the first workshop.
+
+[09:13:00] Priya Natarajan: Added.
+
+[09:13:02] Yolanda Pierce: And please include the test environment question. We need to know where the first connection would be exercised.
+
+[09:13:08] Priya Natarajan: I’ll include that in the technical checklist.
+
+[09:13:10] Yolanda Pierce: Great.
+
+[09:13:12] Priya Natarajan: We should also agree on how we’ll record decisions. Would a shared document work?
+
+[09:13:17] Yolanda Pierce: Yes, as long as there’s one document. We have too many places where notes go to die.
+
+[09:13:21] Priya Natarajan: One shared decision log, with owners and dates.
+
+[09:13:25] Yolanda Pierce: Good.
+
+[09:13:28] Priya Natarajan: I’ll set that up with the initial materials.
+
+[09:13:30] Yolanda Pierce: Thank you.
+
+[09:13:32] Priya Natarajan: Before we wrap, is there anything about the current process that you think we’re likely to misunderstand?
+
+[09:13:38] Yolanda Pierce: Yes. A “confirmed” quantity is not always what the facility will actually receive. Sometimes it reflects what was acknowledged at one point, and then the available amount changes.
+
+[09:13:45] Priya Natarajan: So the timing of the value matters.
+
+[09:13:48] Yolanda Pierce: Very much. The audit trail needs to show when it was confirmed and when it was later adjusted.
+
+[09:13:53] Priya Natarajan: That’s important. We’ll capture the event timing in the requirements discussion.
+
+[09:13:57] Yolanda Pierce: Good.
+
+[09:13:59] Priya Natarajan: Anything else?
+
+[09:14:02] Yolanda Pierce: The facility identifier needs to be consistent. We have local names that aren’t always the same as the formal identifiers.
+
+[09:14:08] Priya Natarajan: We’ll ask for the mapping and include it in the data review.
+
+[09:14:12] Yolanda Pierce: Fine.
+
+[09:14:14] Priya Natarajan: I think we have a productive starting point.
+
+[09:14:17] Yolanda Pierce: I do too. I’m glad we’re having this conversation now rather than waiting for the next quarterly review.
+
+[09:14:22] Priya Natarajan: Same here. I’ll treat this as an active workstream and send the materials today.
+
+[09:14:27] Yolanda Pierce: Good. I’ll watch for them and start lining up the internal contacts.
+
+[09:14:31] Priya Natarajan: Let’s tentatively aim for a working session this week, pending your calendar confirmation.
+
+[09:14:35] Yolanda Pierce: That’s fine.
+
+[09:14:37] Priya Natarajan: And after that session, we’ll turn the agreed scope into the test preparation.
+
+[09:14:41] Yolanda Pierce: Yes. I want the test preparation to be specific enough that the technical team can execute without another round of interpretation.
+
+[09:14:46] Priya Natarajan: We’ll make the scenarios, expected results, and ownership explicit.
+
+[09:14:50] Yolanda Pierce: Excellent.
+
+[09:14:52] Priya Natarajan: I’ll send the follow-up shortly.
+
+[09:14:54] Yolanda Pierce: Thanks, Priya. This was useful.
+
+[09:14:57] Priya Natarajan: Thank you, Yolanda. I appreciate the clarity.
+
+[09:15:00] Yolanda Pierce: All right. I’m off to hear why a delivery moved without anyone moving the delivery date. Have a good one.
+
+[09:15:07] Priya Natarajan: You too. I’ll be in touch.
+
+[09:15:10] Yolanda Pierce: Bye.
+
+[09:15:11] Priya Natarajan: Bye. 
+
+[09:15:16] Priya Natarajan: I’m adding one final commitment to the follow-up before I send it: I promise Wrenfield Health that I will provide a Tidewater Link/Epic integration test plan by September 10, 2026.

@@ -1,0 +1,913 @@
+[09:00:00] Sam Okafor: Good morning, Carlos. Thanks for making time. How are you doing?
+
+[09:00:18] Carlos Nunez: Morning, Sam. Doing all right. It has been a busy start, but nothing unusual for a Thursday.
+
+[09:00:29] Sam Okafor: I hear you. We can keep this focused. I wanted to check in on the pump review, hear how the team is settling in, and leave room for anything you want to raise.
+
+[09:00:45] Carlos Nunez: That works. We have been getting a little more feedback from the verification pharmacists, and I have a few notes from the evening shift too.
+
+[09:00:58] Sam Okafor: Great. Before we get into the notes, how has the week been operationally?
+
+[09:01:12] Carlos Nunez: Fairly steady. We had one unusually heavy discharge block on Tuesday, so that put pressure on compounding and final checks. Yesterday was calmer. The main thing is that the staff are still adjusting to the sequence of steps, even though none of it is especially complicated.
+
+[09:01:29] Sam Okafor: That is normal after a change. Are the day and evening teams seeing the same learning curve?
+
+[09:01:44] Carlos Nunez: Not exactly. The day team had more time with the trainers, so they are moving faster. The evening group is smaller, and they have fewer people available when questions come up. They are capable, but they are more cautious.
+
+[09:01:58] Sam Okafor: Makes sense. We can arrange another short session around their shift if that would help.
+
+[09:02:15] Carlos Nunez: Possibly. I do not want to pull everyone into another formal class before we know what the actual gaps are. I would rather collect the questions and make the session practical.
+
+[09:02:31] Sam Okafor: That is a good approach. What kinds of questions are showing up?
+
+[09:02:46] Carlos Nunez: Mostly small workflow things. Where to stage the supplies, who signs off, when to pause, and what information to include in the handoff. Nothing dramatic. The equipment itself has not created a new problem.
+
+[09:03:02] Sam Okafor: Good to hear. Are you still using the same handoff sheet?
+
+[09:03:18] Carlos Nunez: Yes, although we added a line for the second check. That was our own change. We wanted the receiving pharmacist to see clearly who had completed the first review.
+
+[09:03:33] Sam Okafor: Understood. Has that added much time?
+
+[09:03:47] Carlos Nunez: A few seconds at most. It is more about making the responsibility visible than adding work.
+
+[09:04:01] Sam Okafor: Right. Sometimes a tiny documentation change prevents a much longer conversation later.
+
+[09:04:17] Carlos Nunez: Exactly. People are willing to follow a process when they understand why it is there. If it looks like a box-checking exercise, they start finding ways around it.
+
+[09:04:31] Sam Okafor: How is the physical setup working? Any issues with counter space, outlets, or access?
+
+[09:04:48] Carlos Nunez: The counter space is tight but manageable. We shifted one cart and moved the labels closer to the verification area. The outlet arrangement is fine. Access is actually better than it was during the first week because we removed a cabinet that had been in the way.
+
+[09:05:04] Sam Okafor: That sounds like a useful improvement.
+
+[09:05:20] Carlos Nunez: It was. The cabinet was not part of the equipment plan, but it was occupying the exact spot people needed to stand. Once it was gone, the whole area felt less crowded.
+
+[09:05:34] Sam Okafor: Have you had any comments from nursing?
+
+[09:05:50] Carlos Nunez: A few. They mostly care about whether the request arrives with the information they expect and whether the timing is predictable. We are still tightening that communication. Pharmacy can do its part perfectly and still create frustration if the receiving unit does not know when to expect something.
+
+[09:06:06] Sam Okafor: That is true. Is there a particular unit that needs more attention?
+
+[09:06:23] Carlos Nunez: The step-down unit has had more questions than the others. They have a lot of turnover, and several nurses are new to the hospital. We are giving them a short reference sheet rather than asking them to remember every detail.
+
+[09:06:38] Sam Okafor: I like that. A one-page reference tends to get used more than a long manual.
+
+[09:06:52] Carlos Nunez: Yes, provided it stays one page. The moment it turns into a binder, people stop looking at it.
+
+[09:07:08] Sam Okafor: We can keep any supplementary material separate. On the equipment itself, has the team commented on the interface?
+
+[09:07:24] Carlos Nunez: They like that the information is visible without opening several screens. A couple of pharmacists asked whether the text could be slightly larger, but that is more about their individual preference than a system problem.
+
+[09:07:39] Sam Okafor: We can review the display settings with them.
+
+[09:07:54] Carlos Nunez: Please do. I want everyone using the same settings where possible, especially on the overnight carts. Consistency matters more than making every person perfectly comfortable.
+
+[09:08:09] Sam Okafor: Agreed. How is the alert behavior?
+
+[09:08:25] Carlos Nunez: Better than I expected. We are not seeing a flood of interruptions. The staff still pause when an alert appears, but they are not ignoring it because it happens too often.
+
+[09:08:41] Sam Okafor: That balance is important.
+
+[09:08:56] Carlos Nunez: It is. If people are constantly interrupted, they develop habits that are hard to correct. So far, the alerts are getting attention without taking over the process.
+
+[09:09:10] Sam Okafor: Any cases where the team was unsure what an alert meant?
+
+[09:09:27] Carlos Nunez: One or two. We wrote down the wording and walked through it with the lead pharmacist. After that, the explanation was clear. I would still like the quick guide to use the same language as the screen.
+
+[09:09:43] Sam Okafor: I can make sure that gets passed along.
+
+[09:09:58] Carlos Nunez: Thanks. Small inconsistencies are what slow people down.
+
+[09:10:13] Sam Okafor: Absolutely. Let us talk about training coverage. Do you have enough super-users on each shift?
+
+[09:10:30] Carlos Nunez: On days, yes. On evenings, probably one more would help. Nights are harder to judge because the volume is lower, but there is not always someone nearby who has seen every scenario.
+
+[09:10:45] Sam Okafor: Would you prefer a formal designation or just a few experienced people available informally?
+
+[09:11:01] Carlos Nunez: Informal is better for now. If we give it a title too early, people assume they have a permanent responsibility. I would rather see who naturally becomes the person others ask.
+
+[09:11:17] Sam Okafor: That is reasonable. We can support those people without making it a new role.
+
+[09:11:32] Carlos Nunez: Exactly. They can help with questions, and we can revisit the structure once we have more data.
+
+[09:11:47] Sam Okafor: What data are you collecting?
+
+[09:12:04] Carlos Nunez: The basic things: time from request to preparation, time spent in verification, questions returned to the originating unit, and any interruptions. We are not trying to create a research project. We need enough information to see where the friction is.
+
+[09:12:20] Sam Okafor: That should give you a useful picture.
+
+[09:12:36] Carlos Nunez: I hope so. The first few days were too unusual to interpret. Everyone was watching the process closely, which changes how people behave.
+
+[09:12:51] Sam Okafor: The observation effect.
+
+[09:13:06] Carlos Nunez: Exactly. People slow down when they know someone is asking how long a step takes.
+
+[09:13:22] Sam Okafor: Have you started seeing more typical behavior now?
+
+[09:13:38] Carlos Nunez: More typical, yes. Not fully typical. There are still people who are double-checking everything because they do not want to be the first person to make a mistake.
+
+[09:13:53] Sam Okafor: That caution will probably ease with familiarity.
+
+[09:14:09] Carlos Nunez: It should. I just want to make sure familiarity does not become carelessness. That is the balance we are watching.
+
+[09:14:24] Sam Okafor: Of course. Are managers reinforcing that message?
+
+[09:14:39] Carlos Nunez: Yes. We are telling people that speed is not the first goal. The first goal is a dependable process. Speed comes after people stop having to think about every individual step.
+
+[09:14:55] Sam Okafor: That is the right order.
+
+[09:15:10] Carlos Nunez: It is also easier to explain to staff. They want to know what success looks like, and “faster” by itself is not a useful answer.
+
+[09:15:25] Sam Okafor: How are the pharmacists reacting overall?
+
+[09:15:42] Carlos Nunez: Mixed, but mostly constructive. A few people are naturally skeptical of any new device. Others enjoy trying something different. The important part is that even the skeptical group is giving specific feedback instead of simply rejecting it.
+
+[09:15:58] Sam Okafor: Specific feedback is much easier to work with.
+
+[09:16:14] Carlos Nunez: Yes. “I do not like it” does not tell us much. “This step makes me leave the verification screen” tells us something.
+
+[09:16:30] Sam Okafor: Have you heard that kind of concrete comment?
+
+[09:16:45] Carlos Nunez: A couple. One pharmacist wanted a clearer indication of what had already been confirmed. Another wanted the sequence of prompts to match the order she checks the information. Those are useful requests.
+
+[09:17:00] Sam Okafor: We should capture those in the review notes.
+
+[09:17:16] Carlos Nunez: We are. The charge pharmacist has a running list. It is handwritten right now, which is not ideal, but it is better than losing the comments.
+
+[09:17:31] Sam Okafor: We can provide a simple digital template if you want.
+
+[09:17:47] Carlos Nunez: Maybe after the first review. I do not want another tool introduced just to track the tools.
+
+[09:18:03] Sam Okafor: Fair point.
+
+[09:18:18] Carlos Nunez: We have enough systems already. Sometimes the most efficient method is a sheet of paper on a clipboard.
+
+[09:18:34] Sam Okafor: I will not argue with that.
+
+[09:18:49] Carlos Nunez: Good. We can agree on something.
+
+[09:19:04] Sam Okafor: We usually agree more than we disagree.
+
+[09:19:19] Carlos Nunez: That is probably why these calls stay on the calendar.
+
+[09:19:35] Sam Okafor: Speaking of the calendar, do you still want the review next week?
+
+[09:19:50] Carlos Nunez: Yes, but I would prefer late in the week. By then, we will have another few days of observations and can separate the recurring issues from the one-off questions.
+
+[09:20:05] Sam Okafor: Thursday or Friday?
+
+[09:20:21] Carlos Nunez: Thursday would be better. Friday tends to disappear because of staffing and people trying to close out the week.
+
+[09:20:36] Sam Okafor: I can hold Thursday afternoon.
+
+[09:20:51] Carlos Nunez: Afternoon is fine, as long as it is not right at the shift change.
+
+[09:21:07] Sam Okafor: What time does that avoid?
+
+[09:21:22] Carlos Nunez: Around three is awkward. People are handing things over, and nobody is fully present.
+
+[09:21:38] Sam Okafor: I will look for a time earlier than that.
+
+[09:21:53] Carlos Nunez: Good.
+
+[09:22:08] Sam Okafor: While we are scheduling, should the lead pharmacists attend?
+
+[09:22:24] Carlos Nunez: Definitely. I also want one representative from nursing, but not a large group. Six people on a call is already enough when everyone has notes.
+
+[09:22:40] Sam Okafor: I will keep it small.
+
+[09:22:55] Carlos Nunez: Small and practical. If we need a broader discussion later, we can do that separately.
+
+[09:23:11] Sam Okafor: Understood. I have a question about supplies. Are the current quantities working?
+
+[09:23:26] Carlos Nunez: For now. We are watching consumption because the first week included a lot of practice and setup. I do not want to project that rate forward.
+
+[09:23:42] Sam Okafor: Have you seen any shortages?
+
+[09:23:57] Carlos Nunez: No shortages. We had one shelf that looked low, but the backup stock had been moved during cleaning. It was a location issue, not a supply issue.
+
+[09:24:13] Sam Okafor: That is reassuring.
+
+[09:24:29] Carlos Nunez: It was a good reminder to tell environmental services before moving anything in that area.
+
+[09:24:44] Sam Okafor: I imagine they appreciated that conversation.
+
+[09:25:00] Carlos Nunez: They did, actually. Everyone thought someone else had mentioned it.
+
+[09:25:15] Sam Okafor: The classic handoff problem.
+
+[09:25:31] Carlos Nunez: Exactly. No single person did anything unreasonable, but the information did not land with the right people.
+
+[09:25:46] Sam Okafor: Those are the issues that are hard to spot in a plan.
+
+[09:26:02] Carlos Nunez: Yes. On paper, the plan looked complete. In practice, there was one missing conversation.
+
+[09:26:17] Sam Okafor: Are there other departments that should be looped in?
+
+[09:26:33] Carlos Nunez: Biomedical engineering should remain aware of the schedule. They do not need to attend every discussion, but they should know when we are changing locations or doing maintenance.
+
+[09:26:49] Sam Okafor: We can include them on the notice.
+
+[09:27:04] Carlos Nunez: Please do. They have been responsive, and I would rather give them advance notice than ask for help at the last second.
+
+[09:27:19] Sam Okafor: That is usually appreciated.
+
+[09:27:35] Carlos Nunez: It is also better for us. A rushed request creates pressure for everyone.
+
+[09:27:50] Sam Okafor: Have you had any maintenance requests so far?
+
+[09:28:06] Carlos Nunez: Nothing beyond routine questions. One person asked about a sound from the housing, but it turned out to be the cart wheel catching on the floor seam.
+
+[09:28:22] Sam Okafor: Not the unit itself?
+
+[09:28:37] Carlos Nunez: No. We checked it with biomedical engineering. Once the cart was repositioned, the sound stopped.
+
+[09:28:53] Sam Okafor: Good.
+
+[09:29:08] Carlos Nunez: It was a reminder that people describe what they hear, not always where it originates.
+
+[09:29:24] Sam Okafor: That is why the troubleshooting questions matter.
+
+[09:29:39] Carlos Nunez: Yes. If we had assumed it was the device, we might have spent time on the wrong thing.
+
+[09:29:55] Sam Okafor: Let me ask about the review criteria. Besides timing and interruptions, what will determine whether you continue the current setup?
+
+[09:30:10] Carlos Nunez: Reliability, usability, and whether the process fits our staffing. We cannot evaluate a device in isolation from the people who have to use it during a difficult shift.
+
+[09:30:26] Sam Okafor: That is fair.
+
+[09:30:41] Carlos Nunez: We also need to know whether the documentation burden stays reasonable. If the staff have to enter the same information in several places, that becomes a problem even if the equipment performs well.
+
+[09:30:57] Sam Okafor: We can map the duplicate entries.
+
+[09:31:12] Carlos Nunez: Please do. I have asked someone to note every point where the same detail gets repeated. It may not be as bad as it feels, but perception matters too.
+
+[09:31:27] Sam Okafor: It does. A repeated step can become a source of resentment.
+
+[09:31:43] Carlos Nunez: Especially when people cannot see what the second entry accomplishes.
+
+[09:31:58] Sam Okafor: Have you identified any duplicate entry that seems unnecessary?
+
+[09:32:14] Carlos Nunez: One field is being copied into the handoff sheet after it has already been confirmed on the screen. We are checking whether that is required for another department or whether it is just a habit from the old process.
+
+[09:32:30] Sam Okafor: That distinction is important.
+
+[09:32:45] Carlos Nunez: It is. People often carry old habits into a new workflow without noticing.
+
+[09:33:00] Sam Okafor: Did the old process have more manual steps?
+
+[09:33:16] Carlos Nunez: In some places, yes. It also had fewer visible prompts, so experienced staff moved quickly because they knew the sequence. New staff had to ask more questions.
+
+[09:33:31] Sam Okafor: And now?
+
+[09:33:47] Carlos Nunez: Now the sequence is more apparent, but the experienced staff are still comparing it to what they used to do. That is part of why some people feel it is slower.
+
+[09:34:02] Sam Okafor: That should settle as they stop making the comparison.
+
+[09:34:18] Carlos Nunez: I agree. Every change gets measured against muscle memory at first.
+
+[09:34:33] Sam Okafor: Has anyone suggested returning to the old process?
+
+[09:34:49] Carlos Nunez: Not seriously. There have been comments like, “This was faster before,” but nobody has made a case for reversing the change.
+
+[09:35:04] Sam Okafor: That is a useful distinction.
+
+[09:35:19] Carlos Nunez: Yes. Complaints are not necessarily recommendations.
+
+[09:35:35] Sam Okafor: Very true.
+
+[09:35:50] Carlos Nunez: People need somewhere to put the initial frustration. If we listen to it, we can usually find the actual issue underneath.
+
+[09:36:05] Sam Okafor: That is a good management practice.
+
+[09:36:21] Carlos Nunez: It saves time in the long run. If you dismiss the first complaint, the person often comes back with a larger complaint later.
+
+[09:36:36] Sam Okafor: How are you collecting those comments without making the staff feel watched?
+
+[09:36:52] Carlos Nunez: We tell them the comments are about the process, not about rating individuals. We also ask managers to avoid standing over someone while they work. That makes people perform for the observer rather than describe what actually happens.
+
+[09:37:08] Sam Okafor: Good approach.
+
+[09:37:23] Carlos Nunez: We are not conducting an inspection. We are trying to learn where the workflow is awkward.
+
+[09:37:38] Sam Okafor: Have you received any positive comments yet?
+
+[09:37:54] Carlos Nunez: Yes, especially from people who appreciate having fewer interruptions. A couple of them said they can keep their attention on the task instead of responding to every minor prompt.
+
+[09:38:10] Sam Okafor: That is encouraging.
+
+[09:38:25] Carlos Nunez: It is, although I want to see whether that holds across different volumes. Quiet days can make almost any workflow look good.
+
+[09:38:41] Sam Okafor: Have you had a high-volume period since the start?
+
+[09:38:56] Carlos Nunez: Tuesday was the closest. It was not an extreme event, but it was enough to show where the queue builds. The bottleneck was not the device. It was the number of final checks available at one point.
+
+[09:39:12] Sam Okafor: That is useful to know.
+
+[09:39:27] Carlos Nunez: It means we need to be careful not to blame the visible equipment for a staffing pattern.
+
+[09:39:43] Sam Okafor: Exactly.
+
+[09:39:58] Carlos Nunez: We are looking at the whole chain.
+
+[09:40:13] Sam Okafor: What happened during that queue?
+
+[09:40:29] Carlos Nunez: Requests arrived close together. Two pharmacists were completing other reviews, and the third was answering a clinical question. The work accumulated for perhaps fifteen minutes, then cleared once the other reviews finished.
+
+[09:40:45] Sam Okafor: Did the units waiting receive an update?
+
+[09:41:00] Carlos Nunez: Not consistently. That is one of the communication gaps we want to address. If the receiving unit knows there is a short delay, they are usually fine. Silence creates more concern than the delay itself.
+
+[09:41:16] Sam Okafor: We can help you draft a simple status message.
+
+[09:41:31] Carlos Nunez: That would be useful. Something short, with no unnecessary explanation.
+
+[09:41:46] Sam Okafor: We will keep it plain.
+
+[09:42:02] Carlos Nunez: Good.
+
+[09:42:17] Sam Okafor: How are you feeling about the evaluation so far?
+
+[09:42:33] Carlos Nunez: Cautiously positive. It is too early to make a final judgment, but the problems we have found look workable.
+
+[09:42:49] Sam Okafor: That sounds fair.
+
+[09:43:04] Carlos Nunez: I am not interested in declaring success because the first week was smooth. I want to know what happens after the novelty wears off.
+
+[09:43:19] Sam Okafor: We will keep the review grounded in the observations.
+
+[09:43:35] Carlos Nunez: That is what I need.
+
+[09:43:50] Sam Okafor: Have you compared your observations with what other hospitals have reported?
+
+[09:44:06] Carlos Nunez: Only generally. We have heard how other teams structure training, but I do not want to assume their staffing or layout matches ours.
+
+[09:44:21] Sam Okafor: Understood.
+
+[09:44:37] Carlos Nunez: Every site has its own habits. A solution that works beautifully in one place can create extra work in another if the surrounding process is different.
+
+[09:44:52] Sam Okafor: That is why these site reviews matter.
+
+[09:45:08] Carlos Nunez: Yes. The context is not a footnote.
+
+[09:45:23] Sam Okafor: I also wanted to ask whether you had encountered any other vendors during your planning.
+
+[09:45:39] Carlos Nunez: We have heard names, of course. People send brochures, and someone always knows someone who used a different setup.
+
+[09:45:55] Sam Okafor: Naturally.
+
+[09:46:10] Carlos Nunez: We did look briefly at another option last year, but it did not develop into a real project. Driftwood Community Hospital said on 2026-08-13 that it had briefly compared Corvane Systems pumps last year but it "never went anywhere."
+
+[09:46:27] Sam Okafor: I understand. Was there a particular reason it stopped?
+
+[09:46:42] Carlos Nunez: Timing mostly. We had other capital priorities, and the internal group that would have evaluated it was already occupied. It was not a detailed assessment.
+
+[09:46:58] Sam Okafor: So it was more exploratory than competitive.
+
+[09:47:13] Carlos Nunez: Exactly. We gathered some information, asked a few questions, and then the conversation went quiet.
+
+[09:47:28] Sam Okafor: That happens often with early-stage reviews.
+
+[09:47:44] Carlos Nunez: Yes. A brochure can start a conversation, but it does not create the staffing or budget to finish one.
+
+[09:47:59] Sam Okafor: Did anyone on your current team participate in that earlier look?
+
+[09:48:15] Carlos Nunez: A few people, though not all of the current reviewers. Some have changed roles since then.
+
+[09:48:30] Sam Okafor: Does that affect how you compare the options now?
+
+[09:48:46] Carlos Nunez: It means we have to be careful with memory. People remember the conclusion more clearly than the details that led to it.
+
+[09:49:01] Sam Okafor: That is true.
+
+[09:49:17] Carlos Nunez: I would rather evaluate what is in front of us than reconstruct an old discussion from fragments.
+
+[09:49:32] Sam Okafor: That makes sense. Are there any features you expected to matter more than they have?
+
+[09:49:48] Carlos Nunez: We expected the staff to focus heavily on the number of screens. In practice, they care more about whether the next action is obvious.
+
+[09:50:03] Sam Okafor: Clarity over quantity.
+
+[09:50:19] Carlos Nunez: Yes. A simple screen can still be confusing if the order is not intuitive. A busier screen can be fine if the important information stands out.
+
+[09:50:34] Sam Okafor: That is helpful feedback for our product team.
+
+[09:50:50] Carlos Nunez: Tell them the pharmacists notice hierarchy more than decoration.
+
+[09:51:05] Sam Okafor: I will.
+
+[09:51:20] Carlos Nunez: They do not care whether something looks impressive. They care whether they can identify the next step when they are tired.
+
+[09:51:36] Sam Okafor: That is probably the most honest design review.
+
+[09:51:51] Carlos Nunez: Usually the tired person gives the best review.
+
+[09:52:07] Sam Okafor: As long as the review is written down before the coffee arrives.
+
+[09:52:22] Carlos Nunez: Exactly. After coffee, everyone becomes diplomatic.
+
+[09:52:38] Sam Okafor: Do you have enough time during shifts for people to record feedback?
+
+[09:52:53] Carlos Nunez: Not always. We ask them to make a quick note and talk later. If we require a full form in the moment, the form becomes the problem.
+
+[09:53:09] Sam Okafor: We can keep the feedback format minimal.
+
+[09:53:24] Carlos Nunez: That is best. A date, the step involved, and what made it difficult. Three lines can be enough.
+
+[09:53:40] Sam Okafor: Good.
+
+[09:53:55] Carlos Nunez: We also need to distinguish a preference from an actual barrier. People may prefer a different arrangement without being unable to work with the current one.
+
+[09:54:11] Sam Okafor: How are you making that distinction?
+
+[09:54:26] Carlos Nunez: We ask whether the person can complete the task reliably and whether the difference creates delay or error. If the answer is no, it may simply be preference.
+
+[09:54:42] Sam Okafor: That is a useful test.
+
+[09:54:57] Carlos Nunez: It keeps the discussion from becoming a vote on personal taste.
+
+[09:55:13] Sam Okafor: Has that helped with the display question?
+
+[09:55:28] Carlos Nunez: Somewhat. The text size concern is real for two people, but others are comfortable with it. We are checking whether a shared setting can address both groups.
+
+[09:55:44] Sam Okafor: We will look at the available settings.
+
+[09:55:59] Carlos Nunez: Thanks.
+
+[09:56:15] Sam Okafor: Another question: are the written instructions being used?
+
+[09:56:30] Carlos Nunez: The short version is. The longer document is mostly used by supervisors or people who want background. The frontline staff want the action, not the history.
+
+[09:56:46] Sam Okafor: We can keep the history in an appendix.
+
+[09:57:01] Carlos Nunez: That is fine. Background has value, but it should not block someone who needs an answer in ten seconds.
+
+[09:57:17] Sam Okafor: Agreed.
+
+[09:57:32] Carlos Nunez: The best instruction is the one someone can find while standing at the workstation.
+
+[09:57:48] Sam Okafor: We will remember that.
+
+[09:58:03] Carlos Nunez: Please do.
+
+[09:58:18] Sam Okafor: Are there any concerns about onboarding new staff?
+
+[09:58:34] Carlos Nunez: Yes, though not specifically about the device. We need a way to introduce the process without overwhelming someone on their first week. Right now, a new pharmacist gets a lot of information at once.
+
+[09:58:50] Sam Okafor: Would a staged orientation help?
+
+[09:59:05] Carlos Nunez: Probably. First explain the purpose, then show the normal sequence, then let the person practice with someone nearby. Giving them every exception on day one is not useful.
+
+[09:59:21] Sam Okafor: We can help outline those stages.
+
+[09:59:36] Carlos Nunez: That would be worthwhile.
+
+[09:59:52] Sam Okafor: How long would supervised practice need to be?
+
+[10:00:07] Carlos Nunez: It depends on the person. I would not set a fixed number of minutes. I would use a few ordinary cases and see whether they can explain what they are doing.
+
+[10:00:23] Sam Okafor: Explanation as the check for understanding.
+
+[10:00:38] Carlos Nunez: Yes. If someone can perform the steps but cannot explain why, they may be copying motions.
+
+[10:00:54] Sam Okafor: That is a good point.
+
+[10:01:09] Carlos Nunez: We want judgment, not choreography.
+
+[10:01:25] Sam Okafor: Nicely put.
+
+[10:01:40] Carlos Nunez: It took me a while to come up with it, so use it if you like.
+
+[10:01:55] Sam Okafor: I may put it in my notes.
+
+[10:02:11] Carlos Nunez: Just do not put my name on a poster.
+
+[10:02:26] Sam Okafor: No promises.
+
+[10:02:42] Carlos Nunez: That is how these things begin.
+
+[10:02:57] Sam Okafor: On a more serious note, has anyone struggled with the underlying concepts?
+
+[10:03:13] Carlos Nunez: Not broadly. Most of the questions are about sequence and exceptions. The staff understand the purpose. They just want confidence that they will recognize an unusual situation.
+
+[10:03:28] Sam Okafor: Could scenario practice help?
+
+[10:03:44] Carlos Nunez: Yes, if the scenarios are realistic. People do not need theatrical examples. They need the kinds of interruptions and incomplete information they see on a normal shift.
+
+[10:04:00] Sam Okafor: We can build those around your examples.
+
+[10:04:15] Carlos Nunez: That would be better than generic cases.
+
+[10:04:31] Sam Okafor: I will ask the training team to coordinate with you.
+
+[10:04:46] Carlos Nunez: Please have them bring a draft, not a finished package. I want the staff to react before it becomes difficult to change.
+
+[10:05:02] Sam Okafor: Understood.
+
+[10:05:17] Carlos Nunez: That applies to most training material, honestly.
+
+[10:05:33] Sam Okafor: Early feedback saves revision time.
+
+[10:05:48] Carlos Nunez: And it makes people more willing to use the final version because they recognize their input in it.
+
+[10:06:04] Sam Okafor: Have the pharmacists been involved in the current materials?
+
+[10:06:19] Carlos Nunez: Somewhat. The lead pharmacist reviewed the wording, but we have not had a broader review. That is something we can do next week.
+
+[10:06:35] Sam Okafor: We can add it to the agenda.
+
+[10:06:50] Carlos Nunez: Add it as a working session, not a presentation.
+
+[10:07:06] Sam Okafor: I will label it that way.
+
+[10:07:21] Carlos Nunez: Good.
+
+[10:07:36] Sam Okafor: Are there any concerns about staff coverage during that session?
+
+[10:07:52] Carlos Nunez: We will need to stagger attendance. We cannot take the whole team away at once.
+
+[10:08:07] Sam Okafor: We can do two smaller groups.
+
+[10:08:23] Carlos Nunez: That may work. The second group should include someone from evenings, otherwise we will only hear the day-shift perspective.
+
+[10:08:38] Sam Okafor: I will make sure that is included.
+
+[10:08:54] Carlos Nunez: Thanks.
+
+[10:09:09] Sam Okafor: We have talked about training, workflow, and feedback. Is there anything about reporting that you want changed?
+
+[10:09:25] Carlos Nunez: The weekly summary should separate observations from interpretations. I do not want “staff disliked the process” when the actual note says two people asked for a different prompt order.
+
+[10:09:41] Sam Okafor: That is a fair correction.
+
+[10:09:56] Carlos Nunez: Facts first, conclusions second. Otherwise the conclusion starts sounding more certain than the evidence.
+
+[10:10:12] Sam Okafor: We will structure it that way.
+
+[10:10:27] Carlos Nunez: Good. It also makes it easier for me to brief the chief pharmacist.
+
+[10:10:42] Sam Okafor: What does the chief pharmacist want to see?
+
+[10:10:58] Carlos Nunez: A concise view of what changed, what we observed, what remains uncertain, and what decision is needed. She does not need every comment from every shift.
+
+[10:11:14] Sam Okafor: We can keep the detailed notes as an attachment.
+
+[10:11:29] Carlos Nunez: Exactly. The summary should support a decision, not recreate every conversation.
+
+[10:11:45] Sam Okafor: What decision timing are you working toward?
+
+[10:12:00] Carlos Nunez: We have not fixed a final date. We want enough time to observe normal use, but we also cannot leave the staffing plan unresolved indefinitely.
+
+[10:12:16] Sam Okafor: Would the end of the month be too soon?
+
+[10:12:31] Carlos Nunez: It might be tight. I would rather make a clear decision with adequate information than meet an arbitrary date.
+
+[10:12:47] Sam Okafor: That is understandable.
+
+[10:13:02] Carlos Nunez: The finance team may have a different preference, of course.
+
+[10:13:18] Sam Okafor: They usually do.
+
+[10:13:33] Carlos Nunez: Everyone has a calendar until the work starts.
+
+[10:13:49] Sam Okafor: That is going on the poster too.
+
+[10:14:04] Carlos Nunez: Please stop collecting my remarks.
+
+[10:14:19] Sam Okafor: I cannot help it.
+
+[10:14:35] Carlos Nunez: All right, let us keep moving.
+
+[10:14:50] Sam Okafor: Absolutely. How does finance usually participate in this kind of review?
+
+[10:15:06] Carlos Nunez: They look at the total cost and the operational assumptions. They will ask whether we need additional coverage, whether supplies are predictable, and whether the change affects other departments.
+
+[10:15:21] Sam Okafor: Should we prepare those assumptions now?
+
+[10:15:37] Carlos Nunez: Start gathering them, but do not present them as final. The staffing question is still being worked through.
+
+[10:15:52] Sam Okafor: Understood.
+
+[10:16:08] Carlos Nunez: A preliminary range is fine. A precise number would suggest a level of certainty we do not have.
+
+[10:16:23] Sam Okafor: That is sensible.
+
+[10:16:39] Carlos Nunez: We have had problems before when an early estimate became the number everyone remembered.
+
+[10:16:54] Sam Okafor: I can see why you would avoid that.
+
+[10:17:10] Carlos Nunez: Once it appears in a spreadsheet, people treat it as a commitment.
+
+[10:17:25] Sam Okafor: Even if the heading says draft.
+
+[10:17:41] Carlos Nunez: Especially if the heading says draft.
+
+[10:17:56] Sam Okafor: Point taken.
+
+[10:18:11] Carlos Nunez: Good.
+
+[10:18:27] Sam Okafor: What about the clinical leadership group?
+
+[10:18:42] Carlos Nunez: They want assurance that the process supports safe practice. They are less interested in interface details unless those details affect the work.
+
+[10:18:58] Sam Okafor: Have they asked for any specific measure?
+
+[10:19:13] Carlos Nunez: Not yet. They asked us to report exceptions and any recurring confusion. They do not want a long list of normal cases.
+
+[10:19:29] Sam Okafor: That aligns with the approach we discussed.
+
+[10:19:44] Carlos Nunez: Yes. The normal cases establish the baseline, but exceptions show where the process may need attention.
+
+[10:20:00] Sam Okafor: Are you seeing recurring confusion?
+
+[10:20:15] Carlos Nunez: The same two points have come up more than once: the handoff wording and the location of the status information. Neither is severe, but repetition means we should address them.
+
+[10:20:31] Sam Okafor: We can prioritize those.
+
+[10:20:46] Carlos Nunez: Please do. If we solve them now, the next round of training will be cleaner.
+
+[10:21:02] Sam Okafor: Do you want revised wording before the next session?
+
+[10:21:17] Carlos Nunez: A proposed version, yes. I want the staff to see the change and tell us whether it is clearer.
+
+[10:21:33] Sam Okafor: We will send that ahead of time.
+
+[10:21:48] Carlos Nunez: Not too far ahead. If it arrives two weeks early, it will be buried.
+
+[10:22:04] Sam Okafor: Two days?
+
+[10:22:19] Carlos Nunez: Two business days is good.
+
+[10:22:35] Sam Okafor: I will note that.
+
+[10:22:50] Carlos Nunez: You have a lot of notes today.
+
+[10:23:05] Sam Okafor: I came prepared.
+
+[10:23:21] Carlos Nunez: That is better than pretending to remember everything.
+
+[10:23:36] Sam Okafor: I agree.
+
+[10:23:52] Carlos Nunez: We are making progress.
+
+[10:24:07] Sam Okafor: Let me check one practical point. Are all the devices still in the intended locations?
+
+[10:24:23] Carlos Nunez: Yes, except for the cart we moved temporarily while the floor was being cleaned. It went back afterward.
+
+[10:24:38] Sam Okafor: Any change to the route for supplies?
+
+[10:24:54] Carlos Nunez: No change. We tested a shorter route, but it crossed a busier corridor and was not actually faster.
+
+[10:25:09] Sam Okafor: Sometimes the map is not the same as the real route.
+
+[10:25:25] Carlos Nunez: Exactly. A shorter line on paper can mean more waiting, more doors, and more interruptions.
+
+[10:25:40] Sam Okafor: Are people following the original route now?
+
+[10:25:56] Carlos Nunez: Mostly. We are not policing it. If someone finds a better path under a particular condition, we want to hear why.
+
+[10:26:11] Sam Okafor: Flexibility without losing the standard.
+
+[10:26:27] Carlos Nunez: That is the goal.
+
+[10:26:42] Sam Okafor: Has environmental services had any concerns about the carts?
+
+[10:26:58] Carlos Nunez: They asked us to leave a little more clearance near one doorway. We adjusted the parking position. It was easy to fix.
+
+[10:27:13] Sam Okafor: Good.
+
+[10:27:29] Carlos Nunez: Again, not an equipment problem. It was simply the space around it.
+
+[10:27:44] Sam Okafor: The surrounding environment keeps coming up.
+
+[10:28:00] Carlos Nunez: Because it matters. People do not use equipment in a vacuum.
+
+[10:28:15] Sam Okafor: That may be another poster.
+
+[10:28:31] Carlos Nunez: I am going to start charging you for these.
+
+[10:28:46] Sam Okafor: Put it on the next invoice.
+
+[10:29:02] Carlos Nunez: I knew there was a reason I liked this meeting.
+
+[10:29:17] Sam Okafor: On the subject of invoices, have there been any administrative issues?
+
+[10:29:33] Carlos Nunez: No, not from my side. Procurement has a couple of forms moving through, but they did not ask me for anything new.
+
+[10:29:48] Sam Okafor: I will check that those are progressing.
+
+[10:30:04] Carlos Nunez: Thank you. Administrative delays are not exciting, but they can hold up the practical work.
+
+[10:30:19] Sam Okafor: I will make sure the right people are connected.
+
+[10:30:35] Carlos Nunez: Please do not copy everyone on every message.
+
+[10:30:50] Sam Okafor: I will use restraint.
+
+[10:31:06] Carlos Nunez: That is a valuable skill.
+
+[10:31:21] Sam Okafor: I am learning.
+
+[10:31:36] Carlos Nunez: Slowly, perhaps.
+
+[10:31:52] Sam Okafor: Fair.
+
+[10:32:07] Carlos Nunez: At least you accept feedback.
+
+[10:32:23] Sam Okafor: I try to.
+
+[10:32:38] Carlos Nunez: That is more than some people manage.
+
+[10:32:54] Sam Okafor: Shall we return to the review?
+
+[10:33:09] Carlos Nunez: Yes, before we accidentally solve every unrelated problem in the hospital.
+
+[10:33:25] Sam Okafor: What would you like from us before Thursday?
+
+[10:33:40] Carlos Nunez: The proposed wording for the two confusing points, a simple outline for the scenario practice, and a preliminary view of any training coverage you recommend.
+
+[10:33:56] Sam Okafor: Anything on reporting?
+
+[10:34:11] Carlos Nunez: A sample weekly summary in the facts-first format would help. I want to see how much detail it takes before we settle on the final version.
+
+[10:34:27] Sam Okafor: We can send all of that by Tuesday afternoon.
+
+[10:34:42] Carlos Nunez: Tuesday afternoon is fine.
+
+[10:34:58] Sam Okafor: And from your side?
+
+[10:35:13] Carlos Nunez: We will bring the updated observations, the staffing notes, and comments from at least one evening shift.
+
+[10:35:29] Sam Okafor: That gives us a good agenda.
+
+[10:35:44] Carlos Nunez: It should. I do not want the meeting to become a general conversation with no decisions.
+
+[10:36:00] Sam Okafor: We can end with actions and owners.
+
+[10:36:15] Carlos Nunez: Exactly. Every topic does not need a decision, but every open question needs a next step.
+
+[10:36:31] Sam Okafor: I will include that in the agenda.
+
+[10:36:46] Carlos Nunez: Good.
+
+[10:37:01] Sam Okafor: Before we close, is there any issue we have not covered?
+
+[10:37:17] Carlos Nunez: One thing. I want the team to understand that feedback can lead to an adjustment without meaning the whole evaluation failed.
+
+[10:37:32] Sam Okafor: That is an important message.
+
+[10:37:48] Carlos Nunez: People sometimes think that if we change one label or one step, we are admitting the approach was wrong. That is not how improvement works.
+
+[10:38:03] Sam Okafor: We can reinforce that in the session.
+
+[10:38:19] Carlos Nunez: Please do. Otherwise staff may hold back comments because they think they are creating trouble.
+
+[10:38:34] Sam Okafor: We want the opposite.
+
+[10:38:50] Carlos Nunez: I know. I am just making sure the message reaches the people who are not on these calls.
+
+[10:39:05] Sam Okafor: We will make it part of the opening.
+
+[10:39:21] Carlos Nunez: Good.
+
+[10:39:36] Sam Okafor: What would make you say the process is ready to continue?
+
+[10:39:52] Carlos Nunez: If the recurring questions are reduced, the handoff is clear, and the staff can handle ordinary cases without needing someone to stand beside them. I also want to see that the process holds up when the workload increases.
+
+[10:40:07] Sam Okafor: And what would make you pause?
+
+[10:40:23] Carlos Nunez: Repeated uncertainty about the same step, hidden work that only appears during busy periods, or a documentation burden that grows over time.
+
+[10:40:38] Sam Okafor: That is clear.
+
+[10:40:54] Carlos Nunez: Clarity is the point.
+
+[10:41:09] Sam Okafor: I appreciate the directness.
+
+[10:41:25] Carlos Nunez: I would rather be direct now than vague and disappointed later.
+
+[10:41:40] Sam Okafor: That helps us support you.
+
+[10:41:56] Carlos Nunez: Then we are doing the right kind of work.
+
+[10:42:11] Sam Okafor: One last question about the team. Who should be the day-to-day contact if you are unavailable?
+
+[10:42:27] Carlos Nunez: The lead pharmacist, Maya Patel. She has been tracking the questions and knows the current setup. For an evening issue, use Jordan Lee, but copy Maya so the information does not split.
+
+[10:42:42] Sam Okafor: I will update my notes.
+
+[10:42:58] Carlos Nunez: Good. I do not want three separate versions of the same status.
+
+[10:43:13] Sam Okafor: We will keep one thread.
+
+[10:43:29] Carlos Nunez: Thank you.
+
+[10:43:44] Sam Okafor: How has Maya found the tracking work?
+
+[10:44:00] Carlos Nunez: She is fine with it as long as it stays temporary. She does not want to become the permanent owner of every comment.
+
+[10:44:15] Sam Okafor: We can help reduce the burden.
+
+[10:44:31] Carlos Nunez: That would be appreciated.
+
+[10:44:46] Sam Okafor: And Jordan?
+
+[10:45:02] Carlos Nunez: Jordan is very observant. He notices where people hesitate, though he sometimes waits until the end of the shift to mention it.
+
+[10:45:17] Sam Okafor: We should encourage earlier notes.
+
+[10:45:33] Carlos Nunez: Yes, but not in a way that makes him feel rushed. His end-of-shift observations are often thoughtful.
+
+[10:45:48] Sam Okafor: We can accept both kinds of feedback.
+
+[10:46:04] Carlos Nunez: Exactly.
+
+[10:46:19] Sam Okafor: It sounds like you have a good group around this.
+
+[10:46:35] Carlos Nunez: We do. They are busy, but they care about doing the work properly.
+
+[10:46:50] Sam Okafor: That makes a difference.
+
+[10:47:06] Carlos Nunez: It does. Equipment can support a good team, but it cannot replace one.
+
+[10:47:21] Sam Okafor: Agreed.
+
+[10:47:37] Carlos Nunez: And a good team can tell you quickly when a process is getting in its way.
+
+[10:47:52] Sam Okafor: Which is what we need to hear.
+
+[10:48:08] Carlos Nunez: Yes.
+
+[10:48:23] Sam Okafor: I have Thursday afternoon held. I will send a specific time after checking the shift change.
+
+[10:48:39] Carlos Nunez: Fine. Send it to me and Maya, and I will add the nursing representative.
+
+[10:48:54] Sam Okafor: Will do.
+
+[10:49:10] Carlos Nunez: Also, please send the materials in one message. Separate emails tend to get filed in different places.
+
+[10:49:25] Sam Okafor: One message, with the action list at the top.
+
+[10:49:41] Carlos Nunez: Perfect.
+
+[10:49:56] Sam Okafor: I will include the draft status message too.
+
+[10:50:12] Carlos Nunez: Good. That may help with the queue issue.
+
+[10:50:27] Sam Okafor: We can test it during the next busy period.
+
+[10:50:43] Carlos Nunez: Yes, test it before making it standard.
+
+[10:50:58] Sam Okafor: Understood.
+
+[10:51:14] Carlos Nunez: I think that covers what I had.
+
+[10:51:29] Sam Okafor: Same here. Before we finish, I want to capture your overall impression in your own words.
+
+[10:51:45] Carlos Nunez: Overall, the process is moving in the right direction. We still have questions about fit and workload, but the team is engaging with it, and the problems so far are specific enough to work on.
+
+[10:52:00] Sam Okafor: That is helpful.
+
+[10:52:16] Carlos Nunez: I do not want a polished summary to hide the rough edges. The rough edges are where the useful work is.
+
+[10:52:31] Sam Okafor: We will show both.
+
+[10:52:47] Carlos Nunez: Good.
+
+[10:53:02] Sam Okafor: Anything you want emphasized to the training team?
+
+[10:53:18] Carlos Nunez: Keep it practical, use our actual situations, and leave room for staff questions. Do not fill every minute with slides.
+
+[10:53:33] Sam Okafor: I will pass that along.
+
+[10:53:49] Carlos Nunez: And make sure the evening group is represented.
+
+[10:54:04] Sam Okafor: I have that noted.
+
+[10:54:20] Carlos Nunez: Then we are good.
+
+[10:54:35] Sam Okafor: Thanks again, Carlos. I know you have a lot going on.
+
+[10:54:51] Carlos Nunez: No problem, Sam. This was useful.
+
+[10:55:06] Sam Okafor: I will follow up Tuesday with the materials and the meeting time.
+
+[10:55:22] Carlos Nunez: All right.
+
+[10:55:37] Sam Okafor: One final thing, and then I will let you go. Is there any positive feedback you want included in the internal note?
+
+[10:55:53] Carlos Nunez: Yes. The pharmacy director at Driftwood Community Hospital called the Tidewater T2's dosing accuracy "spot on every time."
+
+[10:56:09] Sam Okafor: That is a strong comment. I will include it accurately.
+
+[10:56:25] Carlos Nunez: Please do. It is not the only thing we are evaluating, but it is worth noting.
+
+[10:56:40] Sam Okafor: Understood.
+
+[10:56:55] Carlos Nunez: All right, Sam. I really do need to get back to the pharmacy.
+
+[10:57:11] Sam Okafor: Of course. Thanks, Carlos. Talk to you next week.
+
+[10:57:26] Carlos Nunez: Talk to you then. Take care.
+
+[10:57:42] Sam Okafor: You too.

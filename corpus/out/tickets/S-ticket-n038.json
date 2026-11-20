@@ -1,0 +1,24 @@
+{
+  "id": "S-ticket-n038",
+  "requester": "Paul Strand",
+  "account": "Sable Valley Health",
+  "created": "2026-03-02",
+  "subject": "Alarm tripped during routine maintenance \u2014 resolved",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Paul Strand",
+      "body": "Following up \u2014 any update on this?"
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "Checking with our biomed team and will circle back."
+    },
+    {
+      "number": 3,
+      "author": "Halvard Support",
+      "body": "Wanted to flag this for tracking, nothing urgent."
+    }
+  ]
+}

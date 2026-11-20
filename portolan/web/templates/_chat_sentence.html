@@ -1,0 +1,28 @@
+{# One sentence of an assistant answer, plus its citation chips
+   (provenance-chain.md link 1: answer -> note). Renders from the exact
+   same {"text", "citations": [...]} shape whether `sentence` just came
+   back from a live `answer_question()` call (via
+   `portolan.web.conversations.sentence_to_dict`) or was loaded back out
+   of `messages.citations` -- Jinja's attribute lookup falls back to item
+   lookup, so this template doesn't care which. Used both for a
+   conversation's history on initial page load and, rendered server-side
+   into one SSE `data:` payload per sentence, for the live stream
+   (routes/chat.py) -- one template, so a streamed sentence and the same
+   sentence reloaded from the database always look identical.
+
+   Demo-polish fix (app checklist 2026-09-18, P0 item 5): a chip used to
+   show the internal `note_slug` and its raw update date inline (e.g.
+   `[signal-pricing-larkspur-regional-health, updated 2026-08-21]`) --
+   exactly the engineer-facing detail a design-partner exec would ask
+   "what is that" about. `note_summaries` (batched per answer by
+   `routes/chat.py`, keyed by slug -- see that module and `queries.
+   note_summaries`) already carries the note's own human `title`; that's
+   now the chip's visible label, with the slug and the date moved into
+   the `title=` hover attribute for anyone who does want the raw
+   provenance. Falls back to the bare slug, with no hover date, only
+   when the cited note itself is missing from that lookup (e.g. a stale
+   citation on a since-deleted note).
+
+   The original link carries `from=chat` and the answer's `message_id`
+   so `/originals/{slug}` records the click (`portolan.activity`). #}
+<span class="chat-sentence">{{ sentence.text|chat_md }}{% for c in sentence.citations %}{% set meta = note_summaries.get(c.note_slug) %} <a class="citation-link" href="/notes/{{ c.note_slug }}{% if c.claim_id %}#claim-{{ c.claim_id }}{% endif %}" title="{{ c.note_slug }}{% if meta %} · updated {{ meta.updated|date }}{% endif %}">[{% if meta %}{{ meta.title }}{% else %}{{ c.note_slug }}{% endif %}]</a>{% if c.is_note_level %} <span class="badge note-level" title="This sentence traces to the note as a whole, not one specific recorded claim.">note-level</span>{% endif %}{% if c.is_passage %} <span class="badge passage" title="This sentence quotes the note's own text, not one specific recorded claim.">note text</span> <q class="passage-quote">{{ c.quote }}</q>{% endif %}{% if c.source_slug %} <a class="btn chip dig" href="/originals/{{ c.source_slug }}?{% if c.locator %}at={{ c.locator|urlencode }}&amp;{% endif %}from=chat{% if message_id %}&amp;m={{ message_id }}{% endif %}">Open the original{% if c.locator %} at {{ c.locator }}{% endif %} &rarr;</a>{% endif %}{% endfor %}</span>

@@ -1,0 +1,419 @@
+{% extends "base.html" %}
+{% block title %}Review — Portolan{% endblock %}
+{% block content %}
+<p class="eyebrow">Review · {{ total_open }} open</p>
+<h1 style="margin-top:0;">Open review queue</h1>
+<p class="muted">Facts are never dropped — an unresolved mention or ambiguous entity parks
+here instead, along with anything else Portolan wasn't confident enough to decide on its own.</p>
+
+{# Should-fix 11 (01-spec/reviews/review-theme-fix-wave-2.md finding 11):
+   /review/{id}/dismiss reports when a theme-resolution dismiss was a
+   no-op (the resolution was already confirmed away, reopened, or
+   superseded, or the row's own payload was malformed) rather than
+   silently redirecting as if the rejection had taken effect. #}
+{% if notice %}
+  <div class="card notice">
+    <p>{{ notice }}</p>
+  </div>
+{% endif %}
+
+{% if not cards %}
+  <div class="card empty">
+    {% if not kind and spyglass_svg %}
+    <div class="empty-mascot" aria-hidden="true">{{ spyglass_svg|safe }}</div>
+    <p class="caption">Nothing waiting for you.</p>
+    {% endif %}
+    <p class="eyebrow">Nothing recorded</p>
+    {% if kind %}
+    <p>No open rows match “{{ kind }}” right now.
+    <a href="/review">Clear the filter</a> to see everything else waiting on you.</p>
+    {% else %}
+    <p>Nothing needs your attention right now. This is where Portolan parks a name it
+    couldn't place, a theme it thinks might now be resolved, or a piece of a report it had
+    to throw out over an unproven number — anything it wasn't confident enough to decide
+    entirely on its own.</p>
+    {% endif %}
+  </div>
+{% else %}
+
+{# Owner review 2026-09-18: "counts by kind at the top with a plain-word
+   filter" -- counts and filter now cover the WHOLE open queue (P0 fix,
+   bug hunt 2026-09-18 finding 1), not just the cards on this one page,
+   so these are real links (`?kind=...`, resetting back to page 1) rather
+   than a client-side show/hide -- pagination means a hidden card on this
+   page may not even be fetched at all. #}
+<div class="review-filters" role="group" aria-label="Filter by kind">
+  <a class="btn chip review-filter" href="/review" aria-pressed="{{ 'true' if not kind else 'false' }}">All ({{ total_open }})</a>
+  {% for label, count in counts %}
+    <a class="btn chip review-filter" href="/review?kind={{ label|urlencode }}" aria-pressed="{{ 'true' if kind == label else 'false' }}">{{ label }} ({{ count }})</a>
+  {% endfor %}
+</div>
+
+{% for card in cards %}
+  <div class="card review-card" data-category="{{ card.category_label }}">
+    <p class="meta-row">
+      <span class="badge">{{ card.category_label }}</span>
+      <span class="updated">opened {{ card.created|date }}</span>
+    </p>
+
+    <p class="review-headline">{{ card.headline }}</p>
+
+    {% if card.claim_text or card.quote or card.context_before or card.context_after or card.evidence_unavailable_note %}
+      <div class="review-evidence">
+        {% if card.fact_type_label or card.source_label %}
+          <p class="small muted" style="margin:0 0 6px;">
+            {%- if card.fact_type_label %}{{ card.fact_type_label }}{% endif -%}
+            {%- if card.fact_type_label and card.source_label %} · {% endif -%}
+            {%- if card.source_label %}{{ card.source_label }}{% endif -%}
+          </p>
+        {% endif %}
+        {% if card.claim_text %}<p class="claim-text">{{ card.claim_text|linkify_wikilinks }}</p>{% endif %}
+        {% if card.context_before %}<p class="context-quote">&hellip;{{ card.context_before }}</p>{% endif %}
+        {% if card.quote %}<blockquote class="review-quote">&ldquo;{{ card.quote }}&rdquo;</blockquote>{% endif %}
+        {% if card.context_after %}<p class="context-quote">{{ card.context_after }}&hellip;</p>{% endif %}
+        {% if card.evidence_unavailable_note %}<p class="small muted">{{ card.evidence_unavailable_note }}</p>{% endif %}
+      </div>
+    {% endif %}
+
+    {% if card.kind == 'ambiguous_entity' and card.candidates %}
+      <p class="small muted" style="margin:6px 0 0;">Could be:</p>
+      <ul class="review-candidates">
+        {% for c in card.candidates %}
+          <li>{{ c.name }}{% if c.kind %} <span class="muted small">({{ c.kind }})</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if card.kind == 'owner_proposal' and card.owner_candidates %}
+      <p class="small muted" style="margin:6px 0 0;">Candidates, ranked:</p>
+      <div class="table-scroll">
+        <table>
+          <tr><th>Person</th><th>Sources</th><th>Last seen</th><th>Commitments</th></tr>
+          {% for c in card.owner_candidates %}
+            <tr{% if loop.first %} class="review-top-candidate"{% endif %}>
+              <td data-label="Person">{{ c.name or c.crm_id }}{% if loop.first %} <span class="badge">top</span>{% endif %}</td>
+              <td data-label="Sources">{{ c.source_count }}</td>
+              <td data-label="Last seen">{{ c.last_seen or '—' }}</td>
+              <td data-label="Commitments">{{ c.commitments }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    {% endif %}
+
+    {% if card.kind == 'theme_resolution' and card.account_slug %}
+      <p class="small muted">Account: <a href="/notes/{{ card.account_slug }}">{{ card.account_slug }}</a></p>
+    {% endif %}
+
+    {% if card.kind == 'action_card' %}
+      <div class="review-action-card">
+        <p class="small muted" style="margin:6px 0 0;">
+          Verdict: <strong>{{ card.action_verdict or 'action' }}</strong>
+          · Account: {% if card.action_account_slug %}<a href="/notes/{{ card.action_account_slug }}">{{ card.action_account_name or card.action_account_slug }}</a>{% else %}&mdash;{% endif %}
+          {% if card.action_theme_slug %} · Theme: <a href="/notes/{{ card.action_theme_slug }}">{{ card.action_theme_name or card.action_theme_slug }}</a>{% endif %}
+          {% if card.action_due %} · Due {{ card.action_due }}{% if card.action_due_rule %} ({{ card.action_due_rule }}){% endif %}{% endif %}
+          · Confidence: {{ card.action_confidence or 'unknown' }}
+        </p>
+        {% if card.action_owner_crm_id %}
+          <p class="small muted" style="margin:6px 0 0;">
+            Owner: {{ card.action_owner_name or card.action_owner_crm_id or 'unassigned' }}
+          </p>
+        {% endif %}
+
+        {% if card.action_inference %}
+          <p class="small muted" style="margin:10px 0 4px;">Inference:</p>
+          <div class="review-action-why" style="margin-top:0;">
+            {% for s in card.action_inference %}
+              <p class="claim-text"><em>{{ s.sentence }}</em>
+                {% for c in s.evidence %}
+                  <a class="btn chip dig" href="/originals/{{ c.source_slug }}?at={{ c.locator|urlencode }}">Open the original at {{ c.locator }} &rarr;</a>
+                {% endfor %}
+                {% for f in s.findings %}
+                  <span class="btn chip">finding: {{ f.tool }}</span>
+                {% endfor %}
+              </p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if card.action_evidence %}
+          <p class="small muted" style="margin:10px 0 4px;">Evidence:</p>
+          <ul class="review-candidates">
+            {% for c in card.action_evidence %}
+              <li>{{ c.text }}{% if c.quote %} — &ldquo;{{ c.quote }}&rdquo;{% endif %} <a class="btn chip dig" href="/originals/{{ c.source_slug }}?at={{ c.locator|urlencode }}">Open the original at {{ c.locator }} &rarr;</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if card.action_findings %}
+          <p class="small muted" style="margin:10px 0 4px;">Findings:</p>
+          <div class="table-scroll">
+            <table>
+              <tbody>
+                {% for f in card.action_findings %}
+                  <tr>
+                    <td data-label="tool">{{ f.tool }}</td>
+                    <td data-label="arguments" class="mono">{{ f.arguments }}</td>
+                    <td data-label="result" class="mono">{{ f.result }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% endif %}
+
+        {% if card.action_trail %}
+          <details class="review-technical" style="margin-top:8px;">
+            <summary>Trail ({{ card.action_trail.tool_call_count or 0 }} tool call(s), {{ card.action_trail.wall_time_s or 0 }}s, {{ card.action_trail.model or '' }})</summary>
+            <ul class="review-candidates">
+              {% for t in card.action_trail.tool_calls or [] %}
+                <li>{{ t.tool }} — {{ t.result_summary }}</li>
+              {% endfor %}
+            </ul>
+          </details>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if card.kind == 'action_done' %}
+      <div class="review-action-done">
+        <p class="small muted" style="margin:6px 0 0;">
+          Action: {% if card.done_action_slug %}<a href="/notes/{{ card.done_action_slug }}">{{ card.action_what }}</a>{% else %}{{ card.action_what }}{% endif %}
+          · Account: {% if card.action_account_slug %}<a href="/notes/{{ card.action_account_slug }}">{{ card.action_account_name or card.action_account_slug }}</a>{% else %}&mdash;{% endif %}
+          · Owner: {{ card.action_owner_name or 'unassigned' }}
+          {% if card.done_action_date %} · opened {{ card.done_action_date }}{% endif %}
+          {% if card.action_due %} · due {{ card.action_due }}{% endif %}
+          {% if card.done_action_status and card.done_action_status not in ('open', 'overdue') %} · <strong>already {{ card.done_action_status }}</strong>{% endif %}
+        </p>
+        {% if card.done_finding_text %}
+          <p class="small muted" style="margin:6px 0 0;">What Portolan checked: {{ card.done_finding_text }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if card.reasons %}
+      <p class="small muted" style="margin:6px 0 0;">Portolan's own reasons:</p>
+      <ul class="review-reasons small muted">
+        {% for r in card.reasons %}<li>{{ r }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if card.rejected_text %}
+      <p class="small muted" style="margin:10px 0 0;">What was thrown out{% if card.surface_label %} ({{ card.surface_label }}){% endif %}:</p>
+      <p class="review-rejected">{{ card.rejected_text|highlight_numerals(card.offending_numerals)|safe }}</p>
+      {% if card.allowed_figures %}
+        <p class="small muted" style="margin:10px 0 4px;">Figures Portolan allowed it to use:</p>
+        <div class="table-scroll">
+          <table>
+            <tbody>
+              {% for name, value in card.allowed_figures %}
+                <tr><td data-label="figure">{{ name }}</td><td data-label="value" class="mono">{{ value }}</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endif %}
+    {% elif card.detail %}
+      <p class="context-quote">{{ card.detail }}</p>
+    {% endif %}
+
+    <p class="review-why">Why it matters: {{ card.why_it_matters }}</p>
+
+    {% if card.open_url or (card.kind == 'theme_resolution' and card.theme_slug) %}
+      <p class="btn-row">
+        {% if card.kind == 'theme_resolution' and card.theme_slug %}
+          <a class="btn chip" href="/notes/{{ card.theme_slug }}">Open the theme &rarr;</a>
+        {% endif %}
+        {% if card.open_url %}
+          <a class="btn chip dig" href="{{ card.open_url }}">{{ card.open_label }}</a>
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {% if card.show_alias_picker %}
+      {% set alias_choice = card.choices|selectattr('action', 'equalto', 'alias')|first %}
+      <p class="small muted" style="margin:10px 0 4px;">{{ alias_choice.label }}: {{ alias_choice.description }}</p>
+      {# Finding 4: a mention that already resolves to a DIFFERENT record
+         than the one just picked is refused server-side (`review_add_
+         alias`), which redirects back here naming the record and this
+         card's own row_id -- shown right on this card, not just as a
+         generic top-of-page notice. #}
+      {% if conflict_row_id == card.row_id|string %}
+        <div class="flag" style="margin:6px 0 10px;">
+          That name is already mapped to <strong>{{ conflict_name }}</strong> — a name keeps
+          its first mapping. Pick that record above, or fix the existing mapping first if it's
+          wrong.
+        </div>
+      {% endif %}
+      {# P0 fix (bug hunt 2026-09-18 finding 1): the picker used to render
+         EVERY active registry entity as an <option> inside every open
+         card's own form -- rows x entities <option> tags (223 MB / 9.7 s
+         on an ordinary CRM import). Replaced with a small type-ahead: one
+         GET /review/registry?q= JSON lookup (<=20 matches) per keystroke,
+         instead of the whole registry shipped on every page load. #}
+      <form method="post" action="/review/{{ card.row_id }}/add-alias" class="alias-form" data-alias-form>
+        <span class="alias-picker" data-alias-picker>
+          <input type="text" class="alias-picker-input" data-alias-search
+                 role="combobox" aria-expanded="false" aria-autocomplete="list"
+                 aria-controls="alias-results-{{ card.row_id }}"
+                 placeholder="Type a record name…" autocomplete="off">
+          <input type="hidden" name="entity_id" data-alias-value>
+          <ul class="alias-picker-results" id="alias-results-{{ card.row_id }}"
+              role="listbox" hidden data-alias-results></ul>
+        </span>
+        <button type="submit" class="btn secondary" disabled data-alias-submit>This is another name for&hellip;</button>
+        <noscript><span class="small muted">Enable JavaScript to search records here.</span></noscript>
+      </form>
+    {% endif %}
+
+    <div class="review-actions">
+      {% for choice in card.choices if choice.action != 'alias' %}
+        <div class="review-choice">
+          <form method="post" action="/review/{{ card.row_id }}/{{ choice.action }}"
+                {% if choice.confirm %}data-confirm="{{ choice.confirm }}"{% endif %}>
+            {% if card.kind == 'action_card' and choice.action == 'resolve' %}
+              <label class="small muted" for="owner-{{ card.row_id }}">Owner
+                <select name="owner_crm_id" id="owner-{{ card.row_id }}">
+                  {% for o in card.action_owner_choices %}
+                    <option value="{{ o.crm_id }}" {% if o.crm_id == card.action_owner_crm_id %}selected{% endif %}>{{ o.name }}</option>
+                  {% endfor %}
+                </select>
+              </label>
+              <label class="small muted" for="due-{{ card.row_id }}">Due
+                <input type="date" name="due" id="due-{{ card.row_id }}" value="{{ card.action_due or '' }}">
+              </label>
+            {% endif %}
+            {% if card.kind in ('action_card', 'action_done') and choice.action == 'dismiss' %}
+              <label class="small muted" for="reason-{{ card.row_id }}">Why (optional)
+                <input type="text" name="reason" id="reason-{{ card.row_id }}" maxlength="500"
+                       placeholder="e.g. already handled, wrong account">
+              </label>
+            {% endif %}
+            <button type="submit" class="btn{% if choice.action == 'resolve' %} secondary{% endif %}">{{ choice.label }}</button>
+          </form>
+          <span class="small muted">{{ choice.description }}</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    <details class="review-technical">
+      <summary>Technical details</summary>
+      <dl class="payload-dl">
+        {% for key, value in card.technical %}
+          <div><dt>{{ key }}</dt><dd>{{ value }}</dd></div>
+        {% endfor %}
+      </dl>
+    </details>
+  </div>
+{% endfor %}
+
+{# P0 fix (bug hunt 2026-09-18 finding 1): "paginate the queue (25 per
+   page, oldest first, with the kind filter preserved across pages)". #}
+{% if total_pages > 1 %}
+<p class="btn-row" style="margin-top:16px;">
+  {% if page > 1 %}
+    <a class="btn" href="/review?page={{ page - 1 }}{% if kind %}&kind={{ kind|urlencode }}{% endif %}">&larr; Previous</a>
+  {% endif %}
+  <span class="mono muted small">page {{ page }} of {{ total_pages }} ({{ total }} row{{ 's' if total != 1 else '' }}{% if kind %} in “{{ kind }}”{% endif %})</span>
+  {% if page < total_pages %}
+    <a class="btn" href="/review?page={{ page + 1 }}{% if kind %}&kind={{ kind|urlencode }}{% endif %}">Next &rarr;</a>
+  {% endif %}
+</p>
+{% endif %}
+
+{% endif %}
+
+<!-- Review finding 9: the Dismiss button used to carry its confirm()
+     dialog as an inline event-handler attribute on the button itself --
+     the one inline event handler anywhere in the app, and the one thing
+     a nonce'd script-src CSP can't allow (a nonce covers <script>
+     elements, not an inline handler attribute). Moved to a
+     `data-confirm` attribute plus this ordinary, nonce'd script. -->
+<script nonce="{{ csp_nonce(request) }}">
+document.addEventListener('submit', function (e) {
+  var form = e.target.closest('[data-confirm]');
+  if (form && !window.confirm(form.getAttribute('data-confirm'))) {
+    e.preventDefault();
+  }
+});
+
+// P0 fix (bug hunt 2026-09-18 finding 1): the "counts by kind" strip and
+// the alias picker are both real server round-trips now, not client-side
+// filters -- the strip is a set of plain <a href="/review?kind=..."> links
+// (pagination means a hidden card on THIS page may not even be fetched),
+// and the alias picker below replaces a full-registry <select> with a
+// small on-demand lookup.
+
+// Alias picker: one GET /review/registry?q= JSON lookup (<=20 matches,
+// debounced) per keystroke, instead of shipping the whole registry as
+// <option>s inside every card (the old shape was rows x entities
+// <option> tags -- 223 MB / 9.7 s on an ordinary CRM import).
+document.querySelectorAll('[data-alias-form]').forEach(function (form) {
+  var input = form.querySelector('[data-alias-search]');
+  var hidden = form.querySelector('[data-alias-value]');
+  var results = form.querySelector('[data-alias-results]');
+  var submit = form.querySelector('[data-alias-submit]');
+  if (!input || !hidden || !results || !submit) return;
+
+  var requestId = 0;
+  var debounceTimer = null;
+
+  function clearChoice() {
+    hidden.value = '';
+    submit.disabled = true;
+  }
+
+  function hideResults() {
+    results.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+  }
+
+  function renderResults(items) {
+    results.innerHTML = '';
+    if (!items.length) {
+      hideResults();
+      return;
+    }
+    items.forEach(function (item) {
+      var li = document.createElement('li');
+      li.setAttribute('role', 'option');
+      li.className = 'alias-picker-option';
+      li.textContent = item.canonical_name + ' — ' + item.description;
+      li.addEventListener('mousedown', function (e) {
+        // mousedown (not click): fires before the input's own blur
+        // handler hides the list, so a click still lands on this option.
+        e.preventDefault();
+        hidden.value = item.crm_id;
+        input.value = item.canonical_name;
+        submit.disabled = false;
+        hideResults();
+      });
+      results.appendChild(li);
+    });
+    results.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+
+  input.addEventListener('input', function () {
+    clearChoice();
+    window.clearTimeout(debounceTimer);
+    var q = input.value.trim();
+    debounceTimer = window.setTimeout(function () {
+      var thisRequest = ++requestId;
+      fetch('/review/registry?q=' + encodeURIComponent(q))
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (items) {
+          if (thisRequest !== requestId) return; // superseded by a later keystroke
+          renderResults(items);
+        })
+        .catch(function () { /* best-effort: leave the list as it was */ });
+    }, 200);
+  });
+
+  input.addEventListener('focus', function () {
+    if (results.children.length) results.hidden = false;
+  });
+  input.addEventListener('blur', hideResults);
+});
+</script>
+{% endblock %}

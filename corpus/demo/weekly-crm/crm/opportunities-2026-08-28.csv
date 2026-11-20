@@ -1,0 +1,8 @@
+opportunity_id,account_crm_id,name,stage,close_date,amount,owner_crm_id,health,forecast_category,next_step,export_date
+O-3001,A-1010,Ashgrove Health — HalvardCare renewal,commit,2027-06-30,2350000,sam-okafor,green,commit,Send the renewal order form,2026-08-28
+O-3002,A-1002,Larkspur Regional Health — Tidewater T2 consumables renewal,negotiation,2027-06-30,1562000,sam-okafor,yellow,best_case,Send revised pricing with the volume discount,2026-08-28
+O-3003,A-1030,Northlake Health System — Tidewater T3 tower expansion,proposal,2027-01-31,450000,sam-okafor,yellow,pipeline,Send the tower proposal,2026-08-28
+O-3004,A-1080,Kestrel Medical Group — HalvardCare renewal,closed_lost,2026-02-15,0,priya-natarajan,,omitted,,2026-08-28
+O-3005,A-1020,Cobalt Ridge Medical Center — Tidewater T3 ED pilot,qualification,2026-10-01,48000,sam-okafor,green,pipeline,Schedule the ED pilot kickoff,2026-08-28
+O-3006,A-1040,Meadowbrook Community Hospital — Tidewater T2 consumables renewal,negotiation,2027-03-31,340000,sam-okafor,red,pipeline,Review the delivery credit request,2026-08-28
+O-3007,A-1090,Wrenfield Health — Tidewater Link integration,proposal,2027-03-31,180000,priya-natarajan,yellow,pipeline,Send the integration test plan,2026-08-28

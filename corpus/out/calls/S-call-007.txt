@@ -1,0 +1,89 @@
+[09:00:00] Sam Okafor: Morning, Rob. Thanks for making time. Can you hear me all right?
+
+[09:00:08] Rob Tallis: I can. Morning, Sam. Dana, are you on?
+
+[09:00:12] Dana Whitlock: I’m here. Good morning, both of you.
+
+[09:00:18] Sam Okafor: Great. I know everybody’s busy, so we’ll keep this focused. We wanted to check in on the Tidewater equipment, the recent supply activity, and anything your teams need from us.
+
+[09:00:32] Rob Tallis: That works. We’re between rounds, more or less. It’s one of those mornings where “between” means somebody is always calling from the unit.
+
+[09:00:39] Dana Whitlock: That sounds familiar. We’ll avoid taking you away from anything urgent.
+
+[09:00:45] Rob Tallis: Appreciate it. The pumps themselves have been steady. As of today, Ashgrove Medical Center runs eleven Tidewater T3 pumps across two ICUs.
+
+[09:00:57] Sam Okafor: Eleven across the two units, right. Has that distribution stayed fairly consistent?
+
+[09:01:03] Rob Tallis: Yes, mostly. We move one occasionally if census changes, but the operating pattern is stable. The night staff know the devices well, and the educators have been reinforcing the standard checks.
+
+[09:01:13] Dana Whitlock: Any particular workflow that’s getting in the way?
+
+[09:01:18] Rob Tallis: Not with the basic operation. The bigger irritation lately has been getting supplies when we expect them. We plan around those dates, especially for the busier ICU.
+
+[09:01:28] Sam Okafor: I saw the delivery notes come through. I wanted to understand what happened from your side rather than just read the tracking entries.
+
+[09:01:35] Rob Tallis: The tracking entries don’t really capture the disruption. We had people checking the dock, then checking again, and calling central supply because nobody knew whether to wait or reorder.
+
+[09:01:47] Dana Whitlock: Was that one order or more than one?
+
+[09:01:51] Rob Tallis: More than one. “Two shipments showed up days late” during the week of July twenty-seventh, and both were Tidewater T2 consumables.
+
+[09:02:03] Sam Okafor: Understood. Were the cartons intact once they arrived?
+
+[09:02:07] Rob Tallis: They were intact. The issue was timing, not visible damage. When a shipment misses the expected window, the nurses don’t know whether the stock is actually coming, and that creates extra work for everybody.
+
+[09:02:18] Dana Whitlock: Did either delay force a change to your clinical workflow?
+
+[09:02:23] Rob Tallis: We managed around it. We borrowed from the other ICU and tightened the count. Nobody was left without what they needed, but it was not a comfortable margin.
+
+[09:02:32] Sam Okafor: I’m sorry. We should have communicated more clearly while those orders were moving. I’ll review the shipment history and the handoff points with our operations team.
+
+[09:02:39] Rob Tallis: That would help. Even a note saying, “This is delayed, here’s the revised date,” is better than silence.
+
+[09:02:45] Dana Whitlock: Agreed. We can also set up a regular status check for open consumable orders until the pattern settles down.
+
+[09:02:52] Rob Tallis: That would be useful, particularly for the T2 items. Our charge nurses shouldn’t have to chase three different places for one answer.
+
+[09:03:00] Sam Okafor: I’ll make sure the account notes reflect that. We can review pending orders before the next replenishment cycle.
+
+[09:03:06] Rob Tallis: Good. On the equipment side, there’s one request from the ICU teams.
+
+[09:03:10] Dana Whitlock: Go ahead.
+
+[09:03:13] Rob Tallis: The ICU asked for a night-mode alarm volume on the Tidewater T3.
+
+[09:03:19] Sam Okafor: A lower volume setting that can be selected for overnight coverage?
+
+[09:03:22] Rob Tallis: Exactly. They still need the alarm to be clear, obviously, but the current sound carries through the rooms and wakes patients who aren’t involved in the event. The night nurses want a defined mode rather than adjusting things informally.
+
+[09:03:35] Dana Whitlock: Is the request for all eleven pumps or just the units in one ICU?
+
+[09:03:39] Rob Tallis: Ideally all of them. The two ICUs operate differently in small ways, but the overnight concern is the same.
+
+[09:03:44] Sam Okafor: I’ll record it as a product request and check whether there’s already a configuration option or planned update. I don’t want to promise a feature before engineering confirms what’s possible.
+
+[09:03:51] Rob Tallis: That’s fair. We’d rather have a clear answer than a vague yes.
+
+[09:03:57] Dana Whitlock: Would written guidance on current alarm settings help while that review is happening?
+
+[09:04:02] Rob Tallis: Yes, if it’s specific to the T3 and easy for a night nurse to follow. We don’t need a long manual dropped in their inbox.
+
+[09:04:10] Sam Okafor: I can send a concise reference after I confirm the approved settings.
+
+[09:04:14] Rob Tallis: Thanks. Also, if the delivery review turns up a contact we should use after hours, please include that. Our receiving desk is staffed differently overnight.
+
+[09:04:20] Dana Whitlock: We’ll note the receiving schedule and the need for proactive updates.
+
+[09:04:24] Sam Okafor: Before we wrap, let me repeat the actions: I’ll investigate the two delayed T2 deliveries, check the communication trail, document the T3 night-mode request, and confirm the current alarm-setting guidance.
+
+[09:04:35] Rob Tallis: That covers it. I’ll have our supply coordinator send over any order references she has, so your team isn’t searching by guesswork.
+
+[09:04:41] Dana Whitlock: Perfect. We’ll follow up once we’ve compared those references with the shipment records.
+
+[09:04:46] Rob Tallis: Sounds good. Thanks for taking it seriously.
+
+[09:04:49] Sam Okafor: Of course. Thanks for the candid feedback, Rob.
+
+[09:04:53] Dana Whitlock: Thanks, everyone. We’ll be in touch.
+
+[09:04:56] Rob Tallis: All right. Take care.

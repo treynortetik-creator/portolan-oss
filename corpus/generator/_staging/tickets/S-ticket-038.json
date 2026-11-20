@@ -1,0 +1,20 @@
+{
+  "subject": "Consumable order arrived late",
+  "comments": [
+    {
+      "number": 1,
+      "author": "June Park",
+      "body": "⟦F05⟧The Tidewater T2 consumable order we placed on August 12th didn't show up until five days after it was due⟦/F05⟧. Pharmacy had to ration par stock across two units in the meantime. Can someone look into what happened?"
+    },
+    {
+      "number": 2,
+      "author": "Sam Okafor",
+      "body": "I'm sorry, June — that shouldn't happen. Looking into the carrier leg on this one now and I'll send you a written summary of what caused it."
+    },
+    {
+      "number": 3,
+      "author": "June Park",
+      "body": "Thank you. Please do loop in whoever needs to know on your end — this is the second time this quarter."
+    }
+  ]
+}

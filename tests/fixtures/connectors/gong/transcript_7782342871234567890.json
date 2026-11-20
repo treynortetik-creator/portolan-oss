@@ -1,0 +1,31 @@
+{
+  "callTranscripts": [
+    {
+      "callId": "7782342871234567890",
+      "transcript": [
+        {
+          "speakerId": "SPK-1",
+          "topic": "Call Opening",
+          "sentences": [
+            {"start": 0, "end": 3200, "text": "Hey Rob, thanks for jumping on today."}
+          ]
+        },
+        {
+          "speakerId": "SPK-2",
+          "topic": "Call Opening",
+          "sentences": [
+            {"start": 3400, "end": 5100, "text": "Oh, you know, Wednesday."},
+            {"start": 5100, "end": 8000, "text": "We had a wild overnight but today's been quiet."}
+          ]
+        },
+        {
+          "speakerId": "SPK-1",
+          "topic": "Delivery issue",
+          "sentences": [
+            {"start": 123000, "end": 126500, "text": "Two shipments showed up days late this week."}
+          ]
+        }
+      ]
+    }
+  ]
+}

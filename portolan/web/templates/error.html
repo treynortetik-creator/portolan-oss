@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ heading }} — Portolan{% endblock %}
+{% block content %}
+{#
+  Branded error page (UX eval 2026-09-12, punch item 11): every 404/500 a
+  browser can land on used to be raw JSON (`{"detail": "..."}`) -- a dead
+  end with no way back for the non-engineers this graph is built for.
+  `app.py` registers this template for both cases; it never renders a
+  traceback or any other server-internal detail, only the plain sentence
+  and (for a 404) the bad slug/path a person actually typed or clicked.
+#}
+<div class="card" style="max-width:560px;margin:40px auto 0;">
+  <p class="eyebrow">{{ eyebrow }}</p>
+  <h1 style="margin-top:0;">{{ heading }}</h1>
+  <p>{{ message }}</p>
+  {% if detail %}<p class="mono muted small" style="word-break:break-word;">{{ detail }}</p>{% endif %}
+  <p class="btn-row">
+    <a class="btn primary" href="/search">Search the graph</a>
+    <a class="btn" href="/">Back to chat</a>
+  </p>
+</div>
+{% endblock %}

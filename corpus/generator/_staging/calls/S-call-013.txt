@@ -1,0 +1,185 @@
+[00:00:00] Sam Okafor: Hey Helen, hey Maria, thanks for making time this afternoon, I know Thursdays are usually brutal for both of you.
+[00:00:08] Helen Ozoro: Barely surviving, honestly. I was outside for a board meeting earlier and it felt like standing next to a running engine, so forgive me if I sound a little frazzled.
+[00:00:20] Sam Okafor: No, you're coming through fine. Maria, how are you doing?
+[00:00:24] Maria Chen: Good, good, just back from vacation last week so I'm still digging out of my inbox a little, but no complaints at all.
+[00:00:33] Sam Okafor: Where'd you end up going?
+[00:00:35] Maria Chen: We did the Outer Banks, first time back there in probably six years, the kids are finally old enough to actually enjoy the beach instead of just eating sand and complaining.
+[00:00:47] Sam Okafor: That's a great stretch of coast this time of year, humidity aside.
+[00:00:52] Maria Chen: The humidity was rough, not going to lie, but it was a really good week. Worth it.
+[00:00:59] Sam Okafor: Glad you got the break in before things pick back up. Helen, anything fun on your end this summer, or has it all been budget season already?
+[00:01:10] Helen Ozoro: Mostly budget season, unfortunately. We did get a week at the lake in July before all of this ramped up, so I can't complain too much.
+[00:01:20] Sam Okafor: That's good, glad you got something in. Well, I appreciate you both carving out forty minutes today. I know this is one of the only open windows on your calendar most weeks, Helen.
+[00:01:33] Helen Ozoro: It really is, so let's use it well. I think Maria's got a list to get through.
+[00:01:40] Helen Ozoro: Actually, one more thing before we jump in, are you still covering the same territory, Sam, or did they ever finalize that reorg they were talking about last spring?
+[00:01:52] Sam Okafor: They did finalize it, actually, but I stayed put, still covering the Midwest, they just shifted some of the accounts around underneath me. So nothing changes for you two, I'm not going anywhere.
+[00:02:05] Helen Ozoro: Good, I was going to be annoyed if I had to break in a new rep after everything else going on this year.
+[00:02:14] Sam Okafor: Ha, no, you're stuck with me. Maria, are you guys fully staffed on the procurement side right now, or still backfilling from the spring turnover?
+[00:02:24] Maria Chen: Mostly staffed, we brought someone on in July, she's still ramping up on the clinical equipment side specifically, but it's helped a lot just having another set of hands.
+[00:02:36] Sam Okafor: Good, that's good to hear, procurement being short-staffed on top of everything else would be rough timing.
+[00:02:42] Sam Okafor: Before we dive in, I did want to mention, I'm going to be at the regional health systems conference in October, I think a couple of your clinical folks usually go, so if anyone from Ashgrove is planning to be there, I'd love to grab coffee in person for once instead of always doing this over the phone.
+[00:03:06] Helen Ozoro: I believe our director of clinical engineering usually attends that one, I can check and connect you two if the dates line up.
+[00:03:15] Sam Okafor: That'd be great, I'll send you the dates once I have my own travel locked in.
+[00:03:21] Maria Chen: I've actually never been to that one, is it worth going to from a procurement angle, or is it mostly clinical content?
+[00:03:30] Sam Okafor: Honestly a mix, there's usually a vendor floor and some sessions on supply chain and contracting that procurement folks find useful, plus it's just a good place to compare notes with peers at other systems.
+[00:03:44] Maria Chen: Might have to look into that for next year then.
+[00:03:48] Sam Okafor: I'll send you the program once it's out, worth at least skimming the agenda.
+[00:03:54] Maria Chen: Speaking of things changing, we're also in the middle of migrating our procurement system to a new platform, so if you notice any weirdness on our end with purchase order formatting over the next month or two, that's probably why.
+[00:04:10] Sam Okafor: Good to know, thanks for the heads-up, I'll flag that internally too so if something looks off on an incoming PO, we know to just check with you rather than assuming it's an error.
+[00:04:23] Maria Chen: Appreciate that, it's been a bit of a bumpy migration honestly, nothing catastrophic, just the usual growing pains with a new system.
+[00:04:32] Sam Okafor: That tracks, those transitions are never as clean as the vendor demo makes them look.
+[00:04:38] Maria Chen: Understatement of the year.
+[00:04:40] Sam Okafor: Alright, well, I don't want to eat into our time with small talk forever, even though I could probably talk about the Outer Banks for another twenty minutes.
+[00:04:51] Maria Chen: Next time, I'll bring pictures.
+[00:04:53] Sam Okafor: I'll hold you to that.
+[00:04:55] Helen Ozoro: Speaking of timing, have you all seen what this heat's done to our ED volume the last two weeks? We're running numbers close to what we'd normally see in flu season.
+[00:05:07] Sam Okafor: I hadn't heard that, that's rough. Heat-related admissions?
+[00:05:10] Maria Chen: A lot of it, yeah, plus just general volume being up citywide, I think two of the other hospitals in the system are seeing the same thing.
+[00:05:21] Sam Okafor: That's good context for me to have, actually, since higher ED volume probably means more pump utilization too, which, given everything we're about to talk about, is not great timing on our end.
+[00:05:34] Helen Ozoro: No, it is not. Which is maybe a good segue into why deliveries matter more than usual right now.
+[00:05:42] Sam Okafor: Fair point. She does too, and I've got one on my end as well, but let's start with hers since I think it's the more pressing one today.
+[00:05:53] Maria Chen: I appreciate that. Should we just dive in?
+[00:05:56] Sam Okafor: Please, go ahead.
+[00:05:58] Maria Chen: Okay. So the headline from my side is deliveries. We've had three purchase orders since June come in late, and it's gotten to the point where it's not just an annoyance anymore, it's actually creating problems on the floor.
+[00:06:13] Sam Okafor: I saw the ticket queue before this call, so I've got some context, but walk me through which ones hurt the most and I'll take notes as we go.
+[00:06:25] Maria Chen: Before I get into the specifics, I should also mention, we've had our loading dock under partial construction since early July, they're redoing the ramp, so there's been a little bit of a confound where some deliveries have been slower to actually get from the dock to central supply even once they arrive on site. I don't want to blame that for everything, but it's part of the backdrop.
+[00:06:52] Sam Okafor: That's helpful context, thank you for flagging it. Do you have a sense of how much of the delay was dock-side versus actually late leaving our distribution center?
+[00:07:04] Maria Chen: For the sensor kits specifically, it was leaving your center late, we have the delivery confirmation timestamps to compare against the dock logs. For the tubing sets, it's a little muddier, it might have sat on the dock for part of a day before someone logged it in.
+[00:07:23] Sam Okafor: Got it, that's useful to know, because it means at least one of these three isn't purely on us, and I want to be precise about that rather than just accepting blame for everything across the board.
+[00:07:38] Helen Ozoro: I appreciate the precision, genuinely. I'm not trying to pin every minute of delay on Halvard specifically, I'm trying to understand the actual shape of the problem so we can fix the right things.
+[00:07:51] Maria Chen: The worst by far was the T2 pressure sensor kits. That order was supposed to land July 14th, and it actually showed up July 29th. That's two full weeks late. We ended up having to borrow loaner sensor kits from Lakeside General just to cover the gap, which is not exactly a fun call to make to a sister facility.
+[00:08:15] Sam Okafor: I remember that one. That was tied to a fire at one of our sensor supplier's plants down in Georgia. I'll be straight with you, the communication on our end about that delay was bad. You should have heard about that slip directly from me, not discovered it through your own tracking system.
+[00:08:36] Maria Chen: To be fair, once we called, your emergency line got us loaners within about six hours, so it's not like nobody responded once we raised it. It's more the fact that we had to be the ones to raise it that bugs me.
+[00:08:54] Sam Okafor: That's a completely fair distinction, and I hear it. Proactive versus reactive is a real difference, and right now we're firmly in reactive mode with you, which isn't where I want to be.
+[00:09:07] Helen Ozoro: It's also just optics internally. When I have to explain to the board why we borrowed equipment from another facility in our own system, that's not a great five minutes of my week.
+[00:09:20] Sam Okafor: No, I imagine not. Did that end up in any kind of formal incident report on your end, or was it handled informally?
+[00:09:29] Maria Chen: Informally, thankfully, nursing leadership flagged it but it didn't rise to a formal safety event, since patient care wasn't actually compromised, we just had to scramble on logistics.
+[00:09:40] Sam Okafor: Okay, that's some relief at least, though I know "no harm done" doesn't make the scramble itself any less frustrating in the moment.
+[00:09:50] Maria Chen: Right, exactly.
+[00:09:50] Sam Okafor: Just so I'm tracking this correctly for when I go back to the team, roughly how many sensor kits were in that specific order?
+[00:10:00] Maria Chen: It was a fairly standard restock, I'd have to check the exact number, but it covers what we'd normally expect to need for about six to eight weeks of typical volume.
+[00:10:12] Sam Okafor: Got it, that helps me understand the scale of the gap you were covering with loaners.
+[00:10:19] Helen Ozoro: I appreciate you saying that plainly, Sam, I really do. But I want to name something bigger, because I think it matters more than any single purchase order. This is the third time this year we've had a version of this exact conversation. I'm not saying that to be difficult. I'm saying it because at some point three separate incidents stop being three separate incidents and start being something I have to explain upward, to people who don't particularly care about the individual root causes.
+[00:10:53] Sam Okafor: That's fair, and I'm not going to wave that away. I do want to walk through why it's happened and what's actually different going forward, but can we finish the rest of Maria's list first? I think the root cause conversation deserves its own real attention, not five rushed minutes squeezed in at the end.
+[00:11:15] Helen Ozoro: That's fine. Maria, go ahead and finish your list.
+[00:11:18] Maria Chen: Sure. Second one was the T2 tubing sets. That one was only four days late, which on its own wouldn't be a big deal, except it landed right in the middle of our internal supply audit week, so it made our numbers look worse than they actually are for that stretch.
+[00:11:39] Sam Okafor: Noted. And the third one?
+[00:11:41] Maria Chen: The third was smaller in dollar terms but not in headache. It was a battery pack reorder for two of our T2 units in the emergency department. That one came in about a week late, and we had two pumps sharing a single working spare battery for a few days, which made the overnight charging rotation a genuine scramble for the night shift nurses.
+[00:12:06] Sam Okafor: On the battery pack situation, did that ever get close to actually affecting a patient, or was it purely a staffing headache?
+[00:12:15] Maria Chen: It stayed a staffing headache, to be clear, nobody went without a working pump when they needed one, it just meant nursing had to actively manage which pump had which battery instead of it being invisible in the background the way it normally is.
+[00:12:33] Sam Okafor: That's good to hear, though I know "purely a staffing headache" during an overnight ED shift is still a real cost, even if it's not a patient safety event on paper.
+[00:12:45] Maria Chen: Right, and it's the kind of thing that adds up. Individually none of these three things is catastrophic. Together, in the same two-month window, it's a lot.
+[00:12:56] Sam Okafor: That's a fair way to put it, and it's basically the same thing Helen said a minute ago, just from a different angle.
+[00:13:05] Helen Ozoro: It's the same point, yeah. Individually explainable, collectively a pattern.
+[00:13:09] Sam Okafor: Okay, I've got all three written down: the sensor kits, the tubing sets, and the ED battery packs. I'm going to go back to procurement and logistics on our side this week and get you an actual answer on each one, not a generic supply chain line.
+[00:13:28] Helen Ozoro: That would help. Even if the answer is just "here's exactly what broke," that's more useful to me than a vague apology with no substance behind it.
+[00:13:39] Sam Okafor: Understood. Can I ask, on the battery pack specifically, is that a SKU you all reorder fairly often? I want to see if there's a way to build in a little more buffer stock earmarked specifically for you.
+[00:13:54] Maria Chen: We reorder that particular battery pack maybe every six to eight weeks across the two EDs running T2 units. It's not huge volume, but it's the kind of item where even a few days matters, because it's the emergency department.
+[00:14:10] Sam Okafor: Right, that's exactly the kind of SKU where I think we could carry a small safety stock set aside just for Ashgrove instead of pulling from the general pool every time an order comes in. Let me take that back and see if operations will sign off on it.
+[00:14:30] Helen Ozoro: I'd like that. Even a small gesture like that tells me someone's actually thinking about our specific situation instead of treating us like a line item on a spreadsheet.
+[00:14:41] Sam Okafor: That's the goal. Before we get further into the delivery stuff, I wanted to check on something else, just logistics-wise. How's the T2 fleet running otherwise day to day, setting the sensor and battery issues aside?
+[00:14:56] Maria Chen: Actually fine. Nursing hasn't flagged anything beyond normal wear and tear, no alarm issues, no dosing complaints, nothing like that. It's really just been the supply side that's been the sore spot this year.
+[00:15:09] Sam Okafor: Good, that's genuinely good to hear. Helen, anything from the finance side before we get into root causes, or should we keep going on deliveries?
+[00:15:19] Helen Ozoro: Actually, there is one more thing, and it's not a complaint, it's more of a scheduling item. Can we talk about the HalvardCare renewal for a second before we get into root causes?
+[00:15:32] Sam Okafor: Of course, go ahead.
+[00:15:34] Helen Ozoro: So as I understand it, and correct me if I'm wrong, the current understanding on our HalvardCare service contract is that it renews March 31st of 2027.
+[00:15:45] Sam Okafor: That's right, March 31st, 2027, that's what's reflected in the current agreement on our side too.
+[00:15:51] Helen Ozoro: Okay. I want to ask you to move that. ⟦F11b⟧We'd like to push the renewal date out to June 30th of 2027 instead of March 31st.⟦/F11b⟧
+[00:16:02] Sam Okafor: Can I ask what's driving that, just so I understand it and can frame it correctly on our end when I put the paperwork through?
+[00:16:12] Helen Ozoro: Sure, it's purely a budget cycle issue on our side. Our fiscal year planning and capital committee cycle runs in a way where a March renewal forces us to commit to a number before we've actually closed out the prior year's actuals. If we push it to the end of June instead, it lines up with when our board actually approves the new fiscal year's capital and service budget, which means I'm not asking anyone to sign off on a number that isn't final yet.
+[00:16:46] Sam Okafor: That makes sense, and it's a completely reasonable ask. From my side, sliding a renewal date out by a quarter is something I can do without it needing to go up the chain for approval, so I don't see any issue with it.
+[00:17:03] Helen Ozoro: Good, because I want to be clear about something. This supersedes whatever's currently written down. The March 31st, 2027 date that's in the existing paperwork, that's no longer the plan going forward. June 30th, 2027 is the date we're working from now.
+[00:17:20] Sam Okafor: Understood. June 30th, 2027, replacing March 31st, 2027, as the HalvardCare renewal date. I'll get that updated in our system this week and send you both a written confirmation so it's on paper, not just something that lives on a call recording somewhere.
+[00:17:37] Helen Ozoro: Perfect, that's exactly what I wanted. Thank you.
+[00:17:40] Maria Chen: That's actually good news for me too, honestly, because March is always a mess for procurement, we've got two other vendor renewals stacked in that same month most years. Having this one land in June spreads our workload out a lot better.
+[00:17:57] Sam Okafor: Glad it works on both fronts then. I'm going to make a note right now to send that written confirmation by end of day tomorrow at the latest, so you're not waiting around on it.
+[00:18:11] Helen Ozoro: Appreciate that. Okay, that's my one scheduling item, so back to the two of you on whatever else is on the list.
+[00:18:20] Sam Okafor: Actually, since we're already on contract and product topics, can I ask where things stand on your interest in T3? Last time we talked, back in June I think, you'd mentioned wanting to see more data before committing to anything.
+[00:18:36] Maria Chen: Yeah, we're still just watching for now. A couple of the other systems in our network have started rolling it out, so we're hearing secondhand feedback, mostly positive, on the interface changes and the updated smart pump library.
+[00:18:51] Sam Okafor: That tracks with what I'm hearing more broadly too. No pressure from me on timing, I just want to keep the door open in case you ever want a hands-on look, maybe even just one unit somewhere quiet to get a feel for how the workflow differs from T2.
+[00:19:10] Maria Chen: What's the actual price difference looking like these days, roughly, unit for unit, T2 versus T3? Not asking for a quote, just trying to get a general sense for planning purposes.
+[00:19:23] Sam Okafor: Directionally it's a modest premium over T2, not a dramatic jump, but I'd want to get you an actual current quote rather than throw out a number from memory that might be stale.
+[00:19:36] Maria Chen: That's fine, no rush on that, I was just curious for my own mental model.
+[00:19:42] Sam Okafor: Happy to get you real numbers whenever it's useful, even just for planning, no strings attached.
+[00:19:48] Helen Ozoro: We'll keep that in mind. Right now, with everything else going on, I don't want to add a new evaluation project on top of what's already sitting on people's plates.
+[00:20:00] Sam Okafor: Completely fair, no pressure at all there. How about the integration side, anything new with Tidewater Link and your EHR since we last talked?
+[00:20:10] Maria Chen: It's actually been pretty stable. We had one hiccup a few weeks back where infusion data wasn't syncing over to the chart for about two hours one morning, but your support team got on it quickly, and it turned out to be something on our network side, not yours.
+[00:20:30] Sam Okafor: Good, I did see that ticket, glad it got resolved fast. Any other integration issues since then?
+[00:20:36] Maria Chen: No, it's been quiet since. Honestly, Link has been one of the more boring parts of this whole relationship, in the best possible way, it mostly just works.
+[00:20:48] Sam Okafor: Any interest from your side in the newer Link features we rolled out earlier this year, the automated dosing reconciliation piece?
+[00:20:56] Maria Chen: We looked at it briefly, but honestly with everything else going on this year, we haven't prioritized evaluating anything new on the integration side. Maybe next year once things settle down.
+[00:21:08] Sam Okafor: That's completely understandable, no urgency on my end either, I just like to keep you aware of what's available in case it's useful down the line.
+[00:21:19] Maria Chen: Appreciate that, I'll flag it internally so it's at least on our radar for when we do have bandwidth.
+[00:21:26] Sam Okafor: I'll happily take boring as a compliment there. Okay, so let's circle back, because Helen, you'd flagged wanting to get into root causes on the deliveries, and I don't want to run out of time before we actually get to that.
+[00:21:43] Helen Ozoro: Right, let's do that now.
+[00:21:45] Sam Okafor: Okay, here's what I can tell you honestly about why this year's been rockier than usual. The sensor kit delay, that was the supplier fire, that part really is a one-off, though I'll grant you our internal communication about it was bad, and that's on us to fix regardless of the root cause. The tubing set delay, that one actually is on us directly, we had a warehouse transition at our Ohio distribution center in July, moving to a new logistics partner, and a batch of orders got stuck in that handoff. The battery pack delay was a combination of that same warehouse move and a bump in demand across a few accounts at the same time.
+[00:22:32] Maria Chen: So two of the three trace back to the same warehouse move?
+[00:22:36] Sam Okafor: Yes, exactly, two of the three come back to that transition. It should be fully settled at this point, we went live on the new system about three weeks ago, but I want to be straight with you, I can't promise zero hiccups in the first month or two of any system change like that.
+[00:22:58] Maria Chen: Can I ask, is the new logistics partner a completely different company, or is this more of an internal system change with the same carrier?
+[00:23:08] Sam Okafor: Completely different company, we moved off our previous 3PL partner to a firm called Meridian Fulfillment, mainly because the old partner had been having their own capacity problems for about a year, ironically for similar reasons, warehouse space and staffing. The idea was that Meridian would actually be more reliable long-term, which is a little painful to say out loud right now given the timing of this conversation.
+[00:23:36] Maria Chen: That is a little ironic, yeah.
+[00:23:38] Sam Okafor: It is. But for what it's worth, the metrics we're seeing internally over the last two weeks on order accuracy and pick times are trending in the right direction, it's just early.
+[00:23:51] Helen Ozoro: I'll take "trending in the right direction" as a data point, not a guarantee.
+[00:23:56] Sam Okafor: That's the right way to take it, honestly. I'd rather under-promise here than tell you it's fixed and be wrong again in a month.
+[00:24:06] Helen Ozoro: I appreciate the honesty, I really do. But I want to be equally honest back with you. This isn't the kind of thing that stays contained to a single quarter's numbers for me. It's the kind of thing that shapes how I think about this relationship over a longer horizon.
+[00:24:26] Sam Okafor: I hear that. What would be most useful to you right now, concretely? More frequent updates the moment something's going to slip? A dedicated point of contact for Ashgrove specifically while this transition settles?
+[00:24:40] Helen Ozoro: Both, honestly. But more than either of those, I want something in writing that actually explains what happened, not a call summary that lives in someone's inbox for a week and then disappears. Something Maria and I can actually point back to later.
+[00:24:57] Sam Okafor: That's completely reasonable, and I can do that.
+[00:25:00] Helen Ozoro: Can I ask you something else while we're in this part of the conversation? We've got a Joint Commission survey window opening sometime in the first quarter of next year, I don't have an exact date yet, and equipment reliability documentation is always part of what they look at. Is there anything about this year's delivery issues that would show up in that kind of review?
+[00:25:26] Sam Okafor: Good question. I don't think so, in the sense that none of these delays affected currently deployed equipment functioning, it was purely about restock timing for consumables and spares. But I hear the underlying concern, which is that if reviewers ask about your equipment supply chain reliability, you want a clean story to tell, not three separate incidents from the same year.
+[00:25:51] Helen Ozoro: Exactly. I don't need it to be perfect. I need it to be explainable in one sentence, not three separate apologies.
+[00:26:00] Sam Okafor: That's actually a really useful way to frame what I owe you in that written summary. It shouldn't just explain what happened, it should give you language you could hand to a surveyor if it ever came up, something like: we identified a distribution transition issue, corrected it, and instituted proactive monitoring.
+[00:26:20] Maria Chen: That would genuinely help, having something we could point to rather than having to explain three unrelated-sounding incidents on the fly.
+[00:26:29] Sam Okafor: Understood, I'll keep that framing in mind when I put it together.
+[00:26:34] Helen Ozoro: Appreciate that. I know I'm asking for a fairly specific thing here, but it's exactly the kind of documentation gap that turns into a bigger headache later if nobody thinks about it now.
+[00:26:47] Sam Okafor: No, that's a smart ask, and it costs me nothing extra to write it that way instead of some other way. I'd rather it actually be useful to you than just be a formality.
+[00:27:00] Maria Chen: While we're talking documentation, is there a single point of contact on your side I should be cc'ing on things like this going forward, or does everything just come through you regardless?
+[00:27:13] Sam Okafor: Everything can keep coming through me for now, I'll pull in specialists as needed on my end, but you shouldn't have to figure out who the right person is on our side, that's my job to manage.
+[00:27:28] Maria Chen: Good, that's one less thing for me to think about.
+[00:27:32] Helen Ozoro: Agreed, that's helpful.
+[00:27:33] Maria Chen: It would also help logistics-wise if we got a heads-up even a day or two before something's going to be late, instead of finding out after the delivery window passes and nothing's shown up. Right now we usually find out because I have to call and ask where it is.
+[00:27:53] Sam Okafor: That's a fair point, and honestly an easy fix on our end, it's mostly about making sure the right person is checking the tracking dashboard proactively instead of reactively. I'll build that into whatever I put together.
+[00:28:08] Sam Okafor: Is there anything else, structurally, that would help? I don't want to just fix the symptom and have this come up again in another form six months from now.
+[00:28:20] Helen Ozoro: Honestly, I think the biggest thing is just consistency. One bad quarter I can absorb. Three incidents inside of two months, tied to two different root causes, that's what makes it feel less like bad luck and more like something I need to actually track.
+[00:28:38] Sam Okafor: That's a completely reasonable way to look at it, and I don't think you're wrong to track it that way.
+[00:28:46] Maria Chen: For what it's worth, I don't think anyone here believes this is malicious or careless on your team's part, it just needs to actually get better, not just get explained better.
+[00:28:58] Sam Okafor: That's a fair distinction, and I'd rather be judged on what actually changes than on how well I explain what already happened.
+[00:29:07] Maria Chen: For what it's worth, I did a quick informal poll of the charge nurses on the floors most affected, just to get a temperature check before this call. Nobody said anything about the pumps themselves being unreliable, which I want to be clear about. The frustration was entirely about not knowing when supplies were coming and having to improvise around it.
+[00:29:31] Sam Okafor: That's actually somewhat reassuring, in a strange way, it means the actual clinical trust in the equipment is intact, it's specifically the supply chain piece that's eroded a little.
+[00:29:43] Helen Ozoro: That's a fair summary. The pumps are fine. The predictability isn't.
+[00:29:47] Sam Okafor: Understood, and that's actually a more fixable problem than if it were the equipment itself, so I'll take that as a small silver lining, if you'll let me have one today.
+[00:30:00] Helen Ozoro: You can have that one.
+[00:30:02] Sam Okafor: Is there a specific cadence of updates that would feel right to you, weekly, or only when something's actually about to slip?
+[00:30:10] Maria Chen: I think only-when-slipping is actually fine, I don't need a weekly status email for its own sake, I'd rather get a heads-up the moment something looks like it's not going to make its window.
+[00:30:24] Sam Okafor: That's easier for me to sustain long-term too, honestly, a forced weekly report tends to become noise that people stop reading. I'd rather it be rare and meaningful.
+[00:30:35] Helen Ozoro: Agreed, quality over frequency.
+[00:30:37] Helen Ozoro: Good. Look, I don't want to overstate this. Day to day, the pumps themselves work fine, your people pick up the phone when we call, this isn't a complaint about the product. It's specifically the delivery reliability piece, and it's been enough of a pattern this year that I need to say something plainly. ⟦F06⟧I'll be honest with you, Sam, if the deliveries don't get more reliable, this is going to come up when we talk about next year.⟦/F06⟧
+[00:31:08] Sam Okafor: I appreciate you putting it that directly, and I'm not going to pretend that isn't a serious thing to hear. ⟦F09⟧Here's what I can commit to right now: I will get you a written summary of the root causes behind these three deliveries, in writing, by August 28th.⟦/F09⟧ Not a verbal recap on some future call, an actual document the two of you can hold onto and refer back to.
+[00:31:36] Helen Ozoro: Thank you. That actually helps more than you might think.
+[00:31:40] Maria Chen: Agreed. And to be clear, this doesn't erase the frustration, but a real explanation goes a long way with me too.
+[00:31:49] Sam Okafor: Understood, and I don't take that lightly. I'll have that summary to you both by the 28th, and I'll loop in my operations contact directly so if there are follow-up questions on your end, you're not stuck waiting on me specifically to relay everything back and forth.
+[00:32:08] Helen Ozoro: That works for me.
+[00:32:09] Sam Okafor: I also want to say, separate from the summary, I'm going to personally check in with you both in a couple of weeks, outside of our normal cadence, just to make sure nothing's slipped through the cracks again in the meantime.
+[00:32:26] Helen Ozoro: I'd appreciate that.
+[00:32:27] Maria Chen: Same here.
+[00:32:28] Sam Okafor: Okay. Let me also just double check the two action items out of today so we're all aligned before we hang up. One, I'm sending written confirmation of the HalvardCare renewal date moving to June 30th, 2027, by end of day tomorrow. Two, I'm sending a written root cause summary on the three late deliveries by August 28th. Does that match what you both have?
+[00:32:54] Helen Ozoro: That matches.
+[00:32:54] Maria Chen: Same here, that's everything on my end too.
+[00:32:58] Sam Okafor: One more thing before we close out, purely administrative. Helen, will the updated renewal date need a formal amendment signed on both sides, or is a written confirmation from me sufficient for your records?
+[00:33:11] Helen Ozoro: For internal purposes a written confirmation is fine for now, but I'd expect we'll want a formal amendment reflecting June 30th, 2027 whenever the contract paperwork is normally refreshed. No rush on that specifically.
+[00:33:25] Sam Okafor: Understood, I'll flag that to our contracts team so it's on their radar for whenever they next touch the agreement, rather than something that falls through the cracks.
+[00:33:36] Maria Chen: That's probably worth a note in the file too, just so whoever's sitting in my seat a year from now isn't confused about why the date changed.
+[00:33:47] Sam Okafor: Good call, I'll make sure the written confirmation spells out clearly that this replaces the prior date and why, so there's no ambiguity later.
+[00:33:56] Helen Ozoro: Appreciate that level of care, honestly. A lot of vendors would just quietly change a date in a system somewhere and never explain it.
+[00:34:06] Sam Okafor: Great. Is there anything else either of you wanted to get to today, or did we cover the list?
+[00:34:14] Helen Ozoro: I think that covers it from my side.
+[00:34:17] Maria Chen: Same, I think we got through everything. I appreciate you actually digging into the specifics today instead of just apologizing in general terms and moving on to the next topic.
+[00:34:29] Sam Okafor: Of course, that's genuinely the job. I'd rather have this conversation than a comfortable one that doesn't actually fix anything.
+[00:34:37] Helen Ozoro: Well, we'll see how the next month goes, but I appreciate the direct answers today.
+[00:34:43] Sam Okafor: Fair enough. I'll talk to you both soon, and you'll have that written confirmation on the renewal date by tomorrow.
+[00:34:51] Helen Ozoro: Should we go ahead and get the next call on the calendar now, or will you send something around?
+[00:34:58] Sam Okafor: I'll send something around, probably for early October, unless you'd rather do it sooner given everything we just talked about.
+[00:35:06] Helen Ozoro: Early October's fine, assuming the summary and the renewal paperwork both land when you said they would.
+[00:35:13] Sam Okafor: They will. I'll make sure of it.
+[00:35:16] Maria Chen: Sounds good. Thanks, Sam.
+[00:35:18] Helen Ozoro: Thanks, Sam. Talk soon.
+[00:35:19] Sam Okafor: Take care, both of you.

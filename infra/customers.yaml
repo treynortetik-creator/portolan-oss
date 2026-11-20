@@ -1,0 +1,14 @@
+# Portolan customers. A plain list of {name, tier, region, domain_name}
+# — see infra/README.md, "How to add a customer", for the one-line
+# process to add a row here. `demo` is the always-first deploy target in
+# infra/deploy/canary.py's release order.
+#
+# `domain_name` is required for every tier except "dev" (review finding
+# F13: CloudFront needs an ACM certificate on the ALB, and a certificate
+# needs a real domain -- PortolanCustomerStack fails synth otherwise).
+# `demo` has no real domain yet (no AWS account exists), so it stays on
+# "dev" -- the one tier CloudFront-to-ALB is allowed to stay HTTP-only
+# for -- until a real domain is picked for it.
+- name: demo
+  tier: dev
+  region: us-east-1

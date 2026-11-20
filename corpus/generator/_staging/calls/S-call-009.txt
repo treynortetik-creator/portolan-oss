@@ -1,0 +1,146 @@
+[00:00:00] Sam Okafor: Hey Felix, thanks for hopping on. How's it going over there this morning?
+[00:00:05] Felix Arden: Hey Sam, good, good. Just got out of a nine o'clock meeting so my brain's still catching up a little. How about you?
+[00:00:15] Sam Okafor: Can't complain. I was actually down in Phoenix for a couple days for a regional meeting, just got back home last night.
+[00:00:25] Felix Arden: Oh nice, how was that? I feel like going down there in August is basically asking for it.
+[00:00:33] Sam Okafor: It was rough, honestly. Hit a hundred and twelve one afternoon. I basically went from the hotel to the conference room to the airport and that was the extent of my Arizona experience.
+[00:00:46] Felix Arden: Yeah, no thank you. We had a heat advisory here too actually, but nothing close to that. It was more like upper nineties, felt almost pleasant by comparison I guess.
+[00:00:59] Sam Okafor: Ha, I bet. Well, I appreciate you making time this morning, I know Thursdays tend to be packed for you guys with rounds and everything else going on.
+[00:01:12] Felix Arden: No, it's actually not bad today, things settled down a little after the morning huddle. I've got maybe forty-five minutes before my next thing, so we should be fine.
+[00:01:24] Sam Okafor: Good. How's the family, by the way? Didn't you say your oldest was starting kindergarten this year?
+[00:01:31] Felix Arden: Oh, yeah, that happened. First day was two weeks ago. She cried for about ten minutes and then apparently had a great time, so, you know, more traumatic for us than for her I think.
+[00:01:46] Sam Okafor: Ha, that's how it always goes. My nephew did the same thing, screamed bloody murder at drop-off and then didn't want to leave at pickup.
+[00:01:57] Felix Arden: Exactly that. How's everybody on your end, you still coaching your kid's soccer team on weekends?
+[00:02:04] Sam Okafor: I am, yeah, season just kicked back up actually. We've got a game Saturday morning, should be a good one if the heat holds off a little.
+[00:02:15] Felix Arden: Good luck with that. I don't miss coaching youth sports, honestly, my patience for it wore thin fast.
+[00:02:23] Sam Okafor: Ha, some days I feel that. Oh, before I forget, did you end up going to that AAMI conference last month? I feel like I saw your name on the attendee list.
+[00:02:37] Felix Arden: I did, yeah, just for two days though, couldn't swing the whole thing. It was fine, mostly the same vendor booths as always, but there was a decent session on alarm fatigue that I got some good notes out of.
+[00:02:54] Sam Okafor: Nice, I've heard good things about that one. Anything useful come out of it that's actually changing what you guys do day to day?
+[00:03:04] Felix Arden: A little, yeah. We're looking at tightening up our alarm escalation policy a bit, nothing dramatic, more just clarifying who's supposed to respond to what within how many minutes. It's one of those things that sounds obvious until you actually write it down and realize everyone's been doing it slightly differently.
+[00:03:25] Sam Okafor: That tracks, I hear that from a lot of hospitals actually, the policy exists on paper but everybody's got their own version of it in practice.
+[00:03:36] Felix Arden: Exactly. Anyway, nothing that involves you guys directly, just wanted to mention it since it's been on my mind.
+[00:03:45] Sam Okafor: No, I appreciate you sharing it, it's useful for me to know what's top of mind on your end even when it's not pump-specific. Oh, and how's the new tower project coming along? I remember you mentioning groundbreaking was supposed to happen sometime this summer.
+[00:04:04] Felix Arden: It broke ground back in June actually, running a little behind already if I'm honest, but that's construction for you. It's going to be a couple years before it's actually open, so not something I'm losing sleep over yet, but it is on my radar for future planning, since presumably it'll need its own equipment buildout eventually.
+[00:04:27] Sam Okafor: Yeah, we should definitely talk about that closer to the time, plenty of runway for now though.
+[00:04:35] Felix Arden: Agreed, way too early to get into details.
+[00:04:39] Sam Okafor: Anyway, I don't want to eat up the whole call catching up, though it's nice to actually talk instead of just trading emails for once.
+[00:04:50] Felix Arden: Agreed, emails only get you so far.
+[00:04:53] Sam Okafor: So I wanted to just check in generally, see how things are going on your end, anything I should know about, and then I've got a handful of items on my list too. We can go whichever direction makes sense to you.
+[00:05:11] Felix Arden: Yeah, um, there's actually something I wanted to bring up first, if that's okay.
+[00:05:17] Sam Okafor: Of course, go ahead.
+[00:05:20] Felix Arden: So, ⟦F02⟧that late order last week — I figured it probably crossed your desk already, but that shipment showing up four days behind schedule caused a real headache on our end for a few days.⟦/F02⟧
+[00:05:34] Sam Okafor: Yeah, it did cross my desk, I saw a note come through on it. Walk me through what actually happened on your side though, I want the full picture before I go back to the supply chain team about it.
+[00:05:51] Felix Arden: Sure. So we had a standard consumables restock in for the T2 lines — tubing sets, the usual bundle — and it just didn't show up on the date it was scheduled to. We track buffer stock pretty closely on the floors, and by the time it finally landed we were down to about a day and a half of cushion on two of the units. That's tighter than I like to run things, especially heading into a weekend.
+[00:06:23] Sam Okafor: That's not okay, especially with buffer running that thin. Do you happen to know exactly what day it actually arrived?
+[00:06:31] Felix Arden: It came in on the fourth. I remember because I had to sign off on an emergency internal transfer from another floor's stock just to cover the gap, and that's extra paperwork nobody really needs on top of everything else.
+[00:06:48] Sam Okafor: Understood. I'll be straight with you, I don't have the full breakdown yet of what happened on the carrier side, but the second I saw the ticket come through I flagged it internally. I want to come back to you with an actual answer, not just an apology and a shrug.
+[00:07:09] Felix Arden: I appreciate that. I mean, it worked out in the end, nobody went without supplies, but if something like this happens twice in a row I'm going to have to start carrying a bigger buffer permanently, and that's money I'd rather not have sitting on a shelf doing nothing.
+[00:07:30] Sam Okafor: Totally fair, and I don't want you in that position. Let me dig into it right after this call and I'll follow up by email, probably tomorrow, with what actually caused the delay and what we're changing on our end so it doesn't happen again.
+[00:07:49] Felix Arden: That works for me. And honestly, I know delays happen, it's not like I think anyone did this on purpose. I just want to make sure it's actually being looked at and not just closed out as a one-off.
+[00:08:05] Sam Okafor: No, completely fair, and it won't just get closed out quietly, I promise you that. I'll also ask whether it makes sense to build in a little more lead time on your standing restock orders generally, just as a cushion, separate from whatever caused this specific delay.
+[00:08:25] Felix Arden: Yeah, I'd be open to that conversation. Might be worth revisiting the reorder point on a couple of the higher-volume consumables too, honestly, now that I think about it.
+[00:08:37] Sam Okafor: Let's put a pin in that, I'll bring some numbers to the next call so we're not just guessing at it.
+[00:08:46] Felix Arden: Sounds good.
+[00:08:47] Sam Okafor: Actually, one more thing on the shipment side — have you been using the vendor portal at all for tracking order status? I know we rolled that out to your account a while back but I don't know how much traction it's actually gotten on your end.
+[00:09:07] Felix Arden: Honestly, not as much as I probably should. One of my techs checks it occasionally but it's not part of anybody's daily routine really. Why, would that have caught this early?
+[00:09:20] Sam Okafor: It might have, yeah, there's a shipment tracking tab that usually updates a day or two ahead of when something's going to miss its window, assuming the carrier's feeding data back correctly, which admittedly isn't always the case.
+[00:09:36] Felix Arden: That would be worth building into somebody's morning checklist honestly, even just a quick glance. I'll mention it to the tech who handles supply ordering, see if we can make that a standing five-minute task.
+[00:09:51] Sam Okafor: That'd be great, and if it turns out the interface is confusing or nobody can figure out where to look, let me know and I can walk whoever it is through it directly, doesn't need to be a big formal training.
+[00:10:08] Felix Arden: Will do, appreciate that.
+[00:10:11] Sam Okafor: And just so you have it, if something like this ever comes up again and you need it escalated faster than a normal support ticket, you can always call my cell directly, you've got the number. I'd rather you do that than sit on it for a few days waiting on a ticket queue.
+[00:10:33] Felix Arden: Good to know, I'll keep that in mind. Honestly for this one I figured it'd get resolved on its own timeline either way, it wasn't like anybody was in danger, just an inconvenience, so I didn't feel like it warranted a middle-of-the-night call or anything.
+[00:10:51] Sam Okafor: No, that's the right read on it, I just want you to know the option's there if something ever does feel more urgent.
+[00:11:01] Felix Arden: Appreciate that, genuinely.
+[00:11:03] Sam Okafor: Was there anything else logistics-wise this week, or was that the main thing?
+[00:11:08] Felix Arden: That was the big one. We did have one pump throw a low battery alert a little early last week, but that turned out to be nothing, just aging batteries in one of the backup units, not a device problem at all.
+[00:11:25] Sam Okafor: Okay, good, glad that one was a non-issue.
+[00:11:29] Felix Arden: Yeah, gave one of the newer techs a mini heart attack for about five minutes though, before we figured out what it actually was. She's sharp, but she hasn't seen every weird edge case yet, that comes with time.
+[00:11:46] Sam Okafor: Sure, that's true of anybody early on. Did she handle the troubleshooting herself or did she need help walking through it?
+[00:11:55] Felix Arden: Mostly herself, actually, she just wanted a second set of eyes to confirm before she signed off on it, which honestly is exactly the right instinct to have, better cautious than not.
+[00:12:09] Sam Okafor: Agreed, that's a good habit to encourage, especially with somebody newer. Well, since we're already on the subject of things going sideways and then getting sorted out, I actually wanted to circle back on the alarm issue from July. I saw the ticket close out in the system but I never got the full story from your side of it.
+[00:12:34] Felix Arden: Oh, yeah. That one was stressful in the moment, honestly more stressful than the shipment thing if I'm being fair about it. We had a T2 on the cardiac floor throwing an intermittent occlusion alarm — it would clear itself and then come back maybe twenty minutes later, which in some ways is worse than a flat-out failure, because at that point nobody trusts the alarm at all anymore, and you've got nurses second-guessing every alert on the floor.
+[00:13:06] Sam Okafor: Yeah, that's a nightmare scenario for a cardiac unit especially. Walk me through it a little more, what did it actually turn out to be?
+[00:13:17] Felix Arden: So we called it in around two in the afternoon, middle of a weekday, not exactly a convenient time for anybody involved, but the charge nurse was pretty insistent we get somebody out same day rather than waiting, given it was affecting patient care directly at that point.
+[00:13:36] Sam Okafor: And somebody got out there same day, right? I want to say I remember that much from the ticket notes.
+[00:13:45] Felix Arden: Same day, yeah, within about ninety minutes actually. I wasn't expecting that fast a turnaround given the time of day and how last-minute the call was on our part. ⟦F10⟧Honestly, that was the fastest we've had from any vendor.⟦/F10⟧ I don't know what your dispatch process looks like on the back end for something like that, but whatever it is, it worked.
+[00:14:11] Sam Okafor: That's great to hear, I'll make sure that gets passed along to the field team directly, they don't always hear the good feedback, mostly just the complaints when something goes wrong.
+[00:14:24] Felix Arden: Yeah, please do. Turned out the root cause was a calibration drift on the occlusion sensor, apparently that can happen gradually over time on units that see really heavy use, and the cardiac floor runs that pump about as hard as any unit in the building. He recalibrated it on the spot and then, since he was already there, went and spot-checked two other T2s on the same floor that had similar run hours, just to rule out the same thing creeping up on those.
+[00:14:59] Sam Okafor: That's smart, proactive thinking rather than just fixing the one and leaving.
+[00:15:05] Felix Arden: Exactly. And honestly the engineer who came out — I don't remember his name off the top of my head, dark hair, I want to say he'd been with you guys a couple years — he ended up walking one of our newer techs through the entire diagnostic process while he was there. That wasn't required of him, he could've just fixed it and left, but he took the time anyway, explained what he was checking and why at each step.
+[00:15:38] Sam Okafor: That's exactly the kind of thing we want happening on these visits. I'll pull the ticket after this call and see who it actually was so I can pass along the specific feedback, not just a generic nice work.
+[00:15:54] Felix Arden: That'd be great, yeah. We also ended up doing a quick in-service with the nursing staff on that floor afterward, just going over what an intermittent alarm like that looks like and when to escalate versus when to just reset and monitor. Filed it as a near-miss internally too, more for our own tracking than anything, since it never actually affected a patient, but I like keeping a record of stuff like that.
+[00:16:24] Sam Okafor: Makes sense, that's good practice on your end regardless of how it turned out.
+[00:16:31] Felix Arden: Yeah, better to have the paper trail and not need it.
+[00:16:36] Sam Okafor: Good. Okay, switching gears a little — I wanted to check in on the HalvardCare renewal timing. I think you're coming up on it in October, is that right?
+[00:16:49] Felix Arden: Yeah, I believe our current term runs through the end of October. We haven't had a formal internal conversation about it yet, but I'm not aware of any appetite to not renew, if that's what you're getting at.
+[00:17:05] Sam Okafor: No, that's good to hear, I just want to get ahead of it so we're not scrambling in the last two weeks trying to push paperwork through your procurement office.
+[00:17:18] Felix Arden: Yeah, procurement here can move slowly, especially anything that touches a multi-year commitment, so earlier is definitely better for everybody. Send something over in the next few weeks and I can start walking it through the system on my end.
+[00:17:34] Sam Okafor: Will do, I'll put a renewal packet together and get it to you, probably early next week. I'll include a summary of the service history too, might be useful for whoever ends up signing off on it, especially with budget season coming up.
+[00:17:52] Felix Arden: That'd help, yeah, especially if it shows response times, given what we were just talking about a minute ago. Our CFO's office has been asking departments to justify recurring line items a lot more than they used to, so anything concrete helps.
+[00:18:09] Sam Okafor: Good point, I'll make sure that's included in there. Are you all locked into the same coverage tier, or is there any appetite to look at the higher tier with the extended loaner pool?
+[00:18:24] Felix Arden: Honestly, we've talked about it before and never pulled the trigger. Might be worth revisiting given how the loaner situation went during that last big snowstorm a couple years back, when we had three units down at once and nothing to swap in quickly.
+[00:18:43] Sam Okafor: I remember that, that was rough. Let's include some numbers on the upgraded tier in the renewal packet too, so you at least have the option in front of you when it comes time to decide.
+[00:18:58] Felix Arden: Yeah, do that, can't hurt to see it on paper.
+[00:19:02] Sam Okafor: Oh, one small thing while I remember — do you all still have current copies of the T2 service manuals on file, or do you need updated ones? We pushed a revision out a few months back with some updated troubleshooting flowcharts.
+[00:19:20] Felix Arden: Let me check with my team, honestly I'm not sure offhand. Go ahead and send the updated version over regardless, easier to have it on hand and not need it than the other way around.
+[00:19:35] Sam Okafor: Will do, I'll include that with the renewal packet so it's all in one place for you.
+[00:19:43] Felix Arden: Perfect, thanks.
+[00:19:44] Sam Okafor: How's the Link integration going, by the way? Last I checked in, you guys were still working through some mapping issues with your EHR team on that.
+[00:19:56] Felix Arden: It's better than it was. Not perfect, but the big issue — where infusion data wasn't syncing correctly for a subset of patients on the med-surg floor — that got sorted out a few weeks back finally. We're still seeing occasional lag, like a few minutes between when something happens on the pump and when it actually shows up in the chart, but it's not causing clinical problems at this point, it's more of an annoyance for the nurses charting off of it.
+[00:20:30] Sam Okafor: Got it. I can loop in our integration team for a closer look at that lag if you want, even if it's not urgent on your end right now.
+[00:20:43] Felix Arden: Yeah, let's do that actually, if only to understand why it's happening in the first place. It bugs me not knowing the root cause of something like that. Our IT director asked me about it last week too, wants to know before our next steering committee meeting.
+[00:21:02] Sam Okafor: When's that meeting, roughly? I can try to have something for you before then if it's soon.
+[00:21:10] Felix Arden: Should be mid-September, so you've got a little time, no huge rush.
+[00:21:15] Sam Okafor: Okay, good, that's doable. I'll set that up and get you a couple times that work for a call with them next week or the week after.
+[00:21:27] Felix Arden: Appreciate it.
+[00:21:28] Sam Okafor: Anything else on the clinical or IT side I should know about while we're on the topic?
+[00:21:36] Felix Arden: Not really, it's been a fairly quiet month otherwise, which I'll take honestly, given everything else going on around here.
+[00:21:44] Sam Okafor: I'll take quiet too, believe me. Okay, one more thing on my list — staffing and training. Do you have new biomed hires coming through soon? I want to make sure we're scheduling anything you might need ahead of time.
+[00:22:01] Felix Arden: Actually yeah, good timing, we've got three new techs starting next month, and I want to get them through T2 training before they're doing anything unsupervised out on the floor. Is that still something your team does on-site, or has most of it moved to virtual now?
+[00:22:20] Sam Okafor: We do both, honestly, depends what works best for your schedule and for the group itself. On-site tends to be better for the hands-on stuff early on, especially with newer techs who haven't touched a pump before, but we've also got a solid virtual module now that covers the basics if that's easier logistically for you.
+[00:22:43] Felix Arden: For these three I think I'd want on-site, at least for the first session. They're all coming over from other departments, none of them have pump experience specifically yet, so I'd rather not have their first exposure be a video.
+[00:23:00] Sam Okafor: That makes sense, on-site is the right call there for a group like that. Let's find a date — maybe first or second week of September sometime?
+[00:23:11] Felix Arden: That should work on our end. Let me check with my team on scheduling and I'll get back to you on which exact day works best for everybody, probably by early next week.
+[00:23:26] Sam Okafor: Perfect, just let me know whenever and I'll get someone booked on our side.
+[00:23:32] Felix Arden: Will do.
+[00:23:34] Sam Okafor: How's staffing otherwise? Last time we talked you mentioned some turnover on the biomed side of things.
+[00:23:42] Felix Arden: It's stabilized some since then. We lost two techs earlier in the year, one retired and one moved out of state with a spouse's job, but we've backfilled both those roles now, plus we're adding the three new positions on top of that, so we're actually in better shape headcount-wise than we've been in a while.
+[00:24:05] Sam Okafor: That's good to hear, turnover on a team like yours can really drag things out operationally when you're short-staffed.
+[00:24:13] Felix Arden: Yeah, it makes a big difference having full staffing, especially heading into flu season when everything ramps up around here fast. Last year we were down two people right when volumes spiked and it was not a fun few months.
+[00:24:30] Sam Okafor: I remember you mentioning that at the time, yeah. Glad it's in better shape this year.
+[00:24:37] Felix Arden: Me too, honestly.
+[00:24:39] Sam Okafor: While we're talking budget-adjacent stuff, any sense yet of what next fiscal year looks like for you capital-wise? I know it's early, but if there's anything on the radar I'd rather hear it now than in a rush in the spring.
+[00:24:56] Felix Arden: Nothing formal yet, budgets don't really firm up here until closer to December, but informally I'd guess we'll be looking at expanding the T3 footprint if the trial goes well, and probably a modest bump to our spare parts inventory regardless of what happens with the pumps themselves. We've been running a little leaner on spares than I'd like.
+[00:25:21] Sam Okafor: Good to know, I'll keep that in mind and can put together some preliminary numbers whenever you want them, even informally, nothing that commits you to anything.
+[00:25:33] Felix Arden: That'd be useful, yeah, even just as a starting point for internal conversations.
+[00:25:39] Sam Okafor: Alright, before we wrap up, can you give me a quick fleet update? I want to make sure my numbers match what's actually sitting on your floors, our records can lag behind reality sometimes.
+[00:25:53] Felix Arden: Yeah, let me think through it for a second. ⟦F26⟧So right now we've got forty T2 pumps in active rotation across the hospital — that number's held pretty steady all year, we haven't added or retired any recently. And then separately, we're trialling four of the T3 units up on med-surg, that kicked off a few weeks ago.⟦/F26⟧ Plan is to run that trial through the end of the quarter before we make any kind of decision on it either way.
+[00:26:26] Sam Okafor: Good, that lines up with what I've got on my end too. How's the T3 trial going so far, anything jumping out at you either good or bad?
+[00:26:38] Felix Arden: Too early to say anything definitive one way or the other. The nurses seem to like the screen, it's easier to read at a glance than the T2 display, and a couple of the alarm behaviors seem a bit more intuitive to them. One of the charge nurses mentioned the new handle design is easier to maneuver through doorways too, which isn't something I would've thought to ask about, but apparently it matters a lot when you're wheeling these things around all shift.
+[00:27:12] Sam Okafor: Ha, that's a good data point, definitely not something that shows up in a spec sheet.
+[00:27:19] Felix Arden: Right, exactly. But I want a full quarter of real use before I'd say anything more concrete than that, one floor over a few weeks isn't really enough to draw conclusions from yet.
+[00:27:33] Sam Okafor: Fair enough, I'd love to hear more once you've got that data, even informally before any kind of official readout, doesn't need to be a whole presentation.
+[00:27:45] Felix Arden: Yeah, I'll keep you posted as we go, doesn't have to wait for some big formal thing on it.
+[00:27:53] Sam Okafor: Actually, since we're talking fleet numbers, are you tracking utilization on the T3 trial units separately, or just folding them into the general reporting for now?
+[00:28:05] Felix Arden: Separately for now, yeah, I set up a simple log so we can compare utilization and any downtime side by side with a matched set of T2 units on the same floor. Nothing fancy, just a spreadsheet, but it should give us something concrete to look at come end of quarter.
+[00:28:26] Sam Okafor: That's smart, and if you want, our clinical team can help build out a slightly more formal comparison template, be less work on your end than building it from scratch.
+[00:28:39] Felix Arden: Yeah, that'd actually save me some time, I'll take you up on that.
+[00:28:44] Sam Okafor: I'll get that sent over in the next week or two along with everything else.
+[00:28:51] Felix Arden: Sounds good. Also, are the four T3 trial units part of a broader regional rollout, or is that just specific to us right now?
+[00:29:01] Sam Okafor: It's happening at a handful of accounts right now, you're actually one of the earlier ones in the territory to have units live and running, so your feedback carries a decent amount of weight for how the broader rollout gets shaped.
+[00:29:18] Felix Arden: Good to know, no pressure then.
+[00:29:22] Sam Okafor: Ha, a little pressure, sure, but in a good way.
+[00:29:27] Felix Arden: Fair enough. I'll make sure whatever we send back is useful and not just vague impressions.
+[00:29:34] Sam Okafor: That's all I'd ask. Alright, let me just recap real quick so we're aligned — I'll send the renewal packet and updated service manuals early next week, get the integration team scheduled for a call about the Link lag, and get a date locked in for T2 training the first or second week of September once you confirm with your team.
+[00:29:59] Felix Arden: That all matches what I've got. I'll get back to you on the training date by early next week like I said.
+[00:30:08] Sam Okafor: Perfect, and I'll have that shipment follow-up email to you by tomorrow as promised.
+[00:30:14] Felix Arden: Great, appreciate you running through all that.
+[00:30:18] Sam Okafor: Of course. Okay, I think that covers everything on my list for today. Anything else on your end before we hop off?
+[00:30:28] Felix Arden: No, I think that covers it on my end too. Oh, actually, are you around next week, or is this a holiday week for you guys with Labor Day?
+[00:30:39] Sam Okafor: I'm off the Monday, back Tuesday, but reachable by email regardless if anything urgent comes up over the weekend.
+[00:30:48] Felix Arden: Good to know, though hopefully nothing urgent comes up, we've had enough excitement for one month already between the shipment and everything in July.
+[00:30:58] Sam Okafor: Ha, fair, let's aim for boring the rest of August.
+[00:31:04] Felix Arden: Agreed, boring is underrated. Just get me that email on the shipment thing when you can, and the renewal packet whenever it's ready to go, no rush on the exact day.
+[00:31:17] Sam Okafor: You'll have both by tomorrow, I'll make sure of it personally. And thanks for flagging the shipment issue directly with me, better I hear it from you than find out some other way down the line.
+[00:31:32] Felix Arden: Of course, that's what these calls are for. Appreciate you staying on top of it, and good luck Saturday with the soccer game.
+[00:31:42] Sam Okafor: Ha, thank you, we'll need it, this team we're playing is undefeated so far. Alright, have a good rest of your week, Felix.
+[00:31:52] Felix Arden: You too, Sam. Talk soon.

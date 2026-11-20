@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ note.title }} — Portolan{% endblock %}
+{% block content %}
+<p class="eyebrow"><a href="/notes/{{ note.slug }}">&larr; {{ note.title }}</a></p>
+<h1 style="margin-top:0;">Edit {% if claim %}claim{% elif note.type.value == 'context' %}company context{% else %}synthesis{% endif %}</h1>
+<p class="muted">
+  Every edit is recorded — who, when, before and after — and appears on the note as
+  <span class="mono">^[edit:name date]</span>.
+  {% if not claim and note.type.value == 'context' %}
+    Keep it under 2,500 characters — the save is rejected if it runs long.
+  {% endif %}
+</p>
+<form method="post" action="/notes/{{ note.slug }}/edit" class="card">
+  {% if claim %}
+    <input type="hidden" name="claim_id" value="{{ claim.id }}">
+    <p class="claim-cite">
+      {{ claim.fact_type }} · {{ claim.source_slug }} @ {{ claim.locator }}
+    </p>
+  {% endif %}
+  <div class="field">
+    <label for="after_text">{% if claim %}Claim text{% elif note.type.value == 'context' %}Company context{% else %}Synthesis{% endif %}</label>
+    <textarea id="after_text" name="after_text" required>{{ claim.claim_text if claim else (note.synthesis or '') }}</textarea>
+  </div>
+  <div class="field">
+    <label for="reason">Reason for this edit</label>
+    <input type="text" id="reason" name="reason" placeholder="e.g. corrected renewal date per Priya">
+  </div>
+  <button type="submit" class="btn primary">Save edit</button>
+</form>
+{% endblock %}

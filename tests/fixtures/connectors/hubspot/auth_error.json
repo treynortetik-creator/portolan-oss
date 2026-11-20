@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "message": "This oauth token does not have the required scopes to make this call.",
+  "correlationId": "mock-correlation-id"
+}

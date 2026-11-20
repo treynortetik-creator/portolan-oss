@@ -1,0 +1,34 @@
+{
+  "id": "S-ticket-024",
+  "requester": "Felix Arden",
+  "account": "Larkspur North Hospital",
+  "created": "2026-07-09",
+  "subject": "False occlusion alarms on three T2 pumps at Larkspur North",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Felix Arden",
+      "body": "We've had three Tidewater T2 pumps at Larkspur North throwing occlusion alarms with no actual occlusion, all within the last couple of weeks this July. Nursing is getting frustrated resetting them mid-infusion."
+    },
+    {
+      "number": 2,
+      "author": "Sam Okafor",
+      "body": "Thanks for flagging, Felix. Can you send me the serial numbers on those three units and roughly what time of day the alarms tend to trip? Want to rule out a line-set batch issue before we escalate to engineering."
+    },
+    {
+      "number": 3,
+      "author": "Felix Arden",
+      "body": "Serials are on their way over in a separate email to keep this ticket clean. Mostly happening on the overnight shift so far, no clear pattern on line-set lot numbers yet."
+    },
+    {
+      "number": 4,
+      "author": "Sam Okafor",
+      "body": "Got the serials, thanks. Opening a field engineering case to get eyes on the pumps directly rather than guessing over email. Will keep this ticket updated."
+    },
+    {
+      "number": 5,
+      "author": "Felix Arden",
+      "body": "Sounds good. Will keep an eye on it in the meantime and let you know if a fourth pump starts doing the same thing."
+    }
+  ]
+}

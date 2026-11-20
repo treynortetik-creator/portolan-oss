@@ -1,0 +1,25 @@
+{
+  "subject": "Duplicate charge on May HalvardCare invoice",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Owen Castellane",
+      "body": "Hi team — pulled up our May 1 HalvardCare invoice for a second look and line item 14 appears twice, both billed at the same amount. ⟦F13⟧That's a duplicated line item of $4,800 on the invoice dated 2026-05-01, and we'd like it corrected before we remit payment.⟦/F13⟧ Can someone confirm and issue a credit memo?"
+    },
+    {
+      "number": 2,
+      "author": "Priya Natarajan",
+      "body": "Thanks for catching that, Owen. Pulling the invoice now to confirm on our side — will follow up with a corrected invoice or credit memo by end of week."
+    },
+    {
+      "number": 3,
+      "author": "Priya Natarajan",
+      "body": "Confirmed the duplicate line and issued a credit memo for the difference, sent to your billing contact this morning. Sorry for the trouble."
+    },
+    {
+      "number": 4,
+      "author": "Owen Castellane",
+      "body": "Got it, that matches what I expected. Closing this out on our end — thanks for the quick turnaround."
+    }
+  ]
+}

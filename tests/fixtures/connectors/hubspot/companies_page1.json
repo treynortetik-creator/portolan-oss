@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "id": "5001",
+      "properties": {
+        "name": "Ashgrove Health",
+        "domain": "ashgrovehealth.org",
+        "annualrevenue": "2350000"
+      },
+      "createdAt": "2026-01-05T00:00:00.000Z",
+      "updatedAt": "2026-08-20T14:03:00.000Z",
+      "archived": false
+    }
+  ],
+  "paging": {"next": {"after": "cursor-page-2", "link": "https://api.hubapi.com/crm/v3/objects/companies?after=cursor-page-2"}}
+}

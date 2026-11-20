@@ -1,0 +1,595 @@
+[00:00:00] Sam Okafor: Morning, everyone. Can you all hear me? I think we have a little echo on my side.
+
+[00:00:08] Gwen Marsh: I can hear you. Felix?
+
+[00:00:11] Felix Arden: Yes, loud and clear. I’m in the engineering conference room, and someone’s running a cart down the corridor, so apologies if that comes through.
+
+[00:00:17] Kenji Mori: I’m good here. I’ve got the notes from our last discussion open.
+
+[00:00:22] Sam Okafor: Great. Thanks for making the time. I know this is a busy Tuesday. The aim today was to close out the configuration discussion, talk through the consumables position, and make sure we leave with a practical sequence rather than another list of open questions.
+
+[00:00:36] Gwen Marsh: That works for me. I’ve got about an hour, maybe a little more if we need it, but I’d like to get to a decision early and then use the rest of the call for the implementation details.
+
+[00:00:44] Sam Okafor: Understood. Before we get into the details, is everyone comfortable with the agenda I sent around?
+
+[00:00:49] Felix Arden: Yes. I added two notes on the integration section, but they’re not blockers for the opening discussion.
+
+[00:00:54] Kenji Mori: Same here. I want to make sure we distinguish what can be delivered as part of the standard deployment from what needs a separate engineering workstream.
+
+[00:01:01] Gwen Marsh: Right. And just so we’re not circling around the main point, Larkspur Regional Health decided today, June 9, 2026, to standardise both hospitals on the Tidewater T3 by June 2027.
+
+[00:01:16] Sam Okafor: That’s very helpful to hear, Gwen. Congratulations, I suppose, and thank you for being direct. When you say both hospitals, you mean North Campus and Riverside?
+
+[00:01:21] Gwen Marsh: Yes, both. We’ve completed the internal review. The clinical teams are aligned enough, procurement is aligned, and the executive committee wants one platform rather than carrying two operating models.
+
+[00:01:30] Felix Arden: That matches what I heard from the technical group. There’s still a lot to do, but the direction is clear.
+
+[00:01:35] Kenji Mori: And June gives us a reasonable window, provided we don’t treat the last month as the planning month.
+
+[00:01:39] Gwen Marsh: Exactly. We’re not asking you to turn up with equipment in June and hope everyone figures it out. We need the sequence now, including validation, training, network work, and the transition from the existing systems.
+
+[00:01:48] Sam Okafor: Let’s take that in order. Kenji, could you give us the current view of the T3 rollout path?
+
+[00:01:55] Kenji Mori: Sure. At a high level, we’d begin with a site-readiness assessment at each hospital. That covers room layout, power, network drops, device placement, service access, and the local biomedical requirements. After that, we’d confirm the deployment design, ship the first units, run acceptance testing, and then move into supervised clinical use.
+
+[00:02:12] Felix Arden: Does the assessment happen separately at each site, or can some of it be done centrally?
+
+[00:02:17] Kenji Mori: The documentation can be central, but the physical survey needs to happen at both sites. The room constraints aren’t identical, and the support model at Riverside is different from North Campus.
+
+[00:02:27] Gwen Marsh: That’s what we expected. Riverside has the newer service corridor, but North Campus has the more complicated patient-flow pattern.
+
+[00:02:33] Sam Okafor: Do you already have preferred weeks for the site visits?
+
+[00:02:38] Gwen Marsh: Not yet. We can identify them quickly once we know the staffing assumptions. I don’t want to book a visit during one of our peak clinical periods and then have half the required people unavailable.
+
+[00:02:45] Felix Arden: I can provide the engineering availability. The bigger question is whether the survey needs someone from your facilities team, someone from biomed, and someone from information services at the same time.
+
+[00:02:51] Kenji Mori: Ideally, yes, for at least part of the day. We don’t need every specialist in every room, but we do need a person who can answer questions on the spot. It saves a lot of back-and-forth later.
+
+[00:03:00] Sam Okafor: We can send a checklist beforehand so people know which sections apply to them.
+
+[00:03:06] Gwen Marsh: Please do. We’ve had projects where the checklist arrives after the visit, which is not terribly useful.
+
+[00:03:10] Sam Okafor: Fair point. We’ll make sure it’s in advance.
+
+[00:03:13] Felix Arden: On the technical side, I want to clarify the current T3 configuration. Are we discussing the standard unit, or the version with the additional monitoring package?
+
+[00:03:21] Kenji Mori: The current proposal is the standard T3 with the monitoring package available as an option. We should confirm whether the clinical use cases require that option at both sites or only in selected areas.
+
+[00:03:28] Gwen Marsh: The clinical team is still reviewing that. They’ve identified a few departments where it would be useful, but they haven’t asked us to include it everywhere.
+
+[00:03:35] Sam Okafor: That’s manageable. We can price the base deployment separately from the optional package so the approval path is clear.
+
+[00:03:42] Felix Arden: Good. I’d also like a written statement on compatibility with the current support tools. We have different age profiles across the two hospitals, and I don’t want to assume the older tools are interchangeable.
+
+[00:03:50] Kenji Mori: We can provide that. The T3 has a defined interface set, but we’ll need the asset and software details from Larkspur to confirm the exact combination.
+
+[00:03:58] Gwen Marsh: We can get those to you. Felix, can your team own the inventory, or do you need help from site operations?
+
+[00:04:04] Felix Arden: My team can own it, though I’ll need the local leads to verify what’s physically installed. The database is not perfectly current.
+
+[00:04:11] Sam Okafor: That’s common. We’ll include an inventory verification step in the plan.
+
+[00:04:15] Gwen Marsh: Good. I’d like the plan to show owners, not just activities. If something is waiting on us, say who on our side owns it. If it’s waiting on Tidewater, I want a Tidewater name next to it.
+
+[00:04:23] Kenji Mori: Agreed. We’ll put a RACI-style table in the first draft.
+
+[00:04:27] Sam Okafor: And we’ll schedule a weekly working call once the plan is approved. It doesn’t need to be a large meeting. We can keep the core group small and pull in specialists when required.
+
+[00:04:33] Gwen Marsh: That’s preferable. Large calls make it harder to tell whether anything has actually moved.
+
+[00:04:38] Felix Arden: I’m going to be slightly difficult on the word “approved.” We have internal approval for the direction, but the detailed deployment plan still needs to go through our operations committee.
+
+[00:04:44] Gwen Marsh: That’s fair. The direction is decided; the execution plan still has gates.
+
+[00:04:50] Sam Okafor: Understood. We’ll separate the decision from the execution approvals in the documentation.
+
+[00:04:55] Kenji Mori: There’s also the question of sequencing the two hospitals. We could run them in parallel, but that increases demand on your local teams. Alternatively, we could start at North Campus, stabilize, and then move to Riverside.
+
+[00:05:04] Gwen Marsh: My instinct is to avoid two simultaneous go-lives. We can do preparatory work in parallel, but the first clinical transition should give us a chance to learn before we repeat it.
+
+[00:05:11] Felix Arden: I agree. North Campus has more complexity, though, so beginning there could expose issues earlier.
+
+[00:05:16] Gwen Marsh: That is precisely why some people will argue for Riverside first. It’s the easier site. But I don’t want the harder site pushed into a compressed window.
+
+[00:05:23] Kenji Mori: We could do the technical groundwork at North Campus first, then use Riverside as the first operational transition if the readiness results support it.
+
+[00:05:31] Sam Okafor: That gives us flexibility without committing to the order today.
+
+[00:05:35] Gwen Marsh: Yes, but I want a recommendation in the draft rather than a blank box. We can change it once we see the readiness information.
+
+[00:05:41] Kenji Mori: We’ll include a recommended order, the assumptions behind it, and the conditions that would cause us to reverse the order.
+
+[00:05:47] Felix Arden: Include training capacity in those conditions. Our trainers are strong, but they’re not unlimited.
+
+[00:05:53] Gwen Marsh: And include the clinical super-users. They’re often the difference between a smooth change and a lot of informal workarounds.
+
+[00:05:59] Sam Okafor: We can set up a super-user workshop before the first site deployment.
+
+[00:06:03] Felix Arden: Would that workshop be virtual or on-site?
+
+[00:06:07] Kenji Mori: Initial sessions can be virtual. The practical sessions should be on-site, with the actual configuration and workflow.
+
+[00:06:14] Gwen Marsh: That makes sense. Our teams will need to see the equipment in the rooms where they’ll use it.
+
+[00:06:19] Sam Okafor: I’ll note that as a requirement.
+
+[00:06:22] Felix Arden: One other thing. The engineering group wants a clear maintenance model. We need to know which checks remain with Larkspur and which are covered by Tidewater service.
+
+[00:06:28] Kenji Mori: We have a standard maintenance matrix. I’ll send it with the plan. It covers routine checks, escalation thresholds, replacement parts, and response paths.
+
+[00:06:35] Gwen Marsh: Please make the response paths specific to each hospital. The local contacts aren’t the same.
+
+[00:06:39] Sam Okafor: We can create separate contact trees and then one central escalation path.
+
+[00:06:43] Felix Arden: Good. We’ve had cases where the central number was available, but nobody knew whether the local team had been notified.
+
+[00:06:48] Kenji Mori: The service portal can show the case owner and local notification status. We can demonstrate that during the working session.
+
+[00:06:53] Gwen Marsh: Put the demonstration on the agenda, but don’t make it the whole meeting. I want the implementation plan to remain the main deliverable.
+
+[00:06:58] Sam Okafor: Absolutely.
+
+[00:07:01] Felix Arden: Can we talk about the existing T2 fleet? The T3 decision is clear, but we still need to manage what is already in use.
+
+[00:07:06] Gwen Marsh: Yes. We have active T2 units at both hospitals, and the transition needs to be orderly. Some areas may need T2 coverage until the T3 deployment is accepted.
+
+[00:07:13] Kenji Mori: We can map the transition by department. The first step is to identify which units are staying temporarily, which are being replaced, and which can be released.
+
+[00:07:20] Felix Arden: That map should include consumables. The clinical teams are concerned about running two supply patterns for longer than necessary.
+
+[00:07:26] Gwen Marsh: Exactly. We don’t want a situation where the equipment is standardized but the consumables are split across shelves and ordering codes.
+
+[00:07:31] Sam Okafor: We can provide a transition table that shows the unit, the associated consumable, the expected change date, and the ordering owner.
+
+[00:07:36] Gwen Marsh: Good. Keep it simple enough for procurement and materials management to use.
+
+[00:07:40] Kenji Mori: We’ll also need an estimate of the monthly usage by site so the supply plan reflects the expanded T3 footprint.
+
+[00:07:46] Gwen Marsh: We can give you the current usage, but the future number should come from the rollout assumptions. Our volumes may change as more departments move over.
+
+[00:07:51] Sam Okafor: We’ll model a baseline and a higher-use case, then review the assumptions with you.
+
+[00:07:56] Felix Arden: That would help. The engineering team can’t make a supply forecast, but we can identify where use will increase after the transition.
+
+[00:08:01] Gwen Marsh: Fine. Just make sure the forecast isn’t presented as a commitment before we’ve reviewed it.
+
+[00:08:06] Sam Okafor: Understood.
+
+[00:08:08] Kenji Mori: Before we move to commercial terms, I want to ask about the timing of the renewal. Are you treating the T2 consumables renewal and the T3 purchase as one approval, or separate approvals?
+
+[00:08:16] Gwen Marsh: They will probably move through related but separate paths. The equipment decision is one thing. The recurring supply agreement needs its own review, especially because it spans the transition period.
+
+[00:08:24] Sam Okafor: That’s useful. I can prepare the paperwork so the two decisions are easy to compare without forcing them into one document.
+
+[00:08:29] Gwen Marsh: Yes, do that. I don’t want a bundled document that makes it difficult to see the recurring cost.
+
+[00:08:35] Felix Arden: And the transition period may be longer at one site than the other, which affects the supply assumptions.
+
+[00:08:40] Kenji Mori: We’ll account for that in the model.
+
+[00:08:43] Sam Okafor: Shall we take five minutes on commercial expectations, then return to the technical schedule?
+
+[00:08:47] Gwen Marsh: Yes. I’d rather put our position on the table now.
+
+[00:08:51] Sam Okafor: Go ahead.
+
+[00:08:54] Gwen Marsh: For the renewal, given the increased volume and the fact that we’re standardizing the platform across both hospitals, we'd be looking for something around twelve points off on Tidewater T2 consumables at the 2027 renewal.
+
+[00:09:08] Sam Okafor: That’s clear. I’ll take that back as the commercial expectation. Is the expectation tied to a minimum volume, or are you asking us to base it on the combined hospital volume as it develops?
+
+[00:09:16] Gwen Marsh: The combined volume as it develops, with a reasonable baseline agreed during the renewal discussion. We don’t want to commit to an artificial number that the rollout plan doesn’t support.
+
+[00:09:22] Sam Okafor: Understood. We’ll need to review the forecast and the timing. The expanded footprint is relevant, but the actual discount structure may depend on the ordering profile.
+
+[00:09:28] Gwen Marsh: That’s fair. I’m not asking you to approve it on this call. I am asking that it be treated as a serious part of the renewal conversation, not as an afterthought.
+
+[00:09:33] Sam Okafor: It will be. I’ll document it separately from the equipment pricing.
+
+[00:09:38] Kenji Mori: Does the commercial discussion affect the deployment sequence?
+
+[00:09:42] Gwen Marsh: No, not the sequence. We’ve made the platform decision. The commercial terms need to work, but they shouldn’t be used to reopen the technical decision.
+
+[00:09:48] Felix Arden: That distinction is helpful for the engineering plan.
+
+[00:09:51] Sam Okafor: I’ll also ask our finance team to provide a clear view of the recurring and one-time elements.
+
+[00:09:56] Gwen Marsh: Please include service and training. Those are often omitted from the first comparison and then appear later.
+
+[00:10:00] Sam Okafor: Yes, we’ll show them.
+
+[00:10:03] Kenji Mori: On training, do you have a preferred model for super-users?
+
+[00:10:07] Felix Arden: We normally designate a group at each hospital, then have them support department-level training. But their release time needs to be planned.
+
+[00:10:13] Gwen Marsh: And we need to avoid assuming that someone can be a super-user simply because they are available. The department heads need to nominate people who are actually respected by their colleagues.
+
+[00:10:20] Kenji Mori: That’s a good point. We can give you a role profile rather than just asking for names.
+
+[00:10:25] Sam Okafor: The role profile can include expected attendance, practical competency, and post-go-live support.
+
+[00:10:30] Felix Arden: Include escalation boundaries. Super-users shouldn’t become an unofficial service desk.
+
+[00:10:34] Gwen Marsh: Absolutely. They can answer workflow questions, but technical faults need to follow the service process.
+
+[00:10:39] Kenji Mori: We’ll make that explicit.
+
+[00:10:42] Sam Okafor: Let’s return to dates. If the target is June next year, when do you need the draft plan?
+
+[00:10:47] Gwen Marsh: I’d like a first draft within two weeks. It doesn’t have to be polished, but it needs to show the major workstreams, dependencies, and decision points.
+
+[00:10:53] Kenji Mori: Two weeks is achievable for a first draft if we receive the current site information promptly.
+
+[00:10:57] Felix Arden: I can send the engineering inventory by the end of this week. Facilities may take longer.
+
+[00:11:02] Gwen Marsh: I’ll ask facilities to treat it as a priority. Sam, send me the exact information request today so I can forward it without rewriting it.
+
+[00:11:08] Sam Okafor: I’ll do that after the call.
+
+[00:11:11] Kenji Mori: For the draft, we’ll use assumptions where data is missing and label them clearly. We won’t let missing details hold up the structure.
+
+[00:11:15] Gwen Marsh: Good. Assumptions are fine if they are visible.
+
+[00:11:18] Felix Arden: What about validation? Does each hospital need a separate validation package?
+
+[00:11:24] Kenji Mori: There will be a common core, but each site needs local acceptance criteria. The rooms, network paths, and user groups differ.
+
+[00:11:32] Felix Arden: And will Larkspur own the final sign-off?
+
+[00:11:36] Kenji Mori: Larkspur owns operational acceptance. Tidewater supports the testing and provides the evidence package.
+
+[00:11:41] Gwen Marsh: That’s the right split. We need the evidence, but the decision to accept the system has to remain with our clinical and engineering leads.
+
+[00:11:47] Sam Okafor: We’ll document the sign-off authorities by workstream.
+
+[00:11:51] Felix Arden: Please include a path for defects found after acceptance. We need to distinguish a defect from a local workflow change.
+
+[00:11:57] Kenji Mori: Yes. We’ll use the standard issue classification and review it during the readiness meetings.
+
+[00:12:02] Gwen Marsh: Fine.
+
+[00:12:04] Sam Okafor: I’m checking the time. We’re about halfway through the scheduled slot, and we’ve covered the decision, the broad sequence, and the commercial expectation. I’d like to spend the next section on systems and data, then finish with owners and immediate actions.
+
+[00:12:17] Felix Arden: That’s the right order.
+
+[00:12:20] Kenji Mori: Felix, could you outline the systems concerns you want us to address?
+
+[00:12:24] Felix Arden: There are three. First, device connectivity and the network path. Second, user authentication and account ownership. Third, the reporting flow into our clinical and operational systems. I don’t want those treated as one generic integration item.
+
+[00:12:34] Gwen Marsh: Agreed. They have different owners on our side.
+
+[00:12:37] Sam Okafor: Kenji, can Tidewater split those into separate workstreams?
+
+[00:12:41] Kenji Mori: Yes. We can show network readiness, identity and access, and application integration separately.
+
+[00:12:45] Felix Arden: Good. For network readiness, we need the traffic requirements, any firewall rules, and the monitoring expectations.
+
+[00:12:51] Kenji Mori: We’ll provide the technical requirements. Your network team can then confirm whether the current environment supports them.
+
+[00:12:56] Gwen Marsh: And if it doesn’t, I want the remediation work identified early, including who pays and who schedules it.
+
+[00:13:02] Sam Okafor: We’ll include that as a dependency.
+
+[00:13:04] Felix Arden: For identity, we need to know whether the T3 supports our current authentication pattern without creating a separate account process for every department.
+
+[00:13:10] Kenji Mori: The platform supports centralized authentication options, but the exact setup depends on your directory and policy environment.
+
+[00:13:17] Felix Arden: Then we’ll need a technical workshop with our identity team, not just a line in the plan.
+
+[00:13:21] Kenji Mori: Agreed.
+
+[00:13:24] Gwen Marsh: Put that workshop in the first month of planning. I don’t want identity decisions deferred until the equipment is already on site.
+
+[00:13:28] Sam Okafor: Noted.
+
+[00:13:31] Felix Arden: On reporting, we have operational dashboards that depend on consistent identifiers. If the new units generate different labels, the reporting team needs to know before they build anything.
+
+[00:13:38] Kenji Mori: We can provide the identifier format and sample outputs.
+
+[00:13:44] Felix Arden: Include error conditions and downtime behavior. The normal path is rarely the issue.
+
+[00:13:49] Kenji Mori: We’ll include those in the interface specification.
+
+[00:13:52] Gwen Marsh: Who should receive that specification?
+
+[00:13:55] Felix Arden: I’ll coordinate the engineering review, but information services and reporting need copies.
+
+[00:14:00] Sam Okafor: I’ll list you as the initial owner and add the other groups as reviewers.
+
+[00:14:03] Gwen Marsh: Fine.
+
+[00:14:05] Kenji Mori: I also want to clarify the boundary between Tidewater Link and the T3 device platform, because the deployment schedule may depend on which interface is needed at which site.
+
+[00:14:12] Felix Arden: That’s one of the items I wanted to get to. We have an Epic environment at Larkspur, and the integration request needs to be treated as a project deliverable, not a nice-to-have.
+
+[00:14:19] Gwen Marsh: Yes. It’s important enough that it needs a date and an owner.
+
+[00:14:22] Sam Okafor: We can put the integration discovery into the early planning phase and then confirm the build sequence once the interface requirements are agreed.
+
+[00:14:27] Felix Arden: Does the standard package include the discovery work?
+
+[00:14:31] Kenji Mori: The initial discovery and technical assessment are part of the standard planning process. Any custom development would need to be assessed separately.
+
+[00:14:36] Gwen Marsh: Then make sure the plan distinguishes assessment, configuration, testing, and any custom work.
+
+[00:14:42] Kenji Mori: We will.
+
+[00:14:44] Sam Okafor: Do you have an existing Epic contact who should join the first workshop?
+
+[00:14:48] Felix Arden: Yes, I can provide the name after I confirm availability. The person who owns the interface standards is different from the person who manages the production environment.
+
+[00:14:56] Gwen Marsh: Include both if possible. We’ve had technical decisions made by one group that the production group then had to unwind.
+
+[00:15:01] Sam Okafor: That’s a useful warning.
+
+[00:15:03] Kenji Mori: We’ll ask for both roles and define their responsibilities in the workshop invitation.
+
+[00:15:07] Felix Arden: Good.
+
+[00:15:09] Gwen Marsh: Also, when you send the interface information, avoid assuming that the people reading it understand Tidewater terminology. Our application teams will need a plain-language overview before the technical appendix.
+
+[00:15:17] Kenji Mori: We can provide a short overview followed by the detailed specification.
+
+[00:15:21] Sam Okafor: That should help with internal circulation.
+
+[00:15:24] Felix Arden: There’s another question around data ownership. If a record is entered at the device and then passed through the interface, which system is the source of truth?
+
+[00:15:31] Kenji Mori: That depends on the data element. We’ll define it in the interface mapping. Some values originate on the device, while patient and encounter context may originate in the hospital system.
+
+[00:15:40] Felix Arden: I want that mapping reviewed by both engineering and clinical informatics.
+
+[00:15:44] Gwen Marsh: Add clinical informatics as a formal reviewer.
+
+[00:15:47] Sam Okafor: Done.
+
+[00:15:49] Kenji Mori: For testing, we’ll need representative scenarios, including normal operation, interrupted connectivity, and user correction.
+
+[00:15:55] Felix Arden: We can supply scenarios, but Tidewater should provide the test harness or test method.
+
+[00:16:00] Kenji Mori: We’ll provide the method and sample cases. Larkspur will confirm the local workflow scenarios.
+
+[00:16:05] Gwen Marsh: That split is reasonable.
+
+[00:16:07] Sam Okafor: Should the testing happen at one hospital first and then be repeated at the second?
+
+[00:16:11] Felix Arden: The core test should be reusable, but each site needs a local confirmation. I don’t want a result at North Campus treated as automatic evidence for Riverside.
+
+[00:16:18] Kenji Mori: Agreed. We can carry forward the common evidence and add site-specific results.
+
+[00:16:22] Gwen Marsh: Good.
+
+[00:16:24] Sam Okafor: Let’s talk about data migration, if there is any.
+
+[00:16:28] Felix Arden: We are not planning a broad historical migration into the T3 environment. There may be reference data and configuration data, but not a full historical transfer.
+
+[00:16:35] Kenji Mori: That simplifies the schedule. We still need to define what reference data is required and who validates it.
+
+[00:16:40] Gwen Marsh: The clinical operations team should validate the department and workflow lists. Engineering can validate the technical settings.
+
+[00:16:45] Felix Arden: Yes.
+
+[00:16:47] Sam Okafor: We’ll split the data checklist accordingly.
+
+[00:16:50] Kenji Mori: Are there any retention or audit requirements we should capture?
+
+[00:16:55] Felix Arden: There are, but our compliance team owns the detailed interpretation. We can arrange a review once the interface and reporting scope is clearer.
+
+[00:17:00] Gwen Marsh: Put compliance on the stakeholder list now, even if their review comes later.
+
+[00:17:04] Sam Okafor: Will do.
+
+[00:17:06] Kenji Mori: For the planning draft, we’ll include a stakeholder map with required, optional, and review-only roles.
+
+[00:17:11] Gwen Marsh: That will be useful. People often confuse “copied on an email” with “responsible for an approval.”
+
+[00:17:16] Felix Arden: Exactly.
+
+[00:17:18] Sam Okafor: We’ve got about twenty minutes left. I’d like to cover service transition and then close with dates. Is everyone comfortable with that?
+
+[00:17:23] Gwen Marsh: Yes.
+
+[00:17:24] Felix Arden: Works for me.
+
+[00:17:25] Kenji Mori: Yes.
+
+[00:17:27] Sam Okafor: On service transition, do you want the current support desk to handle the T3 from day one, or a dedicated Tidewater path during the initial period?
+
+[00:17:33] Felix Arden: A hybrid path initially. The local desk should remain the first contact for ordinary user questions, but technical incidents should route to Tidewater with visibility to our engineering team.
+
+[00:17:40] Kenji Mori: We can define severity levels and handoff rules.
+
+[00:17:44] Gwen Marsh: Include after-hours coverage. We operate around the clock, and “business hours” is not a sufficient answer for a clinical system.
+
+[00:17:48] Sam Okafor: I’ll ask service operations to provide the coverage details.
+
+[00:17:51] Felix Arden: Also include replacement equipment. What happens if a unit is unavailable during the transition?
+
+[00:17:55] Kenji Mori: We can discuss loaner availability and the response target for replacement. That will depend on the final deployment quantity and service package.
+
+[00:18:01] Gwen Marsh: Put both options in the proposal. We need to understand the trade-off.
+
+[00:18:05] Sam Okafor: Okay.
+
+[00:18:06] Felix Arden: The service team will need access to our asset records. That should be part of the onboarding checklist.
+
+[00:18:11] Kenji Mori: Yes, and we’ll confirm what information is required for each asset.
+
+[00:18:14] Gwen Marsh: Keep access limited to what is necessary. Our security review will ask about that.
+
+[00:18:18] Sam Okafor: Understood.
+
+[00:18:20] Kenji Mori: For user support, we normally recommend a short period of enhanced coverage after each go-live. It gives us a faster way to identify recurring questions.
+
+[00:18:26] Felix Arden: How long is “short”?
+
+[00:18:29] Kenji Mori: Usually one to two weeks, depending on usage and issue volume.
+
+[00:18:33] Gwen Marsh: Put a proposed duration in the plan. “Depending” is fine as a condition, but I want a baseline.
+
+[00:18:38] Kenji Mori: We’ll use two weeks as the planning assumption and adjust if the readiness review supports something shorter.
+
+[00:18:42] Sam Okafor: Good.
+
+[00:18:44] Felix Arden: What reporting do we receive during that period?
+
+[00:18:47] Kenji Mori: We can provide a daily issue summary, open-item aging, and a recommendation on whether to continue enhanced coverage.
+
+[00:18:52] Gwen Marsh: Daily is appropriate for the first few days. After that, weekly may be enough.
+
+[00:18:56] Sam Okafor: We’ll show the cadence by phase.
+
+[00:18:59] Felix Arden: I’d also like a post-transition review after both hospitals are live, not just a sign-off at the first site.
+
+[00:19:04] Gwen Marsh: Yes. We should capture what changed between sites and what we want to improve before the program closes.
+
+[00:19:08] Kenji Mori: We’ll schedule a formal review after the second site.
+
+[00:19:11] Sam Okafor: Great.
+
+[00:19:13] Gwen Marsh: Let’s go back to the dates. If we want the first site transition early enough to protect the June target, what do you recommend?
+
+[00:19:18] Kenji Mori: I recommend completing the site-readiness assessments in the third quarter, finalizing the detailed design in the following period, and beginning the first deployment work early in the new year. That leaves time for acceptance and a second-site transition before the end of June.
+
+[00:19:28] Felix Arden: That seems sensible, provided the Epic work isn’t left until the final testing window.
+
+[00:19:33] Kenji Mori: It shouldn’t be. The integration discovery belongs near the start, and build and test activities should be visible as separate milestones.
+
+[00:19:37] Gwen Marsh: I want that dependency called out in the schedule.
+
+[00:19:41] Sam Okafor: It will be.
+
+[00:19:42] Felix Arden: We should also account for year-end change restrictions. Our production teams have a restricted period, and that may affect interface testing.
+
+[00:19:47] Gwen Marsh: Good catch. Felix, add the dates to the information request.
+
+[00:19:52] Felix Arden: I will.
+
+[00:19:53] Kenji Mori: We can plan non-production work around the restriction, but we’ll need the exact dates before we set the testing window.
+
+[00:19:58] Sam Okafor: I’ll add that as a scheduling assumption.
+
+[00:20:00] Gwen Marsh: Fine.
+
+[00:20:02] Sam Okafor: Immediate actions, then. I have: I’ll send the information request today; Tidewater will produce the first implementation draft within two weeks; Felix will provide the engineering inventory and the production restriction dates; and Kenji will provide the maintenance matrix and interface overview.
+
+[00:20:12] Felix Arden: Add the names of the Epic contacts once I confirm them.
+
+[00:20:16] Sam Okafor: Yes.
+
+[00:20:17] Gwen Marsh: Add facilities as an owner for the site information. I’ll speak with them directly after this call.
+
+[00:20:21] Sam Okafor: Noted.
+
+[00:20:23] Kenji Mori: I’ll also include the proposed hospital sequence in the draft, with the assumptions and reversal conditions.
+
+[00:20:27] Gwen Marsh: Good.
+
+[00:20:29] Felix Arden: And the equipment-to-consumables transition table.
+
+[00:20:32] Sam Okafor: Yes, that’s on the list.
+
+[00:20:34] Gwen Marsh: I want to make sure the renewal discussion is tracked separately from the rollout. The discount expectation is important, but it shouldn’t get buried in a deployment document.
+
+[00:20:41] Sam Okafor: I’ll create a separate commercial action and send a summary to our pricing team.
+
+[00:20:45] Gwen Marsh: Thank you.
+
+[00:20:46] Kenji Mori: Do you want a commercial review meeting before the first draft or after it?
+
+[00:20:50] Gwen Marsh: After the first draft, once the volume assumptions are visible. Otherwise we’ll be negotiating against guesses.
+
+[00:20:55] Sam Okafor: That makes sense. I’ll propose times for the week after the draft is delivered.
+
+[00:20:59] Felix Arden: Keep engineering off that meeting unless there’s a technical assumption affecting the price. We don’t need to use their time for a purely commercial discussion.
+
+[00:21:04] Gwen Marsh: Agreed.
+
+[00:21:06] Sam Okafor: We’ll keep the attendee list focused.
+
+[00:21:08] Kenji Mori: There’s one late item I want to make sure we don’t lose: the integration target. If the Epic work needs to be complete before the first clinical transition, we need to know that now.
+
+[00:21:13] Felix Arden: I agree. The application teams will want a clear target, not just “before go-live.”
+
+[00:21:18] Gwen Marsh: Yes, and I want it reflected in the formal request, not only in the meeting notes.
+
+[00:21:22] Sam Okafor: We can capture that in the action summary.
+
+[00:21:25] Gwen Marsh: More specifically, Larkspur Regional Health asked for Tidewater Link integration with its Epic instance by January 2027.
+
+[00:21:33] Kenji Mori: That’s clear. We’ll treat January as the requested target and identify any prerequisites that could put it at risk.
+
+[00:21:37] Felix Arden: I’ll make sure the Epic contacts and the environment details are included in the discovery package.
+
+[00:21:41] Sam Okafor: I’ll put the January target in the project assumptions and the commercial follow-up, since it may affect the implementation scope.
+
+[00:21:46] Gwen Marsh: Fine. If Tidewater believes January is not realistic, I want that surfaced early, with options. I don’t want a quiet slip followed by an explanation after the fact.
+
+[00:21:52] Kenji Mori: Understood. We’ll provide a confidence assessment once we review the interface requirements.
+
+[00:21:55] Felix Arden: And we’ll make the internal dependencies visible on our side.
+
+[00:21:57] Sam Okafor: Good.
+
+[00:21:59] Gwen Marsh: Anything else that would prevent the draft from being useful?
+
+[00:22:02] Kenji Mori: We’ll need the current equipment count, the site contacts, and any known room restrictions. If those arrive late, we can still issue the draft with assumptions, but the first version will be stronger if we have them.
+
+[00:22:09] Felix Arden: I’ll send the count and the engineering contacts. Facilities will need to confirm the rooms.
+
+[00:22:13] Gwen Marsh: I’ll push that today.
+
+[00:22:15] Sam Okafor: I’ll send one consolidated request rather than separate notes to each team.
+
+[00:22:19] Gwen Marsh: Good. Too many requests create conflicting answers.
+
+[00:22:21] Kenji Mori: We’ll also keep a decision log. That way, if a later workstream asks why a choice was made, we have the context.
+
+[00:22:25] Felix Arden: Please include the date and the approving role for each decision.
+
+[00:22:29] Gwen Marsh: Yes. Especially for anything that affects scope or sequence.
+
+[00:22:32] Sam Okafor: I’ll include a decision-log template in the pack.
+
+[00:22:34] Kenji Mori: One final question on communications. Do you want a central program mailbox or should we use the existing procurement thread?
+
+[00:22:39] Gwen Marsh: Use a central program mailbox for implementation matters. Procurement can remain on the commercial thread.
+
+[00:22:45] Felix Arden: That will make it easier to find technical decisions later.
+
+[00:22:47] Sam Okafor: I’ll ask your team for the address and make sure the project distribution list is current.
+
+[00:22:51] Gwen Marsh: Fine.
+
+[00:22:53] Kenji Mori: For the weekly call, should we start immediately or wait until the draft is circulated?
+
+[00:22:56] Gwen Marsh: Start once the draft is out. Before then, we can handle the information exchange by email.
+
+[00:23:00] Sam Okafor: I’ll propose a recurring slot beginning the following week.
+
+[00:23:03] Felix Arden: Tuesdays are difficult for engineering. Wednesday or Thursday would be better.
+
+[00:23:07] Gwen Marsh: Thursday morning is usually workable for me.
+
+[00:23:10] Kenji Mori: Thursday morning works.
+
+[00:23:11] Sam Okafor: I’ll send a Thursday option.
+
+[00:23:13] Gwen Marsh: And keep it to forty-five minutes unless there’s a specific reason to extend it.
+
+[00:23:16] Sam Okafor: Will do.
+
+[00:23:18] Felix Arden: That covers my main points.
+
+[00:23:20] Kenji Mori: Same here. I’ll start the draft with the workstream structure and send the technical requests after the call.
+
+[00:23:23] Gwen Marsh: Good. I appreciate everyone being concrete today. We’ve made the platform decision, and now the value is in turning it into a controlled plan.
+
+[00:23:29] Sam Okafor: Thanks, Gwen. We’ll send the actions and the information request today, and we’ll keep the commercial thread separate.
+
+[00:23:34] Felix Arden: Thanks, everyone.
+
+[00:23:36] Kenji Mori: Thank you.
+
+[00:23:38] Gwen Marsh: Thanks. Speak soon.
+
+[00:23:40] Sam Okafor: Take care.

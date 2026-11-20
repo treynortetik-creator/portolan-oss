@@ -1,0 +1,16 @@
+{
+  "totalSize": 1,
+  "done": true,
+  "records": [
+    {
+      "attributes": {"type": "Opportunity", "url": "/services/data/v61.0/sobjects/Opportunity/0061x000002OppAG"},
+      "Id": "0061x000002OppAG",
+      "Name": "Ashgrove Health — HalvardCare renewal",
+      "CloseDate": "2027-03-31",
+      "StageName": "Negotiation",
+      "Amount": 2350000.0,
+      "AccountId": "0011x000003Ashgv",
+      "LastModifiedDate": "2026-08-10T08:30:00.000+0000"
+    }
+  ]
+}

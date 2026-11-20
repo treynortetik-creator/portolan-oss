@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}{{ slug }} (original) — Portolan{% endblock %}
+{% block head %}
+<style>
+  /* UX eval 2026-09-12, punch item 9: `.loc` is now a fixed right-aligned
+     mono gutter (the locator, once, in mono, as the anchor) with the
+     block's own text in a second flex column, forming a clean left rail
+     down a 13,000px transcript instead of a leading "[HH:MM:SS]" that
+     used to repeat inside the text itself. */
+  .loc-block { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--pl-line); }
+  .loc-block .loc {
+    flex: 0 0 68px; text-align: right; font-family: var(--pl-mono); color: var(--pl-muted);
+    font-size: 12px; overflow-wrap: anywhere;
+  }
+  .loc-block .loc-text { flex: 1 1 auto; min-width: 0; }
+  .loc-block.highlight {
+    background: color-mix(in srgb, var(--pl-accent) 16%, transparent);
+    border-left: 3px solid var(--pl-accent);
+    padding-left: 8px;
+  }
+  pre.raw { white-space: pre-wrap; word-break: break-word; font-family: var(--pl-mono); font-size: 13px; }
+  /* A CRM row's locator is an export path, too long for the gutter: it sits above the fields. */
+  .loc-block.crm-row { flex-direction: column; gap: 4px; }
+  .loc-block.crm-row .loc { flex: none; text-align: left; }
+  .crm-object { margin: 0 0 4px; font-size: 13px; }
+  .crm-field { font-family: var(--pl-mono); font-size: 13px; overflow-wrap: anywhere; }
+  .crm-key { color: var(--pl-muted); }
+  .email-header-key { font-family: var(--pl-mono); font-size: 13px; font-weight: 600; }
+</style>
+{% endblock %}
+{% block content %}
+{#
+  One shared block-loop macro (rather than the same five-line loop
+  duplicated in every branch below) -- centralises the punch item 9 fix
+  in one place, so the call/email/ticket/rss/doc branches can never drift
+  back apart.
+#}
+{% macro render_blocks(blocks) %}
+  {% for block in blocks %}
+    <div class="loc-block" data-locator="{{ block.locator }}">
+      <span class="loc">{{ block.locator }}</span><span class="loc-text">{{ block.text }}</span>
+    </div>
+  {% endfor %}
+{% endmacro %}
+
+<p class="eyebrow"><a href="/sources/{{ slug }}">&larr; Source</a></p>
+<h1 style="margin-top:0;" class="mono">{{ slug }}</h1>
+<p><span class="badge">{{ source.source_type }}</span>
+  {% if source.source_date %}<span class="updated">{{ source.source_date }}</span>{% endif %}</p>
+
+{% if view.kind == 'email' %}
+  <div class="card">
+    {% for key in ['From', 'To', 'Cc', 'Subject', 'Date', 'Message-ID'] %}
+      {% if view.headers.get(key) %}
+        <p style="margin:2px 0;"><strong class="email-header-key">{{ key }}:</strong> {{ view.headers[key] }}</p>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="card" id="original-body">
+    {{ render_blocks(view.blocks) }}
+  </div>
+
+{% elif view.kind == 'call' %}
+  <div class="card" id="original-body">
+    {{ render_blocks(view.blocks) }}
+  </div>
+
+{% elif view.kind == 'ticket' %}
+  <div class="card">
+    {% if view.subject %}<p><strong>{{ view.subject }}</strong></p>{% endif %}
+    <p class="muted">
+      {% if view.requester %}Requester: {{ view.requester }}{% endif %}
+      {% if view.account %} · Account: {{ view.account }}{% endif %}
+    </p>
+  </div>
+  <div class="card" id="original-body">
+    {{ render_blocks(view.blocks) }}
+  </div>
+
+{% elif view.kind == 'rss' %}
+  <div class="card" id="original-body">
+    {% if view.item.title %}<p><strong>{{ view.item.title }}</strong></p>{% endif %}
+    {% set item_link = view.item.link|default('')|safe_href %}
+    {% if item_link %}
+      <p class="mono muted small"><a href="{{ item_link }}">{{ view.item.link }}</a></p>
+    {% elif view.item.link %}
+      {# review finding F5: the RSS feed's own link had a scheme we don't
+         allow into an href (javascript:, data:, ...) -- shown as inert
+         text, not a link, rather than dropped silently. #}
+      <p class="mono muted small">{{ view.item.link }}</p>
+    {% endif %}
+    {{ render_blocks(view.blocks) }}
+  </div>
+
+{% elif view.kind == 'doc' %}
+  <div class="card" id="original-body">
+    {{ render_blocks(view.blocks) }}
+  </div>
+
+{% elif view.kind == 'crm' %}
+  <div class="card" id="original-body">
+    <div class="loc-block crm-row" data-locator="{{ view.locator }}">
+      <span class="loc">{{ view.locator }}</span>
+      <div class="loc-text">
+        {% if view.object %}<p class="crm-object muted">{{ view.object }}</p>{% endif %}
+        {% for key, value in view.fields %}
+          <div class="crm-field" data-field="{{ key }}"><span class="crm-key">{{ key }}</span>=<span class="crm-value">{{ value }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% else %}
+  <div class="card" id="original-body">
+    <pre class="raw">{{ view.text }}</pre>
+  </div>
+{% endif %}
+
+<script nonce="{{ csp_nonce(request) }}">
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var at = params.get('at');
+  if (!at) return;
+  var blocks = document.querySelectorAll('#original-body [data-locator]');
+  for (var i = 0; i < blocks.length; i++) {
+    if (blocks[i].getAttribute('data-locator') === at) {
+      blocks[i].classList.add('highlight');
+      blocks[i].scrollIntoView({behavior: 'smooth', block: 'center'});
+      break;
+    }
+  }
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{
+  "id": "S-ticket-041",
+  "requester": "Derek Hollis",
+  "account": "Northlake General Hospital",
+  "created": "2026-08-18",
+  "subject": "Late Tidewater T3 delivery",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Derek Hollis",
+      "body": "The Northlake General Hospital Tidewater T3 order placed on 2026-08-15 arrived three days late, making it the third late delivery in three weeks."
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "We\u2019re sorry for the disruption, Derek. We\u2019re reviewing the shipment record and will follow up with the delivery details."
+    }
+  ]
+}

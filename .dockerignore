@@ -1,0 +1,65 @@
+# Fix wave 2026-09-12, review finding F4: `docker/Dockerfile`'s `COPY . .`
+# had no `.dockerignore` at all, so `.env` (real secrets on a dev
+# machine) and `.git` (full history) were baked into every image layer
+# pushed to ECR. Everything below is either a secret, a huge/irrelevant
+# local artifact, or this repo's own unrelated tooling -- none of it is
+# needed to run or test Portolan inside the container.
+
+# Secrets. Never let these into a layer.
+.env
+.env.*
+!.env.example
+
+# Local dev state and caches.
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+
+# Local file-store stand-in for S3, and anything the pipeline/bench write
+# locally -- container-local by construction, and can be large.
+var/
+corpus/out-large/
+
+# This repo's own memory/agent tooling and narrative context -- not part
+# of the Portolan product, and none of it belongs in a shipped image.
+.remember/
+00-context/
+02-reference-implementation/
+03-talos-agent-kit/
+
+# Bug hunt 2026-09-18 (ops review, P2 finding 11): agent worktrees
+# (`.claude/`, currently 17 full repo copies locally -- Railway builds
+# from GitHub so these are never in play there, but any local `docker
+# build`/`railway up` would bake them in), the AWS CDK app (never
+# imported by anything under portolan/ -- verified by grep), and the dev
+# scripts directory (bench/eval/training scripts run with `uv run` from a
+# checkout) are dev-only. The web and worker roles never read scripts/;
+# `portolan.training.label_judge.judge_model_allowed` loads
+# scripts/data/build_training_set.py by path, so the bench and training
+# CLIs that call it do not work inside the image, and tests that need it
+# skip there (`tests/_paths.py`).
+#
+# Deliberately NOT excluded here, despite the same finding's blanket
+# suggestion: `01-spec/` and `04-brand/`. Both are read at runtime, not
+# just at dev time -- `01-spec/how-portolan-works.html` is served by
+# `portolan/web/routes/how_it_works.py` (`/how-it-works`, fix wave
+# 2026-09-13 review finding 6, whose own docstring documents "01-spec/ is
+# not excluded by .dockerignore" as a deliberate choice), and
+# `04-brand/brand-tokens.css` is required by `portolan.web.templating.
+# build_templates()`, which refuses to start the app at all if it's
+# missing (review finding 21, `tests/test_web.py::
+# test_build_templates_raises_when_brand_tokens_css_is_missing_or_empty`).
+# Excluding either would build an image that 404s the explainer page or
+# refuses to boot -- reproduced locally before making this change; see
+# `01-spec/reviews/bughunt-2026-09-18-ops.md`'s "Fix status" table.
+.claude/
+infra/
+scripts/
+
+# Version control and CI config -- irrelevant inside the built image.
+.git/
+.github/
+.gitignore

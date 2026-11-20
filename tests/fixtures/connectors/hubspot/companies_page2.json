@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "id": "5002",
+      "properties": {
+        "name": "Larkspur Regional Health",
+        "domain": "larkspurhealth.org",
+        "annualrevenue": "1420000",
+        "hubspot_owner_id": "700001"
+      },
+      "createdAt": "2026-01-06T00:00:00.000Z",
+      "updatedAt": "2026-08-21T09:15:00.000Z",
+      "archived": false
+    }
+  ]
+}

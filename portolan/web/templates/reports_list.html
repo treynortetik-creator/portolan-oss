@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Reports — Portolan{% endblock %}
+{% block content %}
+<p class="eyebrow">Reports</p>
+<h1 style="margin-top:0;">Weekly reports</h1>
+{% if not reports %}
+  <div class="card empty">
+    {% if spyglass_svg %}
+    <div class="empty-mascot" aria-hidden="true">{{ spyglass_svg|safe }}</div>
+    {% endif %}
+    <p class="eyebrow">Nothing recorded</p>
+    <p>No weekly report has been generated yet.</p>
+  </div>
+{% endif %}
+{% for r in reports %}
+  <div class="card">
+    <p><a href="/reports/{{ r.slug }}"><strong>{{ r.title }}</strong></a></p>
+    {% if r.description %}<p class="muted">{{ r.description }}</p>{% endif %}
+    <p class="updated">updated: {{ r.updated|date }}</p>
+    <a class="btn quiet" href="/reports/{{ r.slug }}.md">Download .md</a>
+  </div>
+{% endfor %}
+{% endblock %}

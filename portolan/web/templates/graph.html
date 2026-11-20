@@ -1,0 +1,2065 @@
+{% extends "base.html" %}
+{% block title %}Graph — Portolan{% endblock %}
+{% block head %}
+<!-- Pinned CDN libraries, exact versions.
+
+     Fix wave 2026-09-12 ("stuck on Loading the graph" / "controls half
+     work", var/graph-fix/repro.md): the hand-written d3-force viewer is
+     replaced with two proven, off-the-shelf, same-author libraries that
+     share one API shape, so 2D and 3D run through one data-loading path
+     and one control set instead of two divergent hand-rolled ones --
+     the owner's own suggestion.
+
+     force-graph 1.51.4 (jsdelivr; not on cdnjs -- checked, cdnjs has no
+     `force-graph` package at all) -- the 2D island. Canvas-rendered,
+     bundles d3-force internally (no separate d3 script needed -- the
+     old d3 7.9.0 <script> is gone), ships wheel-zoom/drag-pan and a
+     `zoom()`/`zoomToFit()` API out of the box.
+     3d-force-graph 1.80.0 (jsdelivr) -- the 3D island, unchanged from
+     before. Same author (vasturiano) as force-graph, same method names
+     (`graphData`, `nodeColor`, `nodeVal`, `nodeLabel`, `onNodeClick`,
+     `onEngineStop`, `zoomToFit`), bundles three.js internally, orbit
+     controls built in.
+
+     Review finding 9: a pinned exact version is not an integrity check
+     -- `integrity=` + `crossorigin="anonymous"` below, computed (sha384)
+     from these exact pinned files, is; recompute if either version ever
+     changes. -->
+<script src="https://cdn.jsdelivr.net/npm/force-graph@1.51.4/dist/force-graph.min.js"
+        integrity="sha384-Hm6GpQcTNI5VqGgGS7lLxTGtEFcxu/kOVV0B7ozIZRu9blWVvigv5httJQZ2qZmY"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.0/dist/3d-force-graph.min.js"
+        integrity="sha384-Y7bC2PBKu8ujxtvo5+Z61OeGdSVRzFsYWBK4i5dnL/U6aFDTodk61qOUkTfInaxS"
+        crossorigin="anonymous"></script>
+<!-- Restyle wave 2026-09-15 (graph-reference-aicodingdictionary.md): flat,
+     unlit, camera-facing node discs in 3D need direct THREE constructors
+     (`THREE.Sprite`/`THREE.CanvasTexture`) inside our own `nodeThreeObject`
+     -- 3d-force-graph@1.80.0's UMD bundle wraps three.js internally but
+     never exposes it as a global. Three.js dropped its global/UMD build
+     years before this version range (checked every version jsdelivr lists
+     satisfying 3d-force-graph@1.80.0's own `three: >=0.179 <1` dependency,
+     package.json on jsdelivr -- none of them ship `build/three.min.js`
+     any more, only ESM `build/three.module.js`). So: a pinned, SRI-checked
+     `type="module"` script actually loads and verifies the exact bytes
+     (three@0.184.0, matching that dependency range and confirmed via this
+     app's own bundle to be the same revision aicodingdictionary.com itself
+     ships -- REVISION "184" found directly in their code, see the
+     reference doc).
+
+     The inline controller script below (`type="module"` too, for exactly
+     this) then `import`s the identical URL itself -- the browser's module
+     map dedupes the fetch against the tag above, no second network round
+     trip. A first version instead loaded a tiny separate module that did
+     `window.THREE = THREE` for a plain classic controller script to read
+     later; that raced and lost in testing (a real headless-Chrome repro,
+     not a theoretical concern): this app's own inline controller is a
+     *classic, non-deferred* script, so it starts its `fetch('/graph.json')`
+     immediately, at its position in the DOM, potentially before the
+     document has even finished parsing -- but ANY `type="module"` script,
+     ours included, only ever runs AFTER parsing completes, deferred-like.
+     On a fast localhost fetch the response can come back, and
+     `draw3D()` can run, before that deferred module has executed at all,
+     so `window.THREE` was still `undefined` the moment it was first read.
+     Making the controller itself a module fixes this at the source: its
+     own `import` is guaranteed to resolve before any of its own code
+     runs, controller included. -->
+<script type="module"
+        src="https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.min.js"
+        integrity="sha384-35WaVqXNGvw49+RCXk67Ci9ebo55/5+CfirDbAVSG21KV8/7gO4xwIkhA5ZRcUHc"
+        crossorigin="anonymous"></script>
+<style>
+  /* Restyle wave 2026-09-15 v2 (owner review against
+     aicodingdictionary.com, graph-reference-aicodingdictionary.md): no
+     page header, no toolbar row above the canvas -- the canvas is
+     full-bleed directly under the site nav. `main.wrap` (base.html)
+     still contributes its own top padding on every other page; this page
+     pulls the canvas up to close that gap, mirroring base.html's own
+     padding values at each breakpoint exactly rather than guessing a
+     round number, so the two never drift apart. */
+  main.wrap:has(.graph-canvas-wrap) { padding-top: 0; }
+  .graph-canvas-wrap { margin-top: 0; }
+
+  /* Restyle wave 2026-09-15 (graph-reference-aicodingdictionary.md,
+     "Ground"): a near-white warm-gray canvas that fills most of the
+     viewport, no card, no border -- full-bleed regardless of
+     `main.wrap`'s own 1100px max-width (the standard `calc(50% - 50vw)`
+     breakout), height set by `sizeCanvasWrap()` below (JS) to reach from
+     just under the nav to near the bottom of the viewport; the
+     `min`/`min-height` here are only the pre-JS fallback so there's never
+     a zero-height flash. Ground color is `#e6e6e4` in light mode --
+     the owner's own screenshot read, corroborated independently in the
+     reference doc (`#eaeae8` found in the actual aicodingdictionary.com
+     bundle) -- and the site's own dark `--pl-ground` token in dark mode
+     (build instructions: "invert ... using the same tokens"). */
+  .graph-canvas-wrap {
+    position: relative;
+    width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+    height: min(92vh, 980px); min-height: 420px;
+    background: #e6e6e4;
+    overflow: hidden;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .graph-canvas-wrap { background: var(--pl-ground); }
+  }
+  :root[data-theme="dark"] .graph-canvas-wrap { background: var(--pl-ground); }
+
+  #graph-2d-canvas, #graph-3d-canvas { width: 100%; height: 100%; }
+  #graph-2d-canvas:not([hidden]), #graph-3d-canvas:not([hidden]) { display: block; }
+
+  /* Film grain (build instructions: CSS overlay, SVG feTurbulence data
+     URI, no shader). `pointer-events: none` so it never steals clicks
+     meant for the canvas underneath. `multiply` darkens the light ground
+     correctly; dark mode swaps to `screen`. */
+  .graph-grain {
+    position: absolute; inset: 0; pointer-events: none;
+    opacity: 0.05; mix-blend-mode: multiply; background-size: 180px 180px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .graph-grain { mix-blend-mode: screen; opacity: 0.06; }
+  }
+  :root[data-theme="dark"] .graph-grain { mix-blend-mode: screen; opacity: 0.06; }
+
+  /* Fix wave 2026-09-12 (root cause of "stuck on Loading the graph"):
+     `display` is scoped to `:not([hidden])` so the UA's native `[hidden]`
+     behaviour and an author `display` rule can never fight -- the one
+     change that actually matters in every rule below shaped like it. */
+  .graph-overlay {
+    position: absolute; inset: 0; align-items: center; justify-content: center;
+    margin: 0; text-align: center; padding: 0 24px;
+  }
+  .graph-overlay:not([hidden]) { display: flex; }
+  #graph-loading { font-family: var(--pl-mono); font-size: 13px; color: var(--pl-muted); }
+  #graph-error .flag { max-width: 440px; margin: 0; }
+  #graph-error .flag a { color: var(--pl-accent); }
+
+  /* ---- round icon buttons (search / controls / palette) ------------------
+     Restyle wave 2026-09-15 v2: the old text toolbar is gone -- every
+     standing control on the canvas itself is now one of these three small
+     round buttons, matching the reference's search/info/palette dots. */
+  .graph-round-btn {
+    position: absolute; z-index: 3;
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: color-mix(in srgb, #e6e6e4 82%, transparent);
+    border: 1px solid var(--pl-line); color: #2a2a2a;
+    cursor: pointer; padding: 0;
+  }
+  .graph-round-btn:hover { border-color: var(--pl-muted); }
+  .graph-round-btn[aria-pressed="true"], .graph-round-btn[aria-expanded="true"] {
+    border-color: var(--pl-accent); color: var(--pl-accent);
+  }
+  .graph-round-btn svg { width: 18px; height: 18px; display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .graph-round-btn {
+      background: color-mix(in srgb, var(--pl-ground) 82%, transparent); color: var(--pl-ink);
+    }
+  }
+  :root[data-theme="dark"] .graph-round-btn {
+    background: color-mix(in srgb, var(--pl-ground) 82%, transparent); color: var(--pl-ink);
+  }
+
+  #graph-search-toggle { top: 14px; left: 14px; }
+  #graph-panel-toggle { top: 14px; right: 14px; }
+  #palette-toggle { bottom: 14px; right: 14px; }
+
+  /* ---- search: a round button that expands into a field ------------------ */
+  #graph-search-wrap {
+    position: absolute; top: 14px; left: 14px; z-index: 4;
+    display: flex; align-items: center; gap: 8px;
+  }
+  #graph-search-wrap[hidden] { display: none; }
+  #graph-search-field {
+    display: flex; align-items: center; gap: 6px;
+    background: color-mix(in srgb, #e6e6e4 92%, transparent);
+    border: 1px solid var(--pl-line); border-radius: 20px;
+    padding: 6px 12px; min-width: 220px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) #graph-search-field {
+      background: color-mix(in srgb, var(--pl-ground) 92%, transparent);
+    }
+  }
+  :root[data-theme="dark"] #graph-search-field {
+    background: color-mix(in srgb, var(--pl-ground) 92%, transparent);
+  }
+  #graph-search {
+    border: none; background: none; min-height: auto; padding: 2px 0; width: 160px;
+  }
+  #graph-search:focus-visible { outline: none; }
+  #graph-search-status { margin: 6px 0 0; }
+  #graph-search-status[hidden] { display: none; }
+
+  /* ---- controls slide-out panel ------------------------------------------
+     Restyle wave 2026-09-15 v2, build instructions item 2: everything the
+     old toolbar/legend held now lives in here -- 2D/3D switch, Fit,
+     Rotate, note/link count, the type legend (colors-on only), and the
+     plain-list link. Opened by `#graph-panel-toggle`; auto-closed the
+     moment a note panel opens (item 5) so the two never fight for the
+     same right edge. */
+  .graph-controls-panel {
+    position: absolute; top: 0; right: 0; z-index: 3;
+    width: min(280px, 82vw); height: 100%;
+    background: color-mix(in srgb, #e6e6e4 96%, transparent);
+    border-left: 1px solid var(--pl-line);
+    padding: 60px 18px 18px; overflow-y: auto;
+    transform: translateX(100%); transition: transform 180ms ease;
+  }
+  .graph-controls-panel:not([hidden]) { transform: translateX(0); }
+  .graph-controls-panel[hidden] { display: block; visibility: hidden; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .graph-controls-panel {
+      background: color-mix(in srgb, var(--pl-ground) 96%, transparent);
+    }
+  }
+  :root[data-theme="dark"] .graph-controls-panel {
+    background: color-mix(in srgb, var(--pl-ground) 96%, transparent);
+  }
+  .graph-controls-panel h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 10px;
+  }
+  .graph-controls-panel section { margin-bottom: 18px; }
+  .mode-switch { display: flex; gap: 0; border: 1px solid var(--pl-line); border-radius: 3px; overflow: hidden; width: fit-content; }
+  .mode-switch .btn { border: none; border-radius: 0; }
+  .mode-switch .btn + .btn { border-left: 1px solid var(--pl-line); }
+  .graph-controls-panel .btn-row { margin-top: 8px; }
+  #graph-meta { margin: 0; font-family: var(--pl-mono); font-size: 13px; color: var(--pl-muted); }
+  /* Same recurring bug class this file's own history warns about (fix
+     wave 2026-09-12/13, var/graph-fix/repro.md): an unconditional
+     `display` beats the UA's native `[hidden]{display:none}` regardless
+     of the JS-toggled `hidden` attribute -- caught live in this wave's
+     own headless-Chrome verification (the note showed on a fresh page
+     load with no rotate-toggle click at all). Scoped to `:not([hidden])`
+     so the two states can never fight. */
+  #auto-rotate-note:not([hidden]) { display: block; margin-top: 6px; }
+  /* Same bug, same fix, a second real instance found live: base.html's
+     `.btn { display: inline-block }` is an AUTHOR-origin rule, so it
+     beats the UA stylesheet's `[hidden] { display: none }` regardless of
+     selector specificity (author always outranks user-agent) -- any
+     `class="btn ..." hidden` element stays visible. Verified live:
+     `#rotate-toggle` (hidden outside 3D) and `#search-clear` (hidden
+     until there's a search term) both computed `display: block` with
+     `hidden` true, before this rule. `#id[hidden]` outranks `.btn` on
+     specificity alone, so this is a local, no-base.html-changes fix
+     scoped to the two `.btn`-classed controls this page hides by
+     attribute; base.html's own `.btn` usage elsewhere is unchanged and
+     out of this wave's scope. */
+  #rotate-toggle[hidden], #search-clear[hidden] { display: none; }
+
+  .graph-legend:not([hidden]) { display: flex; gap: 6px; flex-wrap: wrap; }
+  .graph-legend button {
+    display: flex; align-items: center; gap: 6px; font-family: var(--pl-mono); font-size: 12px;
+    padding: 4px 9px; border: 1px solid var(--pl-line); border-radius: 12px; background: var(--pl-ground);
+    color: var(--pl-muted); cursor: pointer;
+  }
+  .graph-legend button[aria-pressed="false"] { opacity: 0.4; }
+  .graph-legend .swatch { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; }
+
+  /* ---- note panel ---------------------------------------------------------
+     Build instructions item 5: clicking a node opens this instead of (or
+     as well as) navigating away -- ~35% of the viewport, full width under
+     720px, styled like the reference (uppercase mono eyebrow, large
+     title, summary, "Connects to" pills, the full body, "Open note"). */
+  .graph-note-panel {
+    position: absolute; top: 0; right: 0; z-index: 5;
+    width: 35vw; min-width: 320px; max-width: 560px; height: 100%;
+    background: var(--pl-ground);
+    border-left: 1px solid var(--pl-line);
+    padding: 56px 24px 32px; overflow-y: auto;
+    transform: translateX(100%); transition: transform 200ms ease;
+  }
+  .graph-note-panel:not([hidden]) { transform: translateX(0); }
+  .graph-note-panel[hidden] { display: block; visibility: hidden; }
+  @media (max-width: 720px) {
+    .graph-note-panel { width: 100vw; min-width: 0; max-width: none; }
+  }
+  #note-panel-eyebrow {
+    font-family: var(--pl-mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--pl-muted); margin: 0 0 8px;
+  }
+  #note-panel-title { font-size: 26px; line-height: 1.2; margin: 0 0 12px; }
+  #note-panel-summary { font-size: 15px; color: var(--pl-muted); margin: 0 0 16px; }
+  #note-panel-connects[hidden] { display: none; }
+  #note-panel-connects .eyebrow { margin-bottom: 8px; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill-row button {
+    font-family: var(--pl-mono); font-size: 12px; padding: 4px 11px; border-radius: 12px;
+    border: 1px solid var(--pl-line); background: none; color: var(--pl-ink); cursor: pointer;
+  }
+  .pill-row button:hover { border-color: var(--pl-accent); color: var(--pl-accent); }
+  #note-panel-body-html { margin: 18px 0; font-size: 15px; line-height: 1.55; }
+  #note-panel-body-html :first-child { margin-top: 0; }
+  .note-panel-nav {
+    display: flex; justify-content: space-between; gap: 10px; margin-top: 20px;
+    border-top: 1px solid var(--pl-line); padding-top: 14px;
+  }
+  .note-panel-nav button { background: none; border: none; padding: 0; cursor: pointer; }
+  .note-panel-nav button:disabled { opacity: 0.35; cursor: default; }
+  #note-panel-close {
+    position: absolute; top: 14px; right: 14px;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--pl-ground); border: 1px solid var(--pl-line); color: var(--pl-ink);
+    cursor: pointer;
+  }
+  #note-panel-close:hover { border-color: var(--pl-accent); color: var(--pl-accent); }
+  #note-panel-loading[hidden], #note-panel-error[hidden] { display: none; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="graph-canvas-wrap">
+  <div id="graph-2d-canvas"
+       role="img"
+       aria-label="2D force-directed graph of the knowledge graph's notes and links. A text alternative is available via the search link below."></div>
+  <div id="graph-3d-canvas" hidden
+       role="img"
+       aria-label="3D force-directed graph of the knowledge graph's notes and links. A text alternative is available via the search link below."></div>
+  <div class="graph-grain" aria-hidden="true"></div>
+
+  <!-- Restyle wave 2026-09-15 v2, item 3: a round magnifier that expands
+       into the search field, top-left of the canvas. -->
+  <button type="button" id="graph-search-toggle" class="graph-round-btn" aria-expanded="false" aria-controls="graph-search-wrap" aria-label="Search notes">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
+  <div id="graph-search-wrap" hidden>
+    <div id="graph-search-field">
+      <label class="sr-only" for="graph-search">Search notes by title</label>
+      <input type="text" id="graph-search" placeholder="Search notes…">
+      <button type="button" id="search-clear" class="btn quiet" hidden>Clear</button>
+    </div>
+  </div>
+  <p id="graph-search-status" class="mono muted small" hidden role="status" style="position:absolute; top:58px; left:14px; z-index:4;"></p>
+
+  <!-- item 2: a round "i"/sliders button opening the controls panel. -->
+  <button type="button" id="graph-panel-toggle" class="graph-round-btn" aria-expanded="false" aria-controls="graph-controls-panel" aria-label="Graph controls">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><circle cx="9" cy="7" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="14" x2="20" y2="14"/><circle cx="16" cy="14" r="2" fill="currentColor" stroke="none"/><line x1="4" y1="21" x2="20" y2="21"/><circle cx="11" cy="21" r="2" fill="currentColor" stroke="none"/></svg>
+  </button>
+  <div id="graph-controls-panel" class="graph-controls-panel" hidden>
+    <section aria-label="View mode">
+      <h2>View</h2>
+      <div class="mode-switch" role="group" aria-label="View mode">
+        <button type="button" id="mode-2d" class="btn" aria-pressed="{{ 'true' if initial_mode == '2d' else 'false' }}">2D</button>
+        <button type="button" id="mode-3d" class="btn" aria-pressed="{{ 'true' if initial_mode != '2d' else 'false' }}">3D</button>
+      </div>
+      <div class="btn-row">
+        <button type="button" id="zoom-fit" class="btn" aria-label="Fit graph to view">Fit</button>
+        <button type="button" id="rotate-toggle" class="btn" aria-pressed="false"{% if initial_mode == '2d' %} hidden{% endif %}>Rotate</button>
+      </div>
+      <span id="auto-rotate-note" class="mono muted small" hidden>Reduced motion is on system-wide; rotating anyway since you asked.</span>
+    </section>
+    <section aria-label="Graph size">
+      <p id="graph-meta">Loading…</p>
+      <div id="graph-cap-notice" class="flag" hidden></div>
+    </section>
+    <section id="graph-legend-section" aria-label="Filter by note type">
+      <h2>Type legend</h2>
+      <div id="graph-legend" class="graph-legend" role="group" aria-label="Filter by note type" hidden></div>
+    </section>
+    <p class="field-hint">Prefer a plain list? <a href="/search">Search the graph</a> instead of the canvas above.</p>
+  </div>
+
+  <!-- item 8: a round palette button, bottom-right, toggles color mode. -->
+  <button type="button" id="palette-toggle" class="graph-round-btn" aria-pressed="false" aria-label="Toggle type colors">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M12 2a10 9 0 1 0 0 18c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.2 0-.9.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-7-9-7Z"/>
+      <circle cx="7.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="11" cy="7" r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="15.5" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+    </svg>
+  </button>
+
+  <!-- Restyle wave 2026-09-15 v2, item 5: clicking a node opens this
+       instead of navigating away immediately -- "Open note" does that. -->
+  <div id="graph-note-panel" class="graph-note-panel" hidden role="complementary" aria-label="Note details">
+    <button type="button" id="note-panel-close" aria-label="Close note panel">&times;</button>
+    <p id="note-panel-loading" class="mono muted small" hidden role="status">Loading…</p>
+    <div id="note-panel-error" class="flag" hidden role="alert"></div>
+    <div id="note-panel-content" hidden>
+      <p id="note-panel-eyebrow"></p>
+      <h2 id="note-panel-title"></h2>
+      <p id="note-panel-summary"></p>
+      <div id="note-panel-connects" hidden>
+        <p class="eyebrow">Connects to</p>
+        <div class="pill-row" id="note-panel-links"></div>
+      </div>
+      <div id="note-panel-body-html"></div>
+      <p class="field-hint"><a id="note-panel-open" href="/notes/">Open note &rarr;</a></p>
+      <div class="note-panel-nav">
+        <button type="button" id="note-panel-prev" class="btn quiet">&larr; Prev</button>
+        <button type="button" id="note-panel-next" class="btn quiet">Next &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- The error-message element (fix wave 2026-09-12): the try/catch
+       below reports here -- never leaves the loading caption sitting on
+       screen forever, on ANY failure path (fetch error, non-2xx status,
+       a CDN script blocked/missing, or the engine itself throwing, e.g.
+       no WebGL for the 3D island). -->
+  <p id="graph-loading" class="graph-overlay" role="status">Loading the graph…</p>
+  <div id="graph-error" class="graph-overlay" hidden role="alert" aria-live="assertive">
+    <p class="flag" id="graph-error-text"></p>
+  </div>
+  <p id="graph-empty" class="graph-overlay" role="status" hidden></p>
+</div>
+
+<script type="module" nonce="{{ csp_nonce(request) }}">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.min.js';
+(function () {
+  function tok(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  function isDarkMode() {
+    var attr = document.documentElement.getAttribute('data-theme');
+    if (attr === 'dark') return true;
+    if (attr === 'light') return false;
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
+  // Eleven note types (portolan/db/migrations/0001_init.sql's closed
+  // list, plus `context` added by migration 0020, 2026-09-17 owner
+  // decision "Company context page").
+  var TYPES = ['account', 'signal', 'contact', 'product', 'competitor', 'theme', 'report', 'action', 'decision', 'source', 'context'];
+
+  // Restyle wave 2026-09-15 v2, build instructions item 8: ten clearly
+  // distinct hues, one per type, validated with the dataviz skill's
+  // `validate_palette.js` against BOTH grounds this page actually
+  // renders on (`#e6e6e4` light, `--pl-ground` dark's `#1a1a19`) --
+  // lightness band, chroma floor, adjacent + worst-pair CVD Delta E, and
+  // the normal-vision floor all pass in both modes (the light mode's five
+  // sub-3:1 slots carry the required "relief": labels stay always-on,
+  // per `labelOpacity` below, never color alone). Fixed order (never
+  // cycled), assigned to TYPES in the array order above -- the
+  // CVD-safety mechanism is the ordering itself, not cosmetic.
+  //
+  // `context` (2026-09-17) is an 11th hue appended after the fact -- a
+  // muted indigo-gray chosen to read distinctly from every existing
+  // slot, but NOT re-run through `validate_palette.js`; a full
+  // eleven-hue CVD re-validation is follow-up work, not blocking this
+  // feature.
+  var CATEGORICAL_LIGHT = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#4a3aa7', '#e34948', '#1e96b0', '#a45c2e', '#5c6ba0'];
+  var CATEGORICAL_DARK = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767', '#1c96ab', '#c17a45', '#7c8bd4'];
+
+  // Restyle wave v4 (owner review 2026-09-15, item 1 "true black at the
+  // dark end"): the reference's darkest discs read near-black, not
+  // charcoal -- these are the true extremes of BOTH the grayscale ramp
+  // (monoTokens below) and the selected node's own forced-ink label
+  // (item 5), so both features cite the exact same two hex values
+  // instead of drifting apart over time. Light theme's extreme is near-
+  // black; dark theme's is "the inverse" -- near-white, not the paper-
+  // toned `--pl-ink` token (`#EDE8E0`), which reads a full step lighter
+  // than true white already before you fade anything further toward it.
+  var TRUE_INK_LIGHT = '#0e0e0e';
+  var TRUE_INK_DARK = '#f2f2f0';
+  function trueInk() { return isDarkMode() ? TRUE_INK_DARK : TRUE_INK_LIGHT; }
+
+  function paletteTokens() {
+    var dark = isDarkMode();
+    var hues = dark ? CATEGORICAL_DARK : CATEGORICAL_LIGHT;
+    var types = {};
+    TYPES.forEach(function (t, i) { types[t] = hues[i]; });
+    return { accent: tok('--pl-accent'), muted: tok('--pl-muted'), ink: tok('--pl-ink'), ground: tok('--pl-ground'), types: types };
+  }
+
+  // Restyle wave 2026-09-15 v2, build instructions item 7: widened to
+  // span dark charcoal to light gray -- ten evenly-spaced steps across
+  // that full range naturally lands a few dark, a few mid, a few light.
+  // Dark mode still inverts (the darkest-reading step in light mode is
+  // the lightest-reading step in dark mode, and vice versa).
+  //
+  // v4 (owner review 2026-09-15, item 1): the owner compared this ramp
+  // against the reference again -- its darkest step still read as
+  // charcoal (`#1a1a19`), not the reference's near-black discs. Both
+  // ramp ends now run all the way out to `trueInk()` (`#0e0e0e` light /
+  // `#f2f2f0` dark, see its own comment above) while the OTHER end
+  // (`#cfcfcd` light / `--pl-line` dark) is untouched -- it already read
+  // as a light, clearly-distinct gray and wasn't part of the owner's
+  // complaint. Ten evenly-spaced steps across the now-wider range keep
+  // every step visually distinct rather than compressing them.
+  function monoTokens() {
+    var dark = isDarkMode();
+    var rampFrom = trueInk();
+    var rampTo = dark ? tok('--pl-line') : '#cfcfcd';
+    var types = {};
+    var n = TYPES.length;
+    TYPES.forEach(function (t, i) {
+      var pct = n > 1 ? Math.round((i / (n - 1)) * 100) : 0;
+      types[t] = 'color-mix(in srgb, ' + rampFrom + ' ' + (100 - pct) + '%, ' + rampTo + ' ' + pct + '%)';
+    });
+    return { accent: tok('--pl-accent'), ink: rampFrom, types: types };
+  }
+
+  // Chrome shared by both palettes -- the selection ring is a fixed
+  // dark/light neutral, not a "type" signal. `link` is the ACTIVE
+  // (hover/selected) link color -- build instructions item 4: "thin dark
+  // dotted lines ... near #333 at full opacity in light theme". Rest-
+  // state links stay near-invisible via opacity, not color (see
+  // `linkOpacityFn` below).
+  function graphChrome() {
+    var dark = isDarkMode();
+    return {
+      ring: dark ? tok('--pl-ink') : '#2a2a2a',
+      link: dark ? tok('--pl-ink') : '#333333'
+    };
+  }
+  function currentPalette() {
+    var base = state.colorsOn ? paletteTokens() : monoTokens();
+    var out = {};
+    for (var k in base) out[k] = base[k];
+    var chrome = graphChrome();
+    out.ring = chrome.ring;
+    out.link = chrome.link;
+    return out;
+  }
+  function graphGround() {
+    return isDarkMode() ? tok('--pl-ground') : '#e6e6e4';
+  }
+
+  var els = {
+    meta: document.getElementById('graph-meta'),
+    legend: document.getElementById('graph-legend'),
+    legendSection: document.getElementById('graph-legend-section'),
+    capNotice: document.getElementById('graph-cap-notice'),
+    loading: document.getElementById('graph-loading'),
+    error: document.getElementById('graph-error'),
+    errorText: document.getElementById('graph-error-text'),
+    empty: document.getElementById('graph-empty'),
+    container2d: document.getElementById('graph-2d-canvas'),
+    container3d: document.getElementById('graph-3d-canvas'),
+    canvasWrap: document.querySelector('.graph-canvas-wrap'),
+    search: document.getElementById('graph-search'),
+    searchToggle: document.getElementById('graph-search-toggle'),
+    searchWrap: document.getElementById('graph-search-wrap'),
+    mode2d: document.getElementById('mode-2d'),
+    mode3d: document.getElementById('mode-3d'),
+    zoomFit: document.getElementById('zoom-fit'),
+    rotateToggle: document.getElementById('rotate-toggle'),
+    autoRotateNote: document.getElementById('auto-rotate-note'),
+    paletteToggle: document.getElementById('palette-toggle'),
+    searchClear: document.getElementById('search-clear'),
+    searchStatus: document.getElementById('graph-search-status'),
+    panelToggle: document.getElementById('graph-panel-toggle'),
+    controlsPanel: document.getElementById('graph-controls-panel'),
+    notePanel: document.getElementById('graph-note-panel'),
+    notePanelClose: document.getElementById('note-panel-close'),
+    notePanelLoading: document.getElementById('note-panel-loading'),
+    notePanelError: document.getElementById('note-panel-error'),
+    notePanelContent: document.getElementById('note-panel-content'),
+    notePanelEyebrow: document.getElementById('note-panel-eyebrow'),
+    notePanelTitle: document.getElementById('note-panel-title'),
+    notePanelSummary: document.getElementById('note-panel-summary'),
+    notePanelConnects: document.getElementById('note-panel-connects'),
+    notePanelLinks: document.getElementById('note-panel-links'),
+    notePanelBody: document.getElementById('note-panel-body-html'),
+    notePanelOpen: document.getElementById('note-panel-open'),
+    notePanelPrev: document.getElementById('note-panel-prev'),
+    notePanelNext: document.getElementById('note-panel-next'),
+    toolbarButtons: Array.prototype.slice.call(
+      document.querySelectorAll('#graph-controls-panel button, #graph-search-toggle, #graph-panel-toggle, #palette-toggle')
+    )
+  };
+
+  var state = {
+    mode: {{ (initial_mode or "3d")|tojson }},
+    data: null,
+    hiddenTypes: new Set(),
+    searchTerm: '',
+    colorsOn: false,
+    selectedId: null,
+    hoveredId: null,
+    // v3, item 2 ("full labels on focus"): the selected node's direct
+    // neighbours, cached on selection change rather than recomputed per
+    // frame/per-node-draw -- same pattern as hoverPull's own origin
+    // snapshot below.
+    selectedNeighborIds: new Set()
+  };
+
+  var engine = null;      // the single live force-graph/3d-force-graph instance, or null
+  var controls = null;    // {fit, getZoom} for `engine`
+  var engineMode = null;  // '2d'/'3d' `engine` was built for, or null -- lets a filter/search
+                           // redraw reuse the live engine (graphData()) instead of tearing it
+                           // down, apart from an actual mode switch (fix wave 2026-09-13).
+  var loaded = false;    // has the loading caption ever been dismissed (fix wave 2026-09-12)
+
+  function reducedMotion() {
+    return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+  var escapeHtml = window.PortolanEscapeHtml;
+  function visible(n) { return !state.hiddenTypes.has(n.type); }
+  function isMatch(n) {
+    return !!state.searchTerm && n.title.toLowerCase().indexOf(state.searchTerm) !== -1;
+  }
+  function neighborIdsOf(matchedIds, edges, allowedIds) {
+    var out = new Set();
+    edges.forEach(function (e) {
+      if (matchedIds.has(e.source) && allowedIds.has(e.target)) out.add(e.target);
+      if (matchedIds.has(e.target) && allowedIds.has(e.source)) out.add(e.source);
+    });
+    return out;
+  }
+  function keptNodes() {
+    var baseNodes = state.data.nodes.filter(visible);
+    if (!state.searchTerm) return baseNodes;
+    var baseIds = new Set(baseNodes.map(function (n) { return n.id; }));
+    var matchedIds = new Set(baseNodes.filter(isMatch).map(function (n) { return n.id; }));
+    var neighborIds = neighborIdsOf(matchedIds, state.data.edges, baseIds);
+    return baseNodes.filter(function (n) { return matchedIds.has(n.id) || neighborIds.has(n.id); });
+  }
+  function nodeVal(n) { return 1.5 + Math.sqrt(n.degree || 0); }
+  // v4, item 5 ("selected state, cleaner"): every node that is neither
+  // the selection itself nor one of its direct neighbours fades to a
+  // flat, low-chroma gray -- "keep the selected cluster readable" -- for
+  // as long as a selection is live. `state.selectedNeighborIds` is
+  // already cached on selection change by `selectNode` (v3), so this is
+  // an O(1) Set lookup, safe to call from a per-node, per-frame path.
+  function isFadedBySelection(id) {
+    return state.selectedId != null && id !== state.selectedId && !state.selectedNeighborIds.has(id);
+  }
+  // Light value is the owner's own screenshot read (`#d4d4d2`); dark is
+  // its structural inverse (each channel's distance from white in light
+  // mode mirrored as the same distance from black in dark mode) -- not
+  // independently confirmed against the reference (which the research
+  // pass never captured in dark mode), but consistent with every other
+  // light/dark pair on this page.
+  function deselectedFadeColor() { return isDarkMode() ? '#2b2b2d' : '#d4d4d2'; }
+  function colorFor(colors) {
+    return function (d) {
+      if (isFadedBySelection(d.id)) return deselectedFadeColor();
+      return isMatch(d) ? colors.accent : (colors.types[d.type] || colors.ink);
+    };
+  }
+  // Restyle wave 2026-09-15: label opacity follows node size, not type or
+  // selection -- a leaf reads faint, a hub reads dark and legible. `val`
+  // ranges ~1.5 (degree 0) to ~7-8 for a realistic hub (nodeVal above).
+  function labelOpacity(val) {
+    var t = Math.max(0, Math.min(1, ((val || 1.5) - 1.5) / 6));
+    return 0.3 + t * 0.62;
+  }
+
+  // ---- hover/selection: which node ids are the "active" (linked) set ------
+  function directNeighborIds(nodeId) {
+    var out = new Set();
+    if (nodeId == null || !state.data) return out;
+    state.data.edges.forEach(function (e) {
+      var s = typeof e.source === 'object' && e.source ? e.source.id : e.source;
+      var t = typeof e.target === 'object' && e.target ? e.target.id : e.target;
+      if (s === nodeId) out.add(t);
+      if (t === nodeId) out.add(s);
+    });
+    return out;
+  }
+  function linkTouches(l, id) {
+    if (id == null) return false;
+    var s = typeof l.source === 'object' && l.source ? l.source.id : l.source;
+    var t = typeof l.target === 'object' && l.target ? l.target.id : l.target;
+    return s === id || t === id;
+  }
+  function linkTouchesSelected(l) { return linkTouches(l, state.selectedId); }
+  // Restyle wave 2026-09-15 v2, item 4: hovering shows a node's links
+  // immediately, with no click needed -- "active" now means "touches the
+  // hovered node OR the selected node", not selection alone.
+  function linkIsActive(l) { return linkTouches(l, state.hoveredId) || linkTouches(l, state.selectedId); }
+  function linkVisibleFn(l) { return state.hoveredId == null && state.selectedId == null ? true : linkIsActive(l); }
+  function linkOpacityFn(l) { return linkIsActive(l) ? 1 : 0.06; }
+  function linkDashFn(l) { return linkIsActive(l) ? [1, 2] : null; }
+  // 2D only (force-graph@1.51.4 has no `linkOpacity` accessor -- checked
+  // directly against the pinned library instance). Opacity is baked into
+  // the color string itself via `color-mix()`.
+  function linkColorFor2D(colors) {
+    return function (l) {
+      var pct = Math.round(linkOpacityFn(l) * 100);
+      return 'color-mix(in srgb, ' + colors.link + ' ' + pct + '%, transparent)';
+    };
+  }
+  // v3, item 2 ("full labels on focus"): a node's label shows the FULL
+  // title -- instead of the truncated rest-state form -- when it's the
+  // hovered node, the selected node, or a direct neighbour of the
+  // selected node (the neighbour set is cached on `state` at selection
+  // time by `selectNode` below, not recomputed here per node/per frame).
+  function isLabelExpanded(id) {
+    return id === state.hoveredId || id === state.selectedId || state.selectedNeighborIds.has(id);
+  }
+
+  // ---- label truncation (v4, item 4 "smaller labels") ---------------------
+  // One cached off-DOM canvas for every measureText() call below --
+  // `makeLabelTexture` further down still uses it to size the 3D label
+  // canvas to whatever text (truncated or full) it's asked to draw.
+  var truncateMeasureCtx = document.createElement('canvas').getContext('2d');
+  // v3 truncated at rest via a measureText binary search to a fixed
+  // SCREEN-pixel width -- exact, but the owner's side-by-side review
+  // still found rest-state labels "spanning several nodes and colliding".
+  // Replaced with a plain character-count cut ("about 22 characters ...
+  // a plain ellipsis", the owner's own words) -- simpler, longer (reads
+  // more of the title before cutting), and independent of font metrics
+  // or zoom, so 2D and 3D share the exact same rule instead of each
+  // tuning its own pixel budget.
+  var LABEL_REST_MAX_CHARS = 22;
+  function truncateToChars(text, maxChars) {
+    if (!text) return '';
+    if (text.length <= maxChars) return text;
+    return text.slice(0, maxChars) + '...';
+  }
+
+  // ---- hover neighbour tug (item 4: "a gentle gravitational tug of
+  // roughly 10 to 15 percent of the distance, eased in over about 300ms
+  // and released when the hover ends") ---------------------------------
+  var HOVER_PULL_STRENGTH = 0.125; // midpoint of 10-15%
+  var HOVER_PULL_EASE_MS = 300;
+  var hoverPull = null; // {nodeId, neighborIds: Set, origin: {id: {x,y,z}}, startedAt}
+
+  function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+  // v3, item 1: a short manual tween for the click-focus panel-offset
+  // nudge (below) -- `zoomToFit` already eases the dolly-in itself, but
+  // its own tween doesn't know about the note panel, so this second,
+  // shorter ease runs right after it, on the same two vectors, instead of
+  // snapping them in one frame.
+  function tweenVector3(vec, target, durationMs, onDone) {
+    var start = vec.clone();
+    var startT = null;
+    function step(t) {
+      if (startT === null) startT = t;
+      var p = Math.min(1, durationMs > 0 ? (t - startT) / durationMs : 1);
+      vec.lerpVectors(start, target, easeInOutCubic(p));
+      if (p < 1) requestAnimationFrame(step); else if (onDone) onDone();
+    }
+    requestAnimationFrame(step);
+  }
+
+  function beginHoverPull(node) {
+    if (!node || !state.data) return;
+    var neighborIds = directNeighborIds(node.id);
+    var origin = {};
+    state.data.nodes.forEach(function (n) {
+      if (neighborIds.has(n.id)) origin[n.id] = { x: n.x, y: n.y, z: n.z };
+    });
+    hoverPull = { nodeId: node.id, neighborIds: neighborIds, origin: origin, startedAt: performance.now() };
+  }
+  function endHoverPull() { hoverPull = null; }
+  // Applies the tug against each neighbour's ORIGIN snapshot (taken once,
+  // at hover start), not cumulatively frame-over-frame -- so the effect
+  // saturates at HOVER_PULL_STRENGTH of the original distance instead of
+  // compounding toward the hovered node the longer the hover lasts.
+  function applyHoverPull() {
+    if (!hoverPull || !state.data) return;
+    var hovered = state.data.nodes.find(function (n) { return n.id === hoverPull.nodeId; });
+    if (!hovered) return;
+    var t = Math.min(1, (performance.now() - hoverPull.startedAt) / HOVER_PULL_EASE_MS);
+    var strength = HOVER_PULL_STRENGTH * easeInOutCubic(t);
+    state.data.nodes.forEach(function (n) {
+      var origin = hoverPull.origin[n.id];
+      if (!origin) return;
+      n.x = origin.x + (hovered.x - origin.x) * strength;
+      n.y = origin.y + (hovered.y - origin.y) * strength;
+      if (typeof origin.z === 'number' && typeof hovered.z === 'number') {
+        n.z = origin.z + (hovered.z - origin.z) * strength;
+      }
+    });
+  }
+  var hoverPullFrameId = null;
+  function hoverPullStep() {
+    applyHoverPull();
+    hoverPullFrameId = requestAnimationFrame(hoverPullStep);
+  }
+  function startHoverPullLoop() {
+    if (hoverPullFrameId === null) hoverPullFrameId = requestAnimationFrame(hoverPullStep);
+  }
+  function stopHoverPullLoop() {
+    if (hoverPullFrameId !== null) { cancelAnimationFrame(hoverPullFrameId); hoverPullFrameId = null; }
+  }
+
+  // ---- idle drift (v3, item 3: "soft idle motion") ------------------------
+  // A gentle, continuous, organic bob per node -- a slow sinusoid with
+  // random phase/period/amplitude, applied as an OFFSET on top of
+  // whatever the force simulation (and hover pull, above) currently has
+  // `n.x`/`n.y`/`n.z` at, never accumulating: each frame first undoes
+  // exactly the offset it added last frame (recovering the
+  // simulation-owned position), then computes and adds a fresh one from
+  // the node's own fixed phase/period -- so the added amount never
+  // compounds frame over frame, and a still-settling force simulation
+  // (or a live hover pull) keeps driving the real, underlying position
+  // uninterrupted. Read directly by both engines every render frame --
+  // proven live already by hoverPull's own direct `n.x`/`n.y`/`n.z`
+  // writes above (v2-verify-output.json's `neighbor_pos_after_hover`).
+  var DRIFT_AMPLITUDE_MIN = 1.6;
+  var DRIFT_AMPLITUDE_MAX = 3.4;
+  var DRIFT_PERIOD_MIN_MS = 5000;
+  var DRIFT_PERIOD_MAX_MS = 11000;
+  var driftFrameId = null;
+  var driftEnabled = false; // set once at load time, per prefers-reduced-motion (below)
+
+  function ensureDriftParams(n) {
+    if (n.__driftPhase !== undefined) return;
+    n.__driftPhase = Math.random() * Math.PI * 2;
+    n.__driftPhaseY = Math.random() * Math.PI * 2;
+    n.__driftPhaseZ = Math.random() * Math.PI * 2;
+    n.__driftPeriod = DRIFT_PERIOD_MIN_MS + Math.random() * (DRIFT_PERIOD_MAX_MS - DRIFT_PERIOD_MIN_MS);
+    n.__driftAmp = DRIFT_AMPLITUDE_MIN + Math.random() * (DRIFT_AMPLITUDE_MAX - DRIFT_AMPLITUDE_MIN);
+    n.__driftOffsetX = 0;
+    n.__driftOffsetY = 0;
+    n.__driftOffsetZ = 0;
+  }
+  function driftStep(t) {
+    if (state.data) {
+      state.data.nodes.forEach(function (n) {
+        ensureDriftParams(n);
+        // Undo last frame's contribution first, so this frame's add is
+        // never layered on top of a prior add (no accumulation).
+        n.x -= n.__driftOffsetX;
+        n.y -= n.__driftOffsetY;
+        if (typeof n.z === 'number') n.z -= n.__driftOffsetZ;
+
+        var base = (t / n.__driftPeriod) * Math.PI * 2;
+        var ox = Math.sin(base + n.__driftPhase) * n.__driftAmp;
+        var oy = Math.sin(base * 0.83 + n.__driftPhaseY) * n.__driftAmp;
+        var oz = Math.sin(base * 1.21 + n.__driftPhaseZ) * n.__driftAmp;
+        n.__driftOffsetX = ox;
+        n.__driftOffsetY = oy;
+        n.__driftOffsetZ = typeof n.z === 'number' ? oz : 0;
+        n.x += ox;
+        n.y += oy;
+        if (typeof n.z === 'number') n.z += oz;
+      });
+    }
+    driftFrameId = requestAnimationFrame(driftStep);
+  }
+  function startDriftLoop() {
+    if (driftFrameId === null) driftFrameId = requestAnimationFrame(driftStep);
+  }
+
+  function onNodeHover(node) {
+    var id = node ? node.id : null;
+    if (state.hoveredId === id) return;
+    state.hoveredId = id;
+    if (node) { beginHoverPull(node); startHoverPullLoop(); }
+    else { endHoverPull(); stopHoverPullLoop(); }
+    refreshLinkVisuals();
+  }
+
+  // Redraws link visuals only (hover changes every frame's worth of
+  // node positions via the pull loop above, but link color/opacity/dash
+  // only need to change on hover ENTER/EXIT, not every frame).
+  function refreshLinkVisuals() {
+    if (!engine || !engineMode) return;
+    if (engineMode === '2d') {
+      engine.linkColor(linkColorFor2D(draw2dLive.colors)).linkVisibility(linkVisibleFn).linkLineDash(linkDashFn);
+    } else if (engineMode === '3d' && live3D.built) {
+      syncSelection3D(live3D.built.nodes, live3D.built.links, live3D.colors);
+    }
+  }
+
+  function selectNode(d) {
+    state.selectedId = d.id;
+    state.selectedNeighborIds = directNeighborIds(d.id);
+    redraw();
+    refreshLinkVisuals();
+    closeControlsPanel();
+    openNotePanel(d.id);
+    // v3, item 1 ("click focus"): rotation stops the instant a node is
+    // selected -- explicit here for an immediate effect rather than
+    // waiting one more rAF tick for autoRotateStep's own `state.selectedId
+    // != null` guard (added below) to notice and self-terminate.
+    stopAutoRotateLoop();
+    if (state.mode === '3d') focusCamera3D(d);
+    else if (state.mode === '2d') focusCamera2D(d);
+  }
+  function selectNodeById(id) {
+    if (!state.data) return;
+    var node = state.data.nodes.find(function (n) { return n.id === id; });
+    if (node) selectNode(node);
+  }
+  function deselectNode() {
+    if (state.selectedId == null) return;
+    state.selectedId = null;
+    state.selectedNeighborIds = new Set();
+    redraw();
+    refreshLinkVisuals();
+    closeNotePanel();
+    // v3, item 1: rotation resumes on deselect UNLESS the reader had
+    // paused it themselves while a node was selected -- the toggle's own
+    // aria-pressed is that reader intent, untouched by selection.
+    if (state.mode === '3d' && engine && els.rotateToggle.getAttribute('aria-pressed') === 'true') {
+      startAutoRotateLoop();
+    }
+  }
+
+  // ---- click-focus camera (v3, item 1) -------------------------------------
+  // "front and centre of the visible canvas area (the part not covered by
+  // the note panel), noticeably closer than rest-state zoom, with its
+  // links and neighbours visible around it" -- both engines expose
+  // `zoomToFit(durationMs, padding, nodeFilterFn)` (confirmed against the
+  // pinned force-graph@1.51.4 / 3d-force-graph@1.80.0 .d.ts files), so
+  // framing just the selected node + its direct neighbours does the
+  // "closer, with neighbours visible" part in one call; a second, delayed
+  // nudge then pans the framed centre left by the note panel's own width
+  // fraction so the node doesn't land behind it. The note panel's width
+  // is already correct to read here -- `openNotePanel` above set
+  // `hidden = false` synchronously; only its slide-in *transform* is
+  // animated, not its CSS width.
+  var FOCUS_EASE_MS = 700;
+  var FOCUS_PAN_DELAY_MS = FOCUS_EASE_MS + 20;
+  function visibleAreaOffsetFrac() {
+    try {
+      var canvasPx = els.canvasWrap.getBoundingClientRect().width;
+      var panelPx = els.notePanel.getBoundingClientRect().width;
+      if (!canvasPx || els.notePanel.hidden) return 0;
+      return Math.min(0.6, panelPx / canvasPx);
+    } catch (e) { return 0; }
+  }
+  function focusCamera3D(node) {
+    if (!engine || typeof engine.zoomToFit !== 'function') return;
+    var neighborIds = directNeighborIds(node.id);
+    try {
+      engine.zoomToFit(FOCUS_EASE_MS, 70, function (n) { return n.id === node.id || neighborIds.has(n.id); });
+    } catch (e) { /* best effort */ }
+    setTimeout(function () {
+      if (state.selectedId !== node.id || !engine || typeof engine.camera !== 'function') return;
+      try {
+        var frac = visibleAreaOffsetFrac();
+        if (frac <= 0) return;
+        var cam = engine.camera();
+        var ctrl = typeof engine.controls === 'function' ? engine.controls() : null;
+        if (!cam || !ctrl || !ctrl.target) return;
+        var distance = cam.position.distanceTo(ctrl.target);
+        var fovRad = (cam.fov || 50) * Math.PI / 180;
+        // The visible (non-panel) strip's own centre sits `panelWidth/2`
+        // screen px left of the full canvas's centre -- at this camera
+        // distance, the frustum's half-width in world units at `distance`
+        // is `distance * tan(fov/2) * aspect`, mapped across NDC [-1, 1]
+        // (i.e. the FULL canvas width, panel or no panel -- the panel is
+        // an HTML overlay, not a smaller render target). So the world
+        // shift for a `frac` (panelWidth / canvasWidth) screen-space
+        // correction is `distance * tan(fov/2) * aspect * frac`, no
+        // additional halving (frac already IS panelWidth/canvasWidth, and
+        // the desired px shift is panelWidth/2 -- the /2 and the
+        // canvasWidth/2 in the NDC-to-px conversion cancel out).
+        var worldShift = Math.tan(fovRad / 2) * (cam.aspect || 1) * distance * frac;
+        var right = new THREE.Vector3(1, 0, 0).applyQuaternion(cam.quaternion).multiplyScalar(worldShift);
+        var newCamPos = cam.position.clone().add(right);
+        var newTarget = ctrl.target.clone().add(right);
+        var PAN_TWEEN_MS = 220;
+        tweenVector3(cam.position, newCamPos, PAN_TWEEN_MS);
+        tweenVector3(ctrl.target, newTarget, PAN_TWEEN_MS, function () {
+          if (typeof ctrl.update === 'function') ctrl.update();
+        });
+      } catch (e) { /* best effort */ }
+    }, FOCUS_PAN_DELAY_MS);
+  }
+  function focusCamera2D(node) {
+    if (!engine || typeof engine.zoomToFit !== 'function') return;
+    var neighborIds = directNeighborIds(node.id);
+    try {
+      engine.zoomToFit(FOCUS_EASE_MS, 70, function (n) { return n.id === node.id || neighborIds.has(n.id); });
+    } catch (e) { /* best effort */ }
+    setTimeout(function () {
+      if (state.selectedId !== node.id || !engine) return;
+      try {
+        var frac = visibleAreaOffsetFrac();
+        if (frac <= 0) return;
+        var canvasPx = els.canvasWrap.getBoundingClientRect().width;
+        var shiftPx = (canvasPx * frac) / 2;
+        var zoom = engine.zoom();
+        if (!zoom) return;
+        engine.centerAt(node.x + shiftPx / zoom, node.y, 300);
+      } catch (e) { /* best effort */ }
+    }, FOCUS_PAN_DELAY_MS);
+  }
+
+  function renderMeta(data) {
+    var freshest = data.nodes.reduce(function (max, n) { return n.updated > max ? n.updated : max; }, '');
+    els.meta.textContent = data.nodes.length + ' notes · ' + data.edges.length + ' links' +
+      (freshest ? ' · as of ' + freshest : '');
+    if (data.truncated) {
+      els.capNotice.hidden = false;
+      els.capNotice.textContent = 'Showing ' + data.nodes.length + ' of ' + data.total_notes +
+        ' notes (capped at ' + data.node_cap + '). Use search or a type filter to narrow it down.';
+    } else {
+      els.capNotice.hidden = true;
+    }
+  }
+
+  function renderLegend(data) {
+    var counts = {};
+    data.nodes.forEach(function (n) { counts[n.type] = (counts[n.type] || 0) + 1; });
+    var colors = paletteTokens();
+    els.legend.innerHTML = '';
+    TYPES.forEach(function (t) {
+      if (!counts[t]) return;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-pressed', state.hiddenTypes.has(t) ? 'false' : 'true');
+      btn.innerHTML = '<span class="swatch" style="background:' + colors.types[t] + '"></span>' + t + ' (' + counts[t] + ')';
+      btn.addEventListener('click', function () {
+        if (state.hiddenTypes.has(t)) state.hiddenTypes.delete(t); else state.hiddenTypes.add(t);
+        btn.setAttribute('aria-pressed', state.hiddenTypes.has(t) ? 'false' : 'true');
+        redraw();
+      });
+      els.legend.appendChild(btn);
+    });
+    // Build instructions item 2: the legend chips stay but only appear
+    // when Type colors is on.
+    els.legend.hidden = !state.colorsOn;
+    els.legendSection.hidden = !state.colorsOn;
+  }
+
+  function currentGraphData() {
+    var colors = currentPalette();
+    var nodes = keptNodes();
+    var ids = new Set(nodes.map(function (n) { return n.id; }));
+    var links = state.data.edges
+      .filter(function (e) { return ids.has(e.source) && ids.has(e.target); })
+      .map(function (e) { return Object.assign({}, e); });
+    return { nodes: nodes, links: links, colors: colors };
+  }
+
+  function renderSearchStatus() {
+    if (!state.data) { els.searchStatus.hidden = true; return; }
+    var total = state.data.nodes.length;
+    var shown = currentGraphData().nodes.length;
+    var filtering = state.hiddenTypes.size > 0 || !!state.searchTerm;
+    els.searchStatus.hidden = !filtering;
+    if (filtering) els.searchStatus.textContent = shown + ' of ' + total + ' shown';
+    els.searchClear.hidden = !state.searchTerm;
+  }
+
+  // ---- loading / error surface -------------------------------------------
+  function markLoaded() {
+    loaded = true;
+    els.loading.hidden = true;
+    els.error.hidden = true;
+  }
+  function showError(message) {
+    loaded = true;
+    els.loading.hidden = true;
+    els.errorText.textContent = '';
+    els.errorText.appendChild(document.createTextNode('Error: ' + message + ' '));
+    var link = document.createElement('a');
+    link.href = '/search';
+    link.textContent = 'Search the graph instead.';
+    els.errorText.appendChild(link);
+    els.error.hidden = false;
+  }
+
+  // ---- canvas sizing (full-bleed, from under the nav to the bottom) ------
+  function sizeCanvasWrap() {
+    if (!els.canvasWrap) return;
+    var top = els.canvasWrap.getBoundingClientRect().top;
+    var h = Math.max(360, Math.round(window.innerHeight - top));
+    els.canvasWrap.style.height = h + 'px';
+    if (engine && typeof engine.width === 'function' && typeof engine.height === 'function') {
+      try { engine.width(els.canvasWrap.clientWidth); engine.height(h); } catch (e) { /* best effort */ }
+    }
+  }
+  window.addEventListener('resize', sizeCanvasWrap);
+
+  // ---- engine lifecycle ----------------------------------------------------
+  function disposeEngine() {
+    stopAutoRotateLoop();
+    stopDepthFadeLoop(); // v4, item 2 -- no-op if it was never running (2D)
+    if (!engine) return;
+    try { if (typeof engine.pauseAnimation === 'function') engine.pauseAnimation(); } catch (e) { /* best effort */ }
+    try { if (typeof engine._destructor === 'function') engine._destructor(); } catch (e) { /* best effort */ }
+    engine = null;
+    controls = null;
+    engineMode = null;
+  }
+
+  // ---- auto-rotate (3D only) -----------------------------------------------
+  // Fix wave 2026-09-13: the pinned 3d-force-graph@1.80.0's bundled
+  // OrbitControls never advances its own internal frame clock, so its
+  // native `autoRotate` is a guaranteed no-op regardless of instance --
+  // driven by our own requestAnimationFrame loop instead, computing its
+  // own deltaTime from `performance.now()`. Only spins while
+  // `controls().state === STATE.NONE`, so it never fights a drag/zoom.
+  var AUTO_ROTATE_RADIANS_PER_SEC = (2 * Math.PI / 60) * 1.1; // ~1 revolution/minute
+  var autoRotateFrameId = null;
+  var autoRotateLastT = null;
+
+  function stopAutoRotateLoop() {
+    if (autoRotateFrameId !== null) { cancelAnimationFrame(autoRotateFrameId); autoRotateFrameId = null; }
+    autoRotateLastT = null;
+  }
+
+  function autoRotateStep(t) {
+    // v3, item 1: rotation stays stopped for as long as a node is
+    // selected, regardless of the toggle's own on/off state -- the
+    // self-terminating guard below is the belt to `selectNode`'s explicit
+    // `stopAutoRotateLoop()` braces (immediate) above.
+    if (!engine || state.mode !== '3d' || state.selectedId != null
+        || els.rotateToggle.getAttribute('aria-pressed') !== 'true') {
+      stopAutoRotateLoop();
+      return;
+    }
+    var dt = autoRotateLastT === null ? 0 : Math.min(0.25, (t - autoRotateLastT) / 1000);
+    autoRotateLastT = t;
+    if (dt > 0 && typeof engine.controls === 'function' && typeof engine.camera === 'function') {
+      var ctrl = engine.controls();
+      if (ctrl.state === -1) { // STATE.NONE -- not being dragged/zoomed right now
+        var cam = engine.camera();
+        var target = ctrl.target || { x: 0, y: 0, z: 0 };
+        var dx = cam.position.x - target.x, dz = cam.position.z - target.z;
+        var radius = Math.sqrt(dx * dx + dz * dz);
+        if (radius > 0.001) {
+          var angle = Math.atan2(dx, dz) + AUTO_ROTATE_RADIANS_PER_SEC * dt;
+          cam.position.x = target.x + radius * Math.sin(angle);
+          cam.position.z = target.z + radius * Math.cos(angle);
+          cam.lookAt(target.x, target.y, target.z);
+        }
+      }
+    }
+    autoRotateFrameId = requestAnimationFrame(autoRotateStep);
+  }
+
+  function startAutoRotateLoop() {
+    if (autoRotateFrameId === null) {
+      autoRotateLastT = null;
+      autoRotateFrameId = requestAnimationFrame(autoRotateStep);
+    }
+  }
+
+  var labelFont = tok('--pl-mono') || 'monospace';
+
+  var INTERACTIVE_BUDGET_MS = 3000;
+  function logInitTime(label, initStart) {
+    var elapsed = performance.now() - initStart;
+    if (elapsed > INTERACTIVE_BUDGET_MS) {
+      console.warn('[graph ' + label + '] took ' + elapsed.toFixed(0) + 'ms to become interactive '
+        + '(budget: ' + INTERACTIVE_BUDGET_MS + 'ms)');
+    } else {
+      console.debug('[graph ' + label + '] interactive after ' + elapsed.toFixed(0) + 'ms');
+    }
+  }
+
+  var draw2dLive = { colors: null };
+
+  // ---- spacing (v4, item 3) -------------------------------------------------
+  // The owner compared the rest-state cloud against the reference again
+  // and found nodes bunched and overlapping -- both engines were still
+  // running plain d3-force defaults (forceManyBody strength -30,
+  // forceLink distance 30; confirmed against `force-graph@1.51.4`'s own
+  // `.d3Force('link'|'charge')` getters, present in both pinned
+  // libraries -- checked directly against the exact pinned jsdelivr
+  // bundles, not assumed). "About double the separation" doesn't mean
+  // literally doubling the charge constant: charge repulsion balances
+  // against the link and centering forces already in play, so the
+  // strength has to grow faster than the target distance ratio to move
+  // the system's equilibrium spacing by that much. LINK_DISTANCE is a
+  // straight 2x (30 -> 60); CHARGE_STRENGTH is tuned empirically (this
+  // wave's own verification samples actual on-screen node-to-node
+  // spacing before and after) rather than derived from a formula.
+  var LINK_DISTANCE = 60;
+  var CHARGE_STRENGTH = -140;
+
+  // ---- 2D (force-graph: canvas, bundles d3-force, wheel-zoom/drag-pan built in) --
+  function draw2D(built) {
+    if (typeof ForceGraph === 'undefined') { throw new Error('The graph library did not load.'); }
+    var colors = built.colors;
+    draw2dLive.colors = colors;
+
+    if (engine && engineMode === '2d') {
+      engine
+        .graphData({ nodes: built.nodes, links: built.links })
+        .nodeColor(colorFor(colors))
+        .linkColor(linkColorFor2D(colors))
+        .linkVisibility(linkVisibleFn)
+        .linkLineDash(linkDashFn);
+      markLoaded();
+      sizeCanvasWrap();
+      return;
+    }
+
+    disposeEngine();
+    els.container2d.innerHTML = '';
+    var readyReported = false;
+    var initStart = performance.now();
+    var autoFitDone = false;
+
+    var g = new ForceGraph(els.container2d)
+      .graphData({ nodes: built.nodes, links: built.links })
+      .nodeId('id')
+      .nodeColor(colorFor(colors))
+      .nodeVal(nodeVal)
+      .nodeRelSize(4)
+      .linkColor(linkColorFor2D(colors))
+      .linkWidth(1)
+      .linkVisibility(linkVisibleFn)
+      .linkLineDash(linkDashFn)
+      .linkDirectionalParticles(function (l) { return linkIsActive(l) ? 2 : 0; })
+      .linkDirectionalParticleWidth(2)
+      .linkDirectionalParticleSpeed(0.004)
+      .linkDirectionalParticleColor(function () { return colors.link; })
+      .backgroundColor('rgba(0,0,0,0)')
+      .onNodeClick(selectNode)
+      .onNodeHover(onNodeHover)
+      .onBackgroundClick(deselectNode)
+      .nodeCanvasObjectMode(function () { return 'after'; })
+      .nodeCanvasObject(function (node, ctx, globalScale) {
+        var c = draw2dLive.colors;
+        var r = 3 + Math.sqrt(node.val || 1) * 2.4;
+        var isSelected = node.id === state.selectedId;
+        if (isSelected) {
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, r + 2.5 / globalScale, 0, 2 * Math.PI);
+          ctx.strokeStyle = c.ring;
+          ctx.lineWidth = 1 / globalScale;
+          ctx.stroke();
+        }
+        // v4, item 5 ("selected state, cleaner"): while a node is
+        // selected, every node that isn't it or a direct neighbour loses
+        // its label entirely -- the disc itself already faded to gray via
+        // the live `.nodeColor(colorFor(colors))` accessor above (no
+        // rebuild needed in 2D, unlike 3D's baked textures). Checked
+        // BEFORE `isLabelExpanded` so a hover on a faded node can't force
+        // its label back on -- item 5's fade holds "until the selection
+        // clears", hover or not.
+        if (isFadedBySelection(node.id)) return;
+        var fontSize = Math.max(7, 9 / globalScale);
+        var fontCss = fontSize + 'px ' + labelFont;
+        ctx.font = fontCss;
+        try { ctx.letterSpacing = '1px'; } catch (e) { /* older engines: no letter-spacing support */ }
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'bottom';
+        // v3 item 2 / v4 item 4: full on hover/select/direct-neighbour-of-
+        // select, else a plain 22-character cut (truncateToChars above).
+        var full = (node.title || '').toUpperCase();
+        var text = isLabelExpanded(node.id) ? full : truncateToChars(full, LABEL_REST_MAX_CHARS);
+        var tx = node.x + r * 0.7 + 3, ty = node.y - r * 0.7 - 3;
+        // v4, item 5: the selected node's own label renders at full
+        // opacity regardless of its size -- everyone else keeps the
+        // size-based fade (labelOpacity) v3 already had.
+        ctx.globalAlpha = isSelected ? 1 : labelOpacity(node.val);
+        // v3, item 4 ("label halo"): a ground-colored stroke behind the
+        // fill, screen-constant width like the font itself (divided by
+        // globalScale), so a label stays readable over another node it
+        // overlaps.
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = 3.5 / globalScale;
+        ctx.strokeStyle = graphGround();
+        ctx.strokeText(text, tx, ty);
+        // v4, item 5: the selected node's own label is forced to true
+        // ink (`trueInk()`) regardless of type/mono color -- everyone
+        // else (only neighbours reach this point; faded nodes returned
+        // above) keeps its normal ink.
+        ctx.fillStyle = isSelected ? trueInk() : c.ink;
+        ctx.fillText(text, tx, ty);
+        ctx.globalAlpha = 1;
+      })
+      .onEngineTick(function () {
+        if (!readyReported) { readyReported = true; markLoaded(); logInitTime('2D', initStart); }
+      })
+      .onEngineStop(function () {
+        if (!readyReported) { readyReported = true; markLoaded(); logInitTime('2D', initStart); }
+        // Restyle wave 2026-09-15 v2, item 6: start closer -- fit once,
+        // then pull the zoom in further. v4, item 3: re-tuned from 1.25x
+        // to 1.4x -- doubling the link/charge spacing above grows the
+        // settled bounding box, and `zoomToFit`'s own fixed 40px padding
+        // already compensates for most of that on its own (its zoom
+        // level is computed FROM the actual bounding box), but the extra
+        // pull-in needed a bit more to keep the cloud filling the
+        // viewport at rest the way it did before the spacing change.
+        if (!autoFitDone) {
+          autoFitDone = true;
+          try { g.zoomToFit(0, 40); g.zoom(g.zoom() * 1.4, 0); } catch (e) { /* best effort */ }
+        }
+      });
+
+    // v4, item 3: double the rest-state separation -- see the constants'
+    // own comment above. Set on the underlying d3-force simulation
+    // directly (both pinned libraries expose the same `.d3Force(name)`
+    // API 3d-force-graph's own README documents), not chainable back
+    // into the builder above since it returns the d3 force object, not
+    // the graph instance.
+    g.d3Force('link').distance(LINK_DISTANCE);
+    g.d3Force('charge').strength(CHARGE_STRENGTH);
+
+    engine = g;
+    engineMode = '2d';
+    controls = {
+      fit: function () { g.zoomToFit(400, 40); },
+      getZoom: function () { return g.zoom(); }
+    };
+    sizeCanvasWrap();
+  }
+
+  // ---- 3D three.js helpers (restyle wave 2026-09-15) -----------------------
+  // Flat, unlit, camera-facing discs: a `THREE.Sprite` always billboards
+  // to face the camera and, unlike a mesh, is never affected by scene
+  // lighting -- exactly "no lighting, no shading, no outlines" with no
+  // extra scene setup needed.
+  function makeCircleTexture(colorCss) {
+    var c = document.createElement('canvas');
+    c.width = c.height = 64;
+    var ctx = c.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(32, 32, 30, 0, Math.PI * 2);
+    ctx.fillStyle = colorCss;
+    ctx.fill();
+    return new THREE.CanvasTexture(c);
+  }
+  function makeRingTexture(colorCss) {
+    var c = document.createElement('canvas');
+    c.width = c.height = 64;
+    var ctx = c.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(32, 32, 27, 0, Math.PI * 2);
+    ctx.strokeStyle = colorCss;
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    return new THREE.CanvasTexture(c);
+  }
+  // v3, item 2: the canvas is now sized to fit exactly whatever text it's
+  // given (truncated at rest, full on focus) rather than a fixed 256px
+  // raster that silently clipped long titles mid-glyph -- `buildNode3D`/
+  // `syncSelection3D` below decide which text to pass in.
+  // v3, item 4 ("label halo"): a `strokeText` in the canvas's own ground
+  // color, drawn BEFORE the fill, gives every label a halo that survives
+  // overlapping another node -- `lineWidth` is set in this same raster
+  // space the glyphs are drawn in, so it scales with the sprite exactly
+  // like the text itself (the sprite stretches the whole fixed-DPI
+  // raster uniformly; "3 to 4px at the label's scale" IS this raster).
+  var LABEL_FONT_PX_3D = 26;
+  // v4, item 4 ("smaller labels"): v3 scaled each label sprite by ITS OWN
+  // node's disc radius (`pxToWorld = r / 32`, further down) -- so a hub's
+  // label grew right along with its (much bigger) disc, which is exactly
+  // what produced the owner's screenshot: hub titles spanning several
+  // neighbouring nodes and colliding with them. The fix: one FIXED
+  // px-to-world ratio, shared by every node regardless of its own size,
+  // derived from a representative "mid-size" node's own disc radius (the
+  // same `r = 1 + cbrt(val) * 3.2` formula `buildNode3D` already uses) so
+  // a label's rendered height comes out "roughly the disc diameter of a
+  // mid-size node" as asked -- not the selected node's, not a leaf's.
+  // Small nodes staying fainter (not smaller) is still `labelOpacity`'s
+  // job, untouched here.
+  var LABEL_MID_NODE_VAL = 3.5; // between a leaf's ~1.5 and a realistic hub's ~7-8
+  var LABEL_MID_NODE_R = 1 + Math.cbrt(LABEL_MID_NODE_VAL) * 3.2;
+  var LABEL_PX_TO_WORLD = LABEL_MID_NODE_R / 32;
+  function makeLabelTexture(text, colorCss) {
+    var padding = 10;
+    truncateMeasureCtx.font = LABEL_FONT_PX_3D + 'px ' + labelFont;
+    try { truncateMeasureCtx.letterSpacing = '2px'; } catch (e) { /* older engines */ }
+    var textWidth = truncateMeasureCtx.measureText(text).width;
+    var c = document.createElement('canvas');
+    c.width = Math.max(64, Math.ceil(textWidth) + padding * 2);
+    c.height = 64;
+    var ctx = c.getContext('2d');
+    ctx.font = LABEL_FONT_PX_3D + 'px ' + labelFont;
+    try { ctx.letterSpacing = '2px'; } catch (e) { /* older engines */ }
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = 3.5;
+    ctx.strokeStyle = graphGround();
+    ctx.strokeText(text, padding, 32);
+    ctx.fillStyle = colorCss;
+    ctx.fillText(text, padding, 32);
+    return { texture: new THREE.CanvasTexture(c), width: c.width, height: c.height };
+  }
+  function labelDisplayText(node, expanded) {
+    var full = (node.title || '').toUpperCase();
+    if (expanded) return full;
+    return truncateToChars(full, LABEL_REST_MAX_CHARS);
+  }
+  function buildNode3D(colors) {
+    var getColor = colorFor(colors);
+    return function (node) {
+      var val = node.val || nodeVal(node);
+      var r = 1 + Math.cbrt(val) * 3.2;
+      var group = new THREE.Group();
+      // v4, item 5: a freshly (re)constructed engine can still land mid-
+      // selection (e.g. a palette toggle while a node is selected) --
+      // build the disc with whatever color it should ALREADY show
+      // (true color or the deselected-fade gray) rather than always the
+      // true color and relying on the next `syncSelection3D` pass to
+      // correct it.
+      var faded = isFadedBySelection(node.id);
+      var discColor = faded ? deselectedFadeColor() : getColor(node);
+
+      var disc = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: makeCircleTexture(discColor), transparent: true, depthWrite: false
+      }));
+      disc.scale.set(r * 2, r * 2, 1);
+      group.add(disc);
+      group.__disc = disc;
+      group.__discColorKey = faded ? 'faded' : discColor;
+
+      var ring = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: makeRingTexture(colors.ring), transparent: true, depthWrite: false
+      }));
+      ring.scale.set(r * 2.7, r * 2.7, 1);
+      ring.visible = node.id === state.selectedId;
+      ring.renderOrder = 2;
+      group.add(ring);
+      group.__ring = ring;
+
+      var isSelected = node.id === state.selectedId;
+      var expanded = isLabelExpanded(node.id);
+      var inkColor = isSelected ? trueInk() : colors.ink;
+      var built = makeLabelTexture(labelDisplayText(node, expanded), inkColor);
+      var label = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: built.texture, transparent: true, depthWrite: false,
+        opacity: isSelected ? 1 : labelOpacity(val)
+      }));
+      // v4, item 4: ONE fixed px-to-world ratio for every label
+      // regardless of this node's own radius -- see LABEL_PX_TO_WORLD's
+      // own comment above.
+      label.scale.set(built.width * LABEL_PX_TO_WORLD, built.height * LABEL_PX_TO_WORLD, 1);
+      label.position.set(r * 1.3, r * 1.1, 0);
+      label.visible = !faded; // item 5: hidden entirely while faded
+      group.add(label);
+      group.__label = label;
+      group.__labelExpanded = expanded;
+      group.__labelStateKey = expanded + '|' + inkColor;
+      group.__labelColor = colors.ink;
+      group.__labelVal = val;
+
+      return group;
+    };
+  }
+  // 3D links: 3d-force-graph@1.80.0 has no `linkLineDash` (checked
+  // directly against the pinned instance). A custom `linkThreeObject`
+  // (a `THREE.Line` + `THREE.LineDashedMaterial`) plus `linkPositionUpdate`
+  // stands in for it; the near-invisible rest state reuses the same
+  // dashed material with a dash length longer than the link itself, so no
+  // gap ever appears, rather than swapping materials on every change.
+  function buildLink3D() {
+    return function () {
+      var geometry = new THREE.BufferGeometry();
+      var material = new THREE.LineDashedMaterial({ transparent: true });
+      return new THREE.Line(geometry, material);
+    };
+  }
+  function updateLinkPosition3D(line, coords) {
+    line.geometry.setFromPoints([
+      new THREE.Vector3(coords.start.x, coords.start.y, coords.start.z || 0),
+      new THREE.Vector3(coords.end.x, coords.end.y, coords.end.z || 0)
+    ]);
+    line.geometry.computeBoundingSphere();
+    line.computeLineDistances();
+    return true; // tell 3d-force-graph we've fully positioned this link ourselves
+  }
+  function syncSelection3D(nodes, links, colors) {
+    var getColor = colorFor(colors);
+    nodes.forEach(function (n) {
+      var obj = n.__threeObj;
+      if (!obj) return;
+      var isSelected = n.id === state.selectedId;
+      if (obj.__ring) obj.__ring.visible = isSelected;
+
+      // v4, item 5 ("selected state, cleaner"): every node that isn't
+      // the selection or one of its direct neighbours fades to a flat
+      // gray -- rebuilt only when that fade state (or, for the not-faded
+      // case, the underlying color) actually changes, same cheap-no-op-
+      // when-nothing-changed shape the label rebuild below already uses.
+      if (obj.__disc) {
+        var faded = isFadedBySelection(n.id);
+        var discColorKey = faded ? 'faded' : getColor(n);
+        if (obj.__discColorKey !== discColorKey) {
+          obj.__discColorKey = discColorKey;
+          var oldDiscTex = obj.__disc.material.map;
+          obj.__disc.material.map = makeCircleTexture(faded ? deselectedFadeColor() : discColorKey);
+          obj.__disc.material.needsUpdate = true;
+          if (oldDiscTex && typeof oldDiscTex.dispose === 'function') oldDiscTex.dispose();
+        }
+      }
+
+      // v3, item 2 / v4, item 5: rebuild the label's texture (and
+      // re-scale the sprite to the new, differently-sized raster) only
+      // when its expanded state OR its forced-ink state (selected vs.
+      // not) actually changes -- called every tick, so this must stay a
+      // cheap no-op for the common case of nothing changing.
+      if (obj.__label) {
+        var faded2 = isFadedBySelection(n.id);
+        obj.__label.visible = !faded2; // item 5: hidden entirely while faded, no texture work needed
+        var expanded = isLabelExpanded(n.id);
+        var inkColor = isSelected ? trueInk() : (obj.__labelColor || colors.ink);
+        var labelStateKey = expanded + '|' + inkColor;
+        if (obj.__labelStateKey !== labelStateKey) {
+          obj.__labelStateKey = labelStateKey;
+          obj.__labelExpanded = expanded;
+          var oldTex = obj.__label.material.map;
+          var built = makeLabelTexture(labelDisplayText(n, expanded), inkColor);
+          obj.__label.material.map = built.texture;
+          obj.__label.material.needsUpdate = true;
+          // v4, item 4: the fixed mid-node ratio, not this node's own r.
+          obj.__label.scale.set(built.width * LABEL_PX_TO_WORLD, built.height * LABEL_PX_TO_WORLD, 1);
+          if (oldTex && typeof oldTex.dispose === 'function') oldTex.dispose();
+        }
+        // v4, item 5: the selected node's own label is forced to full
+        // opacity (before depth fade multiplies on top, in
+        // updateDepthFade below); everyone else keeps the size-based
+        // `labelOpacity` v3 already had.
+        obj.__labelForceFullOpacity = isSelected;
+      }
+    });
+    links.forEach(function (l) {
+      var line = l.__lineObj;
+      if (!line || !line.material) return;
+      var active = linkIsActive(l);
+      line.visible = linkVisibleFn(l);
+      line.material.color.set(colors.link);
+      line.material.opacity = linkOpacityFn(l);
+      if (active) {
+        line.material.dashSize = 2; line.material.gapSize = 3;
+      } else {
+        line.material.dashSize = 4000; line.material.gapSize = 0; // longer than any real link: reads solid
+      }
+      line.material.needsUpdate = true;
+    });
+  }
+
+  // ---- depth fade (v4, item 2) ---------------------------------------------
+  // "Near nodes render at their full shade; far nodes blend toward the
+  // ground color ... like the reference where background discs are pale
+  // and foreground discs are dark." A disc's true color is baked into a
+  // CanvasTexture (`makeCircleTexture`), so it can't cheaply be
+  // reinterpolated toward the ground every frame -- `material.color`
+  // multiplies the texture, which can only ever darken it, not lighten a
+  // dark type-color toward a PALE ground. `material.opacity` is the
+  // mechanism this wave actually uses instead (both are named as
+  // acceptable in the build instructions): fading a sprite's opacity
+  // reveals whatever is drawn behind it, which for an isolated sprite
+  // against `g.backgroundColor(graphGround())` (below) IS the ground
+  // color -- opacity fade and "blend toward ground" are the same visual
+  // result here, and it works identically in light and dark theme
+  // without a second code path. Runs as its own per-frame
+  // requestAnimationFrame loop (`depthFadeStep`) rather than off
+  // `onEngineTick`, which only fires while the simulation is still
+  // settling -- the camera keeps moving (auto-rotate, drag, click-focus)
+  // long after that, and every one of those must re-fade the cloud.
+  var DEPTH_FADE_DISC_FLOOR = 0.14; // discs never fully vanish -- "a faint gradient", not invisible
+  var depthFadeFrameId = null;
+
+  // The cloud's own bounding radius (build instructions: "a near and a
+  // far distance derived from the cloud's bounding radius") -- distance
+  // from the origin, which is where 3d-force-graph's own centering force
+  // already pulls the simulation's centroid, so no separate centroid
+  // pass is needed. O(n) over the live node array; called once per
+  // frame, same order of work `syncSelection3D` already does per tick.
+  function cloudBoundingRadius(nodes) {
+    var maxR = 0;
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      if (typeof n.x !== 'number') continue;
+      var dx = n.x, dy = n.y || 0, dz = n.z || 0;
+      var d = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      if (d > maxR) maxR = d;
+    }
+    return maxR > 1 ? maxR : 1;
+  }
+  function smoothstep(t) { return t * t * (3 - 2 * t); }
+
+  // Exposed on window.__portolanGraph (below) for verification: the
+  // last frame's {near, far, radius} and a sample of the nearest/
+  // farthest node's own computed fade factor, so this wave's own
+  // headless-Chrome check can report real numbers instead of eyeballing
+  // a screenshot.
+  var lastDepthFadeSample = null;
+
+  function updateDepthFade() {
+    if (!engine || engineMode !== '3d' || !live3D.built || typeof engine.camera !== 'function') return;
+    var cam = engine.camera();
+    var nodes = live3D.built.nodes;
+    var radius = cloudBoundingRadius(nodes);
+    var camDist = cam.position.length();
+    // The exact depth range of the point cloud AS SEEN from the camera's
+    // current distance: the nearest a node on the bounding sphere can be
+    // is camDist - radius, the farthest is camDist + radius. Deriving
+    // near/far this way (rather than a fixed world-space constant) is
+    // what makes this "on camera change" too -- zooming in via
+    // click-focus tightens the range automatically, so the focused
+    // node's own neighbours don't wash out.
+    var near = Math.max(1, camDist - radius);
+    var far = camDist + radius;
+    if (far - near < 1) far = near + 1;
+
+    var sampleNear = null, sampleFar = null;
+    nodes.forEach(function (n) {
+      var obj = n.__threeObj;
+      if (!obj || typeof n.x !== 'number') return;
+      var dx = n.x - cam.position.x, dy = (n.y || 0) - cam.position.y, dz = (n.z || 0) - cam.position.z;
+      var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      var t = smoothstep(Math.max(0, Math.min(1, (dist - near) / (far - near))));
+
+      if (obj.__disc) obj.__disc.material.opacity = 1 - t * (1 - DEPTH_FADE_DISC_FLOOR);
+      if (obj.__label && obj.__label.visible) {
+        var val = obj.__labelVal != null ? obj.__labelVal : nodeVal(n);
+        var baseOp = obj.__labelForceFullOpacity ? 1 : labelOpacity(val);
+        obj.__label.material.opacity = baseOp * (1 - t); // "disappear entirely past a distance threshold"
+      }
+
+      if (sampleNear === null || dist < sampleNear.dist) sampleNear = { dist: dist, t: t, id: n.id };
+      if (sampleFar === null || dist > sampleFar.dist) sampleFar = { dist: dist, t: t, id: n.id };
+    });
+    lastDepthFadeSample = { near: near, far: far, radius: radius, camDist: camDist, nearest: sampleNear, farthest: sampleFar };
+  }
+  function depthFadeStep() {
+    updateDepthFade();
+    depthFadeFrameId = requestAnimationFrame(depthFadeStep);
+  }
+  function startDepthFadeLoop() {
+    if (depthFadeFrameId === null) depthFadeFrameId = requestAnimationFrame(depthFadeStep);
+  }
+  function stopDepthFadeLoop() {
+    if (depthFadeFrameId !== null) { cancelAnimationFrame(depthFadeFrameId); depthFadeFrameId = null; }
+  }
+
+  // Read live by the onEngineTick/onEngineStop callbacks below, which are
+  // registered exactly ONCE (at construction) and otherwise close over
+  // whatever `built`/`colors` existed at that moment forever. A reuse-path
+  // redraw (any click, search keystroke, or legend toggle while already in
+  // 3D) hands the engine a FRESH `built.links` array -- fresh copies, per
+  // `currentGraphData()`'s own comment -- and the library attaches the new
+  // `__lineObj` handles to THOSE objects, not the construction-time ones a
+  // stale closure would still be holding.
+  var live3D = { built: null, colors: null };
+
+  // ---- 3D (3d-force-graph, orbit controls built in) ----------------------
+  function draw3D(built) {
+    if (typeof ForceGraph3D === 'undefined') { throw new Error('The graph library did not load.'); }
+    var colors = built.colors;
+    live3D.built = built;
+    live3D.colors = colors;
+
+    if (engine && engineMode === '3d') {
+      engine.graphData({ nodes: built.nodes, links: built.links });
+      syncSelection3D(built.nodes, built.links, colors);
+      startDepthFadeLoop(); // idempotent -- already running in the common case
+      markLoaded();
+      sizeCanvasWrap();
+      return;
+    }
+
+    disposeEngine();
+    els.container3d.innerHTML = '';
+    var readyReported = false;
+    var initStart = performance.now();
+    var tickCount = 0;
+    var autoFitDone = false;
+
+    var g = ForceGraph3D()(els.container3d)
+      .graphData({ nodes: built.nodes, links: built.links })
+      .nodeId('id')
+      .nodeVal(nodeVal)
+      .nodeThreeObject(buildNode3D(colors))
+      .linkThreeObject(buildLink3D())
+      .linkPositionUpdate(updateLinkPosition3D)
+      .linkDirectionalParticles(function (l) { return linkIsActive(l) ? 2 : 0; })
+      .linkDirectionalParticleWidth(1.6)
+      .linkDirectionalParticleSpeed(0.004)
+      .linkDirectionalParticleColor(function () { return colors.link; })
+      .backgroundColor(graphGround())
+      .onNodeClick(selectNode)
+      .onNodeHover(function (d) { els.container3d.style.cursor = d ? 'pointer' : 'default'; onNodeHover(d); })
+      .onBackgroundClick(deselectNode)
+      .onEngineTick(function () {
+        if (tickCount < 10) {
+          tickCount++;
+          console.debug('[graph 3D] tick ' + tickCount + ' at ' + (performance.now() - initStart).toFixed(1) + 'ms');
+        }
+        syncSelection3D(live3D.built.nodes, live3D.built.links, live3D.colors);
+        if (!readyReported) { readyReported = true; markLoaded(); logInitTime('3D', initStart); }
+      })
+      .onEngineStop(function () {
+        syncSelection3D(live3D.built.nodes, live3D.built.links, live3D.colors);
+        if (!readyReported) { readyReported = true; markLoaded(); logInitTime('3D', initStart); }
+        // Restyle wave 2026-09-15 v2, item 6: start closer -- fit once,
+        // then pull the camera in further. v4, item 3: re-tuned from
+        // 0.75x to 0.68x for the same reason 2D's own pull-in moved
+        // (1.25x -> 1.4x, see its comment) -- doubled link/charge
+        // spacing grows the settled cloud, and `zoomToFit`'s own fit
+        // already accounts for most of that, but the extra pull-in
+        // needed a bit more to keep the cloud filling the viewport.
+        if (!autoFitDone) {
+          autoFitDone = true;
+          try {
+            g.zoomToFit(0, 40);
+            var p = g.cameraPosition();
+            g.cameraPosition({ x: p.x * 0.68, y: p.y * 0.68, z: p.z * 0.68 }, undefined, 0);
+          } catch (e) { /* best effort */ }
+        }
+      });
+
+    // v4, item 3: double the rest-state separation -- see LINK_DISTANCE/
+    // CHARGE_STRENGTH's own comment above draw2D. 3d-force-graph exposes
+    // the identical `.d3Force(name)` API force-graph does (checked
+    // directly against the pinned bundle).
+    g.d3Force('link').distance(LINK_DISTANCE);
+    g.d3Force('charge').strength(CHARGE_STRENGTH);
+
+    // No plain-perspective axes/grid, and no scene lights -- Sprites
+    // (buildNode3D above) aren't lit anyway.
+    //
+    // v4, item 2 ("depth fade"): the static `THREE.Fog(ground, 220,
+    // 1400)` this wave used to set here is gone -- fixed world-space
+    // thresholds have no relationship to an arbitrary demo graph's own
+    // scale (a small corpus can settle entirely inside 220 units, a
+    // large one can dwarf 1400), so it either never engaged or fogged
+    // the whole cloud uniformly depending on graph size. The dynamic
+    // per-node opacity fade below (`updateDepthFade`, derived from the
+    // cloud's own bounding radius every frame) replaces it outright, for
+    // both discs and labels, not just geometry fog would have reached.
+
+    engine = g;
+    engineMode = '3d';
+    controls = {
+      fit: function () { g.zoomToFit(400, 40); },
+      getZoom: function () {
+        var p = g.cameraPosition();
+        return Math.sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
+      }
+    };
+    // 3D auto-rotates from the start -- `els.rotateToggle`'s initial
+    // aria-pressed is set once, near the bottom of this file, from
+    // prefers-reduced-motion before any data even loads. Guarded by
+    // `state.selectedId` too (v3, item 1): a mode switch INTO 3D while a
+    // node is already selected (from 2D) must not start rotating.
+    if (state.selectedId == null && els.rotateToggle.getAttribute('aria-pressed') === 'true') startAutoRotateLoop();
+    startDepthFadeLoop(); // v4, item 2 -- 3D only, stopped in disposeEngine()
+    sizeCanvasWrap();
+  }
+
+  function emptyStateText(visibleCount) {
+    if (visibleCount > 0) return null;
+    if (state.searchTerm) return 'No notes match “' + state.searchTerm + '”.';
+    var stillVisible = TYPES.filter(function (t) { return !state.hiddenTypes.has(t); });
+    if (stillVisible.length === 1) return 'No notes of type “' + stillVisible[0] + '” yet.';
+    return 'No notes match the current filters.';
+  }
+
+  function redraw() {
+    if (!state.data) return;
+    try {
+      var built = currentGraphData();
+      renderSearchStatus();
+      var message = emptyStateText(built.nodes.length);
+      els.empty.hidden = !message;
+      els.empty.textContent = message || '';
+      els.container2d.hidden = !!message || state.mode !== '2d';
+      els.container3d.hidden = !!message || state.mode !== '3d';
+      if (message) {
+        disposeEngine();
+        markLoaded();
+        return;
+      }
+      if (state.mode === '3d') { draw3D(built); } else { draw2D(built); }
+    } catch (err) {
+      console.error('[graph] redraw failed:', err);
+      showError((err && err.message) || 'The graph could not be redrawn.');
+      if (state.mode === '3d') { setMode('2d'); }
+    }
+  }
+
+  function setMode(mode) {
+    state.mode = mode;
+    els.mode2d.setAttribute('aria-pressed', mode === '2d' ? 'true' : 'false');
+    els.mode3d.setAttribute('aria-pressed', mode === '3d' ? 'true' : 'false');
+    els.rotateToggle.hidden = mode !== '3d';
+    if (mode !== '3d') els.autoRotateNote.hidden = true;
+    redraw();
+  }
+
+  els.mode2d.addEventListener('click', function () { setMode('2d'); });
+  els.mode3d.addEventListener('click', function () { setMode('3d'); });
+  els.zoomFit.addEventListener('click', function () { controls && controls.fit(); });
+  els.rotateToggle.addEventListener('click', function () {
+    var on = els.rotateToggle.getAttribute('aria-pressed') !== 'true';
+    els.rotateToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+    els.rotateToggle.textContent = on ? 'Pause' : 'Rotate';
+    els.autoRotateNote.hidden = !(on && reducedMotion());
+    if (on && engine && state.mode === '3d') startAutoRotateLoop();
+    else stopAutoRotateLoop();
+  });
+  els.paletteToggle.addEventListener('click', function () {
+    state.colorsOn = !state.colorsOn;
+    els.paletteToggle.setAttribute('aria-pressed', state.colorsOn ? 'true' : 'false');
+    els.paletteToggle.setAttribute('aria-label', state.colorsOn ? 'Switch to grayscale' : 'Switch to section colors');
+    els.legend.hidden = !state.colorsOn;
+    els.legendSection.hidden = !state.colorsOn;
+    // 3D bakes node color into a CanvasTexture at construction (buildNode3D
+    // above); a live accessor can't repaint it, so this forces a fresh
+    // engine to pick up the new palette. Node objects are never copied
+    // (currentGraphData's own comment), so the simulation's x/y/z survive
+    // the rebuild -- a brief re-settle, not a random restart.
+    disposeEngine();
+    redraw();
+    sizeCanvasWrap();
+  });
+
+  // ---- search: round button <-> expanded field ----------------------------
+  function openSearch() {
+    els.searchWrap.hidden = false;
+    els.searchToggle.setAttribute('aria-expanded', 'true');
+    els.search.focus();
+  }
+  function closeSearch() {
+    els.searchWrap.hidden = true;
+    els.searchToggle.setAttribute('aria-expanded', 'false');
+  }
+  els.searchToggle.addEventListener('click', function () {
+    if (els.searchWrap.hidden) openSearch(); else closeSearch();
+  });
+
+  var searchDebounceId = null;
+  function applySearch(term) {
+    state.searchTerm = term.trim().toLowerCase();
+    redraw();
+  }
+  els.search.addEventListener('input', function () {
+    var value = els.search.value;
+    if (searchDebounceId !== null) clearTimeout(searchDebounceId);
+    searchDebounceId = setTimeout(function () { searchDebounceId = null; applySearch(value); }, 150);
+  });
+  els.searchClear.addEventListener('click', function () {
+    if (searchDebounceId !== null) { clearTimeout(searchDebounceId); searchDebounceId = null; }
+    els.search.value = '';
+    applySearch('');
+    els.search.focus();
+  });
+
+  // ---- controls panel (item 2) ---------------------------------------------
+  function openControlsPanel() {
+    els.controlsPanel.hidden = false;
+    els.panelToggle.setAttribute('aria-expanded', 'true');
+  }
+  function closeControlsPanel() {
+    els.controlsPanel.hidden = true;
+    els.panelToggle.setAttribute('aria-expanded', 'false');
+  }
+  els.panelToggle.addEventListener('click', function () {
+    if (els.controlsPanel.hidden) openControlsPanel(); else closeControlsPanel();
+  });
+
+  // ---- note panel (item 5) --------------------------------------------------
+  var notePanelRequestSeq = 0;
+  function sortedNodesByTitle() {
+    if (!state.data) return [];
+    return state.data.nodes.slice().sort(function (a, b) { return a.title.localeCompare(b.title); });
+  }
+  function stepNotePanel(delta) {
+    if (state.selectedId == null) return;
+    var ordered = sortedNodesByTitle();
+    var idx = ordered.findIndex(function (n) { return n.id === state.selectedId; });
+    if (idx === -1) return;
+    var nextIdx = (idx + delta + ordered.length) % ordered.length;
+    selectNodeById(ordered[nextIdx].id);
+  }
+  els.notePanelPrev.addEventListener('click', function () { stepNotePanel(-1); });
+  els.notePanelNext.addEventListener('click', function () { stepNotePanel(1); });
+
+  function renderNotePanel(info) {
+    els.notePanelEyebrow.textContent = info.type;
+    els.notePanelTitle.textContent = info.title;
+    els.notePanelSummary.textContent = info.summary;
+    els.notePanelOpen.href = '/notes/' + encodeURIComponent(info.slug);
+    els.notePanelBody.innerHTML = info.body_html; // server-rendered, html:False markdown -- see routes/graph.py
+    els.notePanelLinks.innerHTML = '';
+    if (info.links && info.links.length) {
+      els.notePanelConnects.hidden = false;
+      info.links.forEach(function (link) {
+        var pill = document.createElement('button');
+        pill.type = 'button';
+        pill.textContent = link.title;
+        pill.addEventListener('click', function () { selectNodeById(link.slug); });
+        els.notePanelLinks.appendChild(pill);
+      });
+    } else {
+      els.notePanelConnects.hidden = true;
+    }
+  }
+
+  function openNotePanel(slug) {
+    els.notePanel.hidden = false;
+    els.notePanelContent.hidden = true;
+    els.notePanelError.hidden = true;
+    els.notePanelLoading.hidden = false;
+    var seq = ++notePanelRequestSeq;
+    fetch('/graph/note/' + encodeURIComponent(slug) + '.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('The note could not be loaded (status ' + r.status + ').');
+        return r.json();
+      })
+      .then(function (info) {
+        if (seq !== notePanelRequestSeq) return; // a newer selection already superseded this one
+        els.notePanelLoading.hidden = true;
+        els.notePanelContent.hidden = false;
+        renderNotePanel(info);
+      })
+      .catch(function (err) {
+        if (seq !== notePanelRequestSeq) return;
+        els.notePanelLoading.hidden = true;
+        els.notePanelError.hidden = false;
+        els.notePanelError.textContent = (err && err.message) || 'The note could not be loaded.';
+      });
+  }
+  function closeNotePanel() {
+    els.notePanel.hidden = true;
+  }
+  els.notePanelClose.addEventListener('click', deselectNode);
+
+  // Keyboard: Escape closes panels and deselects (build instructions item
+  // 10). Order: note panel first (the most "modal" of the three), then
+  // the expanded search field, then the controls panel.
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (state.selectedId != null) { deselectNode(); return; }
+    if (!els.searchWrap.hidden) { closeSearch(); return; }
+    if (!els.controlsPanel.hidden) { closeControlsPanel(); return; }
+  });
+
+  // A 3D node's disc color is baked into a texture at construction, so a
+  // light/dark theme change (the site's own toggle, or the OS preference
+  // firing mid-session) needs the same rebuild the palette toggle above
+  // uses -- 2D needs nothing, its nodeColor accessor is re-read live
+  // every animation frame.
+  function onThemeMaybeChanged() {
+    if (state.mode === '3d') { disposeEngine(); redraw(); }
+  }
+  try {
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onThemeMaybeChanged);
+    }
+  } catch (e) { /* older browsers */ }
+  try {
+    new MutationObserver(onThemeMaybeChanged)
+      .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  } catch (e) { /* MutationObserver unsupported */ }
+
+  window.__portolanGraph = {
+    getMode: function () { return state.mode; },
+    getZoom: function () { return controls ? controls.getZoom() : null; },
+    getVisibleNodeCount: function () { return state.data ? currentGraphData().nodes.length : 0; },
+    getTotalNodeCount: function () { return state.data ? state.data.nodes.length : 0; },
+    getMatchCount: function () { return state.data ? currentGraphData().nodes.filter(isMatch).length : 0; },
+    getSelectedId: function () { return state.selectedId; },
+    getHoveredId: function () { return state.hoveredId; },
+    isLoaded: function () { return loaded; },
+    hoverNodeById: function (id) {
+      var node = id == null ? null : state.data.nodes.find(function (n) { return n.id === id; });
+      onNodeHover(node || null);
+    },
+    // v3: a deterministic alternative to a synthetic-mouse click on a
+    // node's projected screen position, which auto-rotate can move out
+    // from under a click between the position read and the dispatched
+    // event -- exercises the exact same selectNode()/deselectNode() path
+    // a real click or "Connects to" chip does.
+    selectNodeById: function (id) {
+      if (id == null) { deselectNode(); return; }
+      selectNodeById(id);
+    },
+    getCameraPosition: function () {
+      if (!engine || state.mode !== '3d' || typeof engine.camera !== 'function') return null;
+      var p = engine.camera().position;
+      return { x: p.x, y: p.y, z: p.z };
+    },
+    getNodePosition: function (id) {
+      if (!state.data) return null;
+      var node = state.data.nodes.find(function (n) { return n.id === id; });
+      if (!node || typeof node.x !== 'number') return null;
+      var pos = { x: node.x, y: node.y };
+      if (typeof node.z === 'number') pos.z = node.z;
+      return pos;
+    },
+    // Screen-space projection for a node -- lets a verification script
+    // click the actual pixel a node sits at instead of guessing
+    // coordinates (the canvas has no per-node DOM to query). 3D projects
+    // through the live camera; 2D (v3) uses force-graph's own
+    // `graph2ScreenCoords`, offset by the canvas's own page position.
+    getNodeScreenPosition: function (id) {
+      if (!state.data || !engine) return null;
+      var node = state.data.nodes.find(function (n) { return n.id === id; });
+      if (!node || typeof node.x !== 'number') return null;
+      if (state.mode === '3d') {
+        if (typeof engine.camera !== 'function') return null;
+        var cam = engine.camera();
+        cam.updateMatrixWorld(true);
+        var v = new THREE.Vector3(node.x, node.y || 0, node.z || 0);
+        v.project(cam);
+        var rect = els.container3d.getBoundingClientRect();
+        return {
+          x: rect.left + (v.x * 0.5 + 0.5) * rect.width,
+          y: rect.top + (1 - (v.y * 0.5 + 0.5)) * rect.height,
+          behindCamera: v.z > 1
+        };
+      }
+      if (typeof engine.graph2ScreenCoords !== 'function') return null;
+      var p = engine.graph2ScreenCoords(node.x, node.y);
+      var rect2d = els.container2d.getBoundingClientRect();
+      return { x: rect2d.left + p.x, y: rect2d.top + p.y, behindCamera: false };
+    },
+    // v3 verification hooks.
+    getAutoRotateActive: function () { return autoRotateFrameId !== null; },
+    isLabelExpanded: function (id) { return isLabelExpanded(id); },
+    isDriftActive: function () { return driftEnabled; },
+    // v4 verification hooks.
+    isFadedBySelection: function (id) { return isFadedBySelection(id); },
+    getDepthFadeSample: function () { return lastDepthFadeSample; },
+    getDiscOpacity: function (id) {
+      if (!state.data) return null;
+      var node = state.data.nodes.find(function (n) { return n.id === id; });
+      var obj = node && node.__threeObj;
+      return obj && obj.__disc ? obj.__disc.material.opacity : null;
+    },
+    getNodeToNodeDistances2D: function () {
+      // item 3 verification: rest-state screen-pixel distances between
+      // every currently-rendered node pair, for a real "did spacing
+      // actually change" number rather than an eyeballed screenshot.
+      if (!state.data) return [];
+      var built = currentGraphData();
+      var pts = built.nodes
+        .map(function (n) { return window.__portolanGraph.getNodeScreenPosition(n.id); })
+        .filter(Boolean);
+      var out = [];
+      for (var i = 0; i < pts.length; i++) {
+        for (var j = i + 1; j < pts.length; j++) {
+          var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+          out.push(Math.sqrt(dx * dx + dy * dy));
+        }
+      }
+      return out;
+    }
+  };
+
+  els.toolbarButtons.forEach(function (b) { b.disabled = true; });
+
+  // Build instructions "Motion": 3D auto-rotates from the start unless
+  // the reader has asked the system for reduced motion, in which case it
+  // starts paused with a button to start it -- set once, synchronously,
+  // before the data fetch even starts (so there's no flash of the wrong
+  // label/state once the toolbar becomes interactive).
+  var rotateOnByDefault = !reducedMotion();
+  els.rotateToggle.setAttribute('aria-pressed', rotateOnByDefault ? 'true' : 'false');
+  els.rotateToggle.textContent = rotateOnByDefault ? 'Pause' : 'Rotate';
+
+  // v3, item 3 ("soft idle motion"): same reduced-motion gate as
+  // auto-rotate above, checked once here rather than every frame -- if
+  // the reader has the OS-level preference on, the loop never starts at
+  // all, so `state.data.nodes` positions are exactly the simulation's
+  // own, undisturbed.
+  driftEnabled = !reducedMotion();
+  if (driftEnabled) startDriftLoop();
+
+  sizeCanvasWrap();
+
+  try {
+    fetch('/graph.json?mode=' + encodeURIComponent(state.mode))
+      .then(function (r) {
+        if (!r.ok) {
+          throw new Error('The graph data request failed with status ' + r.status + '.');
+        }
+        return r.json();
+      })
+      .then(function (data) {
+        state.data = data;
+        renderMeta(data);
+        renderLegend(data);
+        els.toolbarButtons.forEach(function (b) { b.disabled = false; });
+        setMode(state.mode);
+      })
+      .catch(function (err) {
+        showError((err && err.message) || 'The graph could not be loaded.');
+      });
+  } catch (err) {
+    showError((err && err.message) || 'The graph could not be loaded.');
+  }
+})();
+</script>
+{% endblock %}

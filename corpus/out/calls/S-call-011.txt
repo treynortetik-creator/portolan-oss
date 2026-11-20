@@ -1,0 +1,227 @@
+[00:00:00] Sam Okafor: Good morning, everyone. Can you both hear me all right?
+
+[00:00:06] Derek Hollis: I can hear you. Dana, are you on?
+
+[00:00:10] Dana Whitlock: I am. Sorry, I was just finishing another call. Morning, Derek. Morning, Sam.
+
+[00:00:16] Derek Hollis: Morning. No problem.
+
+[00:00:19] Sam Okafor: Thanks for making the time. I know Friday mornings are not always ideal.
+
+[00:00:24] Derek Hollis: They are not, but this was worth making time for. We have a few operational items to cover, and I want to leave enough room for the delivery issue.
+
+[00:00:31] Dana Whitlock: Understood. I took notes from the last exchange, and I can own the follow-up from our side.
+
+[00:00:36] Sam Okafor: That would be helpful. Before we get into the details, I want to make sure we are aligned on the cadence going forward. Dana?
+
+[00:00:43] Dana Whitlock: I will set up a quarterly business review with Northlake Health System starting in October 2026.
+
+[00:00:49] Derek Hollis: Good. I would like the first one to include clinical engineering, materials management, and whoever is responsible for the tower schedule.
+
+[00:00:55] Dana Whitlock: That makes sense. We can keep the first session focused, then broaden it if there are additional teams that need to be involved.
+
+[00:01:01] Sam Okafor: And I will make sure the regional operations person is included as well. We should not have separate conversations where one group has information the other does not.
+
+[00:01:08] Derek Hollis: Agreed. That has happened a little too often lately.
+
+[00:01:12] Sam Okafor: All right. We also wanted to hear how the current equipment is performing, outside the delivery problem. Any immediate concerns with the units already in service?
+
+[00:01:20] Derek Hollis: The units themselves are generally fine. The nursing teams are familiar with them, and our biomed staff know the routine maintenance. The issue is mostly coordination. When shipments move, we need to know before the truck is already at the loading dock.
+
+[00:01:32] Dana Whitlock: Is that affecting scheduled installations, or is it mainly creating extra work for receiving?
+
+[00:01:37] Derek Hollis: Both, depending on the week. Receiving gets a surprise, then the installation window shifts, and somebody has to explain why the equipment was not where the project plan said it would be.
+
+[00:01:45] Sam Okafor: I understand. I can review the notification process with our logistics team.
+
+[00:01:49] Derek Hollis: Please do. And I do not want a generic promise that someone will look into it. I need a named contact and a clear escalation path.
+
+[00:01:57] Dana Whitlock: We can provide both. Sam, can you send Derek the operational contact after this call?
+
+[00:02:01] Sam Okafor: Yes, I will send that today.
+
+[00:02:04] Derek Hollis: Thank you. Also, the tower project is moving quickly. We are trying to finalize equipment assumptions before the next design review.
+
+[00:02:11] Sam Okafor: Is the tower still expected to open on the current schedule?
+
+[00:02:15] Derek Hollis: The schedule is still being worked through. Construction has had the usual sequence issues, but the clinical planning work is active. We are not waiting until the last minute to make decisions.
+
+[00:02:24] Dana Whitlock: That is useful context. We can make the review more practical if you send us the decision calendar.
+
+[00:02:29] Derek Hollis: I can send a high-level version. I do not want to circulate the entire internal project file.
+
+[00:02:34] Sam Okafor: Of course. A few milestones are enough.
+
+[00:02:37] Derek Hollis: Before we go further, I want to document the two shipment incidents clearly, because they are being treated as isolated when they were not.
+
+[00:02:44] Sam Okafor: Go ahead.
+
+[00:02:46] Derek Hollis: Northlake General Hospital received a Tidewater T3 delivery two days late on August 11, 2026.
+
+[00:02:52] Dana Whitlock: I have that as the first incident. Was that the delivery assigned to the west receiving entrance?
+
+[00:02:56] Derek Hollis: Yes, the west entrance. The receiving team had people scheduled, and the shipment did not arrive in the expected window.
+
+[00:03:02] Sam Okafor: I see the order in our system, but I need to confirm the carrier scan history before I characterize what happened.
+
+[00:03:08] Derek Hollis: That is fine, but the date and delay are not in question on our side.
+
+[00:03:12] Dana Whitlock: And there was another shipment after that?
+
+[00:03:15] Derek Hollis: Yes. That is why I am pushing back on the idea that this was a one-off.
+
+[00:03:18] Sam Okafor: Understood.
+
+[00:03:21] Derek Hollis: Northlake General Hospital received a second Tidewater T3 three days late on August 13, 2026.
+
+[00:03:27] Dana Whitlock: Two separate late deliveries in the same week is a different conversation from one delayed truck.
+
+[00:03:31] Derek Hollis: Exactly. The second one affected the installation sequence, and we had to move staff around again.
+
+[00:03:36] Sam Okafor: I am sorry. I do not want to minimize that. I will pull both shipment records and compare the handoff points.
+
+[00:03:42] Derek Hollis: Please include the planned arrival times, actual arrival times, carrier, and every notification that was sent.
+
+[00:03:47] Sam Okafor: I will.
+
+[00:03:49] Dana Whitlock: Derek, did the second delay affect patient care directly, or was it an operational disruption?
+
+[00:03:53] Derek Hollis: It was an operational disruption. We did not cancel care, but we had to reshuffle work, and that creates risk. People are already stretched.
+
+[00:03:59] Dana Whitlock: Understood.
+
+[00:04:02] Derek Hollis: The problem is not just the extra hours. It is that the project team loses confidence in the dates. Once that happens, every downstream commitment gets questioned.
+
+[00:04:10] Sam Okafor: That is fair. I will make sure the review looks at the communication failure as well as the transit timing.
+
+[00:04:15] Derek Hollis: Good. I do not need someone to tell me that weather or volume can affect shipping. I need to know why we were not warned and what changes next time.
+
+[00:04:22] Dana Whitlock: We should separate the immediate corrective action from the longer-term process change.
+
+[00:04:26] Derek Hollis: Yes. Immediate action is a reliable update before a missed window. Longer term, I want the account team and logistics team using the same status.
+
+[00:04:32] Sam Okafor: I can arrange a short working session with our logistics coordinator and your receiving lead.
+
+[00:04:36] Derek Hollis: That would help, as long as it is not another meeting where we repeat the timeline and nothing changes.
+
+[00:04:40] Dana Whitlock: We can circulate an agenda in advance and leave with assigned actions.
+
+[00:04:44] Derek Hollis: Fine.
+
+[00:04:46] Sam Okafor: There is also the question of the next scheduled delivery. Do you have another Tidewater T3 shipment expected soon?
+
+[00:04:51] Derek Hollis: There is one in the planning file, but I do not want to rely on the date until someone confirms the carrier booking.
+
+[00:04:56] Sam Okafor: I will verify that directly.
+
+[00:04:58] Dana Whitlock: And we can set up a proactive check-in before that shipment moves.
+
+[00:05:02] Derek Hollis: Yes, please. A short message is enough if the status is accurate.
+
+[00:05:05] Sam Okafor: What time of day works best for your receiving team?
+
+[00:05:09] Derek Hollis: Early afternoon is usually better. Mornings are full of rounds, handoffs, and whatever emergency has appeared overnight.
+
+[00:05:15] Dana Whitlock: That sounds familiar.
+
+[00:05:17] Derek Hollis: It is the same everywhere, I suspect.
+
+[00:05:20] Sam Okafor: We will aim for early afternoon. I also want to ask about training for the tower. Are you looking for a new training package, or will the current materials be enough?
+
+[00:05:27] Derek Hollis: Current materials are probably enough for the basics. What we may need is a session for super-users once the final room layouts are settled.
+
+[00:05:34] Dana Whitlock: We can support that without making it a large formal program.
+
+[00:05:38] Derek Hollis: Good. I would rather have a focused session than a presentation that covers things nobody will use.
+
+[00:05:41] Sam Okafor: We can tailor it around setup, cleaning, alarm handling, and escalation.
+
+[00:05:45] Derek Hollis: That would be useful.
+
+[00:05:47] Dana Whitlock: Is there any feedback from the nurses about the current interface?
+
+[00:05:51] Derek Hollis: Mostly positive. There are a few preferences around screen brightness and how the tubing is routed, but nothing that has become a formal issue.
+
+[00:05:56] Sam Okafor: I can capture those as usability notes.
+
+[00:05:59] Derek Hollis: Please do, but do not let that distract from the delivery matter. The shipment problem is the item that needs executive attention.
+
+[00:06:04] Dana Whitlock: Agreed.
+
+[00:06:07] Sam Okafor: Let me summarize the action items so far. I will confirm both shipment histories, identify the logistics contact, and verify the next booking.
+
+[00:06:13] Derek Hollis: Add the notification process review.
+
+[00:06:15] Sam Okafor: Yes, and schedule the working session with receiving.
+
+[00:06:18] Dana Whitlock: I will coordinate the quarterly business review and send proposed dates for October.
+
+[00:06:21] Derek Hollis: Include the tower decision calendar as an agenda item.
+
+[00:06:24] Dana Whitlock: Will do.
+
+[00:06:26] Sam Okafor: Before we close, I want to revisit the broader account picture. Are there other suppliers being considered for the tower?
+
+[00:06:32] Derek Hollis: There are conversations happening. We are trying to keep the evaluation disciplined and based on clinical and operational requirements.
+
+[00:06:36] Sam Okafor: Understood. Is there anything specific you want from us for that evaluation?
+
+[00:06:40] Derek Hollis: A clear delivery plan would help. Reliability matters as much as the equipment specifications.
+
+[00:06:44] Dana Whitlock: That is a fair point, especially after this week's experience.
+
+[00:06:47] Derek Hollis: Yes. The tower team will look at the complete operating picture, not just a product sheet.
+
+[00:06:51] Sam Okafor: We can provide implementation references and a proposed support model.
+
+[00:06:55] Derek Hollis: Send those after the logistics response. I do not want the strategic material to get used as a substitute for fixing the basic process.
+
+[00:06:59] Sam Okafor: Understood.
+
+[00:07:02] Dana Whitlock: We have about five minutes left. Is there anything else we should cover before we lock the follow-ups?
+
+[00:07:06] Derek Hollis: One thing. I want to be transparent about the competitive context so nobody is surprised later.
+
+[00:07:11] Sam Okafor: Of course.
+
+[00:07:13] Derek Hollis: We've had Corvane in to demo for the tower.
+
+[00:07:18] Sam Okafor: I appreciate you telling us directly.
+
+[00:07:20] Derek Hollis: This is not a decision. It is part of the evaluation, and the team is looking at several dimensions.
+
+[00:07:24] Dana Whitlock: We should make sure our response addresses the operating model and not just the device comparison.
+
+[00:07:28] Derek Hollis: Exactly. A strong product with weak coordination still creates problems.
+
+[00:07:31] Sam Okafor: I hear that. I will bring the service and logistics leads into the next discussion.
+
+[00:07:34] Derek Hollis: Good.
+
+[00:07:36] Dana Whitlock: I will send a written recap today with the October review options and the owners for each action.
+
+[00:07:40] Derek Hollis: Please include the two delivery dates in the recap.
+
+[00:07:42] Sam Okafor: I will include them in the shipment review and confirm the underlying records.
+
+[00:07:45] Derek Hollis: Fine.
+
+[00:07:47] Dana Whitlock: Sam, can you have the logistics findings ready before the next customer meeting?
+
+[00:07:51] Sam Okafor: Yes. I will aim to send the first summary early next week, then follow with the carrier details once they are verified.
+
+[00:07:56] Derek Hollis: That timing works.
+
+[00:07:58] Dana Whitlock: Anything else from either of you?
+
+[00:08:00] Derek Hollis: No. I appreciate the direct discussion. I am looking for evidence that the process will improve, not just reassurance.
+
+[00:08:05] Sam Okafor: That is fair. We will come back with specifics.
+
+[00:08:08] Dana Whitlock: Thanks, Derek. We will follow up in writing, and I will get the review scheduling moving.
+
+[00:08:11] Derek Hollis: Thanks, both. Have a good weekend.
+
+[00:08:13] Sam Okafor: You too.
+
+[00:08:14] Dana Whitlock: Take care.

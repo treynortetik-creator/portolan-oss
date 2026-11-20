@@ -1,0 +1,19 @@
+{
+  "id": "S-ticket-045",
+  "requester": "Renee Castillo",
+  "account": "Anchor Bay Surgical Partners",
+  "created": "2026-09-01",
+  "subject": "Equipment usage update",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Renee Castillo",
+      "body": "Hello, I\u2019m updating our equipment records for Anchor Bay Surgical Partners. Anchor Bay Surgical Partners uses six Tidewater T2 pumps across two operating rooms as of 2026-09-01."
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "Thanks, Renee. We\u2019ve recorded the update and will keep it with the practice account."
+    }
+  ]
+}

@@ -1,0 +1,721 @@
+[09:00:00] Felix Arden: Morning, Sam. Can you hear me all right?
+
+[09:00:08] Sam Okafor: I can hear you. Morning, Felix. How are things?
+
+[09:00:15] Felix Arden: Busy, as usual. The department is between cases, so I have a little window. I wanted to use it while I have the people here.
+
+[09:00:25] Sam Okafor: That works. I appreciate you making the time. I know these calls have been landing in the middle of everything else.
+
+[09:00:34] Felix Arden: They have. And I should say up front, this isn't about one late box or one isolated miss. It's become a pattern that the team is having to work around.
+
+[09:00:45] Sam Okafor: Understood. I have the recent order history in front of me, and I wanted to go through the open items one by one rather than give you a general update.
+
+[09:00:54] Felix Arden: Good. General updates are part of the problem, honestly. We hear that something is being looked at, but the people using the consumables don't know what to expect on the floor.
+
+[09:01:06] Sam Okafor: That's fair. Which items are creating the most pressure this week?
+
+[09:01:13] Felix Arden: The catheter kits first. Then the sterile connectors. The kits are the bigger issue because the schedule changes when we don't have the right configuration available.
+
+[09:01:23] Sam Okafor: Are you substituting from another location when that happens?
+
+[09:01:29] Felix Arden: Sometimes. That depends on whether another campus has spare stock and whether its packaging is still within the approved window. It isn't a clean solution.
+
+[09:01:39] Sam Okafor: Right.
+
+[09:01:41] Felix Arden: And the substitutes aren't always the same configuration. Staff have to stop and check. That creates another little delay every time.
+
+[09:01:49] Sam Okafor: I can see why that would be frustrating. I don't want to minimize it.
+
+[09:01:55] Felix Arden: I'm not looking for an apology, Sam. I need something I can take back to the lab managers. If I tell them the situation is under control and then another shipment moves, I lose credibility.
+
+[09:02:05] Sam Okafor: Then let's make the information more specific. I can separate confirmed dates from estimates and send the same view to you and the purchasing group.
+
+[09:02:16] Felix Arden: That would help, provided the dates mean something.
+
+[09:02:19] Sam Okafor: They should. I need to verify a couple of details before I call anything firm.
+
+[09:02:25] Felix Arden: That's fine. I would rather have a cautious answer than an optimistic one that changes tomorrow.
+
+[09:02:31] Sam Okafor: Agreed.
+
+[09:02:33] Felix Arden: The other thing is communication. We get a notice after the expected arrival date has already passed. By then, the team has been calling around trying to find an alternative.
+
+[09:02:43] Sam Okafor: The notifications have not been going out early enough. I can own that part.
+
+[09:02:48] Felix Arden: Thank you. If there is a known issue, even a preliminary note is useful. We can adjust a case list or move inventory before it becomes urgent.
+
+[09:02:55] Sam Okafor: I'll ask the support group to include your team on the first update, not only the final status.
+
+[09:03:00] Felix Arden: Please do. And copy purchasing, because they are often answering questions from the clinics without having the same information we have.
+
+[09:03:08] Sam Okafor: I will.
+
+[09:03:10] Felix Arden: Let me give you the sequence from our side. On Monday, the first shipment was short two kits. Tuesday, the replacement was expected, but only one carton arrived. Yesterday, we were told the balance was moving, and nothing showed up by the afternoon delivery run.
+
+[09:03:23] Sam Okafor: I see the first shortage in the notes. I don't see the second carton recorded as a separate exception, so I'll have to reconcile that.
+
+[09:03:32] Felix Arden: That is exactly why I don't want this handled only through individual order records. The operational effect is cumulative.
+
+[09:03:39] Sam Okafor: Makes sense. Do you have an internal count of how many procedures were affected?
+
+[09:03:45] Felix Arden: Not a clean count. We changed some schedules and borrowed some stock, so an affected procedure isn't always a canceled procedure. The staff time is harder to capture.
+
+[09:03:54] Sam Okafor: Understood. Would a weekly exception summary be useful?
+
+[09:04:00] Felix Arden: Yes, if it includes the original promise date, the latest expected date, the quantity still open, and the reason for movement.
+
+[09:04:07] Sam Okafor: I can build that into the update.
+
+[09:04:10] Felix Arden: And please don't call something shipped just because a label was created. Our receiving team needs to know whether it has actually left the facility.
+
+[09:04:17] Sam Okafor: That's a good distinction. I'll ask for carrier handoff status rather than label status.
+
+[09:04:22] Felix Arden: Exactly.
+
+[09:04:24] Sam Okafor: Are the delivery windows themselves a problem, or is the issue mainly the movement?
+
+[09:04:29] Felix Arden: The movement is the main issue. A narrow window is manageable if it holds. We plan around it, assign a receiver, and arrange storage. When it shifts without warning, we have to redo all of that.
+
+[09:04:40] Sam Okafor: Got it.
+
+[09:04:42] Felix Arden: There is also a storage constraint. We don't have unlimited room for early partial deliveries, especially when the cartons arrive separately and the paperwork is not clear.
+
+[09:04:50] Sam Okafor: So sending a partial quantity without notice can create its own problem.
+
+[09:04:54] Felix Arden: Correct. We need the packing detail before it arrives, not after someone finds the carton.
+
+[09:04:58] Sam Okafor: I'll include that in the request.
+
+[09:05:00] Felix Arden: Good.
+
+[09:05:02] Sam Okafor: I want to ask about the order signals. Are you placing larger orders because of the recent uncertainty?
+
+[09:05:08] Felix Arden: We have increased the safety level on a few items, but we are not trying to hoard product. There are expiration and storage considerations, and finance does not want a large amount sitting unused.
+
+[09:05:17] Sam Okafor: That balance is difficult.
+
+[09:05:19] Felix Arden: It is. People sometimes look at a higher order and assume demand jumped. In reality, part of it is just an attempt to avoid another gap.
+
+[09:05:28] Sam Okafor: I'll make sure that context is visible when I discuss the account internally.
+
+[09:05:31] Felix Arden: Thank you.
+
+[09:05:33] Sam Okafor: Do you know whether the same issue is affecting other hospitals in your network?
+
+[09:05:38] Felix Arden: I know two of the other sites have asked questions, but I don't want to speak for them. Their ordering and storage arrangements are different.
+
+[09:05:46] Sam Okafor: Fair enough.
+
+[09:05:48] Felix Arden: For us, the concern is not just whether one order arrives. It is whether we can plan for the next several weeks without having to check every line twice a day.
+
+[09:05:55] Sam Okafor: That's the standard we need to get back to.
+
+[09:05:58] Felix Arden: Yes.
+
+[09:06:00] Sam Okafor: I have a question about the receiving notes. When the partial cartons arrive, is the shortage visible on the delivery paperwork?
+
+[09:06:05] Felix Arden: Not consistently. Sometimes the paperwork reflects the full order, while the physical delivery is only part of it. The receiving clerk then has to investigate whether the rest is coming separately.
+
+[09:06:15] Sam Okafor: That should be clearer. I'll add a request for carton-level detail.
+
+[09:06:20] Felix Arden: Please also ask them to use the same order reference on every related carton. We have had a replacement arrive with a different reference, and it was not immediately linked to the open line.
+
+[09:06:28] Sam Okafor: I understand.
+
+[09:06:31] Felix Arden: There is no value in making the product move faster if our people cannot identify where it belongs.
+
+[09:06:36] Sam Okafor: Right.
+
+[09:06:38] Felix Arden: And before you ask, no, the receiving team is not the bottleneck. They are doing what they can with incomplete information.
+
+[09:06:45] Sam Okafor: I wasn't going to suggest that, but I appreciate the clarification.
+
+[09:06:48] Felix Arden: I have had to make that clarification a few times lately.
+
+[09:06:51] Sam Okafor: That's not where I want this conversation to go.
+
+[09:06:53] Felix Arden: Good.
+
+[09:06:55] Sam Okafor: Let me summarize what I have so far. We need a consolidated view of open quantities, separate confirmation of physical handoff, early notifications, carton-level paperwork, and a clear reason whenever a date changes.
+
+[09:07:08] Felix Arden: Add one more thing: a named person who can answer when the status is unclear.
+
+[09:07:13] Sam Okafor: Would you prefer that to come through me, or through the support desk?
+
+[09:07:18] Felix Arden: Through you for the account-level issue. For a single carton, support is fine, but they need access to the same current information.
+
+[09:07:25] Sam Okafor: That is reasonable.
+
+[09:07:27] Felix Arden: If I have to explain the entire background every time, the process is already failing.
+
+[09:07:31] Sam Okafor: I agree.
+
+[09:07:33] Felix Arden: I also want to avoid a situation where three people give us three versions of the same date. That happened last week.
+
+[09:07:39] Sam Okafor: I'll make one status document the reference point.
+
+[09:07:42] Felix Arden: Good.
+
+[09:07:44] Sam Okafor: Can we talk about the immediate orders now?
+
+[09:07:48] Felix Arden: Yes. The open catheter kits are the priority. The connector order matters too, but we have a little more flexibility there.
+
+[09:07:54] Sam Okafor: I have the kit order ending in 4182. The system shows a quantity still open, but I need to confirm the current movement before I give you a date.
+
+[09:08:02] Felix Arden: Please don't give me the system date until you have checked with the distribution side.
+
+[09:08:06] Sam Okafor: I won't.
+
+[09:08:08] Felix Arden: And I want to know whether the open quantity is allocated. If it is not allocated, then a projected date is not very useful.
+
+[09:08:14] Sam Okafor: I'll ask both questions.
+
+[09:08:16] Felix Arden: Thank you.
+
+[09:08:18] Sam Okafor: For the connectors, I see a separate line with a later expected movement. Are those tied to the same production issue?
+
+[09:08:23] Felix Arden: I don't know. That is another thing we have not been able to establish. The notices use broad language, so we cannot tell whether the items share a cause.
+
+[09:08:30] Sam Okafor: I can request a plain-language explanation of the cause for each line.
+
+[09:08:34] Felix Arden: Please do. We don't need a technical report; we need to know whether the problem is likely to repeat across the next order.
+
+[09:08:41] Sam Okafor: That's helpful.
+
+[09:08:43] Felix Arden: If the answer is that the next order is exposed to the same issue, we need to know now.
+
+[09:08:48] Sam Okafor: Yes.
+
+[09:08:50] Felix Arden: We have a planning meeting tomorrow morning. Even a preliminary answer before then would be useful.
+
+[09:08:55] Sam Okafor: I can give you an interim note before that meeting, with anything still awaiting confirmation labeled as such.
+
+[09:09:01] Felix Arden: That works.
+
+[09:09:03] Sam Okafor: I don't want to overpromise on the final investigation today.
+
+[09:09:06] Felix Arden: I appreciate that. Just don't let caution become silence.
+
+[09:09:10] Sam Okafor: Point taken.
+
+[09:09:12] Felix Arden: The clinicians are asking whether they should adjust their lists. I cannot answer that from a blank status field.
+
+[09:09:18] Sam Okafor: I'll make the interim note useful for that decision.
+
+[09:09:20] Felix Arden: Good.
+
+[09:09:22] Sam Okafor: Is there a preferred time for the note?
+
+[09:09:26] Felix Arden: Before ten tomorrow would be ideal. After that, the meeting will already be underway.
+
+[09:09:29] Sam Okafor: I'll target that.
+
+[09:09:31] Felix Arden: Target is fine, but please tell me if it slips.
+
+[09:09:34] Sam Okafor: I will.
+
+[09:09:36] Felix Arden: One thing that would help is distinguishing a delay caused before dispatch from one caused after dispatch. Those lead to different actions on our side.
+
+[09:09:43] Sam Okafor: Agreed. I'll ask for that distinction in the report.
+
+[09:09:45] Felix Arden: And if it is after dispatch, include the carrier reference in the same line. We should not have to request it separately.
+
+[09:09:51] Sam Okafor: Understood.
+
+[09:09:53] Felix Arden: Sorry, I know this sounds like a lot of detail.
+
+[09:09:55] Sam Okafor: It is detail, but it is operationally important.
+
+[09:09:57] Felix Arden: The people who receive the product would say the same thing.
+
+[09:09:59] Sam Okafor: I believe you.
+
+[09:10:01] Felix Arden: They are not interested in a polished explanation. They need a box, a quantity, and a dependable arrival window.
+
+[09:10:07] Sam Okafor: That's clear.
+
+[09:10:09] Felix Arden: Also, we need to know whether any substitute configuration requires a different approval. We cannot just use whatever is available because the dimensions look similar.
+
+[09:10:16] Sam Okafor: I'll add that to the technical question.
+
+[09:10:18] Felix Arden: Good.
+
+[09:10:20] Sam Okafor: Would you be able to send me the list of approved alternatives?
+
+[09:10:24] Felix Arden: I can send the current internal list, but it may not include every item your team is considering. Your people should not assume approval from a similar product.
+
+[09:10:33] Sam Okafor: Understood. I will send it to the appropriate technical contact rather than make an assumption.
+
+[09:10:37] Felix Arden: That's the right route.
+
+[09:10:39] Sam Okafor: Do you have any cases today that are at immediate risk?
+
+[09:10:43] Felix Arden: One procedure is being reviewed, but I do not want to call it at risk until the clinical team confirms the final list. The uncertainty is the problem at this point.
+
+[09:10:51] Sam Okafor: I won't describe it as canceled or postponed.
+
+[09:10:54] Felix Arden: Thank you.
+
+[09:10:56] Sam Okafor: I can say the supply status is being reviewed.
+
+[09:10:59] Felix Arden: That is accurate.
+
+[09:11:01] Sam Okafor: Let's talk about the cadence after tomorrow. Would a short call twice a week be better than a long call once a week?
+
+[09:11:07] Felix Arden: For now, yes. Fifteen minutes with the current status is better than an hour of reconstruction.
+
+[09:11:13] Sam Okafor: Tuesday and Friday?
+
+[09:11:16] Felix Arden: Tuesday morning works. Friday is difficult because of the procedure schedule. Thursday afternoon would be better.
+
+[09:11:21] Sam Okafor: Tuesday morning and Thursday afternoon, then.
+
+[09:11:24] Felix Arden: For the next few weeks.
+
+[09:11:26] Sam Okafor: Yes, we can revisit once the flow is stable.
+
+[09:11:28] Felix Arden: Fine.
+
+[09:11:30] Sam Okafor: I want to make sure the right people are on those calls. Who should join from Larkspur?
+
+[09:11:35] Felix Arden: Me, someone from purchasing, and the receiving supervisor. A clinical representative can join if a procedure question is on the agenda.
+
+[09:11:42] Sam Okafor: I'll invite the operations contact from our side and whoever owns the order data.
+
+[09:11:46] Felix Arden: Please do not make it a large meeting for the sake of appearances.
+
+[09:11:49] Sam Okafor: I agree. Small and useful.
+
+[09:11:51] Felix Arden: Exactly.
+
+[09:11:53] Sam Okafor: Do you want the first one tomorrow, or should we wait until we have the investigation summary?
+
+[09:11:57] Felix Arden: Tomorrow is too soon for a full recurring meeting. Send the written update first, then we can schedule the first short call after we see what is still open.
+
+[09:12:04] Sam Okafor: That works.
+
+[09:12:06] Felix Arden: There is another concern, though. The team is starting to spend time checking status instead of doing other work.
+
+[09:12:13] Sam Okafor: I understand. The update should reduce those checks.
+
+[09:12:15] Felix Arden: It will, if it is current. If the document is already obsolete when it reaches us, people will go back to calling.
+
+[09:12:20] Sam Okafor: Then I'll include the time the data was last verified.
+
+[09:12:24] Felix Arden: Good idea.
+
+[09:12:26] Sam Okafor: And I'll distinguish information received from the warehouse from information still pending.
+
+[09:12:31] Felix Arden: That level of transparency is useful.
+
+[09:12:33] Sam Okafor: I also want to check whether your purchase order notes contain a delivery instruction we may be missing.
+
+[09:12:38] Felix Arden: They contain the usual receiving hours and dock information. If your team needs something else, tell me exactly what it is.
+
+[09:12:44] Sam Okafor: I will.
+
+[09:12:46] Felix Arden: We do not have a separate dock for urgent deliveries, if that is what you are asking.
+
+[09:12:49] Sam Okafor: That's helpful to know.
+
+[09:12:51] Felix Arden: And the receiver cannot accept an unannounced delivery outside the posted window. That is a site rule, not a preference.
+
+[09:12:57] Sam Okafor: I'll make sure that is visible.
+
+[09:12:59] Felix Arden: Thanks.
+
+[09:13:01] Sam Okafor: There is a possibility that one carton is moving under a revised reference. I don't want to state that as confirmed yet, but I am checking.
+
+[09:13:07] Felix Arden: If that is the case, the reference needs to be tied back to the original order in the notice.
+
+[09:13:12] Sam Okafor: Yes.
+
+[09:13:14] Felix Arden: Otherwise the receiving team may reject it as unidentified.
+
+[09:13:17] Sam Okafor: I'll flag that.
+
+[09:13:19] Felix Arden: I appreciate it.
+
+[09:13:21] Sam Okafor: How much inventory do you have on hand for the kits?
+
+[09:13:25] Felix Arden: I would rather not give a precise number on this call because the count is being reconciled, and it changes as the clinics draw from central stock.
+
+[09:13:32] Sam Okafor: That's fine.
+
+[09:13:34] Felix Arden: I can tell you the direction: we are below the level we planned for, and the buffer is narrowing.
+
+[09:13:41] Sam Okafor: I'll note that without attaching a number.
+
+[09:13:43] Felix Arden: Good.
+
+[09:13:45] Sam Okafor: Does the central warehouse have any ability to prioritize your allocation?
+
+[09:13:49] Felix Arden: I don't know. That is something you need to answer, not me.
+
+[09:13:52] Sam Okafor: Fair.
+
+[09:13:54] Felix Arden: If there is an allocation rule, explain it. If there is a choice, tell us what information you need from us to make the case.
+
+[09:14:00] Sam Okafor: I'll ask directly.
+
+[09:14:02] Felix Arden: And please do not put the burden on the clinic to call around for stock. They have neither the time nor the visibility.
+
+[09:14:08] Sam Okafor: Understood.
+
+[09:14:10] Felix Arden: This should be coordinated centrally.
+
+[09:14:12] Sam Okafor: Agreed.
+
+[09:14:14] Felix Arden: Have you seen this kind of movement on the same item elsewhere?
+
+[09:14:18] Sam Okafor: I have heard similar concerns, but I need to verify whether the underlying situation is actually the same before I connect them.
+
+[09:14:24] Felix Arden: That is fair. I am not asking for someone else's confidential details. I just want to know whether we should expect a broader pattern.
+
+[09:14:30] Sam Okafor: I'll request an aggregated view if one is available.
+
+[09:14:33] Felix Arden: Fine.
+
+[09:14:35] Sam Okafor: We should also make sure the account notes reflect the business impact, not only the transaction history.
+
+[09:14:40] Felix Arden: Yes. The transaction history says a carton moved. It does not say that a manager had to reorganize a schedule around it.
+
+[09:14:46] Sam Okafor: I'll include that context.
+
+[09:14:48] Felix Arden: Good.
+
+[09:14:50] Sam Okafor: Would you like a separate escalation on the kits today?
+
+[09:14:54] Felix Arden: Yes. Please escalate the open quantity and ask for an answer on allocation, physical location, and the next confirmed movement.
+
+[09:15:01] Sam Okafor: I will send that after this call.
+
+[09:15:03] Felix Arden: Include the connector line too, but keep it separate so the priority is obvious.
+
+[09:15:07] Sam Okafor: I can do that.
+
+[09:15:09] Felix Arden: And copy me, purchasing, and the receiving supervisor.
+
+[09:15:13] Sam Okafor: I have the contacts.
+
+[09:15:15] Felix Arden: All right.
+
+[09:15:17] Sam Okafor: Before we move on, is there anything about the product itself that has changed? Packaging, labeling, or configuration?
+
+[09:15:22] Felix Arden: Not that we have observed. If a change has been made, we have not received a notice about it.
+
+[09:15:28] Sam Okafor: I'll ask for confirmation.
+
+[09:15:30] Felix Arden: Good. A packaging change can affect storage even when the item number stays the same.
+
+[09:15:35] Sam Okafor: Understood.
+
+[09:15:37] Felix Arden: We have to think about shelf placement, scanning, and whether the carton fits the existing bins.
+
+[09:15:43] Sam Okafor: I'll include those points.
+
+[09:15:45] Felix Arden: Thanks.
+
+[09:15:47] Sam Okafor: I know we have been on for a while. Do you have another ten minutes?
+
+[09:15:50] Felix Arden: I can stay a little longer. The next meeting moved, which is unusual enough that I should take advantage of it.
+
+[09:15:56] Sam Okafor: Then I'll ask about the longer-term correction. What would you need to see to feel that the situation is improving?
+
+[09:16:02] Felix Arden: A few consecutive deliveries that arrive in the agreed window, with complete quantities and advance notice if anything changes. It is not complicated.
+
+[09:16:10] Sam Okafor: So consistency matters more than one accelerated shipment.
+
+[09:16:14] Felix Arden: Exactly. One rescue shipment does not restore confidence if the next routine order slips again.
+
+[09:16:20] Sam Okafor: That's a useful distinction.
+
+[09:16:22] Felix Arden: We are not trying to make this dramatic. We are trying to run a hospital department.
+
+[09:16:27] Sam Okafor: I understand.
+
+[09:16:29] Felix Arden: And I want to keep the relationship constructive. But constructive does not mean pretending the current process is working.
+
+[09:16:34] Sam Okafor: I agree with that.
+
+[09:16:36] Felix Arden: If your operations team needs examples, I can provide the receiving notes and the messages we received.
+
+[09:16:40] Sam Okafor: That would help. Please send the recent notices, especially where the physical delivery differed from the stated quantity.
+
+[09:16:45] Felix Arden: I will, though some of the messages are terse.
+
+[09:16:48] Sam Okafor: Terse is fine. I need the sequence.
+
+[09:16:50] Felix Arden: All right.
+
+[09:16:52] Sam Okafor: Do you have a standard review process for supplier performance?
+
+[09:16:56] Felix Arden: We have a quarterly review, but this will be discussed sooner if the open issues continue. The quarterly cycle is not a reason to wait.
+
+[09:17:04] Sam Okafor: Understood.
+
+[09:17:06] Felix Arden: The review looks at service, product quality, responsiveness, and the effect on our work. Delivery reliability is one part, but it touches the others.
+
+[09:17:13] Sam Okafor: That makes sense.
+
+[09:17:15] Felix Arden: If people spend their day chasing dates, responsiveness is already taking a hit.
+
+[09:17:19] Sam Okafor: Yes.
+
+[09:17:21] Felix Arden: And if they borrow stock from another site, the cost is not invisible. Someone has to arrange the transfer and reconcile it later.
+
+[09:17:27] Sam Okafor: I'll capture that as operational impact.
+
+[09:17:29] Felix Arden: Good.
+
+[09:17:31] Sam Okafor: Is there a finance contact I should include for any cost discussion?
+
+[09:17:35] Felix Arden: Not at this stage. Purchasing can coordinate the account side. I do not want to widen the circle before we have facts.
+
+[09:17:40] Sam Okafor: That's sensible.
+
+[09:17:42] Felix Arden: Keep it focused.
+
+[09:17:44] Sam Okafor: I will.
+
+[09:17:46] Felix Arden: Another practical question: if the shipment comes in two parts, can your notice show the expected contents of each part?
+
+[09:17:51] Sam Okafor: I'll ask for that. It should show which quantity is moving and which remains open.
+
+[09:17:55] Felix Arden: Exactly.
+
+[09:17:57] Sam Okafor: And if the second part has no date, we should say that rather than repeat the original estimate.
+
+[09:18:00] Felix Arden: Yes. An empty date is better than a copied date that looks confirmed.
+
+[09:18:05] Sam Okafor: I agree.
+
+[09:18:07] Felix Arden: We can work with uncertainty when it is labeled. We cannot work with false precision.
+
+[09:18:11] Sam Okafor: I'll use that wording internally.
+
+[09:18:13] Felix Arden: Fine.
+
+[09:18:15] Sam Okafor: Are there any days when receiving is especially constrained?
+
+[09:18:19] Felix Arden: Mondays are heavy. We can receive, but a late arrival creates more disruption because the dock is already handling routine deliveries.
+
+[09:18:26] Sam Okafor: I'll note that.
+
+[09:18:28] Felix Arden: Afternoon deliveries are better than late morning for these items, if there is a choice.
+
+[09:18:32] Sam Okafor: Is that because of staffing?
+
+[09:18:35] Felix Arden: Partly staffing, partly the case schedule. The afternoon team can verify and put things away without interrupting the morning intake.
+
+[09:18:41] Sam Okafor: Understood.
+
+[09:18:43] Felix Arden: But do not delay a shipment just to hit an afternoon window. A confirmed morning delivery is better than a speculative afternoon one.
+
+[09:18:49] Sam Okafor: That's clear.
+
+[09:18:51] Felix Arden: Good.
+
+[09:18:53] Sam Okafor: I want to make sure the escalation asks for a realistic date rather than simply the earliest possible date.
+
+[09:18:58] Felix Arden: Yes. The earliest possible date is often what gets quoted, and then everyone is surprised when it is not achieved.
+
+[09:19:04] Sam Okafor: I'll request a date based on actual availability and transport, not a best-case estimate.
+
+[09:19:08] Felix Arden: Please do.
+
+[09:19:10] Sam Okafor: If the answer is not available today, I can send a holding note saying exactly what is pending.
+
+[09:19:15] Felix Arden: That is acceptable.
+
+[09:19:17] Sam Okafor: And I will follow up rather than wait for the system to update itself.
+
+[09:19:20] Felix Arden: Good.
+
+[09:19:22] Sam Okafor: You mentioned a planning meeting tomorrow. Who will be making the decision about any schedule adjustment?
+
+[09:19:26] Felix Arden: The clinical lead and the service managers together. I provide the supply view; I do not make the clinical decision.
+
+[09:19:32] Sam Okafor: Understood.
+
+[09:19:34] Felix Arden: That is why precise supply information matters. I need to give them something reliable, not tell them what I hope will happen.
+
+[09:19:40] Sam Okafor: I won't put you in that position.
+
+[09:19:42] Felix Arden: Thank you.
+
+[09:19:44] Sam Okafor: Do you want me to join the planning meeting?
+
+[09:19:48] Felix Arden: No, not tomorrow. Send the note, and I will come back with any questions. We can involve you in the operational review once we know what is still unresolved.
+
+[09:19:55] Sam Okafor: That is fine.
+
+[09:19:57] Felix Arden: I don't want the clinicians spending time on a supplier call when they should be preparing cases.
+
+[09:20:01] Sam Okafor: Agreed.
+
+[09:20:03] Felix Arden: Keep the first line of communication with me and purchasing.
+
+[09:20:06] Sam Okafor: I will.
+
+[09:20:08] Felix Arden: What can you commit to today?
+
+[09:20:11] Sam Okafor: Today, I can commit to escalating the open kit quantity, checking allocation and physical handoff, requesting the cause and current movement for the connector line, and sending you an interim update before tomorrow's meeting.
+
+[09:20:20] Felix Arden: Good. Please put those in writing after the call.
+
+[09:20:23] Sam Okafor: I will.
+
+[09:20:25] Felix Arden: And include the communication changes we discussed, not just the order checks.
+
+[09:20:28] Sam Okafor: Early notices, one status document, verified time stamps, and carton-level detail.
+
+[09:20:33] Felix Arden: Exactly.
+
+[09:20:35] Sam Okafor: I will also ask for a single operational contact on the other side.
+
+[09:20:38] Felix Arden: That would help.
+
+[09:20:40] Sam Okafor: Is there anything else you want in the written recap?
+
+[09:20:44] Felix Arden: State what is confirmed, what is pending, and what you need from us. No long background section.
+
+[09:20:50] Sam Okafor: Concise and actionable.
+
+[09:20:52] Felix Arden: Yes.
+
+[09:20:54] Sam Okafor: I'll keep it that way.
+
+[09:20:56] Felix Arden: All right.
+
+[09:20:58] Sam Okafor: Before we close, I want to ask about the September planning horizon. Do you expect the same order pattern through then?
+
+[09:21:03] Felix Arden: The demand is not expected to change materially. The uncertainty is around whether deliveries will hold.
+
+[09:21:10] Sam Okafor: So a stable demand picture makes delivery consistency even more important.
+
+[09:21:13] Felix Arden: Yes. We can plan quantities if the supply side is dependable.
+
+[09:21:15] Sam Okafor: I'll raise that with operations.
+
+[09:21:17] Felix Arden: Please do.
+
+[09:21:19] Sam Okafor: If the current situation continues into next month, what would the internal response look like?
+
+[09:21:24] Felix Arden: We would review our options with purchasing and the clinical group. I don't want to get ahead of that discussion, but we cannot leave the department exposed indefinitely.
+
+[09:21:32] Sam Okafor: Understood.
+
+[09:21:34] Felix Arden: The goal is to fix this with you, not to create a procurement exercise.
+
+[09:21:37] Sam Okafor: That's how I want to approach it as well.
+
+[09:21:39] Felix Arden: Then the next week matters.
+
+[09:21:41] Sam Okafor: It does.
+
+[09:21:43] Felix Arden: We need to see whether the information improves and whether the physical deliveries follow.
+
+[09:21:48] Sam Okafor: I'll make those the measures for the immediate review.
+
+[09:21:50] Felix Arden: Good.
+
+[09:21:52] Sam Okafor: I have one last question. If operations asks for a joint discussion, are you available next week?
+
+[09:21:57] Felix Arden: I can make time, but I need a little notice. My calendar is full of clinical and engineering reviews.
+
+[09:22:02] Sam Okafor: Would Thursday or Friday be better?
+
+[09:22:06] Felix Arden: Thursday afternoon is generally easier. Friday is unpredictable.
+
+[09:22:10] Sam Okafor: I'll keep Thursday afternoon in mind.
+
+[09:22:12] Felix Arden: Fine.
+
+[09:22:14] Sam Okafor: I don't want to schedule something until I know who needs to attend and what material we have.
+
+[09:22:18] Felix Arden: That's sensible.
+
+[09:22:20] Sam Okafor: I'll send the recap first.
+
+[09:22:22] Felix Arden: All right.
+
+[09:22:24] Sam Okafor: Anything else before we wrap?
+
+[09:22:28] Felix Arden: Just one reminder: if the date changes, tell us as soon as you know, even if the replacement date is still being worked out.
+
+[09:22:34] Sam Okafor: I will.
+
+[09:22:36] Felix Arden: That alone would remove some of the strain.
+
+[09:22:38] Sam Okafor: I understand.
+
+[09:22:40] Felix Arden: And do not wait for a perfect answer to send the first answer.
+
+[09:22:44] Sam Okafor: That's fair.
+
+[09:22:46] Felix Arden: Good.
+
+[09:22:48] Sam Okafor: I'll get started as soon as we hang up.
+
+[09:22:50] Felix Arden: Thank you, Sam.
+
+[09:22:52] Sam Okafor: Thank you for being direct, Felix.
+
+[09:22:54] Felix Arden: I would rather be direct now than have a worse conversation later.
+
+[09:22:57] Sam Okafor: I appreciate that.
+
+[09:22:59] Felix Arden: Send the recap to me before you send it broadly, if possible. I want to make sure the account references are correct.
+
+[09:23:04] Sam Okafor: I can do that.
+
+[09:23:06] Felix Arden: Fine.
+
+[09:23:08] Sam Okafor: I'll speak with you tomorrow after the written update, unless something changes sooner.
+
+[09:23:12] Felix Arden: If something changes sooner, call me. Email can wait.
+
+[09:23:16] Sam Okafor: Understood.
+
+[09:23:18] Felix Arden: All right. I need to get back to the lab.
+
+[09:23:20] Sam Okafor: Of course. Have a good rest of the morning.
+
+[09:23:22] Felix Arden: You too.
+
+[09:23:24] Sam Okafor: Take care.
+
+[09:23:26] Felix Arden: Bye.
+
+[09:23:28] Sam Okafor: Bye.
+
+[09:23:30] Felix Arden: Sam, one thing—I almost forgot. If we reach September and deliveries still have not stabilized, we'd need to look at a second supplier for consumables.
+
+[09:23:42] Sam Okafor: I understand. I do not want this to reach that point, and I will make sure the seriousness of that risk is clear in the escalation.
+
+[09:23:49] Felix Arden: Good. I am not saying that to make a threat. I am saying it because I have to plan for continuity.
+
+[09:23:56] Sam Okafor: That is reasonable.
+
+[09:23:58] Felix Arden: Then please make the next steps visible.
+
+[09:24:00] Sam Okafor: I will.
+
+[09:24:02] Felix Arden: All right, now we can end the call.
+
+[09:24:04] Sam Okafor: Thanks, Felix.
+
+[09:24:06] Felix Arden: Thanks.
+
+[09:24:08] Sam Okafor: And I am committing to a joint call with Halvard's operations team and Larkspur Memorial by August 27 to review the delivery root cause.
+
+[09:24:20] Felix Arden: Good. Send me the proposed time and attendee list.
+
+[09:24:23] Sam Okafor: I will send both with the recap.
+
+[09:24:25] Felix Arden: Thanks, Sam. Now we are done.
+
+[09:24:27] Sam Okafor: We are. Goodbye.
+
+[09:24:29] Felix Arden: Goodbye.

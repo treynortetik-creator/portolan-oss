@@ -1,0 +1,8 @@
+{
+  "access_token": "00Dxx0000001gPF!ARsAQMockAccessToken",
+  "instance_url": "https://halvardmedical.my.salesforce.com",
+  "id": "https://login.salesforce.com/id/00Dxx0000001gPFEAY/005xx000001Sv6AAAS",
+  "token_type": "Bearer",
+  "issued_at": "1757640000000",
+  "signature": "mockSignature=="
+}

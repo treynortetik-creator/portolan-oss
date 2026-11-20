@@ -1,0 +1,755 @@
+[09:00:12] Sam Okafor: Morning, Felix. Can you hear me all right?
+
+[09:00:19] Felix Arden: I can. Morning, Sam. Give me one second, I’m just closing something down.
+
+[09:00:31] Sam Okafor: No problem. How’s the morning treating you?
+
+[09:00:42] Felix Arden: Busy, but not unusually busy. We had a couple of alarms to clear before rounds, and procurement is chasing me for numbers again.
+
+[09:00:55] Sam Okafor: Naturally. I wanted to use today to go through the open items, particularly the consumables question and the follow-up from the pump alarm issue.
+
+[09:01:08] Felix Arden: Yes, that works. I’ve got the notes in front of me. I may have to pause if somebody comes through the lab, but we can get through the main points.
+
+[09:01:21] Sam Okafor: Sounds good. Before we get into the list, how did the last delivery land with the wards?
+
+[09:01:33] Felix Arden: Regarding that late order last week, Larkspur Memorial Hospital reported a Tidewater T2 consumable delivery arriving four days late on 2026-08-04.
+
+[09:01:49] Sam Okafor: Right, I saw the note come across yesterday afternoon. Was the impact mainly administrative, or did it put pressure on clinical stock?
+
+[09:02:03] Felix Arden: A bit of both. We had enough on hand to avoid stopping anything, but it reduced the cushion people are comfortable with. The bigger irritation was that the ward coordinators were expecting the cartons on one day, then had to keep checking whether they were actually in transit.
+
+[09:02:18] Sam Okafor: Understood. Did anyone have to borrow stock from another department?
+
+[09:02:25] Felix Arden: No, not this time. Central stores moved a few boxes around internally, but that’s normal housekeeping rather than an emergency transfer.
+
+[09:02:39] Sam Okafor: I’ll keep the delivery issue open while I check the carrier trail and the handoff notes. I don’t want to give you a polished explanation before we know where the delay occurred.
+
+[09:02:50] Felix Arden: That’s fair. The useful thing for us would be a clear sequence, even if the answer is simply that something got held up between two points.
+
+[09:03:06] Sam Okafor: Agreed. I’ll ask logistics for the dispatch scan, the carrier acceptance time, and the final delivery scan. If there’s a gap, we can work from that.
+
+[09:03:19] Felix Arden: Good. Procurement also asked whether the next standing order is still configured the same way.
+
+[09:03:30] Sam Okafor: It should be, but I’ll verify the quantities and the destination details rather than assume. There have been a few changes in how accounts are being routed.
+
+[09:03:43] Felix Arden: That’s probably worth checking. We’ve had people update spreadsheets without necessarily telling the people who actually receive the boxes.
+
+[09:03:54] Sam Okafor: Yes, that can create a very quiet failure. The order looks correct in one system, then the receiving team is working from an older instruction.
+
+[09:04:08] Felix Arden: Exactly. And then everyone spends an afternoon asking who changed what.
+
+[09:04:18] Sam Okafor: Let’s put a simple ownership check on it. I’ll send you the current delivery details, and you can tell me whether the stores contact and receiving location are still right.
+
+[09:04:31] Felix Arden: I can do that. If you send it before lunch, I should be able to get an answer back today.
+
+[09:04:43] Sam Okafor: I’ll aim for that. Now, on the July pump alarm issue, I saw the service report had been closed. Has the team been satisfied since the visit?
+
+[09:04:55] Felix Arden: The clinical engineering group has. We’ve kept an eye on the affected units, and nobody has reported the same pattern since the work was done.
+
+[09:05:08] Sam Okafor: That’s good to hear. Was the replacement part the main fix, or did the engineer make an adjustment as well?
+
+[09:05:20] Felix Arden: There was an adjustment, and the engineer also walked the team through what to look for if the alarm came back. That helped because people weren’t left with a black-box explanation.
+
+[09:05:34] Sam Okafor: I’ll pass that along. The field team likes hearing when the handover is useful, not just whether the ticket is technically closed.
+
+[09:05:45] Felix Arden: It was useful. The person who came out was clear and didn’t make us repeat the whole story three times.
+
+[09:05:58] Sam Okafor: That’s the standard we want. I know response times are only one part of it; the time on site and the communication matter too.
+
+[09:06:12] Felix Arden: Yes. Our people are usually juggling several things, so a concise explanation makes a difference.
+
+[09:06:21] Sam Okafor: I’ll note that. Are there any remaining questions from the July review?
+
+[09:06:29] Felix Arden: Not from my side. I’m waiting for one internal sign-off on the maintenance note, but that’s an administrative step.
+
+[09:06:42] Sam Okafor: Okay. I’ll leave the service item as monitoring rather than fully disappearing from our agenda.
+
+[09:06:51] Felix Arden: That’s sensible. It gives us somewhere to put any follow-up without reopening the whole history.
+
+[09:07:04] Sam Okafor: Exactly. I also wanted to ask about training. Has the newer staff group had enough time with the equipment, or is that still being arranged?
+
+[09:07:17] Felix Arden: It’s partly arranged. We have an induction block planned, but the dates keep moving because of leave and rota changes.
+
+[09:07:29] Sam Okafor: Would a short remote session help, or do they need hands-on time?
+
+[09:07:37] Felix Arden: Hands-on is better for this group. They ask sensible questions once they’re standing in front of the pump, whereas a slide deck tends to produce polite silence.
+
+[09:07:49] Sam Okafor: That sounds familiar. We can arrange a practical session if you have a room and a unit available.
+
+[09:08:01] Felix Arden: We can probably do that. I need to check whether education services has booked the demonstration space.
+
+[09:08:14] Sam Okafor: No rush today, but if you give me two or three possible windows, I can see who’s available on our side.
+
+[09:08:23] Felix Arden: All right. I’ll ask them after this call.
+
+[09:08:36] Sam Okafor: While we’re on training, are there particular topics people are struggling with?
+
+[09:08:45] Felix Arden: Mostly the distinction between a genuine equipment condition and something caused by setup. They know the basics, but in the moment they can jump straight to escalation.
+
+[09:08:58] Sam Okafor: A short decision guide might help there.
+
+[09:09:06] Felix Arden: Yes, provided it stays short. If it becomes a twelve-page document, it will live in a folder and never be opened.
+
+[09:09:17] Sam Okafor: Point taken. We can make it a one-page check with the escalation path at the bottom.
+
+[09:09:29] Felix Arden: That would be more likely to get used.
+
+[09:09:41] Sam Okafor: I’ll ask the technical writer whether there’s already a suitable version. No sense recreating something from scratch.
+
+[09:09:49] Felix Arden: Good. We have enough duplicated material already.
+
+[09:10:02] Sam Okafor: On the consumables side, besides the recent delivery timing, have you noticed any packaging or labeling problems?
+
+[09:10:10] Felix Arden: Nothing significant. A couple of people said the outer cartons looked scuffed, but the inner packaging was fine.
+
+[09:10:23] Sam Okafor: Were the labels readable?
+
+[09:10:30] Felix Arden: Yes. No issue there.
+
+[09:10:42] Sam Okafor: Good. I’ll separate the delivery-lateness investigation from the product condition question so they don’t get blended together in the report.
+
+[09:10:53] Felix Arden: That’s helpful. Otherwise somebody will read “delivery problem” and assume the contents were unusable.
+
+[09:11:05] Sam Okafor: Exactly. I want the record to be precise.
+
+[09:11:13] Felix Arden: Precision is appreciated, especially when several teams review the same note.
+
+[09:11:25] Sam Okafor: How does your internal review process work once I send the logistics findings?
+
+[09:11:34] Felix Arden: I’ll look first, then route it to stores and procurement. If it’s just a carrier timing issue, they’ll probably close it. If the order details were wrong, they’ll want a corrective action.
+
+[09:11:48] Sam Okafor: That makes sense. I’ll include the order reference and the relevant timestamps.
+
+[09:11:55] Felix Arden: Please do. It saves me having to ask for them separately.
+
+[09:12:08] Sam Okafor: I’ve got it. Let me check something else: is the equipment register up to date enough for the service team?
+
+[09:12:17] Felix Arden: Mostly. There are a few units where the location field is old because departments moved equipment without telling us.
+
+[09:12:29] Sam Okafor: That can make a planned visit take twice as long.
+
+[09:12:37] Felix Arden: Yes, and then the engineer is wandering around with a serial number while somebody phones three wards.
+
+[09:12:50] Sam Okafor: Would it help if we provided a list for you to reconcile?
+
+[09:12:58] Felix Arden: It might. Send whatever your team has, and I’ll compare it with our register.
+
+[09:13:10] Sam Okafor: Will do. I’ll label it as a reconciliation exercise, not an audit, so nobody treats it as a formal finding.
+
+[09:13:19] Felix Arden: Thank you. The word “audit” tends to create meetings before anyone has looked at the data.
+
+[09:13:31] Sam Okafor: I know the pattern.
+
+[09:13:39] Felix Arden: We all do.
+
+[09:13:51] Sam Okafor: How are things generally with the service desk? Are requests being acknowledged quickly enough?
+
+[09:14:01] Felix Arden: Usually, yes. The variation is more in how complete the first response is. Sometimes we get an acknowledgement, but not a useful next step.
+
+[09:14:14] Sam Okafor: That’s useful feedback. Would you rather have a short acknowledgement followed by a call, or a slightly longer first message?
+
+[09:14:24] Felix Arden: A short message is fine if it says who owns it and when we’ll hear something substantive.
+
+[09:14:36] Sam Okafor: So ownership and a time expectation.
+
+[09:14:42] Felix Arden: Exactly. “Received” on its own doesn’t help anyone plan.
+
+[09:14:54] Sam Okafor: I’ll mention that to the service manager. It’s a small wording change, but it changes how people experience the handoff.
+
+[09:15:06] Felix Arden: Yes, and it prevents repeated follow-ups from different people.
+
+[09:15:16] Sam Okafor: We should probably also review the escalation contacts. Are the current names still right for your team?
+
+[09:15:27] Felix Arden: Some are, some aren’t. We’ve had two people change roles since spring.
+
+[09:15:39] Sam Okafor: I’ll send the list I have, and you can mark it up.
+
+[09:15:47] Felix Arden: Fine. Keep the general switchboard route on there as well. People sometimes need to call outside normal hours.
+
+[09:15:59] Sam Okafor: Understood.
+
+[09:16:07] Felix Arden: And make sure the instructions don’t imply that every alarm is an immediate field visit. Some can be resolved with a proper phone assessment.
+
+[09:16:20] Sam Okafor: That’s a good distinction. We need to avoid both over-escalation and under-escalation.
+
+[09:16:28] Felix Arden: Right.
+
+[09:16:40] Sam Okafor: Let’s go back to the July issue for a minute. Did the team have any trouble arranging access when the engineer arrived?
+
+[09:16:47] Felix Arden: No, not really. Security knew to expect someone, and the department had someone available.
+
+[09:16:59] Sam Okafor: Good. We’ve had cases elsewhere where the technical response is quick, but the person arrives and can’t get to the equipment.
+
+[09:17:09] Felix Arden: That happens here too, just not with that visit.
+
+[09:17:20] Sam Okafor: Was the service report easy to understand?
+
+[09:17:28] Felix Arden: Yes. It was concise and included the checks they performed.
+
+[09:17:39] Sam Okafor: That’s encouraging. I’ll make sure the same format is used for future visits where possible.
+
+[09:17:48] Felix Arden: Good. Consistency helps when different people review the records.
+
+[09:18:01] Sam Okafor: I’m going to take a quick note on that. One moment.
+
+[09:18:12] Felix Arden: Sure.
+
+[09:18:24] Sam Okafor: Okay. I’ve got it. Any issue with the replacement inventory after the visit?
+
+[09:18:32] Felix Arden: No. The stores team logged what was used, and there was no surprise charge that I’ve seen.
+
+[09:18:44] Sam Okafor: Good. If anything appears later, send it directly to me rather than letting it sit in a general queue.
+
+[09:18:52] Felix Arden: I will.
+
+[09:19:04] Sam Okafor: I know you mentioned procurement numbers earlier. Are they asking for a forecast, or just confirmation of current usage?
+
+[09:19:12] Felix Arden: Mostly confirmation. They’re trying to make the next planning cycle less reactive.
+
+[09:19:24] Sam Okafor: That’s reasonable. Do they need the information by a specific date?
+
+[09:19:31] Felix Arden: By the end of the week, ideally. They can work with a preliminary number if I explain what’s still being checked.
+
+[09:19:42] Sam Okafor: I can provide the account-level information we have, but you’ll know the ward-level pattern better.
+
+[09:19:51] Felix Arden: Yes, and the ward-level pattern is where the surprises usually are.
+
+[09:20:03] Sam Okafor: Is demand fairly even across the month?
+
+[09:20:10] Felix Arden: Not completely. Admissions and scheduled activity create peaks, and holiday cover changes the ordering rhythm.
+
+[09:20:22] Sam Okafor: Then a single monthly average probably hides too much.
+
+[09:20:29] Felix Arden: It does. Averages make everything look calm.
+
+[09:20:40] Sam Okafor: I’ll avoid presenting only an average. We can show the recent range and note the scheduling effect.
+
+[09:20:51] Felix Arden: That would be more useful.
+
+[09:21:03] Sam Okafor: We’re moving through the agenda fairly well. I’ve got the delivery investigation, the service follow-up, training, and the register check.
+
+[09:21:12] Felix Arden: That covers the urgent things.
+
+[09:21:24] Sam Okafor: Are there any quieter issues we should capture while we have the time?
+
+[09:21:31] Felix Arden: The only other thing is noise around the storage room. Not from the equipment itself, just people moving carts past it.
+
+[09:21:43] Sam Okafor: Is that affecting access or just making the area unpleasant?
+
+[09:21:51] Felix Arden: Mostly unpleasant. It can be difficult to hear when someone is explaining a check.
+
+[09:22:02] Sam Okafor: Would a different time for training avoid the busiest movement?
+
+[09:22:10] Felix Arden: Probably. Early afternoon is worse than morning.
+
+[09:22:22] Sam Okafor: I’ll bear that in mind when we look at dates.
+
+[09:22:29] Felix Arden: Thanks.
+
+[09:22:41] Sam Okafor: Speaking of the field team, how did the engineer handle questions from the newer staff?
+
+[09:22:49] Felix Arden: Patiently. They asked some very basic things, and he didn’t make them feel foolish for asking.
+
+[09:23:01] Sam Okafor: That matters. People remember the tone of an interaction as much as the technical answer.
+
+[09:23:09] Felix Arden: They do. If someone feels brushed off, they’ll hesitate the next time.
+
+[09:23:21] Sam Okafor: And hesitation is what we want to avoid around alarms.
+
+[09:23:29] Felix Arden: Exactly.
+
+[09:23:40] Sam Okafor: Did he leave any written guidance behind?
+
+[09:23:47] Felix Arden: Just the service report and a few notes on the local copy. Nothing excessive.
+
+[09:23:59] Sam Okafor: That sounds about right.
+
+[09:24:07] Felix Arden: I prefer that to a stack of generic pages.
+
+[09:24:19] Sam Okafor: We can keep future materials tailored to the equipment and the process your staff actually use.
+
+[09:24:28] Felix Arden: Good.
+
+[09:24:40] Sam Okafor: I should ask directly about the response itself. From your perspective, did it meet expectations?
+
+[09:24:49] Felix Arden: Yes. On 2026-08-05, Larkspur Memorial's biomed lead said that Halvard's field engineer response to the July pump alarm issue was "the fastest we've had from any vendor".
+
+[09:25:08] Sam Okafor: That’s strong feedback, Felix. I appreciate you sharing it.
+
+[09:25:15] Felix Arden: It’s deserved. The response was quick, and the communication was straightforward.
+
+[09:25:26] Sam Okafor: I’ll make sure the field manager sees the exact wording, because that sort of comment is useful for the team.
+
+[09:25:34] Felix Arden: Please do. The engineer should know it landed well.
+
+[09:25:47] Sam Okafor: I’ll send it through today. Are there any reservations behind that positive view?
+
+[09:25:54] Felix Arden: Not about that particular visit. We still want the general process to be dependable, but the visit itself was handled properly.
+
+[09:26:06] Sam Okafor: Understood. We’ll treat it as feedback on the response and the handoff, not as a reason to ignore the broader process.
+
+[09:26:14] Felix Arden: That’s the right way to read it.
+
+[09:26:25] Sam Okafor: Did the team have to chase for the appointment time?
+
+[09:26:32] Felix Arden: No. They got the expected update without having to keep calling.
+
+[09:26:44] Sam Okafor: Good. That’s one of the behaviours we’re trying to standardize.
+
+[09:26:53] Felix Arden: It makes a noticeable difference.
+
+[09:27:04] Sam Okafor: I’m glad. I know “fast” can sometimes mean someone arrived quickly but left people uncertain about what happened.
+
+[09:27:12] Felix Arden: That wasn’t the case here. We knew what had been checked and what to monitor.
+
+[09:27:24] Sam Okafor: Excellent.
+
+[09:27:31] Felix Arden: And the follow-up note came through when they said it would.
+
+[09:27:43] Sam Okafor: I’ll include that in the internal feedback as well.
+
+[09:27:51] Felix Arden: All right.
+
+[09:28:03] Sam Okafor: Let me ask about reporting. Do you want a monthly summary of service activity, or is that more paperwork than help?
+
+[09:28:11] Felix Arden: A short summary could help, as long as it highlights exceptions rather than repeating every routine closure.
+
+[09:28:23] Sam Okafor: So exceptions, response intervals, and anything recurring.
+
+[09:28:30] Felix Arden: Yes. If there’s a trend, I want to see it before it becomes a larger discussion.
+
+[09:28:42] Sam Okafor: We can do that. I’ll ask whether the existing report can be filtered instead of creating another document.
+
+[09:28:50] Felix Arden: Better to filter what exists.
+
+[09:29:02] Sam Okafor: Agreed. Do you want the summary sent to you only, or to the wider engineering group?
+
+[09:29:10] Felix Arden: Send it to me first. I’ll decide who needs the detail.
+
+[09:29:21] Sam Okafor: Fine.
+
+[09:29:29] Felix Arden: Some reports get forwarded so widely that nobody knows who is meant to act.
+
+[09:29:42] Sam Okafor: That’s another good reason to keep the first circulation small.
+
+[09:29:49] Felix Arden: Exactly.
+
+[09:30:01] Sam Okafor: We’re at about half an hour, so I’ll keep us moving. On the trial equipment, is there anything you need from us at this stage?
+
+[09:30:09] Felix Arden: We need to confirm the evaluation criteria. People have opinions, but not everyone is measuring the same things.
+
+[09:30:21] Sam Okafor: What categories are important to you?
+
+[09:30:28] Felix Arden: Ease of setup, alarm clarity, cleaning workflow, and how quickly staff become comfortable using it.
+
+[09:30:41] Sam Okafor: Would you also include service access and documentation?
+
+[09:30:48] Felix Arden: Yes, but those should be separate from the day-to-day handling scores.
+
+[09:30:59] Sam Okafor: That makes sense. We can draft a simple evaluation sheet with distinct sections.
+
+[09:31:07] Felix Arden: Keep the scoring intuitive. If people need instructions to understand the scoring, they won’t use it consistently.
+
+[09:31:19] Sam Okafor: We can use a small scale and add a comments box.
+
+[09:31:26] Felix Arden: Good.
+
+[09:31:38] Sam Okafor: How long do you expect the evaluation period to run?
+
+[09:31:45] Felix Arden: Long enough to cover ordinary work and a few less predictable days. A single quiet week would not tell us much.
+
+[09:31:57] Sam Okafor: Understood. We can leave the timing open until the group has enough observations.
+
+[09:32:05] Felix Arden: That’s preferable to rushing to a conclusion because somebody wants a date for a slide.
+
+[09:32:17] Sam Okafor: I’ll make sure the planning note says the findings depend on sufficient use.
+
+[09:32:26] Felix Arden: Fine.
+
+[09:32:38] Sam Okafor: Are users comparing the new units directly with the current ones?
+
+[09:32:45] Felix Arden: They are, informally. That’s why a written structure would help; otherwise the loudest opinion wins.
+
+[09:32:57] Sam Okafor: We can separate direct comparisons from general impressions.
+
+[09:33:05] Felix Arden: Yes. And make sure comments identify whether they came from nursing, biomed, or stores.
+
+[09:33:17] Sam Okafor: Good point. Different groups notice different things.
+
+[09:33:24] Felix Arden: Exactly.
+
+[09:33:36] Sam Okafor: I’ll draft something and send it for your review before anyone starts filling it in.
+
+[09:33:45] Felix Arden: That works.
+
+[09:33:52] Sam Okafor: Do you have a preferred format?
+
+[09:34:00] Felix Arden: A shared table is probably easiest, provided the permissions don’t turn into a project.
+
+[09:34:12] Sam Okafor: We can start with a simple document if the shared table is awkward.
+
+[09:34:20] Felix Arden: That may be safer.
+
+[09:34:32] Sam Okafor: All right. I’ll avoid introducing another system unless there’s a clear benefit.
+
+[09:34:41] Felix Arden: Appreciate that.
+
+[09:34:48] Sam Okafor: Coming back to supplies, do the trial units use the same general ordering route as the existing units?
+
+[09:34:55] Felix Arden: The equipment route is different from consumables, so stores needs clear instructions.
+
+[09:35:07] Sam Okafor: I’ll make sure the guidance distinguishes the two.
+
+[09:35:15] Felix Arden: Good. People see the same manufacturer name and assume the ordering process is identical.
+
+[09:35:27] Sam Okafor: That assumption causes trouble.
+
+[09:35:35] Felix Arden: It does.
+
+[09:35:47] Sam Okafor: Is the stores team involved in the evaluation?
+
+[09:35:54] Felix Arden: They should be. They care about packaging, shelf space, and how easy it is to identify the right item.
+
+[09:36:06] Sam Okafor: I’ll include a place for their comments.
+
+[09:36:14] Felix Arden: And don’t schedule their input during the busiest receiving window.
+
+[09:36:26] Sam Okafor: Do you know when that usually is?
+
+[09:36:33] Felix Arden: Late morning, generally. It varies, but that’s the period to avoid if we can.
+
+[09:36:45] Sam Okafor: Noted.
+
+[09:36:53] Felix Arden: The afternoon can be busy too, but it’s more spread out.
+
+[09:37:05] Sam Okafor: We’ll offer a couple of options rather than one fixed time.
+
+[09:37:13] Felix Arden: That’s easier for everyone.
+
+[09:37:25] Sam Okafor: How are the clinical users being selected for the evaluation?
+
+[09:37:32] Felix Arden: We’re trying to include people with different levels of experience, not just the people who volunteer first.
+
+[09:37:44] Sam Okafor: That should give you a more balanced view.
+
+[09:37:51] Felix Arden: That’s the idea.
+
+[09:38:03] Sam Okafor: Will the participants use the units in more than one area?
+
+[09:38:11] Felix Arden: Yes, otherwise we’d only learn how they behave in one workflow.
+
+[09:38:22] Sam Okafor: Then the sheet should include the location or context for each comment.
+
+[09:38:30] Felix Arden: Agreed.
+
+[09:38:42] Sam Okafor: I’ll add that field.
+
+[09:38:49] Felix Arden: Good.
+
+[09:39:01] Sam Okafor: Have any users raised concerns about moving between the current and trial equipment?
+
+[09:39:08] Felix Arden: A few asked whether the controls are arranged similarly. It’s not a major concern, but they want to know what changes.
+
+[09:39:20] Sam Okafor: We can provide a brief comparison guide.
+
+[09:39:28] Felix Arden: That would help during the first few shifts.
+
+[09:39:39] Sam Okafor: I’ll ask for one that focuses on practical differences rather than product language.
+
+[09:39:48] Felix Arden: Please. Staff don’t need marketing terms when they’re trying to remember a sequence.
+
+[09:40:00] Sam Okafor: Understood.
+
+[09:40:07] Felix Arden: Clear labels and a short checklist are enough.
+
+[09:40:19] Sam Okafor: I’ll make that the brief.
+
+[09:40:27] Felix Arden: Thanks.
+
+[09:40:39] Sam Okafor: We’ve got a little background noise on your end. Are you still okay to continue?
+
+[09:40:47] Felix Arden: Yes, someone’s moving a trolley outside the room. It should pass.
+
+[09:40:59] Sam Okafor: No problem.
+
+[09:41:06] Felix Arden: It’s gone now.
+
+[09:41:18] Sam Okafor: Great. I wanted to clarify the contact route for trial questions. Should users come through you, or is there a local coordinator?
+
+[09:41:26] Felix Arden: Start with the local coordinator for ordinary questions. Anything involving a technical concern should come to biomed.
+
+[09:41:39] Sam Okafor: That separation is useful.
+
+[09:41:46] Felix Arden: It keeps routine “how do I do this” questions from competing with equipment issues.
+
+[09:41:58] Sam Okafor: We can put that at the top of the guide.
+
+[09:42:05] Felix Arden: Yes, in plain language.
+
+[09:42:17] Sam Okafor: I’ll avoid a complicated flowchart.
+
+[09:42:25] Felix Arden: Please do.
+
+[09:42:37] Sam Okafor: I’m also checking whether we can make a field engineer available for a short review midway through the evaluation.
+
+[09:42:45] Felix Arden: That could be useful, especially if the team identifies the same question repeatedly.
+
+[09:42:57] Sam Okafor: We could use that session to review observations rather than repeat the initial introduction.
+
+[09:43:05] Felix Arden: Better. People will have real examples by then.
+
+[09:43:17] Sam Okafor: Exactly.
+
+[09:43:24] Felix Arden: Just give us enough notice. The rota is not forgiving.
+
+[09:43:36] Sam Okafor: I’ll propose dates early.
+
+[09:43:44] Felix Arden: Good.
+
+[09:43:56] Sam Okafor: Do you expect any issue getting the evaluation group together?
+
+[09:44:03] Felix Arden: Not if we keep it short. A full meeting with every stakeholder would be difficult.
+
+[09:44:15] Sam Okafor: We can have a small working session and circulate the notes.
+
+[09:44:23] Felix Arden: That’s more realistic.
+
+[09:44:35] Sam Okafor: I’ll include only the people who need to make decisions.
+
+[09:44:42] Felix Arden: Thank you.
+
+[09:44:54] Sam Okafor: Let’s talk about data capture. Do you want individual comments, or just one combined departmental view?
+
+[09:45:02] Felix Arden: Individual comments initially. We can group them later, but we shouldn’t lose the original context.
+
+[09:45:14] Sam Okafor: Agreed.
+
+[09:45:22] Felix Arden: And if someone has a negative view, I want to know whether it came from one unusual event or a repeated pattern.
+
+[09:45:34] Sam Okafor: We’ll include a frequency prompt.
+
+[09:45:42] Felix Arden: Good.
+
+[09:45:54] Sam Okafor: Do you want names attached to comments?
+
+[09:46:01] Felix Arden: Role is enough for the first pass. People may be more candid that way.
+
+[09:46:13] Sam Okafor: That makes sense.
+
+[09:46:20] Felix Arden: We can identify specific follow-up contacts separately if needed.
+
+[09:46:32] Sam Okafor: I’ll structure it that way.
+
+[09:46:40] Felix Arden: All right.
+
+[09:46:52] Sam Okafor: On the current equipment, are there any recurring maintenance patterns we should account for when comparing?
+
+[09:47:00] Felix Arden: We have ordinary wear items, but nothing unusual I want to call out today.
+
+[09:47:12] Sam Okafor: Fine. We can record routine maintenance separately from user experience.
+
+[09:47:20] Felix Arden: Yes. Otherwise the comparison gets muddled.
+
+[09:47:32] Sam Okafor: I’ll keep those sections separate.
+
+[09:47:40] Felix Arden: Good.
+
+[09:47:52] Sam Okafor: Do you need support explaining the evaluation to senior leadership?
+
+[09:47:59] Felix Arden: Maybe later. For now, they mainly want to know that the process is controlled.
+
+[09:48:11] Sam Okafor: Then a short outline of scope, participants, and review points should be enough.
+
+[09:48:19] Felix Arden: Exactly.
+
+[09:48:31] Sam Okafor: I can prepare that once the evaluation sheet is agreed.
+
+[09:48:38] Felix Arden: That sequence works.
+
+[09:48:50] Sam Okafor: I’ll avoid promising a final recommendation before the data exists.
+
+[09:48:57] Felix Arden: Please. People get attached to a direction too early.
+
+[09:49:09] Sam Okafor: Understood.
+
+[09:49:16] Felix Arden: It’s easier to be objective before everyone has a preferred answer.
+
+[09:49:28] Sam Okafor: Very true.
+
+[09:49:36] Felix Arden: We’ve all sat through those meetings.
+
+[09:49:48] Sam Okafor: More than once.
+
+[09:49:56] Felix Arden: Exactly.
+
+[09:50:08] Sam Okafor: I want to revisit the delivery issue briefly. If the logistics review shows the delay was outside the normal route, would you still want a formal corrective action?
+
+[09:50:17] Felix Arden: It depends on the explanation and whether the route is likely to repeat. One isolated carrier problem is different from a process weakness.
+
+[09:50:29] Sam Okafor: So recurrence risk matters.
+
+[09:50:36] Felix Arden: Yes. We need to know whether to change something or simply document what happened.
+
+[09:50:48] Sam Okafor: I’ll include that distinction in the follow-up.
+
+[09:50:56] Felix Arden: Good.
+
+[09:51:08] Sam Okafor: Do you have a preferred deadline for the explanation?
+
+[09:51:15] Felix Arden: As soon as practical. Procurement is already asking questions, but I’d rather have a complete answer than a fast guess.
+
+[09:51:27] Sam Okafor: I’ll give you an update even if the investigation is still open, and I’ll say what remains outstanding.
+
+[09:51:35] Felix Arden: That helps.
+
+[09:51:47] Sam Okafor: Would a brief call with logistics be useful, or should I keep it behind the scenes?
+
+[09:51:54] Felix Arden: Keep it behind the scenes unless they need information from us. Too many people on a simple tracing exercise can slow it down.
+
+[09:52:06] Sam Okafor: Agreed.
+
+[09:52:14] Felix Arden: If there’s a decision needed, bring us in then.
+
+[09:52:26] Sam Okafor: That’s how I’ll handle it.
+
+[09:52:34] Felix Arden: Fine.
+
+[09:52:46] Sam Okafor: I’m making a list of actions as we speak. The first is the delivery trace.
+
+[09:52:53] Felix Arden: Second is the equipment register comparison.
+
+[09:53:05] Sam Okafor: Third is the training dates and the one-page guide.
+
+[09:53:13] Felix Arden: Fourth is the evaluation sheet and the comparison guide.
+
+[09:53:25] Sam Okafor: Fifth is the feedback to the field manager.
+
+[09:53:32] Felix Arden: That’s all I need from this call.
+
+[09:53:44] Sam Okafor: I’ll also send the escalation contact list for review.
+
+[09:53:52] Felix Arden: Add that as six, then.
+
+[09:54:04] Sam Okafor: Done.
+
+[09:54:12] Felix Arden: And put the delivery details first. That’s the item people are waiting on.
+
+[09:54:24] Sam Okafor: I’ll order the list that way.
+
+[09:54:32] Felix Arden: Thanks.
+
+[09:54:44] Sam Okafor: Before we close, is there anything about the service response that you’d like changed even though the July visit went well?
+
+[09:54:53] Felix Arden: The main improvement would be making that level of communication routine rather than dependent on which engineer picks up the work.
+
+[09:55:05] Sam Okafor: Consistency across engineers.
+
+[09:55:12] Felix Arden: Yes. The technical quality needs to be consistent, but so does the explanation.
+
+[09:55:24] Sam Okafor: I’ll frame the feedback around repeatable behaviours: clear ownership, realistic timing, and a useful closeout note.
+
+[09:55:32] Felix Arden: That captures it.
+
+[09:55:44] Sam Okafor: Good.
+
+[09:55:51] Felix Arden: The field team already does some of that well.
+
+[09:56:03] Sam Okafor: We need to make sure it isn’t left to individual habit.
+
+[09:56:11] Felix Arden: Exactly.
+
+[09:56:23] Sam Okafor: Do you want the field manager to contact you directly about the feedback?
+
+[09:56:30] Felix Arden: A note is enough. If he has a specific question, he can come back through you.
+
+[09:56:42] Sam Okafor: I’ll keep it simple.
+
+[09:56:50] Felix Arden: Good.
+
+[09:57:02] Sam Okafor: On the evaluation, should we include a question about how quickly users can recover from a mistake?
+
+[09:57:10] Felix Arden: Yes, but phrase it as confidence after an error. That’s more meaningful than pretending mistakes never happen.
+
+[09:57:22] Sam Okafor: That’s a useful distinction.
+
+[09:57:30] Felix Arden: Real workflows are not perfect.
+
+[09:57:42] Sam Okafor: I’ll add it.
+
+[09:57:49] Felix Arden: And ask whether the instructions helped them recover.
+
+[09:58:01] Sam Okafor: Good.
+
+[09:58:09] Felix Arden: That gives us something actionable.
+
+[09:58:21] Sam Okafor: I’m nearly at the end of my list. Are the current storage arrangements likely to change during the evaluation?
+
+[09:58:29] Felix Arden: Possibly. Estates is looking at the room, but nothing is decided.
+
+[09:58:41] Sam Okafor: Then we should record the storage context for each observation.
+
+[09:58:48] Felix Arden: Yes, otherwise a later move could look like an equipment change.
+
+[09:59:00] Sam Okafor: I’ll include the location field.
+
+[09:59:08] Felix Arden: Thanks.
+
+[09:59:20] Sam Okafor: Any concern about the units being moved between areas?
+
+[09:59:27] Felix Arden: Only that the location record needs updating promptly.
+
+[09:59:39] Sam Okafor: We can remind users of that at the start.
+
+[09:59:47] Felix Arden: Please do.
+
+[09:59:59] Sam Okafor: All right. I’m going to summarize the immediate next steps, then I’ll let you get back to the lab.
+
+[10:00:07] Felix Arden: That would be good.
+
+[10:00:19] Sam Okafor: Today I’ll request the delivery trace, send the current delivery details for confirmation, pass the service feedback to the field manager, and send the escalation contact list.
+
+[10:00:28] Felix Arden: I’ll check the delivery details, ask education services about the training room, and compare the equipment register when you send it.
+
+[10:00:40] Sam Okafor: I’ll draft the evaluation sheet and the short comparison guide after I confirm the available support.
+
+[10:00:48] Felix Arden: Fine.
+
+[10:01:00] Sam Okafor: I’ll send you a written recap by early afternoon.
+
+[10:01:07] Felix Arden: If it comes through today, I can respond before the end of the day.
+
+[10:01:19] Sam Okafor: Good. If anything urgent changes before then, call me directly.
+
+[10:01:26] Felix Arden: I will.
+
+[10:01:38] Sam Okafor: One final question on the equipment picture, just so I’m working from the right baseline: how many current pumps are in service, and how many trial units are involved?
+
+[10:01:48] Felix Arden: Larkspur Memorial Hospital has forty Tidewater T2 pumps and is trialling four T3 units as of 2026-08-05.
+
+[10:02:02] Sam Okafor: Perfect. That gives me the baseline I needed.
+
+[10:02:09] Felix Arden: I’ll make sure the register comparison uses those figures as a check, not as a substitute for the serial-level review.
+
+[10:02:21] Sam Okafor: That’s sensible.
+
+[10:02:28] Felix Arden: The totals are easy enough to state, but the locations are where things get messy.
+
+[10:02:40] Sam Okafor: Understood. I’ll keep both levels in the recap.
+
+[10:02:48] Felix Arden: Good.
+
+[10:03:00] Sam Okafor: Anything else before we wrap?
+
+[10:03:07] Felix Arden: No, I think we’ve covered the useful points.
+
+[10:03:19] Sam Okafor: Thanks for making the time, especially with the interruptions.
+
+[10:03:26] Felix Arden: No problem. It was a productive call.
+
+[10:03:38] Sam Okafor: I’ll get the actions moving and send the recap this afternoon.
+
+[10:03:45] Felix Arden: All right. Speak soon.
+
+[10:03:57] Sam Okafor: Speak soon, Felix. Take care.
+
+[10:04:04] Felix Arden: You too.

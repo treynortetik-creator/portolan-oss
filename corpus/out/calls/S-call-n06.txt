@@ -1,0 +1,995 @@
+[09:02:11] Sam Okafor: Hi, Owen, it’s Sam. How are you?
+
+[09:02:18] Owen Castellane: Sam, good morning. I’m well, thanks. How about you?
+
+[09:02:25] Sam Okafor: Doing well. I appreciate you making time. I know this is just a courtesy call, so I’ll keep it light. I wanted to check in after the quarter, say thank you, and hear how things felt from your side.
+
+[09:02:43] Owen Castellane: That works. And yes, it was a pretty clean quarter for us. I’m not complaining.
+
+[09:02:50] Sam Okafor: I saw that from the outside. The updates were quiet, which is usually a good sign.
+
+[09:02:55] Owen Castellane: Quiet is good. Quiet means nobody is calling me at six in the morning.
+
+[09:03:01] Sam Okafor: Exactly. My favorite kind of operational metric.
+
+[09:03:05] Owen Castellane: Although, to be fair, if nobody calls at six in the morning, I sometimes worry the dashboard has stopped working.
+
+[09:03:12] Sam Okafor: There’s no pleasing anyone.
+
+[09:03:17] Owen Castellane: No, that’s the lesson. If the system is busy, people are unhappy. If it’s silent, people wonder whether the system is alive.
+
+[09:03:23] Sam Okafor: I’ll put that on a mug.
+
+[09:03:27] Owen Castellane: Please don’t.
+
+[09:03:31] Sam Okafor: Fair enough. Before we get into anything else, how are things personally? Still splitting your time between the office and home?
+
+[09:03:39] Owen Castellane: More or less. I’ve settled into a rhythm. I’m in the office enough to remember what the conference rooms look like, but not enough to become furniture.
+
+[09:03:48] Sam Okafor: That’s a healthy balance.
+
+[09:03:52] Owen Castellane: Depends who you ask. My team says I’m around more than I think. My calendar says otherwise.
+
+[09:03:59] Sam Okafor: Calendars are not always reliable witnesses.
+
+[09:04:03] Owen Castellane: Neither are teams.
+
+[09:04:07] Sam Okafor: True. Well, I’ll start with the broad question: did the quarter feel as smooth internally as it looked externally?
+
+[09:04:14] Owen Castellane: Mostly, yes. We had the normal little things. A few handoffs that needed chasing, some approvals that took longer than they should have, and one week where everyone seemed to be on vacation at the same time.
+
+[09:04:23] Sam Okafor: That week is always mysterious. Nobody planned it, but somehow it happens.
+
+[09:04:29] Owen Castellane: Exactly. Still, the important part is that none of those things turned into a real problem.
+
+[09:04:35] Sam Okafor: That’s what I was hoping to hear.
+
+[09:04:39] Owen Castellane: And from our side, the service was steady. We didn’t have any fire drills around it, which is probably the strongest compliment I can give.
+
+[09:04:47] Sam Okafor: I’ll take “no fire drills” as a five-star review.
+
+[09:04:52] Owen Castellane: It’s a very operations-specific five-star review.
+
+[09:04:56] Sam Okafor: I’m learning. I also wanted to ask whether the team has had any recurring questions that haven’t made their way to me.
+
+[09:05:03] Owen Castellane: Not recurring questions, no. There were a couple of one-off things, but people found their way through them.
+
+[09:05:10] Sam Okafor: Good. Did they use the written guides, or did they mostly ask each other?
+
+[09:05:16] Owen Castellane: A mixture. The written guides are useful when somebody remembers they exist.
+
+[09:05:21] Sam Okafor: That is a difficult feature to build.
+
+[09:05:25] Owen Castellane: Yes, the “remember” button is still missing.
+
+[09:05:28] Sam Okafor: We’ll put it on the roadmap.
+
+[09:05:34] Owen Castellane: Don’t. You’ll have someone asking for a progress update next quarter.
+
+[09:05:39] Sam Okafor: Very fair point.
+
+[09:05:43] Owen Castellane: But genuinely, the guides were fine. The newer people needed a little orientation, which is normal, and the experienced people mostly knew where to look.
+
+[09:05:52] Sam Okafor: That’s helpful. We’ve been trying to make those easier to scan rather than adding more pages.
+
+[09:05:58] Owen Castellane: That’s the right direction. Nobody needs a forty-page explanation when they have a question at 4:45 on a Friday.
+
+[09:06:04] Sam Okafor: Especially at 4:45 on a Friday.
+
+[09:06:08] Owen Castellane: At that point, the reader has already made peace with whatever answer is on page one.
+
+[09:06:14] Sam Okafor: I know the feeling. I wanted to spend a few minutes on the relationship generally, too. We value the account, and I don’t want our contact to be limited to renewals or problem tickets.
+
+[09:06:24] Owen Castellane: I appreciate that. It’s better when the conversation isn’t only happening because something broke.
+
+[09:06:31] Sam Okafor: Exactly. A quiet quarter can make it easy for vendors to disappear, and then suddenly everyone is surprised when planning season arrives.
+
+[09:06:38] Owen Castellane: Planning season has a way of arriving whether anyone is ready or not.
+
+[09:06:43] Sam Okafor: I’ve noticed.
+
+[09:06:46] Owen Castellane: It’s like weather. We discuss it for weeks and then act surprised when it happens.
+
+[09:06:52] Sam Okafor: That’s a better metaphor than the one I was about to use.
+
+[09:06:56] Owen Castellane: You were going to say tax season?
+
+[09:06:59] Sam Okafor: Something less cheerful.
+
+[09:07:04] Owen Castellane: Then keep it to yourself.
+
+[09:07:08] Sam Okafor: Done.
+
+[09:07:11] Owen Castellane: What did you have in mind for the next few months?
+
+[09:07:16] Sam Okafor: Nothing dramatic. I’d like to keep the current cadence, make sure the right people are still getting the updates, and perhaps schedule a working session if your team has anything they want to review.
+
+[09:07:25] Owen Castellane: That sounds sensible. We don’t need a big workshop just for the sake of having a big workshop.
+
+[09:07:30] Sam Okafor: Agreed. I’d rather bring people together around a question than around a slide deck that has been looking for an audience.
+
+[09:07:37] Owen Castellane: Yes. Slide decks are very persistent. They survive long after their purpose is gone.
+
+[09:07:43] Sam Okafor: Like office plants.
+
+[09:07:47] Owen Castellane: We have one in the reception area that may now be part of the building.
+
+[09:07:54] Sam Okafor: Does anyone know what it is?
+
+[09:07:58] Owen Castellane: We used to think it was a ficus. Now it’s more of a historical artifact.
+
+[09:08:04] Sam Okafor: That’s impressive.
+
+[09:08:08] Owen Castellane: It has outlasted two receptionists and one office renovation.
+
+[09:08:13] Sam Okafor: Then it has earned its place.
+
+[09:08:17] Owen Castellane: That’s what I keep saying. The facilities team disagrees.
+
+[09:08:22] Sam Okafor: Facilities can be ruthless.
+
+[09:08:26] Owen Castellane: They have standards.
+
+[09:08:30] Sam Okafor: On the practical side, is there anything you’d change about how we communicate?
+
+[09:08:37] Owen Castellane: Maybe fewer messages that say “just checking in” when there’s nothing specific to check.
+
+[09:08:43] Sam Okafor: That’s fair.
+
+[09:08:47] Owen Castellane: I don’t mind hearing from you. I just prefer a message that tells me why you’re calling, even if the reason is simply to say hello.
+
+[09:08:54] Sam Okafor: That’s useful feedback. I can make the purpose clearer in the subject line and keep the notes shorter.
+
+[09:09:00] Owen Castellane: That would help. People are busy, but they’re not trying to be difficult.
+
+[09:09:06] Sam Okafor: Understood.
+
+[09:09:09] Owen Castellane: And I’ll say the same about our side. We can be slow to respond when something feels non-urgent, which probably makes it look as though we’re not interested.
+
+[09:09:16] Sam Okafor: I haven’t taken it that way.
+
+[09:09:20] Owen Castellane: Good. Sometimes a message falls into the space between “needs an answer” and “can wait,” and then it waits.
+
+[09:09:27] Sam Okafor: That space is where many emails go to retire.
+
+[09:09:32] Owen Castellane: Exactly.
+
+[09:09:35] Sam Okafor: Would a short monthly note be useful, or would that become another thing to ignore?
+
+[09:09:41] Owen Castellane: It might become another thing to ignore. Quarterly is probably enough unless there’s something material.
+
+[09:09:48] Sam Okafor: Quarterly with an exception for anything that actually matters.
+
+[09:09:52] Owen Castellane: That’s the right balance.
+
+[09:09:55] Sam Okafor: I’ll follow that.
+
+[09:09:59] Owen Castellane: And if we have a question, we’ll reach out. I don’t want you spending time producing a report nobody requested.
+
+[09:10:05] Sam Okafor: I appreciate that. There’s a tendency in our world to equate more pages with more value.
+
+[09:10:11] Owen Castellane: Yes, as though a longer document can compensate for not answering the actual question.
+
+[09:10:16] Sam Okafor: It cannot.
+
+[09:10:20] Owen Castellane: No. It can hide the absence of an answer for a little while, but that’s about it.
+
+[09:10:24] Sam Okafor: That’s going in my notes.
+
+[09:10:28] Owen Castellane: Then make sure you spell my name right.
+
+[09:10:31] Sam Okafor: I have it right here.
+
+[09:10:35] Owen Castellane: Good. I’ve been Owen for years, but I still see creative variations.
+
+[09:10:40] Sam Okafor: Any memorable ones?
+
+[09:10:45] Owen Castellane: A hotel once put “Orin” on the welcome sign. I was too tired to correct them.
+
+[09:10:51] Sam Okafor: That’s a new one.
+
+[09:10:55] Owen Castellane: The person meeting me had a sign for “Orin,” and I thought, well, maybe I’m Orin today.
+
+[09:11:00] Sam Okafor: Did you introduce yourself that way?
+
+[09:11:04] Owen Castellane: No, I didn’t have the courage.
+
+[09:11:08] Sam Okafor: Probably wise. It could have followed you for years.
+
+[09:11:12] Owen Castellane: Exactly. One alias is manageable. A reputation is harder.
+
+[09:11:17] Sam Okafor: On the topic of reputation, I wanted to check whether you feel comfortable recommending us internally when another group asks.
+
+[09:11:24] Owen Castellane: Yes, I do, with the usual caveat that every group has its own needs.
+
+[09:11:30] Sam Okafor: Of course.
+
+[09:11:34] Owen Castellane: I wouldn’t promise that every team will use it in exactly the same way, but I’d be comfortable saying the relationship has been dependable.
+
+[09:11:43] Sam Okafor: That means a lot.
+
+[09:11:47] Owen Castellane: Dependable is more valuable than exciting in operations.
+
+[09:11:51] Sam Okafor: I’ll happily be dependable.
+
+[09:11:55] Owen Castellane: You can be exciting at dinner.
+
+[09:11:59] Sam Okafor: I’m not sure my dinner repertoire supports that.
+
+[09:12:03] Owen Castellane: Mine doesn’t either. We’re both safe.
+
+[09:12:07] Sam Okafor: Safe is underrated.
+
+[09:12:10] Owen Castellane: Very much so.
+
+[09:12:14] Sam Okafor: Have any internal priorities shifted since we last spoke?
+
+[09:12:21] Owen Castellane: Nothing that changes the immediate picture. We’re still focused on keeping the operation steady, reducing avoidable effort, and giving people fewer systems to think about.
+
+[09:12:30] Sam Okafor: That last one is always popular.
+
+[09:12:34] Owen Castellane: Yes. Every new system arrives with a promise of simplicity and a training plan.
+
+[09:12:40] Sam Okafor: And then a second system to explain the first system.
+
+[09:12:44] Owen Castellane: Exactly. We’re trying not to add layers unless there’s a clear reason.
+
+[09:12:51] Sam Okafor: That aligns with how I’d like to support you. We can keep an eye on the existing setup rather than proposing changes for the sake of activity.
+
+[09:12:58] Owen Castellane: Good. Activity is not the same as progress.
+
+[09:13:03] Sam Okafor: I agree.
+
+[09:13:07] Owen Castellane: Sometimes the most useful thing is to leave a process alone for a while and see whether it continues to behave.
+
+[09:13:13] Sam Okafor: That’s a difficult message for people whose job is to recommend improvements.
+
+[09:13:18] Owen Castellane: It is, but restraint is also an operational skill.
+
+[09:13:23] Sam Okafor: I’ll remember that.
+
+[09:13:27] Owen Castellane: You’ve got a lot of quotes from me now.
+
+[09:13:32] Sam Okafor: I’ll avoid publishing the collection.
+
+[09:13:36] Owen Castellane: Thank you.
+
+[09:13:40] Sam Okafor: Let me ask about the quarter-end process itself. Did your team find the reporting and review cycle straightforward?
+
+[09:13:47] Owen Castellane: Yes, once we got into it. The first pass always takes a little longer because people are checking whether the numbers look sensible.
+
+[09:13:55] Sam Okafor: And then the second pass is checking whether the first pass checked the numbers.
+
+[09:13:59] Owen Castellane: That’s the basic rhythm.
+
+[09:14:03] Sam Okafor: It’s reassuring, in a way.
+
+[09:14:07] Owen Castellane: It is. I’d rather have someone ask one extra question than confidently circulate something wrong.
+
+[09:14:12] Sam Okafor: Absolutely.
+
+[09:14:16] Owen Castellane: We had no surprises from your side. The information arrived when expected, and that made the internal review easier.
+
+[09:14:22] Sam Okafor: I’m glad.
+
+[09:14:26] Owen Castellane: I don’t want to overstate it. It’s not dramatic. It just means people could do their jobs without creating a special meeting.
+
+[09:14:34] Sam Okafor: That is the dream.
+
+[09:14:38] Owen Castellane: A day without a special meeting is a good day.
+
+[09:14:42] Sam Okafor: I’ll make that my status message.
+
+[09:14:45] Owen Castellane: Please don’t. Someone will schedule one to discuss it.
+
+[09:14:50] Sam Okafor: You’re right. I withdraw the idea.
+
+[09:14:54] Owen Castellane: Good.
+
+[09:14:58] Sam Okafor: Are there any upcoming periods where you expect more pressure on the team?
+
+[09:15:05] Owen Castellane: There are always busy periods, but nothing unusual on the immediate horizon. We’re watching the calendar and trying not to let everything become urgent at once.
+
+[09:15:13] Sam Okafor: That is a strong strategy.
+
+[09:15:17] Owen Castellane: It’s more of an aspiration, but we call it a strategy because it sounds better.
+
+[09:15:23] Sam Okafor: I respect the branding.
+
+[09:15:27] Owen Castellane: Operations is partly the art of giving ordinary things respectable names.
+
+[09:15:31] Sam Okafor: Like “calendar hygiene.”
+
+[09:15:35] Owen Castellane: Exactly. Or “cross-functional alignment,” which may mean three people agreeing to send an email.
+
+[09:15:40] Sam Okafor: I have sat through that meeting.
+
+[09:15:44] Owen Castellane: Everyone has.
+
+[09:15:48] Sam Okafor: If pressure does increase, would you prefer me to check in proactively?
+
+[09:15:55] Owen Castellane: If there’s a reason to think you can help, yes. Otherwise, I’d rather have the team tell me what they need first.
+
+[09:16:02] Sam Okafor: That makes sense.
+
+[09:16:06] Owen Castellane: We’re trying to avoid creating noise in response to the possibility of noise.
+
+[09:16:13] Sam Okafor: That’s a useful distinction.
+
+[09:16:17] Owen Castellane: It’s one I’m still learning myself.
+
+[09:16:21] Sam Okafor: Aren’t we all?
+
+[09:16:25] Owen Castellane: Probably.
+
+[09:16:28] Sam Okafor: How is the team morale after the quarter?
+
+[09:16:35] Owen Castellane: Good. People are tired, but it’s the normal kind of tired. Nobody is looking at the walls and asking whether they can be transferred to another department.
+
+[09:16:42] Sam Okafor: That’s encouraging.
+
+[09:16:46] Owen Castellane: We did a small lunch, nothing formal. A few people brought food, somebody forgot plates, and we used paper towels as napkins.
+
+[09:16:55] Sam Okafor: That sounds like a successful lunch.
+
+[09:16:59] Owen Castellane: It was. The food was better than the logistics.
+
+[09:17:03] Sam Okafor: That’s usually the correct order.
+
+[09:17:07] Owen Castellane: Yes. If the logistics are better than the food, you have a problem.
+
+[09:17:11] Sam Okafor: I’m writing that down too.
+
+[09:17:15] Owen Castellane: You’re going to need a very large notebook.
+
+[09:17:19] Sam Okafor: I have a document called “Owen’s operational wisdom.”
+
+[09:17:24] Owen Castellane: Delete it.
+
+[09:17:28] Sam Okafor: Done.
+
+[09:17:31] Owen Castellane: Good.
+
+[09:17:34] Sam Okafor: Did anyone bring dessert?
+
+[09:17:40] Owen Castellane: Someone brought a cake that was supposed to be lemon and turned out to be mostly sugar.
+
+[09:17:46] Sam Okafor: That’s still cake.
+
+[09:17:50] Owen Castellane: We accepted it on those grounds.
+
+[09:17:54] Sam Okafor: Generous.
+
+[09:17:58] Owen Castellane: Morale was high enough to overlook the chemistry.
+
+[09:18:03] Sam Okafor: Excellent.
+
+[09:18:07] Owen Castellane: It was a nice break. People don’t need a speech every time. Sometimes they need lunch and permission not to answer messages for twenty minutes.
+
+[09:18:14] Sam Okafor: That sounds reasonable.
+
+[09:18:18] Owen Castellane: We’re working on the permission part.
+
+[09:18:22] Sam Okafor: That may be the harder one.
+
+[09:18:26] Owen Castellane: It is. Everyone thinks the message they’re about to send is the one exception.
+
+[09:18:31] Sam Okafor: The message always believes it is special.
+
+[09:18:35] Owen Castellane: Exactly.
+
+[09:18:39] Sam Okafor: Let’s circle back to your experience with our team. Is there anyone you’d like me to recognize?
+
+[09:18:46] Owen Castellane: The support group has been good. They’re patient, and they don’t make a simple question feel foolish.
+
+[09:18:53] Sam Okafor: I’m glad to hear that. I’ll pass it along.
+
+[09:18:57] Owen Castellane: Please do. People notice that kind of thing, even if they don’t always say it.
+
+[09:19:02] Sam Okafor: I’ll make sure they hear it.
+
+[09:19:06] Owen Castellane: And you’ve been consistent about following through. I know account people have a lot of customers, so I don’t assume every little thing is top priority.
+
+[09:19:15] Sam Okafor: I appreciate the understanding.
+
+[09:19:19] Owen Castellane: But when you say you’ll come back with an answer, you usually do. That’s important.
+
+[09:19:24] Sam Okafor: I’ll keep that standard.
+
+[09:19:28] Owen Castellane: Good.
+
+[09:19:31] Sam Okafor: Is there anything you wish we had asked earlier in the relationship?
+
+[09:19:38] Owen Castellane: Maybe how we define a successful interaction. It isn’t always about speed. Sometimes it’s about clarity, or knowing who owns the next step.
+
+[09:19:47] Sam Okafor: That’s a good point.
+
+[09:19:51] Owen Castellane: A quick answer that sends someone in the wrong direction isn’t actually quick.
+
+[09:19:55] Sam Okafor: Right.
+
+[09:19:59] Owen Castellane: And a thoughtful answer that arrives a little later can be more useful, as long as people know when to expect it.
+
+[09:20:06] Sam Okafor: So visibility matters as much as turnaround.
+
+[09:20:10] Owen Castellane: In many cases, yes. Silence creates extra work because people start trying to solve the communication problem instead of the original problem.
+
+[09:20:19] Sam Okafor: That’s something we can control better.
+
+[09:20:23] Owen Castellane: I think so. Even a short note saying, “I’m looking into it; I’ll update you tomorrow,” removes a lot of uncertainty.
+
+[09:20:28] Sam Okafor: Agreed.
+
+[09:20:32] Owen Castellane: Then tomorrow, of course, you have to update them.
+
+[09:20:36] Sam Okafor: The inconvenient second half.
+
+[09:20:40] Owen Castellane: Yes. Commitments have a way of becoming real.
+
+[09:20:44] Sam Okafor: I’ve heard that.
+
+[09:20:48] Owen Castellane: You’re learning quickly.
+
+[09:20:52] Sam Okafor: I’m taking the safe lessons.
+
+[09:20:55] Owen Castellane: Sensible.
+
+[09:20:58] Sam Okafor: Do you feel the current contact points are clear for your team?
+
+[09:21:05] Owen Castellane: Generally, yes. New people sometimes ask who they should contact, but that’s expected. We have a few internal pages that help.
+
+[09:21:12] Sam Okafor: We could make a simple one-page contact guide if that would be useful.
+
+[09:21:18] Owen Castellane: It might be, provided it stays one page.
+
+[09:21:22] Sam Okafor: I promise not to turn it into a handbook.
+
+[09:21:26] Owen Castellane: Good. The moment it becomes a handbook, nobody knows where to begin.
+
+[09:21:30] Sam Okafor: We’ll keep it practical.
+
+[09:21:34] Owen Castellane: A name, a purpose, and what information to include when reaching out. That’s probably enough.
+
+[09:21:40] Sam Okafor: That’s clear.
+
+[09:21:44] Owen Castellane: Most people don’t need a map of the entire organization. They need to know which door to knock on.
+
+[09:21:51] Sam Okafor: Nicely put.
+
+[09:21:55] Owen Castellane: Again, don’t put it in the document.
+
+[09:21:59] Sam Okafor: I’ve already deleted the document.
+
+[09:22:03] Owen Castellane: Good.
+
+[09:22:07] Sam Okafor: I’m curious whether the quarter-end review changed any expectations about the next one.
+
+[09:22:14] Owen Castellane: Not really. If anything, it confirmed that the current approach is adequate. We may adjust the timing around holidays, but that’s a calendar matter.
+
+[09:22:22] Sam Okafor: We can accommodate that.
+
+[09:22:26] Owen Castellane: I appreciate flexibility there. Fixed dates are useful until they land on the one day half the team is unavailable.
+
+[09:22:32] Sam Okafor: The calendar loves those days.
+
+[09:22:36] Owen Castellane: It does. It puts a little star next to them.
+
+[09:22:40] Sam Okafor: And then sends reminders.
+
+[09:22:44] Owen Castellane: Repeatedly.
+
+[09:22:48] Sam Okafor: We’ll watch the holiday calendar before proposing anything.
+
+[09:22:52] Owen Castellane: That’s all I ask.
+
+[09:22:55] Sam Okafor: Are there any recurring meetings you’d like to reduce or reshape?
+
+[09:23:02] Owen Castellane: Not with you. The conversations are short enough. Internally, we are still trying to decide whether a meeting needs to exist before we decide what to do in it.
+
+[09:23:10] Sam Okafor: That’s advanced meeting governance.
+
+[09:23:14] Owen Castellane: It sounds advanced. Mostly it means asking, “Could this be an email?” before sending the invitation.
+
+[09:23:19] Sam Okafor: A timeless question.
+
+[09:23:23] Owen Castellane: And one that people answer incorrectly with surprising confidence.
+
+[09:23:27] Sam Okafor: I’ve seen that too.
+
+[09:23:31] Owen Castellane: The invitation arrives with an agenda that says “discussion.”
+
+[09:23:35] Sam Okafor: The most open-ended agenda.
+
+[09:23:39] Owen Castellane: Yes. It can mean anything, so it usually means nothing.
+
+[09:23:43] Sam Okafor: I’ll avoid that word in our next invite.
+
+[09:23:47] Owen Castellane: Use “specific conversation.”
+
+[09:23:51] Sam Okafor: That’s much more intimidating.
+
+[09:23:55] Owen Castellane: Good. People prepare.
+
+[09:23:59] Sam Okafor: Fair.
+
+[09:24:03] Owen Castellane: But again, no need to schedule one now.
+
+[09:24:07] Sam Okafor: Understood.
+
+[09:24:10] Sam Okafor: I also wanted to thank you for the candid feedback over the year. It helps me distinguish what is truly important from what just sounds important in a meeting.
+
+[09:24:18] Owen Castellane: I try to be direct without being dramatic.
+
+[09:24:22] Sam Okafor: That’s a good combination.
+
+[09:24:26] Owen Castellane: Directness saves time, but drama gets remembered, so people sometimes confuse the two.
+
+[09:24:33] Sam Okafor: That’s true.
+
+[09:24:37] Owen Castellane: If something is working, I’ll say it’s working. If it isn’t, I’ll say that too. There’s no benefit to making a small issue sound like a crisis.
+
+[09:24:45] Sam Okafor: I value that approach.
+
+[09:24:49] Owen Castellane: And I know you can’t fix everything instantly.
+
+[09:24:53] Sam Okafor: That helps.
+
+[09:24:57] Owen Castellane: The important thing is that the issue has an owner and a next step.
+
+[09:25:02] Sam Okafor: That comes up often.
+
+[09:25:06] Owen Castellane: Because it works.
+
+[09:25:10] Sam Okafor: We should print that on the back of the contact guide.
+
+[09:25:14] Owen Castellane: You’re trying to sneak the document back into the call.
+
+[09:25:18] Sam Okafor: I’m testing the boundaries.
+
+[09:25:22] Owen Castellane: The boundaries are holding.
+
+[09:25:26] Sam Okafor: Noted.
+
+[09:25:29] Owen Castellane: How are things on your end? You sound as though you’ve been busy.
+
+[09:25:36] Sam Okafor: It’s been steady. A lot of planning conversations, some travel, and too many airport sandwiches.
+
+[09:25:43] Owen Castellane: Airport sandwiches are a test of optimism.
+
+[09:25:47] Sam Okafor: You look at the label and think, “Maybe this time.”
+
+[09:25:51] Owen Castellane: And then you remember that the sandwich has been waiting longer than you have.
+
+[09:25:55] Sam Okafor: Exactly.
+
+[09:25:59] Owen Castellane: Do you still travel with the tiny bag of almonds?
+
+[09:26:04] Sam Okafor: I do. You remembered that?
+
+[09:26:08] Owen Castellane: You mentioned it on one of these calls. You said it was your emergency plan.
+
+[09:26:12] Sam Okafor: It is. The almonds have prevented several poor decisions.
+
+[09:26:16] Owen Castellane: That’s a strong return on investment.
+
+[09:26:20] Sam Okafor: They’re not exciting, but they’re dependable.
+
+[09:26:24] Owen Castellane: There’s that word again.
+
+[09:26:28] Sam Okafor: It follows me.
+
+[09:26:32] Owen Castellane: Better than a sandwich.
+
+[09:26:36] Sam Okafor: Definitely.
+
+[09:26:40] Owen Castellane: I’ve been traveling less. When I do travel, I try to leave enough space that a delay doesn’t turn the whole day into a negotiation.
+
+[09:26:47] Sam Okafor: That’s wise.
+
+[09:26:51] Owen Castellane: It’s easier when you accept that the schedule is a suggestion.
+
+[09:26:55] Sam Okafor: Airlines would object to that framing.
+
+[09:26:59] Owen Castellane: They can object from the gate.
+
+[09:27:03] Sam Okafor: Fair enough.
+
+[09:27:07] Owen Castellane: I’ve become more interested in arriving calm than arriving ten minutes earlier.
+
+[09:27:12] Sam Okafor: That sounds like progress.
+
+[09:27:16] Owen Castellane: Or age. I’m comfortable with either explanation.
+
+[09:27:20] Sam Okafor: I’ll call it progress.
+
+[09:27:24] Owen Castellane: Thank you.
+
+[09:27:28] Sam Okafor: We still have some time, so I can ask a few more questions, or we can give you the gift of getting twenty minutes back.
+
+[09:27:34] Owen Castellane: The gift of twenty minutes is tempting.
+
+[09:27:38] Sam Okafor: I’m happy to make it official.
+
+[09:27:42] Owen Castellane: Before we do, I’d like to understand what you’re hearing from other operations leaders. Not names or anything confidential. Just whether there are patterns we should be thinking about.
+
+[09:27:49] Sam Okafor: That’s a good question.
+
+[09:27:53] Owen Castellane: I’m not looking for a trend report. I’m just curious whether people are dealing with the same ordinary problems we are.
+
+[09:27:59] Sam Okafor: They are. A lot of leaders are focused on reducing friction between teams, keeping information current, and making sure new employees can get productive without needing five separate explanations.
+
+[09:28:07] Owen Castellane: That sounds familiar.
+
+[09:28:11] Sam Okafor: There’s also a lot of attention on keeping processes understandable as organizations change.
+
+[09:28:15] Owen Castellane: That’s the difficult part. A process can be perfectly clear on the day it’s written and confusing six months later.
+
+[09:28:22] Sam Okafor: Because the surrounding context changes.
+
+[09:28:26] Owen Castellane: Exactly. The document stays still while the organization moves around it.
+
+[09:28:30] Sam Okafor: That’s a good way to describe it.
+
+[09:28:34] Owen Castellane: Don’t put it in the document.
+
+[09:28:38] Sam Okafor: I won’t.
+
+[09:28:42] Owen Castellane: You’re very compliant today.
+
+[09:28:46] Sam Okafor: I’m aiming for a clean quarter.
+
+[09:28:50] Owen Castellane: That was almost a joke.
+
+[09:28:54] Sam Okafor: Almost.
+
+[09:28:58] Owen Castellane: Keep practicing.
+
+[09:29:02] Sam Okafor: I will.
+
+[09:29:06] Owen Castellane: On process changes, we’ve tried to be careful not to introduce new language for every minor adjustment. People can only absorb so many labels.
+
+[09:29:14] Sam Okafor: That’s sensible.
+
+[09:29:18] Owen Castellane: If the underlying action is the same, changing the name creates more confusion than value.
+
+[09:29:23] Sam Okafor: Agreed.
+
+[09:29:27] Owen Castellane: The exception is when the old name has become misleading.
+
+[09:29:31] Sam Okafor: Right. Then a new label can clarify rather than decorate.
+
+[09:29:35] Owen Castellane: Exactly.
+
+[09:29:39] Sam Okafor: I like that distinction.
+
+[09:29:43] Owen Castellane: You have another quote.
+
+[09:29:47] Sam Okafor: I’m not writing it down.
+
+[09:29:51] Owen Castellane: Good.
+
+[09:29:55] Sam Okafor: Are there any areas where you think we could make the relationship more useful without making it more demanding?
+
+[09:30:02] Owen Castellane: Perhaps sharing examples of how other teams use the service, as long as they’re short and relevant.
+
+[09:30:09] Sam Okafor: We can do that.
+
+[09:30:13] Owen Castellane: I don’t need a polished case study every time. A paragraph explaining the situation and what changed would be enough.
+
+[09:30:20] Sam Okafor: That’s manageable.
+
+[09:30:24] Owen Castellane: And if the example doesn’t apply to us, we can ignore it. No harm done.
+
+[09:30:28] Sam Okafor: Would you prefer those in the quarterly note?
+
+[09:30:34] Owen Castellane: Yes, if there’s room. Not as the main event.
+
+[09:30:38] Sam Okafor: Understood. A small section, clearly labeled.
+
+[09:30:42] Owen Castellane: That would be useful.
+
+[09:30:46] Sam Okafor: I’ll include that in the follow-up.
+
+[09:30:50] Owen Castellane: Good.
+
+[09:30:54] Sam Okafor: Anything you definitely don’t want in the follow-up?
+
+[09:31:01] Owen Castellane: No long list of product possibilities. If something is relevant, tell me why. Otherwise, I’ll assume it’s just there because somebody wanted to mention it.
+
+[09:31:08] Sam Okafor: That’s fair.
+
+[09:31:12] Owen Castellane: I’m not against hearing about options. I just want the connection to our situation made clear.
+
+[09:31:18] Sam Okafor: So relevance before completeness.
+
+[09:31:22] Owen Castellane: Exactly.
+
+[09:31:26] Sam Okafor: I can work with that.
+
+[09:31:30] Owen Castellane: Most people can. They just need permission not to cover everything.
+
+[09:31:34] Sam Okafor: That may be the real challenge.
+
+[09:31:38] Owen Castellane: It is.
+
+[09:31:42] Sam Okafor: I sometimes see teams afraid that leaving something out will look like they forgot it.
+
+[09:31:47] Owen Castellane: Then they include it, and the important point gets buried.
+
+[09:31:51] Sam Okafor: Exactly.
+
+[09:31:55] Owen Castellane: Communication is partly deciding what not to say.
+
+[09:31:59] Sam Okafor: I’m going to remember that one.
+
+[09:32:03] Owen Castellane: I thought the document was deleted.
+
+[09:32:07] Sam Okafor: It is. My memory is separate.
+
+[09:32:11] Owen Castellane: Convenient.
+
+[09:32:15] Sam Okafor: Very.
+
+[09:32:19] Owen Castellane: What do you usually put in a courtesy-call follow-up?
+
+[09:32:25] Sam Okafor: Usually a short thank-you, a summary of what I heard, any agreed next steps, and a reminder that they can contact me if something changes.
+
+[09:32:33] Owen Castellane: That sounds fine.
+
+[09:32:37] Sam Okafor: I’ll keep it to those pieces.
+
+[09:32:41] Owen Castellane: And don’t make it sound as though we had a strategic summit.
+
+[09:32:45] Sam Okafor: I promise not to call it a summit.
+
+[09:32:49] Owen Castellane: Good. It was a conversation.
+
+[09:32:53] Sam Okafor: A useful conversation.
+
+[09:32:57] Owen Castellane: That’s acceptable.
+
+[09:33:01] Sam Okafor: I’ll be careful with the adjectives.
+
+[09:33:05] Owen Castellane: Adjectives cause trouble.
+
+[09:33:09] Sam Okafor: Especially “transformational.”
+
+[09:33:13] Owen Castellane: That word has been responsible for many unnecessary meetings.
+
+[09:33:17] Sam Okafor: I believe it.
+
+[09:33:21] Owen Castellane: People hear “transformational” and start looking for a steering committee.
+
+[09:33:25] Sam Okafor: And a logo.
+
+[09:33:29] Owen Castellane: And a logo.
+
+[09:33:33] Sam Okafor: We’ll keep the follow-up logo-free.
+
+[09:33:37] Owen Castellane: Thank you.
+
+[09:33:41] Sam Okafor: There’s one thing I’d like to validate. You said the quarter was clean, but were there any small frustrations you decided not to raise because they weren’t worth the effort?
+
+[09:33:49] Owen Castellane: A few minor ones, probably. Nothing that changed our view. Sometimes people don’t raise a small frustration because they expect it will take longer to explain than to work around.
+
+[09:33:58] Sam Okafor: That’s exactly the kind of thing I’d like to catch.
+
+[09:34:02] Owen Castellane: I understand. But there’s also a limit. If every tiny annoyance becomes a formal improvement request, the team spends more time describing work than doing it.
+
+[09:34:10] Sam Okafor: That’s fair.
+
+[09:34:14] Owen Castellane: The distinction is whether the annoyance repeats or spreads. A one-time awkward moment is different from a pattern.
+
+[09:34:19] Sam Okafor: That’s useful. If something repeats, tell me. If it’s isolated, you can still mention it, but we won’t turn it into a campaign.
+
+[09:34:28] Owen Castellane: Exactly.
+
+[09:34:32] Sam Okafor: Can you think of one example?
+
+[09:34:38] Owen Castellane: There was a small delay in getting a particular piece of information to the right person. It was resolved, but the handoff was less obvious than it could have been.
+
+[09:34:46] Sam Okafor: Was that within our team or between your teams and ours?
+
+[09:34:50] Owen Castellane: Between the teams. Once the right person was identified, it moved.
+
+[09:34:54] Sam Okafor: That’s worth knowing.
+
+[09:34:58] Owen Castellane: Again, not a complaint. Just a place where the path could be clearer.
+
+[09:35:02] Sam Okafor: I’ll review the contact flow and see whether a simple note would help.
+
+[09:35:06] Owen Castellane: That would be enough.
+
+[09:35:10] Sam Okafor: I won’t create a committee.
+
+[09:35:14] Owen Castellane: I appreciate that.
+
+[09:35:18] Sam Okafor: Did the delay affect anything downstream?
+
+[09:35:24] Owen Castellane: No, not materially. Somebody followed up, and it was handled.
+
+[09:35:28] Sam Okafor: Good.
+
+[09:35:32] Owen Castellane: That’s why I didn’t raise it at the time. It resolved before it became consequential.
+
+[09:35:36] Sam Okafor: Understood.
+
+[09:35:40] Owen Castellane: If it happens again, I’ll tell you.
+
+[09:35:44] Sam Okafor: Please do.
+
+[09:35:48] Owen Castellane: I will.
+
+[09:35:52] Sam Okafor: That’s a good example of the kind of feedback that helps without turning the call into a review meeting.
+
+[09:35:58] Owen Castellane: Exactly.
+
+[09:36:02] Sam Okafor: We’ve talked a lot about communication. How is the actual day-to-day experience for the people using the service?
+
+[09:36:09] Owen Castellane: Mostly unremarkable, which is good. They know what to do, and when they’re unsure, they know where to ask.
+
+[09:36:17] Sam Okafor: Do they feel they have enough visibility into status?
+
+[09:36:23] Owen Castellane: Usually. The people closest to the work have enough detail. The people farther away mostly want to know whether something is moving and who is responsible.
+
+[09:36:31] Sam Okafor: Different audiences need different levels of detail.
+
+[09:36:35] Owen Castellane: Right. Giving everyone the same information is not always transparent. Sometimes it’s just indiscriminate.
+
+[09:36:43] Sam Okafor: That’s a subtle but important difference.
+
+[09:36:47] Owen Castellane: Operations is full of subtle differences that become obvious after the fact.
+
+[09:36:51] Sam Okafor: The most expensive kind of obvious.
+
+[09:36:55] Owen Castellane: Usually.
+
+[09:36:59] Sam Okafor: We can think about whether the updates should have a summary and a detail section.
+
+[09:37:06] Owen Castellane: That would help. Give people the headline first, then let them go deeper if they need to.
+
+[09:37:12] Sam Okafor: I’ll structure future notes that way.
+
+[09:37:16] Owen Castellane: Good.
+
+[09:37:20] Sam Okafor: Would you want the summary at the top even if there’s nothing urgent?
+
+[09:37:27] Owen Castellane: Yes. “No change” is still useful information if someone is checking.
+
+[09:37:31] Sam Okafor: That’s easy to provide.
+
+[09:37:35] Owen Castellane: It saves people from having to infer stability from silence.
+
+[09:37:39] Sam Okafor: Another good point.
+
+[09:37:43] Owen Castellane: I’m going to start charging for these.
+
+[09:37:47] Sam Okafor: I’ll send payment in almonds.
+
+[09:37:51] Owen Castellane: The currency is accepted.
+
+[09:37:55] Sam Okafor: Good.
+
+[09:37:59] Owen Castellane: Although you’ll have to account for airport inflation.
+
+[09:38:03] Sam Okafor: That could be substantial.
+
+[09:38:07] Owen Castellane: It is.
+
+[09:38:11] Sam Okafor: One thing I’ve noticed in other accounts is that people sometimes want more customization in routine updates, while others prefer a standard format. Where do you land?
+
+[09:38:18] Owen Castellane: Standard format with a small amount of flexibility. Consistency matters more than making every note unique.
+
+[09:38:25] Sam Okafor: That’s helpful.
+
+[09:38:29] Owen Castellane: If the format changes every time, readers spend energy figuring out the format.
+
+[09:38:33] Sam Okafor: Exactly.
+
+[09:38:37] Owen Castellane: Give them a stable place to find the important bits, then change the content when the situation changes.
+
+[09:38:43] Sam Okafor: I like that.
+
+[09:38:47] Owen Castellane: You can write that down.
+
+[09:38:51] Sam Okafor: I’m resisting.
+
+[09:38:55] Owen Castellane: Very disciplined.
+
+[09:38:59] Sam Okafor: Trying to be.
+
+[09:39:03] Owen Castellane: It’s working.
+
+[09:39:07] Sam Okafor: We’re getting close to the end of the time I reserved. Is there anything you wanted to cover that I haven’t asked?
+
+[09:39:14] Owen Castellane: No major item. I mainly wanted to say that the relationship feels easy right now, and I’d like to keep it that way.
+
+[09:39:22] Sam Okafor: I’m pleased to hear that.
+
+[09:39:26] Owen Castellane: Easy doesn’t mean absent. It means the right things happen without a lot of pushing.
+
+[09:39:31] Sam Okafor: That’s a good distinction.
+
+[09:39:35] Owen Castellane: If you stay responsive and keep the communication practical, we’ll be in good shape.
+
+[09:39:41] Sam Okafor: I can commit to that.
+
+[09:39:45] Owen Castellane: And if our needs change, we’ll tell you.
+
+[09:39:49] Sam Okafor: Perfect.
+
+[09:39:53] Owen Castellane: I don’t expect dramatic changes, but you never know.
+
+[09:39:57] Sam Okafor: True.
+
+[09:40:01] Owen Castellane: The calendar is full of surprises.
+
+[09:40:05] Sam Okafor: Usually disguised as invitations.
+
+[09:40:09] Owen Castellane: Or a message with “quick question” in the subject.
+
+[09:40:13] Sam Okafor: Nothing quick has ever followed those words.
+
+[09:40:17] Owen Castellane: Correct.
+
+[09:40:21] Sam Okafor: I’ll send a short follow-up with the communication preferences, the idea for concise examples, and the contact-flow note. No summit language, no logo, no unnecessary list.
+
+[09:40:29] Owen Castellane: That sounds right.
+
+[09:40:33] Sam Okafor: I’ll also keep the next regular check-in quarterly unless something material comes up.
+
+[09:40:37] Owen Castellane: Good.
+
+[09:40:41] Sam Okafor: And I’ll pass along your thanks to the support group.
+
+[09:40:45] Owen Castellane: Please do.
+
+[09:40:49] Sam Okafor: Is there a particular day or time that usually works best for the next call?
+
+[09:40:56] Owen Castellane: Mornings are generally better, except Monday mornings, when everyone is pretending the weekend is still happening.
+
+[09:41:03] Sam Okafor: So Tuesday through Thursday?
+
+[09:41:07] Owen Castellane: Usually. Friday mornings are fine if the call is short.
+
+[09:41:11] Sam Okafor: I’ll avoid Monday and reserve a midweek morning.
+
+[09:41:15] Owen Castellane: That works.
+
+[09:41:19] Sam Okafor: I’ll send a few options rather than choosing one unilaterally.
+
+[09:41:23] Owen Castellane: Appreciated.
+
+[09:41:27] Sam Okafor: We’ll keep it to the useful parts.
+
+[09:41:31] Owen Castellane: That’s the goal.
+
+[09:41:35] Sam Okafor: Owen, thanks again for the time, and for the candid perspective. It’s good to hear the quarter was steady from your side.
+
+[09:41:43] Owen Castellane: Thanks, Sam. I appreciate you checking in without turning it into a sales call.
+
+[09:41:49] Sam Okafor: That was the plan.
+
+[09:41:53] Owen Castellane: Plans are useful when they survive contact with the calendar.
+
+[09:41:57] Sam Okafor: I’ll make sure this one does.
+
+[09:42:01] Owen Castellane: Good.
+
+[09:42:05] Sam Okafor: Enjoy the rest of your morning.
+
+[09:42:09] Owen Castellane: You too. And find a better sandwich.
+
+[09:42:13] Sam Okafor: I’ll try.
+
+[09:42:17] Owen Castellane: Try the almonds.
+
+[09:42:21] Sam Okafor: I may have to promote them from emergency plan to primary plan.
+
+[09:42:25] Owen Castellane: That’s how it starts.
+
+[09:42:29] Sam Okafor: Take care, Owen.
+
+[09:42:33] Owen Castellane: You too, Sam. Bye.
+
+[09:42:37] Sam Okafor: Bye.

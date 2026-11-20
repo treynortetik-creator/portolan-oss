@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "id": "8001",
+      "properties": {
+        "hs_email_subject": "Introduction, and a delivery issue",
+        "hs_email_text": "Our Tidewater T2 delivery that was due Wednesday didn't show up until three days late.",
+        "hs_email_direction": "INCOMING_EMAIL",
+        "hs_email_from_email": "abell@cobaltridgemed.org",
+        "hs_email_to_email": "s.okafor@halvardmedical.com",
+        "hs_timestamp": "1786118400000"
+      },
+      "createdAt": "2026-08-07T16:00:00.000Z",
+      "updatedAt": "2026-08-07T16:00:05.000Z",
+      "archived": false,
+      "associations": {"companies": {"results": [{"id": "5003", "type": "email_to_company"}]}}
+    }
+  ]
+}

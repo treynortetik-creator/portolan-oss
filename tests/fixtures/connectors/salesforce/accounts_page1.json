@@ -1,0 +1,16 @@
+{
+  "totalSize": 2,
+  "done": false,
+  "nextRecordsUrl": "/services/data/v61.0/query/01g1x0000000001AAA-2000",
+  "records": [
+    {
+      "attributes": {"type": "Account", "url": "/services/data/v61.0/sobjects/Account/0011x000003Ashgv"},
+      "Id": "0011x000003Ashgv",
+      "Name": "Ashgrove Health",
+      "ParentId": null,
+      "Website": "https://ashgrovehealth.org",
+      "AnnualRevenue": 2350000.0,
+      "LastModifiedDate": "2026-08-20T14:03:00.000+0000"
+    }
+  ]
+}

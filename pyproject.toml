@@ -1,0 +1,127 @@
+[project]
+name = "portolan"
+version = "0.0.1"
+description = "A living chart of what your customers actually said."
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic>=2",
+    "boto3",
+    "anthropic[bedrock]",
+    "psycopg[binary]",
+    "pgvector",
+    "pyyaml",
+    "claude-agent-sdk>=0.2.152",
+    "pydantic-settings>=2.15.0",
+    "fastembed>=0.8.0",
+    "aws-cdk-lib>=2.269.0",
+    "constructs>=10.8.1",
+    "jsonschema>=4.26.0",
+    "mcp[cli]>=2.2.0",
+    "fastapi>=0.141.1",
+    "uvicorn[standard]>=0.52.4",
+    "jinja2>=3.1.6",
+    "itsdangerous>=2.2.0",
+    "defusedxml>=0.7.1",
+    "markdown-it-py>=4.0.0",
+    "psycopg-pool>=3.2",
+    "datasets>=5.0.1",
+    "numpy>=2",
+    "mmh3>=5",
+    "pyjwt[crypto]>=2.10.1",
+    "workos>=10.5.0",
+]
+
+[project.scripts]
+portolan = "portolan.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+# Local fine-tune loop (scripts/train/mlx_lora.py, portolan/llm/mlx_local.py).
+# Apple Silicon only, never a default group: `uv sync --frozen` (Docker, CI)
+# installs `dev` only, so the production image does not grow. Install with
+# `uv sync --group mlx`; tests that need it skip when it is absent.
+mlx = [
+    "mlx-lm>=0.28; sys_platform == 'darwin' and platform_machine == 'arm64'",
+]
+
+[tool.ruff]
+# Read-only reference code copied from another project; not ours to lint.
+extend-exclude = ["02-reference-implementation", "03-talos-agent-kit", "corpus/out", ".claude"]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+# Unconfigured ruff 0.16 defaults to ~416 rules across many plugin families
+# (bandit, pylint, refurb, tryceratops, etc.); narrowed to the core set this
+# project actually wants enforced. E501 stayed selected because scoped E501s
+# were spread across code and tests, not dominated by prompt-text literals.
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "C4", "RUF"]
+ignore = [
+    "SIM103",  # guard-clause chains ending in `return True` / `return False` read as a checklist
+    "SIM300",  # flags `assert MODULE_CONSTANT == expected` and flips the value under test to the right
+    "SIM905",  # word lists (stopwords, number words) read and diff better as one split string
+    # The product reads transcripts: curly quotes, en dashes and fullwidth glyphs in strings,
+    # docstrings and comments are the text under test, not typos.
+    "RUF001",
+    "RUF002",
+    "RUF003",
+    # Off until S is on: noqa comments that name bandit codes (S608) would read as dead.
+    "RUF100",
+]
+
+[tool.ruff.lint.flake8-comprehensions]
+# `dict(key=value)` reads as a bundle of keyword arguments (fixtures, **kwargs); keep it.
+allow-dict-calls-with-keyword-arguments = true
+
+[tool.ruff.lint.per-file-ignores]
+# Open branches are editing these paths: widen after the open branches merge.
+"portolan/training/**" = ["SIM", "C4", "RUF"]
+"portolan/bench/**" = ["SIM", "C4", "RUF"]
+"corpus/generator/**" = ["SIM", "C4", "RUF"]
+"scripts/data/**" = ["SIM", "C4", "RUF"]
+"scripts/verify.py" = ["SIM", "C4", "RUF"]
+"portolan/llm/mlx_local.py" = ["SIM", "C4", "RUF"]
+"tests/test_training_pipeline_single.py" = ["SIM", "C4", "RUF"]
+"tests/test_verify_script.py" = ["SIM", "C4", "RUF"]
+# Hand-written corpus prose lives in string literals; line length is not a code-quality signal there.
+"corpus/generator/*.py" = ["E501"]
+"tests/test_corpus_generator.py" = ["E501"]
+# Its cases are whole shell commands; wrapping them would change what is being tested.
+"tests/test_no_secrets_hook.py" = ["E501"]
+"scripts/*.py" = ["E501"]  # report templates carry long markdown lines
+# FastAPI's Depends()/Form() in argument defaults is the framework's own
+# documented pattern, not a mutable-default bug -- B008 is a known false
+# positive for it (https://docs.astral.sh/ruff/rules/function-call-in-default-argument/).
+# One glob here (fix wave 2026-09-12, slop list) replaces the nine
+# identical 8-line `# ruff: noqa: B008` file-header comments that used to
+# be copy-pasted across every route module.
+"portolan/web/routes/*.py" = ["B008"]
+# create_app's gated /docs, /redoc, /openapi.json routes (fix wave
+# 2026-09-12, review findings F9/F15) use the same FastAPI
+# Depends()-in-default-argument pattern.
+"portolan/web/app.py" = ["B008"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The suite's guardrails (tests/guards.py): test database only, no network, no paid-model
+# keys, no writes to the repo's var/. Loaded as a plugin so `--noconftest` does not skip it;
+# tests/conftest.py registers it too when this file is bypassed.
+# `perf` tests assert wall-clock time, which fails under load rather than on a regression:
+# excluded here (so from CI too); run them with `-m perf`.
+addopts = ["-p", "tests.guards", "-m", "not perf"]
+markers = ["perf: asserts wall-clock time; excluded by default, run with -m perf"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["portolan"]
+
+[tool.ruff.format]
+# Review docs quote code verbatim; never reformat fenced blocks in markdown.
+exclude = ["*.md"]

@@ -1,0 +1,675 @@
+[09:00:00] Sam Okafor: Good morning, June. Thanks for making time. How are things on your side today?
+
+[09:00:08] June Park: Morning, Sam. Busy, but manageable. We had a delivery come in early, so I’ve been moving between receiving and the medication room.
+
+[09:00:18] Sam Okafor: That sounds like one of those mornings where the coffee gets cold before you get to it.
+
+[09:00:22] June Park: Exactly. I’ve reheated the same cup twice already. I’m hoping to get through this conversation without somebody appearing in the doorway with a question about a barcode.
+
+[09:00:31] Sam Okafor: I’ll take that as a challenge. Before we get into the equipment review, is the new scheduling process settling down?
+
+[09:00:42] June Park: Somewhat. The first week was rough because everyone had a different interpretation of the handoff times, but we’ve tightened that up. The evening team is still adjusting, though.
+
+[09:00:54] Sam Okafor: Understood. And thanks again for sending the usage summary. I looked through it last night, but I wanted to hear your read rather than just stare at the spreadsheet.
+
+[09:01:05] June Park: The spreadsheet tells the story well enough. Our volume is not wildly different from last quarter, but the mix has shifted. We’re seeing more short-duration infusions and more changes during a single visit.
+
+[09:01:17] Sam Okafor: More changes meaning rate changes, medication changes, or both?
+
+[09:01:22] June Park: Both, depending on the unit. The oncology floor is the biggest example. They’re also more cautious about documenting each adjustment, which is good clinically but adds steps for the nurses.
+
+[09:01:31] Sam Okafor: That makes sense. When you mentioned that in your note, I wondered whether the pump workflow was adding to the burden or whether the issue was mainly the documentation system.
+
+[09:01:42] June Park: It’s a little of both. The pump itself is familiar to most of the staff, but familiarity can hide inefficiencies. People know how to get through a task, so they don’t always stop to say, “This takes four extra touches every time.”
+
+[09:01:53] Sam Okafor: Right. And then those small touches accumulate across a shift.
+
+[09:02:00] June Park: They do. Especially when the unit is full and someone is covering two rooms. Nobody is making a dramatic complaint; it’s more a steady stream of little annoyances.
+
+[09:02:10] Sam Okafor: Let me make sure I have the broad picture. You’re not looking at an immediate replacement because something has failed outright.
+
+[09:02:15] June Park: Correct. We’re planning, not reacting to a breakdown.
+
+[09:02:21] Sam Okafor: That’s helpful. The reason I ask is that the timing affects what we can reasonably evaluate. If there’s an urgent issue, we focus on availability and continuity. If it’s planning, we can spend more time on workflow, training, and the economics over the life of the equipment.
+
+[09:02:32] June Park: Planning is the right word. We have older units that are still working, but they’re not all at the same revision level. That creates some confusion when staff move between departments.
+
+[09:02:44] Sam Okafor: Are the differences mostly cosmetic, or do they affect operation?
+
+[09:02:50] June Park: Both. The screens aren’t all arranged the same way, and the response from one group of units feels slightly different from another. It’s not enough to stop somebody from using them, but it makes orientation harder.
+
+[09:03:01] Sam Okafor: I remember you saying that new hires need to learn several variations during their first month.
+
+[09:03:07] June Park: Yes. We have a general orientation, then each unit adds its own practical training. The nurses are capable, of course, but they’re learning a lot at once. Any avoidable variation matters.
+
+[09:03:18] Sam Okafor: What does that look like in practice? Is there a formal competency check?
+
+[09:03:23] June Park: There is a short check, mostly observation and a few scenarios. It covers loading the set, starting an infusion, responding to an alarm, and documenting what happened. We also have a super-user on each shift when staffing allows.
+
+[09:03:34] Sam Okafor: “When staffing allows” is doing a lot of work in that sentence.
+
+[09:03:38] June Park: It is. We have good people, but we can’t promise a super-user every hour of every day. That’s why I’m interested in reducing the number of things somebody has to remember.
+
+[09:03:49] Sam Okafor: I’ll note that. On our side, we can talk through the standard operating sequence, and we can arrange a demonstration for the educators rather than making them rely on a slide deck.
+
+[09:03:57] June Park: A demonstration would be better. Slides are fine for reference, but they don’t show the awkward moments.
+
+[09:04:04] Sam Okafor: Such as?
+
+[09:04:09] June Park: The moment when a line is almost ready but not quite, or when an alarm starts while somebody is answering a call, or when the patient is moving and the pole gets bumped. Those are the situations staff remember.
+
+[09:04:19] Sam Okafor: Fair point. We can include those in a session. We can also ask the educator to bring examples from your actual units, within whatever privacy boundaries you need.
+
+[09:04:29] June Park: That would be useful. I don’t want a showroom demonstration where everything is lined up perfectly and nobody has to make a decision.
+
+[09:04:39] Sam Okafor: Agreed. A clean tabletop setup has its place, but it doesn’t tell us how the process feels at two in the morning.
+
+[09:04:45] June Park: Exactly.
+
+[09:04:49] Sam Okafor: Let’s talk about where the equipment is used most heavily. You listed oncology, the medical-surgical floors, and the outpatient infusion area.
+
+[09:05:01] June Park: Those are the main areas. The emergency department uses them too, but in a different pattern. They need speed and flexibility, while oncology is more focused on consistency and controlled adjustments.
+
+[09:05:14] Sam Okafor: And the outpatient area?
+
+[09:05:19] June Park: It has fewer units, but the patients and families ask more questions because they’re there longer. The team wants the interface to be clear enough that routine explanations don’t become a full lesson every time.
+
+[09:05:29] Sam Okafor: That’s a good distinction. Does the current interface create questions?
+
+[09:05:35] June Park: Sometimes. Not necessarily because it’s poorly designed, but because symbols and prompts aren’t always obvious to somebody seeing them for the first time. Staff can explain them, but again, that adds work.
+
+[09:05:45] Sam Okafor: We can cover the display language and the alert hierarchy in the demonstration. I’ll ask our clinical specialist to focus on what a first-time observer sees.
+
+[09:05:51] June Park: Please do.
+
+[09:05:55] Sam Okafor: Another item from your summary was alarm handling. Are you seeing too many alerts, or are the alerts difficult to interpret?
+
+[09:06:02] June Park: Both, but in different ways. Some alerts are appropriate and need immediate attention. Others occur because the line is positioned in a way that isn’t actually dangerous, and staff have to decide whether they need to intervene.
+
+[09:06:13] Sam Okafor: So the issue is not simply volume; it’s confidence in the alert.
+
+[09:06:19] June Park: Exactly. If an alarm goes off, the nurse should be able to understand the reason quickly and decide what to do. If the message is vague, they spend time checking several possibilities.
+
+[09:06:29] Sam Okafor: Do you track alarm-related interruptions?
+
+[09:06:34] June Park: Not in a clean way. We have incident notes and informal comments, but we don’t have a separate field that captures every interruption. It would be difficult to ask staff to record one more thing.
+
+[09:06:45] Sam Okafor: That’s understandable. We could use observation during a pilot rather than asking people to document everything themselves.
+
+[09:06:50] June Park: Observation is probably more honest. If you ask people to keep a tally, they’ll remember the first few and then get pulled into patient care.
+
+[09:06:56] Sam Okafor: Exactly. We can structure it lightly so it doesn’t become another administrative project.
+
+[09:07:01] June Park: Good.
+
+[09:07:05] Sam Okafor: How are you currently handling maintenance and service requests?
+
+[09:07:12] June Park: The biomedical team handles first review. If they can’t resolve something, it goes through the service process. We try to consolidate requests, although urgent issues obviously jump the line.
+
+[09:07:24] Sam Okafor: Are you satisfied with the turnaround?
+
+[09:07:29] June Park: Usually. The bigger problem is that we have to keep track of which unit is out, where it is, and whether a replacement has been staged. The tracking is more manual than I’d like.
+
+[09:07:40] Sam Okafor: Would a dashboard help, or is the bottleneck physical availability?
+
+[09:07:45] June Park: Both matter. A dashboard would help us see the status, but it doesn’t create another unit when several are being serviced at once.
+
+[09:07:55] Sam Okafor: Of course. We should look at the fleet size and the busy-day pattern rather than only the average day.
+
+[09:08:02] June Park: Yes. Averages can be misleading here. We can look fine on paper and still be short on a Monday when several patients arrive early.
+
+[09:08:13] Sam Okafor: Do you have a regular seasonal peak?
+
+[09:08:18] June Park: Not a dramatic one. The pattern is more tied to clinic schedules and staffing. When several specialty clinics overlap, demand rises quickly.
+
+[09:08:28] Sam Okafor: That suggests the evaluation should include surge conditions.
+
+[09:08:33] June Park: It should. I’m less interested in how something performs when one person has all the time in the world.
+
+[09:08:40] Sam Okafor: That’s fair. We can define a few scenarios: routine use, a rate change, an alarm response, and a shift handoff with several units in circulation.
+
+[09:08:49] June Park: Add moving a unit between rooms. That’s not glamorous, but it happens constantly.
+
+[09:08:55] Sam Okafor: I’ll add it. We can also ask the staff to comment on cleaning and transport.
+
+[09:09:00] June Park: Cleaning is important. Anything with awkward seams or places that are hard to reach becomes a nuisance very quickly.
+
+[09:09:07] Sam Okafor: What does your infection prevention team usually want to see?
+
+[09:09:13] June Park: Clear surfaces, simple instructions, and no mystery about which products are acceptable. They don’t want staff improvising because a manual is vague.
+
+[09:09:23] Sam Okafor: Understood. We’ll bring the cleaning guidance and make sure the specialist can answer questions directly.
+
+[09:09:28] June Park: Good.
+
+[09:09:31] Sam Okafor: I also wanted to ask about integration. You mentioned that the pharmacy information system and the nursing documentation system don’t always line up neatly.
+
+[09:09:41] June Park: They don’t. The interfaces are improving, but staff still have to verify information in more than one place. I don’t want to assume a new pump solves that, but I do want to understand what it can and cannot exchange.
+
+[09:09:54] Sam Okafor: That’s the right way to frame it. We can map the current workflow first, then show the available connection points without promising something outside the scope.
+
+[09:10:02] June Park: Please be very clear about that. My team has been burned by demonstrations where an optional feature is described as though it’s included in the standard configuration.
+
+[09:10:11] Sam Okafor: I’ll separate standard, optional, and future-state items. If there are licensing or interface costs, they’ll be listed rather than buried in a footnote.
+
+[09:10:17] June Park: Thank you. That makes the review much easier.
+
+[09:10:21] Sam Okafor: How much of the decision will depend on integration?
+
+[09:10:28] June Park: It will matter, but it won’t be the only thing. If the bedside workflow is cumbersome, a good connection doesn’t rescue the experience.
+
+[09:10:39] Sam Okafor: Right. The device still has to work for the person standing next to the patient.
+
+[09:10:44] June Park: Exactly.
+
+[09:10:47] Sam Okafor: We’re approaching the middle of our time, so let me pause. Are there any concerns you want on the table before I walk through the evaluation plan?
+
+[09:10:55] June Park: Yes. We’re not starting from a blank sheet. I’ll put it plainly: “We’ve been looking at some other options” for pumps.
+
+[09:11:02] Sam Okafor: I appreciate you saying that directly.
+
+[09:11:06] June Park: I’d rather be transparent. We need to compare what’s available, and we need to understand whether changing equipment would actually improve the day-to-day work.
+
+[09:11:14] Sam Okafor: That’s reasonable. What will make the comparison useful for you?
+
+[09:11:20] June Park: Consistent criteria. I don’t want one group presenting a polished story while the evaluation questions change for everyone else.
+
+[09:11:28] Sam Okafor: We can help build a common scorecard, as long as your team owns the final criteria.
+
+[09:11:34] June Park: That’s important. The scorecard should come from the people who use the equipment, not just from purchasing or from a sales presentation.
+
+[09:11:42] Sam Okafor: Who should be involved?
+
+[09:11:48] June Park: A nurse educator, one or two bedside nurses from the busiest areas, somebody from biomedical engineering, infection prevention, and a pharmacy representative. I’d also like a person from information services for the interface questions.
+
+[09:11:58] Sam Okafor: That’s a solid group. Would you include a patient or family representative?
+
+[09:12:03] June Park: If the evaluation includes the outpatient area, yes. They can tell us whether the display and the routine explanations make sense from the other side of the conversation.
+
+[09:12:12] Sam Okafor: Good point. Sometimes the staff adapt so completely that they stop noticing what is confusing to everyone else.
+
+[09:12:18] June Park: That happens a lot.
+
+[09:12:21] Sam Okafor: Let’s talk about the scoring categories. I’m hearing ease of use, alarm clarity, training burden, cleaning, transport, service, and integration.
+
+[09:12:29] June Park: Add reliability, but define it carefully. People use that word to mean different things.
+
+[09:12:35] Sam Okafor: What definition would be useful?
+
+[09:12:40] June Park: Not just whether the device turns on. I mean whether it performs consistently, whether the controls respond as expected, and whether staff can recover from an interruption without confusion.
+
+[09:12:51] Sam Okafor: That’s helpful. We can break reliability into operational consistency, recovery, and service history.
+
+[09:12:58] June Park: Yes. And please distinguish a true equipment issue from an issue caused by a disposable set or by setup.
+
+[09:13:05] Sam Okafor: We’ll document the conditions for each scenario so the results are interpretable.
+
+[09:13:10] June Park: Good.
+
+[09:13:13] Sam Okafor: You mentioned disposable sets. Are supply constraints affecting your planning?
+
+[09:13:19] June Park: They affect everything. We need to know availability, lead times, substitutions, and whether the same set can be used across departments. A device may look attractive until the supply process becomes complicated.
+
+[09:13:31] Sam Okafor: Would you prefer a single set family across the hospital?
+
+[09:13:37] June Park: Preferably, yes, but patient needs and existing protocols may limit that. I don’t want to force uniformity where it creates a clinical problem.
+
+[09:13:45] Sam Okafor: Understood. We can review the set options by use case.
+
+[09:13:49] June Park: And include the packaging. If staff have to fight with the package, they remember that more than the brochure.
+
+[09:13:56] Sam Okafor: I’ll make sure the demonstration includes opening and preparing the set, not just attaching it after the hard part has already been done.
+
+[09:14:01] June Park: That’s exactly what I mean.
+
+[09:14:04] Sam Okafor: On training, would you rather have a train-the-trainer model or direct sessions for each department?
+
+[09:14:11] June Park: Both, initially. The educators need depth, but the first group of bedside staff needs enough direct practice to identify issues before the wider rollout.
+
+[09:14:20] Sam Okafor: How many people would that first group be?
+
+[09:14:25] June Park: Probably ten to twelve, across the main shifts. We’d need at least one person from each area, and the schedule would have to avoid pulling the whole unit at once.
+
+[09:14:34] Sam Okafor: We can offer shorter repeated sessions rather than one long class.
+
+[09:14:39] June Park: That usually works better. People retain more when they can practice and then return with a real question.
+
+[09:14:43] Sam Okafor: Do you want competency materials left behind?
+
+[09:14:49] June Park: Yes, but they need to be usable. A forty-page packet tends to live in a binder and never come out.
+
+[09:14:57] Sam Okafor: We can provide a concise quick guide plus the detailed reference material for educators.
+
+[09:15:04] June Park: Include a troubleshooting card. Staff want to know what to check first before escalating.
+
+[09:15:10] Sam Okafor: That’s easy to include.
+
+[09:15:13] June Park: “Easy” is a dangerous word, Sam.
+
+[09:15:18] Sam Okafor: Fair correction. I’ll say we can propose one, and we’ll confirm the final format with your educators.
+
+[09:15:23] June Park: Better.
+
+[09:15:27] Sam Okafor: Let’s shift to the pilot. Would you want a formal trial in one unit, or a smaller demonstration across several areas?
+
+[09:15:36] June Park: I’d start small but not too narrow. One unit alone can hide problems that show up when equipment moves around.
+
+[09:15:43] Sam Okafor: So perhaps one medical-surgical area and a limited number of sessions in outpatient?
+
+[09:15:49] June Park: That could work. I’d also want pharmacy involved because we see the downstream effects of setup and medication changes.
+
+[09:15:57] Sam Okafor: How long would you need?
+
+[09:16:02] June Park: Long enough to cover different shifts and enough routine cases. A single afternoon tells us almost nothing.
+
+[09:16:09] Sam Okafor: Would two weeks be realistic?
+
+[09:16:14] June Park: Maybe. It depends on availability and whether the staff can use the equipment without someone from your team standing beside them every minute.
+
+[09:16:22] Sam Okafor: We can be present at the start, then taper support so the evaluation reflects ordinary use.
+
+[09:16:28] June Park: That’s important. I don’t want a test that succeeds only because the vendor is hovering.
+
+[09:16:34] Sam Okafor: Understood. We’ll define support windows in advance.
+
+[09:16:37] June Park: And define what happens if something goes wrong. Who gets called, how quickly somebody responds, and whether the unit is removed from the trial.
+
+[09:16:45] Sam Okafor: We can include an escalation plan with contact names and response expectations.
+
+[09:16:51] June Park: Good.
+
+[09:16:54] Sam Okafor: For measurements, we could look at setup time, completion of the required steps, alarm interpretation, and staff confidence.
+
+[09:17:02] June Park: Staff confidence can be useful, but don’t treat it as a substitute for observed performance.
+
+[09:17:08] Sam Okafor: Absolutely. We can pair a short survey with observation and debriefs.
+
+[09:17:13] June Park: Include comments from people who don’t like it. Those are often the most informative.
+
+[09:17:20] Sam Okafor: We won’t filter for positive reactions.
+
+[09:17:23] June Park: Good. If everyone says everything is fine, the questions probably weren’t sharp enough.
+
+[09:17:27] Sam Okafor: That’s a useful standard.
+
+[09:17:30] June Park: I’ve been in enough evaluations to know that a comfortable meeting can produce a terrible decision.
+
+[09:17:36] Sam Okafor: I agree. The goal is a decision we can defend later, including if the answer is to keep what you have for now.
+
+[09:17:42] June Park: Exactly. I don’t want a change for the sake of having a change.
+
+[09:17:46] Sam Okafor: On budget, should we discuss capital and operating costs together?
+
+[09:17:52] June Park: Yes. Purchase price is only one line. Service, training time, disposables, accessories, and replacement units all belong in the picture.
+
+[09:18:00] Sam Okafor: Would a multi-year view be useful?
+
+[09:18:05] June Park: It would. Use a few scenarios rather than one number. We need to see what happens if utilization is lower than expected, if service needs increase, or if we add units later.
+
+[09:18:16] Sam Okafor: We can prepare a base case, a higher-use case, and a constrained case.
+
+[09:18:22] June Park: Label the assumptions clearly.
+
+[09:18:25] Sam Okafor: I will.
+
+[09:18:28] June Park: And keep finance from having to reverse-engineer the spreadsheet. If the assumptions are hidden in formulas, people lose confidence.
+
+[09:18:35] Sam Okafor: We’ll include an assumptions page and a plain-language summary.
+
+[09:18:40] June Park: That helps.
+
+[09:18:43] Sam Okafor: Are there procurement requirements we should know about now?
+
+[09:18:50] June Park: We’ll need a formal review. There will be a technical response, a clinical review, and a financial review. Timing depends on how complete the materials are.
+
+[09:18:58] Sam Okafor: Do you expect a formal request soon?
+
+[09:19:03] June Park: I don’t want to promise a date today. We’re still aligning internally.
+
+[09:19:08] Sam Okafor: That’s fine. We can prepare the information you’re likely to need without assuming a specific process.
+
+[09:19:13] June Park: Please do. A clear preliminary packet saves time later.
+
+[09:19:17] Sam Okafor: Would you prefer electronic materials first?
+
+[09:19:22] June Park: Yes, searchable files first. Printed copies can come later if the committee needs them.
+
+[09:19:26] Sam Okafor: We’ll organize them by clinical, technical, service, and financial topics.
+
+[09:19:31] June Park: Include a short contents page. It sounds minor, but people are joining these reviews between other responsibilities.
+
+[09:19:37] Sam Okafor: I’ll include it.
+
+[09:19:40] June Park: Thanks.
+
+[09:19:43] Sam Okafor: Let me ask about service coverage. What matters most: response time, local availability, loaner equipment, or parts?
+
+[09:19:51] June Park: All of those matter, but response time and loaners are the first things people notice. If a unit is down, we need a practical way to keep the area running.
+
+[09:20:00] Sam Okafor: Would you want service performance reports?
+
+[09:20:05] June Park: Yes. Not just a promise that support is good. Show the process, the escalation path, and the metrics you’re willing to stand behind.
+
+[09:20:13] Sam Okafor: We can explain the support model and provide sample reporting.
+
+[09:20:19] June Park: Sample reporting is fine, as long as it’s clear what is illustrative and what is contractual.
+
+[09:20:25] Sam Okafor: I’ll separate those.
+
+[09:20:28] June Park: Good.
+
+[09:20:31] Sam Okafor: What about software updates?
+
+[09:20:36] June Park: We need to understand how they’re scheduled, tested, and communicated. I don’t want a surprise change during a busy period.
+
+[09:20:44] Sam Okafor: Updates can be planned with your technical team and validated before wider deployment.
+
+[09:20:50] June Park: Then show us that process. A sentence in a brochure won’t be enough.
+
+[09:20:56] Sam Okafor: Understood.
+
+[09:20:59] June Park: Also explain what happens to settings and logs after an update.
+
+[09:21:05] Sam Okafor: We’ll cover that with the technical specialist.
+
+[09:21:08] June Park: Good.
+
+[09:21:11] Sam Okafor: We’ve covered a lot. I want to check whether there are any staff concerns that don’t fit neatly into the categories.
+
+[09:21:18] June Park: Noise, mostly. Some units are quiet until they aren’t, and when several alarms happen near one another, the environment becomes stressful.
+
+[09:21:26] Sam Okafor: Is the concern the volume, the tone, or the difficulty identifying which unit is calling?
+
+[09:21:33] June Park: The combination. In a crowded area, people need to locate the source quickly. A tone that sounds like every other device doesn’t help.
+
+[09:21:42] Sam Okafor: We can include an alarm-identification exercise.
+
+[09:21:47] June Park: Please do it in a realistic room, not a silent conference room.
+
+[09:21:53] Sam Okafor: We can arrange that.
+
+[09:21:56] June Park: Another thing is the pole and mounting arrangement. Staff move equipment more than people realize.
+
+[09:22:03] Sam Okafor: What problems do they report?
+
+[09:22:08] June Park: Stability, cable management, and getting around corners. If the setup catches on a doorway, everyone remembers it.
+
+[09:22:15] Sam Okafor: We’ll evaluate the complete arrangement, not just the pump by itself.
+
+[09:22:21] June Park: Exactly. The pump is part of a system in the room.
+
+[09:22:24] Sam Okafor: Would staff want to test it with a loaded pole?
+
+[09:22:29] June Park: Yes. Empty equipment behaves differently.
+
+[09:22:34] Sam Okafor: I’ll add that to the scenario list.
+
+[09:22:37] June Park: Thanks.
+
+[09:22:40] Sam Okafor: How do you handle temporary staff or travelers who may not know the equipment?
+
+[09:22:46] June Park: They receive the same orientation, but the amount of prior experience varies. We can’t assume that somebody who has used one system will immediately understand another.
+
+[09:22:55] Sam Okafor: That reinforces the need for a clear initial sequence.
+
+[09:23:00] June Park: Yes, and visible cues. People shouldn’t have to remember a hidden shortcut.
+
+[09:23:05] Sam Okafor: That’s a good design principle.
+
+[09:23:08] June Park: It’s also a training principle.
+
+[09:23:11] Sam Okafor: True.
+
+[09:23:14] June Park: We’ve had situations where a nurse knew the general idea but missed one small confirmation step. The issue was corrected, but it shows why the sequence matters.
+
+[09:23:22] Sam Okafor: We can make confirmation behavior part of the observation criteria.
+
+[09:23:27] June Park: Do that.
+
+[09:23:30] Sam Okafor: What would success look like six months after implementation, assuming you choose to move forward?
+
+[09:23:37] June Park: Fewer variations in practice, less time spent figuring out alarms, and a smoother onboarding process. I’d also want fewer calls to pharmacy for basic operational questions.
+
+[09:23:47] Sam Okafor: Those are measurable enough to track.
+
+[09:23:52] June Park: They’re measurable if we establish a baseline first. Otherwise, six months later everyone just gives an impression.
+
+[09:23:57] Sam Okafor: We can propose a baseline review before the pilot.
+
+[09:24:04] June Park: Keep it light. We don’t have staff available for a research study.
+
+[09:24:09] Sam Okafor: A focused sample, then, with the same scenarios before and after.
+
+[09:24:14] June Park: That would be reasonable.
+
+[09:24:17] Sam Okafor: Could we review existing training time and service data?
+
+[09:24:22] June Park: Yes, within reason. I can provide summaries rather than raw records.
+
+[09:24:28] Sam Okafor: Summaries are sufficient for the first pass.
+
+[09:24:31] June Park: Good.
+
+[09:24:34] Sam Okafor: I also want to make sure we don’t overlook storage. Where do spare units and supplies live?
+
+[09:24:40] June Park: In several places, which is part of the problem. Storage is tight, and equipment sometimes gets parked wherever there’s room.
+
+[09:24:46] Sam Okafor: Would a smaller footprint make a meaningful difference?
+
+[09:24:51] June Park: It could, but not if the smaller footprint makes the controls harder to see or the handles uncomfortable. Space matters, but not by itself.
+
+[09:24:58] Sam Okafor: Understood. We’ll look at the physical dimensions alongside usability.
+
+[09:25:03] June Park: And how the unit is secured when it’s stored. We’ve had things shift when shelves are crowded.
+
+[09:25:09] Sam Okafor: We’ll include storage safety in the review.
+
+[09:25:12] June Park: Fine.
+
+[09:25:15] Sam Okafor: Are there any environmental conditions we should plan for, such as temperature or transport between buildings?
+
+[09:25:22] June Park: Transport between buildings is more relevant. We have different floor surfaces, elevators, and thresholds. The device needs to tolerate ordinary movement without becoming difficult to control.
+
+[09:25:31] Sam Okafor: We can test thresholds and elevators during the demonstration.
+
+[09:25:36] June Park: Do that. A smooth floor in a lab doesn’t tell us much.
+
+[09:25:40] Sam Okafor: Agreed.
+
+[09:25:43] June Park: Sorry, I’m jumping around.
+
+[09:25:46] Sam Okafor: You’re not. These details are connected.
+
+[09:25:49] June Park: They are, but the meeting in my head is less organized than the meeting on the calendar.
+
+[09:25:54] Sam Okafor: That may be true for all of us.
+
+[09:25:57] June Park: At least you’re not hearing the phone ring behind me.
+
+[09:26:01] Sam Okafor: I heard something, but I assumed it was part of the evaluation environment.
+
+[09:26:05] June Park: It was somebody looking for a missing label printer. I’m going to ignore it for another minute.
+
+[09:26:09] Sam Okafor: That sounds wise.
+
+[09:26:12] June Park: The printer can wait. The point about transport is important.
+
+[09:26:16] Sam Okafor: Absolutely.
+
+[09:26:19] June Park: We should also let environmental services see the equipment. They’re the ones who deal with cleaning between uses, and they notice design issues immediately.
+
+[09:26:28] Sam Okafor: Good suggestion. I’ll include them in a short session.
+
+[09:26:32] June Park: Don’t make it a huge meeting. They’ll have practical questions and then need to get back to work.
+
+[09:26:36] Sam Okafor: We can schedule a focused walkthrough.
+
+[09:26:40] June Park: That works.
+
+[09:26:43] Sam Okafor: What about storage of accessories and spare parts?
+
+[09:26:49] June Park: Labeling and replenishment are the main concerns. If an accessory has three names depending on who ordered it, somebody eventually orders the wrong thing.
+
+[09:26:56] Sam Okafor: We can provide a standardized list.
+
+[09:27:01] June Park: With pictures if possible. People identify some items visually faster than by a long description.
+
+[09:27:05] Sam Okafor: We can include images in the reference guide.
+
+[09:27:09] June Park: Good.
+
+[09:27:12] Sam Okafor: I want to revisit the evaluation group. Would you be able to nominate people by next week?
+
+[09:27:18] June Park: Probably. I need to check schedules with nursing education and biomedical engineering.
+
+[09:27:24] Sam Okafor: No need to rush the names before you’ve checked availability.
+
+[09:27:28] June Park: I know, but if we don’t put tentative names against it, the work gets lost among everything else.
+
+[09:27:34] Sam Okafor: We can make a short list and mark it provisional.
+
+[09:27:38] June Park: That’s better.
+
+[09:27:41] Sam Okafor: On our side, I’ll bring a clinical specialist, a technical person, and somebody from service.
+
+[09:27:48] June Park: Keep the group manageable. Too many presenters make it hard for staff to ask candid questions.
+
+[09:27:54] Sam Okafor: We’ll limit the initial group and bring others in only when their topic comes up.
+
+[09:27:58] June Park: Good.
+
+[09:28:01] Sam Okafor: Would you prefer the first session in the morning or afternoon?
+
+[09:28:07] June Park: Morning is usually better for pharmacy, but nursing schedules are complicated. Give me a few options.
+
+[09:28:13] Sam Okafor: I’ll send options for two mornings and one afternoon.
+
+[09:28:17] June Park: Please avoid the day our medication safety committee meets.
+
+[09:28:21] Sam Okafor: Which day is that?
+
+[09:28:26] June Park: Wednesdays, generally, though the schedule changes around holidays.
+
+[09:28:31] Sam Okafor: I’ll avoid Wednesday and confirm before placing anything on the calendar.
+
+[09:28:35] June Park: Thanks.
+
+[09:28:38] Sam Okafor: We’re close to the end of the scheduled block. I want to summarize the next steps, but first, is there anything you think I’ve missed?
+
+[09:28:46] June Park: The patient-facing aspect. We talked about it briefly, but I want it represented in the criteria, not treated as a nice extra.
+
+[09:28:54] Sam Okafor: We’ll include clarity of the display, ease of explanation, and how the equipment fits into the conversation with patients and families.
+
+[09:29:00] June Park: Good. Also, don’t let the patient representative become a symbolic attendee. Give them specific questions.
+
+[09:29:05] Sam Okafor: We’ll prepare a short question set.
+
+[09:29:08] June Park: And leave room for comments we didn’t anticipate.
+
+[09:29:12] Sam Okafor: Definitely.
+
+[09:29:15] June Park: Another point is accessibility. If the display is hard to read from a certain angle, or if the controls require fine motor precision, that can matter for staff and patients.
+
+[09:29:23] Sam Okafor: We’ll ask about viewing angles and control effort.
+
+[09:29:28] June Park: Include gloves in the testing.
+
+[09:29:31] Sam Okafor: Good catch. We’ll test with gloves and ordinary lighting conditions.
+
+[09:29:35] June Park: And dimmer lighting, where appropriate.
+
+[09:29:39] Sam Okafor: We’ll document the conditions.
+
+[09:29:42] June Park: Fine.
+
+[09:29:45] Sam Okafor: Let me summarize what I’ll send. First, a proposed scorecard with the categories we discussed: workflow, alerts, training, cleaning, transport, service, integration, reliability, supplies, and patient-facing usability.
+
+[09:29:58] June Park: Add cost of ownership and storage.
+
+[09:30:01] Sam Okafor: Cost of ownership and storage, yes. Second, a preliminary pilot outline with scenarios, observation points, support windows, and escalation contacts.
+
+[09:30:11] June Park: Include how results will be shared with the committee.
+
+[09:30:15] Sam Okafor: I’ll include a reporting format and a debrief schedule.
+
+[09:30:18] June Park: Good.
+
+[09:30:21] Sam Okafor: Third, the technical and service information, separated into standard, optional, and future-state items.
+
+[09:30:27] June Park: And the assumptions for any cost model.
+
+[09:30:31] Sam Okafor: Yes, with a plain-language summary.
+
+[09:30:34] June Park: Fine.
+
+[09:30:37] Sam Okafor: Fourth, a list of proposed demonstration dates that avoid Wednesday.
+
+[09:30:41] June Park: That works.
+
+[09:30:44] Sam Okafor: What would you like from your side before then?
+
+[09:30:49] June Park: I’ll identify the internal participants, send a summary of the current workflow, and confirm which areas can support a demonstration without disrupting patient care.
+
+[09:30:58] Sam Okafor: Would it help if I sent a template for the workflow summary?
+
+[09:31:04] June Park: Yes. Make it simple: who starts the process, what gets checked, where information is entered, and where delays occur.
+
+[09:31:10] Sam Okafor: I’ll send that template with the other materials.
+
+[09:31:14] June Park: Good.
+
+[09:31:17] Sam Okafor: Do you need anything from me before our next call?
+
+[09:31:23] June Park: A clear explanation of what support looks like during and after the evaluation. I want to know who is responsible for what.
+
+[09:31:29] Sam Okafor: I’ll make that explicit.
+
+[09:31:32] June Park: And don’t make it sound more settled than it is. We’re still evaluating.
+
+[09:31:37] Sam Okafor: Understood. I’ll describe proposals as proposals and confirmed items as confirmed.
+
+[09:31:42] June Park: That distinction matters.
+
+[09:31:45] Sam Okafor: It does.
+
+[09:31:48] June Park: I’m getting the missing-label-printer person again.
+
+[09:31:51] Sam Okafor: I’ll let you rescue the printer situation.
+
+[09:31:55] June Park: It’s probably not a rescue. It’s probably me pointing at the supply room.
+
+[09:31:59] Sam Okafor: Sometimes that’s the most efficient intervention.
+
+[09:32:02] June Park: True.
+
+[09:32:05] Sam Okafor: I’ll send the materials by the end of tomorrow. Once you’ve reviewed them, we can schedule a shorter follow-up to refine the scorecard before the broader demonstration.
+
+[09:32:13] June Park: That timing works. I’ll try to circulate the scorecard internally, but I may get comments in pieces rather than all at once.
+
+[09:32:20] Sam Okafor: Pieces are fine. I’d rather get practical comments than a rushed approval.
+
+[09:32:25] June Park: Agreed.
+
+[09:32:28] Sam Okafor: And if the team has questions while reviewing, they can send them directly to me.
+
+[09:32:33] June Park: I may collect them first so we don’t end up with six versions of the same question.
+
+[09:32:38] Sam Okafor: That’s probably easier for everyone.
+
+[09:32:41] June Park: I’ll keep a list.
+
+[09:32:44] Sam Okafor: Excellent. Thank you for the candid discussion, June. This was very useful.
+
+[09:32:49] June Park: Thank you, Sam. The conversation was useful because it stayed practical.
+
+[09:32:54] Sam Okafor: That’s what we’re aiming for.
+
+[09:32:57] June Park: Send the materials, and I’ll get back to you after I’ve had a chance to look at them with the team.
+
+[09:33:03] Sam Okafor: Will do. Have a good rest of the morning.
+
+[09:33:07] June Park: You too. And enjoy your coffee before it needs another reheating.
+
+[09:33:11] Sam Okafor: I’ll try. Take care.
+
+[09:33:14] June Park: Take care.

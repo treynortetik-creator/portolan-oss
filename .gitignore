@@ -1,0 +1,43 @@
+# Private context, never in the repo
+00-context/
+.remember/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Generated corpus output
+# corpus/out/ is committed for the hand-written v0 corpus (not reproducible by code); ignore only large regenerated sets
+corpus/out-large/
+# Resumability sidecar for a live `--mode openrouter` generation run (corpus/generator/cli.py);
+# deleted automatically on a clean finish, ignored here as a backstop if a run is left crashed
+corpus/out/.generation_progress.json
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Superseded HTML snapshots (pre-brand / pre-audio-v2)
+*.pre-brand.html
+*.pre-audio-v2.html
+
+# macOS
+.DS_Store
+
+# Talos agent kit bytecode caches
+03-talos-agent-kit/hooks/__pycache__/
+03-talos-agent-kit/scripts/__pycache__/
+
+# run artifacts (bench reports, lint reports, e2e logs)
+var/
+.claude/worktrees/
+
+# portolan CLI session file
+.portolan-session.json

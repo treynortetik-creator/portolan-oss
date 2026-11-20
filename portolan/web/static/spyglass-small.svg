@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32"
+     role="img" aria-labelledby="pl-spyglass-sm-title">
+  <title id="pl-spyglass-sm-title">Spyglass</title>
+  <!-- Simplified, single-colour spyglass for inline use (the chat
+       streaming indicator, small captions): the same computed geometry
+       as spyglass.svg (generate_spyglass.py), tube outline plus the
+       three band rings only, no lens/highlight/glint, every shape
+       currentColor. -->
+  <g transform="rotate(-30 60 60)">
+    <g fill="none" stroke="currentColor" stroke-width="5.0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.00,56.00 L40.00,56.00"/>
+    <path d="M14.00,64.00 L40.00,64.00"/>
+    <path d="M40.00,53.50 L66.00,53.50"/>
+    <path d="M40.00,66.50 L66.00,66.50"/>
+    <path d="M66.00,50.50 L90.00,50.50"/>
+    <path d="M66.00,69.50 L90.00,69.50"/>
+    <ellipse cx="14.00" cy="60.00" rx="1.28" ry="4.00"/>
+    <ellipse cx="40.00" cy="60.00" rx="2.08" ry="6.50"/>
+    <ellipse cx="66.00" cy="60.00" rx="3.04" ry="9.50"/>
+    <ellipse cx="90.00" cy="60.00" rx="3.04" ry="9.50"/>
+    </g>
+    <g fill="currentColor">
+    <path fill-rule="evenodd" d="M37.55,60.00 A2.45,7.65 0 1,0 42.45,60.00 A2.45,7.65 0 1,0 37.55,60.00 Z M38.29,60.00 A1.71,5.35 0 1,0 41.71,60.00 A1.71,5.35 0 1,0 38.29,60.00 Z"/>
+    <path fill-rule="evenodd" d="M62.59,60.00 A3.41,10.65 0 1,0 69.41,60.00 A3.41,10.65 0 1,0 62.59,60.00 Z M63.33,60.00 A2.67,8.35 0 1,0 68.67,60.00 A2.67,8.35 0 1,0 63.33,60.00 Z"/>
+    <path fill-rule="evenodd" d="M86.59,60.00 A3.41,10.65 0 1,0 93.41,60.00 A3.41,10.65 0 1,0 86.59,60.00 Z M87.33,60.00 A2.67,8.35 0 1,0 92.67,60.00 A2.67,8.35 0 1,0 87.33,60.00 Z"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "calls": [
+    {
+      "id": "7782342871234567891",
+      "title": "Larkspur Memorial — check-in",
+      "started": "2026-08-05T15:00:00Z",
+      "duration": 1200
+    }
+  ],
+  "records": {
+    "totalRecords": 2,
+    "currentPageSize": 1,
+    "currentPageNumber": 1
+  }
+}

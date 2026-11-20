@@ -1,0 +1,473 @@
+[00:00:01] Aisha Bell: Hi, Sam. Can you hear me?
+
+[00:00:04] Sam Okafor: I can hear you. Can you hear me all right?
+
+[00:00:07] Aisha Bell: Yes, though you faded for a second there. Let me close a couple of windows. Sorry, it has been one of those mornings.
+
+[00:00:15] Sam Okafor: No problem. I had a similar start. The building Wi-Fi decided it needed attention before anyone else did.
+
+[00:00:22] Aisha Bell: That sounds about right. We have a cart alarm going off somewhere down the hall, so if you hear beeping, that is not part of the discussion.
+
+[00:00:28] Sam Okafor: Understood. I was going to ask whether that was your new conference-room soundtrack.
+
+[00:00:33] Aisha Bell: We are trying to keep things lively. Anyway, thanks for making time. I wanted to go through the open items while I have the order files in front of me.
+
+[00:00:42] Sam Okafor: Absolutely. I have the account notes pulled up. We can take them one at a time, and I can capture anything that needs to go back to our operations group.
+
+[00:00:51] Aisha Bell: Good. I also have Priya’s spreadsheet open, although I may be looking at the wrong tab. There are about six versions with nearly identical names.
+
+[00:00:58] Sam Okafor: That is a familiar problem. Which one are you on?
+
+[00:01:02] Aisha Bell: The one marked “current review,” dated yesterday. It starts with the replenishment lines, then the backordered items, then the receiving notes.
+
+[00:01:10] Sam Okafor: That should be the right one. I have the same grouping in front of me.
+
+[00:01:14] Aisha Bell: All right. Before we get into individual product lines, I want to address the service issue from the previous cycle. We'd expect some kind of credit on the account after last month.
+
+[00:01:23] Sam Okafor: I understand. I saw the note about the delayed delivery, and I want to make sure I have the sequence right before I speak to billing.
+
+[00:01:29] Aisha Bell: The sequence is the problem. We were told the shipment was moving, then the expected arrival shifted, then our receiving team had to rearrange the replenishment plan.
+
+[00:01:37] Sam Okafor: Was that the shipment with the sterile procedure supplies, or the one with the diagnostic consumables?
+
+[00:01:42] Aisha Bell: The sterile procedure supplies. The other shipment had a separate issue, but that one arrived within the revised window.
+
+[00:01:48] Sam Okafor: Got it. I will separate those. Do you have the original requested date handy?
+
+[00:01:55] Aisha Bell: Yes, it is in the receiving log. The request was entered on the third, and the dock appointment was originally set for the eighth.
+
+[00:02:02] Sam Okafor: And the actual appointment?
+
+[00:02:05] Aisha Bell: It was moved twice. I do not want to overstate it, but the changes created a fair amount of work on our end.
+
+[00:02:11] Sam Okafor: That is fair. I am not going to characterize it as routine if the team had to redo the plan.
+
+[00:02:16] Aisha Bell: Thank you. The main thing is that the invoice is still moving through the normal process, and I do not want the adjustment request to get lost because the delivery note sits in a different queue.
+
+[00:02:24] Sam Okafor: I can flag it separately. I will need the shipment reference and, if possible, the receiving note.
+
+[00:02:29] Aisha Bell: I can send both. The reference is in the spreadsheet, but I will put it in the follow-up message so there is no hunting around.
+
+[00:02:34] Sam Okafor: That would help. I will also check whether the account already has a pending adjustment record.
+
+[00:02:40] Aisha Bell: Please do. We have had a few cases where two people were working from different versions of the same note.
+
+[00:02:45] Sam Okafor: I know how that goes. One version says “review,” another says “review final,” and then someone creates “review final two.”
+
+[00:02:51] Aisha Bell: Exactly. And then the actual answer is in an email from three weeks earlier.
+
+[00:02:55] Sam Okafor: We should probably not admit how often that happens.
+
+[00:02:58] Aisha Bell: Probably not. Moving on, the first line on my list is the regular replenishment order. The request was submitted through the portal, but the confirmation came back later than we usually see.
+
+[00:03:09] Sam Okafor: Was the delay in the confirmation itself, or did the confirmation arrive and then change?
+
+[00:03:14] Aisha Bell: The confirmation arrived late. Once it arrived, the quantities looked right. I am more concerned about visibility when a request sits without a status.
+
+[00:03:21] Sam Okafor: That makes sense. Were you able to see the request in the portal while it was waiting?
+
+[00:03:26] Aisha Bell: It showed as submitted, but there was not much detail beyond that. Our coordinator could not tell whether it had been accepted into fulfillment or was still being reviewed.
+
+[00:03:33] Sam Okafor: I can ask our portal team whether the status labels can be more informative.
+
+[00:03:38] Aisha Bell: That would be useful, especially for orders tied to a scheduled procedure. People here need to know whether to wait, substitute, or escalate.
+
+[00:03:44] Sam Okafor: Understood. Are the scheduled-procedure orders identified differently in your system?
+
+[00:03:48] Aisha Bell: Internally, yes. We add a note and route them through our priority queue, but the supplier-facing request looks fairly ordinary.
+
+[00:03:55] Sam Okafor: So if the portal only sees the request type, it may not know that the timing carries more weight.
+
+[00:04:00] Aisha Bell: That is how it seems. We can provide whatever label or field your team needs, but we do not want to add a second manual process for every order.
+
+[00:04:07] Sam Okafor: I will ask whether there is an existing priority indicator that your users are not currently seeing.
+
+[00:04:11] Aisha Bell: Good. Also, our new coordinator is still learning the terminology. If the system uses abbreviations, she may not know which status needs action.
+
+[00:04:17] Sam Okafor: I can send a short key for the current statuses.
+
+[00:04:20] Aisha Bell: That would be helpful. Keep it short, though. If it turns into a fourteen-page document, nobody will open it.
+
+[00:04:24] Sam Okafor: I promise not to produce a fourteen-page status key.
+
+[00:04:28] Aisha Bell: I am holding you to that.
+
+[00:04:30] Sam Okafor: Let us look at the next item. I see a line for the standard care kits, with a requested quantity that is higher than the prior cycle.
+
+[00:04:36] Aisha Bell: That increase is deliberate. We are trying to avoid making several small requests during the month. The usage has been uneven, but the overall need is higher.
+
+[00:04:43] Sam Okafor: Is the higher quantity expected to continue, or is it just for this period?
+
+[00:04:48] Aisha Bell: We are still evaluating that. I would call it a working estimate rather than a standing change.
+
+[00:04:54] Sam Okafor: I will note it as a temporary planning level instead of a permanent adjustment.
+
+[00:04:58] Aisha Bell: Good. We do not want a temporary spike to become the default forecast.
+
+[00:05:01] Sam Okafor: Have you changed the approval path for those larger requests?
+
+[00:05:06] Aisha Bell: Not formally. Anything above our normal range gets a second review, but that is an internal check.
+
+[00:05:11] Sam Okafor: Understood. If the portal flags it, that would be useful, but only if the flag does not block submission.
+
+[00:05:16] Aisha Bell: Exactly. We have had systems that treat a warning as a hard stop, and then the person submitting the request has to call around to get it released.
+
+[00:05:23] Sam Okafor: That is not ideal. I will ask for the distinction between an informational warning and an approval hold.
+
+[00:05:27] Aisha Bell: Please do. Small wording differences can create a lot of confusion at the desk.
+
+[00:05:31] Sam Okafor: I am writing that down. Now, on the product substitutions, I see two items marked for review.
+
+[00:05:36] Aisha Bell: Those are the ones our clinical team wants to examine before anyone swaps them. The specifications look close, but “close” is not enough for those particular items.
+
+[00:05:42] Sam Okafor: Do you want substitutions disabled for those lines?
+
+[00:05:46] Aisha Bell: For now, yes, unless someone from our team approves the alternative. We do not want an automatic replacement simply because the original line is unavailable.
+
+[00:05:54] Sam Okafor: I can add that to the account note. Should the restriction apply to all departments or only the procedure area?
+
+[00:06:00] Aisha Bell: Only the procedure area for now. Other departments may have more flexibility, and I do not want to create a blanket rule unnecessarily.
+
+[00:06:07] Sam Okafor: That distinction is important. I will make sure the note is specific.
+
+[00:06:12] Aisha Bell: Thank you. We are trying to avoid rules that sound simple but cause trouble in places where they do not belong.
+
+[00:06:16] Sam Okafor: That is usually where account notes get complicated.
+
+[00:06:19] Aisha Bell: Yes, and then the person reading them has to guess what “special handling” means.
+
+[00:06:24] Sam Okafor: I will use the actual department name and the approval requirement.
+
+[00:06:27] Aisha Bell: Good. Now, the next part is receiving. Our team wants the packing information earlier, particularly when one shipment contains several cartons.
+
+[00:06:35] Sam Okafor: Are you receiving a packing notice now, or only the carrier notice?
+
+[00:06:40] Aisha Bell: Usually the carrier notice. The carton detail is not always available until the shipment is already on its way.
+
+[00:06:45] Sam Okafor: Would a notice the afternoon before dispatch be useful?
+
+[00:06:49] Aisha Bell: Yes, if it is reliable. Even a basic carton count and item grouping would help the dock prepare.
+
+[00:06:54] Sam Okafor: I will check what the warehouse can provide without creating a manual step for every order.
+
+[00:06:58] Aisha Bell: That is the balance. We want more information, but we do not want the warehouse team spending half a day preparing a custom report.
+
+[00:07:03] Sam Okafor: Maybe there is a standard dispatch file that can be sent automatically.
+
+[00:07:07] Aisha Bell: If so, that would be ideal. It could go to the receiving mailbox rather than to individual people.
+
+[00:07:12] Sam Okafor: Do you have a shared mailbox for that?
+
+[00:07:16] Aisha Bell: Yes, but it is monitored during business hours. After-hours deliveries still follow the on-call process.
+
+[00:07:21] Sam Okafor: I will note both paths so the notice does not go to an address nobody checks overnight.
+
+[00:07:25] Aisha Bell: Thanks. The night team has a different contact list, and that list is not always included in the standard instructions.
+
+[00:07:31] Sam Okafor: I can ask whether your account profile has a separate after-hours field.
+
+[00:07:35] Aisha Bell: It might. We have updated it before, but I cannot remember whether the change applied to every shipping location.
+
+[00:07:41] Sam Okafor: There is one primary location and a secondary receiving entrance listed here.
+
+[00:07:45] Aisha Bell: The secondary entrance is only used for certain deliveries. The carrier needs to follow the appointment note rather than assume that entrance is always open.
+
+[00:07:51] Sam Okafor: I will check the instructions attached to the location record.
+
+[00:07:54] Aisha Bell: Good. We have had drivers arrive at the right campus but the wrong dock, which is almost as unhelpful as arriving at the wrong campus.
+
+[00:08:00] Sam Okafor: That sounds like a long walk with a pallet.
+
+[00:08:03] Aisha Bell: It creates a longer walk for everyone. The security desk then calls us, we call receiving, and the driver is waiting while people compare notes.
+
+[00:08:10] Sam Okafor: I will see whether the dock identifier can be made more prominent on the shipping instructions.
+
+[00:08:13] Aisha Bell: Please. Anything that reduces interpretation is worth doing.
+
+[00:08:16] Sam Okafor: Let us return briefly to the delayed shipment, because I want to understand the operational effect for the adjustment request.
+
+[00:08:21] Aisha Bell: The immediate effect was that our team had to use existing stock more carefully. We did not run out, but we had less room to absorb another change.
+
+[00:08:29] Sam Okafor: Was there a substitute source available?
+
+[00:08:33] Aisha Bell: Not one we could activate quickly. The item has requirements that limit what we can use, and the alternate source would have required a separate review.
+
+[00:08:39] Sam Okafor: I understand. Did the delay affect a planned procedure?
+
+[00:08:44] Aisha Bell: It affected preparation for one, but the procedure itself continued. I want that distinction captured accurately.
+
+[00:08:50] Sam Okafor: Absolutely. I will not describe it as a cancellation or a shortage if that did not happen.
+
+[00:08:55] Aisha Bell: Thank you. The issue is still material because the planning work and the risk were real, even though the team managed it.
+
+[00:09:01] Sam Okafor: That context will help when I route the request.
+
+[00:09:04] Aisha Bell: We can send the receiving record and the internal note. I will remove anything that is not relevant to the shipment.
+
+[00:09:08] Sam Okafor: That is fine. The shipment reference, requested date, revised dates, and receipt date should be enough for the first review.
+
+[00:09:13] Aisha Bell: I will include those. If billing asks for more, let me know rather than having them reject it for an incomplete packet.
+
+[00:09:19] Sam Okafor: I will try to keep it moving through one channel.
+
+[00:09:22] Aisha Bell: That would be appreciated. Our accounting team is patient, but they do not like unexplained differences on an invoice.
+
+[00:09:27] Sam Okafor: Nor do I. It is easier for everyone when the adjustment is visible and tied to a clear note.
+
+[00:09:31] Aisha Bell: Exactly. The person reviewing the invoice should not have to reconstruct the story from separate messages.
+
+[00:09:36] Sam Okafor: I will put a concise summary in the account record.
+
+[00:09:40] Aisha Bell: Good. Use plain language, please. The internal shorthand is not useful outside our materials group.
+
+[00:09:45] Sam Okafor: I will keep it plain.
+
+[00:09:47] Aisha Bell: Thanks. Now, on the recurring order schedule, I want to revisit the cutoff time. Our team has been submitting requests near the end of the day because the usage numbers are not final earlier.
+
+[00:09:55] Sam Okafor: Is the current cutoff causing requests to roll to the next processing day?
+
+[00:10:00] Aisha Bell: Sometimes. We can submit before the cutoff, but if a department sends its count late, the coordinator may need to wait for confirmation rather than guess.
+
+[00:10:06] Sam Okafor: Would a later cutoff solve it, or would a partial submission be better?
+
+[00:10:11] Aisha Bell: A later cutoff would help, but only if it does not reduce the available delivery options. We do not want to gain an hour and lose a day.
+
+[00:10:17] Sam Okafor: That is a good point. I will ask what changes operationally when a request crosses the cutoff.
+
+[00:10:20] Aisha Bell: Please. The label makes it sound like a simple administrative boundary, but it may be tied to picking and dispatch.
+
+[00:10:26] Sam Okafor: It usually is, though the exact timing can vary by item group.
+
+[00:10:30] Aisha Bell: Then item group matters. If the standard lines can move while one special line is reviewed, we need to know whether the request can be split.
+
+[00:10:36] Sam Okafor: I will check whether split processing is supported on your account.
+
+[00:10:40] Aisha Bell: We have used it before, but the results were inconsistent. One part moved and the other part seemed to disappear from the visible order.
+
+[00:10:46] Sam Okafor: That should not happen. Do you have an example?
+
+[00:10:49] Aisha Bell: I can find one, but I do not want to derail today’s call. I will send the order number separately.
+
+[00:10:55] Sam Okafor: That is fine. Even one example will help the portal team trace the behavior.
+
+[00:10:58] Aisha Bell: Good. We are collecting examples, but I am trying not to turn every meeting into a complete system audit.
+
+[00:11:03] Sam Okafor: I appreciate that. We can keep the audit for another day.
+
+[00:11:06] Aisha Bell: Thank you. Speaking of another day, our quarterly inventory count is coming up, so there will be a period when responses from our side are slower.
+
+[00:11:13] Sam Okafor: When is the count scheduled?
+
+[00:11:16] Aisha Bell: It is planned for the first week of next month. The exact day for the main count is still being confirmed.
+
+[00:11:22] Sam Okafor: Should routine requests continue as usual?
+
+[00:11:26] Aisha Bell: Yes, but urgent questions should go to the shared mailbox rather than directly to one person. People will be moving between storage areas.
+
+[00:11:32] Sam Okafor: I will make a note of that. Do you expect order volume to change during the count?
+
+[00:11:36] Aisha Bell: It may be slightly higher beforehand and then quieter for a short period. That is only a planning expectation, not a firm schedule.
+
+[00:11:42] Sam Okafor: Understood. I will not treat it as a committed forecast.
+
+[00:11:45] Aisha Bell: Good. We are still reconciling several cabinets, and I would rather not promise numbers that change once the count begins.
+
+[00:11:51] Sam Okafor: Does the reconciliation involve any of the items on today’s list?
+
+[00:11:55] Aisha Bell: A few. The standard care kits are included, but the substitution-restricted items are being counted separately.
+
+[00:12:01] Sam Okafor: That may explain why the numbers look different from the prior report.
+
+[00:12:05] Aisha Bell: It probably does. Our reports are not always generated at the same time of day, so there can be a small timing difference.
+
+[00:12:10] Sam Okafor: I will compare the report dates before drawing conclusions.
+
+[00:12:13] Aisha Bell: Thank you. Timing differences can look like usage changes when they are really just a snapshot issue.
+
+[00:12:17] Sam Okafor: That is worth noting in the forecast discussion.
+
+[00:12:20] Aisha Bell: Yes. Also, please do not have anyone update the recurring quantity based solely on the older report.
+
+[00:12:25] Sam Okafor: I will mark the older report as reference only.
+
+[00:12:28] Aisha Bell: Perfect.
+
+[00:12:30] Sam Okafor: I have another question about the invoice adjustment. Do you want the review to cover only the delayed shipment, or should it include the related handling issue?
+
+[00:12:36] Aisha Bell: The request should focus on the delivery delay. The handling issue is something we should discuss separately because I do not want the two matters blended together.
+
+[00:12:42] Sam Okafor: Understood. I will keep the scope narrow.
+
+[00:12:45] Aisha Bell: The handling issue is worth addressing, though. The cartons were intact, but the labels were not as easy to read as they should have been.
+
+[00:12:51] Sam Okafor: Were the labels damaged, or was the print simply difficult to interpret?
+
+[00:12:55] Aisha Bell: The print was clear enough once you looked closely. The problem was that the placement did not match the orientation our dock team expects.
+
+[00:13:01] Sam Okafor: So it added time but did not prevent identification.
+
+[00:13:05] Aisha Bell: Correct. We had to turn and check several cartons, which is not ideal when the dock is busy.
+
+[00:13:10] Sam Okafor: I can send that feedback to the packaging contact without attaching it to the adjustment request.
+
+[00:13:14] Aisha Bell: Please do. A separate note will make it easier for the right team to act on it.
+
+[00:13:18] Sam Okafor: I will need the carton examples if you have them.
+
+[00:13:22] Aisha Bell: I can include photographs from receiving, assuming the files are not too large.
+
+[00:13:27] Sam Okafor: A few photographs should be enough.
+
+[00:13:30] Aisha Bell: I will ask the receiving lead to select the clearest ones. I do not want to send a whole folder when three images explain the issue.
+
+[00:13:36] Sam Okafor: That is sensible.
+
+[00:13:38] Aisha Bell: There is also a question about the order confirmation language. It says “scheduled” in one place and “anticipated” in another.
+
+[00:13:44] Sam Okafor: Are you concerned that the two terms imply different commitments?
+
+[00:13:47] Aisha Bell: Yes. Our team reads “scheduled” as something more definite. If the date is still subject to change, “anticipated” is clearer.
+
+[00:13:53] Sam Okafor: I will ask the customer communications team whether the terms can be aligned.
+
+[00:13:57] Aisha Bell: Thanks. Consistent language matters when several people are reviewing the same order.
+
+[00:14:00] Sam Okafor: Do you want the confirmation to show a range instead of a single date when the timing is uncertain?
+
+[00:14:05] Aisha Bell: A range would be more honest in those cases, as long as the range is not so broad that it becomes meaningless.
+
+[00:14:11] Sam Okafor: That is the challenge.
+
+[00:14:13] Aisha Bell: I know. I am not asking for perfect certainty. I am asking for the uncertainty to be visible.
+
+[00:14:17] Sam Okafor: I will capture that wording.
+
+[00:14:20] Aisha Bell: Good. We are trying to make decisions with the information available, and a clear range is better than a precise-looking date that later shifts.
+
+[00:14:26] Sam Okafor: That connects to the portal status question as well.
+
+[00:14:29] Aisha Bell: Exactly. If the system shows that a date is provisional, our team can plan around it.
+
+[00:14:33] Sam Okafor: I will group those feedback points for the product team.
+
+[00:14:35] Aisha Bell: Fine. Just do not let the product team turn this into a new dashboard nobody requested.
+
+[00:14:40] Sam Okafor: I will try to protect everyone from unnecessary dashboards.
+
+[00:14:42] Aisha Bell: Please. We already have enough colored boxes.
+
+[00:14:45] Sam Okafor: I see a note here about a training session for your coordinators. Is that still useful?
+
+[00:14:50] Aisha Bell: Yes, but it should be practical. A short session using a real example would be better than a general tour of every feature.
+
+[00:14:56] Sam Okafor: Would you prefer a recorded session or a live meeting?
+
+[00:15:00] Aisha Bell: Live, if the presenter can answer questions. We can record it afterward for people who are not available.
+
+[00:15:05] Sam Okafor: How many people would attend?
+
+[00:15:08] Aisha Bell: Probably six or seven from materials, plus someone from receiving.
+
+[00:15:12] Sam Okafor: I can propose two times.
+
+[00:15:15] Aisha Bell: Send them after the inventory count date is settled. I do not want to schedule training and then move it because everyone is in storage.
+
+[00:15:20] Sam Okafor: That makes sense.
+
+[00:15:22] Aisha Bell: The session should cover status interpretation, order notes, and where to find the shipment detail. It does not need to cover administrative settings.
+
+[00:15:28] Sam Okafor: I will give the presenter that outline.
+
+[00:15:32] Aisha Bell: Also, please include the escalation path. People know how to submit a request, but they are less certain about what to do when a status does not change.
+
+[00:15:38] Sam Okafor: I will ask for the current escalation instructions.
+
+[00:15:41] Aisha Bell: And have them distinguish urgent from merely delayed. Everything feels urgent when you are standing in front of a screen with no update.
+
+[00:15:47] Sam Okafor: That is a fair point. The instructions should include examples.
+
+[00:15:50] Aisha Bell: Exactly. A definition without an example is hard to apply.
+
+[00:15:53] Sam Okafor: I will include that request.
+
+[00:15:55] Aisha Bell: Thanks.
+
+[00:15:57] Sam Okafor: Let me check my list. We have the adjustment request, portal visibility, the temporary quantity increase, substitution controls, packing information, dock instructions, confirmation language, and training.
+
+[00:16:04] Aisha Bell: That is the core of it. There are a couple of smaller items, but those are the ones I need tracked.
+
+[00:16:08] Sam Okafor: For the smaller items, should we handle them by email?
+
+[00:16:11] Aisha Bell: Yes. I do not want to spend the entire call reading line numbers aloud.
+
+[00:16:15] Sam Okafor: Fair enough. I will send a recap with owners and next steps.
+
+[00:16:18] Aisha Bell: Include the expected timing where you can, but do not put artificial dates on items that depend on another team.
+
+[00:16:23] Sam Okafor: I will label those as pending confirmation.
+
+[00:16:25] Aisha Bell: Good. I would rather see “pending confirmation” than a date that gets copied into three plans and then missed.
+
+[00:16:30] Sam Okafor: Agreed.
+
+[00:16:32] Aisha Bell: For the adjustment specifically, when do you think you can tell me whether billing has accepted the request for review?
+
+[00:16:38] Sam Okafor: Once I have the shipment reference and receiving note, I can submit it. I should be able to confirm that it is in the review queue after that.
+
+[00:16:44] Aisha Bell: All right. I will send the documents this afternoon.
+
+[00:16:47] Sam Okafor: I will watch for them.
+
+[00:16:49] Aisha Bell: If the request needs a different form, please tell me right away. We have already spent enough time translating the same information between formats.
+
+[00:16:55] Sam Okafor: Understood. I will not wait until the end of the process to mention a missing form.
+
+[00:16:58] Aisha Bell: Thank you. That is all I am asking.
+
+[00:17:00] Sam Okafor: Before we wrap, is there anything on the next scheduled order that looks unusual?
+
+[00:17:05] Aisha Bell: The quantity is slightly higher, as I mentioned, but the item mix is otherwise ordinary. The procedure-area lines are the ones I want reviewed before substitution.
+
+[00:17:12] Sam Okafor: I will check those against the account note.
+
+[00:17:15] Aisha Bell: Please also verify the delivery location. It should go to the primary receiving dock unless the appointment note says otherwise.
+
+[00:17:20] Sam Okafor: I will verify that the order is not carrying the secondary entrance by default.
+
+[00:17:23] Aisha Bell: Good. That small detail has caused more confusion than it should.
+
+[00:17:26] Sam Okafor: I will add it to the order review checklist.
+
+[00:17:29] Aisha Bell: Thanks.
+
+[00:17:31] Sam Okafor: And for the packing information, should the notice include the expected number of cartons even if the count is not final?
+
+[00:17:36] Aisha Bell: Yes, but it should say that the count is preliminary. A rough number is useful as long as nobody treats it as final.
+
+[00:17:41] Sam Okafor: I will pass that along.
+
+[00:17:43] Aisha Bell: Great.
+
+[00:17:45] Sam Okafor: I think I have what I need. I will send the recap, check the adjustment status, and raise the operational questions with the relevant teams.
+
+[00:17:51] Aisha Bell: That covers it. I will send the shipment reference, receiving note, and the example for the split-processing issue.
+
+[00:17:56] Sam Okafor: Perfect.
+
+[00:17:58] Aisha Bell: And I will confirm the inventory-count timing once our director signs off.
+
+[00:18:02] Sam Okafor: I will wait for that before proposing training times.
+
+[00:18:05] Aisha Bell: Sounds good. Thanks for listening through all of that.
+
+[00:18:08] Sam Okafor: It was useful. I would rather get the full context than chase separate fragments later.
+
+[00:18:12] Aisha Bell: Same here. The fragments are what make these things difficult.
+
+[00:18:15] Sam Okafor: I will follow up shortly.
+
+[00:18:17] Aisha Bell: All right. Have a good afternoon, Sam.
+
+[00:18:19] Sam Okafor: You too, Aisha. Take care.
+
+[00:18:21] Aisha Bell: Bye.

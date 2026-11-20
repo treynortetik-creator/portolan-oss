@@ -1,0 +1,359 @@
+[00:00:00] Sam Okafor: Derek, hi, it’s Sam. Thanks for taking a few minutes. How are you?
+
+[00:00:06] Derek Hollis: I’m well, Sam. How about you?
+
+[00:00:09] Sam Okafor: Doing well, thanks. I won’t keep you too long. I wanted to make a courtesy call after the quarter closed, say thank you for the partnership, and make sure nothing is sitting on your desk that needs attention.
+
+[00:00:21] Derek Hollis: I appreciate that. It was a clean quarter from our side, so I don’t have any fires to hand you.
+
+[00:00:27] Sam Okafor: That’s good to hear. Clean is exactly what we like. Sometimes “clean” just means the problems are waiting until Monday, but hopefully not in this case.
+
+[00:00:34] Derek Hollis: No, I think we’re in decent shape. There are always little things, of course.
+
+[00:00:39] Sam Okafor: Right. Little things have a way of becoming large things if nobody gives them a name. How has the team been? Busy?
+
+[00:00:45] Derek Hollis: Busy, but manageable. The clinical engineering group has been working through the usual inspection cycle, and we had a couple of staffing gaps, but nothing unusual.
+
+[00:00:52] Sam Okafor: Understood. Staffing gaps make every normal task feel like an exception. Are the departments generally cooperating with the inspection schedule?
+
+[00:00:58] Derek Hollis: Mostly. There’s always one unit that needs a reminder because equipment seems to become invisible when someone wants the room.
+
+[00:01:05] Sam Okafor: I’ve heard that story from several hospitals. The device is right there, the calendar invitation is right there, and somehow neither exists.
+
+[00:01:11] Derek Hollis: Exactly. We’ve gotten better at tracking it, though.
+
+[00:01:15] Sam Okafor: Good. I also wanted to thank you for how responsive your team was during the last few exchanges. From our side, the handoffs were straightforward.
+
+[00:01:21] Derek Hollis: I’ll pass that along. People like hearing that the paperwork didn’t become the main event.
+
+[00:01:26] Sam Okafor: Absolutely. Nobody enters clinical engineering because they dream about chasing a form through three inboxes.
+
+[00:01:31] Derek Hollis: Some of us have learned to appreciate a well-labeled spreadsheet.
+
+[00:01:34] Sam Okafor: I knew there was a reason I liked working with you.
+
+[00:01:37] Derek Hollis: You say that now.
+
+[00:01:39] Sam Okafor: Fair. Let me ask broadly: is there anything about the way we’ve been supporting you that has felt harder than it should?
+
+[00:01:45] Derek Hollis: Nothing major. The communication has been clear. When something is open, we know who owns it, and that’s half the battle.
+
+[00:01:52] Sam Okafor: That’s useful feedback. Ownership is one of those words everyone agrees with until there are four teams involved.
+
+[00:01:57] Derek Hollis: Yes, and then everybody owns it in theory.
+
+[00:02:00] Sam Okafor: Exactly. I’m glad the practical version has been working.
+
+[00:02:03] Derek Hollis: It has.
+
+[00:02:05] Sam Okafor: How are things outside the department? I know you’ve had a busy winter.
+
+[00:02:10] Derek Hollis: Busy winter is accurate. We had a few weather-related delays, nothing dramatic, but enough to make scheduling awkward.
+
+[00:02:16] Sam Okafor: Weather is very good at exposing optimistic schedules.
+
+[00:02:19] Derek Hollis: And optimistic schedules are very good at reproducing themselves. One delay moves everything else.
+
+[00:02:23] Sam Okafor: Right. Then somebody asks why a task from Tuesday is happening Thursday afternoon.
+
+[00:02:26] Derek Hollis: And the answer is a twenty-minute story.
+
+[00:02:29] Sam Okafor: I’ll spare you the twenty minutes. I mainly wanted to make sure we were not missing anything on your end.
+
+[00:02:33] Derek Hollis: You’re not. If I had a concern, I’d raise it.
+
+[00:02:36] Sam Okafor: I know you would. That’s one of the reasons these calls are easy.
+
+[00:02:39] Derek Hollis: Easy is good.
+
+[00:02:41] Sam Okafor: It is. We spend a lot of time trying to remove friction, and then occasionally discover that the friction was a person waiting for someone else to reply.
+
+[00:02:47] Derek Hollis: That happens everywhere.
+
+[00:02:49] Sam Okafor: It does. I’m trying to avoid becoming part of that universal experience.
+
+[00:02:52] Derek Hollis: So far, so good.
+
+[00:02:54] Sam Okafor: I’ll take that as a strong review. Do you have any internal planning meetings coming up where our team should be prepared to answer questions?
+
+[00:03:00] Derek Hollis: We have our monthly operations review next week. It’s mostly routine. We’ll look at open work, upcoming inspections, and the capital list.
+
+[00:03:08] Sam Okafor: Makes sense. If a question comes up that needs a technical answer, send it over. I’d rather give you a complete response than have someone rely on a half-remembered note from six months ago.
+
+[00:03:14] Derek Hollis: That’s appreciated.
+
+[00:03:16] Sam Okafor: The half-remembered note is dangerous. It usually begins, “I think we once said…”
+
+[00:03:19] Derek Hollis: And ends with three people searching old email.
+
+[00:03:22] Sam Okafor: Exactly. A thrilling afternoon for everyone.
+
+[00:03:25] Derek Hollis: We’ve had those.
+
+[00:03:27] Sam Okafor: I’m sure. On our side, I’ve been reviewing the quarter with the service group, and the overall picture looked steady. I wanted you to hear that directly rather than through some internal summary.
+
+[00:03:35] Derek Hollis: That’s good. Steady is what we want.
+
+[00:03:37] Sam Okafor: Yes. Steady, predictable, and boring in the best possible way.
+
+[00:03:41] Derek Hollis: Boring has a strong place in engineering.
+
+[00:03:43] Sam Okafor: It does. Boring means the alarm stays quiet and the process behaves.
+
+[00:03:46] Derek Hollis: Until somebody changes the process.
+
+[00:03:48] Sam Okafor: There’s always somebody.
+
+[00:03:50] Derek Hollis: Usually with good intentions.
+
+[00:03:52] Sam Okafor: That’s the dangerous part. Bad intentions are easier to spot.
+
+[00:03:55] Derek Hollis: True.
+
+[00:03:56] Sam Okafor: What’s the mood among your leadership group? Are people feeling stretched, or is it more a matter of keeping pace?
+
+[00:04:02] Derek Hollis: A little of both. We’re keeping pace, but everyone is watching resources closely. There are more requests than there are comfortable hours in the week.
+
+[00:04:10] Sam Okafor: That sounds familiar. When the queue grows, the difficult part is separating urgent from merely loud.
+
+[00:04:16] Derek Hollis: Exactly. Loud gets attention. Important sometimes waits quietly.
+
+[00:04:20] Sam Okafor: We can help with that where our work touches your queue. If something needs escalation, tell me plainly. You don’t need to dress it up.
+
+[00:04:25] Derek Hollis: I appreciate the invitation.
+
+[00:04:27] Sam Okafor: It’s genuine. I’d rather know early, while there are still options.
+
+[00:04:30] Derek Hollis: That’s reasonable.
+
+[00:04:32] Sam Okafor: And if there’s nothing to escalate, that’s useful to know too. A quiet answer is still an answer.
+
+[00:04:37] Derek Hollis: Then today’s answer is quiet.
+
+[00:04:39] Sam Okafor: I like today’s answer.
+
+[00:04:41] Derek Hollis: You can put that in your notes.
+
+[00:04:43] Sam Okafor: I will, with excessive punctuation.
+
+[00:04:46] Derek Hollis: Please don’t.
+
+[00:04:47] Sam Okafor: I’ll restrain myself.
+
+[00:04:49] Derek Hollis: Thank you.
+
+[00:04:50] Sam Okafor: Before I let you go, I wanted to check whether your team has been receiving the regular updates in a useful format.
+
+[00:04:56] Derek Hollis: Yes, they have. The short summaries are useful, especially when they include the next action instead of just describing what happened.
+
+[00:05:03] Sam Okafor: That’s a good distinction. A historical report can be accurate and still leave everyone wondering what to do next.
+
+[00:05:09] Derek Hollis: Right. We need enough history to understand the issue, but not so much that the action gets buried.
+
+[00:05:14] Sam Okafor: We’ll keep that balance in mind.
+
+[00:05:16] Derek Hollis: Good.
+
+[00:05:17] Sam Okafor: Do you prefer the updates grouped by department, by equipment category, or by status?
+
+[00:05:22] Derek Hollis: By status is usually easiest for me. Then I can see what’s open, what’s waiting, and what’s finished.
+
+[00:05:28] Sam Okafor: That makes sense. It also helps us see where something is waiting on your team versus waiting on ours.
+
+[00:05:34] Derek Hollis: Exactly. “Open” covers too much ground by itself.
+
+[00:05:36] Sam Okafor: I agree. Open can mean actively being worked, blocked, or simply forgotten.
+
+[00:05:41] Derek Hollis: Forgotten is the one we try not to have.
+
+[00:05:43] Sam Okafor: Same here.
+
+[00:05:45] Derek Hollis: Although the occasional forgotten item is how you discover whether your reminder system works.
+
+[00:05:49] Sam Okafor: That’s an optimistic way to describe it.
+
+[00:05:51] Derek Hollis: Clinical engineering develops optimism as a survival skill.
+
+[00:05:54] Sam Okafor: I may borrow that line.
+
+[00:05:56] Derek Hollis: You can cite me.
+
+[00:05:57] Sam Okafor: I will. Derek Hollis, Director of Clinical Engineering, noted that optimism is a survival skill.
+
+[00:06:02] Derek Hollis: That sounds more formal than I intended.
+
+[00:06:04] Sam Okafor: I have a formal voice for everything.
+
+[00:06:06] Derek Hollis: I’ve noticed.
+
+[00:06:08] Sam Okafor: I’m working on it.
+
+[00:06:09] Derek Hollis: Don’t work too hard.
+
+[00:06:10] Sam Okafor: That’s the nicest operational advice I’ve received today.
+
+[00:06:12] Derek Hollis: You’re welcome.
+
+[00:06:13] Sam Okafor: Is there anything you’d like us to bring into the next quarter from your perspective? Not a commitment, necessarily—just something you want us paying attention to.
+
+[00:06:21] Derek Hollis: Keep the handoffs clean. That’s the main thing. If the person who starts an item isn’t the person who finishes it, the context needs to travel with the item.
+
+[00:06:28] Sam Okafor: That’s fair. Context is easy to lose when the handoff is treated as a name change instead of a transfer of responsibility.
+
+[00:06:34] Derek Hollis: Yes. The new person shouldn’t have to reconstruct the whole story.
+
+[00:06:36] Sam Okafor: We’ll keep emphasizing that internally.
+
+[00:06:38] Derek Hollis: Good.
+
+[00:06:39] Sam Okafor: And if you notice context dropping out, send me an example. It’s much easier to fix a specific gap than a general feeling that something is less smooth.
+
+[00:06:45] Derek Hollis: I can do that.
+
+[00:06:47] Sam Okafor: Thank you. I’m not looking for a complaint list. I’m looking for the points where the process asks people to remember too much.
+
+[00:06:52] Derek Hollis: That’s a useful way to put it.
+
+[00:06:54] Sam Okafor: People are good at remembering the things they care about and surprisingly poor at remembering the things they assumed someone else had recorded.
+
+[00:06:59] Derek Hollis: Especially after a long day.
+
+[00:07:01] Sam Okafor: Especially after a long day.
+
+[00:07:03] Derek Hollis: Our days have been long lately.
+
+[00:07:05] Sam Okafor: I’m sorry to hear that. Are you getting any time away from the hospital?
+
+[00:07:08] Derek Hollis: Some. I try to keep weekends separate, though that depends on what’s happening.
+
+[00:07:12] Sam Okafor: That boundary is worth defending.
+
+[00:07:14] Derek Hollis: I agree. It doesn’t always defend itself.
+
+[00:07:16] Sam Okafor: No, boundaries are apparently another system requiring maintenance.
+
+[00:07:18] Derek Hollis: With no service contract.
+
+[00:07:20] Sam Okafor: And poor documentation.
+
+[00:07:22] Derek Hollis: Exactly.
+
+[00:07:23] Sam Okafor: Do you have anything pleasant planned this weekend?
+
+[00:07:27] Derek Hollis: Nothing elaborate. I’m hoping to get outside if the weather holds.
+
+[00:07:31] Sam Okafor: That sounds better than another spreadsheet.
+
+[00:07:33] Derek Hollis: Almost anything is better than another spreadsheet.
+
+[00:07:35] Sam Okafor: I say that, but I know people who would disagree.
+
+[00:07:37] Derek Hollis: Those people should be studied.
+
+[00:07:39] Sam Okafor: Carefully, with appropriate controls.
+
+[00:07:41] Derek Hollis: Naturally.
+
+[00:07:43] Sam Okafor: We’ve drifted a little from the purpose of the call, but I’m not objecting.
+
+[00:07:46] Derek Hollis: Courtesy calls are allowed to drift.
+
+[00:07:48] Sam Okafor: That may be the official definition.
+
+[00:07:50] Derek Hollis: It should be.
+
+[00:07:51] Sam Okafor: All right. Coming back to work for a moment, I’ll send a short follow-up after this—not a long recap, just the points we discussed and my contact information in case something surfaces.
+
+[00:07:59] Derek Hollis: That’s fine. Keep it short and I’ll read it.
+
+[00:08:01] Sam Okafor: Deal. Short enough to survive an inbox.
+
+[00:08:03] Derek Hollis: That’s the standard.
+
+[00:08:05] Sam Okafor: And I’ll note that there are no immediate concerns from your side.
+
+[00:08:07] Derek Hollis: That’s accurate.
+
+[00:08:09] Sam Okafor: Good. I don’t want to turn a quiet conversation into a dramatic status report.
+
+[00:08:12] Derek Hollis: Please don’t. Drama is expensive.
+
+[00:08:14] Sam Okafor: It is, and it rarely improves the equipment.
+
+[00:08:16] Derek Hollis: Or the calendar.
+
+[00:08:18] Sam Okafor: Or anyone’s blood pressure.
+
+[00:08:20] Derek Hollis: You’re learning.
+
+[00:08:22] Sam Okafor: Slowly, but consistently.
+
+[00:08:24] Derek Hollis: That’s enough.
+
+[00:08:25] Sam Okafor: One last question: is there anyone else on your team I should check in with separately, or would that create more traffic than value?
+
+[00:08:32] Derek Hollis: You can stay with me for now. If something comes up, I’ll connect you with the right person.
+
+[00:08:38] Sam Okafor: Perfect. I appreciate that. I don’t want to create a parade of courtesy calls through your department.
+
+[00:08:42] Derek Hollis: We have enough parades already.
+
+[00:08:44] Sam Okafor: I’ll keep mine to one participant and a calendar entry.
+
+[00:08:46] Derek Hollis: Sensible.
+
+[00:08:47] Sam Okafor: How is the calendar, by the way? Still full of meetings that could have been messages?
+
+[00:08:51] Derek Hollis: Absolutely. And messages that become meetings because nobody wants to answer the original question.
+
+[00:08:55] Sam Okafor: A complete ecosystem.
+
+[00:08:57] Derek Hollis: It sustains itself.
+
+[00:08:59] Sam Okafor: We should put that on a process map.
+
+[00:09:01] Derek Hollis: With arrows going in every direction.
+
+[00:09:03] Sam Okafor: And one box labeled “follow up later.”
+
+[00:09:05] Derek Hollis: That box is always full.
+
+[00:09:07] Sam Okafor: I believe it.
+
+[00:09:08] Derek Hollis: You have your own version.
+
+[00:09:10] Sam Okafor: Naturally. Mine is color-coded, so it looks more intentional.
+
+[00:09:13] Derek Hollis: Color can hide a lot.
+
+[00:09:15] Sam Okafor: That may be the most accurate thing said on this call.
+
+[00:09:17] Derek Hollis: I try to contribute.
+
+[00:09:19] Sam Okafor: You have. More seriously, thank you for the time and for the candid feedback. It’s helpful to know the basics are working.
+
+[00:09:25] Derek Hollis: You’re welcome. I appreciate you checking in without turning it into a sales presentation.
+
+[00:09:30] Sam Okafor: That was the goal. A courtesy call should feel like a courtesy call.
+
+[00:09:33] Derek Hollis: Then you succeeded.
+
+[00:09:35] Sam Okafor: Good. I’ll take the win.
+
+[00:09:37] Derek Hollis: Take it.
+
+[00:09:38] Sam Okafor: I’ll send the brief note, and otherwise I’ll let you get back to your day.
+
+[00:09:42] Derek Hollis: Thank you. I have another meeting starting shortly, so the timing is good.
+
+[00:09:45] Sam Okafor: I won’t be the reason you arrive late.
+
+[00:09:47] Derek Hollis: You’re safe.
+
+[00:09:48] Sam Okafor: Excellent. Thanks again, Derek.
+
+[00:09:50] Derek Hollis: Thanks, Sam. Good talking with you.
+
+[00:09:52] Sam Okafor: You too. Take care.
+
+[00:09:54] Derek Hollis: You as well.

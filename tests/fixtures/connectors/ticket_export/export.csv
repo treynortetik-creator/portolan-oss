@@ -1,0 +1,3 @@
+ticket_id,subject,created,comment_number,author,comment_created,body
+T-9002,Pharmacy dispensing question,2026-05-01T00:00:00Z,1,June Park,2026-05-01T00:00:00Z,Can the T2 pump flag a dosage outside the usual range?
+T-9002,Pharmacy dispensing question,2026-05-01T00:00:00Z,2,Dana Whitlock,2026-05-02T00:00:00Z,Yes — the dosage-range alert is on by default; happy to confirm your config.

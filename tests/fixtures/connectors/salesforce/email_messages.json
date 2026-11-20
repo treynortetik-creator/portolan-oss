@@ -1,0 +1,17 @@
+{
+  "totalSize": 1,
+  "done": true,
+  "records": [
+    {
+      "attributes": {"type": "EmailMessage", "url": "/services/data/v61.0/sobjects/EmailMessage/02s1x000000EmlAB"},
+      "Id": "02s1x000000EmlAB",
+      "Subject": "Introduction, and a delivery issue",
+      "TextBody": "Hi Sam,\n\nI'm taking over from Tom here at Cobalt Ridge as Materials Manager. Our Tidewater T2 delivery that was due Wednesday didn't show up until three days late.\n\nAisha Bell",
+      "FromAddress": "abell@cobaltridgemed.org",
+      "ToAddress": "s.okafor@halvardmedical.com",
+      "MessageDate": "2026-08-07T16:00:00.000+0000",
+      "RelatedToId": "0011x000003CoblRg",
+      "LastModifiedDate": "2026-08-07T16:00:05.000+0000"
+    }
+  ]
+}

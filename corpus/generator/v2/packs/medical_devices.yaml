@@ -1,0 +1,602 @@
+# Medical devices vertical pack -- WP1's one reference pack
+# (`01-spec/world-generator-v2-2026-09-22.md` section 4). Validates against
+# `corpus/generator/v2/packs/schema.py::VerticalPack`. This is the vertical
+# v1 (`corpus/generator/worlds.py`) already covers (infusion pumps), kept
+# as the reference so WP2's other seven packs have a working example to
+# copy the shape of.
+
+id: medical_devices
+name: Medical devices
+vendor_what: infusion pumps, monitoring hardware and integration modules sold to hospitals and health systems
+
+products:
+  - kind: infusion_pump_family
+    name_template: "{line}"
+    tiers: []
+    known_issue_pool:
+      - "occasional false occlusion alarms under low-flow rates"
+      - "battery runtime shorter than spec on units over 18 months old"
+  - kind: infusion_pump_unit
+    name_template: "{line} {tier}"
+    tiers: ["T2", "T3"]
+    known_issue_pool:
+      - "firmware 4.x reboot loop under a specific alarm-silence sequence"
+      - "touchscreen drift after repeated autoclave cycles"
+  - kind: ehr_bridge_module
+    name_template: "{line} Link"
+    tiers: []
+    known_issue_pool:
+      - "intermittent dropped updates when the EHR is mid-maintenance window"
+  - kind: service_contract
+    name_template: "{line} Care"
+    tiers: []
+    known_issue_pool: []
+
+roles:
+  - title: Director of Nursing
+    seniority: director
+    is_champion_candidate: true
+  - title: Director of Clinical Engineering
+    seniority: director
+    is_champion_candidate: true
+  - title: Biomed Engineering Lead
+    seniority: staff
+    is_champion_candidate: true
+  - title: VP Supply Chain
+    seniority: vp
+    is_champion_candidate: false
+  - title: CFO
+    seniority: c_suite
+    is_champion_candidate: false
+  - title: Materials Manager
+    seniority: manager
+    is_champion_candidate: false
+  - title: ICU Nurse Manager
+    seniority: manager
+    is_champion_candidate: true
+  - title: Practice Administrator
+    seniority: manager
+    is_champion_candidate: false
+
+event_templates:
+  - event_type: go_live
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{product} is scheduled for go-live at {account} on {date}."
+        - "{person} from {account} reported that {product} has been fully operational for {days} days."
+        - "The {vendor} team is preparing {amount} new {product} devices for deployment with {account} by {date}."
+        - "{account} has on {date} completed training for {amount} of its staff on {product} usage."
+        - "Integration of {product} within {account} was confirmed to be complete as of {date}."
+      complaint:
+        - "Go-live of {product} at {account} was delayed by {days} days due to setup issues."
+        - "{person} reported that {product} failed to connect to their EHR system on {date}."
+        - "Support at {vendor} has been notified by {account} about a misconfigured {product} unit."
+        - "Several {product} devices failed to initialize properly at {account} on {date}."
+        - "{person} at {account} noted inconsistent drip rates reported in {product} logs as of {date}."
+        - "A lack of documentation caused implementation challenges for {product} during {account}'s go-live on {date}."
+  - event_type: release
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{product} was released at {account} on {date} with a planned rollout over {days} days."
+        - "A software update to {product} was pushed to {account} on {date} affecting {amount} users."
+        - "{person} from {vendor} visited {account} to support the {product} release and address live training needs."
+        - "Release validation checks for {product} at {account} began on {date} and are concluded in {days} days."
+        - "{account} has confirmed the successful release of {product} to {amount} units across the facility."
+      praise:
+        - "{person} at {account} praised the speed of the {product} release on {date}."
+        - "The {vendor} team was commended for timely delivery of the {product} update to {account} on {date}."
+        - "{account} has reported that {product} integration on {date} exceeded expectations in performance."
+        - "The {product} launch at {account} on {date} was smooth and met all deployment milestones."
+        - "Positive feedback from {account} highlighted how the {product} release simplified their care workflows by {date}."
+        - "{person} from {vendor} received appreciation from {account} for supporting the {product} release on {date}."
+        - "{product} has been widely adopted at {account} since the release on {date}, with no major issues."
+        - "A staff training session on {product} at {account} completed on {date} received enthusiastic feedback."
+        - "The {vendor} tech team was lauded for solving {product} kinks quickly during the release at {account}."
+  - event_type: incident
+    weight: 1.6
+    claim_templates:
+      complaint:
+        - "On {date}, {person} at {account} observed a {product} malfunction leading to {days} downtime."
+        - "{product} at {account} generated multiple errors on {date}, including communication failures."
+        - "The {vendor} team was summoned when {product} at {account} failed to align with the EHR system on {date}."
+        - "{account} experienced an unexpected {product} shutdown affecting {amount} patients during {days} days."
+        - "A user at {account} triggered an alert for {product} overuse on {date}, impacting treatment accuracy."
+        - "Data sync with {product} failed for {days} days at {account}, beginning on {date}."
+        - "The {vendor} support team is investigating a complaint from {account} regarding {product} instability as of {date}."
+      risk:
+        - "The recent {product} incident at {account} has raised concerns about device reliability."
+        - "Extended {days} downtime with {product} at {account} threatens our SLA obligations."
+        - "Unaddressed {product} issues at {account} may delay future renewals and maintenance."
+        - "If the {product} problem at {account} recurs, there's a high risk of contract termination."
+  - event_type: escalation
+    weight: 1.2
+    claim_templates:
+      risk:
+        - "The {days}-day duration of the {product} issue escalation may impact our service reputation at {account}."
+        - "{account} is considering legal action if {product} reliability is not resolved by {date}."
+        - "An ongoing issue with {product} at {account} has prompted internal discussions about account risk."
+        - "The unresolved complaint at {account} for {product} has created reputational risk within the clinical team."
+      complaint:
+        - "An issue with {product} reported by {account} on {date} has now been escalated for urgent resolution."
+        - "On {date}, {person} from {account} requested escalation of their recurring {product} downtime issue."
+        - "The {vendor} support team failed to resolve the {product} issue at {account}, leading to {days} of disruption."
+        - "Multiple reports from {account} about {product} system lockups have been escalated to engineering."
+        - "The {product} problem at {account} has been open for {days} days and is now under escalation review."
+  - event_type: qbr
+    weight: 1.4
+    claim_templates:
+      usage:
+        - "In the QBR on {date}, {person} confirmed ongoing use of {product} in {amount} daily procedures."
+        - "{product} has been used effectively at {account} for {days} consecutive days since deployment."
+        - "Usage reporting for {product} at {account} during the QBR on {date} showed high adoption levels."
+        - "The team at {account} updated {vendor} on how {product} has streamlined workflows over the past {days} days."
+        - "During the QBR on {date}, {account} shared that {amount} staff now routinely use {product} without incident."
+      praise:
+        - "During the QBR on {date}, {account} praised the {product} team at {vendor} for exceptional support."
+        - "{person} from {account} highlighted how {product} has improved patient outcomes since its deployment on {date}."
+        - "The {account} leadership team noted significant operational efficiency from {product} in the QBR on {date}."
+        - "In the recent QBR with {vendor}, {account} commended {product} for reducing manual data entry by {amount}."
+        - "The QBR on {date} featured a glowing endorsement of {product} from {person} at {account}."
+        - "{person} from {vendor} was recognized at {account}'s QBR on {date} for resolving {product} issues within {days} days."
+        - "{product} has maintained its performance according to {account}'s latest QBR feedback on {date}."
+        - "Positive trends in {product} usage at {account} were flagged in the QBR on {date}."
+        - "In the QBR on {date}, {person} from {account} confirmed that {product} is meeting all clinical KPIs."
+      question:
+        - "{person} from {account} asked during the QBR on {date} how {vendor} monitors {product} usage performance across {amount} devices."
+        - "A staff member from {account} inquired about {vendor}'s roadmap for {product} enhancements during the {date} meeting."
+        - "At the QBR on {date}, {person} asked when the next major {product} update is scheduled for release."
+        - "{person} from {account} requested clarification on how {vendor} tracks {days} of downtime for {product} in QBR discussions."
+        - "During the QBR on {date}, {person} asked whether {vendor} supports automated case creation during {product} outages."
+        - "The QBR on {date} included a question from {person} about how {vendor} ensures data integrity for {product} users."
+        - "{person} at {account} asked if {vendor} offers API integration for {product} with third-party systems during their QBR on {date}."
+        - "A rep from {account} inquired how {product} maintenance windows are scheduled during the QBR on {date}."
+        - "In the QBR on {date}, {person} asked about the role of {vendor} in updating {product} as EHR systems evolve."
+        - "{person} from {account} posed a question at the QBR on {date} regarding {vendor}\u2019s support of {product} for rural facilities."
+        - "{person} inquired during the QBR on {date} how {vendor} plans to scale {product} for {account} as usage increases by {amount}."
+        - "The QBR on {date} featured a question from {person} asking about {product}\u2019s compatibility with new clinical workflows."
+        - "{person} asked in the QBR on {date} if {vendor} had metrics for how {product} is performing in {account}'s operating rooms."
+        - "During the QBR on {date}, {person} asked about the recent delays in {product} feature rollouts."
+        - "{person} inquired in the QBR on {date} whether {vendor} had tested {product} with the latest EHR updates from {account}."
+        - "In the QBR on {date}, {person} asked how {vendor} can help {account} expand {product} use beyond the current {amount} units."
+        - "{person} asked during the QBR on {date} if {vendor} could provide data showing how {product} reduces clinician workload."
+        - "A question from {person} during the QBR on {date} highlighted the need for {product} training for {amount} new nurses."
+  - event_type: renewal_step
+    weight: 1.0
+    claim_templates:
+      decision:
+        - "{account} has initiated the renewal process for {product} with a decision expected by {date}."
+        - "In the renewal meeting on {date}, {person} from {account} confirmed they are choosing to extend their {product} contract."
+        - "{account} has decided to include {days} of on-site {vendor} support in the next {product} renewal."
+        - "The clinical leadership at {account} voted in favor of {product} extension following the QBR on {date}."
+        - "{person} at {account} informed {vendor} of a final decision to renew {product} for {amount} additional units."
+      pricing:
+        - "{person} at {account} is evaluating the pricing model for {product} during their renewal process on {date}."
+        - "Renewal discussions for {product} at {account} on {date} included a detailed analysis of {amount} pricing tiers."
+        - "{vendor} proposed a new pricing structure for {product} that {account} is considering for a renewal decision on {date}."
+        - "The pricing options for {product} were finalized at {account} on {date}, with {amount} set as the new contract value."
+        - "{person} highlighted the importance of matching {amount} in savings during {account}\u2019s renewal pricing review on {date}."
+        - "{account} requested revised pricing for {product} to be released before the renewal date of {date}."
+        - "An invoice review for {product} at {account} on {date} noted {amount} as the expected renewal cost."
+        - "Pricing negotiations for {product} at {account} are expected to last {days} days before finalization on {date}."
+        - "During the renewal on {date}, {person} asked whether maintenance pricing for {product} has changed in the last {days}."
+  - event_type: price_negotiation
+    weight: 0.9
+    claim_templates:
+      pricing:
+        - "{person} at {account} is seeking a {amount} price reduction for {product} during their negotiation on {date}."
+        - "{vendor} updated the {product} price for {account} on {date}, which is now under formal negotiation."
+        - "The current {product} price at {account} is locked for {days} more days, but negotiations are expected on {date}."
+        - "In response to {account}'s price concerns, {vendor} has proposed a new tiered model for {product} on {date}."
+        - "The {product} price negotiation at {account} on {date} did not reach agreement, and a revised offer is pending."
+        - "{person} requested a breakdown of {product} costs for {account} to support their price negotiation due {days} after {date}."
+        - "{account} is using the {product} service contract as a lever to renegotiate the product bundle pricing by {date}."
+        - "During the price negotiation on {date}, {account} compared the {vendor} {product} rate to their current budget of {amount}."
+        - "A warm-up offer was extended on {date} for {product} usage at {account}, but price is still up for discussion."
+      request:
+        - "{person} from {account} requested a discounted price for the {product} hardware beyond the {amount} already negotiated."
+        - "During the QBR on {date}, {account} asked {vendor} to extend the {product} trial period by {days} to allow better pricing review."
+        - "{person} at {account} has requested a formal budget projection for scaled {product} pricing by {date}."
+        - "The VP of Supply Chain at {account} requested a tailored pricing model for {product} based on deployment {days} and {amount} devices."
+        - "{account} asked {vendor} to clarify {product} pricing tiers and provide a comparison of bundled vs separate contracts during the QBR on {date}."
+        - "The nursing team at {account} submitted a request for more competitive pricing for {product} on {date}."
+        - "{person} requested that {vendor} adjust {product} pricing for upcoming expansion at {account} by {date}."
+        - "In the latest call, {person} from {account} asked {vendor} to launch a trial pricing plan for {product} on {date}."
+        - "{vendor} was asked by {person} at {account} to provide a discount proposal for {product} within {days} after {date}."
+        - "The team at {account} requested a custom evaluation of {product} pricing before finalizing any agreement by {date}."
+        - "{person} requested a breakdown of {vendor}\u2019s per-unit {product} cost and fixed monthly charges for {account} on {date}."
+        - "To facilitate budgeting, {account} asked {vendor} to provide a usage-based {product} pricing model by {date}."
+        - "{person} at {account} asked the {product} team to include a 10% volume discount in the next pricing proposal for {days} more units."
+        - "The Clinical Engineering Lead at {account} requested a revised pricing proposal for {product} after encountering three escalations."
+        - "During the {date} negotiation, {person} from {account} asked {vendor} for a 5-year pricing guarantee for {product} volume of at least {amount}."
+        - "{account} requested that {vendor} apply the same {product} pricing for their regional clinical network, effective {date}."
+        - "To justify ROI, {person} from {account} asked for a three-year cost projection for {product} at the current {amount} per unit rate."
+        - "After implementation delays, {person} from {account} asked {vendor} to provide a one-time price adjustment for {product} use on {date}."
+  - event_type: competitive_eval
+    weight: 0.8
+    claim_templates:
+      competitor_mention:
+        - "{account} is evaluating {competitor}\u2019s {product} as a potential replacement for their current system."
+        - "The {competitor} team has already visited {account} three times in the past {days} to pitch their product."
+        - "{person} mentioned {competitor} is offering a more robust integration with their EHR than {vendor}'s {product} during an internal review."
+        - "In a competitive evaluation last week, {person} at {account} noted {competitor}\u2019s faster sync times for {product}."
+        - "{person} from {account} has invited {competitor} to submit a quote for their proposed {product} integration."
+        - "The clinical engineering team at {account} is benchmarking {competitor}\u2019s {product} against {vendor} metrics for {days} days."
+        - "{competitor} has been shortlisted by {account} in their {product} comparison report due to reported {amount} integration advantages."
+        - "During a recent evaluation, {person} at {account} raised concerns about {vendor}\u2019s {product} lagging behind {competitor} in accuracy metrics."
+        - "{person} at {account} spoke with the {competitor} rep to understand how their {product} differs from ours."
+        - "In competitive testing, {account} said {competitor}'s {product} offered better fault tolerance and response times."
+        - "A recent presentation to {account} highlighted how {competitor}\u2019s {product} may better suit their high-volume {days}-hour workflows."
+        - "The {vendor} rep was informed by {person} that {competitor} is now being considered as a {product} partner for {account}."
+        - "{competitor} is under formal consideration at {account} for a pilot that would require replacing {days} of {vendor}\u2019s {product} usage."
+        - "According to internal notes, {person} at {account} is pushing for {competitor}\u2019s {product} in the upcoming evaluation round."
+        - "{person} has shared an internal report showing {competitor} outperforming {vendor} in certain {product} use cases."
+        - "In their competitive matrix, {account} listed {competitor}\u2019s {product} as the top performer for integrated alerts and alarms."
+        - "{competitor} is scheduled to present their {product} to {account} on {date}, after reports of poor {vendor} performance."
+        - "{account} is considering a full infrastructure switch to {competitor}\u2019s {product}, citing better scalability for {days}-day operations."
+      risk:
+        - "{competitor} is being considered by {account} for {product} replacement due to ongoing issues."
+        - "The clinical engineering team at {account} mentioned evaluating {competitor} in relation to {product} performance."
+        - "During an internal review, {account} expressed interest in {competitor} despite active support from {vendor}."
+        - "A recent report suggests {account} is re-evaluating {vendor} in favor of {competitor} after issues with {product}."
+        - "Rumors within {account} suggest {competitor} is being invited to a competitive evaluation due to {product} concerns."
+  - event_type: champion_departure
+    weight: 0.7
+    claim_templates:
+      contact_change:
+        - "{person}, the main advocate for {product} at {account}, left the organization on {date}."
+        - "The champion for {vendor} at {account}, {person}, has been reassigned internally, with no replacement as of {date}."
+        - "A change in {person}'s role at {account} has shifted responsibility for {product} management since {date}."
+        - "Without {person} at {account}, we've noted an internal restructure in the {product} adoption team over {days} days."
+        - "{account} informed {vendor} on {date} that {person} is stepping down as the point of contact for {product}."
+        - "Departure of {person} from {account} has stalled progress on {product} training within the past {days} days."
+        - "{person} will no longer handle {product} issues at {account}, effective {date}, and we are waiting for contact updates."
+        - "The Biomed Engineering Lead at {account}, {person}, left last week, causing a delay in {product} expansion."
+        - "A new contact at {account} has taken over {product}-related responsibilities just {days} days after {person} departed."
+        - "{person}, previously our main contact for {product} at {account}, has now moved to new clinical systems role after {date}."
+        - "{vendor} has been advised by {person} at {account} that they will no longer be the liaison for {product} decisions."
+        - "The departure of {person} on {date} has affected our communication with {account} regarding {product} implementation."
+        - "In the absence of {person}, we have not heard from {account} on the next steps for the {product} rollout."
+        - "The nursing director at {account}, {person}, has been restructured out of the {product} oversight role since {date}."
+        - "Contact updates needed after {person} at {account} left {vendor}\u2019s {product} project on {date}."
+        - "After {person} left {account}, we are relying on new contacts for {product} coordination, which has taken {days} days to establish."
+        - "The VP at {account}, {person}, has since transferred, and {vendor} is awaiting new {product} decision-makers."
+        - "A new Biomed Lead at {account} has taken over from {person}, with the transition occurring on {date}, affecting {days} of {product} timelines."
+      risk:
+        - "{person}, the primary advocate for {product} at {account}, left the role effective {date}."
+        - "Departure of the {vendor} champion on {date} could delay future {product} renewals."
+        - "A key proponent of {product} from {account} resigned after {days} of collaboration with {vendor}."
+        - "The loss of {person} from {account} is a risk to sustained adoption of {product} in their workflows."
+  - event_type: expansion
+    weight: 0.7
+    claim_templates:
+      decision:
+        - "An expansion in {product} usage at {account} is set for {date} to cover the next {amount} departments."
+        - "{vendor} has received a decision from {person} at {account} to expand {product} to {days} more workstations."
+        - "At {account}, {product} will be deployed to {amount} new units following a board decision on {date}."
+        - "{person} from {account} announced during the QBR on {date} that they plan to expand {product} use in {days} facilities."
+        - "A decision made by {person} at {account} on {date} confirmed purchase of {amount} additional {product} modules."
+      usage:
+        - "{account} is expanding its {product} deployment to {amount} additional units by {date}."
+        - "{vendor} is supplying {amount} new {product} devices to {account} to support expansion."
+        - "The {product} installation plan at {account} now includes {amount} new locations, effective {date}."
+        - "{account} requested {days} days to assess scalability before expanding {product} usage in-house."
+        - "Expansion of {product} use at {account} is expected to grow by {amount} additional modules over {days} days."
+  - event_type: commitment_made
+    weight: 1.1
+    claim_templates:
+      commitment:
+        - "In the latest meeting, {person} from {vendor} committed to providing {amount} additional {product} units to {account} by {date}."
+        - "{vendor} confirmed a commitment to resolve {product} issues at {account} within {days} days."
+        - "During the QBR on {date}, {vendor} promised to dispatch a {product}-specific support team to {account} within {days} days."
+        - "{person} from {vendor} provided a written commitment to deliver an API update for {product} at {account} by {date}."
+        - "{vendor} has made a commitment to {account} that their {product} team will ensure integration stability by {date}."
+  - event_type: commitment_due
+    weight: 1.0
+    claim_templates:
+      commitment:
+        - "A prior commitment to {account} on {date} for {product} maintenance is now due for fulfillment in {days} days."
+        - "Our obligation to {person} at {account} for {product} integration is overdue by {days} day as of {date}."
+        - "An internal report showed {vendor} is {days} days behind in meeting a commitment to {account} regarding {product} support."
+        - "The {vendor} team failed to deliver a commitment to {account} about {product} training on time by {date}."
+        - "On {date}, {account} reminded {vendor} that the commitment for {product} access needs to be executed within {days} days."
+        - "The commitment to {person} at {account} for {product} customization is now {days} past the agreed deadline."
+        - "A team from {vendor} has been reassigned to meet a pending commitment about {product} at {account} within {days} days."
+        - "The {vendor} rep confirmed the commitment to {account} on {date} but no action has been taken in the last {days} days."
+        - "A follow-up is needed on the commitment made to {account} by {vendor} for {product} enhancements after {days} days of inactivity."
+        - "{vendor} committed to {account} a parts replacement SLA for {product} by {date}, but delivery is {days} days delayed."
+        - "The commitment by {vendor} to complete a {product} system upgrade at {account} remains {days} days overdue as of {date}."
+        - "{vendor} agreed to perform a {product}-specific technical audit for {account} by {date}, now {days} days past due."
+        - "{account} expects {vendor} to confirm {product} compliance certification by {date}, with {days} days remaining in the deadline."
+      risk:
+        - "{vendor} is now overdue by {days} days for a promised feature on {product} at {account}."
+        - "A commitment made to {account} on {date} for {product} has yet to be fulfilled past {days} days."
+        - "An upcoming evaluation at {account} will focus on {days} days remaining to meet a {product} commitment due on {date}."
+        - "Failure to deliver on {product} by {date} may impact the renewal terms for {account}."
+  - event_type: decision
+    weight: 0.9
+    claim_templates:
+      decision:
+        - "A decision was made on {date} at {account} to proceed with the {product} migration."
+        - "{person} at {account} confirmed a decision to pause {product} deployment due to resource constraints."
+        - "{vendor} has been informed by {account} that a decision regarding {product} will be made by {date}."
+        - "The {product} adoption decision for {account} is pending final approval from {person}."
+  - event_type: policy_change
+    weight: 0.6
+    claim_templates:
+      other:
+        - "A new policy at {account} for {days}-hour device checks has been introduced following {vendor}\u2019s {product} support."
+        - "{vendor} was brought into a recent policy change at {account} to govern how {product} integration logs are shared with third parties."
+        - "On {date}, {account} implemented a policy affecting {days} of device readiness for {product} in nursing units."
+        - "{product} usage is now regulated by a new policy in place at {account} as of {date}, impacting internal workflows."
+        - "The {vendor} staff supported a recent policy implementation at {account} regarding {product} access during off-hours."
+        - "Due to a new {days}-day internal review policy, {product} configurations at {account} will be updated by {date}."
+        - "The Director of Clinical Engineering at {account} announced a policy revision for {product} deployment on {date}."
+        - "{vendor} was invited to a policy workshop at {account} to discuss {product} access and training protocols as of {date}."
+        - "A policy change at {account} on {date} requires quarterly audits of all {product} units."
+        - "The nursing team at {account} was briefed on a new {product} policy introduced to handle {days} of device downtime."
+        - "After the {date} incident, {account} adopted a stricter {product} use policy across their network of {days} days."
+        - "{vendor} is now required to follow updated policy guidelines from {account} concerning {product} data sharing."
+        - "A new policy at {account} limits {product} access to {days} hours post-deployment, effective {date}."
+        - "The regulatory team at {account} mandated a policy update for {product} tracking due to recent changes on {date}."
+        - "{account} will now require {days} pre-approval for any changes to their {product} configuration, as per a new policy on {date}."
+        - "In alignment with regional standards, {account} has instituted a new {product} policy by {date} that involves {amount} more checks."
+        - "{person} at {account} briefed the {vendor} team on the newly adopted {product} data policy on {date}, covering {days} of system activity."
+        - "Following the recent {product} release, {account} has revised their system integration policy to include stricter {days} of monitoring."
+      decision:
+        - "{account} updated their {product} access policy on {date} affecting {amount} staff roles."
+        - "On {date}, a new {amount} device limit was set for {product} at {account} based on a recent policy audit."
+        - "{person} from {account} informed {vendor} of a policy change that will impact {days} of training needs for {product}."
+        - "In response to new compliance standards, {account} implemented a {days}-day review cycle for {product} usage on {date}."
+
+arcs:
+  - id: rocky_go_live_v1
+    arc_type: rocky_go_live
+    weight: 1.2
+    steps:
+      - {event_type: go_live, day_offset: 0}
+      - {event_type: incident, day_offset: 14}
+      - {event_type: escalation, day_offset: 30}
+      - {event_type: commitment_made, day_offset: 35}
+      - {event_type: commitment_due, day_offset: 60}
+      - {event_type: decision, day_offset: 75}
+  - id: renewal_price_pushback_v1
+    arc_type: renewal_price_pushback
+    weight: 1.3
+    steps:
+      - {event_type: renewal_step, day_offset: 0}
+      - {event_type: price_negotiation, day_offset: 10}
+      - {event_type: price_negotiation, day_offset: 20}
+      - {event_type: decision, day_offset: 35}
+  - id: competitive_eval_save_or_churn_v1
+    arc_type: competitive_eval_save_or_churn
+    weight: 1.0
+    steps:
+      - {event_type: competitive_eval, day_offset: 0}
+      - {event_type: escalation, day_offset: 15}
+      - {event_type: commitment_made, day_offset: 20}
+      - {event_type: decision, day_offset: 40}
+  - id: champion_transition_v1
+    arc_type: champion_transition
+    weight: 1.0
+    steps:
+      - {event_type: champion_departure, day_offset: 0}
+      - {event_type: qbr, day_offset: 20}
+      - {event_type: decision, day_offset: 30}
+  - id: expansion_v1
+    arc_type: expansion
+    weight: 1.0
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: expansion, day_offset: 20}
+      - {event_type: commitment_made, day_offset: 25}
+      - {event_type: decision, day_offset: 40}
+  - id: incident_escalation_exec_v1
+    arc_type: incident_escalation_exec
+    weight: 1.1
+    steps:
+      - {event_type: incident, day_offset: 0}
+      - {event_type: incident, day_offset: 7}
+      - {event_type: escalation, day_offset: 14}
+      - {event_type: commitment_made, day_offset: 18}
+      - {event_type: commitment_due, day_offset: 40}
+  - id: quiet_steady_v1
+    arc_type: quiet_steady
+    weight: 2.2
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: release, day_offset: 30}
+      - {event_type: qbr, day_offset: 60}
+      - {event_type: policy_change, day_offset: 75}
+
+topic_tree:
+  - name: Product
+    children:
+      - name: Pump maintenance
+      - name: Onboarding
+      - name: Firmware updates
+  - name: Account
+    children:
+      - name: Billing
+      - name: Renewal
+      - name: Expansion
+  - name: Support
+    children:
+      - name: Incidents
+      - name: Training
+  - name: Competitive
+    children:
+      - name: Evaluations
+  - name: People
+    children:
+      - name: Contacts
+      - name: Champions
+
+# One shared generic directive list, aliased into every fact type: the
+# spec's own directive list is a phrasing-style vocabulary applied across
+# types, not type-specific content (section 4, "Phrasing").
+fact_directives:
+  complaint: &directives
+    - hedged
+    - numbers_spelled_out
+    - colloquial
+    - embedded_mid_sentence
+    - passive
+    - through_an_alias
+    - corrected_mid_sentence
+    - list_item
+    - terse
+    - rambling
+    - formal
+    - via_quoted_reply
+    - second_language_phrasing
+  request: *directives
+  praise: *directives
+  risk: *directives
+  competitor_mention: *directives
+  commitment: *directives
+  decision: *directives
+  contact_change: *directives
+  pricing: *directives
+  usage: *directives
+  question: *directives
+  other: *directives
+
+persona_bank:
+  - id: terse_clinical
+    speech_register: clinical
+    formality: neutral
+    typo_rate_range: [0.0, 0.01]
+    chat_style: short_fragments
+    signature_style: initials_only
+    hedging: false
+  - id: rambling_ops
+    speech_register: operations
+    formality: informal
+    typo_rate_range: [0.01, 0.03]
+    chat_style: long_threads
+    signature_style: full_name_title
+    hedging: true
+  - id: formal_executive
+    speech_register: executive
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+  - id: typo_prone_frontline
+    speech_register: clinical
+    formality: informal
+    typo_rate_range: [0.03, 0.06]
+    chat_style: emoji_light
+    signature_style: first_name_only
+    hedging: false
+  - id: emoji_chat_nurse
+    speech_register: clinical
+    formality: informal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: emoji_heavy
+    signature_style: first_name_only
+    hedging: false
+  - id: second_language_procurement
+    speech_register: procurement
+    formality: formal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: measured
+    signature_style: full_block
+    hedging: true
+    second_language_features: [article_drop, present_tense_for_future]
+  - id: formal_biomed
+    speech_register: clinical_engineering
+    formality: formal
+    typo_rate_range: [0.0, 0.01]
+    chat_style: precise
+    signature_style: full_name_title
+    hedging: false
+  - id: casual_it
+    speech_register: operations
+    formality: informal
+    typo_rate_range: [0.02, 0.04]
+    chat_style: short_fragments
+    signature_style: none
+    hedging: false
+  - id: hedging_materials_manager
+    speech_register: operations
+    formality: neutral
+    typo_rate_range: [0.0, 0.02]
+    chat_style: measured
+    signature_style: first_name_only
+    hedging: true
+  - id: direct_cfo
+    speech_register: executive
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+
+decoy_classes:
+  - id: hypothetical
+    near_type: risk
+    description: A hypothetical framed as if it already happened ("if a shipment ever ran late...").
+    example: "Our team had a demo with Meridian Dynamics last quarter where their smart pump system seemed to handle complex medication protocols seamlessly, but we haven't moved forward with a full deployment yet."
+  - id: negation
+    near_type: request
+    description: "A negation indicating no action is required without specifying context or implying any status"
+    example: "I don't think there's anything that needs to be done on our part for now."
+    forbidden_patterns: [competitor_evaluation]
+    text_source:
+      model: "qwen/qwen3-32b"
+      generated: "2026-09-23"
+      raw_response_sha256:
+        - "70b02a210f55ffce4d14723643ad20c28e2e8bf37c5438232ccfccaa750d90c1"
+  - id: hearsay_other_company
+    near_type: competitor_mention
+    description: Something said to have happened to a different, unnamed customer.
+    example: "Haven't seen the same level of integration speed as AuroraMed's clients reportedly did with their Orion 700 series at a Colorado health system last year, but our setup's been stable enough."
+  - id: generic_industry_talk
+    near_type: other
+    description: Industry chatter with no account-specific claim.
+    example: "Everyone in the space is looking at automated infusor systems because of the regulatory push for more reliable devices this year."
+  - id: rhetorical_question
+    near_type: question
+    description: A question asked for effect, not information, with no real open item.
+    example: "Do you really need a whole team to handle one infusion pump? That seems extreme."
+  - id: vendor_internal_speculation
+    near_type: risk
+    description: Vendor-side speculation about a customer, not a customer statement.
+    example: "I think St. Clare\u2019s probably went with MedFlow Solutions because they needed faster IV automation than our system could deliver at the time."
+  - id: resolved_issue_as_history
+    near_type: complaint
+    description: An already-resolved issue retold as past history, not a live complaint.
+    example: "We had some hiccups with our old EHR compatibility back in 2021, but switched to VitaPulse's integration modules and it's been smooth sailing since\u2014no look-backs for us."
+
+name_pool_refs:
+  account_suffixes_system: ["Health System", "Regional Health", "Health Network"]
+  account_suffixes_facility: ["Medical Center", "Community Hospital", "General Hospital"]
+  account_suffixes_standalone: ["Surgical Group", "Surgical Partners", "Health Partners"]
+  vendor_domain_tld: ".com"
+
+excluded_product_kinds: []
+
+# Coordinator review of 7f779a3, 2026-09-22: every claim template above and
+# every decoy_classes[].example was written by this open-weight model, curated
+# (filtered/deduped, dropped when invalid, never rephrased) by
+# scripts/data/v2_gen_pack_templates.py -- not Claude-written, since this text
+# reaches training data. raw_response_sha256 points at the exact, unedited
+# model responses under var/data/v2_packs/raw/ (gitignored, not committed).
+claim_templates_source:
+  model: "qwen/qwen3-32b"
+  generated: "2026-09-22"
+  raw_response_sha256:
+    - "2391d2c70d3645fe72db6019eb4aedd3a6e961e795b91a0feff10e27be1bf38e"
+    - "fad06c9e8cc72c635025e6c996ebd80ea9b741bd2eccbe0745270d265703ced2"
+    - "9b863f6f10c8a1ca6fb99172cc1587e0dc3e91006edc34e4f3cf777bbfa3e36c"
+    - "4b7d1322fe8e1e006b3dc01e69cf01611d0db0d1e826c4416a20d0d316b8fb8a"
+    - "e576ca43c23ab61b0384b4d8bac7e6ac023f74719e829b0ac0b96d7c99a9ef84"
+    - "a99bc197406d355d9d1de168d7bedf54a2782571b92b0cac8b15cb0f0dbe8c5b"
+    - "1f8731d262ed9113706b4654fab725bd5d353c9e3087c7bc4c2c38819be1da0b"
+    - "fdff873cf5933b3ebb465946d6696eb8d8aca4eee7e38fe849e967a8fa952175"
+    - "2cf250b8d8fbdc89eade4ede89b85694d5ab1baa9e3e2bf1ff9e3a1ec6c85ac4"
+    - "be2504b3e4bfd2dd1d1f353f246dbac48ec9969c593d115f747bf85fccb3b9eb"

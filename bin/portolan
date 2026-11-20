@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Run the portolan CLI from any directory: bin/portolan <command> [args] [--json]
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+exec uv run --quiet --project "$HERE" portolan "$@"

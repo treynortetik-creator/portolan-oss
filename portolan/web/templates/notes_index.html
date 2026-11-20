@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Notes — Portolan{% endblock %}
+{% block content %}
+<p class="eyebrow">Notes</p>
+<h1 style="margin-top:0;">All notes</h1>
+<p class="mono muted small">{{ total }} note{{ 's' if total != 1 else '' }}</p>
+{% if company_context_updated %}
+  <p class="mono muted small">
+    <a href="/notes/company-context">Company context</a> last updated: {{ company_context_updated|date }}
+  </p>
+{% endif %}
+
+<form method="get" action="/notes" style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+  <input type="text" name="q" value="{{ q }}" placeholder="filter by title or slug…" style="flex:1 1 220px;">
+  <select name="type" style="width:auto;">
+    <option value="">All types</option>
+    {% for t in note_types %}
+      <option value="{{ t }}" {% if t == type %}selected{% endif %}>{{ t }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit" class="btn primary">Filter</button>
+</form>
+
+{% if not rows %}
+  <div class="card empty">
+    <p class="eyebrow">Nothing recorded</p>
+    <p>No notes match this filter.</p>
+    <a class="btn" href="/notes">Clear filters</a>
+  </div>
+{% else %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Notes index">
+  <table>
+    <tr><th>Title</th><th>Type</th><th>Status</th><th>Updated</th></tr>
+    {% for row in rows %}
+      <tr>
+        <td data-label="Title"><a href="/notes/{{ row.slug }}">{{ row.title }}</a></td>
+        <td data-label="Type"><span class="badge type-{{ row.type }}">{{ row.type }}</span></td>
+        <td data-label="Status"><span class="badge">{{ row.status }}</span></td>
+        <td class="updated" data-label="Updated">{{ row.updated|date }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  </div>
+
+  {% if total_pages > 1 %}
+  <p class="btn-row" style="margin-top:16px;">
+    {% if page > 1 %}
+      <a class="btn" href="/notes?page={{ page - 1 }}{% if type %}&type={{ type }}{% endif %}{% if q %}&q={{ q|urlencode }}{% endif %}">&larr; Previous</a>
+    {% endif %}
+    <span class="mono muted small">page {{ page }} of {{ total_pages }}</span>
+    {% if page < total_pages %}
+      <a class="btn" href="/notes?page={{ page + 1 }}{% if type %}&type={{ type }}{% endif %}{% if q %}&q={{ q|urlencode }}{% endif %}">Next &rarr;</a>
+    {% endif %}
+  </p>
+  {% endif %}
+{% endif %}
+{% endblock %}

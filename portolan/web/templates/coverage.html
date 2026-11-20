@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Coverage — Portolan{% endblock %}
+{% block content %}
+<p class="eyebrow">Coverage</p>
+<h1 style="margin-top:0;">Ingest coverage, last {{ days }} days</h1>
+<p class="muted">Source dates {{ since }} to {{ through }}. Every source is seen, filtered, extracted, partial or failed —
+nothing is silently dropped.</p>
+
+<div class="card">
+  <p class="eyebrow">Ledger</p>
+  {% if not ledger %}
+    <div class="empty">
+      {% if spyglass_svg %}
+      <div class="empty-mascot" aria-hidden="true">{{ spyglass_svg|safe }}</div>
+      {% endif %}
+      <p>No coverage recorded yet.</p>
+    </div>
+  {% else %}
+  {# UX eval 2026-09-12, punch item 5: this table overflowed the page at
+     400px (measured scrollWidth 664 against a 400px viewport). Wrapped in
+     the design system's `.table-scroll` (a horizontal scroll region at
+     any width) and, below 720px, CSS reflows the same markup into a
+     stacked card per row via each `<td>`'s `data-label` -- no column is
+     ever silently dropped, on any screen. #}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Ingest ledger">
+  <table>
+    <tr><th>Day</th><th>Connector</th><th>Seen</th><th>Extracted</th><th>Partial</th><th>Failed</th><th>Sampled</th><th>Filtered</th></tr>
+    {% for row in ledger %}
+      <tr>
+        <td class="mono" data-label="Day">{{ row.day }}</td>
+        <td data-label="Connector">{{ row.connector }}</td>
+        <td data-label="Seen">{{ row.seen }}</td>
+        <td data-label="Extracted">{{ row.extracted }}</td>
+        <td data-label="Partial">{{ row.partial }}</td>
+        <td data-label="Failed">{{ row.failed }}</td>
+        <td data-label="Sampled">{{ row.sampled }}</td>
+        <td class="muted" data-label="Filtered">
+          {% for reason, count in row.filtered.items() %}{{ reason }}: {{ count }}{% if not loop.last %}, {% endif %}{% endfor %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% endif %}
+</div>
+
+<div class="card">
+  <p class="eyebrow">Not ingested (failed / partial)</p>
+  {% if not not_ingested %}
+    <div class="empty"><p>Nothing failed or partial right now.</p></div>
+  {% else %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Sources not fully ingested">
+  <table>
+    <tr><th>Source</th><th>Type</th><th>Date</th><th>Status</th><th>Attempts</th><th>Last error</th></tr>
+    {% for s in not_ingested %}
+      <tr>
+        <td class="mono" data-label="Source"><a href="/sources/{{ s.slug }}">{{ s.slug }}</a></td>
+        <td data-label="Type">{{ s.source_type }}</td>
+        <td data-label="Date">{{ s.source_date or '' }}</td>
+        <td data-label="Status"><span class="badge">{{ s.extraction_status }}</span></td>
+        <td data-label="Attempts">{{ s.attempts }}</td>
+        <td class="muted" data-label="Last error">{{ s.last_error or '' }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% endif %}
+</div>
+
+<div class="card">
+  <p class="eyebrow">Dead letter (pending redrive)</p>
+  {% if not dead_letter %}
+    <div class="empty"><p>Nothing pending redrive.</p></div>
+  {% else %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Dead letter queue">
+  <table>
+    <tr><th>Source</th><th>Stage</th><th>Attempt</th><th>Error</th><th>Created</th></tr>
+    {% for d in dead_letter %}
+      <tr>
+        <td class="mono" data-label="Source">{{ d.source_id }}</td>
+        <td data-label="Stage">{{ d.stage }}</td>
+        <td data-label="Attempt">{{ d.attempt }}</td>
+        <td class="muted" data-label="Error">{{ d.error }}</td>
+        <td class="updated" data-label="Created">{{ d.created|date('%Y-%m-%d %H:%M') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

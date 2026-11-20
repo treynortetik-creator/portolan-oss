@@ -1,0 +1,581 @@
+[00:00:00] Sam Okafor: Hey Marcus, good to see you. Can you hear me all right?
+
+[00:00:04] Marcus Diallo: I can, yes. You’re coming through clearly. How are you?
+
+[00:00:08] Sam Okafor: Doing well, thanks. Monday morning, so I’m still negotiating with my coffee, but otherwise good.
+
+[00:00:14] Marcus Diallo: I know the feeling. I had one before this and then decided it needed a second opinion.
+
+[00:00:19] Sam Okafor: That’s a responsible approach. Thanks for making the time. I know this is our routine quarterly check-in, so I thought we could keep it fairly relaxed, run through how things are going on your side, and then leave room for anything you want to raise.
+
+[00:00:32] Marcus Diallo: Sounds good. Nothing dramatic on my end. We can go through the usual list.
+
+[00:00:36] Sam Okafor: Perfect. Before we get into the account, how’s the new lab space settling in?
+
+[00:00:41] Marcus Diallo: Pretty well. We’re still finding homes for things. You know how it is: somebody labels a cabinet, and two weeks later the cabinet has become a completely different cabinet.
+
+[00:00:48] Sam Okafor: Absolutely. The label says cables, and suddenly it’s full of adapters, old notebooks, and one mysterious screwdriver nobody claims.
+
+[00:00:54] Marcus Diallo: We have several mysterious screwdrivers. They seem to reproduce.
+
+[00:00:57] Sam Okafor: That may be a facilities issue rather than an account issue.
+
+[00:01:00] Marcus Diallo: Probably. The team likes the space, though. More room around the benches, better separation between incoming units and the things waiting for evaluation, and fewer people trying to work around the same cart.
+
+[00:01:10] Sam Okafor: That sounds like a win. Has the move changed how your group handles the regular maintenance work?
+
+[00:01:14] Marcus Diallo: Not really. The process is basically the same. We’re just less cramped while doing it.
+
+[00:01:19] Sam Okafor: Good. I always like hearing that the practical side has caught up with the planning side.
+
+[00:01:23] Marcus Diallo: The planning side is still optimistic, but yes, it’s getting there.
+
+[00:01:27] Sam Okafor: Let me pull up my notes. I have the usual categories here: usage, service experience, upcoming planning, and then any feedback for our team. I’m not seeing anything that looks urgent.
+
+[00:01:37] Marcus Diallo: That matches my view. We’ve had a steady quarter.
+
+[00:01:41] Sam Okafor: When you say steady, is that mostly volume staying consistent, or has the work shifted in type?
+
+[00:01:45] Marcus Diallo: A little of both. The volume has been manageable, and the mix has moved around depending on which internal projects were active. But nothing that changed our overall approach.
+
+[00:01:53] Sam Okafor: Understood. And are the engineers finding the day-to-day tools straightforward?
+
+[00:01:58] Marcus Diallo: Yes. There are always individual preferences, of course. One person wants every view expanded, another wants the screen as empty as possible. That’s normal. But there isn’t a broad usability concern.
+
+[00:02:06] Sam Okafor: I can relate. I once watched two people spend ten minutes debating whether a panel was “hidden” or merely “not currently invited.”
+
+[00:02:12] Marcus Diallo: That sounds familiar.
+
+[00:02:15] Sam Okafor: How has onboarding been for anyone new since our last conversation?
+
+[00:02:19] Marcus Diallo: We had a couple of people rotate into the group. They picked things up without much trouble. The experienced engineers did the usual informal training, and the documentation filled in the gaps.
+
+[00:02:26] Sam Okafor: Good. Does the documentation still line up with what they see?
+
+[00:02:29] Marcus Diallo: As far as I’ve heard, yes. There may be small wording differences after routine updates, but no one has been blocked by it.
+
+[00:02:35] Sam Okafor: That’s helpful. I’ll make a note to keep the documentation review on our normal cadence rather than treating it as something that needs special attention.
+
+[00:02:41] Marcus Diallo: That’s fine.
+
+[00:02:43] Sam Okafor: I also wanted to check the support experience. When your team reaches out, are response times and handoffs working as expected?
+
+[00:02:48] Marcus Diallo: Yes. We haven’t had to escalate anything. Questions have been answered through the regular channel, and the people on our side know where to go.
+
+[00:02:55] Sam Okafor: That’s good to hear. I know a lot of the value in a routine relationship is that people don’t have to wonder which door to knock on.
+
+[00:03:00] Marcus Diallo: Exactly. If someone has to stop and figure out the route before asking the question, the question usually gets delayed.
+
+[00:03:04] Sam Okafor: Right. And from our side, a delayed question often turns into a larger question simply because it has had time to collect baggage.
+
+[00:03:09] Marcus Diallo: That’s a good description.
+
+[00:03:11] Sam Okafor: Are there any recurring questions that would be useful for us to turn into a short reference note?
+
+[00:03:16] Marcus Diallo: Not at the moment. We have the usual questions when someone new joins, but they’re covered by the existing materials and the internal walkthrough.
+
+[00:03:22] Sam Okafor: Okay. No need to manufacture a guide just to have another guide.
+
+[00:03:25] Marcus Diallo: Please don’t. We already have enough documents whose main purpose is to explain where the other documents are.
+
+[00:03:29] Sam Okafor: I’ve seen that ecosystem. A map of the map.
+
+[00:03:33] Marcus Diallo: Exactly.
+
+[00:03:35] Sam Okafor: Let’s talk a little about planning. Looking ahead to the next quarter, do you expect the same general rhythm?
+
+[00:03:40] Marcus Diallo: Broadly, yes. There may be some scheduling variation around internal programs, but I don’t expect a major change in how we use the service.
+
+[00:03:46] Sam Okafor: Does your team have any busy periods we should be aware of?
+
+[00:03:50] Marcus Diallo: Nothing unusual. We have normal peaks around project milestones, but they’re predictable and we’ve handled them before.
+
+[00:03:55] Sam Okafor: Good. If that changes, just give me a little notice and we can look at the calendar together.
+
+[00:03:59] Marcus Diallo: Will do.
+
+[00:04:01] Sam Okafor: What about staffing? Any major changes expected in the group?
+
+[00:04:05] Marcus Diallo: Not that I’m aware of. There are always conversations going on, but I’m not planning around a significant change right now.
+
+[00:04:09] Sam Okafor: Understood. And from an engineering leadership perspective, are there any internal priorities that might affect the relationship?
+
+[00:04:15] Marcus Diallo: The priorities are fairly ordinary: keep the work moving, keep records clean, and make sure people have enough time to do things properly. Nothing that requires a change from your side.
+
+[00:04:23] Sam Okafor: That’s a sensible list. Records clean is often the least glamorous and most useful part.
+
+[00:04:28] Marcus Diallo: Yes. Nobody celebrates a tidy record until they need it.
+
+[00:04:31] Sam Okafor: Exactly. Then suddenly it’s the most important record in the building.
+
+[00:04:34] Marcus Diallo: And everybody remembers that they personally created it.
+
+[00:04:37] Sam Okafor: A remarkable pattern.
+
+[00:04:40] Marcus Diallo: Very consistent.
+
+[00:04:42] Sam Okafor: On reporting, are the regular summaries giving you what you need?
+
+[00:04:46] Marcus Diallo: They’re sufficient. We use them for our internal review, and the level of detail is appropriate. I don’t need a longer report just because a longer report is possible.
+
+[00:04:53] Sam Okafor: I appreciate that. There’s a temptation to equate page count with value.
+
+[00:04:57] Marcus Diallo: Or to add another chart because there’s a blank spot in the meeting deck.
+
+[00:05:00] Sam Okafor: The lonely blank spot.
+
+[00:05:02] Marcus Diallo: It needs something. Anything.
+
+[00:05:04] Sam Okafor: A tasteful line.
+
+[00:05:06] Marcus Diallo: Maybe a small box with “no further comments.”
+
+[00:05:08] Sam Okafor: That would be honest.
+
+[00:05:10] Marcus Diallo: Which is sometimes considered risky in a presentation.
+
+[00:05:14] Sam Okafor: Fair point. Do you have any preferences for how we structure these check-ins going forward?
+
+[00:05:19] Marcus Diallo: The current format works. A short agenda, time for questions, and no attempt to turn a routine conversation into a strategic summit.
+
+[00:05:26] Sam Okafor: That’s music to my ears. I like strategic summits, but not when everyone expected a twenty-minute call.
+
+[00:05:31] Marcus Diallo: Exactly. The calendar invitation says one thing, and then the meeting discovers a new identity.
+
+[00:05:35] Sam Okafor: “Quarterly check-in” becomes “cross-functional transformation forum.”
+
+[00:05:38] Marcus Diallo: With a pre-read that arrives during the meeting.
+
+[00:05:41] Sam Okafor: I’m glad we agree to avoid that.
+
+[00:05:43] Marcus Diallo: Strongly.
+
+[00:05:46] Sam Okafor: Let me ask about communication generally. Is the amount of contact about right?
+
+[00:05:49] Marcus Diallo: Yes. We don’t need constant outreach, and we do appreciate knowing someone is available when there’s a question. The current balance is good.
+
+[00:05:57] Sam Okafor: That’s useful. I never want to disappear, but I also don’t want to become the person who sends a “just checking in” message every other day.
+
+[00:06:02] Marcus Diallo: A reasonable fear.
+
+[00:06:04] Sam Okafor: My inbox has enough of those already.
+
+[00:06:06] Marcus Diallo: Most inboxes do.
+
+[00:06:08] Sam Okafor: Sometimes the message is just “following up on my previous follow-up.”
+
+[00:06:11] Marcus Diallo: That one has layers.
+
+[00:06:14] Sam Okafor: A geological email.
+
+[00:06:16] Marcus Diallo: You have to excavate the original question.
+
+[00:06:18] Sam Okafor: And then discover it was answered three messages earlier.
+
+[00:06:20] Marcus Diallo: Usually by somebody who has since left the company.
+
+[00:06:23] Sam Okafor: That’s the full cycle.
+
+[00:06:25] Marcus Diallo: It is.
+
+[00:06:27] Sam Okafor: On your side, who else should be included in these conversations?
+
+[00:06:31] Marcus Diallo: The current group is fine. If something specific comes up, I can bring in the relevant person. I don’t think we need a larger standing list.
+
+[00:06:38] Sam Okafor: Agreed. Smaller calls tend to leave more room for actual discussion.
+
+[00:06:41] Marcus Diallo: And fewer opportunities for someone to say, “I thought another team owned that.”
+
+[00:06:44] Sam Okafor: The sentence that can end a meeting instantly.
+
+[00:06:46] Marcus Diallo: Or start a very different meeting.
+
+[00:06:49] Sam Okafor: Right. I’m looking at the calendar now, and we have the next check-in penciled in for the beginning of the following quarter. Does that timing still suit you?
+
+[00:06:57] Marcus Diallo: Yes, that should be fine.
+
+[00:06:59] Sam Okafor: Good. I’ll leave it as is and send the usual reminder closer to the date.
+
+[00:07:02] Marcus Diallo: Sounds good.
+
+[00:07:04] Sam Okafor: I want to make sure I’m not overlooking anything. Is there any small friction point that hasn’t risen to the level of an issue but would still be useful for me to know?
+
+[00:07:11] Marcus Diallo: Nothing comes to mind. Minor annoyances are part of any process, but there isn’t something I’d ask you to act on.
+
+[00:07:18] Sam Okafor: That distinction is helpful. We don’t need to turn every preference into a project.
+
+[00:07:21] Marcus Diallo: Exactly. Sometimes the answer is just that a person prefers one arrangement over another.
+
+[00:07:24] Sam Okafor: And sometimes that preference changes after lunch.
+
+[00:07:27] Marcus Diallo: Usually after lunch.
+
+[00:07:29] Sam Okafor: I’m taking that as an argument for scheduling important decisions after lunch.
+
+[00:07:33] Marcus Diallo: Or for scheduling a second lunch.
+
+[00:07:35] Sam Okafor: I support that proposal.
+
+[00:07:38] Marcus Diallo: I assumed you would.
+
+[00:07:40] Sam Okafor: One other general question: how does the team feel about the rhythm of reviews and follow-ups? Is it enough to keep everyone oriented without adding meeting overhead?
+
+[00:07:46] Marcus Diallo: Yes. The rhythm is predictable, and predictability helps. People know when they’ll see the information and when they can raise something. It hasn’t felt burdensome.
+
+[00:07:54] Sam Okafor: That’s exactly what we’re aiming for.
+
+[00:07:56] Marcus Diallo: Then it’s working.
+
+[00:07:58] Sam Okafor: I’ll take the compliment.
+
+[00:08:00] Marcus Diallo: It was intentional.
+
+[00:08:02] Sam Okafor: Much appreciated.
+
+[00:08:04] Marcus Diallo: Don’t let it go to your head.
+
+[00:08:07] Sam Okafor: Too late.
+
+[00:08:09] Marcus Diallo: That was quick.
+
+[00:08:11] Sam Okafor: I’m efficient.
+
+[00:08:13] Marcus Diallo: That’s one word for it.
+
+[00:08:16] Sam Okafor: Let’s see, we’ve covered the practical items. I can also give you a quick update from our side, although there isn’t anything you need to prepare for.
+
+[00:08:21] Marcus Diallo: Go ahead.
+
+[00:08:23] Sam Okafor: Our account team is keeping the normal review cycle. We’re comparing feedback across customers, looking for patterns, and making sure routine requests are routed properly. Nothing in that process changes what you need to do.
+
+[00:08:32] Marcus Diallo: That makes sense.
+
+[00:08:35] Sam Okafor: We’re also trying to keep internal handoffs simple. If you contact me, I’ll either answer directly or connect you with the person best placed to help rather than making you repeat the whole story.
+
+[00:08:43] Marcus Diallo: That’s appreciated. Repeating context is usually the part people dislike most.
+
+[00:08:47] Sam Okafor: Especially when the context is in an earlier thread that nobody can find.
+
+[00:08:50] Marcus Diallo: Or in someone’s notes, written during a call, with an arrow pointing to an arrow.
+
+[00:08:54] Sam Okafor: The ancient language of meeting notes.
+
+[00:08:56] Marcus Diallo: It takes training to interpret.
+
+[00:08:59] Sam Okafor: Do your internal notes tend to be typed or handwritten?
+
+[00:09:03] Marcus Diallo: Mixed. Some people type everything. Some people write a few words and trust their future selves to understand them.
+
+[00:09:08] Sam Okafor: Future selves are often less cooperative than expected.
+
+[00:09:11] Marcus Diallo: They have no memory of the original thought.
+
+[00:09:13] Sam Okafor: And no sympathy.
+
+[00:09:15] Marcus Diallo: None.
+
+[00:09:17] Sam Okafor: I’ve spent whole mornings trying to decode a note that said, “ask about blue thing.”
+
+[00:09:22] Marcus Diallo: Did you find the blue thing?
+
+[00:09:24] Sam Okafor: Eventually I found three blue things and had to ask about all of them.
+
+[00:09:27] Marcus Diallo: That’s thorough.
+
+[00:09:29] Sam Okafor: Or inefficient. Depends on the outcome.
+
+[00:09:31] Marcus Diallo: Usually both.
+
+[00:09:33] Sam Okafor: Fair. On a related note, if your team’s documentation habits change, I’m happy to adapt how I send follow-up material. Some groups prefer a compact summary, others prefer links with a short explanation.
+
+[00:09:41] Marcus Diallo: Compact summary is usually best for us. If we need more detail, we’ll ask for it.
+
+[00:09:46] Sam Okafor: That’s easy enough. I’ll keep that in mind.
+
+[00:09:48] Marcus Diallo: Thanks.
+
+[00:09:50] Sam Okafor: Do you have any preference about when follow-up notes arrive?
+
+[00:09:54] Marcus Diallo: Same day or next day is fine. It doesn’t need to be immediate, and it doesn’t need to wait for a formal packet.
+
+[00:10:00] Sam Okafor: That’s helpful. I can usually send a short recap while the conversation is still fresh.
+
+[00:10:03] Marcus Diallo: That works.
+
+[00:10:05] Sam Okafor: I’ll keep it concise. Agenda, what we covered, and anything either of us agreed to remember.
+
+[00:10:10] Marcus Diallo: Good. The “agreed to remember” category is important.
+
+[00:10:13] Sam Okafor: It’s where most of the real work lives.
+
+[00:10:15] Marcus Diallo: Sometimes it’s just “continue as before.”
+
+[00:10:18] Sam Okafor: Which can be a perfectly useful conclusion.
+
+[00:10:20] Marcus Diallo: It can. People often feel pressured to change something just to demonstrate that the meeting happened.
+
+[00:10:24] Sam Okafor: Yes. A meeting that ends with no new task can feel suspiciously successful.
+
+[00:10:27] Marcus Diallo: Or people assume they missed the task.
+
+[00:10:30] Sam Okafor: “Surely there must be an action item somewhere.”
+
+[00:10:32] Marcus Diallo: Check under the table.
+
+[00:10:34] Sam Okafor: I’ll have facilities look.
+
+[00:10:36] Marcus Diallo: Please do.
+
+[00:10:38] Sam Okafor: While we’re on process, has the quarterly timing been convenient for your leadership reviews?
+
+[00:10:42] Marcus Diallo: Yes. It lines up reasonably well with our own planning. If it drifted by a week or two, it wouldn’t be a problem, but the current timing is comfortable.
+
+[00:10:49] Sam Okafor: Good. We can keep it flexible if calendars get crowded.
+
+[00:10:52] Marcus Diallo: That’s usually the only challenge: too many calendars that all claim to be the final calendar.
+
+[00:10:55] Sam Okafor: The final-final calendar.
+
+[00:10:57] Marcus Diallo: Followed by final-final-updated.
+
+[00:10:59] Sam Okafor: And then a version with a date in the file name.
+
+[00:11:01] Marcus Diallo: That one is supposed to settle everything.
+
+[00:11:03] Sam Okafor: It never does.
+
+[00:11:05] Marcus Diallo: No.
+
+[00:11:07] Sam Okafor: I’m glad we’re aligned there.
+
+[00:11:09] Marcus Diallo: Alignment is important.
+
+[00:11:11] Sam Okafor: Especially in a meeting about alignment.
+
+[00:11:13] Marcus Diallo: Very meta.
+
+[00:11:16] Sam Okafor: Are there any changes in how you measure whether the relationship is working?
+
+[00:11:20] Marcus Diallo: Not really. We look at whether the work is moving, whether the information is usable, and whether people can get help when they need it. Those are still the important things.
+
+[00:11:27] Sam Okafor: Clear and practical.
+
+[00:11:29] Marcus Diallo: That’s the goal.
+
+[00:11:31] Sam Okafor: Sometimes the simplest measures are the hardest to argue with.
+
+[00:11:34] Marcus Diallo: They’re also harder to decorate with extra terminology.
+
+[00:11:37] Sam Okafor: “Operational enablement visibility.”
+
+[00:11:39] Marcus Diallo: Please stop.
+
+[00:11:41] Sam Okafor: I apologize.
+
+[00:11:43] Marcus Diallo: Accepted.
+
+[00:11:45] Sam Okafor: I’ll use ordinary words.
+
+[00:11:47] Marcus Diallo: That would be refreshing.
+
+[00:11:49] Sam Okafor: Noted.
+
+[00:11:51] Marcus Diallo: There you go.
+
+[00:11:53] Sam Okafor: What?
+
+[00:11:55] Marcus Diallo: “Noted” is doing a lot of work there.
+
+[00:11:57] Sam Okafor: It’s a versatile word.
+
+[00:11:59] Marcus Diallo: It can mean anything from “I’ll act on that” to “I have written down the sound you just made.”
+
+[00:12:02] Sam Okafor: I’ll be more specific.
+
+[00:12:04] Marcus Diallo: That would help.
+
+[00:12:06] Sam Okafor: I’ll write that down and use it when preparing the recap.
+
+[00:12:09] Marcus Diallo: Better.
+
+[00:12:11] Sam Okafor: See? Growth.
+
+[00:12:13] Marcus Diallo: Incremental.
+
+[00:12:15] Sam Okafor: I’ll take incremental.
+
+[00:12:17] Marcus Diallo: Most things happen incrementally anyway.
+
+[00:12:19] Sam Okafor: True. Big changes tend to be a series of small changes that people only recognize later.
+
+[00:12:23] Marcus Diallo: Or a series of small changes that people recognize immediately because they’ve created a new problem.
+
+[00:12:27] Sam Okafor: Also true.
+
+[00:12:29] Marcus Diallo: It depends on the week.
+
+[00:12:31] Sam Okafor: And the number of people involved.
+
+[00:12:33] Marcus Diallo: And whether anyone checked the assumptions.
+
+[00:12:35] Sam Okafor: The assumptions are always innocent until examined.
+
+[00:12:38] Marcus Diallo: Then they become the main subject.
+
+[00:12:40] Sam Okafor: We’ve managed to turn a routine check-in into a philosophy seminar.
+
+[00:12:43] Marcus Diallo: But at least it’s a short philosophy seminar.
+
+[00:12:45] Sam Okafor: So far.
+
+[00:12:47] Marcus Diallo: Don’t invite a third person.
+
+[00:12:49] Sam Okafor: I won’t.
+
+[00:12:51] Marcus Diallo: Good.
+
+[00:12:53] Sam Okafor: Let me circle back to anything your engineers might want improved in the next few months. Not a complaint, just something that would make routine work smoother.
+
+[00:12:59] Marcus Diallo: I don’t have a particular improvement request. The team is generally comfortable with the current arrangement. If something specific emerges, I’ll bring it to you.
+
+[00:13:06] Sam Okafor: That’s perfectly fine. I’d rather hear a real request when there is one than collect speculative wishes.
+
+[00:13:10] Marcus Diallo: Same. Speculative wishes have a way of becoming commitments.
+
+[00:13:13] Sam Okafor: Or slide headings.
+
+[00:13:15] Marcus Diallo: Worse.
+
+[00:13:17] Sam Okafor: Much worse.
+
+[00:13:19] Marcus Diallo: A slide can make anything look approved.
+
+[00:13:21] Sam Okafor: And if it has a green checkmark, it becomes historical fact.
+
+[00:13:24] Marcus Diallo: Exactly.
+
+[00:13:26] Sam Okafor: I’ll avoid green checkmarks.
+
+[00:13:28] Marcus Diallo: Use them sparingly.
+
+[00:13:30] Sam Okafor: That sounds like permission.
+
+[00:13:32] Marcus Diallo: It’s not.
+
+[00:13:34] Sam Okafor: Understood.
+
+[00:13:36] Marcus Diallo: You almost said “noted.”
+
+[00:13:38] Sam Okafor: I caught myself.
+
+[00:13:40] Marcus Diallo: Progress.
+
+[00:13:42] Sam Okafor: We’ve got about ten minutes left. Is there anything you wanted to use the call for that we haven’t touched?
+
+[00:13:47] Marcus Diallo: No, I think we’ve covered the useful items. I wanted to make sure the regular review happened, and it has.
+
+[00:13:52] Sam Okafor: Great. Then I’ll keep the rest of this focused. I’ll send a short recap, keep the existing cadence, and leave the channel open for anything that comes up.
+
+[00:13:59] Marcus Diallo: That works.
+
+[00:14:01] Sam Okafor: Before we wrap, can I ask one question about internal communication? When I send something for your team, do you prefer that it goes through you first, or should I include the broader group?
+
+[00:14:07] Marcus Diallo: Through me is usually best. I can distribute it according to the context. If there’s a message intended for everyone, we can handle that separately.
+
+[00:14:14] Sam Okafor: That makes sense. I’ll use you as the first point of contact unless we agree otherwise.
+
+[00:14:17] Marcus Diallo: Good.
+
+[00:14:19] Sam Okafor: And if you’re away, is there someone else I should know to contact?
+
+[00:14:23] Marcus Diallo: There’s coverage within the group, but I don’t think you need a permanent alternate for routine matters. If I’m unavailable, the team knows how to route anything important.
+
+[00:14:30] Sam Okafor: Fine by me. I don’t want to create an alternate-contact chart for a relationship that doesn’t need one.
+
+[00:14:35] Marcus Diallo: That chart would outlive both of us.
+
+[00:14:37] Sam Okafor: It would have a revision history.
+
+[00:14:39] Marcus Diallo: And an owner.
+
+[00:14:41] Sam Okafor: And a meeting to review the owner.
+
+[00:14:43] Marcus Diallo: Then a meeting to review the meeting.
+
+[00:14:45] Sam Okafor: We should stop while we’re ahead.
+
+[00:14:47] Marcus Diallo: Agreed.
+
+[00:14:49] Sam Okafor: I’ll also make sure the next invitation has a clear agenda in the description, even if it’s only a few lines.
+
+[00:14:53] Marcus Diallo: That’s useful. It helps people know whether they need to prepare anything.
+
+[00:14:57] Sam Okafor: In this case, no special preparation is needed.
+
+[00:14:59] Marcus Diallo: That’s always welcome.
+
+[00:15:01] Sam Okafor: I’ll say that plainly in the invitation.
+
+[00:15:03] Marcus Diallo: Good.
+
+[00:15:05] Sam Okafor: Do you prefer the invitation to include the previous recap, or should I leave that in the separate message?
+
+[00:15:09] Marcus Diallo: Separate message is cleaner. The invitation can stay focused on the upcoming conversation.
+
+[00:15:14] Sam Okafor: Agreed. Too many attachments make invitations feel like homework.
+
+[00:15:17] Marcus Diallo: And then people spend more time looking for the relevant attachment than preparing for the call.
+
+[00:15:20] Sam Okafor: Or they open the wrong version.
+
+[00:15:22] Marcus Diallo: Or the right version with the wrong date.
+
+[00:15:24] Sam Okafor: A classic.
+
+[00:15:26] Marcus Diallo: Very common.
+
+[00:15:28] Sam Okafor: We’ll keep the invitation light.
+
+[00:15:30] Marcus Diallo: Thanks.
+
+[00:15:32] Sam Okafor: I’m checking my notes one last time: routine review completed, current communication approach is working, no special preparation for the next meeting, and we’ll continue with the existing cadence.
+
+[00:15:42] Marcus Diallo: That summary is accurate.
+
+[00:15:44] Sam Okafor: Anything you’d phrase differently?
+
+[00:15:46] Marcus Diallo: No. It’s straightforward.
+
+[00:15:48] Sam Okafor: Straightforward is a good place to finish.
+
+[00:15:50] Marcus Diallo: Usually.
+
+[00:15:52] Sam Okafor: Sometimes it makes people nervous.
+
+[00:15:54] Marcus Diallo: They’ll recover.
+
+[00:15:56] Sam Okafor: I hope so.
+
+[00:15:58] Marcus Diallo: They usually do.
+
+[00:16:00] Sam Okafor: Well, Marcus, thanks again. I appreciate the time and the practical feedback.
+
+[00:16:04] Marcus Diallo: Thanks, Sam. This was useful.
+
+[00:16:06] Sam Okafor: I’ll send the recap later today.
+
+[00:16:08] Marcus Diallo: All right.
+
+[00:16:10] Sam Okafor: And I’ll keep the next invitation as simple as promised.
+
+[00:16:12] Marcus Diallo: I’ll hold you to that.
+
+[00:16:14] Sam Okafor: Fair enough. Enjoy the rest of your morning.
+
+[00:16:16] Marcus Diallo: You too. Try not to create a new version of your coffee before noon.
+
+[00:16:19] Sam Okafor: No promises.
+
+[00:16:21] Marcus Diallo: Take care.
+
+[00:16:22] Sam Okafor: Take care.

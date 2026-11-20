@@ -1,0 +1,292 @@
+[00:00:00] Sam Okafor: Hey Derek, thanks for hopping on. Can you hear me all right?
+[00:00:06] Derek Hollis: Yeah, loud and clear. Can you hear me okay too?
+[00:00:10] Sam Okafor: Yep, sounds good on my end.
+[00:00:13] Derek Hollis: Good, good.
+[00:00:15] Sam Okafor: How's your week going so far?
+[00:00:18] Derek Hollis: Oh, you know, Wednesday. Right in the thick of it.
+[00:00:22] Sam Okafor: Ha, I hear you. Anything particular going on, or just the usual grind?
+[00:00:28] Derek Hollis: Mostly the usual. We had a fire alarm test yesterday that ran long and threw off half the day's schedule, but other than that, pretty normal.
+[00:00:40] Sam Okafor: Oh no, those are the worst. Everybody standing around outside for an hour?
+[00:00:46] Derek Hollis: Pretty much. At least the weather cooperated, could've been a lot worse in January.
+[00:00:52] Sam Okafor: True, small mercies. How's the summer treating you otherwise? Kids out of school yet?
+[00:00:58] Derek Hollis: They are, actually, just wrapped up last week. So now it's the scramble to figure out camp schedules and all that.
+[00:01:07] Sam Okafor: Any camp decided on yet, or is that still up in the air?
+[00:01:13] Derek Hollis: Still narrowing it down, honestly. There's a day camp through the rec center that's the front runner right now, mostly because it's close and doesn't require us to drive twenty minutes each way.
+[00:01:27] Sam Okafor: Ha, that's usually the deciding factor in my house too. Proximity wins over almost everything else.
+[00:01:34] Derek Hollis: Exactly. My oldest wanted the one with the climbing wall, but it's clear across town, so that one's probably out.
+[00:01:42] Sam Okafor: Ha, the climbing wall always gets them, doesn't it?
+[00:01:47] Derek Hollis: Every time. We'll see, we've still got a couple weeks to decide.
+[00:01:52] Sam Okafor: Well, good luck with that. Oh, hey, did you end up catching any baseball this year? I remember you mentioning you had tickets to a game a while back.
+[00:02:05] Derek Hollis: We did go, actually, back in April. Cold one, but a good game.
+[00:02:10] Sam Okafor: Nice, who won?
+[00:02:12] Derek Hollis: We did, actually, extra innings even. My son was thrilled, stayed up way past his bedtime for it.
+[00:02:20] Sam Okafor: Ha, that's a good problem to have.
+[00:02:23] Derek Hollis: It really was. Worth the next morning being rough.
+[00:02:28] Sam Okafor: Ha, I bet. Any plans to go again this summer?
+[00:02:32] Derek Hollis: Maybe, we'll see how schedules line up. My wife's been wanting to go again too.
+[00:02:39] Sam Okafor: Well, if you do, hope the weather's better for it.
+[00:02:43] Derek Hollis: Ha, same. Anyway, I don't want to eat up the whole call talking baseball.
+[00:02:49] Sam Okafor: No, it's fine, this is the good part of these calls honestly.
+[00:02:55] Derek Hollis: Agreed.
+[00:02:56] Sam Okafor: How's the drive been for you lately? I know you mentioned the highway construction was making things unpredictable last time we talked.
+[00:03:05] Derek Hollis: It's actually finally wrapping up, believe it or not. They opened the extra lane a couple weeks ago and it's made a real difference.
+[00:03:16] Sam Okafor: Oh, that's great. I bet that's been a long time coming.
+[00:03:21] Derek Hollis: Years, honestly. I'd almost forgotten what a normal commute felt like.
+[00:03:26] Sam Okafor: Ha, I bet it feels like a gift at this point.
+[00:03:31] Derek Hollis: It really does. Small things, right?
+[00:03:34] Sam Okafor: Absolutely. Well, glad that's finally sorted for you.
+[00:03:37] Derek Hollis: Me too.
+[00:03:39] Sam Okafor: So, before we get into it, I saw on my calendar that this is actually our first check-in since the spring. Time's flown.
+[00:03:48] Derek Hollis: It really has. Feels like we just talked, honestly.
+[00:03:52] Sam Okafor: I know, right? Well, I don't have anything urgent on my list today, mostly just wanted to catch up and see how things are looking on your end.
+[00:04:05] Derek Hollis: Yeah, no, it's a good time. Things have actually been pretty active around here, so there's a decent amount to go over.
+[00:04:14] Sam Okafor: Perfect, let's dig in then. Where do you want to start?
+[00:04:19] Derek Hollis: Let's just start with the general fleet stuff and work our way out from there.
+[00:04:26] Sam Okafor: Sounds good. How are the T2s holding up these days?
+[00:04:30] Derek Hollis: Overall pretty steady. We had one unit down for a few days last month with a screen issue, but your service folks got out here quick and swapped it.
+[00:04:43] Sam Okafor: Oh good, glad that turned around fast.
+[00:04:46] Derek Hollis: Yeah, no complaints there. The tech who came out was great, walked our biomed guy through everything.
+[00:04:54] Sam Okafor: Good to hear, I'll pass that along to the service team.
+[00:04:58] Derek Hollis: Please do, they deserve to hear it.
+[00:05:02] Sam Okafor: Will do. And how's the alarm volume been on the floors? I know that came up a while back.
+[00:05:10] Derek Hollis: It's been fine, actually. I think whatever adjustment got made settled things down.
+[00:05:16] Sam Okafor: Good, good. Consumables, are we keeping pace okay? I know ICU volumes have been up this year from what I remember you mentioning.
+[00:05:26] Derek Hollis: They have, but central supply hasn't flagged anything to me about running short. I think the reorder cadence we set up is keeping up with it.
+[00:05:37] Sam Okafor: Perfect. I'll double check with distribution just to be safe, but sounds like we're in good shape.
+[00:05:44] Derek Hollis: I think so, yeah.
+[00:05:46] Sam Okafor: How's the preventive maintenance schedule looking these days? Still rolling throughout the year the way you all like it?
+[00:05:55] Derek Hollis: Still rolling, yeah. We spread it out on purpose so it's never a huge batch all at once for the team.
+[00:06:04] Sam Okafor: That makes sense, keeps it manageable.
+[00:06:07] Derek Hollis: Exactly. Though it does mean there's usually a handful of units cycling through service at any given moment, which took some getting used to for our newer folks.
+[00:06:19] Sam Okafor: Ha, yeah, that can look alarming on a spreadsheet if you're not used to the pattern.
+[00:06:26] Derek Hollis: It really can. I had to walk one of our newer techs through it a few months back so he wouldn't panic every time he saw the numbers.
+[00:06:38] Sam Okafor: Ha, I bet that helped once he understood it.
+[00:06:42] Derek Hollis: It did, he's much more relaxed about it now.
+[00:06:46] Sam Okafor: Good. And the spare units we left with you a while back, are those still just sitting as backup, or did any end up in regular rotation?
+[00:06:58] Derek Hollis: Still just backup, as far as I know. They're in the equipment room on the third floor.
+[00:07:05] Sam Okafor: Good, that's what they're there for. Just wanted to make sure nothing got lost in the shuffle.
+[00:07:12] Derek Hollis: No, we keep pretty good track of where everything lives.
+[00:07:17] Sam Okafor: Good to hear. Do you know roughly how many units you're running across the floors these days? Just want to make sure my notes are current.
+[00:07:28] Derek Hollis: I'd have to check the exact number with my team, it shifts a little depending on what's in service versus down for PM at any given time.
+[00:07:40] Sam Okafor: No worries, whenever you get a chance, not urgent.
+[00:07:44] Derek Hollis: I'll get you something after this call.
+[00:07:47] Sam Okafor: Appreciate it. And how's the quarterly usage summary been landing? Still finding that useful, or has that fallen off your radar?
+[00:07:57] Derek Hollis: Honestly, I skim it more than I read it closely, but it's useful to have on file when questions come up.
+[00:08:06] Sam Okafor: Fair enough, as long as it's useful in some form. I can always walk you through how to read it more closely sometime if that'd help.
+[00:08:17] Derek Hollis: Maybe eventually, not urgent though.
+[00:08:20] Sam Okafor: No rush at all. Okay, one more fleet thing and then I'll move on — any issues at all with the newer administration sets, or has that transition been smooth?
+[00:08:33] Derek Hollis: Smooth, actually. Nobody's mentioned anything to me about it either way, which I take as a good sign.
+[00:08:41] Sam Okafor: Ha, no news is good news there.
+[00:08:44] Derek Hollis: Exactly.
+[00:08:45] Sam Okafor: Good, that's good to hear across the board honestly.
+[00:08:49] Derek Hollis: It's been a pretty steady stretch overall, yeah.
+[00:08:53] Sam Okafor: Oh, and one more thing before we shift gears — did that satisfaction survey we sent out last quarter ever land on your radar? I always wonder if those get buried in people's inboxes.
+[00:09:07] Derek Hollis: I did see it, actually. Meant to fill it out and then, you know, life got in the way.
+[00:09:15] Sam Okafor: Ha, no worries at all, zero pressure on those. I just like to ask because our team genuinely reads them.
+[00:09:24] Derek Hollis: Good to know, I'll try to circle back to it when I get a spare few minutes.
+[00:09:31] Sam Okafor: Whenever works, genuinely no rush.
+[00:09:33] Derek Hollis: I'll try to get to it before the next one lands.
+[00:09:38] Sam Okafor: Ha, no promises needed. Oh, and did you catch any of the local team's run this spring? I know they had a good stretch there for a while.
+[00:09:50] Derek Hollis: A little bit, yeah. My son's more into it than I am, so I catch pieces of it whether I mean to or not.
+[00:10:01] Sam Okafor: Ha, that's usually how it goes in my house too, honestly.
+[00:10:05] Derek Hollis: Did your bracket survive at all, or did that blow up in the first round like everyone else's?
+[00:10:13] Sam Okafor: Blew up almost immediately, like always. I don't know why I keep filling one out every year.
+[00:10:21] Derek Hollis: Tradition, I guess.
+[00:10:22] Sam Okafor: Must be. Anyway, sorry, I keep getting us off track today.
+[00:10:27] Derek Hollis: No, it's fine, honestly, this is the nice part of these calls.
+[00:10:33] Sam Okafor: Agreed. All right, let me get back to the list before I forget something important.
+[00:10:39] Derek Hollis: Go ahead.
+[00:10:40] Sam Okafor: Okay, good. So, shifting gears a little bit — I know last time we talked you mentioned starting to think through some longer-term fleet planning. Where's that at?
+[00:10:53] Derek Hollis: Yeah, so, we're in the early stages of a broader capital planning conversation for next fiscal year. Nothing decided yet, we're just mapping out what our options look like across a few different categories.
+[00:11:07] Sam Okafor: Makes sense, that's usually a multi-month process on your side, right?
+[00:11:13] Derek Hollis: Exactly, and honestly it moves at the pace of committees, so I try not to get too far ahead of it myself.
+[00:11:22] Sam Okafor: Ha, fair. Well, whenever you want to talk through options, happy to walk through whatever's helpful, no pressure at all.
+[00:11:30] Derek Hollis: I appreciate that. It's still pretty early, but I've been doing some reading on my own just to get a feel for what's out there.
+[00:11:41] Sam Okafor: Sure, that's smart. Are you looking at anything specific, or just general landscape stuff at this point?
+[00:11:49] Derek Hollis: Mostly general landscape stuff. Honestly, I've been looking a bit at the T3 specs, just out of curiosity more than anything formal.
+[00:11:59] Sam Okafor: Oh, nice, yeah, happy to talk through that whenever. It's a pretty different platform from the T2 in a few ways.
+[00:12:07] Derek Hollis: Yeah, that's actually part of why I wanted to bring it up today, if you've got a few minutes for it.
+[00:12:16] Sam Okafor: Of course, let's do it.
+[00:12:19] Derek Hollis: So, one of the bigger things on our radar right now is our EHR situation. We're mid-migration, and interoperability is a huge deal for us this year.
+[00:12:31] Sam Okafor: Right, I remember you mentioning the migration project last time we talked. How's that going, by the way?
+[00:12:39] Derek Hollis: It's going, slowly. These things always take longer than anyone budgets for.
+[00:12:44] Sam Okafor: Ha, that's true of basically every EHR project I've ever heard about.
+[00:12:49] Derek Hollis: Exactly. But anyway, given that, integration compatibility is a big factor for us in any equipment conversation right now.
+[00:12:58] Sam Okafor: That makes total sense, and it's a fair thing to be thinking about early.
+[00:13:04] Derek Hollis: Right, so, on that note — do you happen to know off the top of your head, ⟦F22⟧does the T3 support integration with Cerner?⟦/F22⟧
+[00:13:14] Sam Okafor: You know, that's a great question. Let me check on that and get back to you, I don't want to give you a wrong answer off the cuff.
+[00:13:26] Derek Hollis: No worries at all, whenever you get a chance.
+[00:13:30] Sam Okafor: I'll make a note of it right now, actually, so it doesn't slip through the cracks.
+[00:13:37] Derek Hollis: Appreciate it.
+[00:13:39] Sam Okafor: Of course. Okay, so, switching gears a little bit — how's training been going for any newer staff? I know you all had some turnover on nights a few months back.
+[00:13:52] Derek Hollis: We did, yeah. Education did a round of sessions in April, I think, to get everybody caught up.
+[00:14:00] Sam Okafor: Oh good, that's good timing.
+[00:14:02] Derek Hollis: Yeah, it worked out okay. I think there's maybe a handful of people who started since then who might still need it, but nothing urgent.
+[00:14:13] Sam Okafor: Whenever that becomes a priority, just let me know and we can send somebody out for a refresher, doesn't have to be a big formal thing.
+[00:14:24] Derek Hollis: I'll keep that in mind, thanks. I'll check with education and see where things stand.
+[00:14:31] Sam Okafor: Sounds good, no rush.
+[00:14:33] Derek Hollis: Appreciate it.
+[00:14:34] Sam Okafor: So, how's biomed staffing been overall? Last time we talked I think you mentioned being a little short-handed.
+[00:14:42] Derek Hollis: We actually just filled that opening, finally. New tech started a couple weeks ago.
+[00:14:48] Sam Okafor: Oh, that's great news. Must be a relief.
+[00:14:52] Derek Hollis: It really is. It had been open for months, so things were getting stretched pretty thin.
+[00:14:59] Sam Okafor: I bet. Is the new person coming in with pump experience, or more general biomed background?
+[00:15:06] Derek Hollis: More general background, but he seems to be picking things up quickly. I think he'll be fine once he's had a bit more time on the equipment specifically.
+[00:15:18] Sam Okafor: Good to hear. If it'd help, we could always send someone out to do a more formal orientation with him on the T2 platform specifically.
+[00:15:29] Derek Hollis: That might actually be useful. Let me check his schedule and get back to you on timing.
+[00:15:36] Sam Okafor: No rush at all, whenever works.
+[00:15:39] Derek Hollis: Will do.
+[00:15:40] Sam Okafor: Oh, before I forget — how's the new tech settling in otherwise? Getting along okay with the rest of the team?
+[00:15:50] Derek Hollis: Yeah, seems to be. He's quiet, keeps to himself a bit, but he asks good questions when he's not sure about something, which I'd rather have than someone who guesses.
+[00:16:02] Sam Okafor: That's a good trait to have on a biomed team, honestly.
+[00:16:07] Derek Hollis: Agreed. I'd rather answer ten extra questions than have him wing it on something equipment-related.
+[00:16:14] Sam Okafor: Makes sense. Is he local, or did he relocate for the job?
+[00:16:19] Derek Hollis: Local, actually, came from one of the smaller clinics on the other side of town. Wanted something with more variety in the work.
+[00:16:30] Sam Okafor: Good, that usually helps with retention when people are already rooted in the area.
+[00:16:36] Derek Hollis: That's part of why we liked him for it, honestly.
+[00:16:40] Sam Okafor: Smart. Oh, speaking of the building — did anything ever come of that roof work I remember you mentioning a while back?
+[00:16:50] Derek Hollis: Oh, yeah, that finally wrapped up in the spring. Took longer than anyone wanted, but no more leaks in the east stairwell at least.
+[00:17:00] Sam Okafor: Ha, glad that's resolved. That had been dragging on for a while, if I remember right.
+[00:17:07] Derek Hollis: Forever, yeah. Facilities was thrilled when it was finally done.
+[00:17:12] Sam Okafor: I bet. Are you all expecting any state health department visits any time soon, or is that further out?
+[00:17:20] Derek Hollis: Nothing scheduled that I know of. Those tend to be pretty unannounced anyway, so it's more of a constant low hum of readiness than a specific date on the calendar.
+[00:17:33] Sam Okafor: Ha, fair enough, that's true of most of these inspection-type things.
+[00:17:38] Derek Hollis: Exactly, you just try to stay ready year round rather than scramble for a specific date.
+[00:17:45] Sam Okafor: Smart approach. How's your own team's morale been generally, now that the staffing gap is filled?
+[00:17:52] Derek Hollis: Better, honestly. There was definitely some strain when we were down a person for so long, but things feel more normal now.
+[00:18:02] Sam Okafor: Good, that's good to hear. Overtime finally easing up for everybody?
+[00:18:07] Derek Hollis: Mostly, yeah. Still some, but nothing like it was a few months ago.
+[00:18:13] Sam Okafor: Glad that's trending the right direction.
+[00:18:15] Derek Hollis: Me too, it makes a real difference day to day.
+[00:18:20] Sam Okafor: Oh, and I meant to ask, are you all still doing cross-training between the ICU and med-surg biomed coverage, or did that end up not sticking?
+[00:18:32] Derek Hollis: It's stuck around, actually, better than I expected honestly. It's given us a lot more flexibility when somebody's out sick.
+[00:18:40] Sam Okafor: That's great, glad that ended up working out.
+[00:18:44] Derek Hollis: Me too, there was some grumbling early on about the extra training time, but everybody's come around on it.
+[00:18:52] Sam Okafor: Good. Change management's always the hard part with stuff like that.
+[00:18:57] Derek Hollis: Exactly, the training itself was never really the issue.
+[00:19:01] Sam Okafor: Makes sense. Oh, and I wanted to double back on the conference for a second — do you know roughly how many people you'd want to send this year, or is that still up in the air?
+[00:19:17] Derek Hollis: Probably just one, maybe two if budget allows. We usually keep it lean on the travel side.
+[00:19:25] Sam Okafor: That's totally normal, most of our accounts send one or two. I'll get you the registration details as soon as they're live and you can figure out headcount from there.
+[00:19:37] Derek Hollis: Sounds good, I'll run it by my director once I have real numbers to work with.
+[00:19:44] Sam Okafor: Perfect. And is your director someone I've met before, or is that a newer face on your team?
+[00:19:52] Derek Hollis: You might have met her briefly at a site visit a while back, but it's been a bit since she's been directly involved in these calls.
+[00:20:04] Sam Okafor: Got it, well, if it's ever useful to loop her in more directly, happy to do that.
+[00:20:11] Derek Hollis: I'll keep that in mind, appreciate it.
+[00:20:14] Sam Okafor: Of course. Okay, and one more thing on the credentialing side — did that ever get fully resolved, or is there still a loose end somewhere?
+[00:20:26] Derek Hollis: No, that's fully resolved now. It was just a portal glitch on their end that took a couple emails to sort out.
+[00:20:35] Sam Okafor: Good, glad it wasn't anything more complicated than that.
+[00:20:39] Derek Hollis: Me too, it was more annoying than anything serious.
+[00:20:43] Sam Okafor: I hear you. Oh, and speaking of paperwork, did the updated business associate agreement ever come back from your legal team? I know that got sent over a while back too.
+[00:20:57] Derek Hollis: I believe so, yeah, though that's really more Priya's world than mine. I can double check if you need confirmation.
+[00:21:05] Sam Okafor: No need, I'll just check with our own contracts team on that one, wanted to ask more out of habit than anything.
+[00:21:14] Derek Hollis: Fair enough.
+[00:21:16] Sam Okafor: Okay, let's see, what else. Oh, right, how's the equipment room inventory process going generally? Still doing the manual counts, or did you all ever move to something more automated?
+[00:21:29] Derek Hollis: Still manual, honestly. It's been on our wish list to automate for a while, but it keeps getting bumped by other priorities.
+[00:21:39] Sam Okafor: That's pretty common, I hear that from a lot of accounts actually.
+[00:21:44] Derek Hollis: Good to know it's not just us being behind on it.
+[00:21:49] Sam Okafor: Not at all, it's a common gap. If it'd ever be useful, I can put you in touch with someone on our side who's done that kind of project with other systems.
+[00:22:03] Derek Hollis: That might be worth exploring at some point, not urgent though.
+[00:22:07] Sam Okafor: No rush, whenever it becomes a priority just let me know.
+[00:22:12] Derek Hollis: Will do, appreciate the offer.
+[00:22:15] Sam Okafor: Of course. And how's your relationship with the ED charge nurses been, any friction there around equipment availability during busy stretches?
+[00:22:24] Derek Hollis: Not really, no. We keep a small buffer of units specifically for the ED so they're not competing with the floors during surges.
+[00:22:35] Sam Okafor: Smart approach, that usually heads off a lot of friction before it starts.
+[00:22:40] Derek Hollis: That was the idea, yeah, and it's mostly worked.
+[00:22:44] Sam Okafor: Good to hear. Okay, I think I'm running low on items here, let me just double check my notes for a second.
+[00:22:54] Derek Hollis: Take your time.
+[00:22:55] Sam Okafor: Okay, I think that's most of the big stuff. Anything on the informatics side I should know about, separate from the EHR migration itself?
+[00:23:06] Derek Hollis: Nothing major. There's some noise about a new reporting dashboard rolling out later this year, but that's really an IT initiative more than a biomed one.
+[00:23:17] Sam Okafor: Got it, good to know it's on the radar at least.
+[00:23:22] Derek Hollis: Yeah, I mostly just hear about it secondhand in meetings at this point.
+[00:23:28] Sam Okafor: Ha, that's usually how these things go until they suddenly land on your desk.
+[00:23:34] Derek Hollis: Exactly, so we'll see.
+[00:23:36] Sam Okafor: Okay, let's see, what else is on my list here. Oh, right — did the updated service contract paperwork ever make it through your review process? I know that got routed a while back.
+[00:23:51] Derek Hollis: It did, yeah, legal signed off a few weeks ago. I think it's fully executed on both sides now.
+[00:23:59] Sam Okafor: Perfect, I'll double check on my end but I believe I saw that come through too.
+[00:24:06] Derek Hollis: Good, one less thing to track.
+[00:24:09] Sam Okafor: Agreed. And how's the campus doing generally? Anything going on facilities-wise I should know about?
+[00:24:15] Derek Hollis: Actually, yeah, we've got a pretty big HVAC upgrade project going on right now in the older tower. It's been noisy, but nothing that's affected patient care.
+[00:24:27] Sam Okafor: Oh, good, glad it's not causing bigger headaches.
+[00:24:31] Derek Hollis: No, just a lot of ceiling tile dust and occasional noise complaints. Facilities is handling it.
+[00:24:38] Sam Okafor: Ha, sounds about right for a project like that.
+[00:24:42] Derek Hollis: Exactly.
+[00:24:43] Sam Okafor: Are you all gearing up for an accreditation survey any time soon, or is that further out for you?
+[00:24:51] Derek Hollis: That's further out for us, thankfully. We're not due for another cycle for a while yet.
+[00:24:58] Sam Okafor: Good, that's one less thing on your plate for now.
+[00:25:03] Derek Hollis: Definitely.
+[00:25:03] Sam Okafor: How's the budget planning process looking on your end for next year? I know that usually starts ramping up around now.
+[00:25:12] Derek Hollis: It's starting to, yeah. Nothing finalized, but the conversations are beginning.
+[00:25:17] Sam Okafor: Makes sense. When do you usually get more clarity on final numbers?
+[00:25:23] Derek Hollis: Typically not until the fall, honestly. It's a slow burn all summer before anything's locked in.
+[00:25:30] Sam Okafor: Got it, I'll keep that timeline in mind.
+[00:25:33] Derek Hollis: Appreciate that.
+[00:25:35] Sam Okafor: Oh, and unrelated, but did you all end up going anywhere for the holiday weekend? I meant to ask earlier and forgot.
+[00:25:44] Derek Hollis: We just stayed local, did a cookout with some neighbors. Nothing exciting, but it was nice to just relax for once.
+[00:25:53] Sam Okafor: That sounds perfect, honestly. Sometimes the low-key ones are the best.
+[00:25:58] Derek Hollis: Agreed completely.
+[00:25:59] Sam Okafor: Did you catch any of the fireworks, or was that a bust with the weather?
+[00:26:06] Derek Hollis: We caught the tail end of them, actually. Rain held off just long enough.
+[00:26:12] Sam Okafor: Oh, good timing.
+[00:26:14] Derek Hollis: Lucky, more than anything.
+[00:26:16] Sam Okafor: Ha, I'll take it. Okay, let's see, what else is on my list. Oh — I wanted to mention, our regional conference is coming up in the fall, out in Denver this year. I'll send details once registration opens, but wanted to flag it in case anyone on your team might be interested.
+[00:26:38] Derek Hollis: Oh, good to know. I'll think about who might want to go. We usually try to send at least one person from clinical engineering.
+[00:26:48] Sam Okafor: Yeah, we get good feedback from folks who attend. Lots of hands-on sessions.
+[00:26:54] Derek Hollis: Good, I'll keep an eye out for the details.
+[00:26:58] Sam Okafor: Will do. Oh, and one more small thing — did you all ever get squared away on the vendor credentialing renewal? I remember there being some back and forth on that a few months ago.
+[00:27:13] Derek Hollis: Yeah, that got sorted out eventually. Took a couple emails, but it's fine now.
+[00:27:19] Sam Okafor: Good, glad that's behind you.
+[00:27:22] Derek Hollis: Me too, it was more annoying than anything.
+[00:27:25] Sam Okafor: I bet. Okay, let's talk service visits for a second. I think we're due for the next round sometime this fall, is that right?
+[00:27:36] Derek Hollis: I believe so, yeah. Let me check my notes, but I think that's roughly when we did it last time too.
+[00:27:45] Sam Okafor: I'll get some proposed dates together and send them your way in the next couple weeks.
+[00:27:52] Derek Hollis: Sounds good. Just try to avoid the first two weeks of September if you can, that's usually when things are chaotic here with new resident onboarding.
+[00:28:03] Sam Okafor: Noted, I'll keep that in mind when I'm putting the options together.
+[00:28:09] Derek Hollis: Appreciate it.
+[00:28:10] Sam Okafor: Of course. Is there anyone else besides you I should loop in on scheduling that, or does it still just route through you?
+[00:28:20] Derek Hollis: Still just me for now, though honestly with the new tech ramping up, that might shift eventually.
+[00:28:28] Sam Okafor: Okay, good to know. I'll keep you as the point of contact until you tell me otherwise.
+[00:28:35] Derek Hollis: Sounds good.
+[00:28:36] Sam Okafor: All right, let's see, what else. Oh, actually, I wanted to ask, how's the relationship with your GPO been lately? Any changes there I should be aware of on our end?
+[00:28:50] Derek Hollis: No changes that I know of. That's really more on the supply chain side of the house than mine anyway.
+[00:28:58] Sam Okafor: Fair enough, just figured I'd ask since sometimes that stuff trickles down.
+[00:29:04] Derek Hollis: No, nothing new there as far as I know.
+[00:29:08] Sam Okafor: Okay, good. Well, I think that covers most of what I had on my list for today. Is there anything on your end you wanted to bring up before we wrap?
+[00:29:21] Derek Hollis: Let me think... No, I don't think so. It's actually been a pretty good stretch overall.
+[00:29:28] Sam Okafor: Good, I like hearing that.
+[00:29:31] Derek Hollis: Me too, trust me.
+[00:29:33] Sam Okafor: Well, since I've got you, I always like to just check in generally on how you're feeling about the partnership overall. Anything nagging at you, anything you wish was different?
+[00:29:46] Derek Hollis: No, honestly, nothing like that. We've had a good run with you all. No, look, ⟦F15⟧we're not shopping around, Sam, if that's what you're getting at.⟦/F15⟧ We're happy with where things stand.
+[00:30:00] Sam Okafor: Ha, no, I didn't mean to fish for that, but I appreciate hearing it. It's always good to know where we stand.
+[00:30:09] Derek Hollis: No, I get it, it's a fair thing to check on every once in a while. But yeah, no complaints from my side.
+[00:30:19] Sam Okafor: Good, that's great to hear. I don't take that for granted, honestly.
+[00:30:24] Derek Hollis: I know you don't, that's part of why it's worked out.
+[00:30:29] Sam Okafor: Well, either way, I appreciate you being straight with me about it.
+[00:30:34] Derek Hollis: Of course, that's just how I'd rather operate anyway. No point being cagey about that kind of thing.
+[00:30:42] Sam Okafor: Agreed, makes these calls a lot easier honestly.
+[00:30:46] Derek Hollis: For both of us, I think.
+[00:30:49] Sam Okafor: So, is there anything else on your radar I should be tracking before we wrap up for today?
+[00:30:57] Derek Hollis: Let me think for a second... No, I think that covers it. It's been a fairly full call, actually, more than I expected going in.
+[00:31:07] Sam Okafor: Ha, yeah, more than I expected too, in a good way though.
+[00:31:13] Derek Hollis: Agreed, good way.
+[00:31:14] Sam Okafor: I'll get a follow-up email out with the action items, the T3 question I owe you an answer on, the service visit dates, and the orientation scheduling for the new tech.
+[00:31:28] Derek Hollis: Perfect, that'll help me keep it all straight on my end too.
+[00:31:33] Sam Okafor: Will do, probably by end of week.
+[00:31:36] Derek Hollis: No rush, whenever works for you.
+[00:31:39] Sam Okafor: Appreciate that. And obviously, anything comes up before August, don't wait on my account, just reach out directly.
+[00:31:47] Derek Hollis: Will do, same goes both ways.
+[00:31:50] Sam Okafor: Absolutely. Do you have any travel planned before the next call, or should I just assume you're around?
+[00:31:58] Derek Hollis: Mostly around, aside from a few days off around the lake house trip you mentioned, actually, small world, we're doing something similar ourselves later this summer.
+[00:32:09] Sam Okafor: Oh, nice, where are you all headed?
+[00:32:13] Derek Hollis: Down in Wisconsin, nothing fancy, just a rental for a week.
+[00:32:18] Sam Okafor: That sounds great, hope the weather cooperates for you.
+[00:32:22] Derek Hollis: Same to you for Michigan.
+[00:32:24] Sam Okafor: Thanks, appreciate it. Well, I think that's everything on my end for today.
+[00:32:30] Derek Hollis: Same here. This was a good one, thanks for taking the time.
+[00:32:35] Sam Okafor: Of course, always good catching up with you, Derek.
+[00:32:39] Derek Hollis: Likewise. Say hi to the family for me.
+[00:32:43] Sam Okafor: Will do, and same to yours. Good luck narrowing down that camp decision.
+[00:32:49] Derek Hollis: Ha, I'll need it. Enjoy the cherries up in Michigan.
+[00:32:53] Sam Okafor: Will do, thanks. Talk again in August then, if not sooner.
+[00:32:58] Derek Hollis: Sounds good. Take care, Sam.
+[00:33:01] Sam Okafor: You too, Derek. Have a good rest of your week.
+[00:33:05] Derek Hollis: You too. Bye now.

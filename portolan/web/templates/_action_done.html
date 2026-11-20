@@ -1,0 +1,25 @@
+{# An action closed from later evidence (`portolan.report.action_done`):
+   the claim a person confirmed as answering it, with who and when. Shared
+   by `note.html` and the Atlas note pane. Expects `done` (`build_done_
+   context`). #}
+{% set ev = done.evidence %}
+<div class="card action-done">
+  <p class="eyebrow">Done</p>
+  <p class="note-body">Marked done by {{ done.confirmed_by }} on {{ done.confirmed_at|date }}
+    {%- if ev.speaker %}, from what {{ ev.speaker }} recorded{% if ev.claim_date %} on {{ ev.claim_date }}{% endif %}{% endif %}:</p>
+  <div class="claim">
+    <p class="claim-text">{{ ev.text|linkify_wikilinks }}</p>
+    {% if ev.quote %}<p class="claim-quote">&ldquo;{{ ev.quote }}&rdquo;</p>{% endif %}
+    <p class="claim-cite">{{ ev.source_slug }} @ {{ ev.locator }}</p>
+    <div class="claim-actions">
+      <a class="btn chip dig" href="/originals/{{ ev.source_slug }}?at={{ ev.locator|urlencode }}">Open the original at {{ ev.locator }} &rarr;</a>
+    </div>
+  </div>
+  {% if done.finding_text %}
+    <p class="muted small" style="margin-top:12px;">What the system checked: {{ done.finding_text }}</p>
+  {% endif %}
+  <p class="muted small">
+    Proposed by Portolan{% if done.proposed_at %} on {{ done.proposed_at|date }}{% endif %},
+    confirmed by {{ done.confirmed_by }} on {{ done.confirmed_at|date }}.
+  </p>
+</div>

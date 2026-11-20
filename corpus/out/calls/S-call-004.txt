@@ -1,0 +1,1019 @@
+[00:00:04] Sam Okafor: Hi, Derek. Sam Okafor here. Can you hear me all right?
+
+[00:00:08] Derek Hollis: I can. Give me one second—I'm just getting the conference room door shut. There's a construction crew in the corridor, and apparently they believe everyone enjoys a jackhammer before breakfast.
+
+[00:00:17] Sam Okafor: I was going to say, you sound like you're calling from inside an airport.
+
+[00:00:21] Derek Hollis: More or less. The west wing is being renovated, so the temporary engineering office is in a space that used to be storage. We have a folding table, two working outlets, and a coffee machine that has developed opinions.
+
+[00:00:32] Sam Okafor: That's a full clinical engineering setup, then.
+
+[00:00:35] Derek Hollis: Exactly. Although the coffee machine is the only thing here with a service contract that people actually read.
+
+[00:00:39] Sam Okafor: Fair enough. Thanks for making time. I know your schedule is usually a little unpredictable.
+
+[00:00:44] Derek Hollis: It is today. We had a ventilator alarm issue at six, then a nurse-call escalation, and now I'm trying to keep this meeting from being swallowed by the morning. But I have the hour.
+
+[00:00:52] Sam Okafor: I appreciate it. I wanted to walk through the Tidewater T3 proposal, answer anything outstanding, and understand where your team is in the review. No pressure to make a decision today.
+
+[00:01:01] Derek Hollis: Good, because I wouldn't be able to make one today even if I wanted to. We have several people who need to see the information. Biomedical engineering, nursing operations, our interfaces group, supply chain, and finance all have a hand in this.
+
+[00:01:13] Sam Okafor: That makes sense. When a pump touches medication delivery and documentation, it rarely stays in one department.
+
+[00:01:20] Derek Hollis: Right. And our fleet is mixed. Some units are newer, some are old enough that the display has that gray haze around the edges. We keep them running because they still perform, but parts availability and battery condition are becoming recurring problems.
+
+[00:01:31] Sam Okafor: That's one reason I thought the T3 might be relevant. It gives you a common platform without requiring an immediate replacement of every device on the floor.
+
+[00:01:38] Derek Hollis: That is the general attraction. We don't want a big-bang conversion. We have too many sites and too many workflows. If we changed everything at once, we'd spend the first month answering questions instead of treating patients.
+
+[00:01:48] Sam Okafor: Understood. The proposal assumed an initial deployment in two facilities, with the option to extend after the first review period.
+
+[00:01:54] Derek Hollis: I saw that. The two facilities are the right ones for a pilot, in principle. One is our larger acute-care campus, and the other is a smaller community hospital with a different staffing pattern. If the product works in both environments, that tells us more than a single-site trial.
+
+[00:02:07] Sam Okafor: Exactly. You get a high-volume test and a lower-volume test.
+
+[00:02:11] Derek Hollis: Though “pilot” can be a dangerous word here. People hear pilot and assume the equipment is temporary, the training is optional, and the feedback can wait until next quarter.
+
+[00:02:18] Sam Okafor: I agree. We usually treat a pilot as a controlled deployment, not as a demonstration. We would define success criteria, identify the super-users, and schedule check-ins before the first units arrive.
+
+[00:02:26] Derek Hollis: Good. I don't want a box dropped at the loading dock with a phone number taped to it.
+
+[00:02:31] Sam Okafor: Nor do I. Our implementation team would be involved before shipment. We'd review the unit mix, locations, and the initial training calendar.
+
+[00:02:36] Derek Hollis: Let's talk about the unit mix. The draft had thirty-six devices, correct?
+
+[00:02:41] Sam Okafor: Thirty-six in the initial group, yes. Twenty-four allocated to the acute-care campus and twelve to the community site.
+
+[00:02:48] Derek Hollis: And those are all the same configuration?
+
+[00:02:50] Sam Okafor: The hardware is the same. The software profile can be configured by location, within the supported parameters.
+
+[00:02:55] Derek Hollis: I want to be careful there. We have enough variation already. If every department creates its own favorite version of a profile, the result is a catalog nobody can govern.
+
+[00:03:05] Sam Okafor: That is a reasonable concern. We can start with one approved profile and a change-control process. Your team would own the clinical approval, and we would support the technical configuration.
+
+[00:03:12] Derek Hollis: That would be preferable. We have had products where the vendor says, “It's configurable,” and what they mean is, “You can configure it fifty different ways and then call us when the behavior surprises you.”
+
+[00:03:21] Sam Okafor: I know the type. Configurability needs guardrails.
+
+[00:03:24] Derek Hollis: Exactly.
+
+[00:03:26] Sam Okafor: Before we get too far into implementation, can I ask about your current maintenance model? Are repairs handled centrally?
+
+[00:03:34] Derek Hollis: Mostly centrally. The local teams can do basic inspection and battery swaps, but anything involving the pump mechanism, board-level work, or a recurring alarm issue comes through our main shop.
+
+[00:03:43] Sam Okafor: And how long does that usually take?
+
+[00:03:45] Derek Hollis: It depends on the device and the season. If we have parts, a straightforward repair can be turned around quickly. If the part is backordered, the unit can sit in a queue while someone keeps asking me whether it is ready.
+
+[00:03:53] Sam Okafor: We can review the recommended spare-parts package. For the initial deployment, we usually suggest enough consumables and common replacement items to avoid unnecessary shipping delays.
+
+[00:04:02] Derek Hollis: I want the actual list, not just the phrase “recommended spare parts.” Our purchasing people will ask what is included, our technicians will ask what commonly fails, and finance will ask why the quantities are what they are.
+
+[00:04:10] Sam Okafor: I can provide that. I can also separate the items into expected-use inventory and contingency inventory.
+
+[00:04:15] Derek Hollis: That helps.
+
+[00:04:17] Sam Okafor: We should also cover loaners. If a unit is down during the pilot, we can arrange replacement equipment under the support terms.
+
+[00:04:23] Derek Hollis: How fast?
+
+[00:04:25] Sam Okafor: The standard target is next-business-day shipment after the failure is confirmed and the replacement request is accepted. Actual arrival depends on carrier timing and the destination.
+
+[00:04:31] Derek Hollis: “Next-business-day shipment” is not the same as next-business-day arrival, and our nursing directors will notice the difference.
+
+[00:04:37] Sam Okafor: That's fair. I'll make that distinction explicit in the written response. We can also discuss whether a local reserve makes sense for the pilot.
+
+[00:04:43] Derek Hollis: A local reserve probably makes sense for the acute-care campus. The community site may not need the same quantity, but it is far enough away that shipping becomes part of the clinical conversation.
+
+[00:04:49] Sam Okafor: We can model both options. The reserve units would remain yours for the deployment period, and we would track their use.
+
+[00:04:54] Derek Hollis: Are they new?
+
+[00:04:56] Sam Okafor: They would be new units from the same production run where possible.
+
+[00:05:00] Derek Hollis: “Where possible” is another one of those phrases that gets attention.
+
+[00:05:03] Sam Okafor: Sorry. For the initial order, the reserve units would be new. If anything changed in availability, we would disclose it before shipping.
+
+[00:05:08] Derek Hollis: Better.
+
+[00:05:10] Sam Okafor: Let's go back to training. We proposed two on-site sessions at the acute-care campus and one at the community site, with recorded material for staff who cannot attend.
+
+[00:05:17] Derek Hollis: I don't want recording to substitute for hands-on training. People can watch a video and still hold the pump upside down the next day.
+
+[00:05:21] Sam Okafor: Agreed. The recording is supplemental. We would include hands-on sessions, competency checklists, and a train-the-trainer component.
+
+[00:05:27] Derek Hollis: Who signs off on competency?
+
+[00:05:29] Sam Okafor: Your designated clinical educators or whoever you assign. We provide the checklist and demonstration criteria, but your organization controls the final sign-off.
+
+[00:05:36] Derek Hollis: That distinction matters. Vendors sometimes imply that their attendance at a class equals our approval to use the equipment.
+
+[00:05:42] Sam Okafor: We won't frame it that way.
+
+[00:05:44] Derek Hollis: Good.
+
+[00:05:46] Sam Okafor: What do you anticipate being the biggest training challenge?
+
+[00:05:50] Derek Hollis: Consistency. We have experienced staff who know pumps very well, new nurses who need the basics, and float staff who may encounter the T3 only once every few weeks. The interface has to be understandable without assuming everyone remembers the same sequence.
+
+[00:05:59] Sam Okafor: We can create role-specific material. The super-users would get deeper configuration and troubleshooting content, while general users would focus on setup, programming, alarm response, and escalation.
+
+[00:06:08] Derek Hollis: That sounds right. I also want someone to observe the first shift after go-live. Training in a classroom is one thing; training when six pumps are alarming and a charge nurse is asking for help is another.
+
+[00:06:15] Sam Okafor: We can schedule floor support during the first deployment days.
+
+[00:06:18] Derek Hollis: How many days?
+
+[00:06:20] Sam Okafor: For the acute-care site, I would recommend three days covering different shifts. For the community site, two days may be enough, but we can adjust based on staffing.
+
+[00:06:26] Derek Hollis: Include that as an option. I don't want it buried in a footnote.
+
+[00:06:28] Sam Okafor: I will.
+
+[00:06:31] Derek Hollis: Now, the interface question. We use Cerner for the clinical record, and our medication workflows are tied to it. Does the Tidewater T3 support Cerner integration?
+
+[00:06:37] Sam Okafor: Let me check on that.
+
+[00:06:40] Derek Hollis: All right.
+
+[00:06:42] Sam Okafor: I don't want to give you an incomplete answer. I know we have interface options, but the exact Cerner support depends on the release and the integration path.
+
+[00:06:49] Derek Hollis: Sure.
+
+[00:06:51] Sam Okafor: Let's keep moving through the operational items, and I'll make a note to confirm the technical details with our interface team.
+
+[00:06:56] Derek Hollis: Fine. The interface group will want specifics, not a general statement that it can connect to something.
+
+[00:07:00] Sam Okafor: Understood. I'll ask them for the supported workflow, prerequisites, any middleware requirements, and what data can move in each direction.
+
+[00:07:07] Derek Hollis: Also ask whether the integration is included in the base proposal or treated as a separate service.
+
+[00:07:10] Sam Okafor: I will.
+
+[00:07:12] Derek Hollis: And whether it requires a new server on our side.
+
+[00:07:14] Sam Okafor: I'll include that as well.
+
+[00:07:16] Derek Hollis: Good. We can return to it when you have the answer.
+
+[00:07:18] Sam Okafor: Absolutely.
+
+[00:07:20] Derek Hollis: Another point is network behavior. Our biomedical devices operate on segmented networks, and the rules differ by facility.
+
+[00:07:25] Sam Okafor: The T3 can operate within a segmented environment, but your network team would need to approve the required ports and endpoints. We can provide the technical documentation for that review.
+
+[00:07:34] Derek Hollis: “Can operate” needs a little more detail too. We have a security questionnaire that will ask about authentication, encryption, logging, software updates, and remote access.
+
+[00:07:41] Sam Okafor: We have standard security documentation. I can send the questionnaire responses and arrange a call with our technical security contact if your team has follow-up questions.
+
+[00:07:48] Derek Hollis: That may be necessary. Our security review is not a formality anymore.
+
+[00:07:51] Sam Okafor: Most health systems are treating it that way now.
+
+[00:07:54] Derek Hollis: They should. A device can be clinically excellent and still create a problem if its support model does not fit the network.
+
+[00:07:58] Sam Okafor: Agreed.
+
+[00:08:00] Derek Hollis: How are updates handled?
+
+[00:08:02] Sam Okafor: Firmware updates are scheduled, not pushed without coordination. We provide release notes, identify prerequisites, and work with the customer on timing.
+
+[00:08:09] Derek Hollis: Are updates mandatory?
+
+[00:08:11] Sam Okafor: Some are recommended and some may be required for support or security reasons. We would identify the category and the impact before planning the update.
+
+[00:08:17] Derek Hollis: How much notice?
+
+[00:08:19] Sam Okafor: For a routine update, typically several weeks. For an urgent security issue, the timing could be shorter, but we would communicate the reason and the available mitigation.
+
+[00:08:25] Derek Hollis: Put that in writing. Our change board will ask.
+
+[00:08:27] Sam Okafor: Yes.
+
+[00:08:29] Derek Hollis: And can we test an update before applying it broadly?
+
+[00:08:31] Sam Okafor: Yes, we recommend a controlled test with representative equipment before broad deployment.
+
+[00:08:35] Derek Hollis: Good. We need a test unit that is not already carrying a patient workflow.
+
+[00:08:38] Sam Okafor: That can be part of the rollout plan.
+
+[00:08:41] Derek Hollis: Let's discuss alarms. The nurses will want to know whether alarm volume and escalation can be adjusted without losing important alerts.
+
+[00:08:47] Sam Okafor: Alarm parameters can be configured within defined limits, and the system distinguishes between notification categories. We would review your current alarm policy during implementation.
+
+[00:08:53] Derek Hollis: The phrase “within defined limits” is fine, but I need the actual limits.
+
+[00:08:56] Sam Okafor: I'll include the parameter range documentation.
+
+[00:08:58] Derek Hollis: And can the configuration be locked?
+
+[00:09:00] Sam Okafor: Administrative controls can limit who changes profiles. We can show you the permission model.
+
+[00:09:04] Derek Hollis: That's important. We don't want someone changing an alarm setting because it was irritating during a busy shift.
+
+[00:09:09] Sam Okafor: Understood.
+
+[00:09:11] Derek Hollis: What happens when the pump loses network connectivity?
+
+[00:09:13] Sam Okafor: The pump continues its local operation, and network-dependent functions may be unavailable until connectivity is restored. The device records applicable events locally, subject to storage limits.
+
+[00:09:22] Derek Hollis: What is the storage limit?
+
+[00:09:24] Sam Okafor: I need to verify the exact figure rather than guess.
+
+[00:09:27] Derek Hollis: Please do. That will come up in the downtime review.
+
+[00:09:29] Sam Okafor: I'll get the exact figure and the behavior when storage reaches capacity.
+
+[00:09:32] Derek Hollis: Good.
+
+[00:09:34] Sam Okafor: On downtime, do you have a standard paper process for medication administration when interfaces are unavailable?
+
+[00:09:39] Derek Hollis: We do. The process is not elegant, but it exists. The concern is reconciliation afterward. People need to know which records are authoritative and who verifies that nothing was duplicated.
+
+[00:09:47] Sam Okafor: We can map the T3 workflow into your downtime procedure and identify the reconciliation points.
+
+[00:09:52] Derek Hollis: Have you done that with other systems?
+
+[00:09:54] Sam Okafor: Yes, though the details vary by customer and interface design.
+
+[00:09:57] Derek Hollis: I would like a sample workflow with customer information removed.
+
+[00:10:00] Sam Okafor: I can provide a representative example.
+
+[00:10:02] Derek Hollis: Fine.
+
+[00:10:04] Sam Okafor: Let's look at consumables. The proposal assumed the standard tubing set, but I want to confirm whether you have specialty requirements in critical care or pediatrics.
+
+[00:10:12] Derek Hollis: We do have specialty requirements. The adult critical-care units are the largest group, but pediatrics has different expectations, and oncology will ask about compatibility with their existing sets.
+
+[00:10:20] Sam Okafor: We can provide the compatibility matrix.
+
+[00:10:22] Derek Hollis: Include material, approved use, and any limitations. We have been burned by a matrix that listed a product as compatible but omitted a temperature or pressure restriction.
+
+[00:10:29] Sam Okafor: That's a good point. I'll ask for the detailed version.
+
+[00:10:32] Derek Hollis: Also, who owns the decision if a department wants a set that is not on the list?
+
+[00:10:34] Sam Okafor: Your clinical governance process would make that decision, with our team providing technical compatibility information.
+
+[00:10:39] Derek Hollis: Again, good. We own the clinical decision.
+
+[00:10:41] Sam Okafor: Yes.
+
+[00:10:43] Derek Hollis: How long is the expected service life?
+
+[00:10:45] Sam Okafor: The expected service life is seven years under the stated operating conditions, subject to maintenance and availability of service support.
+
+[00:10:52] Derek Hollis: Seven years is useful only if parts are available for seven years.
+
+[00:10:54] Sam Okafor: The support plan includes parts availability commitments, and I can provide the specific term.
+
+[00:10:59] Derek Hollis: Do that. We need to compare it with the replacement cycle in our capital plan.
+
+[00:11:02] Sam Okafor: Of course.
+
+[00:11:04] Derek Hollis: Battery life is another concern. Our current equipment tends to look fine until it suddenly doesn't.
+
+[00:11:08] Sam Okafor: The T3 displays battery status and provides replacement guidance. Battery performance depends on usage, charging patterns, and age.
+
+[00:11:14] Derek Hollis: Can our technicians replace the battery?
+
+[00:11:16] Sam Okafor: Yes, trained technicians can replace it using the approved procedure.
+
+[00:11:19] Derek Hollis: Is special tooling required?
+
+[00:11:21] Sam Okafor: There is a service kit. I'll include the tooling list and training requirement.
+
+[00:11:24] Derek Hollis: Good.
+
+[00:11:26] Sam Okafor: Your shop also asked about calibration.
+
+[00:11:29] Derek Hollis: Correct. We need to know whether calibration is performed in-house or sent out.
+
+[00:11:31] Sam Okafor: Routine verification can be performed by trained personnel using the approved test equipment. If a device fails verification or needs a deeper adjustment, it may require depot service.
+
+[00:11:39] Derek Hollis: How often?
+
+[00:11:41] Sam Okafor: The recommended interval is annual, unless your policy or usage profile calls for a different schedule.
+
+[00:11:45] Derek Hollis: Annual is probably where we will land, but our quality group will want the source document.
+
+[00:11:48] Sam Okafor: I'll send the service manual excerpt and the recommended verification procedure.
+
+[00:11:51] Derek Hollis: Please make sure the excerpt is current. We have received old manuals before.
+
+[00:11:54] Sam Okafor: I'll verify the revision before sending it.
+
+[00:11:56] Derek Hollis: Thanks.
+
+[00:11:58] Sam Okafor: On warranty, the proposal lists two years for the device and one year for selected accessories.
+
+[00:12:03] Derek Hollis: What counts as a selected accessory?
+
+[00:12:05] Sam Okafor: Items defined in the warranty schedule. I can attach the schedule so there is no ambiguity.
+
+[00:12:08] Derek Hollis: Please do. Warranty language is where a simple proposal becomes a legal review.
+
+[00:12:11] Sam Okafor: Understood.
+
+[00:12:13] Derek Hollis: Does the warranty cover labor?
+
+[00:12:15] Sam Okafor: For covered repairs performed through the authorized service process, labor is included. Shipping terms can vary depending on the type of service.
+
+[00:12:21] Derek Hollis: Again, spell out the shipping.
+
+[00:12:23] Sam Okafor: I will.
+
+[00:12:25] Derek Hollis: And accidental damage?
+
+[00:12:27] Sam Okafor: Accidental damage is generally outside the standard warranty, though there may be an optional protection program.
+
+[00:12:32] Derek Hollis: I don't want an optional program slipped into the total without showing it separately.
+
+[00:12:34] Sam Okafor: It would be listed as a separate line.
+
+[00:12:37] Derek Hollis: Good.
+
+[00:12:39] Sam Okafor: Let's talk about pricing structure. The current proposal separates equipment, implementation, training, and the annual support plan.
+
+[00:12:45] Derek Hollis: That is easier for us to review. Finance will still ask for the total cost over the initial term.
+
+[00:12:48] Sam Okafor: I can provide a total-cost view with one-time and recurring charges separated.
+
+[00:12:52] Derek Hollis: Include assumptions. If the price depends on a minimum quantity or a particular support tier, I need to see that.
+
+[00:12:55] Sam Okafor: Yes.
+
+[00:12:57] Derek Hollis: Are taxes included?
+
+[00:12:59] Sam Okafor: No, taxes and any site-specific installation charges would be shown separately.
+
+[00:13:02] Derek Hollis: Installation charges?
+
+[00:13:04] Sam Okafor: Only if additional site work is needed beyond the standard deployment. For example, unusual network preparation or a custom mounting requirement.
+
+[00:13:10] Derek Hollis: We may have mounting requirements in one of the units. The medication rooms are not identical.
+
+[00:13:13] Sam Okafor: Send me the mounting details and photos if you have them. We can have our technical team review.
+
+[00:13:18] Derek Hollis: I can send photos, but I need to clear that with facilities first.
+
+[00:13:20] Sam Okafor: Of course.
+
+[00:13:22] Derek Hollis: What payment terms are assumed?
+
+[00:13:24] Sam Okafor: The draft assumes net thirty, with invoicing tied to shipment for equipment and completion milestones for services.
+
+[00:13:29] Derek Hollis: Our standard terms are longer.
+
+[00:13:31] Sam Okafor: I can ask our contracts team to review your standard terms.
+
+[00:13:34] Derek Hollis: Do that early. I don't want the operational team spending weeks on a proposal that stops at procurement.
+
+[00:13:36] Sam Okafor: Agreed.
+
+[00:13:38] Derek Hollis: What is the lead time?
+
+[00:13:40] Sam Okafor: Current planning lead time is approximately eight to ten weeks after order acceptance and configuration confirmation.
+
+[00:13:46] Derek Hollis: That is a range, not a date.
+
+[00:13:48] Sam Okafor: It is a planning range because production allocation can change, but I can ask for a date estimate based on the proposed quantity.
+
+[00:13:52] Derek Hollis: Please do. We need to coordinate a budget release, site preparation, and training.
+
+[00:13:55] Sam Okafor: I will.
+
+[00:13:57] Derek Hollis: If we split the order between facilities, does that change the lead time?
+
+[00:13:59] Sam Okafor: It may, depending on whether you want one shipment or staged shipments. Staging could let you begin at one site earlier, but it can also add logistics complexity.
+
+[00:14:05] Derek Hollis: We would probably prefer staged shipments if the second site is not ready.
+
+[00:14:07] Sam Okafor: We can quote both approaches.
+
+[00:14:09] Derek Hollis: Good.
+
+[00:14:11] Sam Okafor: How do you normally evaluate a pilot?
+
+[00:14:14] Derek Hollis: We start with safety and reliability, then workflow. If the device does what it should but causes staff to take twice as long, that is not a successful deployment.
+
+[00:14:21] Sam Okafor: What measures would you use?
+
+[00:14:23] Derek Hollis: Setup time, programming errors, alarm response, service calls, and staff confidence. We also need to know whether the equipment behaves consistently across shifts.
+
+[00:14:31] Sam Okafor: Would you collect baseline data from the existing fleet?
+
+[00:14:34] Derek Hollis: Yes, at least enough to compare. Otherwise everyone remembers the old process selectively.
+
+[00:14:36] Sam Okafor: We can provide a measurement template.
+
+[00:14:39] Derek Hollis: Make it simple. If it takes a technician ten minutes to log one event, the data will disappear after day two.
+
+[00:14:41] Sam Okafor: We can use a short form with optional detail fields.
+
+[00:14:44] Derek Hollis: That would be better.
+
+[00:14:46] Sam Okafor: Would you want weekly review meetings during the pilot?
+
+[00:14:49] Derek Hollis: Weekly for the first month, then every other week if things are stable. I want the first meeting after the initial live shifts, not after everyone has forgotten what happened.
+
+[00:14:54] Sam Okafor: We can schedule the first one within a few days of go-live.
+
+[00:14:57] Derek Hollis: Include nursing and interfaces, not just engineering.
+
+[00:14:59] Sam Okafor: Absolutely.
+
+[00:15:01] Derek Hollis: And please make sure the vendor attendees can make decisions or get answers. We have had meetings where everyone takes notes and nobody owns the follow-up.
+
+[00:15:07] Sam Okafor: I'll assign an implementation lead and a technical escalation contact.
+
+[00:15:10] Derek Hollis: Names matter.
+
+[00:15:12] Sam Okafor: I'll include names and responsibilities.
+
+[00:15:14] Derek Hollis: Good.
+
+[00:15:16] Sam Okafor: On escalation, our standard support path starts with the service desk, then moves to technical support, then engineering if needed.
+
+[00:15:23] Derek Hollis: What are the hours?
+
+[00:15:25] Sam Okafor: The service desk is available twenty-four hours for urgent clinical issues. Non-urgent requests are handled during standard business hours.
+
+[00:15:31] Derek Hollis: Is that twenty-four hours every day?
+
+[00:15:33] Sam Okafor: Yes, including weekends and holidays for urgent issues.
+
+[00:15:36] Derek Hollis: What is the response target?
+
+[00:15:38] Sam Okafor: Critical issues receive an initial response within one hour. Resolution time depends on the cause and whether parts or on-site service are required.
+
+[00:15:44] Derek Hollis: Again, initial response is not resolution.
+
+[00:15:46] Sam Okafor: Correct. We should not blur those.
+
+[00:15:48] Derek Hollis: What qualifies as critical?
+
+[00:15:50] Sam Okafor: A condition that affects patient-care operation or prevents safe use of the device across the affected workflow. We can review the severity definitions with your team.
+
+[00:15:58] Derek Hollis: Put examples in the support guide.
+
+[00:16:00] Sam Okafor: I will.
+
+[00:16:02] Derek Hollis: Do you offer remote diagnostics?
+
+[00:16:04] Sam Okafor: Yes, when enabled and approved by the customer. Remote access is controlled, logged, and limited to the support need.
+
+[00:16:09] Derek Hollis: Our security group will want to know whether the connection is persistent.
+
+[00:16:11] Sam Okafor: It is not intended to be an unrestricted persistent connection. The exact method depends on the deployment architecture.
+
+[00:16:17] Derek Hollis: That answer will not pass review by itself, but it is a start.
+
+[00:16:19] Sam Okafor: I'll get the architecture document.
+
+[00:16:21] Derek Hollis: Also, can our technicians run diagnostics without granting remote access?
+
+[00:16:23] Sam Okafor: Yes, there are local diagnostic procedures.
+
+[00:16:26] Derek Hollis: Good. We prefer to solve routine things ourselves when we can.
+
+[00:16:28] Sam Okafor: That is usually faster for everyone.
+
+[00:16:30] Derek Hollis: Unless the manual tells us to call support for every loose cable.
+
+[00:16:33] Sam Okafor: The manual should help with loose cables, at least.
+
+[00:16:35] Derek Hollis: It should. We can test that by giving it to a technician who has not seen the product.
+
+[00:16:37] Sam Okafor: That's a useful usability test.
+
+[00:16:39] Derek Hollis: We do that with documentation now. The author always thinks the steps are obvious.
+
+[00:16:41] Sam Okafor: And the person reading them discovers that step three assumes knowledge from step nine.
+
+[00:16:44] Derek Hollis: Exactly.
+
+[00:16:46] Sam Okafor: We can include a documentation review in the pilot preparation.
+
+[00:16:48] Derek Hollis: Include the quick-reference guide too.
+
+[00:16:50] Sam Okafor: Yes.
+
+[00:16:52] Derek Hollis: Let's discuss cleaning and infection prevention.
+
+[00:16:54] Sam Okafor: The T3 has an approved cleaning-agent list and defined cleaning procedures. The housing is designed for routine wipe-down, but the procedure specifies areas that need special attention.
+
+[00:17:02] Derek Hollis: Are there products we cannot use?
+
+[00:17:04] Sam Okafor: Yes, certain solvents and abrasive agents are not approved.
+
+[00:17:06] Derek Hollis: Our infection-prevention team will need the complete list, not a summary.
+
+[00:17:08] Sam Okafor: I'll send the full list and the contact-time guidance.
+
+[00:17:10] Derek Hollis: What about fluid ingress?
+
+[00:17:12] Sam Okafor: The device has a defined protection rating, but it is not intended to be immersed. If fluid enters the housing, the device should be removed from service and inspected.
+
+[00:17:20] Derek Hollis: That needs to be prominent. People see a wipeable device and assume it can survive anything.
+
+[00:17:23] Sam Okafor: Agreed.
+
+[00:17:25] Derek Hollis: Do the cleaning instructions differ for pediatric units?
+
+[00:17:27] Sam Okafor: The approved agents are the same unless the facility has a specific policy that requires additional handling. We can review that with infection prevention.
+
+[00:17:33] Derek Hollis: Fine.
+
+[00:17:35] Sam Okafor: What about transport between departments?
+
+[00:17:37] Derek Hollis: We do a lot of that. Some pumps stay with a patient, others move with a bed or procedure team.
+
+[00:17:39] Sam Okafor: The device is designed for routine transport, and there are mounting and carrying options.
+
+[00:17:43] Derek Hollis: Are the carrying options part of the quote?
+
+[00:17:45] Sam Okafor: The standard handle is included. Additional mounts or accessories would be listed separately.
+
+[00:17:49] Derek Hollis: List them separately, then.
+
+[00:17:51] Sam Okafor: Will do.
+
+[00:17:53] Derek Hollis: We also have elevators that create a brief network interruption. I assume the device does not stop operation every time it leaves coverage.
+
+[00:17:57] Sam Okafor: Local operation continues during a temporary network interruption. Any functions requiring a connection resume when the connection is restored.
+
+[00:18:04] Derek Hollis: Good.
+
+[00:18:06] Sam Okafor: Do your teams need a device-tracking capability?
+
+[00:18:08] Derek Hollis: We track equipment, but not always elegantly. Some departments use labels, some use spreadsheets, and our central inventory system is not always updated at the moment a device moves.
+
+[00:18:15] Sam Okafor: The T3 can expose device identifiers and status information for inventory workflows, depending on the system you connect it to.
+
+[00:18:22] Derek Hollis: That's another item for interfaces. We do not need a separate island of inventory data.
+
+[00:18:24] Sam Okafor: Understood.
+
+[00:18:26] Derek Hollis: Can the serial number be read without turning the pump over?
+
+[00:18:28] Sam Okafor: The identifier is visible on the device label, and it is also available through the device interface.
+
+[00:18:32] Derek Hollis: Fine.
+
+[00:18:34] Sam Okafor: We should cover delivery and receiving. Would both sites receive through central materials management?
+
+[00:18:38] Derek Hollis: The acute-care campus would. The community hospital receives some equipment directly, but we need advance notice so facilities can clear a staging area.
+
+[00:18:43] Sam Okafor: We can provide packing information and a delivery schedule.
+
+[00:18:46] Derek Hollis: Include the dimensions and weight of the shipping cases.
+
+[00:18:48] Sam Okafor: I will.
+
+[00:18:50] Derek Hollis: And whether the cases can be reused for returns.
+
+[00:18:52] Sam Okafor: I'll confirm that.
+
+[00:18:54] Derek Hollis: We have limited dock space, so a surprise pallet is not welcome.
+
+[00:18:56] Sam Okafor: We'll coordinate the delivery window.
+
+[00:18:58] Derek Hollis: Good.
+
+[00:19:00] Sam Okafor: Does your receiving team need serial numbers before delivery?
+
+[00:19:02] Derek Hollis: Yes, if possible. They load the asset records before the equipment reaches the shop.
+
+[00:19:05] Sam Okafor: We can provide a shipment manifest with serial numbers.
+
+[00:19:07] Derek Hollis: Include the software revision if it is available.
+
+[00:19:09] Sam Okafor: Yes.
+
+[00:19:11] Derek Hollis: And the battery date?
+
+[00:19:13] Sam Okafor: I'll ask whether that is included in the manifest.
+
+[00:19:15] Derek Hollis: Please do.
+
+[00:19:17] Sam Okafor: Once the equipment arrives, would your team perform incoming inspection?
+
+[00:19:20] Derek Hollis: Yes. We check packaging, labels, accessories, physical condition, and basic power-up. We also verify that the quantity matches the manifest.
+
+[00:19:26] Sam Okafor: We can supply an incoming-inspection checklist.
+
+[00:19:29] Derek Hollis: That would save us time.
+
+[00:19:31] Sam Okafor: It includes damage documentation and the process for reporting a discrepancy.
+
+[00:19:35] Derek Hollis: What is the reporting window?
+
+[00:19:37] Sam Okafor: Shipping damage should be reported promptly, generally within five business days of receipt.
+
+[00:19:41] Derek Hollis: That's short if the cases go straight into a storage room.
+
+[00:19:43] Sam Okafor: We can discuss whether the contract uses a different period. The checklist will emphasize inspection before acceptance.
+
+[00:19:47] Derek Hollis: Better.
+
+[00:19:49] Sam Okafor: How do you handle obsolete equipment?
+
+[00:19:51] Derek Hollis: We have an asset-disposition process. Devices are either redeployed, cannibalized where permitted, returned, or sent for certified disposal. We cannot simply put them in a dumpster.
+
+[00:19:59] Sam Okafor: We offer a return and disposition service for units at the end of their use, subject to the agreement.
+
+[00:20:03] Derek Hollis: Is that included?
+
+[00:20:05] Sam Okafor: Not in the current base price. It can be quoted separately.
+
+[00:20:07] Derek Hollis: Show it as an option.
+
+[00:20:09] Sam Okafor: I will.
+
+[00:20:11] Derek Hollis: Data sanitization is part of that, I assume.
+
+[00:20:13] Sam Okafor: If the device stores customer or operational data, the disposition procedure includes data handling and a certificate where applicable.
+
+[00:20:17] Derek Hollis: “Where applicable” will get flagged.
+
+[00:20:19] Sam Okafor: I'll clarify the exact certificate process for this model.
+
+[00:20:21] Derek Hollis: Thanks.
+
+[00:20:23] Sam Okafor: We have about twenty minutes left. I want to make sure we leave time for next steps.
+
+[00:20:27] Derek Hollis: That's fine. I have enough coffee to make the remaining twenty minutes possible.
+
+[00:20:30] Sam Okafor: I envy you. Mine is still in the car.
+
+[00:20:32] Derek Hollis: That is not coffee; that is a liability.
+
+[00:20:34] Sam Okafor: Probably true.
+
+[00:20:36] Derek Hollis: Let's talk about references. I want to hear from organizations that deployed in a setting similar to ours.
+
+[00:20:39] Sam Okafor: We can arrange reference conversations, subject to the customers' availability and approval.
+
+[00:20:43] Derek Hollis: I would prefer one large system and one smaller hospital, not two showcase sites that have nothing in common with us.
+
+[00:20:47] Sam Okafor: I can look for that combination.
+
+[00:20:49] Derek Hollis: Ask them about implementation, not just whether they like the pump.
+
+[00:20:51] Sam Okafor: What topics matter most?
+
+[00:20:53] Derek Hollis: Training burden, support responsiveness, interface work, maintenance, and what they wish they had put in the contract.
+
+[00:20:58] Sam Okafor: Those are good questions.
+
+[00:21:00] Derek Hollis: Also ask what surprised them after go-live. People are more honest about surprises than strengths.
+
+[00:21:03] Sam Okafor: I'll frame the request that way.
+
+[00:21:05] Derek Hollis: Good.
+
+[00:21:07] Sam Okafor: Would you want a product demonstration for the wider group?
+
+[00:21:09] Derek Hollis: Yes, but not a two-hour sales presentation. We need a working session where nursing can try normal tasks and engineering can inspect service functions.
+
+[00:21:15] Sam Okafor: We can split it into a clinical workflow session and a technical session.
+
+[00:21:18] Derek Hollis: That is better. The audiences ask different questions.
+
+[00:21:20] Sam Okafor: We can bring a demo unit and let users practice programming, responding to alerts, changing approved settings, and documenting the workflow.
+
+[00:21:26] Derek Hollis: Include a failure scenario. Not something theatrical, just a network interruption or a battery warning.
+
+[00:21:29] Sam Okafor: We can demonstrate both.
+
+[00:21:31] Derek Hollis: And let the users ask questions without someone steering every answer back to the brochure.
+
+[00:21:33] Sam Okafor: I promise to keep the brochure out of the room.
+
+[00:21:35] Derek Hollis: That would make you popular.
+
+[00:21:37] Sam Okafor: I can probably survive that kind of popularity.
+
+[00:21:39] Derek Hollis: The demo should include the accessory changeover too. Staff need to see how much handling is involved.
+
+[00:21:42] Sam Okafor: We'll include it.
+
+[00:21:44] Derek Hollis: And cleaning.
+
+[00:21:46] Sam Okafor: Yes.
+
+[00:21:48] Derek Hollis: How many people can attend?
+
+[00:21:50] Sam Okafor: We can support up to fifteen in one clinical session comfortably. Larger groups can be split.
+
+[00:21:54] Derek Hollis: We will probably split. Fifteen people in a room with one device becomes a spectator sport.
+
+[00:21:57] Sam Okafor: Two smaller sessions may be more productive.
+
+[00:21:59] Derek Hollis: Agreed.
+
+[00:22:01] Sam Okafor: What is your decision process after the demonstration?
+
+[00:22:04] Derek Hollis: I gather feedback, write a recommendation, and take it through our capital review. If the recommendation is positive, supply chain and legal work through the commercial terms.
+
+[00:22:10] Sam Okafor: Does the capital review happen monthly?
+
+[00:22:12] Derek Hollis: Usually. The schedule shifts around holidays and budget deadlines.
+
+[00:22:14] Sam Okafor: And are you working against a particular budget cycle?
+
+[00:22:16] Derek Hollis: We have capital available in the current planning cycle, but the release is not automatic. The proposal needs to be complete enough for finance to understand the recurring impact.
+
+[00:22:22] Sam Okafor: I'll make the recurring support cost clear.
+
+[00:22:24] Derek Hollis: Include training refreshers and optional services too. A low first-year number that ignores year two is not useful.
+
+[00:22:28] Sam Okafor: Understood.
+
+[00:22:30] Derek Hollis: Is support priced per device or per site?
+
+[00:22:32] Sam Okafor: The standard support plan is priced per device, with some site-level services included depending on the tier.
+
+[00:22:38] Derek Hollis: Give me both views.
+
+[00:22:40] Sam Okafor: I will.
+
+[00:22:42] Derek Hollis: Are there volume discounts beyond thirty-six?
+
+[00:22:44] Sam Okafor: There may be, depending on the final quantity and timing. I can ask for an alternate price at the broader fleet level.
+
+[00:22:49] Derek Hollis: Do that, but keep the pilot quote separate. Otherwise people will compare two different decisions.
+
+[00:22:52] Sam Okafor: That's sensible.
+
+[00:22:54] Derek Hollis: We may want to expand if the pilot goes well, but expansion should not be assumed before we have results.
+
+[00:22:56] Sam Okafor: I agree.
+
+[00:22:58] Derek Hollis: What happens to the pilot pricing if we do not expand?
+
+[00:23:00] Sam Okafor: The pilot pricing would apply to the pilot quantity under the quoted terms. Any future order would be quoted separately, though we can state the assumptions for a potential expansion.
+
+[00:23:05] Derek Hollis: Put that in plain language.
+
+[00:23:07] Sam Okafor: I will.
+
+[00:23:09] Derek Hollis: We also need to understand contract termination. If the pilot is not successful, what can we return and what costs remain?
+
+[00:23:12] Sam Okafor: That would be governed by the agreement. Equipment return, services already delivered, and any custom work would be addressed separately.
+
+[00:23:18] Derek Hollis: Legal will want the actual language.
+
+[00:23:20] Sam Okafor: I'll provide the standard terms for review.
+
+[00:23:22] Derek Hollis: Early, please.
+
+[00:23:24] Sam Okafor: Yes.
+
+[00:23:26] Derek Hollis: Another practical issue: storage. Do the pumps need a special charging rack?
+
+[00:23:28] Sam Okafor: They can be stored and charged using the approved charging accessories. The exact rack configuration depends on your available space and whether you want centralized or distributed charging.
+
+[00:23:36] Derek Hollis: We have both. Centralized charging is convenient until the rack becomes a single point of failure.
+
+[00:23:39] Sam Okafor: We can discuss a mixed approach.
+
+[00:23:41] Derek Hollis: What is the footprint?
+
+[00:23:43] Sam Okafor: I'll send the dimensions for the charger and the recommended clearance.
+
+[00:23:45] Derek Hollis: Include heat and power requirements.
+
+[00:23:47] Sam Okafor: Yes.
+
+[00:23:49] Derek Hollis: Can the units charge while mounted?
+
+[00:23:51] Sam Okafor: They can, depending on the approved mount and power connection.
+
+[00:23:54] Derek Hollis: “Depending” again.
+
+[00:23:56] Sam Okafor: I'll identify the exact mount options that support charging.
+
+[00:23:58] Derek Hollis: Good.
+
+[00:24:00] Sam Okafor: How do you currently label devices for location and ownership?
+
+[00:24:03] Derek Hollis: We use our asset tag plus a department label. Some units have colored bands, which are supposed to indicate home location but sometimes indicate where someone last found them.
+
+[00:24:10] Sam Okafor: The T3 can accommodate your asset label, and we can discuss placement so it does not block the manufacturer information.
+
+[00:24:14] Derek Hollis: That is enough. We don't need another proprietary label system.
+
+[00:24:16] Sam Okafor: Understood.
+
+[00:24:18] Derek Hollis: What happens if a pump is sent to the wrong facility?
+
+[00:24:20] Sam Okafor: The device remains usable, but inventory and configuration records may need to be updated. We can define a transfer process.
+
+[00:24:26] Derek Hollis: That process should not require the unit to go back to you.
+
+[00:24:28] Sam Okafor: It should be manageable locally by authorized personnel.
+
+[00:24:30] Derek Hollis: Good.
+
+[00:24:32] Sam Okafor: Do you need bilingual materials?
+
+[00:24:34] Derek Hollis: We need materials in English and Spanish for some staff groups. The spoken training can be arranged through our education department, but written quick-reference material needs to be accessible.
+
+[00:24:41] Sam Okafor: We can provide Spanish versions of the standard user materials if available, and we can confirm which documents are translated.
+
+[00:24:47] Derek Hollis: Confirm rather than assume.
+
+[00:24:49] Sam Okafor: I will.
+
+[00:24:51] Derek Hollis: Accessibility is also relevant. A few staff have visual limitations, so font size and contrast matter.
+
+[00:24:54] Sam Okafor: We can review the display settings and the documentation format.
+
+[00:24:57] Derek Hollis: Include that in the demonstration.
+
+[00:24:59] Sam Okafor: Yes.
+
+[00:25:01] Derek Hollis: What is the display size?
+
+[00:25:03] Sam Okafor: I'll send the technical specification and show the display during the demo.
+
+[00:25:05] Derek Hollis: Fine.
+
+[00:25:07] Sam Okafor: We have about ten minutes.
+
+[00:25:09] Derek Hollis: Then let's make the next-step list concrete.
+
+[00:25:11] Sam Okafor: I'll recap as we go. First, I owe you the Cerner integration answer and details on supported workflows.
+
+[00:25:16] Derek Hollis: Correct.
+
+[00:25:18] Sam Okafor: Second, the network and security documentation, including remote diagnostics architecture.
+
+[00:25:22] Derek Hollis: Correct.
+
+[00:25:24] Sam Okafor: Third, the service-life, parts-support, calibration, battery, and maintenance documents.
+
+[00:25:28] Derek Hollis: Yes.
+
+[00:25:30] Sam Okafor: Fourth, the detailed consumables and cleaning compatibility information.
+
+[00:25:34] Derek Hollis: Yes.
+
+[00:25:36] Sam Okafor: Fifth, revised pricing with recurring costs, optional services, alternate quantities, and staged-shipment assumptions.
+
+[00:25:42] Derek Hollis: And payment terms.
+
+[00:25:44] Sam Okafor: And payment terms.
+
+[00:25:46] Derek Hollis: Also the warranty schedule and standard contract terms.
+
+[00:25:49] Sam Okafor: I'll include both.
+
+[00:25:51] Derek Hollis: Sixth, reference options and a proposed demonstration agenda.
+
+[00:25:54] Sam Okafor: Yes.
+
+[00:25:56] Derek Hollis: For the demo, I want the clinical educators, one nurse manager from each site, someone from interfaces, and two of our technicians.
+
+[00:26:02] Sam Okafor: That sounds like the right group.
+
+[00:26:04] Derek Hollis: We will probably need two hours, but I do not want a two-hour lecture.
+
+[00:26:06] Sam Okafor: We can allocate the time to short context, hands-on workflow, technical review, and questions.
+
+[00:26:10] Derek Hollis: Good.
+
+[00:26:12] Sam Okafor: Do you have a date in mind?
+
+[00:26:14] Derek Hollis: The week after next is possible, except Tuesday afternoon. Monday morning is usually bad because of operational review, and Friday is when everyone tries to escape.
+
+[00:26:22] Sam Okafor: Wednesday or Thursday?
+
+[00:26:24] Derek Hollis: Wednesday morning would be best.
+
+[00:26:26] Sam Okafor: I'll check the demo-unit schedule and send a few times.
+
+[00:26:28] Derek Hollis: Send them to me and copy my coordinator. She will find a room that is not currently being dismantled.
+
+[00:26:31] Sam Okafor: I appreciate the help.
+
+[00:26:33] Derek Hollis: She is the reason any of these meetings happen.
+
+[00:26:35] Sam Okafor: Then I will make her life easier by sending one consolidated packet instead of twelve separate attachments.
+
+[00:26:38] Derek Hollis: Please do. A consolidated packet with an index would be ideal.
+
+[00:26:40] Sam Okafor: I'll create an index and identify which documents are for clinical review, technical review, and commercial review.
+
+[00:26:43] Derek Hollis: That will help us route it.
+
+[00:26:45] Sam Okafor: What turnaround do you need for the packet?
+
+[00:26:47] Derek Hollis: If I have it by the end of the week, I can circulate it before the demo.
+
+[00:26:50] Sam Okafor: I'll target Friday afternoon.
+
+[00:26:52] Derek Hollis: Don't promise Friday if your interface team needs longer. I would rather have a complete answer Monday than a partial one Friday.
+
+[00:26:57] Sam Okafor: That's fair. I'll send the documents as they are ready, but I won't label the packet complete until the technical answers are included.
+
+[00:27:02] Derek Hollis: Good.
+
+[00:27:04] Sam Okafor: Would you like a short written summary of today's discussion?
+
+[00:27:06] Derek Hollis: Yes, with open questions clearly separated from confirmed points.
+
+[00:27:08] Sam Okafor: I'll do that.
+
+[00:27:10] Derek Hollis: And don't describe the integration as confirmed until it is confirmed.
+
+[00:27:12] Sam Okafor: Understood.
+
+[00:27:14] Derek Hollis: I know that sounds obvious, but summaries tend to turn possibilities into decisions.
+
+[00:27:16] Sam Okafor: I have seen that happen.
+
+[00:27:18] Derek Hollis: Then you know why I say it.
+
+[00:27:20] Sam Okafor: I do.
+
+[00:27:22] Derek Hollis: One more item: I want to understand how your company handles product changes. If the hardware or software changes during our rollout, how much notice do we get?
+
+[00:27:28] Sam Okafor: We provide product-change notices when a change affects function, compatibility, service, or ordering. The notice period depends on the nature of the change.
+
+[00:27:35] Derek Hollis: That needs to be in the contract or support terms.
+
+[00:27:37] Sam Okafor: I'll point you to the applicable section.
+
+[00:27:39] Derek Hollis: And what happens to existing accessories if a revision changes the connection?
+
+[00:27:41] Sam Okafor: Compatibility information would be included in the notice, and we would identify any required transition plan.
+
+[00:27:45] Derek Hollis: Fine.
+
+[00:27:47] Sam Okafor: Do you need a formal end-of-support commitment?
+
+[00:27:49] Derek Hollis: Yes. We need enough notice to plan replacement, not discover at renewal that a product is no longer supported.
+
+[00:27:54] Sam Okafor: I'll include the lifecycle policy.
+
+[00:27:56] Derek Hollis: Good.
+
+[00:27:58] Sam Okafor: I think we covered the main areas.
+
+[00:28:00] Derek Hollis: We covered the main areas, and probably several areas that were not on your agenda.
+
+[00:28:03] Sam Okafor: That's usually how these calls go.
+
+[00:28:05] Derek Hollis: It is better than finding the missing areas after the purchase order.
+
+[00:28:07] Sam Okafor: Absolutely.
+
+[00:28:09] Derek Hollis: I want to be clear about our posture. We're not shopping around.
+
+[00:28:12] Sam Okafor: I appreciate you saying that.
+
+[00:28:14] Derek Hollis: That does not mean the review is automatic. We still need the technical answers, the demonstration, and the commercial review. But we are spending this time because we see a credible path here.
+
+[00:28:22] Sam Okafor: That's helpful context. I won't treat the process as a formality.
+
+[00:28:24] Derek Hollis: Good. If the product and the support model fit, we can move forward. If something does not fit, I will tell you directly.
+
+[00:28:28] Sam Okafor: I value that.
+
+[00:28:30] Derek Hollis: And if the interface answer is complicated, give me the complicated answer. We can work through requirements; we cannot work through a vague assurance.
+
+[00:28:35] Sam Okafor: Understood. I'll make sure the interface team addresses the actual workflow and prerequisites.
+
+[00:28:37] Derek Hollis: All right.
+
+[00:28:39] Sam Okafor: I'll send the follow-up summary today, then the documents as they come in, and proposed demonstration times.
+
+[00:28:42] Derek Hollis: Send the summary to me and my coordinator. I will distribute it internally.
+
+[00:28:45] Sam Okafor: Will do.
+
+[00:28:47] Derek Hollis: And if you need photos or facility details for the mounting review, tell me exactly what you need. I can get the right people involved.
+
+[00:28:51] Sam Okafor: I will send a short request rather than a generic data list.
+
+[00:28:53] Derek Hollis: Perfect.
+
+[00:28:55] Sam Okafor: Thanks again, Derek. I know we ran right up to the hour.
+
+[00:28:58] Derek Hollis: We did. The construction crew has moved on to something that sounds like a submarine, so I should take advantage of the quiet.
+
+[00:29:02] Sam Okafor: I'll let you get back to it.
+
+[00:29:04] Derek Hollis: Thanks, Sam. Send the follow-up, and we'll take it from there.
+
+[00:29:07] Sam Okafor: Will do. Take care.
+
+[00:29:09] Derek Hollis: You too.

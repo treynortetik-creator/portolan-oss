@@ -1,0 +1,240 @@
+# Manual only. GitHub Actions minutes ran out, so CI runs on this machine before every push:
+# `uv run python scripts/ci_local.py` (lint, full suite, gitleaks, the docker job), enforced by
+# .claude/hooks/push_gate.py and scripts/git-hooks/pre-push. The jobs below are unchanged so a
+# run can be started by hand from the Actions tab.
+name: CI
+
+on:
+  workflow_dispatch:
+
+# Bug hunt 2026-09-18 (ops review, P2 finding 14): two quick pushes to
+# the same branch used to run two full, independent CI runs with no
+# ordering guarantee between them -- a slower run for an EARLIER commit
+# could finish after a faster run for a LATER one, and Railway's
+# Wait-for-CI would see whichever green check landed last. Grouping by
+# ref and cancelling the superseded run removes that race; it also stops
+# burning a full run for a commit that's already obsolete the moment a
+# newer one lands on the same branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Guardrails plan 2026-09-22, rank 5 (CLAUDE.md "Never commit secrets"): scan every
+  # commit, not just the tip -- a key that was committed and then deleted is still in
+  # history. The release binary is pinned and checksum-verified rather than using
+  # gitleaks-action, which needs a paid license for organization-owned repos.
+  # `.gitleaks.toml` holds the allowlist (one false positive, found by the first scan).
+  #
+  # Every job has a timeout so a hang cannot hold Railway's Wait-for-CI for GitHub's 6-hour
+  # default. Actions are pinned to a commit SHA (the tag in the comment is the release it was
+  # read from), so a moved tag cannot change what runs here.
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GITLEAKS_VERSION: "8.30.1"
+      # sha256 of gitleaks_8.30.1_linux_x64.tar.gz, from the release's checksums.txt and
+      # re-computed from the downloaded tarball on 2026-09-22.
+      GITLEAKS_SHA256: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Install gitleaks (pinned, checksum-verified)
+        run: |
+          curl -fsSLo gitleaks.tar.gz \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf gitleaks.tar.gz gitleaks
+          ./gitleaks version
+
+      - name: Scan full git history for secrets
+        run: ./gitleaks git --config .gitleaks.toml --redact --no-banner --exit-code 1 .
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: portolan
+          POSTGRES_PASSWORD: portolan
+          POSTGRES_DB: portolan_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U portolan -d portolan_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://portolan:portolan@localhost:5432/portolan_test
+      # Same pinned binary as the `secrets` job: tests/test_gitleaks_rules.py runs the custom
+      # rules in .gitleaks.toml against synthetic secrets, and fails here if it cannot.
+      GITLEAKS_VERSION: "8.30.1"
+      GITLEAKS_SHA256: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      # tests/test_infra.py and tests/test_infra_deploy.py import
+      # aws_cdk, which is jsii-backed and spawns a real `node` child
+      # process just to import it. The runner happens to ship a Node
+      # already, but that's implicit tooling this workflow shouldn't
+      # depend on quietly -- pin it explicitly instead (the `docker` job
+      # deliberately does NOT get Node: those two files are excluded from
+      # the in-image test run there, see docker/Dockerfile's CMD).
+      - name: Set up Node (aws_cdk/jsii needs a real `node` on PATH)
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "20"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@caf0cab7a618c569241d31dcd442f54681755d39 # v3.2.4
+        with:
+          version: "0.11.3"
+
+      - name: Install gitleaks (pinned, checksum-verified) for the rule tests
+        run: |
+          curl -fsSLo "$RUNNER_TEMP/gitleaks.tar.gz" \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  $RUNNER_TEMP/gitleaks.tar.gz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/gitleaks-bin"
+          tar -xzf "$RUNNER_TEMP/gitleaks.tar.gz" -C "$RUNNER_TEMP/gitleaks-bin" gitleaks
+          echo "$RUNNER_TEMP/gitleaks-bin" >> "$GITHUB_PATH"
+
+      # Fails when uv.lock no longer matches pyproject.toml; `uv sync --frozen` below would
+      # install the stale lock without complaint.
+      - name: Lockfile matches pyproject.toml
+        run: uv lock --check
+
+      - name: Set up Python
+        run: uv python install 3.13
+
+      # `portolan.db.backup_database`/`restore_database` shell out to
+      # `pg_dump`/`pg_restore` matching the connected server's major
+      # version (`portolan.db._resolve_pg_binary`) -- the Postgres
+      # service below is `pgvector/pgvector:pg17`, but ubuntu-latest's
+      # own default client tools trail that (the same gap this fix
+      # covers on a dev machine: Homebrew's unversioned `pg_dump` can be
+      # older than the server it's asked to dump). Installed from the
+      # official PGDG apt repo, pinned to major version 17 -- the same
+      # recipe docker/Dockerfile already uses for the production image.
+      - name: Install postgresql-client-17 (PGDG apt repo)
+        run: |
+          sudo install -d -m 0755 /usr/share/postgresql-common/pgdg
+          curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+            | sudo tee /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc > /dev/null
+          . /etc/os-release
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt ${VERSION_CODENAME}-pgdg main" \
+            | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends postgresql-client-17
+
+      - name: Install dependencies
+        # Bug hunt 2026-09-18 (ops review, P2 finding 14): plain `uv sync`
+        # silently re-locks against whatever's newest on PyPI right now
+        # and tests THOSE versions -- not the ones `uv.lock` actually
+        # pins, and not what `--frozen` installs in the production image
+        # (docker/Dockerfile). `--frozen` here means this job tests the
+        # exact dependency set that ships.
+        run: uv sync --frozen
+
+      - name: Lint
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+      - name: corpus/truth-table.yaml parses (review finding F6)
+        run: |
+          uv run python -c "
+          import yaml
+          with open('corpus/truth-table.yaml', encoding='utf-8') as f:
+              data = yaml.safe_load(f)
+          assert isinstance(data, dict) and data, 'truth-table.yaml parsed to something empty/non-dict'
+          print(f'truth-table.yaml OK: {len(data)} top-level key(s)')
+          "
+
+      - name: Test
+        run: uv run pytest -q
+
+  docker:
+    # Fix wave 2026-09-12 (review finding F4): the old version of this job
+    # only ever built the image and ran the test suite inside it -- it
+    # never proved the image could serve a request, so it never could have
+    # caught "the ECS task runs pytest and exits while the ALB
+    # health-checks port 8000." This job now also starts PORTOLAN_ROLE=
+    # migrate, then PORTOLAN_ROLE=web, against the compose Postgres, and
+    # curls /login for a real 200 before passing.
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      DOCKER_BUILDKIT: "1"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Build with a dummy .env present (review finding F4)
+        run: |
+          echo "PORTOLAN_ORG_KEY=this-must-never-reach-the-built-image" > .env
+          docker compose -f docker/docker-compose.yml build app
+          # The image builds every time this workflow runs, dummy .env or
+          # not -- the real proof is the next step, checking the built
+          # image never contains it.
+          rm -f .env
+
+      - name: .env never reaches the built image
+        run: |
+          docker compose -f docker/docker-compose.yml run --rm --no-deps \
+            --entrypoint sh app -c 'test ! -e /app/.env && echo "no .env in the image: OK"'
+
+      - name: Run the full test suite in the container (PORTOLAN_ROLE=test)
+        # Bug hunt 2026-09-18 (ops review, P1 finding 4): an unset
+        # PORTOLAN_ROLE used to fall through to the image's CMD, which
+        # ran the test suite -- that fallthrough is gone (docker/
+        # entrypoint.sh now defaults an unset/empty role to `web`
+        # directly, and the image has no CMD at all), so running the
+        # suite in-container is now this explicit role instead of the
+        # absence of one.
+        run: docker compose -f docker/docker-compose.yml run --rm -e PORTOLAN_ROLE=test app
+
+      - name: PORTOLAN_ROLE=migrate against the compose Postgres
+        run: |
+          docker compose -f docker/docker-compose.yml run --rm \
+            -e PORTOLAN_ROLE=migrate \
+            app
+
+      - name: PORTOLAN_ROLE=web, then curl /login for a 200
+        run: |
+          docker compose -f docker/docker-compose.yml run -d --name portolan-web \
+            -e PORTOLAN_ROLE=web \
+            -e PORTOLAN_ORG_KEY=ci-docker-smoke-org-key \
+            -e PORTOLAN_SESSION_SECRET=ci-docker-smoke-session-secret \
+            -p 8000:8000 \
+            app
+
+          status=""
+          for _ in $(seq 1 30); do
+            status="$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8000/login || true)"
+            if [ "$status" = "200" ]; then break; fi
+            sleep 1
+          done
+          echo "GET /login -> ${status}"
+          docker logs portolan-web || true
+          test "$status" = "200"
+
+      # /healthz is the route Railway's healthcheck gates a deploy on (railway.json); it runs
+      # SELECT 1 through the request pool, so this also proves the web role reaches Postgres.
+      - name: curl /healthz for a 200
+        run: |
+          status="$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8000/healthz || true)"
+          echo "GET /healthz -> ${status}"
+          test "$status" = "200"
+
+      - name: Tear down
+        if: always()
+        run: |
+          docker rm -f portolan-web 2>/dev/null || true
+          docker compose -f docker/docker-compose.yml down -v
+          rm -f .env

@@ -1,0 +1,24 @@
+{
+  "id": "S-ticket-038",
+  "requester": "June Park",
+  "account": "Meadowbrook Community Hospital",
+  "created": "2026-08-18",
+  "subject": "Consumable order arrived late",
+  "comments": [
+    {
+      "number": 1,
+      "author": "June Park",
+      "body": "The Tidewater T2 consumable order we placed on August 12th didn't show up until five days after it was due. Pharmacy had to ration par stock across two units in the meantime. Can someone look into what happened?"
+    },
+    {
+      "number": 2,
+      "author": "Sam Okafor",
+      "body": "I'm sorry, June \u2014 that shouldn't happen. Looking into the carrier leg on this one now and I'll send you a written summary of what caused it."
+    },
+    {
+      "number": 3,
+      "author": "June Park",
+      "body": "Thank you. Please do loop in whoever needs to know on your end \u2014 this is the second time this quarter."
+    }
+  ]
+}

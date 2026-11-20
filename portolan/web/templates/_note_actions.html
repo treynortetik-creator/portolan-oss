@@ -1,0 +1,33 @@
+{# Open actions on an account note (its actions) or a contact note (the
+   actions that person owns), shared by `note.html` and the Atlas note pane
+   (`atlas.html`). Expects `actions_note` (the NoteRow), `actions_rows`
+   (`note_view.build_note_context`'s `note_actions`, each with `overdue`)
+   and `link_base` ("/notes" or "/atlas", so Atlas links stay in Atlas).
+   Same columns, overdue badge and one-line why as `/actions`. #}
+{% if actions_note.type.value in ('account', 'contact') and actions_rows %}
+<div class="card note-actions">
+  <p class="eyebrow">Open actions{% if actions_note.type.value == 'contact' %} owned{% endif %}</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Open actions">
+  <table>
+    <tr><th>What</th>{% if actions_note.type.value == 'account' %}<th>Owner</th>{% else %}<th>Account</th>{% endif %}<th>Due</th></tr>
+    {% for a in actions_rows %}
+      <tr{% if a.overdue %} class="flag"{% endif %}>
+        <td data-label="What">
+          <a href="{{ link_base }}/{{ a.note_slug }}">{{ a.what }}</a>
+          {% if a.why_summary %}<div class="muted small">{{ a.why_summary }}</div>{% endif %}
+        </td>
+        {% if actions_note.type.value == 'account' %}
+          <td data-label="Owner">{{ a.owner_name or 'Unassigned' }}</td>
+        {% else %}
+          <td data-label="Account">{% if a.account_slug %}<a href="{{ link_base }}/{{ a.account_slug }}">{{ a.account_title }}</a>{% else %}—{% endif %}</td>
+        {% endif %}
+        <td data-label="Due" class="mono">
+          {{ a.due|date if a.due else '—' }}{% if a.overdue %} <span class="badge">overdue</span>{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  </div>
+  <p class="btn-row"><a class="btn chip" href="/actions">Open the Actions page &rarr;</a></p>
+</div>
+{% endif %}

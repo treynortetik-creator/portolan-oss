@@ -1,0 +1,6 @@
+{
+  "access_token": "mock.zoom.s2s.access.token",
+  "token_type": "bearer",
+  "expires_in": 3600,
+  "scope": "recording:read cloud_recording:read report:read:admin"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "S-ticket-040",
+  "requester": "Maria Chen",
+  "account": "Ashgrove Riverside Hospital",
+  "created": "2026-08-19",
+  "subject": "Tidewater T2 consumable delivery delay",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Maria Chen",
+      "body": "The Tidewater T2 consumable delivery for Ashgrove Riverside Hospital arrived five days late on 2026-08-18. Please review the cause of the delay and advise on next steps."
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "Thanks, Maria. We\u2019ve logged the delivery issue and will review the shipment record with the logistics team."
+    }
+  ]
+}

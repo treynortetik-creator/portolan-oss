@@ -1,0 +1,23 @@
+{
+  "comments": [
+    {
+      "id": 900001,
+      "author_id": 8001,
+      "created_at": "2026-08-05T00:00:00Z",
+      "plain_body": "Our Tidewater T2 consumable order that was due August 1st didn't arrive until August 4th — 4 days late."
+    },
+    {
+      "id": 900002,
+      "author_id": 7001,
+      "created_at": "2026-08-05T10:00:00Z",
+      "plain_body": "Sorry about that, Felix. Checking with distribution now on what caused the delay."
+    },
+    {
+      "id": 900003,
+      "author_id": 8001,
+      "created_at": "2026-08-05T11:00:00Z",
+      "plain_body": "Appreciate it. Just want to make sure it's not a pattern."
+    }
+  ],
+  "meta": {"has_more": false, "after_cursor": null}
+}

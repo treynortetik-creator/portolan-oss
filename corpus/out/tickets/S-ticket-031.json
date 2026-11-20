@@ -1,0 +1,24 @@
+{
+  "id": "S-ticket-031",
+  "requester": "Felix Arden",
+  "account": "Larkspur Memorial Hospital",
+  "created": "2026-08-05",
+  "subject": "Late consumable delivery",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Felix Arden",
+      "body": "Our Tidewater T2 consumable order that was due August 1st didn't arrive until August 4th \u2014 4 days late. We managed by borrowing from our own par stock but it was closer than I'd like."
+    },
+    {
+      "number": 2,
+      "author": "Sam Okafor",
+      "body": "Sorry about that, Felix. Checking with distribution now on what caused the delay \u2014 will get back to you with a root cause once I hear back."
+    },
+    {
+      "number": 3,
+      "author": "Felix Arden",
+      "body": "Appreciate it. Just want to make sure it's not a pattern before our par levels get tighter next month."
+    }
+  ]
+}

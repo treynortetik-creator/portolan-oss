@@ -1,0 +1,1715 @@
+[09:00:00] Priya Natarajan: Good morning, Owen. Can you hear me all right?
+
+[09:00:04] Owen Castellane: I can hear you. Let me switch off the speaker. There, that’s better. How are you?
+
+[09:00:10] Priya Natarajan: Doing well, thanks. It’s been a busy morning, but nothing dramatic yet.
+
+[09:00:15] Owen Castellane: That’s usually when something dramatic is about to happen.
+
+[09:00:18] Priya Natarajan: Exactly. I’m choosing not to tempt fate. How are things on your side?
+
+[09:00:24] Owen Castellane: Busy. We’re in the middle of the operating review, so I’ve got people coming in and out, but I wanted to make time for this because the integration question is starting to come up more often.
+
+[09:00:34] Priya Natarajan: That makes sense. I saw the note you sent over. Before we get into the specifics, do you want to give me the latest from the field?
+
+[09:00:42] Owen Castellane: Sure. The clearest example came from St. Aldric Health. Their team asked, “could the Link module talk to our Epic instance?” It was the first time we’d heard that exact question, but not the last kind of question we’ve been hearing.
+
+[09:00:57] Priya Natarajan: Understood. Was that from their technical team, or did it come through operations?
+
+[09:01:02] Owen Castellane: Operations first, then their applications people joined the follow-up. They’re trying to understand what the boundary is between the Link module and the systems they already run. The question wasn’t just, “does it have an interface?” They wanted to know what the experience would be for their staff, whether information would move in both directions, and how much work their team would have to carry.
+
+[09:01:18] Priya Natarajan: That’s helpful. When customers ask it that way, I usually try to separate the basic connection question from workflow and implementation questions. Otherwise we end up answering three different things in one sentence.
+
+[09:01:26] Owen Castellane: Right. And that’s exactly where the conversation is going. They hear “integration” and assume the whole process becomes automatic. Then, when we start talking about mapping, ownership, and validation, they think we’re backing away from the original answer.
+
+[09:01:39] Priya Natarajan: Yes, that can happen. It may help to give them a simple first response and then a more detailed technical path. We can say what the module is designed to exchange, what has to be configured, and what remains with their implementation team.
+
+[09:01:49] Owen Castellane: I’d like that. I also want something our account people can use without having to improvise. We’ve got enough variation in how the question is being answered already.
+
+[09:01:58] Priya Natarajan: I can put together a short response guide. We should keep it accurate, though, and not turn it into a broad promise.
+
+[09:02:04] Owen Castellane: Agreed. Accuracy matters more than sounding impressive. The health systems we deal with will ask very pointed follow-ups.
+
+[09:02:10] Priya Natarajan: What kind of follow-ups did St. Aldric raise?
+
+[09:02:15] Owen Castellane: They asked who owns the connection after launch, what happens when one side changes a field, and whether their internal team can see enough detail to troubleshoot without opening a case every time. They also asked about the timing of updates. I don’t want to overstate what we can answer today, but those are the areas.
+
+[09:02:30] Priya Natarajan: Those are reasonable questions. Did they have a target date?
+
+[09:02:35] Owen Castellane: Not a hard date. They’re doing planning for the next operating cycle. Their language was, “we need to know whether this belongs in the plan,” not “we’re signing next week.”
+
+[09:02:44] Priya Natarajan: That gives us a little room to shape the discussion properly.
+
+[09:02:48] Owen Castellane: Yes, though room disappears quickly once a committee gets involved. They’ll want something that can go into a planning document.
+
+[09:02:54] Priya Natarajan: Then I’ll focus on a planning-level explanation first. We can add a technical appendix if they need it.
+
+[09:02:59] Owen Castellane: That would be useful. I’m less concerned about a polished brochure and more concerned about consistency.
+
+[09:03:05] Priya Natarajan: Understood. Let me ask one thing: when they said “talk to” their instance, did they mean a direct connection, or were they using that phrase broadly?
+
+[09:03:12] Owen Castellane: Broadly, I think. Their operations lead was not using interface terminology precisely. Their applications manager was more specific, but even she kept returning to the staff workflow. They want to know what a user sees, what gets entered where, and what requires an exception.
+
+[09:03:25] Priya Natarajan: That distinction is important. We should avoid answering only at the transport layer.
+
+[09:03:30] Owen Castellane: Exactly. If we give them a technically correct answer that doesn’t help the people running the process, we haven’t really answered them.
+
+[09:03:36] Priya Natarajan: I’ll frame the guide around three layers: connection, data movement, and day-to-day responsibility.
+
+[09:03:44] Owen Castellane: Good. Add implementation effort as a fourth layer, even if it’s only a set of questions. Customers want to know whether their team needs a specialist for the whole project.
+
+[09:03:52] Priya Natarajan: I can do that. We’ll need input from solutions engineering before we put any estimates in writing.
+
+[09:03:58] Owen Castellane: Yes, no estimates from me. I can describe the operational impact, but I don’t want to make a technical commitment.
+
+[09:04:03] Priya Natarajan: That’s the right boundary. I’ll set up a working session with solutions engineering and bring in someone who knows the module details.
+
+[09:04:08] Owen Castellane: Could you include our implementation lead?
+
+[09:04:11] Priya Natarajan: Absolutely. Who should that be?
+
+[09:04:14] Owen Castellane: Marta Ruiz. She’s closest to the customer questions, and she’ll catch anything that sounds fine in theory but won’t work for a live operations team.
+
+[09:04:22] Priya Natarajan: Great. I’ll include Marta. Does she need to be on the first session, or should we have an internal prep first?
+
+[09:04:28] Owen Castellane: Internal prep first. I’d rather not put her in a room where we’re still sorting out our own language.
+
+[09:04:35] Priya Natarajan: Fair. I’ll draft the outline, circulate it internally, and then we can schedule the customer-facing conversation.
+
+[09:04:41] Owen Castellane: That sequence works.
+
+[09:04:45] Priya Natarajan: There’s one other thing I’d like to understand. Did St. Aldric ask whether the connection would be part of the standard package, or were they only asking if it was technically possible?
+
+[09:04:53] Owen Castellane: They asked both, though not in those exact words. They wanted to understand what comes with the product and what would be treated as additional work. That’s where the commercial conversation started to hover in the background.
+
+[09:05:02] Priya Natarajan: We should be careful there. If we answer the capability question and the commercial question together, they may assume the implementation details are already settled.
+
+[09:05:09] Owen Castellane: Agreed. Separate them. We can say we’re clarifying the technical path first and then discuss the commercial treatment once the scope is clear.
+
+[09:05:16] Priya Natarajan: I’ll use that language.
+
+[09:05:20] Owen Castellane: Good.
+
+[09:05:23] Priya Natarajan: How did the rest of the call go?
+
+[09:05:27] Owen Castellane: Fairly well. They were engaged. The main challenge was that three different people were using “integration” to mean three different things. One meant the underlying connection, one meant the workflow, and one meant reporting.
+
+[09:05:39] Priya Natarajan: That’s common.
+
+[09:05:41] Owen Castellane: I know. Still, it makes the notes messy.
+
+[09:05:44] Priya Natarajan: We can make the next conversation more structured. I’ll send an agenda with the terms defined in plain language.
+
+[09:05:51] Owen Castellane: Please do. And keep it short. If the agenda is three pages, they’ll spend the meeting debating the agenda.
+
+[09:05:56] Priya Natarajan: One page, then.
+
+[09:05:59] Owen Castellane: Perfect.
+
+[09:06:02] Priya Natarajan: I’m going to take notes as we go. Are there any internal deadlines I should work backward from?
+
+[09:06:08] Owen Castellane: I’d like the initial guide by the end of next week. The internal prep can happen shortly after that, depending on solutions engineering.
+
+[09:06:16] Priya Natarajan: End of next week is workable. I’ll aim to send a first draft earlier so you have time to react.
+
+[09:06:21] Owen Castellane: Thanks. I’m not looking for perfection in the first pass.
+
+[09:06:24] Priya Natarajan: Good, because first passes rarely deserve that label.
+
+[09:06:28] Owen Castellane: That’s the most honest thing anyone has said in a planning meeting today.
+
+[09:06:31] Priya Natarajan: I’m glad to contribute.
+
+[09:06:35] Owen Castellane: Before we move on, I want to talk about how we respond if another customer raises the same issue. I don’t want the field team to say, “we’re looking into it,” and leave the customer with no useful information.
+
+[09:06:43] Priya Natarajan: We can give them a holding response that acknowledges the question and explains the next step without making a commitment. Something like, “We’re confirming the supported workflow and the implementation requirements, and we’ll follow up with the appropriate technical detail.”
+
+[09:06:53] Owen Castellane: That’s better than “I’ll ask someone.” It tells the customer what we’re actually doing.
+
+[09:06:57] Priya Natarajan: Exactly. We can also give them a few questions to ask the customer so we aren’t starting from zero each time.
+
+[09:07:03] Owen Castellane: Such as?
+
+[09:07:06] Priya Natarajan: What workflow they want to support, which team owns the source information, whether they expect one-way or two-way movement, what timing they consider acceptable, and what level of visibility they need after launch.
+
+[09:07:16] Owen Castellane: Add whether they have an internal technical owner. That changes the conversation quickly.
+
+[09:07:21] Priya Natarajan: Good point. I’ll add that.
+
+[09:07:25] Owen Castellane: And ask whether they’re evaluating this for one department or across the organization. People say “the health system” when they really mean one service line.
+
+[09:07:31] Priya Natarajan: That’s a useful qualifier. It affects the scale and the number of workflows.
+
+[09:07:35] Owen Castellane: Right.
+
+[09:07:38] Priya Natarajan: Do you want the guide to include sample answers, or just discovery questions?
+
+[09:07:43] Owen Castellane: Both, but sample answers should be deliberately modest. No one should be able to copy a sentence and accidentally turn it into a product promise.
+
+[09:07:51] Priya Natarajan: I’ll label them as suggested language and include a note to confirm details before sending anything externally.
+
+[09:07:56] Owen Castellane: Good.
+
+[09:08:00] Priya Natarajan: Let me think through the structure aloud. First section: how to acknowledge the request. Second: questions to clarify the use case. Third: what we can explain at a high level. Fourth: what requires technical review. Fifth: next steps.
+
+[09:08:11] Owen Castellane: That sequence is logical. Put ownership near the front, though. Customers want to know who is going to answer them.
+
+[09:08:16] Priya Natarajan: I can make ownership part of the opening section.
+
+[09:08:19] Owen Castellane: Thanks.
+
+[09:08:23] Priya Natarajan: Should we include the St. Aldric example as an internal illustration?
+
+[09:08:28] Owen Castellane: Internally, yes, but don’t identify them in anything broader. Use a generalized example if the guide goes to the full field team.
+
+[09:08:34] Priya Natarajan: Understood. I’ll keep the customer name out of the general version.
+
+[09:08:37] Owen Castellane: Good.
+
+[09:08:40] Priya Natarajan: Do you know whether their current environment has any unusual constraints?
+
+[09:08:45] Owen Castellane: Nothing unusual was raised in the first call. They did mention that different departments have different procedures, which is why they were cautious about a one-size-fits-all answer.
+
+[09:08:53] Priya Natarajan: That reinforces the need to discuss workflow rather than only the system connection.
+
+[09:08:57] Owen Castellane: Yes. The word “integration” sounds singular, but their operation is not singular.
+
+[09:09:01] Priya Natarajan: Nicely put. I may borrow that for the internal briefing.
+
+[09:09:04] Owen Castellane: Go ahead. Just make me sound less tired.
+
+[09:09:07] Priya Natarajan: I’ll remove the part where you sighed before saying it.
+
+[09:09:11] Owen Castellane: Appreciated.
+
+[09:09:14] Priya Natarajan: Let’s talk about the internal audience. Is this just for account reps, or should support and implementation see it too?
+
+[09:09:21] Owen Castellane: Support should see it. They’ll receive the practical questions once people start using whatever we provide. Implementation definitely needs it. Product should at least review the wording.
+
+[09:09:28] Priya Natarajan: I’ll make a review list. We don’t need everyone in the first drafting session, but we should give each group a chance to flag problems.
+
+[09:09:34] Owen Castellane: That’s sensible. Keep the first group small, though. Too many reviewers and the document turns into a record of everyone’s preferred adjective.
+
+[09:09:39] Priya Natarajan: I’ve seen that happen.
+
+[09:09:43] Owen Castellane: “Seamless” will appear at least twice if we’re not careful.
+
+[09:09:46] Priya Natarajan: I’ll ban it from the draft.
+
+[09:09:49] Owen Castellane: You’ll make my day.
+
+[09:09:52] Priya Natarajan: We can say “defined workflow” instead, where appropriate.
+
+[09:09:57] Owen Castellane: Much better.
+
+[09:10:00] Priya Natarajan: What would make the guide successful from your perspective?
+
+[09:10:07] Owen Castellane: If an account rep can hear the question, acknowledge it, gather the right details, and get the customer to the right next conversation without guessing, that’s success.
+
+[09:10:18] Priya Natarajan: So not necessarily a complete technical answer in the first exchange.
+
+[09:10:21] Owen Castellane: Correct. A clear path is more valuable than a rushed answer.
+
+[09:10:24] Priya Natarajan: I’ll make that the principle at the top.
+
+[09:10:28] Owen Castellane: Good.
+
+[09:10:31] Priya Natarajan: Did anyone from St. Aldric ask for written material already?
+
+[09:10:35] Owen Castellane: They asked whether we had an overview they could circulate. We sent a general module description, but I told them it didn’t answer all of their implementation questions.
+
+[09:10:43] Priya Natarajan: That was probably the right call. Better to distinguish the overview from the detailed response.
+
+[09:10:47] Owen Castellane: Exactly. I didn’t want a general description forwarded around as if it were a technical design.
+
+[09:10:51] Priya Natarajan: We should add a note to the guide about document labels. “Overview,” “planning guidance,” and “technical design” should not blur together.
+
+[09:10:58] Owen Castellane: Please do. The label may be boring, but it prevents confusion later.
+
+[09:11:02] Priya Natarajan: Boring labels are underrated.
+
+[09:11:06] Owen Castellane: Especially in healthcare.
+
+[09:11:09] Priya Natarajan: I’m writing that down.
+
+[09:11:12] Owen Castellane: You’re writing down all my jokes, apparently.
+
+[09:11:15] Priya Natarajan: Only the useful ones.
+
+[09:11:18] Owen Castellane: Then the notes should be short.
+
+[09:11:21] Priya Natarajan: Fair.
+
+[09:11:25] Owen Castellane: There’s another concern: people may assume that because a customer uses a particular platform, the workflow is the same everywhere. It isn’t.
+
+[09:11:32] Priya Natarajan: We can say that the customer’s operating model still needs to be understood even when the underlying platform is familiar.
+
+[09:11:38] Owen Castellane: Yes. That’s the message.
+
+[09:11:41] Priya Natarajan: Should the guide include a sample discovery call?
+
+[09:11:45] Owen Castellane: Maybe a short one. Not a script. Scripts make people stop listening.
+
+[09:11:49] Priya Natarajan: Agreed. We’ll use prompts and an example exchange.
+
+[09:11:53] Owen Castellane: That would help newer reps.
+
+[09:11:56] Priya Natarajan: I’ll also include a short “when to bring in help” section.
+
+[09:12:00] Owen Castellane: Include system-specific questions, unusual data requirements, multi-department rollout, and anything involving a commitment about timing.
+
+[09:12:07] Priya Natarajan: Good list. I’ll add uncertainty about ownership as well.
+
+[09:12:12] Owen Castellane: Yes.
+
+[09:12:15] Priya Natarajan: For St. Aldric, should we schedule a follow-up now, or wait until we have the first internal draft?
+
+[09:12:21] Owen Castellane: Schedule a tentative follow-up. I’d rather have time on the calendar, then move it if needed.
+
+[09:12:26] Priya Natarajan: I’ll look for a slot the week after next.
+
+[09:12:30] Owen Castellane: Tuesday or Wednesday is better. Their applications manager said Mondays are difficult.
+
+[09:12:36] Priya Natarajan: I’ll avoid Monday.
+
+[09:12:39] Owen Castellane: Thank you.
+
+[09:12:42] Priya Natarajan: Do you want their team to send questions in advance?
+
+[09:12:46] Owen Castellane: Yes, but ask for themes rather than a formal questionnaire. If we send a form, they’ll spend a week debating which department owns each answer.
+
+[09:12:53] Priya Natarajan: I’ll send three or four prompts in the invitation.
+
+[09:12:57] Owen Castellane: That should be enough.
+
+[09:13:00] Priya Natarajan: Let me recap the action items so far. I’ll draft the internal response guide, contact solutions engineering, include Marta in the prep, and propose a follow-up with St. Aldric.
+
+[09:13:09] Owen Castellane: Add the review list and the short customer-question prompts.
+
+[09:13:13] Priya Natarajan: Added.
+
+[09:13:16] Owen Castellane: I’ll send you my notes from the original conversation. They’re rough, but they include the exact questions and who asked them.
+
+[09:13:22] Priya Natarajan: That would be very helpful. Could you send them by tomorrow?
+
+[09:13:25] Owen Castellane: Yes. I’ll clean up the obvious shorthand first.
+
+[09:13:28] Priya Natarajan: No need to make them beautiful. I’d rather see the raw wording.
+
+[09:13:32] Owen Castellane: In that case, you’ll get them today.
+
+[09:13:35] Priya Natarajan: Excellent.
+
+[09:13:38] Owen Castellane: One caveat: some of the notes are from memory because I was writing while they spoke.
+
+[09:13:42] Priya Natarajan: That’s fine. We can mark anything that needs confirmation.
+
+[09:13:45] Owen Castellane: Good.
+
+[09:13:48] Priya Natarajan: Before we close the topic, is there anything you don’t want in the guide?
+
+[09:13:54] Owen Castellane: Don’t include a long list of system names. It will age quickly and distract from the operating questions.
+
+[09:13:59] Priya Natarajan: Agreed.
+
+[09:14:02] Owen Castellane: Don’t imply that every customer needs the same architecture. And don’t bury the escalation path at the end.
+
+[09:14:08] Priya Natarajan: I’ll keep those out.
+
+[09:14:11] Owen Castellane: Also, avoid saying “just connect the systems.” That phrase makes the work sound trivial.
+
+[09:14:17] Priya Natarajan: That’s a good one to avoid.
+
+[09:14:20] Owen Castellane: People say it casually, then the customer repeats it in a steering committee.
+
+[09:14:24] Priya Natarajan: And suddenly it’s treated as the baseline.
+
+[09:14:27] Owen Castellane: Exactly.
+
+[09:14:31] Priya Natarajan: I’ll include a caution on casual language that creates expectations.
+
+[09:14:35] Owen Castellane: Fine.
+
+[09:14:38] Priya Natarajan: How much detail should we give on support after launch?
+
+[09:14:42] Owen Castellane: Enough to distinguish routine questions from issues that need implementation or product involvement. Customers need to know they won’t be passed around, but we also shouldn’t pretend every question goes to one team.
+
+[09:14:51] Priya Natarajan: We can show the handoff points without presenting them as a maze.
+
+[09:14:55] Owen Castellane: Right. One owner at the front, specialists behind that owner.
+
+[09:14:59] Priya Natarajan: That’s clear. I’ll use it.
+
+[09:15:02] Owen Castellane: Good.
+
+[09:15:05] Priya Natarajan: Do you want any metrics in the guide?
+
+[09:15:10] Owen Castellane: Not yet. We don’t have enough consistent data, and numbers would invite comparisons that aren’t meaningful.
+
+[09:15:15] Priya Natarajan: Then I’ll leave metrics out and focus on the decision path.
+
+[09:15:18] Owen Castellane: Yes.
+
+[09:15:21] Priya Natarajan: What about a checklist for the account team?
+
+[09:15:25] Owen Castellane: A short checklist is fine. Keep it to the questions that change the next step.
+
+[09:15:30] Priya Natarajan: I’ll make it one page.
+
+[09:15:33] Owen Castellane: Great.
+
+[09:15:36] Priya Natarajan: I’m conscious we’ve spent a lot of time on the wording, but that may be the point.
+
+[09:15:41] Owen Castellane: It is. The technical team can explain the technical side. Our problem is making sure the first conversation doesn’t create confusion.
+
+[09:15:47] Priya Natarajan: That’s a useful distinction.
+
+[09:15:51] Owen Castellane: And it’s not just about St. Aldric. If we handle the pattern well, we can reuse it.
+
+[09:15:56] Priya Natarajan: Without treating every customer as identical.
+
+[09:16:00] Owen Castellane: Exactly.
+
+[09:16:03] Priya Natarajan: Let’s talk about who should approve the external language.
+
+[09:16:08] Owen Castellane: Solutions engineering should confirm the technical wording. Product should review anything that describes capability. I can approve the operational framing.
+
+[09:16:15] Priya Natarajan: That gives us a clean review path.
+
+[09:16:18] Owen Castellane: Keep legal out unless something unusual comes up. If we send every ordinary sentence through legal, we’ll be waiting until winter.
+
+[09:16:24] Priya Natarajan: Understood. I’ll only route it there if the review group identifies a reason.
+
+[09:16:27] Owen Castellane: Good.
+
+[09:16:30] Priya Natarajan: Do you want the guide in a shared document or a slide deck?
+
+[09:16:35] Owen Castellane: Shared document first. Slides encourage people to read only the headings.
+
+[09:16:40] Priya Natarajan: I agree. We can make a short deck later if there’s demand.
+
+[09:16:43] Owen Castellane: That’s fine.
+
+[09:16:46] Priya Natarajan: I’ll put the version date on the first page.
+
+[09:16:49] Owen Castellane: And an owner. Every useful document becomes an orphan eventually unless someone’s named.
+
+[09:16:54] Priya Natarajan: I’ll name myself as the initial owner and add a review date.
+
+[09:16:57] Owen Castellane: Good.
+
+[09:17:00] Priya Natarajan: How often should it be reviewed?
+
+[09:17:04] Owen Castellane: Quarterly for now, or sooner if the module changes materially.
+
+[09:17:08] Priya Natarajan: Quarterly with an event-based review. That’s reasonable.
+
+[09:17:12] Owen Castellane: Yes.
+
+[09:17:15] Priya Natarajan: Should I include a change log?
+
+[09:17:19] Owen Castellane: A simple one. Date, change, reviewer. No need for an essay.
+
+[09:17:23] Priya Natarajan: Got it.
+
+[09:17:26] Owen Castellane: You’re building a small operating system for one question.
+
+[09:17:29] Priya Natarajan: It’s a recurring question, so I’m trying to prevent recurring confusion.
+
+[09:17:33] Owen Castellane: Fair.
+
+[09:17:36] Priya Natarajan: Did St. Aldric indicate whether they were comparing us with other providers?
+
+[09:17:41] Owen Castellane: They didn’t say that directly. They spoke about their broader planning process, but I wouldn’t assume we’re the only option.
+
+[09:17:47] Priya Natarajan: Then the guide should help us be clear without turning the response into a competitive pitch.
+
+[09:17:51] Owen Castellane: Exactly. If we start selling before we understand the question, we’ll lose credibility.
+
+[09:17:55] Priya Natarajan: I’ll keep the tone factual.
+
+[09:17:58] Owen Castellane: Thanks.
+
+[09:18:01] Priya Natarajan: What does your team need from me after the guide is drafted?
+
+[09:18:06] Owen Castellane: A short walkthrough. Fifteen minutes is enough if the document is straightforward.
+
+[09:18:10] Priya Natarajan: I’ll schedule one for your leadership group and a separate optional session for the field team.
+
+[09:18:15] Owen Castellane: Make the optional one recorded, if that’s allowed.
+
+[09:18:19] Priya Natarajan: I’ll check our policy and handle it appropriately.
+
+[09:18:23] Owen Castellane: Good.
+
+[09:18:26] Priya Natarajan: Do you want the walkthrough before or after solutions engineering reviews it?
+
+[09:18:30] Owen Castellane: After. I don’t want to train people on wording that changes the next day.
+
+[09:18:34] Priya Natarajan: Makes sense.
+
+[09:18:37] Owen Castellane: I’ll also ask Marta to collect questions from the implementation team.
+
+[09:18:40] Priya Natarajan: Excellent. Those questions will probably reveal where the guide is too abstract.
+
+[09:18:44] Owen Castellane: That’s what I’m hoping.
+
+[09:18:47] Priya Natarajan: We should leave room for a second version after the first few customer conversations.
+
+[09:18:52] Owen Castellane: Definitely. The first version will tell us what we forgot.
+
+[09:18:55] Priya Natarajan: I’ll label it as an initial version so nobody treats it as final forever.
+
+[09:18:59] Owen Castellane: Good.
+
+[09:19:02] Priya Natarajan: Let me check the time. We have about forty minutes left, but I want to make sure we cover anything else you had in mind.
+
+[09:19:09] Owen Castellane: The main thing was the integration question. The rest is making sure our response doesn’t get ahead of what we know.
+
+[09:19:14] Priya Natarajan: Then we’re aligned.
+
+[09:19:17] Owen Castellane: I think so.
+
+[09:19:20] Priya Natarajan: I’ll start with your notes and draft the opening language today.
+
+[09:19:24] Owen Castellane: Good.
+
+[09:19:27] Priya Natarajan: Do you want me to send the first outline to you alone or to the broader group?
+
+[09:19:31] Owen Castellane: Send it to me first. I’ll make sure the operational framing is right before we bring in more people.
+
+[09:19:36] Priya Natarajan: I’ll do that.
+
+[09:19:39] Owen Castellane: Then include Marta and solutions engineering in the next round.
+
+[09:19:42] Priya Natarajan: Yes.
+
+[09:19:45] Owen Castellane: And don’t copy the entire leadership team on the first email.
+
+[09:19:48] Priya Natarajan: I promise.
+
+[09:19:51] Owen Castellane: You laugh, but that’s how a three-person review becomes a twenty-person thread.
+
+[09:19:55] Priya Natarajan: I’ve been on those threads.
+
+[09:19:58] Owen Castellane: Then you know.
+
+[09:20:01] Priya Natarajan: I do. I’ll keep the first circulation tight.
+
+[09:20:04] Owen Castellane: Thanks.
+
+[09:20:07] Priya Natarajan: One question on terminology: do you prefer “connection,” “interface,” or “integration” in the guide?
+
+[09:20:13] Owen Castellane: Use all three only when we explain the difference. Otherwise, use the customer’s words first and then clarify.
+
+[09:20:18] Priya Natarajan: That’s a good rule.
+
+[09:20:22] Owen Castellane: If someone says “integration,” don’t correct them in the first breath. Ask what they need the process to do.
+
+[09:20:28] Priya Natarajan: Exactly.
+
+[09:20:31] Owen Castellane: Technical precision matters, but it shouldn’t become a barrier.
+
+[09:20:35] Priya Natarajan: I’ll include that in the coaching notes.
+
+[09:20:39] Owen Castellane: Good.
+
+[09:20:42] Priya Natarajan: How should the guide handle questions we cannot answer immediately?
+
+[09:20:47] Owen Castellane: Say so plainly, identify who will confirm it, and give the customer a next step. Don’t fill the silence with speculation.
+
+[09:20:53] Priya Natarajan: Clear.
+
+[09:20:56] Owen Castellane: Also, record the question. Otherwise the same uncertainty keeps circulating privately.
+
+[09:21:00] Priya Natarajan: I’ll add a place for open questions and owners.
+
+[09:21:04] Owen Castellane: Good.
+
+[09:21:07] Priya Natarajan: Maybe a small table: question, customer context, internal owner, status, next update.
+
+[09:21:13] Owen Castellane: That would work. Keep it separate from the customer-facing section.
+
+[09:21:18] Priya Natarajan: Yes, internal tracking only.
+
+[09:21:21] Owen Castellane: Exactly.
+
+[09:21:24] Priya Natarajan: Do you think the account team needs training on the technical terms themselves?
+
+[09:21:29] Owen Castellane: Basic orientation, yes. Deep training, no. They need to recognize when a question is technical and route it properly.
+
+[09:21:35] Priya Natarajan: I’ll include a glossary with short definitions.
+
+[09:21:38] Owen Castellane: Short is important.
+
+[09:21:41] Priya Natarajan: One or two lines per term.
+
+[09:21:44] Owen Castellane: Perfect.
+
+[09:21:47] Priya Natarajan: Any terms you already know cause confusion?
+
+[09:21:51] Owen Castellane: “Real time” is one. People use it to mean immediate, same-day, or simply not manual. We should ask what timing they actually require.
+
+[09:21:58] Priya Natarajan: Good example. I’ll include it.
+
+[09:22:01] Owen Castellane: “Automatic” is another. It can mean no human review, or it can mean the process starts without someone typing the same thing twice.
+
+[09:22:08] Priya Natarajan: That’s exactly the kind of ambiguity the guide should surface.
+
+[09:22:12] Owen Castellane: Yes.
+
+[09:22:15] Priya Natarajan: What about “single source of truth”?
+
+[09:22:19] Owen Castellane: Use sparingly. People say it as if every organization has agreed where truth lives. Often they haven’t.
+
+[09:22:25] Priya Natarajan: I’ll avoid it unless the customer defines it.
+
+[09:22:28] Owen Castellane: Good.
+
+[09:22:31] Priya Natarajan: You’re giving me a useful list of phrases to retire.
+
+[09:22:35] Owen Castellane: I’ve been in enough meetings to know which ones create trouble.
+
+[09:22:38] Priya Natarajan: That’s valuable experience.
+
+[09:22:41] Owen Castellane: It mostly creates a long memory for bad wording.
+
+[09:22:45] Priya Natarajan: Still valuable.
+
+[09:22:48] Owen Castellane: I’ll take the compliment.
+
+[09:22:51] Priya Natarajan: Does St. Aldric have a dedicated program manager for this work?
+
+[09:22:55] Owen Castellane: They mentioned a planning lead, but I don’t know whether that person owns the implementation. I’ll confirm in my notes.
+
+[09:23:01] Priya Natarajan: If you can identify that role before the next meeting, it will help us bring the right people in.
+
+[09:23:05] Owen Castellane: I’ll look.
+
+[09:23:08] Priya Natarajan: Thanks.
+
+[09:23:11] Owen Castellane: One thing I want to avoid is making this sound like a special exception for one account.
+
+[09:23:15] Priya Natarajan: Because the same question may come from other accounts.
+
+[09:23:18] Owen Castellane: Exactly. We should treat St. Aldric as the immediate example, not as the entire policy.
+
+[09:23:23] Priya Natarajan: I’ll distinguish the reusable framework from customer-specific details.
+
+[09:23:27] Owen Castellane: Good.
+
+[09:23:30] Priya Natarajan: Should the guide have an internal title that names the platform?
+
+[09:23:34] Owen Castellane: No. Give it a broader title about customer integration questions. That way it remains useful as other platforms come up.
+
+[09:23:41] Priya Natarajan: Agreed.
+
+[09:23:44] Owen Castellane: The example can mention the platform where needed.
+
+[09:23:47] Priya Natarajan: Right.
+
+[09:23:50] Owen Castellane: And if the product language changes, we can revise the example without renaming the whole document.
+
+[09:23:55] Priya Natarajan: Exactly.
+
+[09:23:58] Owen Castellane: I think we’re getting somewhere.
+
+[09:24:01] Priya Natarajan: Me too.
+
+[09:24:04] Owen Castellane: How much time do you need with solutions engineering?
+
+[09:24:09] Priya Natarajan: Thirty minutes for the initial technical review, then perhaps a shorter pass on the revised wording.
+
+[09:24:14] Owen Castellane: That should be manageable.
+
+[09:24:17] Priya Natarajan: I’ll ask them for a subject-matter reviewer rather than a large group.
+
+[09:24:20] Owen Castellane: Good. One person who knows the details is better than six people giving partial answers.
+
+[09:24:24] Priya Natarajan: We can widen the review only if needed.
+
+[09:24:27] Owen Castellane: Exactly.
+
+[09:24:30] Priya Natarajan: Are there any operational constraints on your team’s availability next week?
+
+[09:24:35] Owen Castellane: Wednesday afternoon is difficult because of the planning review. Thursday morning is also crowded. Tuesday and Friday are easier.
+
+[09:24:42] Priya Natarajan: I’ll target Tuesday for the internal review.
+
+[09:24:46] Owen Castellane: That’s fine.
+
+[09:24:49] Priya Natarajan: And for the customer, I’ll propose Wednesday the following week, with Tuesday as an alternative.
+
+[09:24:54] Owen Castellane: Works for me.
+
+[09:24:57] Priya Natarajan: We’ve got a plan.
+
+[09:25:00] Owen Castellane: We do.
+
+[09:25:03] Priya Natarajan: Before I let you go, can I ask about the tone you want for the customer follow-up?
+
+[09:25:08] Owen Castellane: Direct, calm, and practical. Don’t make it sound like we’re avoiding the question. We’re clarifying what they need so we can answer it properly.
+
+[09:25:15] Priya Natarajan: I’ll use that framing.
+
+[09:25:18] Owen Castellane: And don’t send a giant attachment.
+
+[09:25:21] Priya Natarajan: I’ll send a brief note and offer the working session.
+
+[09:25:24] Owen Castellane: Good.
+
+[09:25:27] Priya Natarajan: Should the note mention that we’re preparing internal guidance?
+
+[09:25:31] Owen Castellane: No. Keep the customer message about their questions, not our internal process.
+
+[09:25:36] Priya Natarajan: Understood.
+
+[09:25:39] Owen Castellane: We can say we’re bringing the right technical and operational people together.
+
+[09:25:43] Priya Natarajan: That’s useful and customer-centered.
+
+[09:25:47] Owen Castellane: Exactly.
+
+[09:25:50] Priya Natarajan: What should we ask them to prepare?
+
+[09:25:55] Owen Castellane: A description of the workflow they want to support, the groups involved, and the questions they need answered for planning. No need to ask them for a full technical design.
+
+[09:26:03] Priya Natarajan: I’ll keep the request light.
+
+[09:26:06] Owen Castellane: Thanks.
+
+[09:26:09] Priya Natarajan: Would a diagram help?
+
+[09:26:13] Owen Castellane: Maybe later. A diagram before we understand the workflow could give the wrong impression.
+
+[09:26:17] Priya Natarajan: Agreed. We’ll start with words and confirm the process.
+
+[09:26:20] Owen Castellane: Exactly.
+
+[09:26:23] Priya Natarajan: Do you want to invite someone from their clinical operations side?
+
+[09:26:27] Owen Castellane: Yes, if they have someone available. The applications team can describe the system, but the people running the work can describe the actual exceptions.
+
+[09:26:34] Priya Natarajan: I’ll suggest that in the invitation.
+
+[09:26:37] Owen Castellane: Good.
+
+[09:26:40] Priya Natarajan: That may also prevent us from designing around an idealized process.
+
+[09:26:44] Owen Castellane: Exactly. Real processes have people, queues, and interruptions.
+
+[09:26:48] Priya Natarajan: I’ll write that down too.
+
+[09:26:51] Owen Castellane: You’re going to have a very long document.
+
+[09:26:54] Priya Natarajan: Not if I resist the urge to include every good sentence.
+
+[09:26:58] Owen Castellane: That’s the hard part.
+
+[09:27:01] Priya Natarajan: It is.
+
+[09:27:04] Owen Castellane: Another point: don’t make the customer repeat the same context to three different internal teams.
+
+[09:27:09] Priya Natarajan: We should have one consolidated set of notes and a named coordinator.
+
+[09:27:12] Owen Castellane: Yes. If we need specialists, they should receive the context before joining.
+
+[09:27:16] Priya Natarajan: I’ll make that part of the meeting process.
+
+[09:27:19] Owen Castellane: Good.
+
+[09:27:22] Priya Natarajan: And after the meeting, send one summary with open questions and owners.
+
+[09:27:26] Owen Castellane: Exactly.
+
+[09:27:29] Priya Natarajan: That’s manageable.
+
+[09:27:32] Owen Castellane: It sounds simple, but it’s often the first thing that disappears when people get busy.
+
+[09:27:36] Priya Natarajan: Then we’ll make it a standard step.
+
+[09:27:39] Owen Castellane: Good.
+
+[09:27:42] Priya Natarajan: Is there anything else from the original St. Aldric conversation that felt important?
+
+[09:27:47] Owen Castellane: They were concerned about responsibility if something doesn’t move as expected. Not in an accusatory way. They want to know how an issue is identified and who investigates first.
+
+[09:27:55] Priya Natarajan: That belongs in the support and ownership section.
+
+[09:27:59] Owen Castellane: Yes. It’s not enough to talk about the happy path.
+
+[09:28:03] Priya Natarajan: We’ll include exception handling at a high level.
+
+[09:28:07] Owen Castellane: Good.
+
+[09:28:10] Priya Natarajan: Do they need a monitoring view?
+
+[09:28:14] Owen Castellane: They asked about visibility, but I don’t know whether they mean a dashboard, an audit record, or simply a status they can check.
+
+[09:28:20] Priya Natarajan: Then we should ask them to define visibility in their own terms.
+
+[09:28:23] Owen Castellane: Exactly.
+
+[09:28:26] Priya Natarajan: I’ll add that to the discovery prompts.
+
+[09:28:29] Owen Castellane: Great.
+
+[09:28:32] Priya Natarajan: We should probably distinguish monitoring from reporting too.
+
+[09:28:36] Owen Castellane: Yes. One tells you something is happening; the other may be for review later. People merge them.
+
+[09:28:40] Priya Natarajan: Noted.
+
+[09:28:43] Owen Castellane: This is why I wanted the call.
+
+[09:28:46] Priya Natarajan: I’m glad we made time.
+
+[09:28:49] Owen Castellane: Me too.
+
+[09:28:52] Priya Natarajan: I’m going to share my screen for a second. I have a rough outline. Can you see it?
+
+[09:28:57] Owen Castellane: Yes. I see the headings.
+
+[09:29:00] Priya Natarajan: I have “customer request,” “what to clarify,” “who to involve,” “how to respond,” and “follow-up.”
+
+[09:29:06] Owen Castellane: Add “what not to assume.”
+
+[09:29:09] Priya Natarajan: Good addition. I’ll put that between clarification and response.
+
+[09:29:13] Owen Castellane: Also add “information to capture.” Otherwise people will have a good conversation and then lose the details.
+
+[09:29:18] Priya Natarajan: I’ll include a capture checklist.
+
+[09:29:21] Owen Castellane: That’s the part managers will appreciate.
+
+[09:29:24] Priya Natarajan: Probably.
+
+[09:29:27] Owen Castellane: They like things they can inspect.
+
+[09:29:30] Priya Natarajan: I’ll make it easy to inspect without making it bureaucratic.
+
+[09:29:34] Owen Castellane: That’s the balance.
+
+[09:29:37] Priya Natarajan: I’ll add a section on the customer’s decision and planning context too.
+
+[09:29:42] Owen Castellane: Yes. The same technical question means something different if they’re exploring, budgeting, or preparing for a rollout.
+
+[09:29:49] Priya Natarajan: Exactly.
+
+[09:29:52] Owen Castellane: Don’t call it a sales stage, though. Operations people hear that and stop sharing.
+
+[09:29:57] Priya Natarajan: I’ll call it “planning context.”
+
+[09:30:01] Owen Castellane: Better.
+
+[09:30:04] Priya Natarajan: Are you still with me?
+
+[09:30:06] Owen Castellane: Yes, just checking another message.
+
+[09:30:09] Priya Natarajan: No problem.
+
+[09:30:12] Owen Castellane: Sorry.
+
+[09:30:14] Priya Natarajan: It’s a working call, not a ceremony.
+
+[09:30:17] Owen Castellane: Good, because ceremonies have better coffee.
+
+[09:30:20] Priya Natarajan: That is unfortunately true.
+
+[09:30:23] Owen Castellane: We should add coffee to the implementation checklist.
+
+[09:30:26] Priya Natarajan: I’ll leave that to operations.
+
+[09:30:29] Owen Castellane: Fair.
+
+[09:30:32] Priya Natarajan: Let’s decide what the first page should say.
+
+[09:30:36] Owen Castellane: The first page should say that the goal is to understand the customer’s required workflow and route the question responsibly.
+
+[09:30:42] Priya Natarajan: Good.
+
+[09:30:45] Owen Castellane: It should also say that an initial acknowledgment is not the same as a final technical answer.
+
+[09:30:50] Priya Natarajan: That’s important. I’ll put it in a callout.
+
+[09:30:54] Owen Castellane: Keep the callout plain.
+
+[09:30:57] Priya Natarajan: “Acknowledge first; confirm details before committing.”
+
+[09:31:01] Owen Castellane: That works.
+
+[09:31:04] Priya Natarajan: Nice and short.
+
+[09:31:07] Owen Castellane: Short is usually better.
+
+[09:31:10] Priya Natarajan: Except when we’re on calls.
+
+[09:31:13] Owen Castellane: We’ve been talking for half an hour, so I can’t argue.
+
+[09:31:16] Priya Natarajan: We’re making progress.
+
+[09:31:19] Owen Castellane: We are.
+
+[09:31:22] Priya Natarajan: Would it help to create a separate customer-facing one-page summary from the internal guide?
+
+[09:31:27] Owen Castellane: Eventually. Not until we know the language is stable.
+
+[09:31:31] Priya Natarajan: Agreed.
+
+[09:31:34] Owen Castellane: We don’t want customers to see our internal decision tree.
+
+[09:31:37] Priya Natarajan: Definitely not.
+
+[09:31:40] Owen Castellane: They need a clear explanation of the next step, not our filing system.
+
+[09:31:44] Priya Natarajan: I’ll keep those separate.
+
+[09:31:47] Owen Castellane: Good.
+
+[09:31:50] Priya Natarajan: Is there value in inviting St. Aldric to a demonstration?
+
+[09:31:55] Owen Castellane: Maybe, but only if the demonstration answers their workflow questions. A generic demonstration could create more questions than it resolves.
+
+[09:32:02] Priya Natarajan: Then we should first ask what they want to see.
+
+[09:32:05] Owen Castellane: Exactly.
+
+[09:32:08] Priya Natarajan: I’ll put that in the follow-up note.
+
+[09:32:11] Owen Castellane: Good.
+
+[09:32:14] Priya Natarajan: If they ask for a demonstration before we have the details, how should we respond?
+
+[09:32:18] Owen Castellane: Offer a focused session and ask them to identify the workflow they want to examine. Don’t promise that a standard tour will cover it.
+
+[09:32:24] Priya Natarajan: That’s clear.
+
+[09:32:27] Owen Castellane: The phrase “standard tour” is fine internally, not externally.
+
+[09:32:30] Priya Natarajan: I’ll translate it.
+
+[09:32:33] Owen Castellane: Thanks.
+
+[09:32:36] Priya Natarajan: What would make you decide we need product involved immediately?
+
+[09:32:41] Owen Castellane: If the question is about a capability that isn’t documented, if the requested workflow differs from the normal pattern, or if the customer is asking for a commitment about future behavior.
+
+[09:32:48] Priya Natarajan: I’ll include those triggers.
+
+[09:32:51] Owen Castellane: Also if the issue touches several product areas. That’s when the answer can become inconsistent.
+
+[09:32:56] Priya Natarajan: Good addition.
+
+[09:32:59] Owen Castellane: And if the customer frames it as a requirement for selection, not just curiosity.
+
+[09:33:04] Priya Natarajan: That’s useful context.
+
+[09:33:07] Owen Castellane: Exactly.
+
+[09:33:10] Priya Natarajan: I’ll keep the trigger list concise.
+
+[09:33:13] Owen Castellane: Please.
+
+[09:33:16] Priya Natarajan: Do you want escalation levels?
+
+[09:33:20] Owen Castellane: Not formal levels yet. A simple “owner and next team” model is enough.
+
+[09:33:25] Priya Natarajan: That keeps it usable.
+
+[09:33:28] Owen Castellane: Yes.
+
+[09:33:31] Priya Natarajan: And we can formalize it later if the volume grows.
+
+[09:33:35] Owen Castellane: Exactly.
+
+[09:33:38] Priya Natarajan: What would tell us the volume is growing?
+
+[09:33:42] Owen Castellane: Repeated questions from different accounts, duplicated internal reviews, or customer follow-ups waiting because nobody knows who owns the answer.
+
+[09:33:49] Priya Natarajan: I’ll add those as signals.
+
+[09:33:52] Owen Castellane: Good.
+
+[09:33:55] Priya Natarajan: We could track the questions in a simple log.
+
+[09:33:59] Owen Castellane: Yes, but don’t create a new system if we can use an existing workspace.
+
+[09:34:03] Priya Natarajan: I’ll check what’s already available.
+
+[09:34:06] Owen Castellane: Thanks.
+
+[09:34:09] Priya Natarajan: Does your team already have a place where customer questions are recorded?
+
+[09:34:14] Owen Castellane: Several places, which is part of the problem. Some are in account notes, some in implementation notes, and some in email.
+
+[09:34:20] Priya Natarajan: Then the guide should point to one preferred location for this topic.
+
+[09:34:24] Owen Castellane: Yes. Even if we link out to other records.
+
+[09:34:27] Priya Natarajan: I’ll ask our operations team what we can use without creating extra administration.
+
+[09:34:31] Owen Castellane: Good.
+
+[09:34:34] Priya Natarajan: I’m mindful that this is becoming a broader process discussion.
+
+[09:34:38] Owen Castellane: That’s okay. The original question exposed the process gap.
+
+[09:34:42] Priya Natarajan: Then it’s worth capturing.
+
+[09:34:45] Owen Castellane: Just don’t let the process become the product.
+
+[09:34:48] Priya Natarajan: I’ll keep the guide focused.
+
+[09:34:51] Owen Castellane: Good.
+
+[09:34:54] Priya Natarajan: Let’s walk through a hypothetical first response. A customer asks whether the module can work with their existing environment. The rep says, “Thanks for raising that. To point you to the right answer, can you tell me which workflow you want to support, which teams are involved, and what timing and visibility you need?” Then the rep says we’ll confirm the technical path with the right specialist.
+
+[09:35:10] Owen Castellane: That’s good. Add a sentence that the answer depends on the workflow and the information that needs to move.
+
+[09:35:15] Priya Natarajan: I can add that.
+
+[09:35:18] Owen Castellane: It sets expectations without sounding evasive.
+
+[09:35:21] Priya Natarajan: Exactly.
+
+[09:35:24] Owen Castellane: And if the rep knows the answer to one part, they can answer that part without pretending the whole question is resolved.
+
+[09:35:29] Priya Natarajan: That’s a useful coaching point.
+
+[09:35:32] Owen Castellane: Yes. Partial clarity is better than false certainty.
+
+[09:35:36] Priya Natarajan: I’ll quote that internally, though not in a dramatic way.
+
+[09:35:39] Owen Castellane: Please don’t put my name under it.
+
+[09:35:42] Priya Natarajan: I’ll call it a team principle.
+
+[09:35:45] Owen Castellane: Much safer.
+
+[09:35:48] Priya Natarajan: How should the rep close the first exchange?
+
+[09:35:53] Owen Castellane: Confirm the next step and who owns it. If a technical review is needed, say when the customer should expect an update, even if the update is simply that the review is still in progress.
+
+[09:36:00] Priya Natarajan: That’s practical.
+
+[09:36:03] Owen Castellane: Silence is what makes people think the question disappeared.
+
+[09:36:06] Priya Natarajan: I’ll add a follow-up cadence.
+
+[09:36:09] Owen Castellane: Good.
+
+[09:36:12] Priya Natarajan: Do you want a standard response time?
+
+[09:36:16] Owen Castellane: Not until we understand the review load. We can promise an acknowledgment and a next update, but I don’t want to set a blanket answer deadline yet.
+
+[09:36:23] Priya Natarajan: That’s sensible.
+
+[09:36:26] Owen Castellane: We need to avoid making a customer wait, but we also need to avoid promising a speed we can’t sustain.
+
+[09:36:30] Priya Natarajan: I’ll phrase it around communication rather than a fixed duration.
+
+[09:36:33] Owen Castellane: Good.
+
+[09:36:36] Priya Natarajan: Does that apply to St. Aldric as well?
+
+[09:36:40] Owen Castellane: Yes. They’re reasonable, but they’ll notice if we say we’re following up and then go quiet.
+
+[09:36:43] Priya Natarajan: I’ll make sure the calendar reminder is set.
+
+[09:36:46] Owen Castellane: Thanks.
+
+[09:36:49] Priya Natarajan: I’m going to note the customer’s language carefully. They asked whether the module could work with their instance, but their underlying concerns were workflow, responsibility, visibility, and planning.
+
+[09:36:57] Owen Castellane: That’s the summary.
+
+[09:37:00] Priya Natarajan: Good.
+
+[09:37:03] Owen Castellane: And those four concerns will probably recur.
+
+[09:37:06] Priya Natarajan: We’ll build around them.
+
+[09:37:09] Owen Castellane: Great.
+
+[09:37:12] Priya Natarajan: Do you want to discuss the commercial side now?
+
+[09:37:16] Owen Castellane: Only at a high level. The technical scope needs to be clearer before we discuss any additional work.
+
+[09:37:20] Priya Natarajan: Then we can say that commercial treatment follows scope confirmation.
+
+[09:37:24] Owen Castellane: Yes.
+
+[09:37:27] Priya Natarajan: Should account reps bring commercial specialists into the first conversation?
+
+[09:37:31] Owen Castellane: Not automatically. Bring them in when the customer asks for a quote, a scope distinction, or a commitment that depends on technical details.
+
+[09:37:37] Priya Natarajan: That’s a clear trigger.
+
+[09:37:40] Owen Castellane: Good.
+
+[09:37:43] Priya Natarajan: What if the customer insists on a commercial answer before technical review?
+
+[09:37:47] Owen Castellane: Explain that we want to avoid pricing a vague requirement. Ask whether a planning range is useful, but make clear what assumptions it would contain.
+
+[09:37:54] Priya Natarajan: I’ll include that as suggested language.
+
+[09:37:57] Owen Castellane: Fine.
+
+[09:38:00] Priya Natarajan: No figures in the guide.
+
+[09:38:03] Owen Castellane: Correct.
+
+[09:38:06] Priya Natarajan: Understood.
+
+[09:38:09] Owen Castellane: We’re not ready for figures.
+
+[09:38:12] Priya Natarajan: I’ll leave them out.
+
+[09:38:15] Owen Castellane: Good.
+
+[09:38:18] Priya Natarajan: I have another question about internal ownership. Should the account rep remain the customer-facing owner even after solutions engineering joins?
+
+[09:38:23] Owen Castellane: Usually, yes. The specialist can explain the technical details, but the account rep should keep the conversation coordinated.
+
+[09:38:29] Priya Natarajan: That aligns with what I was thinking.
+
+[09:38:32] Owen Castellane: If the specialist becomes the only contact, the customer may get a detailed answer but lose the broader context.
+
+[09:38:36] Priya Natarajan: I’ll state that explicitly.
+
+[09:38:39] Owen Castellane: Good.
+
+[09:38:42] Priya Natarajan: And implementation should be brought in once the workflow and likely scope are clearer.
+
+[09:38:46] Owen Castellane: Yes, unless the customer’s question is already about implementation ownership.
+
+[09:38:49] Priya Natarajan: Right.
+
+[09:38:52] Owen Castellane: The order can change based on the question.
+
+[09:38:55] Priya Natarajan: I’ll avoid presenting the sequence as rigid.
+
+[09:38:58] Owen Castellane: Good.
+
+[09:39:01] Priya Natarajan: This is probably a good time for a quick break, but we can keep going if you’re okay.
+
+[09:39:06] Owen Castellane: I’m fine. I’ve got coffee here.
+
+[09:39:09] Priya Natarajan: Then we’ll trust the coffee.
+
+[09:39:12] Owen Castellane: It’s doing most of the work.
+
+[09:39:15] Priya Natarajan: Same.
+
+[09:39:18] Owen Castellane: We can continue.
+
+[09:39:21] Priya Natarajan: I want to make sure the guide doesn’t accidentally imply that the customer has to know the technical solution before asking the question.
+
+[09:39:28] Owen Castellane: Good point. They should be able to describe the business need in ordinary terms.
+
+[09:39:32] Priya Natarajan: Then the first questions should be about the work, not the interface.
+
+[09:39:35] Owen Castellane: Exactly. Ask what they want people to be able to do.
+
+[09:39:39] Priya Natarajan: I’ll put that first.
+
+[09:39:42] Owen Castellane: And only then ask where the information currently lives.
+
+[09:39:46] Priya Natarajan: That will make the conversation easier for operations participants.
+
+[09:39:49] Owen Castellane: Yes.
+
+[09:39:52] Priya Natarajan: What if the customer only brings technical people?
+
+[09:39:56] Owen Castellane: Ask them to describe the operational outcome in their own terms. If they can’t, request a later session with someone who can.
+
+[09:40:02] Priya Natarajan: I’ll include that as a fallback.
+
+[09:40:05] Owen Castellane: Good.
+
+[09:40:08] Priya Natarajan: What if they only bring operations people?
+
+[09:40:12] Owen Castellane: That’s fine for the first conversation. We can gather the workflow and then involve technical people.
+
+[09:40:16] Priya Natarajan: That’s reassuring.
+
+[09:40:19] Owen Castellane: The first meeting doesn’t need everyone.
+
+[09:40:22] Priya Natarajan: I’ll say that too.
+
+[09:40:25] Owen Castellane: Good.
+
+[09:40:28] Priya Natarajan: I’d like to include a sample note template. Something like: customer goal, current process, desired change, information involved, timing, visibility, owners, open questions, next step.
+
+[09:40:35] Owen Castellane: That’s a good structure. Add affected departments and any constraints they mentioned.
+
+[09:40:40] Priya Natarajan: Added.
+
+[09:40:43] Owen Castellane: And separate facts from assumptions.
+
+[09:40:47] Priya Natarajan: Very good. We can add an assumptions field.
+
+[09:40:50] Owen Castellane: People often forget which is which.
+
+[09:40:53] Priya Natarajan: Then the template can force the distinction.
+
+[09:40:56] Owen Castellane: Exactly.
+
+[09:40:59] Priya Natarajan: I’m going to ask our enablement team whether a template already exists.
+
+[09:41:03] Owen Castellane: Please do. I’d rather adapt something than create another version.
+
+[09:41:06] Priya Natarajan: Understood.
+
+[09:41:09] Owen Castellane: We have enough templates that nobody can find.
+
+[09:41:12] Priya Natarajan: That’s a problem we can avoid.
+
+[09:41:15] Owen Castellane: Good.
+
+[09:41:18] Priya Natarajan: Does the operations review next week have any bearing on the follow-up with St. Aldric?
+
+[09:41:22] Owen Castellane: It may. If the review changes our priorities, I’ll tell you. But I don’t expect it to change the immediate need for a clear response.
+
+[09:41:29] Priya Natarajan: That’s helpful.
+
+[09:41:32] Owen Castellane: The review may affect sequencing, not the fact that customers are asking.
+
+[09:41:35] Priya Natarajan: Exactly.
+
+[09:41:38] Owen Castellane: We need to be able to respond while the larger decisions are still being made.
+
+[09:41:42] Priya Natarajan: I’ll keep the guide neutral on future priorities.
+
+[09:41:45] Owen Castellane: Good.
+
+[09:41:48] Priya Natarajan: Do you want to include a note about what happens if we need more time?
+
+[09:41:52] Owen Castellane: Yes. Give the customer an interim update, state what’s being checked, and say when they’ll hear from us again.
+
+[09:41:58] Priya Natarajan: Even if there’s no new answer.
+
+[09:42:01] Owen Castellane: Especially then.
+
+[09:42:04] Priya Natarajan: That’s clear.
+
+[09:42:07] Owen Castellane: People are usually patient if they know the question is still alive.
+
+[09:42:10] Priya Natarajan: I’ll put that in the follow-up section.
+
+[09:42:13] Owen Castellane: Great.
+
+[09:42:16] Priya Natarajan: What’s the right balance between transparency and internal detail?
+
+[09:42:21] Owen Castellane: Tell them what we’re confirming and why it matters to their workflow. Don’t narrate every internal meeting.
+
+[09:42:27] Priya Natarajan: That’s a good rule.
+
+[09:42:30] Owen Castellane: Customers don’t need to know which internal calendar is full.
+
+[09:42:33] Priya Natarajan: They need to know what the next useful information will be.
+
+[09:42:36] Owen Castellane: Exactly.
+
+[09:42:39] Priya Natarajan: I’ll use that wording.
+
+[09:42:42] Owen Castellane: Fine.
+
+[09:42:45] Priya Natarajan: I’m also thinking about how we capture customer terminology. If they use a local name for a process, the notes should preserve it rather than translating it immediately.
+
+[09:42:51] Owen Castellane: Yes. Local terms often carry meaning that a generic label loses.
+
+[09:42:55] Priya Natarajan: Then the note can include their term and our working interpretation separately.
+
+[09:42:59] Owen Castellane: That would help.
+
+[09:43:02] Priya Natarajan: Good.
+
+[09:43:05] Owen Castellane: It also gives us something to confirm at the next meeting.
+
+[09:43:08] Priya Natarajan: Exactly.
+
+[09:43:11] Owen Castellane: This is a lot of structure for what started as one question.
+
+[09:43:15] Priya Natarajan: Repeated questions usually deserve structure.
+
+[09:43:18] Owen Castellane: True.
+
+[09:43:21] Priya Natarajan: I’m going to avoid describing it as a program. That would invite a governance committee.
+
+[09:43:25] Owen Castellane: Wise.
+
+[09:43:28] Priya Natarajan: We’ll call it guidance.
+
+[09:43:31] Owen Castellane: Much safer.
+
+[09:43:34] Priya Natarajan: Does your leadership team need a status update before the guide is done?
+
+[09:43:39] Owen Castellane: I’ll mention it in my weekly update. You don’t need to prepare a separate deck.
+
+[09:43:44] Priya Natarajan: That saves time.
+
+[09:43:47] Owen Castellane: I’ll describe it as a response framework being prepared with technical review.
+
+[09:43:52] Priya Natarajan: That’s accurate.
+
+[09:43:55] Owen Castellane: And I’ll say we’re using a current customer question to make the response more consistent.
+
+[09:43:59] Priya Natarajan: Good.
+
+[09:44:02] Owen Castellane: No need to make it sound larger than it is.
+
+[09:44:05] Priya Natarajan: Agreed.
+
+[09:44:08] Owen Castellane: That’s how small tasks become banners.
+
+[09:44:11] Priya Natarajan: And then somebody needs a logo.
+
+[09:44:14] Owen Castellane: Exactly.
+
+[09:44:17] Priya Natarajan: I’ll keep the document plain.
+
+[09:44:20] Owen Castellane: Thank you.
+
+[09:44:23] Priya Natarajan: Let’s decide on the next communication with St. Aldric. I’ll send a note after we have an internal review slot.
+
+[09:44:29] Owen Castellane: Yes. Don’t send it before we can offer a credible next step.
+
+[09:44:33] Priya Natarajan: I’ll coordinate internally first.
+
+[09:44:36] Owen Castellane: Good.
+
+[09:44:39] Priya Natarajan: The note will thank them for the question, say we’re clarifying the workflow and implementation considerations, and propose a focused discussion.
+
+[09:44:44] Owen Castellane: That sounds right.
+
+[09:44:47] Priya Natarajan: I’ll ask them to share any priority scenarios in advance.
+
+[09:44:50] Owen Castellane: Yes.
+
+[09:44:53] Priya Natarajan: And I’ll avoid attaching the general module overview unless they ask for it again.
+
+[09:44:58] Owen Castellane: Good. They already have it.
+
+[09:45:01] Priya Natarajan: Understood.
+
+[09:45:04] Owen Castellane: We should not make them read another document before we answer the question.
+
+[09:45:08] Priya Natarajan: Agreed.
+
+[09:45:11] Owen Castellane: A conversation may be more useful.
+
+[09:45:14] Priya Natarajan: Especially if their departments use different processes.
+
+[09:45:18] Owen Castellane: Exactly.
+
+[09:45:21] Priya Natarajan: I’ll include that in the invitation.
+
+[09:45:24] Owen Castellane: Good.
+
+[09:45:27] Priya Natarajan: Is there a risk that a focused discussion sounds like we don’t have a general answer?
+
+[09:45:32] Owen Castellane: Only if we phrase it badly. Say we want to understand their priorities so we can address the relevant workflow rather than give them a generic answer.
+
+[09:45:39] Priya Natarajan: That’s strong.
+
+[09:45:42] Owen Castellane: It makes the conversation about usefulness, not uncertainty.
+
+[09:45:45] Priya Natarajan: I’ll use that.
+
+[09:45:48] Owen Castellane: Good.
+
+[09:45:51] Priya Natarajan: Let me ask about internal confidence. Do you feel the team understands the module well enough to have the first discussion?
+
+[09:45:57] Owen Castellane: Some do, some don’t. That’s another reason I want a common opening and a clear handoff.
+
+[09:46:04] Priya Natarajan: I’ll write for a mixed audience.
+
+[09:46:07] Owen Castellane: Yes. Experienced people can skim, and newer people can follow the prompts.
+
+[09:46:10] Priya Natarajan: That’s the goal.
+
+[09:46:13] Owen Castellane: Don’t assume the account team knows the difference between a product capability and a customer-specific configuration.
+
+[09:46:19] Priya Natarajan: I’ll explain that distinction.
+
+[09:46:22] Owen Castellane: Good.
+
+[09:46:25] Priya Natarajan: We can use an example without attaching it to a specific customer.
+
+[09:46:29] Owen Castellane: Exactly.
+
+[09:46:32] Priya Natarajan: And add a prompt to ask whether the customer is describing an existing requirement or a preferred future state.
+
+[09:46:38] Owen Castellane: Very useful. Those get mixed together all the time.
+
+[09:46:41] Priya Natarajan: I’ll add it.
+
+[09:46:44] Owen Castellane: Great.
+
+[09:46:47] Priya Natarajan: Do you want the guide to explain what information should not be collected?
+
+[09:46:52] Owen Castellane: Yes, at least generally. Don’t ask for sensitive details before we know they’re necessary, and don’t have people paste operational records into an ordinary email.
+
+[09:47:00] Priya Natarajan: I’ll include a reminder to follow the normal information-handling process.
+
+[09:47:04] Owen Castellane: Good.
+
+[09:47:07] Priya Natarajan: We don’t need to turn it into a compliance manual.
+
+[09:47:10] Owen Castellane: Correct. Just prevent careless requests.
+
+[09:47:13] Priya Natarajan: Understood.
+
+[09:47:16] Owen Castellane: That’s another place where a simple reminder helps.
+
+[09:47:19] Priya Natarajan: I’ll keep it concise.
+
+[09:47:22] Owen Castellane: Thanks.
+
+[09:47:25] Priya Natarajan: Do you think St. Aldric will want to include procurement in the next call?
+
+[09:47:30] Owen Castellane: Possibly, but I wouldn’t invite procurement unless they ask or unless the discussion turns commercial. Start with operations and applications.
+
+[09:47:36] Priya Natarajan: That keeps the first conversation focused.
+
+[09:47:39] Owen Castellane: Yes.
+
+[09:47:42] Priya Natarajan: If procurement joins anyway, we can answer at the planning level and defer scope details.
+
+[09:47:46] Owen Castellane: Exactly.
+
+[09:47:49] Priya Natarajan: I’ll prepare for that.
+
+[09:47:52] Owen Castellane: Good.
+
+[09:47:55] Priya Natarajan: I’m noticing we keep coming back to the same principle: understand the use case before making the answer bigger than it needs to be.
+
+[09:48:00] Owen Castellane: That’s the principle.
+
+[09:48:03] Priya Natarajan: It should be the title.
+
+[09:48:06] Owen Castellane: Maybe not. It’s a little long.
+
+[09:48:09] Priya Natarajan: “Understand before answering”?
+
+[09:48:12] Owen Castellane: Better.
+
+[09:48:15] Priya Natarajan: I’ll use it as an internal subtitle.
+
+[09:48:18] Owen Castellane: Fine.
+
+[09:48:21] Priya Natarajan: What should the guide say about customer requests for documentation?
+
+[09:48:26] Owen Castellane: Ask what decision the document will support. A planning committee may need different information than an implementation team.
+
+[09:48:31] Priya Natarajan: That’s useful. It prevents us from sending the same document to everyone.
+
+[09:48:34] Owen Castellane: Exactly.
+
+[09:48:37] Priya Natarajan: We can ask whether they need a summary, a workflow description, or technical detail.
+
+[09:48:41] Owen Castellane: Yes, but don’t force those labels on them. Describe the purpose in ordinary language.
+
+[09:48:45] Priya Natarajan: Good distinction.
+
+[09:48:48] Owen Castellane: People often ask for “documentation” when they really need something to explain the decision internally.
+
+[09:48:53] Priya Natarajan: I’ll include that.
+
+[09:48:56] Owen Castellane: Great.
+
+[09:48:59] Priya Natarajan: We should probably include a sample follow-up summary too.
+
+[09:49:04] Owen Castellane: Yes. It should state what we heard, what we confirmed, what remains open, and what happens next.
+
+[09:49:09] Priya Natarajan: Concise, with owners.
+
+[09:49:12] Owen Castellane: Right.
+
+[09:49:15] Priya Natarajan: Should the customer approve the summary?
+
+[09:49:19] Owen Castellane: Ask them to correct anything we misunderstood. Don’t make approval sound like a formal sign-off unless it needs to be one.
+
+[09:49:26] Priya Natarajan: That keeps it collaborative.
+
+[09:49:29] Owen Castellane: Yes.
+
+[09:49:32] Priya Natarajan: I’ll phrase it as “Please let us know if we missed or mischaracterized anything.”
+
+[09:49:36] Owen Castellane: Good.
+
+[09:49:39] Priya Natarajan: Do you want a deadline for their corrections?
+
+[09:49:43] Owen Castellane: Only if the planning schedule requires one. Otherwise, give them a reasonable window without making the email feel like a form.
+
+[09:49:49] Priya Natarajan: Understood.
+
+[09:49:52] Owen Castellane: The tone matters.
+
+[09:49:55] Priya Natarajan: It does.
+
+[09:49:58] Owen Castellane: Especially when we’re asking them to spend time helping us understand their process.
+
+[09:50:01] Priya Natarajan: Good point.
+
+[09:50:04] Owen Castellane: We should make the value of the conversation clear to them.
+
+[09:50:08] Priya Natarajan: I’ll say that the discussion will help us focus the answer on the scenarios that matter to them.
+
+[09:50:11] Owen Castellane: Exactly.
+
+[09:50:14] Priya Natarajan: I have enough for the outline now.
+
+[09:50:17] Owen Castellane: Good.
+
+[09:50:20] Priya Natarajan: I’ll send you the first version this afternoon.
+
+[09:50:24] Owen Castellane: I’ll watch for it.
+
+[09:50:27] Priya Natarajan: And you’ll send your notes before then?
+
+[09:50:31] Owen Castellane: Yes. I’ll forward them after this call.
+
+[09:50:34] Priya Natarajan: Perfect.
+
+[09:50:37] Owen Castellane: I’m going to warn you that the notes include a half-finished thought about reporting.
+
+[09:50:41] Priya Natarajan: Half-finished thoughts are welcome in internal notes.
+
+[09:50:44] Owen Castellane: Good, because there are several.
+
+[09:50:47] Priya Natarajan: We’ll sort them into confirmed questions and things to clarify.
+
+[09:50:51] Owen Castellane: Exactly.
+
+[09:50:54] Priya Natarajan: Do you want to stay on and review the customer invitation wording?
+
+[09:50:58] Owen Castellane: Yes, let’s do that now so I don’t have to reopen it later.
+
+[09:51:01] Priya Natarajan: Great. I’ll draft it aloud. “Thank you for the discussion about your planning needs. We’d like to schedule a focused session to better understand the workflows you want to support and the information your teams need to exchange.”
+
+[09:51:09] Owen Castellane: Good start.
+
+[09:51:12] Priya Natarajan: “We’ll bring both operational and technical colleagues so we can discuss the relevant questions together.”
+
+[09:51:17] Owen Castellane: Say “the right operational and technical colleagues,” not “both.” It sounds less like a fixed cast.
+
+[09:51:21] Priya Natarajan: Good catch.
+
+[09:51:24] Owen Castellane: Also, don’t say “exchange” if we haven’t confirmed directionality.
+
+[09:51:29] Priya Natarajan: I’ll say “how information is used across the workflow.”
+
+[09:51:33] Owen Castellane: Better.
+
+[09:51:36] Priya Natarajan: “If helpful, please send us the priority scenarios or planning questions you’d like to cover.”
+
+[09:51:41] Owen Castellane: Good. Add that they don’t need to prepare a technical design.
+
+[09:51:46] Priya Natarajan: “There is no need to prepare a technical design in advance.”
+
+[09:51:49] Owen Castellane: Exactly.
+
+[09:51:52] Priya Natarajan: “We’ll use the conversation to confirm the scope of the questions and identify any follow-up needed.”
+
+[09:51:58] Owen Castellane: I like that.
+
+[09:52:01] Priya Natarajan: Then offer two dates.
+
+[09:52:04] Owen Castellane: Yes.
+
+[09:52:07] Priya Natarajan: “Would Tuesday or Wednesday work for your team?”
+
+[09:52:11] Owen Castellane: Ask for their preferred time zones if there are multiple sites.
+
+[09:52:15] Priya Natarajan: Good.
+
+[09:52:18] Owen Castellane: They may have people joining from different locations.
+
+[09:52:21] Priya Natarajan: I’ll add that.
+
+[09:52:24] Owen Castellane: Otherwise the invitation is solid.
+
+[09:52:27] Priya Natarajan: Thanks.
+
+[09:52:30] Owen Castellane: It’s much better than sending a generic “let’s discuss integration” note.
+
+[09:52:34] Priya Natarajan: That phrase was on my first draft.
+
+[09:52:37] Owen Castellane: Delete it.
+
+[09:52:40] Priya Natarajan: Happily.
+
+[09:52:43] Owen Castellane: Good.
+
+[09:52:46] Priya Natarajan: What subject line would you use?
+
+[09:52:50] Owen Castellane: “Follow-up on workflow and planning questions” is plain and accurate.
+
+[09:52:54] Priya Natarajan: That’s good.
+
+[09:52:57] Owen Castellane: Avoid putting a technical term in the subject if the attendees include operations people.
+
+[09:53:01] Priya Natarajan: Understood.
+
+[09:53:04] Owen Castellane: The subject should tell them why the meeting matters.
+
+[09:53:07] Priya Natarajan: I’ll use your wording.
+
+[09:53:10] Owen Castellane: Fine.
+
+[09:53:13] Priya Natarajan: Should I include an agenda in the invitation?
+
+[09:53:17] Owen Castellane: Three bullets: desired workflow, information and timing questions, next steps. That’s enough.
+
+[09:53:24] Priya Natarajan: Perfect.
+
+[09:53:27] Owen Castellane: If we add more, people will assume every bullet requires preparation.
+
+[09:53:31] Priya Natarajan: Good point.
+
+[09:53:34] Owen Castellane: Keep the burden low.
+
+[09:53:37] Priya Natarajan: I’ll do that.
+
+[09:53:40] Owen Castellane: Thanks.
+
+[09:53:43] Priya Natarajan: I also want to ask whether they want a product specialist present.
+
+[09:53:47] Owen Castellane: Say we can include one, rather than asking them to decide the team structure.
+
+[09:53:51] Priya Natarajan: Right. “We can include a product specialist if that would be useful.”
+
+[09:53:56] Owen Castellane: Good.
+
+[09:53:59] Priya Natarajan: But we’ll likely include one anyway.
+
+[09:54:03] Owen Castellane: Yes, as long as the person is prepared.
+
+[09:54:06] Priya Natarajan: I’ll send them the context in advance.
+
+[09:54:09] Owen Castellane: Good.
+
+[09:54:12] Priya Natarajan: Do you want Marta on the customer call?
+
+[09:54:16] Owen Castellane: Probably not the first one unless she has a specific role. She can help prepare and join if the discussion turns to implementation ownership.
+
+[09:54:22] Priya Natarajan: That makes sense.
+
+[09:54:25] Owen Castellane: Too many internal people can make the customer feel like they’re defending a proposal.
+
+[09:54:29] Priya Natarajan: We’ll keep the group focused.
+
+[09:54:32] Owen Castellane: Good.
+
+[09:54:35] Priya Natarajan: Should I ask St. Aldric to limit their attendees?
+
+[09:54:39] Owen Castellane: No. Let them bring who they need. We can recommend that anyone who understands the workflow or planning decision attend.
+
+[09:54:45] Priya Natarajan: That’s better.
+
+[09:54:48] Owen Castellane: If they bring a large group, we’ll manage it.
+
+[09:54:51] Priya Natarajan: Understood.
+
+[09:54:54] Owen Castellane: I’d rather have the right people there than make them choose in advance.
+
+[09:54:58] Priya Natarajan: Good.
+
+[09:55:01] Owen Castellane: Sometimes the person who has the one important detail isn’t on the original invite list.
+
+[09:55:04] Priya Natarajan: Exactly.
+
+[09:55:07] Owen Castellane: We can send a summary afterward.
+
+[09:55:10] Priya Natarajan: I’ll make that standard.
+
+[09:55:13] Owen Castellane: Great.
+
+[09:55:16] Priya Natarajan: Let’s discuss the internal prep agenda.
+
+[09:55:20] Owen Castellane: Start with what we know, then list what we don’t know, then decide who can answer each open question.
+
+[09:55:26] Priya Natarajan: I’ll also bring the exact customer wording.
+
+[09:55:29] Owen Castellane: Yes. It’s important not to paraphrase away the ambiguity.
+
+[09:55:33] Priya Natarajan: Good point.
+
+[09:55:36] Owen Castellane: Then agree on the questions we want to ask them, not the answers we hope to give.
+
+[09:55:41] Priya Natarajan: That’s excellent. I’ll make it the final prep step.
+
+[09:55:45] Owen Castellane: Good.
+
+[09:55:48] Priya Natarajan: Should we prepare a capability summary?
+
+[09:55:52] Owen Castellane: A short one, with clear boundaries. No marketing claims.
+
+[09:55:56] Priya Natarajan: I’ll ask solutions engineering for that.
+
+[09:55:59] Owen Castellane: Fine.
+
+[09:56:02] Priya Natarajan: And a list of questions we cannot answer without customer context.
+
+[09:56:06] Owen Castellane: Yes.
+
+[09:56:09] Priya Natarajan: That should keep the meeting from drifting.
+
+[09:56:12] Owen Castellane: It will still drift. We just need to know when we’ve drifted.
+
+[09:56:16] Priya Natarajan: Fair.
+
+[09:56:19] Owen Castellane: Tangents are not always bad.
+
+[09:56:22] Priya Natarajan: Especially when they reveal the real concern.
+
+[09:56:25] Owen Castellane: Exactly.
+
+[09:56:28] Priya Natarajan: I’ll leave room in the notes for follow-up threads.
+
+[09:56:31] Owen Castellane: Good.
+
+[09:56:34] Priya Natarajan: We’ve got about four minutes before the top of the hour. Anything urgent we haven’t captured?
+
+[09:56:40] Owen Castellane: No. The immediate next steps are clear.
+
+[09:56:43] Priya Natarajan: Let me summarize one more time. You’ll send the original notes and confirm the planning lead if possible. I’ll draft the guide, check for an existing note template, set up the internal technical review, and prepare the customer invitation.
+
+[09:56:53] Owen Castellane: Correct.
+
+[09:56:56] Priya Natarajan: I’ll send you the draft first, then we’ll bring in Marta and solutions engineering.
+
+[09:56:59] Owen Castellane: Yes.
+
+[09:57:02] Priya Natarajan: We’ll propose a focused customer session and ask for priority scenarios without requiring a technical design.
+
+[09:57:07] Owen Castellane: Exactly.
+
+[09:57:10] Priya Natarajan: And we’ll keep the account rep as the coordinating owner.
+
+[09:57:14] Owen Castellane: Right.
+
+[09:57:17] Priya Natarajan: I think that covers it.
+
+[09:57:20] Owen Castellane: It does.
+
+[09:57:23] Priya Natarajan: Thanks for making time, especially during the operating review.
+
+[09:57:26] Owen Castellane: Thanks for taking it seriously. I’d rather build a good response now than fix five inconsistent ones later.
+
+[09:57:31] Priya Natarajan: Same here.
+
+[09:57:34] Owen Castellane: Send me the outline when it’s ready.
+
+[09:57:37] Priya Natarajan: I will.
+
+[09:57:40] Owen Castellane: And I’ll send the notes shortly.
+
+[09:57:43] Priya Natarajan: Great. Have a good rest of the morning.
+
+[09:57:46] Owen Castellane: You too, Priya.
+
+[09:57:49] Priya Natarajan: Take care.
+
+[09:57:51] Owen Castellane: Bye.

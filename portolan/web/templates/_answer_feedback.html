@@ -1,0 +1,18 @@
+{# Thumbs up or down on one assistant answer, with an optional one-line
+   reason (`POST /messages/{id}/feedback`, routes/usage.py). A plain form:
+   the reply reloads the conversation with the rating shown. Rendered for a
+   reloaded message (chat.html) and sent in the stream's `done` event for a
+   new one. Needs `message_id` and `feedback` (None, or {"rating", "reason"}). #}
+<form class="answer-feedback" method="post" action="/messages/{{ message_id }}/feedback">
+  <label class="sr-only" for="fb-reason-{{ message_id }}">Reason (optional)</label>
+  <input id="fb-reason-{{ message_id }}" name="reason" type="text" maxlength="200"
+         placeholder="Optional: what was right or wrong?"
+         value="{{ feedback.reason if feedback and feedback.reason else '' }}">
+  <button type="submit" name="rating" value="up" class="btn chip quiet"
+          aria-pressed="{{ 'true' if feedback and feedback.rating == 'up' else 'false' }}"
+          title="Helpful">&#x1F44D; Helpful</button>
+  <button type="submit" name="rating" value="down" class="btn chip quiet"
+          aria-pressed="{{ 'true' if feedback and feedback.rating == 'down' else 'false' }}"
+          title="Not helpful">&#x1F44E; Not helpful</button>
+  {% if feedback %}<span class="muted small feedback-state">Thanks, you marked this {{ 'helpful' if feedback.rating == 'up' else 'not helpful' }}.</span>{% endif %}
+</form>

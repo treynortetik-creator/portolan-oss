@@ -1,0 +1,19 @@
+{
+  "id": "S-ticket-n022",
+  "requester": "Tom Ridley",
+  "account": "Cobalt Ridge Medical Center",
+  "created": "2026-03-02",
+  "subject": "Alarm tripped during routine maintenance \u2014 resolved",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Tom Ridley",
+      "body": "Following up \u2014 any update on this?"
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "Checking with our biomed team and will circle back."
+    }
+  ]
+}

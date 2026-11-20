@@ -1,0 +1,222 @@
+[00:00:00] Sam Okafor: Okay, looks like everybody's on. Gwen, Felix, thanks for making time this week. I also want to introduce Kenji Mori, one of our product managers. He's going to sit in today and walk through some roadmap items later in the call.
+[00:00:17] Gwen Marsh: Hi Kenji, nice to meet you. Sam's mentioned you a couple times.
+[00:00:23] Kenji Mori: Good to meet you too, Gwen. And Felix, I think we might have crossed paths at the AAMI conference a couple years back, actually.
+[00:00:33] Felix Arden: Oh, could be. I was there in, gosh, twenty twenty-three I think. A lot of faces blur together at those things after a while.
+[00:00:44] Kenji Mori: Ha, same. I mostly remember the coffee being terrible.
+[00:00:49] Gwen Marsh: That tracks for pretty much every conference I've ever attended.
+[00:00:54] Sam Okafor: Before we dive into the agenda, how's everybody's summer going? Felix, I know you guys had that heat advisory out there.
+[00:01:03] Felix Arden: Oh, it was rough. We had two air handlers go down in the equipment storage room on the same afternoon, and I spent a couple hours genuinely worried about battery stock overheating in there.
+[00:01:18] Gwen Marsh: I heard about that. Felix ran around like his hair was on fire for most of that day.
+[00:01:26] Felix Arden: It was not my finest hour, no. Everything turned out fine, but it was a stressful few hours.
+[00:01:34] Sam Okafor: Glad it worked out okay. Gwen, how are things on your end?
+[00:01:40] Gwen Marsh: Busy, but good busy. We just wrapped our fiscal year planning cycle, so I've actually got a bit more bandwidth now than I did a month ago, which is part of why I wanted to get this call scheduled.
+[00:01:56] Sam Okafor: Good timing then. Kenji, how about you, anything new before we get going?
+[00:02:03] Kenji Mori: Just back from a couple weeks visiting some of our other accounts out west, so this is actually my first call back at my desk. Good to be talking pumps again instead of sitting in airports.
+[00:02:18] Felix Arden: Airports will do that to you.
+[00:02:21] Sam Okafor: Alright, let's go ahead and get into it. I know we've got a fair bit to cover today, fleet status, some roadmap conversation with Kenji, and then a couple items Gwen flagged ahead of time.
+[00:02:36] Gwen Marsh: Right, and I do have a hard stop at the top of the hour, so let's try to keep us moving at a decent pace.
+[00:02:47] Sam Okafor: Understood. Felix, want to kick us off with where the fleet's sitting right now?
+[00:02:54] Felix Arden: Sure. At Memorial we're running right around a hundred and ten T2 pumps across med-surg, ICU, and the ED. Utilization's high, we're basically at or near full deployment any time census is up.
+[00:03:08] Gwen Marsh: North's fleet is smaller. About sixty-five T2 units there, less acute mix overall, but still steady utilization.
+[00:03:16] Felix Arden: Right. And the thing I keep coming back to is that a good chunk of our Memorial units are getting up there in service years. We're not seeing catastrophic failures, to be clear, but I'm seeing more of the little things, housing wear, screen dimming, the occasional battery that won't hold a charge the way it used to.
+[00:03:40] Sam Okafor: That tracks with what we're seeing across a lot of the T2 install base generally at this point in its life cycle. It's a workhorse pump, but nothing runs forever.
+[00:03:53] Felix Arden: Exactly. From a biomed standpoint my PM schedule on those units has crept up too. Nothing dramatic, but more hands-on time per unit than it used to take, and my team hasn't grown to match.
+[00:04:08] Kenji Mori: How big is your biomed team currently, if you don't mind me asking? Just curious how that maps against fleet size.
+[00:04:18] Felix Arden: Five techs plus me, covering both Memorial and about half of North's workload, the rest of North has their own smaller shop.
+[00:04:27] Kenji Mori: Okay, that's helpful context for later when we talk rollout staffing.
+[00:04:33] Gwen Marsh: That's actually a good segue into something I wanted to put on the table today, because it connects directly to what Felix is describing.
+[00:04:43] Sam Okafor: Go ahead, Gwen.
+[00:04:46] Gwen Marsh: So we took this to our capital committee last month, and then I had a follow-up conversation with our CNO and with Felix's director just this week. ⟦F31⟧And where we've landed, as of today, is that Larkspur Regional Health is standardizing both hospitals, Memorial and North, on the Tidewater T3, and we want that transition complete by June of twenty twenty-seven.⟦/F31⟧
+[00:05:11] Sam Okafor: That's great to hear, Gwen. Genuinely, I know this has been a conversation building for a while now.
+[00:05:19] Gwen Marsh: It has. And I want to be upfront that a big driver was exactly what Felix described, the maintenance burden on the T2 fleet, plus the fact that we don't want two different pump platforms living side by side indefinitely. It creates training headaches, inventory headaches, all of it.
+[00:05:40] Felix Arden: From my seat, I'm relieved. Running one platform across both sites instead of two is going to simplify a lot of what my team does day to day.
+[00:05:52] Kenji Mori: That's great to hear, and congratulations on getting that through committee. Capital asks at this scale aren't usually a quick yes.
+[00:06:01] Gwen Marsh: It wasn't quick, no. But the case made itself once we laid out the maintenance trend data.
+[00:06:09] Sam Okafor: So, June twenty twenty-seven as the target for full standardization across both hospitals, I'll make sure that's reflected on our account plan. Does that assume a phased rollout, or more of a single conversion event?
+[00:06:24] Gwen Marsh: Phased. We can't take Memorial's ICU dark for a weekend to swap four hundred pumps, that's not realistic. I'd want Felix's read on how we sequence it unit by unit.
+[00:06:37] Felix Arden: My instinct is we start with the units where the T2s are oldest, that's mostly med-surg at Memorial, and work outward from there. ICU and the ED probably come later since clinical staff there are the most change-resistant, and I want more runway for training on those units specifically.
+[00:06:58] Sam Okafor: That makes sense, we can build a sequencing plan around that once we're closer to committing on numbers and dates.
+[00:07:07] Gwen Marsh: Agreed. I don't need that nailed down today, I mainly wanted the decision itself on record with you all so we can start planning around it in earnest.
+[00:07:19] Sam Okafor: Understood, and it's on record now. Felix, anything else on current fleet condition before we shift into the roadmap conversation with Kenji?
+[00:07:29] Felix Arden: A couple more things, yeah. Battery performance is one, we're seeing more units flagged during PM where the battery's degraded past what I'd like, and I've had to pull a handful out of rotation entirely rather than risk a mid-shift alarm.
+[00:07:46] Sam Okafor: How many would you say you've pulled total this year?
+[00:07:51] Felix Arden: Across Memorial, maybe eight. Not huge against a fleet of a hundred and ten, but it's trending up quarter over quarter, and it's exactly the kind of thing that makes me nervous about riding the T2 fleet much longer without a plan in place.
+[00:08:10] Gwen Marsh: Which is part of why June twenty twenty-seven felt like the right outer boundary and not something further out.
+[00:08:18] Felix Arden: Right. The other thing, and this is more of a workflow observation than a hard failure, is that our nursing staff have gotten used to certain alarm behaviors on the T2, the way it escalates, the way the screen presents occlusion alerts. Whatever we move to, I want enough lead time to retrain muscle memory, because alarm confusion during a transition period is a real patient safety consideration, not just an inconvenience.
+[00:08:48] Kenji Mori: That's a fair concern, and it's one we hear from a lot of biomed leads during platform transitions. The T3's alarm escalation logic is different enough from the T2 that it's worth building a real training curriculum around, not just a quick in-service session.
+[00:09:07] Felix Arden: Good to know that upfront. I'd rather hear it now than discover it three weeks into a live rollout.
+[00:09:15] Sam Okafor: We can loop in our clinical education team once we've got a rollout sequence mapped out. They've run this exact kind of transition with a few other systems already.
+[00:09:28] Felix Arden: I'd take you up on that. Another question, maybe this one's for Kenji, what happens to service parts availability on the T2 once a health system starts winding it down? I don't want to get caught mid-transition needing a part that's already gone end of life.
+[00:09:47] Kenji Mori: Good question. We're not sunsetting T2 service parts anytime soon, the installed base across our whole customer footprint is still large enough that we're committed to supporting it for years yet. You won't get stranded mid-transition.
+[00:10:03] Felix Arden: That's reassuring, honestly. I've been burned by other vendors on that exact issue before, so I like to ask directly rather than assume.
+[00:10:13] Sam Okafor: Fair to ask. Felix, anything on the disposables or tubing side, compatibility-wise, we should flag while planning the transition?
+[00:10:22] Felix Arden: Not really a compatibility issue, more just logistics, we'll need to manage two sets of disposables in inventory during the overlap period, and my materials management folks will want a heads-up on shelf space and par levels well before units start rolling out.
+[00:10:40] Gwen Marsh: That's a supply chain conversation I'll own on our end. I'll loop in our materials director directly once we have a firmer sequencing plan in hand.
+[00:10:51] Sam Okafor: Good. Felix, anything else, or should we hand it to Kenji for the roadmap piece?
+[00:10:58] Felix Arden: One last thing, cleaning and disinfection protocol. Is the T3 housing compatible with the same wipes we already use system-wide, or are we going to need a new safety data sheet review?
+[00:11:12] Kenji Mori: Compatible with the same list, actually. We validated against the standard hospital-grade quaternary and bleach wipes most systems already stock, so it shouldn't require a new SDS review on your end.
+[00:11:25] Felix Arden: That's one less headache. I appreciate you knowing that off the top of your head instead of promising to follow up.
+[00:11:35] Kenji Mori: It comes up on basically every one of these calls at this point.
+[00:11:41] Sam Okafor: One more before we move on, Felix, how are you tracking PM documentation currently, paper-based or is that already in a CMMS?
+[00:11:51] Felix Arden: All in a CMMS at this point, we moved off paper a few years back. Makes pulling trend data like the battery numbers a lot easier than it used to be.
+[00:12:04] Sam Okafor: Alright, let's shift into the roadmap piece. Kenji, take it away.
+[00:12:10] Kenji Mori: Sure. At a high level, the T3 program is past its initial launch phase now, we've got a solid number of systems live on it, and we're in what I'd call the maturation phase of the roadmap. I want to walk through a few things relevant given you're about to standardize your whole fleet on it.
+[00:12:33] Gwen Marsh: Please, go ahead.
+[00:12:35] Kenji Mori: First is dosing safety. The T3 ships with an updated dose error reduction system, and we've built a faster drug library update cycle, instead of a quarterly push, we can turn around a library update in about half that time if a formulary change needs to get out fast.
+[00:12:56] Felix Arden: That's a meaningful improvement over the T2 cadence, honestly. We've had a couple close calls waiting on library pushes in the past.
+[00:13:06] Kenji Mori: Yeah, that was direct customer feedback shaping the change, so it's good to hear it lands. Second area is battery, new cell chemistry, longer runtime per charge, and a battery health indicator built into the maintenance menu so your biomed team can see degradation trending before a unit fails rather than after the fact.
+[00:13:28] Felix Arden: Now that is something I want. Being reactive on battery failures is exactly the pain point I described earlier.
+[00:13:37] Kenji Mori: It should help a lot there. Third thing, and this one's more forward-looking, we're continuing to build out wireless connectivity and remote monitoring, so a pump's status, including alarms and battery state, can surface to a central dashboard rather than requiring someone to physically walk the floor to check.
+[00:13:57] Gwen Marsh: That's appealing from a staffing efficiency standpoint. Our nurse-to-patient ratios are tight enough that anything reducing walking time matters.
+[00:14:06] Kenji Mori: That's the idea behind it. We're still expanding which nurse call and EHR systems that dashboard talks to natively, but the core pump-side telemetry ships on every T3 today.
+[00:14:19] Sam Okafor: Kenji, maybe touch on lead times, since Gwen's going to want to think about ordering volume against that June twenty twenty-seven target.
+[00:14:28] Kenji Mori: Right, good call. Current manufacturing lead time on new T3 orders runs around ten to twelve weeks from PO to delivery, depending on order size. For an order the scale of converting both hospitals, I'd want us to build in some buffer and stagger the purchase orders rather than placing one giant order at once.
+[00:14:51] Gwen Marsh: That lines up with the phased approach Felix described anyway.
+[00:14:56] Kenji Mori: Exactly, it maps well onto a unit-by-unit rollout. We also run a trade-in program for the outgoing T2 units, credit gets applied against the new T3 purchase, and we handle responsible disposal or refurbishment on our end so you're not stuck warehousing old pumps.
+[00:15:15] Felix Arden: That's good, because I genuinely don't have storage space for a hundred and seventy retired pumps sitting around somewhere.
+[00:15:24] Kenji Mori: We hear that from nearly everyone doing a full fleet conversion. We'll get you the trade-in paperwork whenever you're ready to start placing orders.
+[00:15:34] Sam Okafor: Kenji, anything on the interoperability roadmap specifically, since I know EHR integration is going to come up later in this call?
+[00:15:44] Kenji Mori: Sure, at a high level, the T3 platform works with Tidewater Link the same way the T2 does, nothing changes architecturally there. What is improving is the breadth of validated EHR integrations Link supports, and the speed of the interface engine itself. That's probably more Sam's conversation than mine, but happy to answer anything pump-side.
+[00:16:07] Sam Okafor: We'll get there. Gwen, does the roadmap Kenji's laid out change your thinking on anything, or does it mostly validate the direction you were already headed?
+[00:16:18] Gwen Marsh: Mostly validates it, honestly. The battery health monitoring piece is the one that jumps out most given what Felix described earlier about reactive failures.
+[00:16:29] Felix Arden: Same, that and the drug library cadence.
+[00:16:32] Kenji Mori: Good to hear. I'll send over the full spec sheet after the call too, so you've got it in writing for your committee if that's useful.
+[00:16:44] Gwen Marsh: That would be helpful, yes, please do.
+[00:16:48] Sam Okafor: Kenji, one more roadmap question while we're here, any changes coming to the training materials or the in-service curriculum that ships with a new fleet order?
+[00:16:59] Kenji Mori: Yeah, actually, we redid the whole onboarding curriculum alongside the T3 launch. It's more scenario-based now rather than just a feature walkthrough, and there's a shorter refresher module specifically for staff who already know the T2 and just need the delta.
+[00:17:16] Felix Arden: That delta-focused module is exactly what I'd want for our more tenured nurses. They don't need the full course, they need what's different.
+[00:17:27] Kenji Mori: Exactly the thinking behind it. We can make sure that's built into the training plan once we get to scheduling.
+[00:17:36] Sam Okafor: Kenji, one thing I forgot to ask, what's the warranty structure look like on a new T3 order compared to what Larkspur's used to on the T2?
+[00:17:47] Kenji Mori: Standard warranty term is the same length as what you're used to, we haven't changed the base coverage window. What has changed is that loaner coverage during any warranty repair is now built into the base terms automatically, rather than needing to be negotiated separately like it sometimes did on older contracts.
+[00:18:09] Felix Arden: That's a nice change, honestly, negotiating loaner terms after the fact always felt like an unnecessary extra step.
+[00:18:17] Kenji Mori: Agreed, it was one of the more common friction points we heard about, so it's just standard now.
+[00:18:26] Gwen Marsh: Good to know, that'll simplify the contract language on our side too, one less thing for legal to redline.
+[00:18:34] Sam Okafor: Felix, anything on the extended service side, or is HalvardCare not really part of today's conversation?
+[00:18:42] Felix Arden: It's not something I wanted to get into today specifically, I think that's more a conversation for another call once we're closer to actual numbers.
+[00:18:53] Sam Okafor: Fair enough, we can pick that up separately when the timing's right.
+[00:18:58] Gwen Marsh: Agreed, let's keep today focused on what we've already covered.
+[00:19:03] Kenji Mori: Makes sense to me, happy to circle back on service contract specifics whenever that's useful.
+[00:19:10] Sam Okafor: Alright, Gwen, I know you had a couple of your own items today. Want to move into those?
+[00:19:19] Gwen Marsh: Yeah, let's do that. There are two things on my list.
+[00:19:24] Sam Okafor: Understood, Gwen. You mentioned two items, what's the first one?
+[00:19:29] Gwen Marsh: The first is around the T2 consumables contract, since that's going to stay live for a while yet even as we transition the hardware over.
+[00:19:40] Sam Okafor: Sure, what's on your mind there?
+[00:19:43] Gwen Marsh: That contract is up for renewal in twenty twenty-seven, roughly the same window as the hardware transition. I've done some benchmarking against a couple of our peer systems, and I want to flag now, well ahead of the actual renewal conversation, what we're going to be asking for.
+[00:20:04] Sam Okafor: I appreciate you flagging it early rather than springing it on us at the eleventh hour.
+[00:20:11] Gwen Marsh: ⟦F12⟧When that T2 consumables contract comes up for renewal in twenty twenty-seven, we'd be looking for something around twelve points off, call it a twelve percent volume discount, given the volume we're running across both sites.⟦/F12⟧
+[00:20:26] Sam Okafor: Okay, noted, I'll flag that internally so it's not a surprise when we sit down for the renewal conversation next year.
+[00:20:36] Gwen Marsh: I'd rather you have a year of runway to think about it than a month.
+[00:20:43] Kenji Mori: That's reasonable. Consumables pricing isn't really my lane, but I know our contracts team does look at total account volume across hardware and consumables together, so the T3 conversion itself is probably relevant context for that conversation.
+[00:20:59] Sam Okafor: Agreed, it'll all be part of the same broader account picture by the time we get there.
+[00:21:06] Gwen Marsh: That's exactly the point I wanted made. We're not a small account, and I want the pricing conversation to reflect that reality.
+[00:21:16] Sam Okafor: Understood, Gwen. You said there were two items, what's the second one?
+[00:21:22] Gwen Marsh: I actually want to hold the second one until we've talked through a bit more of the rollout logistics, it connects to the EHR side of things and I'd rather sequence it after we've covered mechanics.
+[00:21:37] Sam Okafor: That works, we'll circle back to it. Let's use the middle stretch here to nail down some rollout mechanics.
+[00:21:46] Felix Arden: While we're in the weeds on logistics, I want to raise staffing for the actual swap-out days. Is this something Halvard sends a field team for, or is it mostly on my department to execute once equipment ships to us?
+[00:22:03] Sam Okafor: For a conversion this size we'd send a field implementation team for the initial go-live stretch on each unit, plus remote support after that. You won't be doing four hundred pump swaps with just your own staff.
+[00:22:19] Felix Arden: That's a relief, honestly, my team's already stretched thin on day-to-day PM work as it is.
+[00:22:26] Kenji Mori: And to Felix's earlier point about training, we'd bundle the clinical education piece into that same field visit schedule, so nursing staff on a given unit get hands-on training right around the time their pumps actually change out, rather than training weeks ahead and forgetting half of it.
+[00:22:46] Felix Arden: That's the right sequencing. Training too far ahead of the actual hardware change is basically wasted effort in my experience.
+[00:22:55] Gwen Marsh: Agreed, we saw that exact problem with a different system rollout a few years back, trained everyone early, went live months later, and half of it had to be redone from scratch.
+[00:23:09] Sam Okafor: We'll build the schedule so training and go-live sit close together, unit by unit, to avoid that.
+[00:23:17] Felix Arden: Good. Another question, during the overlap period where we've got both T2 and T3 units live on the same unit, is there any risk of staff confusion between the two, alarm-wise or interface-wise?
+[00:23:31] Kenji Mori: There's some risk, sure, any time you run a mixed fleet that's just the nature of a phased transition. What we usually recommend is keeping the overlap period as short as possible per unit, swap a whole unit at once rather than scattering it, and using clear physical labeling in the interim so staff can tell at a glance which platform they're looking at.
+[00:23:58] Felix Arden: We can do unit-at-a-time, that's actually how I was already planning to sequence it anyway.
+[00:24:05] Sam Okafor: That aligns well then. Gwen, from a purchasing standpoint, does unit-by-unit sequencing change how you want to structure the purchase orders, or would you rather do a smaller number of larger POs?
+[00:24:19] Gwen Marsh: I think smaller, more frequent POs actually work better for us budget-wise, it lets us spread the capital spend across a couple of fiscal years rather than taking the whole hit at once.
+[00:24:33] Sam Okafor: That's workable on our end, especially since Kenji already flagged that staggered ordering fits the ten-to-twelve-week lead time better anyway.
+[00:24:42] Kenji Mori: Right, a single massive order that size would actually be harder for us to fulfill cleanly than a staggered cadence spread over time.
+[00:24:52] Gwen Marsh: Good, that settles that then.
+[00:24:55] Sam Okafor: One more mechanical piece before we move on, has your facilities team weighed in at all on charging infrastructure? I know some systems need to look at whether existing charging stations and med room outlets are compatible with a new platform.
+[00:25:12] Felix Arden: Good question, I hadn't actually raised that internally yet. What's the general compatibility story with the T3?
+[00:25:20] Kenji Mori: The T3 charging cradles use a different connector than the T2, so you would need new charging stations, they're not backward compatible with T2 hardware. The good news is the footprint is similar, so in most cases it's a swap-in-place rather than a full electrical rework.
+[00:25:40] Felix Arden: That's good to hear, a full electrical rework would've been a much bigger conversation with our facilities director.
+[00:25:48] Gwen Marsh: I'll flag that to facilities regardless, just so they're not caught off guard when it comes time to order new stations.
+[00:25:57] Sam Okafor: We can include station counts in the same order cadence as the pumps themselves, so it's one coordinated timeline rather than two separate purchasing tracks.
+[00:26:08] Felix Arden: That's helpful, keeps everything on the same page instead of the pumps arriving and stations lagging behind.
+[00:26:16] Kenji Mori: Exactly, we usually recommend syncing those two so units aren't sitting around without a place to charge overnight.
+[00:26:24] Gwen Marsh: Makes sense. Sam, can you make sure that gets built into whatever sequencing document you put together after this call?
+[00:26:33] Sam Okafor: Absolutely, I'll fold it into the same unit-by-unit plan.
+[00:26:38] Felix Arden: One more logistics question, is there a recommended disposal or recycling process for the charging stations we're replacing, or is that on us to figure out locally?
+[00:26:50] Kenji Mori: We can include station disposal in the same trade-in and recycling process as the pumps themselves, so you're not left managing that separately either.
+[00:27:00] Felix Arden: Good, that keeps it simple. Appreciate you thinking through all the pieces, not just the pumps themselves.
+[00:27:08] Kenji Mori: It's usually the little pieces like that which cause the most friction in a rollout if nobody thinks about them ahead of time.
+[00:27:18] Sam Okafor: Gwen, does any of this change your thinking on the purchase order structure we talked about earlier, or does it still make sense to fold stations into the same staggered POs?
+[00:27:32] Gwen Marsh: No, I think folding it into the same POs still makes the most sense, keeps the accounting simpler on our end too.
+[00:27:41] Sam Okafor: Good, we'll structure it that way then.
+[00:27:45] Felix Arden: Appreciate everybody thinking through the details this deep, honestly, it's usually the unglamorous logistics that make or break how smooth these things go.
+[00:27:55] Gwen Marsh: Agreed completely.
+[00:27:57] Sam Okafor: Felix, one more thing while we're deep in logistics, how does your asset tracking system handle a hardware swap like this, do we need to coordinate any data migration on your end?
+[00:28:11] Felix Arden: Good question, our CMMS tracks each pump by serial number and location, so as units get swapped we'll just be retiring old records and creating new ones. Shouldn't require anything from your side beyond confirming serial numbers as units ship.
+[00:28:28] Kenji Mori: We can provide serial number manifests ahead of each shipment specifically so that's easy to reconcile on your end.
+[00:28:37] Felix Arden: That would help a lot, manual reconciliation against packing slips is always more error-prone than it should be.
+[00:28:45] Sam Okafor: We'll build that into the shipping process for this account specifically.
+[00:28:50] Gwen Marsh: While we're talking documentation, will there be updated user manuals or quick-reference cards for the nursing units, or do we need to develop those internally?
+[00:29:01] Kenji Mori: We provide standard quick-reference cards as part of the training package, laminated ones for the units themselves, plus a digital version your education team can adapt if they want to add anything specific to your protocols.
+[00:29:17] Gwen Marsh: That's helpful, saves our education team from having to build that from scratch.
+[00:29:23] Felix Arden: Agreed, that's usually a time sink if you're starting from a blank page.
+[00:29:29] Sam Okafor: We'll include a sample set with the training materials Kenji mentioned earlier.
+[00:29:35] Gwen Marsh: Perfect. I think that covers the logistics questions I had in mind, at least for today.
+[00:29:42] Felix Arden: One last thought before we move off logistics, communication to staff. Is there a standard announcement template or timeline Halvard recommends, so units aren't blindsided by a delivery truck showing up?
+[00:29:56] Kenji Mori: Yeah, we usually recommend communication going out at least two weeks ahead of a unit's go-live date, and we can provide template language your team can adapt, unit posters, that sort of thing.
+[00:30:10] Felix Arden: That's useful, I'll loop that into whatever communication plan our nursing education team builds.
+[00:30:16] Gwen Marsh: Good, let's make sure that's part of the packet Sam sends after this call as well.
+[00:30:24] Sam Okafor: Will do, I'll fold the communication templates in with the training and spec materials.
+[00:30:30] Gwen Marsh: One scheduling consideration from my side, I'd want to avoid rolling out major changes during our peak flu season, historically that's been a rough stretch for unit staffing bandwidth.
+[00:30:43] Felix Arden: Agreed, and probably worth avoiding the December holiday stretch too, staffing's thin and everyone's attention is elsewhere.
+[00:30:51] Sam Okafor: That's reasonable, we can build seasonal considerations into the sequencing plan so we're not asking units to absorb a pump change during their toughest staffing weeks.
+[00:31:02] Kenji Mori: Makes sense, we see that request from a lot of systems, it's a smart way to reduce friction during go-live.
+[00:31:11] Gwen Marsh: Good, I'll make sure our calendar gets shared so the sequencing plan actually reflects that.
+[00:31:18] Sam Okafor: Felix, anything else on the mechanics before we get into the EHR piece?
+[00:31:24] Felix Arden: Just one more thing, spare pool. During the transition I'd want a small reserve of loaner T3 units on site so I'm not caught short if something arrives damaged or dead on arrival.
+[00:31:39] Sam Okafor: We typically build a loaner allotment into transitions this size, we'll size that once we've got firm unit counts from you.
+[00:31:48] Felix Arden: That's all I've got on mechanics for now.
+[00:31:52] Sam Okafor: Great, let's talk EHR and Link then, since I know that's where Gwen's second item is headed. Kenji, want to give a quick refresher on how Link works for anyone who needs it?
+[00:32:06] Kenji Mori: Sure. Tidewater Link is our integration module, it's the piece that lets the pumps talk to the EHR, so things like dose data, infusion status, and in some configurations bidirectional order-to-pump communication can flow without a nurse manually keying anything in.
+[00:32:24] Sam Okafor: Gwen, remind me, are both Larkspur hospitals on the same EHR platform currently?
+[00:32:30] Gwen Marsh: Yes, we consolidated onto one platform system-wide a few years back, so Memorial and North are both running the same instance now.
+[00:32:40] Sam Okafor: That simplifies an integration project quite a bit versus supporting two different EHR platforms at once.
+[00:32:47] Felix Arden: It also means whatever interface work gets built once should apply cleanly to both sites, which is nice for once.
+[00:32:56] Kenji Mori: Agreed, single-instance integrations are a lot more straightforward to validate and support long-term.
+[00:33:02] Sam Okafor: Gwen, is this where you wanted to bring in your second item?
+[00:33:08] Gwen Marsh: It is, yeah.
+[00:33:10] Gwen Marsh: Before I get to the actual ask, can I ask a clarifying question, is Link something we'd need to purchase and implement as a separate project from the pump conversion, or does it usually run alongside it?
+[00:33:26] Sam Okafor: It's technically a separate module and a separate implementation project, but a lot of systems doing a full pump conversion like yours choose to run them close together, since biomed and IT teams are already deep in transition planning anyway.
+[00:33:43] Gwen Marsh: That's what I assumed, and it's actually the direction I want to go. Let me lay out the full picture, because I want the ask to land with the right context. We're consolidating two hospitals onto one pump platform by mid twenty twenty-seven. At the same time, our IT leadership has been pushing hard on closing the gap between our infusion data and our EHR, mostly driven by med-error reporting requirements our quality committee has been under pressure about.
+[00:34:16] Felix Arden: That's been a live conversation on the clinical side too, for what it's worth. Manual pump documentation has come up in more than one of our internal safety reviews.
+[00:34:28] Gwen Marsh: Right, so this isn't a nice-to-have for us, it's tied to a real quality initiative with its own internal deadline pressure.
+[00:34:38] Kenji Mori: That context is helpful, and honestly a pretty common driver for Link adoption across our customer base generally.
+[00:34:46] Sam Okafor: Go ahead and lay out the ask, Gwen, whenever you're ready.
+[00:34:51] Gwen Marsh: I'll note upfront, this needs to move on a defined timeline, not just at some point during the pump rollout generally.
+[00:35:01] Sam Okafor: Understood, let's get specific then.
+[00:35:04] Gwen Marsh: Okay. ⟦F20⟧What I want to formally ask for today is Tidewater Link integrated with our Epic instance, live and working, by January of twenty twenty-seven.⟦/F20⟧
+[00:35:15] Sam Okafor: That's a clear ask, and I appreciate the specific date. Let me be straight with you, that's roughly six, seven months out from today. It's workable, but it means we need to get an implementation project scoped soon rather than treating it as a someday item.
+[00:35:34] Gwen Marsh: That's exactly why I wanted it on record now rather than waiting until we're deeper into the pump conversion itself.
+[00:35:43] Kenji Mori: From the product side, I'll say the Epic integration path for Link is well-trodden at this point, it's one of our more mature validated connections, so the technical risk on that specific pairing is lower than it might be with some other platforms.
+[00:36:01] Felix Arden: Good to hear, my IT counterparts get nervous any time Epic and a new interface engine get mentioned in the same sentence.
+[00:36:11] Sam Okafor: Fair. I'll get our implementation team looped in this week and start a scoping conversation, and we'll build a schedule that targets that date.
+[00:36:22] Gwen Marsh: That's what I needed to hear, thank you.
+[00:36:26] Sam Okafor: Of course. I'll follow up in writing with next steps on both the pump conversion sequencing and the Link project scope, probably by end of next week.
+[00:36:38] Gwen Marsh: That works well for me.
+[00:36:41] Felix Arden: And loop me in on the IT side of the Link scoping specifically, I'll want to make sure biomed and IT aren't stepping on each other during implementation.
+[00:36:53] Sam Okafor: Will do.
+[00:36:55] Gwen Marsh: One more question on the Link timeline while it's fresh, does our IT team need to be on the scoping call you mentioned, or is that something you'll pull together internally first before looping them in?
+[00:37:10] Sam Okafor: I'd want your IT lead on the very first scoping call actually, that way we're not making assumptions about your Epic environment that turn out to be wrong three weeks in.
+[00:37:24] Gwen Marsh: That's fair, I'll get you a name and contact info for our Epic analyst by tomorrow.
+[00:37:31] Sam Okafor: Perfect, that'll let us move quickly.
+[00:37:34] Kenji Mori: This was a great call to sit in on, honestly. Useful for me to hear the biomed side of these transitions directly rather than secondhand through sales.
+[00:37:46] Felix Arden: Happy to keep being a resource on that if it's useful, I've got opinions on pump design, as you might have gathered by now.
+[00:37:57] Kenji Mori: Ha, noted. I might take you up on that separately sometime actually, we run customer input sessions periodically for the roadmap team.
+[00:38:07] Felix Arden: I'd be up for that.
+[00:38:10] Gwen Marsh: One last thing before I have to jump, Sam, can you send the roadmap spec sheet Kenji mentioned along with your follow-up email, rather than as a separate thing? Easier for me to keep everything in one place for the committee.
+[00:38:27] Sam Okafor: Absolutely, I'll bundle it all together.
+[00:38:30] Kenji Mori: I'll get that spec sheet over to Sam by tomorrow.
+[00:38:35] Gwen Marsh: Perfect. Alright, I've got to jump in a couple minutes, but this was a productive one. Thank you all.
+[00:38:44] Sam Okafor: Thanks, Gwen. I'll get that follow-up email out this week with everything we covered, the conversion timeline, the sequencing approach, and the Link project kickoff.
+[00:38:55] Felix Arden: Sounds good. And Gwen, let's you and I sync separately sometime next week on the materials management side of the transition, once you've talked to your director.
+[00:39:07] Gwen Marsh: Yes, let's do that, I'll reach out once I've had that conversation.
+[00:39:13] Sam Okafor: Great, sounds like we've got a clear set of next steps all around.
+[00:39:19] Gwen Marsh: Agreed. Talk soon, everyone.
+[00:39:21] Felix Arden: Take care, everybody.
+[00:39:24] Kenji Mori: Thanks all, good talking with you.
+[00:39:27] Sam Okafor: Thanks everyone, have a good rest of your week.

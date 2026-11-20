@@ -1,0 +1,4 @@
+{
+  "requestId": "mock-request-id",
+  "errors": ["Access token or key/secret pair is invalid or has expired."]
+}

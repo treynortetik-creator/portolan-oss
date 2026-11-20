@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Signing out — Portolan{% endblock %}
+{% block head %}<meta http-equiv="refresh" content="0;url={{ logout_url }}">{% endblock %}
+{% block content %}
+<div class="card" style="max-width:420px;margin:40px auto 0;">
+  <p class="eyebrow">Signing out</p>
+  <h1 style="margin-top:0;">Signing you out of Portolan and your work account.</h1>
+  <p><a class="btn primary" id="finish-sign-out" href="{{ logout_url }}">Finish signing out</a></p>
+</div>
+{% endblock %}

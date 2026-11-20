@@ -1,0 +1,618 @@
+# Telehealth vertical pack -- WP2 (`01-spec/world-generator-v2-2026-09-22.md`
+# section 4). Validates against `corpus/generator/v2/packs/schema.py::VerticalPack`.
+
+id: telehealth
+name: Telehealth
+vendor_what: "video-visit, remote patient monitoring and virtual behavioral health platforms sold to health systems and payers"
+
+products:
+  - kind: video_visit_platform
+    name_template: "{line}"
+    tiers: []
+    known_issue_pool:
+      - "video-quality drops on low-bandwidth patient connections"
+      - "waiting-room notifications occasionally delayed"
+  - kind: remote_patient_monitoring
+    name_template: "{line} RPM"
+    tiers: []
+    known_issue_pool:
+      - "device-reading sync lags for cellular-connected devices"
+  - kind: async_econsult_module
+    name_template: "{line} {tier}"
+    tiers: ["Consult", "ConsultPlus"]
+    known_issue_pool:
+      - "attachment upload failures on large imaging files"
+  - kind: virtual_behavioral_health
+    name_template: "{line} Behavioral"
+    tiers: []
+    known_issue_pool: []
+  - kind: patient_engagement_app
+    name_template: "{line} Engage"
+    tiers: []
+    known_issue_pool:
+      - "appointment reminders occasionally duplicate across channels"
+
+roles:
+  - title: "Telehealth Program Lead"
+    seniority: manager
+    is_champion_candidate: true
+  - title: "Chief Medical Officer"
+    seniority: c_suite
+    is_champion_candidate: true
+  - title: "VP Ambulatory Services"
+    seniority: vp
+    is_champion_candidate: true
+  - title: "IT Director"
+    seniority: director
+    is_champion_candidate: false
+  - title: "Population Health Director"
+    seniority: director
+    is_champion_candidate: false
+  - title: "CFO"
+    seniority: c_suite
+    is_champion_candidate: false
+  - title: "Nurse Practitioner Lead"
+    seniority: staff
+    is_champion_candidate: false
+  - title: "Behavioral Health Director"
+    seniority: director
+    is_champion_candidate: false
+
+event_templates:
+  - event_type: go_live
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{account} launched {product} on {date} with {amount} users."
+        - "{person} at {account} activated {product} on {date} after {days} of training."
+        - "The {product} deployment at {account} went live on {date}, serving {amount} clinics."
+        - "{vendor} reported {account} completed {product} onboarding on {date} with {amount} daily users."
+        - "{account} integrated {product} into their system on {date} after {days} of testing."
+      complaint:
+        - "{account} reported {product} had {days} of downtime during {date} go-live."
+        - "{person} at {account} raised issues with {product} integration on {date}."
+        - "The {date} {product} launch at {account} faced complaints about {amount} failed syncs."
+        - "{account} cited {product} performance delays affecting {amount} clinicians on {date}."
+        - "During {date} go-live, {account} noted {product} video quality dropped below acceptable standards."
+        - "{vendor} received feedback from {person} at {account} about {product} onboarding delays on {date}."
+  - event_type: release
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{product} at {account} rolled out a new feature on {date} for {amount} clinicians."
+        - "{account} increased {product} usage by {amount}% in {days} post-release."
+        - "The {product} team at {vendor} confirmed {account} adopted version 3.0 on {date}."
+        - "{person} from {account} reported {product} saw {amount} video visits daily after {date} update."
+        - "{account} extended {product} access to {amount} departments on {date}."
+      praise:
+        - "{person} at {account} praised {product}\u2019s {date} update for reducing no-shows by {amount}%."
+        - "{account} reported {product}\u2019s {date} release improved clinician satisfaction to {amount}%."
+        - "During {date} testing, {account} commended {product}\u2019s seamless EHR integration."
+        - "{vendor} received positive feedback from {account} about {product}\u2019s {date} security enhancements."
+        - "{account} noted {product}\u2019s {date} async feature cut patient wait times by {amount} minutes."
+        - "{person} highlighted {product}\u2019s {date} triage tool as a game-changer for {account}\u2019s ER."
+        - "{account} cited {product}\u2019s {date} reporting dashboard as a key factor in their recent QBR score."
+        - "The {date} {product} update was praised by {account} for its role in reducing readmissions."
+        - "{account}\u2019s CMO endorsed {product}\u2019s {date} behavioral health module for its HIPAA compliance."
+  - event_type: incident
+    weight: 1.6
+    claim_templates:
+      complaint:
+        - "{product} at {account} experienced {amount} server errors on {date}."
+        - "{account} reported {product} patient data sync failed on {date} for {days}."
+        - "{person} from {account} logged a critical {product} bug on {date} affecting {amount} users."
+        - "The {date} {product} outage at {account} caused {days} of operational disruption."
+        - "{account} noted {product} API errors spiked by {amount}% on {date}."
+        - "On {date}, {account} filed a complaint about {product} notifications being delayed by {days}."
+        - "{vendor} received feedback about {product} crashing on {date} during peak hours at {account}."
+      risk:
+        - "{account} warned about potential {product} churn after {date} service disruption."
+        - "The {date} {product} incident could impact {account}\u2019s renewal decision."
+        - "{account} cited {product} reliability as a threat to their {date} patient onboarding goals."
+        - "{vendor} flagged {account} as high risk after {date} {product} outage affecting {amount} users."
+  - event_type: escalation
+    weight: 1.2
+    claim_templates:
+      risk:
+        - "{account}\u2019s unresolved {product} issues may lead to legal action per {date} escalation."
+        - "The {date} {product} escalation at {account} risks missing their Q3 KPIs."
+        - "{vendor} fears {account} might terminate {product} contract after {date} incident."
+        - "{account} has halted new {product} user onboarding since {date} escalation."
+      complaint:
+        - "{account} escalated {product} reliability concerns to {vendor} on {date}."
+        - "{person} at {account} demanded a {product} fix by {date} after {days} of unresolved issues."
+        - "The {date} {product} incident at {account} was elevated to executive level due to {amount} complaints."
+        - "{vendor} acknowledged {account}\u2019s {date} escalation about {product} payment gateway failures."
+        - "{account} warned {vendor} about potential churn due to {product} SLA violations on {date}."
+        - "{product} issues at {account} were escalated on {date} after {days} without resolution."
+  - event_type: qbr
+    weight: 1.4
+    claim_templates:
+      usage:
+        - "{account} reported {product} usage hit {amount} monthly sessions during {date} QBR."
+        - "During {date} QBR, {person} noted {product} integration with EHR reached {amount}%."
+        - "{vendor} logged {amount} feedback items about {product} from {account} during {date} QBR."
+        - "The {date} QBR revealed {product} adoption at {account} rose by {amount} users in {days}."
+        - "{account} outlined plans to expand {product} to {amount} new clinics at {date} QBR."
+      praise:
+        - "{person} from {account} commended {product}\u2019s {date} QBR performance metrics."
+        - "In {date} QBR, {account} recognized {product} for reducing clinician onboarding time by {amount}."
+        - "{vendor} received praise from {account} during {date} QBR for {product}\u2019s uptime of {amount}%."
+        - "{account} noted {product}\u2019s {date} QBR results exceeded their patient engagement goals."
+        - "The {date} QBR at {account} highlighted {product}\u2019s role in increasing video visit adoption by {amount}%."
+        - "{account} credited {product}\u2019s {date} QBR insights with improving their remote monitoring KPIs."
+        - "{person} at {account} praised {product} for enabling {amount} more async consults since {date} QBR."
+        - "During {date} QBR, {account} acknowledged {product}\u2019s impact on reducing behavioral health waitlists."
+        - "{vendor} received positive feedback from {account} about {product}\u2019s {date} QBR training materials."
+      question:
+        - "{person} at {account} asked about {product}\u2019s ability to scale to {amount} users by {date}."
+        - "During {date} QBR, {account} inquired about {product}\u2019s integration with their new EHR system."
+        - "{account} questioned how {product} handles HIPAA compliance for async {product} modules."
+        - "{person} from {account} asked for benchmarks comparing {product} performance to industry standards."
+        - "The {date} QBR included a query about {product}\u2019s capacity for multilingual support in video visits."
+        - "{account} sought clarification on {product}\u2019s SLA terms for {days} of unplanned downtime."
+        - "{person} at {account} asked about {product}\u2019s roadmap for telepsychiatry features by {date}."
+        - "{account} requested details on how {product} tracks clinician productivity metrics."
+        - "During {date} QBR, {person} asked about {product}\u2019s compatibility with {vendor}\u2019s new API version."
+        - "{account} inquired about {product}\u2019s security protocols for storing patient-generated health data."
+        - "{person} from {account} asked how {product} handles patient no-shows in rural areas."
+        - "The {date} QBR included a question about {product}\u2019s capacity to support {amount} concurrent video visits."
+        - "{account} asked about {product}\u2019s ability to generate real-time care team alerts for remote monitoring."
+        - "{person} at {account} questioned {product}\u2019s current patient satisfaction scores compared to {vendor}\u2019s competitors."
+        - "{account} sought information on {product}\u2019s telehealth billing integration with their existing systems."
+        - "During {date} QBR, {person} asked about {product}\u2019s plans for integrating AI-based triage tools."
+        - "{account} requested a demonstration of {product}\u2019s capabilities for post-acute care coordination."
+        - "{person} from {account} asked about {product}\u2019s capacity to support telehealth in correctional facilities."
+  - event_type: renewal_step
+    weight: 1.0
+    claim_templates:
+      decision:
+        - "{account} approved the {date} renewal for {product} after {days} of evaluation."
+        - "{person} at {account} confirmed {product} would be renewed on {date} with {amount} additional users."
+        - "The {date} {product} renewal at {account} was approved with a 20% budget increase."
+        - "{vendor} received notice from {account} about {product} contract renewal on {date}."
+        - "{account} outlined plans to renew {product} on {date} following a successful {days}-day trial."
+      pricing:
+        - "{account} requested a 15% discount on {product} during {date} renewal negotiations."
+        - "{person} from {account} cited budget constraints during {date} {product} pricing discussion."
+        - "{vendor} offered {account} a phased {product} payment plan on {date} for {amount} new users."
+        - "The {date} {product} renewal at {account} included a 10% discount for long-term commitment."
+        - "{account} raised concerns about {product}\u2019s {date} pricing increase affecting their ROI projections."
+        - "{person} at {account} proposed a revenue-sharing model for {product} during {date} talks."
+        - "{vendor} presented a tiered {product} pricing structure to {account} on {date} for {amount} users."
+        - "{account} asked for a 3-year {product} contract with fixed pricing by {date}."
+        - "{date} discussions revealed {account} wanted to bundle {product} with other {vendor} services."
+  - event_type: price_negotiation
+    weight: 0.9
+    claim_templates:
+      pricing:
+        - "{account} disputed {product}\u2019s {date} fee for asynchronous consult modules."
+        - "{person} from {account} proposed a per-visit pricing model for {product} during {date} talks."
+        - "{vendor} offered {account} a volume discount for {amount} additional {product} users on {date}."
+        - "The {date} {product} price negotiation at {account} focused on reducing SaaS licensing costs."
+        - "{account} requested a 25% reduction in {product} annual fees during {date} discussions."
+        - "{person} at {account} argued {product}\u2019s {date} rate was above industry benchmarks."
+        - "{vendor} proposed a 3-year {product} pricing lock for {account} on {date}."
+        - "{account} wanted to include maintenance costs in {product}\u2019s {date} per-user rate."
+        - "The {date} negotiation included {account}\u2019s demand for prorated {product} fees for partial-year use."
+        - "{person} from {account} requested a separate budget line for {product} behavioral health modules on {date}."
+        - "{vendor} countered {account}\u2019s {date} pricing proposal with a tiered discount structure."
+        - "{account} asked for a usage-based pricing model for {product} during {date} talks."
+        - "{date} discussions revealed {account} wanted to shift {product} costs from CAPEX to OPEX."
+        - "{person} at {account} suggested bundling {product} with EHR licensing during {date} pricing review."
+        - "{vendor} proposed a 5% discount for {account}\u2019s {product} renewal on {date} in exchange for a 2-year commitment."
+        - "{date} pricing talks included {account}\u2019s request for a 90-day free trial of new {product} features."
+        - "{account} asked to exclude rural user licenses from {product}\u2019s {date} per-visit fee."
+      request:
+        - "{account} requested a 20% discount on {product} during {date} discussions."
+        - "{person} at {account} asked for custom {product} pricing based on patient volume on {date}."
+        - "{account} sought a payment plan for {product} renewal on {date} due to cash flow constraints."
+        - "During {date} talks, {account} requested free training for {amount} users with {product} purchase."
+        - "{account} asked to freeze {product} pricing for 3 years during {date} negotiation."
+        - "{account} requested a free {days}-day trial of premium {product} features during {date} discussions."
+        - "The {date} {product} negotiation included {account}\u2019s demand for prorated fees for partial-year use."
+        - "{account} asked for a usage-based billing model for {product} in {date} price talks."
+        - "{person} at {account} proposed a revenue-sharing model for {product} during {date} discussions."
+        - "{account} wanted to exclude rural patients from {product} per-visit fees during {date} negotiations."
+        - "On {date}, {account} requested a 50% discount on new {product} modules for behavioral health."
+        - "{account} asked for a separate budget line for {product} async features during {date} talks."
+        - "{vendor} received a request from {account} to reduce {product} SaaS fees by 10% on {date}."
+        - "{account} proposed a tiered discount for {product} based on number of active users during {date} talks."
+        - "{person} from {account} asked for a 3-year {product} commitment with annual price caps on {date}."
+        - "{account} requested a volume discount for 500+ {product} users in their {date} price proposal."
+        - "{account} wanted to bundle {product} with EHR licensing during {date} pricing discussions."
+  - event_type: competitive_eval
+    weight: 0.8
+    claim_templates:
+      competitor_mention:
+        - "{account} included {competitor} in their {date} RFP for video visit platforms."
+        - "During {date} evaluation, {person} at {account} compared {product} with {competitor}\u2019s remote monitoring suite."
+        - "{account} is piloting {competitor} as an alternative to {vendor}\u2019s {product} since {date}."
+        - "The {date} {competitor} demo at {account} raised concerns about {vendor}\u2019s {product} scalability."
+        - "{account}\u2019s {date} procurement team rated {competitor} higher than {vendor} for async consult tools."
+        - "On {date}, {account} evaluated {competitor}\u2019s telehealth platform for behavioral health use cases."
+        - "{person} from {account} mentioned {competitor} as a potential replacement for {vendor}\u2019s {product} during {date} review."
+        - "{account} cited {competitor}\u2019s faster deployment as a reason to extend their current {vendor} {product} contract by 6 months."
+        - "{competitor} was shortlisted alongside {vendor} for {account}\u2019s {date} telehealth project evaluation."
+        - "During {date} QBR, {account} discussed {competitor}\u2019s new AI-powered triage feature as a potential {vendor} product gap."
+        - "{person} at {account} raised {competitor}\u2019s better HIPAA compliance as a reason to re-evaluate {vendor}\u2019s {product} in {date} talks."
+        - "{account}\u2019s {date} competitive analysis report compared {vendor}\u2019s {product} with {competitor}\u2019s patient engagement features."
+        - "{competitor} was included in {account}\u2019s {date} vendor shortlist for video visit platforms after a successful pilot."
+        - "The {date} {competitor} webinar led {account} to request a feature-by-feature comparison with {vendor}\u2019s {product}."
+        - "{account}\u2019s {date} procurement committee cited {competitor}\u2019s pricing structure as a reason to delay {vendor} {product} renewal."
+        - "During {date} discovery calls, {person} at {account} asked how {vendor}\u2019s {product} differs from {competitor}\u2019s virtual care suite."
+        - "{account} included {competitor} in their {date} telecom health partnership review as an alternative to {vendor}\u2019s {product}."
+        - "{person} from {account} mentioned {competitor}\u2019s recent EHR integration success during {date} {vendor} {product} evaluation."
+      risk:
+        - "{account} is piloting {competitor} as an alternative to {vendor}\u2019s {product} since {date}."
+        - "The {date} {competitor} demo at {account} raised concerns about {vendor}\u2019s {product} scalability."
+        - "{account}\u2019s {date} RFP process included {competitor} alongside {vendor}\u2019s {product}."
+        - "During {date} evaluation, {account} cited {competitor}\u2019s faster deployment for {product}."
+        - "{person} at {account} mentioned {competitor} as a potential replacement for {vendor}\u2019s {product}."
+  - event_type: champion_departure
+    weight: 0.7
+    claim_templates:
+      contact_change:
+        - "{person}\u2019s departure from {account} on {date} raised concerns about {product} adoption."
+        - "The loss of {person} at {account} threatens {product} integration progress post-{date}."
+        - "{account}\u2019s {date} leadership change created uncertainty for ongoing {product} expansion."
+        - "With {person} leaving {account} in {days}, {product} implementation timelines are at risk."
+        - "{account} announced {person}\u2019s promotion to COO on {date}, reducing their {product} oversight role."
+        - "{person} from {account} left for a competitor on {date}, causing delays in {product} expansion planning."
+        - "The {date} departure of {person} from {account} led to a temporary pause in {product} training programs."
+        - "{account} restructured their telehealth team on {date}, removing {person} from {product} decision-making."
+        - "With {person} moving to a new role at {account} on {date}, {product} budget authority is now unclear."
+        - "{person}\u2019s exit from {account} on {date} created a 60-day leadership vacuum for {product} initiatives."
+        - "{account} announced {person}\u2019s retirement on {date}, eliminating their prior {product} integration influence."
+        - "Following {date} leadership changes at {account}, {person} no longer chairs {product} steering committees."
+        - "{person}\u2019s reassignment to {vendor}\u2019s {product} competitor in {days} created uncertainty for {account}\u2019s renewal."
+        - "The {date} restructuring at {account} moved {person} from {product} ownership to IT infrastructure role."
+        - "{account} confirmed {person}\u2019s termination on {date}, disrupting ongoing {product} implementation."
+        - "With {person} departing {account} in {days}, {product} expansion plans face an internal approval bottleneck."
+        - "{account} reorganized their care team on {date}, eliminating {person}\u2019s role in {product} governance."
+      risk:
+        - "{person}\u2019s departure from {account} on {date} raised concerns about {product} adoption."
+        - "The loss of {person} at {account} threatens {product} integration progress post-{date}."
+        - "{account}\u2019s {date} leadership change created uncertainty for ongoing {product} expansion."
+        - "With {person} leaving {account} in {days}, {product} implementation timelines are at risk."
+  - event_type: expansion
+    weight: 0.7
+    claim_templates:
+      decision:
+        - "{account} greenlit {product} expansion to {amount} new clinics on {date}."
+        - "The {date} decision at {account} added {amount} users to their {product} deployment."
+        - "{person} from {account} announced {product} expansion to rural regions effective {date}."
+        - "{account} approved {product} integration with their EHR system on {date} after {days} of testing."
+        - "{vendor} confirmed {account}\u2019s {date} decision to expand {product} to mental health departments."
+      usage:
+        - "{account} expanded {product} to {amount} additional clinics on {date}."
+        - "On {date}, {person} confirmed {account} increased {product} usage by {amount} clinicians."
+        - "{vendor} recorded {account} adding {amount} new {product} users in {days} post-{date}."
+        - "{product} at {account} reached {amount} active users after expansion on {date}."
+        - "{account} announced {product} now supports {amount} video visits daily following {date} upgrades."
+  - event_type: commitment_made
+    weight: 1.1
+    claim_templates:
+      commitment:
+        - "{account} committed to {product} expansion by {date} after {days} of planning."
+        - "{person} at {account} signed a {date} letter of commitment for {amount} new {product} users."
+        - "{vendor} received written commitment from {account} to continue {product} use through {date}."
+        - "{account} outlined a {date} commitment to increase {product} adoption by {amount} clinicians."
+        - "On {date}, {person} from {account} confirmed {product} would be integrated into all clinics by {date}."
+        - "{account} agreed to a {date} commitment to expand {product} to 10 rural regions by {date}."
+        - "{vendor} received {account}\u2019s {date} assurance to maintain {product} as their exclusive telehealth vendor."
+        - "{person} at {account} signed a {date} memo committing to double {product} usage within {days}."
+        - "{account} issued a {date} directive to make {product} the standard platform for all virtual visits by {date}."
+  - event_type: commitment_due
+    weight: 1.0
+    claim_templates:
+      commitment:
+        - "{account} has not met their {date} {product} usage commitment of {amount} sessions."
+        - "The {date} {product} milestone at {account} remains unfulfilled after {days} of delays."
+        - "{account}\u2019s pending {date} {product} expansion decision poses renewal risk."
+        - "{vendor} warned {account} about missing {date} {product} adoption targets."
+        - "{person} at {account} has not signed the {date} commitment letter for {product} expansion."
+        - "The {date} {product} commitment from {account} is 30 days overdue as of {date}."
+        - "{account}\u2019s {date} commitment to expand {product} to 5 new clinics has not materialized."
+        - "{vendor} is tracking {account}\u2019s {date} {product} adoption goals at only {amount}% completion."
+        - "{account}\u2019s {date} written commitment to retain {product} has not been finalized after {days} of delays."
+      risk:
+        - "{account} has not met their {date} {product} usage commitment of {amount} sessions."
+        - "The {date} {product} milestone at {account} remains unfulfilled after {days} of delays."
+        - "{account}\u2019s pending {date} {product} expansion decision poses renewal risk."
+        - "{vendor} warned {account} about missing {date} {product} adoption targets."
+  - event_type: decision
+    weight: 0.9
+    claim_templates:
+      decision:
+        - "{account} decided to pause {product} expansion pending {date} compliance review."
+        - "{person} at {account} made the {date} decision to switch {product} to a SaaS model."
+        - "The {date} {account} board approved {product} migration to AWS after {days} of deliberation."
+        - "{account} issued a {date} directive to sunset {product} by {date} due to budget cuts."
+  - event_type: policy_change
+    weight: 0.6
+    claim_templates:
+      other:
+        - "{account} updated their {date} HIPAA compliance policy to include stricter {product} data encryption."
+        - "The {date} {account} executive order mandated quarterly {product} security audits starting {date}."
+        - "{person} at {account} announced new {date} guidelines requiring pre-approval for all {product} module additions."
+        - "{account} implemented a {date} telehealth usage policy limiting {product} video visits to 30-minute sessions."
+        - "On {date}, {account} revised their {product} data retention policy to extend patient records to 10 years."
+        - "{vendor} received notice of {account}\u2019s {date} policy change requiring local storage of all {product} health data."
+        - "{account} issued a {date} directive to sunset {product} behavioral health modules by {date} due to compliance issues."
+        - "The {date} {account} leadership team approved new {product} billing policies effective {date}."
+        - "{person} from {account} proposed a {date} telehealth policy requiring dual-factor authentication for all {product} users."
+        - "{account} updated their {date} care coordination policy to prioritize {product} async consults over phone calls."
+        - "{vendor} was informed of {account}\u2019s {date} policy requiring 24/7 availability of {product} virtual behavioral health services."
+        - "{account}\u2019s {date} executive team voted to extend {product} usage hours from 8 AM to 8 PM daily."
+        - "On {date}, {person} from {account} announced new {product} remote monitoring policies for post-acute care patients."
+        - "{account} revised their {date} patient onboarding policy to require {product} training before virtual visits."
+        - "{vendor} received details of {account}\u2019s {date} policy mandating real-time {product} audit trails for all patient interactions."
+        - "The {date} {account} board approved a policy to expand {product} availability to all insured members by {date}."
+        - "{person} at {account} issued a {date} memo requiring all clinicians to document {product} visits in EHR within 24 hours."
+        - "{account} updated their {date} telehealth reimbursement policy to include {product} behavioral health consultations."
+      decision:
+        - "{account} implemented a new {date} policy requiring {product} usage for all virtual visits."
+        - "The {date} {account} executive order mandated {product} compliance with stricter HIPAA standards."
+        - "{person} at {account} announced {product} data retention policies would change on {date}."
+        - "{account} updated their {date} telehealth guidelines to include {product} as a preferred vendor."
+
+arcs:
+  - id: rocky_go_live_v1
+    arc_type: rocky_go_live
+    weight: 1.2
+    steps:
+      - {event_type: go_live, day_offset: 0}
+      - {event_type: incident, day_offset: 14}
+      - {event_type: escalation, day_offset: 30}
+      - {event_type: commitment_made, day_offset: 35}
+      - {event_type: commitment_due, day_offset: 60}
+      - {event_type: decision, day_offset: 75}
+  - id: renewal_price_pushback_v1
+    arc_type: renewal_price_pushback
+    weight: 1.3
+    steps:
+      - {event_type: renewal_step, day_offset: 0}
+      - {event_type: price_negotiation, day_offset: 10}
+      - {event_type: price_negotiation, day_offset: 20}
+      - {event_type: decision, day_offset: 35}
+  - id: competitive_eval_save_or_churn_v1
+    arc_type: competitive_eval_save_or_churn
+    weight: 1.0
+    steps:
+      - {event_type: competitive_eval, day_offset: 0}
+      - {event_type: escalation, day_offset: 15}
+      - {event_type: commitment_made, day_offset: 20}
+      - {event_type: decision, day_offset: 40}
+  - id: champion_transition_v1
+    arc_type: champion_transition
+    weight: 1.0
+    steps:
+      - {event_type: champion_departure, day_offset: 0}
+      - {event_type: qbr, day_offset: 20}
+      - {event_type: decision, day_offset: 30}
+  - id: expansion_v1
+    arc_type: expansion
+    weight: 1.0
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: expansion, day_offset: 20}
+      - {event_type: commitment_made, day_offset: 25}
+      - {event_type: decision, day_offset: 40}
+  - id: incident_escalation_exec_v1
+    arc_type: incident_escalation_exec
+    weight: 1.1
+    steps:
+      - {event_type: incident, day_offset: 0}
+      - {event_type: incident, day_offset: 7}
+      - {event_type: escalation, day_offset: 14}
+      - {event_type: commitment_made, day_offset: 18}
+      - {event_type: commitment_due, day_offset: 40}
+  - id: quiet_steady_v1
+    arc_type: quiet_steady
+    weight: 2.2
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: release, day_offset: 30}
+      - {event_type: qbr, day_offset: 60}
+      - {event_type: policy_change, day_offset: 75}
+
+topic_tree:
+  - name: "Product"
+    children:
+      - name: "Video visits"
+      - name: "Remote patient monitoring"
+      - name: "Virtual behavioral health"
+  - name: "Account"
+    children:
+      - name: "Billing"
+      - name: "Renewal"
+      - name: "Expansion"
+  - name: "Support"
+    children:
+      - name: "Incidents"
+      - name: "Training"
+  - name: "Competitive"
+    children:
+      - name: "Evaluations"
+  - name: "People"
+    children:
+      - name: "Contacts"
+      - name: "Champions"
+
+# One shared generic directive list, aliased into every fact type (section 4,
+# "Phrasing": a phrasing-style vocabulary applied across types, not
+# type-specific content -- same pattern as medical_devices.yaml).
+fact_directives:
+  complaint: &directives
+    - hedged
+    - numbers_spelled_out
+    - colloquial
+    - embedded_mid_sentence
+    - passive
+    - through_an_alias
+    - corrected_mid_sentence
+    - list_item
+    - terse
+    - rambling
+    - formal
+    - via_quoted_reply
+    - second_language_phrasing
+  request: *directives
+  praise: *directives
+  risk: *directives
+  competitor_mention: *directives
+  commitment: *directives
+  decision: *directives
+  contact_change: *directives
+  pricing: *directives
+  usage: *directives
+  question: *directives
+  other: *directives
+
+persona_bank:
+  - id: terse_th
+    speech_register: "telehealth_clinical"
+    formality: neutral
+    typo_rate_range: [0.0, 0.01]
+    chat_style: short_fragments
+    signature_style: initials_only
+    hedging: false
+  - id: rambling_ops_th
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.01, 0.03]
+    chat_style: long_threads
+    signature_style: full_name_title
+    hedging: true
+  - id: formal_executive_th
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+  - id: typo_prone_frontline_th
+    speech_register: "telehealth_clinical"
+    formality: informal
+    typo_rate_range: [0.03, 0.06]
+    chat_style: emoji_light
+    signature_style: first_name_only
+    hedging: false
+  - id: emoji_chat_th
+    speech_register: "telehealth_clinical"
+    formality: informal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: emoji_heavy
+    signature_style: first_name_only
+    hedging: false
+  - id: second_language_procurement_th
+    speech_register: "procurement"
+    formality: formal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: measured
+    signature_style: full_block
+    hedging: true
+    second_language_features: ["article_drop", "present_tense_for_future"]
+  - id: formal_specialist_th
+    speech_register: "telehealth_clinical_specialist"
+    formality: formal
+    typo_rate_range: [0.0, 0.01]
+    chat_style: precise
+    signature_style: full_name_title
+    hedging: false
+  - id: casual_it_th
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.02, 0.04]
+    chat_style: short_fragments
+    signature_style: none
+    hedging: false
+  - id: hedging_manager_th
+    speech_register: "operations"
+    formality: neutral
+    typo_rate_range: [0.0, 0.02]
+    chat_style: measured
+    signature_style: first_name_only
+    hedging: true
+  - id: direct_cfo_th
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+
+decoy_classes:
+  - id: hypothetical_th
+    near_type: risk
+    description: "A hypothetical framed as if it already happened."
+    example: "We tried switching to MeridianCare's virtual behavioral health platform last quarter, but it didn\u2019t stick because our clinicians were already used to the workflow in our current system."
+  - id: negation_th
+    near_type: request
+    description: "A polite negation that avoids committing to action or stating a decision, using phrases like 'not asking for' or 'no need' without factual claims."
+    example: "Right now, I\u2019m not asking for any specific updates or next steps from your team."
+    forbidden_patterns: [competitor_evaluation]
+    text_source:
+      model: "qwen/qwen3-32b"
+      generated: "2026-09-23"
+      raw_response_sha256:
+        - "1b398cc300d9426bcf7a442d43d7d9163eaffaa359f22548ad529abea0bf882e"
+  - id: hearsay_other_company_th
+    near_type: competitor_mention
+    description: "Something said to have happened to a different, unnamed customer."
+    example: "I heard that ClearMed had to delay their telehealth rollout due to HIPAA compliance issues last summer."
+  - id: generic_industry_talk_th
+    near_type: other
+    description: "Industry chatter with no account-specific claim."
+    example: "Telehealth adoption is surging across the industry, especially in rural areas where access to behavioral health services is limited."
+  - id: rhetorical_question_th
+    near_type: question
+    description: "A question asked for effect, not information, with no real open item."
+    example: "Who could have predicted how essential virtual behavioral health would become in 2024?"
+  - id: vendor_internal_speculation_th
+    near_type: risk
+    description: "Vendor-side speculation about a customer, not a customer statement."
+    example: "I\u2019ve got a feeling Cedar Hill Health might be circling NeoHealth\u2019s MindSphere platform for behavioral health, but their CIO told us last quarter they\u2019re not ready to jettison our virtual care suite just yet."
+  - id: resolved_issue_as_history_th
+    near_type: complaint
+    description: "An already-resolved issue retold as past history, not a live complaint."
+    example: "We had some sync issues with AuroraHealth's RPM module back in 2022, but it's all smoothed out now after their latest update."
+  - id: commitment_decision_confusable_th
+    near_type: decision
+    description: "A vendor commitment restated in decision-shaped language, or a customer decision restated as if it were still an open vendor promise -- easy to mistype as the other fact type."
+    example: "We decided to go with HealthBridge's video-visit solution because it felt like the most mature option, even though the contract wasn't technically finalized yet."
+
+name_pool_refs:
+  account_suffixes_system: ["Virtual Health Network", "Telehealth Health System", "Connected Care Network"]
+  account_suffixes_facility: ["Telehealth Clinic", "Virtual Care Center", "Ambulatory Telehealth Site"]
+  account_suffixes_standalone: ["Telehealth Partners", "Virtual Care Group", "Connected Health Partners"]
+  vendor_domain_tld: ".com"
+
+excluded_product_kinds: []
+held_out: false
+
+# Coordinator review of 7f779a3, 2026-09-22: every claim template above and
+# every decoy_classes[].example was written by this open-weight model, curated
+# (filtered/deduped, dropped when invalid, never rephrased) by scripts/data/
+# v2_gen_pack_templates.py -- not Claude-written, since this text reaches
+# training data. raw_response_sha256 points at the exact, unedited model
+# responses under var/data/v2_packs/raw/ (gitignored, not committed).
+claim_templates_source:
+  model: "qwen/qwen3-32b"
+  generated: "2026-09-22"
+  raw_response_sha256:
+    - "337a23fc13a70659325b700fe4207fced24f4e0c233cc4f170aa100e40052fa8"
+    - "5468c1dc8ea1a9ddb5c22e05b83c5e36c9cb2992a32f54d938c328283fdbd515"
+    - "c1743cf6c0647d56f66d62444bf58d889bad03db47df438325c7bcf529481a2a"
+    - "c168885f2ce5ec0e4baea01acae1c089cdc3720d70cb869cc48026a644b3d692"
+    - "dba51e2a8dfe19faacf171449de1a9409ae1786ea4c8d93b8a94e7b5d99564b7"
+    - "b058034466ce955002284ae69cb18d95896245ef8e150143c21d5ca2c347f68a"
+    - "3a2cd75f3d774a7bf88825c1efb8c900a4bb1489eee1d0621698ab98abeed904"
+    - "d1917c0a82b1900736e05e21e4c63a32584b36fa3c957775f7cdfee3e59abdb3"
+    - "bdea2b76ca8a2ae36fbf5291e0ad7d9b869ddc8d40d65a8f0a6a192be1022295"
+    - "21724ae0ef8e6a7452db383c3420eb20be82f6e554f1b9e34ec37a3eec9d5668"
+    - "63e45ba5b4bc5f5da3153b4e56969fb4df463f2c35eda90d829ad13f7f83b34e"
+    - "1a92d286bd1bc7bd80e04ca6664162618143d170596efe0c281ef670e62931df"
+    - "4e455ebfaaccebb656a68de6dbeb08f3da60d64e8b2d9ff3631caa5970802ee8"
+    - "890c228d17f81058a1b90393cf6575138bb70563f32a979e8f787411d71b882f"

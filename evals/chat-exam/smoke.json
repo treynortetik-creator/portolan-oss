@@ -1,0 +1,92 @@
+[
+ {
+  "id": "smoke-01",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "Which hospital accounts had late deliveries in August, and what did they say?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-02",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "Are the delivery problems over?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-03",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "When does Ashgrove Health's HalvardCare contract renew?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-04",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "Is Wrenfield Health ready to start the Epic integration?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-05",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "What did Sam Okafor promise Ashgrove, and when was it due?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-06",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "Is any account looking at Corvane, and has anything happened with Corvane lately?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-07",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "Which accounts have asked for Tidewater Link to work with Epic?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-08",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "What has changed at Larkspur Regional Health since September 1?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-09",
+  "graph": "demo",
+  "type": "smoke",
+  "question": "Which customers are pushing on price?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ },
+ {
+  "id": "smoke-10",
+  "graph": "demo",
+  "type": "abstain",
+  "question": "What is our NPS with Ashgrove Health?",
+  "gold": [],
+  "origin": "demo:smoke",
+  "public": true
+ }
+]

@@ -1,0 +1,13 @@
+{
+  "name": "Seeded local app: a follow-up that leans on the first question still answers",
+  "steps": [
+    {
+      "do": "ask \"Which hospital accounts had late deliveries in August?\"",
+      "expect": {"outcome": "answered", "new_conversation": true}
+    },
+    {
+      "do": "ask \"Which of those had the most recent complaint?\"",
+      "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "new_conversation": false}
+    }
+  ]
+}

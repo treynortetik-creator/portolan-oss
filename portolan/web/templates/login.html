@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Log in — Portolan{% endblock %}
+{% block content %}
+<div class="card" style="max-width:420px;margin:40px auto 0;">
+  <p class="eyebrow">Org login</p>
+  <h1 style="margin-top:0;">A living chart of what your customers actually said.</h1>
+  {% if error %}
+    <div class="flag">{{ error }}</div>
+  {% endif %}
+  <form method="post" action="/login">
+    {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+    <div class="field">
+      <label for="org_key">Organization key</label>
+      <input type="password" id="org_key" name="org_key" required autofocus>
+    </div>
+    <div class="field">
+      <label for="editor">Your name</label>
+      <input
+        type="text" id="editor" name="editor" required
+        minlength="2" maxlength="40"
+        value="{{ editor or '' }}"
+        placeholder="e.g. Priya Natarajan"
+      >
+      <p class="field-hint">2 to 40 characters. Attributes your edits, names your chat history.</p>
+    </div>
+    <button type="submit" class="btn primary">Log in</button>
+  </form>
+  <p class="muted" style="font-size:13px;margin-top:16px;">
+    Everyone at the organization sees everything on this graph — no per-role access in this
+    version. Every question and every original opened is logged.
+  </p>
+  <p class="field-hint" style="margin-top:8px;">
+    New here? <a href="/how-it-works">See how Portolan works</a> before you log in.
+  </p>
+</div>
+{% endblock %}

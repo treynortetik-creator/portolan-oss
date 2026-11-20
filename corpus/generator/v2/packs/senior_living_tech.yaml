@@ -1,0 +1,620 @@
+# Senior-living tech vertical pack -- WP2 (`01-spec/world-generator-v2-2026-09-22.md`
+# section 4). Validates against `corpus/generator/v2/packs/schema.py::VerticalPack`.
+#
+# Guard (the maintainer, 2026-09-22): excludes resident fall detection, fall prevention, resident monitoring, video monitoring of residents, and any product in that category -- a category deliberately out of scope. Covers other senior-living operator tech only: care-plan documentation, medication management, staffing and scheduling, family communication, billing, dietary, maintenance. Enforced by `tests/test_world_generator_v2_packs.py::test_senior_living_pack_excludes_monitoring_category` (scans this pack's products and events for fall/monitor*/camera/video/sensor).
+
+id: senior_living_tech
+name: Senior-living tech
+vendor_what: "care-plan documentation, medication management, staffing and scheduling, family communication, billing and dietary software sold to senior-living operators"
+
+products:
+  - kind: care_plan_documentation
+    name_template: "{line}"
+    tiers: []
+    known_issue_pool:
+      - "care-plan sync delays after a shift change"
+      - "PDF export formatting breaks on long care plans"
+  - kind: emar_medication_management
+    name_template: "{line} {tier}"
+    tiers: ["MAR", "Plus"]
+    known_issue_pool:
+      - "occasional duplicate dose alerts on PRN medications"
+      - "barcode scan failures on relabeled unit-dose packaging"
+  - kind: staffing_scheduling
+    name_template: "{line} Schedule"
+    tiers: []
+    known_issue_pool:
+      - "shift-swap requests occasionally not routed to the right supervisor"
+  - kind: family_communication_portal
+    name_template: "{line} Connect"
+    tiers: []
+    known_issue_pool:
+      - "photo uploads time out on the family app during peak evening hours"
+  - kind: billing_and_dietary
+    name_template: "{line} Billing"
+    tiers: []
+    known_issue_pool: []
+  - kind: maintenance_work_orders
+    name_template: "{line} Maintenance"
+    tiers: []
+    known_issue_pool:
+      - "work-order status occasionally stuck in \"assigned\""
+
+roles:
+  - title: "Community Executive Director"
+    seniority: director
+    is_champion_candidate: true
+  - title: "Director of Nursing"
+    seniority: director
+    is_champion_candidate: true
+  - title: "Regional VP of Operations"
+    seniority: vp
+    is_champion_candidate: false
+  - title: "Business Office Manager"
+    seniority: manager
+    is_champion_candidate: false
+  - title: "Dietary Services Director"
+    seniority: director
+    is_champion_candidate: false
+  - title: "Staffing Coordinator"
+    seniority: manager
+    is_champion_candidate: true
+  - title: "Family Engagement Coordinator"
+    seniority: staff
+    is_champion_candidate: false
+  - title: "IT Director"
+    seniority: director
+    is_champion_candidate: false
+
+event_templates:
+  - event_type: go_live
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{account} launched {product} at 12 units on {date} after {days} of training with {person} from {vendor}."
+        - "{product} was activated across {account}'s 3 regional campuses on {date} with {amount} users onboarded in first week."
+        - "Implementation team led by {person} completed {product} deployment for {account} on {date} ahead of {days} scheduled timeline."
+        - "{vendor} engineers supported {account} through {product} go-live on {date}, achieving 98% staff adoption within {days}."
+        - "Phased rollout of {product} at {account} began {days} before {date} with {amount} facilities initially enabled."
+      complaint:
+        - "{account} reported login failures during {product} go-live on {date} affecting {amount} staff."
+        - "Data migration to {product} for {account} was incomplete on {date}, missing {amount} resident records."
+        - "Training for {product} at {account} was delayed {days} past {date} due to vendor resource shortages."
+        - "{account} claimed {product} integration with existing EHR caused billing errors for {amount} residents."
+        - "Go-live of {product} at {account} on {date} exceeded budget by {amount} due to unexpected configuration costs."
+        - "{person} from {account} noted {product} mobile access was unavailable during critical hours on {date}."
+  - event_type: release
+    weight: 1.0
+    claim_templates:
+      usage:
+        - "{account} upgraded to {product} v3.2 on {date}, enabling new {amount} dietary compliance features."
+        - "{vendor} delivered {product} maintenance release to {account} on {date} resolving {amount} critical bugs."
+        - "New {product} reporting module adopted by {account} on {date} reduced billing errors by {amount}% within {days}."
+        - "{person} from {account} requested {product} feature toggle activation on {date} for {amount} pilot locations."
+        - "Production deployment of {product} API v2 completed for {account} on {date} with {days} of sandbox testing prior."
+      praise:
+        - "{person} from {account} praised {product} v3.2 release for reducing medication errors by {amount}%."
+        - "New {product} reporting features implemented at {account} on {date} have cut billing cycles by {days}."
+        - "{account} leadership commended {vendor} team for timely {product} maintenance release on {date}."
+        - "Staff at {account} reported {product} updates have improved care-plan documentation efficiency by {amount} hours weekly."
+        - "{person} from {vendor} received recognition from {account} for exceptional {product} feature implementation on {date}."
+        - "Family communication portal in {product} at {account} now achieves 95% resident family satisfaction scores."
+        - "{product} dietary module upgrades at {account} have reduced meal waste by {amount}% since {date} deployment."
+        - "Executive team at {account} cited {product} as key factor in achieving {amount} cost savings in Q3."
+        - "{account} nursing staff praise {product}'s medication tracking features for improving shift handover accuracy."
+  - event_type: incident
+    weight: 1.6
+    claim_templates:
+      complaint:
+        - "{product} at {account} experienced {days} downtime on {date} disrupting medication administration."
+        - "Security alert raised for {account}'s {product} instance on {date} showing suspicious login attempts."
+        - "Reporting module for {product} at {account} returned inaccurate staffing metrics on {date} for {amount} shifts."
+        - "{account} claims {product} failed to alert about medication expiration for {amount} residents on {date}."
+        - "Family portal in {product} for {account} was inaccessible for {days} starting {date} due to API errors."
+        - "{person} from {vendor} acknowledged {product} integration errors at {account} causing {amount} billing delays."
+        - "Emergency fixes required for {product} at {account} on {date} after {days} of declining system performance."
+      risk:
+        - "{product} reliability issues at {account} since {date} risk delaying upcoming compliance audit."
+        - "Unresolved {product} integration problems for {account} threaten {amount} pending state inspections."
+        - "{account} threatened to pause {product} payments after {days} of unresolved service incidents."
+        - "Pending {product} security vulnerabilities at {account} could trigger compliance fines if unresolved by {date}."
+  - event_type: escalation
+    weight: 1.2
+    claim_templates:
+      risk:
+        - "{account} faces risk of staffing shortages due to {product} scheduling module errors persisting past {date}."
+        - "Unaddressed {product} dietary reporting defects at {account} risk non-compliance with federal nutrition guidelines by {date}."
+        - "{vendor} support delays exceeding {days} threaten {account}\\'s ability to finalize {amount} in pending insurance claims."
+        - "Family communication gaps from {product} outages at {account} increase liability risks during resident complaint investigations."
+      complaint:
+        - "Senior {vendor} engineer assigned to {account}'s {product} performance issues escalated on {date}."
+        - "Escalation of {product} login failures at {account} to VP level occurred on {date} after {days} unresolved."
+        - "{account} demanded executive intervention for {product} reliability problems escalated on {date}."
+        - "SLA violations for {product} at {account} were formally escalated on {date} citing {amount} service credits."
+  - event_type: qbr
+    weight: 1.4
+    claim_templates:
+      usage:
+        - "{person} from {account} confirmed {product} usage at {amount} facilities during QBR on {date}."
+        - "{vendor} presented {product} utilization metrics showing {amount}% adoption growth at {account} in {days} since {date}."
+        - "QBR with {account} on {date} noted {product} is now used daily by {amount} staff across {days} operational areas."
+        - "{product} feature usage analysis shared with {account} on {date} revealed {amount} underutilized modules."
+        - "{person} from {vendor} documented {account}'s plan to expand {product} deployment to {amount} new locations by {date}."
+      praise:
+        - "{account}'s {person} highlighted {product}'s staffing module for reducing shift gaps by {amount} hours monthly since {date}."
+        - "The {vendor} {product} dietary compliance tools at {account} improved menu adherence by {amount}% post-{date} implementation."
+        - "Maintenance request resolution times at {account} dropped by {days} days using {product}'s work-order tracking, per {person}'s report."
+        - "{product}'s automated billing reconciliation for {account} now processes invoices {amount}% faster than prior systems, as of {date}."
+        - "Family engagement metrics at {account} rose {amount} points after {vendor} enhanced {product}'s communication portal in {date}."
+        - "{person} from {account} noted {product}'s care-plan templates cut documentation time by {amount} minutes per shift weekly."
+      question:
+        - "{person} from {account} asked about {product} roadmap for improving staff scheduling automation."
+        - "During {date} QBR, {account} inquired about {product} integration with existing payroll systems."
+        - "{person} requested clarification on {product} compliance reporting requirements for new state regulations."
+        - "{account} asked if {vendor} could provide training for {product} dietary module on {date}."
+        - "The {account} team questioned {product} support availability during holiday weekends."
+        - "During QBR on {date}, {account} asked about {product} capacity to handle {amount} additional residents."
+        - "{person} from {account} inquired about {product} customization options for memory care workflows."
+        - "{account} asked if {vendor} could provide references for {product} implementation at similar facilities."
+        - "The {account} team requested details about {product} security certifications during {date} meeting."
+        - "{person} asked about {product} mobile access limitations for non-English speaking staff."
+        - "{account} inquired about {product} reporting features for tracking staff certification expiration dates."
+        - "During QBR, {account} asked if {vendor} could integrate {product} with third-party timekeeping software."
+        - "{person} requested information about {product} disaster recovery protocols for regional outages."
+        - "{account} questioned if {product} could support paperless documentation for all care plan requirements."
+        - "The team at {account} asked about {product} options for multi-factor authentication on {date}."
+        - "{person} from {account} inquired about {product} support for automated medication reconciliation."
+        - "{account} asked if {vendor} could add custom fields to {product} incident reporting templates."
+        - "{person} requested clarification on {product} data retention policies for archived resident records."
+  - event_type: renewal_step
+    weight: 1.0
+    claim_templates:
+      decision:
+        - "{account} executive team approved {product} renewal on {date} for {amount} locations."
+        - "Renewal of {product} contract with {account} was finalized on {date} after {days} of negotiations."
+        - "{person} from {vendor} documented {account}'s decision to extend {product} through {date}."
+        - "Board approval granted for {account} to renew {product} agreement on {date} with {amount} discount."
+        - "{account} leadership decided to maintain existing {product} partnership rather than seek competitive bids."
+      pricing:
+        - "{account} requested {amount} discount for {product} renewal on {date} citing competitor offers."
+        - "Pricing structure for {product} at {account} was modified on {date} to include tiered volume rates."
+        - "{vendor} offered {account} {amount} annual savings for early renewal of {product} by {date}."
+        - "Negotiated {product} renewal terms for {account} on {date} included {amount} additional support hours."
+        - "{person} from {account} proposed payment plan for {product} renewal requiring {amount} upfront deposit."
+        - "{account} leadership approved {amount} budget increase for {product} in Q4 2024 renewal."
+        - "Pricing exception for {product} at {account} expired on {date}, reverting to standard rates."
+        - "{account} requested price justification documentation for {product} renewal on {date}."
+        - "Discounted {product} renewal rate for {account} was finalized on {date} after {days} of negotiations."
+  - event_type: price_negotiation
+    weight: 0.9
+    claim_templates:
+      pricing:
+        - "{vendor} provided {account} with a multi-year pricing commitment for {product}, reducing annual costs by {amount} starting {date}."
+        - "{account} negotiated to include additional {product} modules for an incremental {amount} fee on {date}."
+        - "{vendor} agreed to extend {days} net payment terms for {account}'s {product} subscription beyond standard conditions."
+        - "{account} secured a bundled pricing package combining {product} with dietary software, reducing annual expenses by {amount}."
+        - "{vendor} implemented performance-based pricing for {product} at {account}, linking {amount} savings to adoption metrics by {date}."
+        - "{account} received a seasonal pricing adjustment for {product} maintenance modules, effective {date}, saving {amount} quarterly."
+      request:
+        - "{account} asked if {vendor} could offer a graduated pricing model for {product} based on usage volume."
+        - "During negotiations, {account} requested additional support hours with {product} renewal."
+        - "{person} from {account} proposed a 18-month term for {product} at 10% discount from standard rates."
+        - "{account} asked about bundled pricing options for {product} and dietary modules."
+        - "The {account} team requested a proof of concept period before finalizing {product} pricing."
+        - "{person} from {vendor} received request for customized {product} pricing model during {date} discussion."
+        - "{account} asked if {vendor} could apply multi-year discount for {product} renewal."
+        - "During {date} call, {account} requested payment terms for {product} to be split into quarterly installments."
+        - "{person} from {account} proposed a phased implementation with discounted pricing for initial phase."
+        - "{account} requested volume pricing for {product} covering all 22 of their locations."
+        - "The {account} team asked if {vendor} could match a competitor's pricing for {product} functionality."
+        - "{person} from {vendor} was asked to prepare a cost comparison between current and proposed {product} pricing."
+        - "{account} requested a 5-year pricing commitment for {product} with annual review provisions."
+        - "During negotiations, {account} asked if {vendor} could include free training with {product} renewal."
+        - "{person} from {vendor} received request to restructure {product} pricing to include per-resident fees."
+        - "{account} asked about possible discounts for early renewal of {product} by {date}."
+        - "The {account} team requested a price exception for {product} due to regulatory changes affecting their budget."
+        - "{person} from {vendor} was asked to create a custom payment plan for {product} renewal."
+  - event_type: competitive_eval
+    weight: 0.8
+    claim_templates:
+      competitor_mention:
+        - "{account} evaluated {competitor} platform for care-plan documentation but selected {vendor}'s {product} due to better integration."
+        - "During {date} RFP process, {account} compared {product} with {competitor}'s solution and found our reporting capabilities superior."
+        - "{person} from {account} shared that {competitor} is offering similar functionality at 20% lower price than {product}."
+        - "Executive team at {account} considered {competitor} for medication management but found their interface too complex for staff."
+        - "{account} requested a feature-by-feature comparison between {product} and {competitor}'s platform for budget review."
+        - "The {account} team mentioned {competitor} as an alternative during {date} discussion but cited our 24/7 support as key advantage."
+        - "{person} from {vendor} received a request from {account} to demonstrate {product} vs {competitor} in memory care workflows."
+        - "{account} cited {competitor} as having better mobile access for staff compared to {product} when discussing renewal options."
+        - "During {date} evaluation, {account} found {competitor}'s implementation timeline to be faster than {vendor}'s {product} deployment."
+        - "{account} requested pricing from {competitor} for dietary management features currently available in {product}."
+        - "{person} from {vendor} learned {account} had seen a {competitor} demo focused on family communication capabilities."
+        - "The {account} team mentioned {competitor} as having superior reporting templates for compliance audits."
+        - "{account} asked about how {product} differentiates from {competitor}'s platform in staff scheduling automation."
+        - "{person} from {vendor} was asked to explain why {product} integration with existing EHR is faster than {competitor}'s solution."
+        - "{account} mentioned {competitor} had a more intuitive interface for non-technical staff compared to {product}."
+        - "During {date} RFP process, {account} compared {product} and {competitor}'s maintenance work order tracking capabilities."
+        - "{account} requested references from similar facilities that have compared {product} with {competitor} solutions."
+        - "{person} from {vendor} was asked to prepare a cost-benefit analysis comparing {product} with {competitor}'s platform."
+      risk:
+        - "{account} is evaluating {competitor} as alternative to {product} due to recent service issues."
+        - "RFP process for {product} replacement underway at {account} after {days} of {competitor} demonstrations."
+        - "{person} from {account} shared {competitor} pricing for similar functionality during {date} discussion."
+        - "{account} has scheduled {competitor} demo on {date} for {product} replacement consideration."
+        - "Executive team at {account} approved proof-of-concept funding for {competitor} solution by {date}."
+  - event_type: champion_departure
+    weight: 0.7
+    claim_templates:
+      contact_change:
+        - "{person} at {account} will no longer be the main contact for {vendor}'s {product} after {date}."
+        - "{vendor} has been notified that {person} is exiting their role related to {product} at {account} following {days} days of use."
+        - "Due to internal changes at {account}, {person} will no longer handle requests regarding {vendor}'s {product}."
+        - "On {date}, {account} confirmed that responsibility for {vendor}\u2019s {product} will transition away from {person}."
+        - "The contact information for {product} at {account} will be updated as {person} is departing the organization."
+        - "{vendor} is being informed that the point of contact for {product} at {account} will change effective {date}."
+        - "{person} is transitioning from their role managing {product} at {account}, effective {date}."
+        - "{account} will reassign {product} contact duties from {person} to another team member by {date}."
+        - "Following their departure, {person} will no longer oversee {vendor}'s {product} implementation at {account}."
+        - "{vendor} acknowledges {person}'s exit from {account} and will update contact records for {product} accordingly."
+        - "A new liaison for {product} at {account} will be appointed, replacing {person} as of {date}."
+        - "{person} has handed over {product}-related responsibilities at {account} to another colleague, effective {date}."
+        - "The {product} contact at {account} is changing; {person} will be replaced after {days} of service."
+        - "{vendor} has been informed that {person} is no longer responsible for {product} coordination at {account}."
+        - "{account} will appoint a successor for {person} in managing {vendor}'s {product} by {date}."
+        - "{person}\u2019s role as the primary contact for {product} at {account} ends on {date} due to organizational restructuring."
+        - "Contact duties for {vendor}'s {product} at {account} will shift from {person} to another staff member immediately."
+        - "After {days} with {account}, {person} is no longer the key contact for {vendor}'s {product} and will be replaced."
+      risk:
+        - "{account} risks {days} operational disruption post-{date} due to {person}'s departure impacting {product} workflow coordination."
+        - "Loss of {person} at {account} threatens {amount} in pending {product}-related reimbursements if unresolved by {date}."
+        - "Departure of {product} implementation lead {person} risks delaying {account}\u2019s compliance certification by {days}."
+        - "{account} faces risk of {days} setback in {product} customization without {person}\u2019s expertise past {date}."
+  - event_type: expansion
+    weight: 0.7
+    claim_templates:
+      decision:
+        - "{account} leadership greenlit expansion of {product}'s dietary module to {amount} new locations by {date}."
+        - "{account} signed a multi-year {product} agreement with {vendor} on {date}, covering {amount} facilities after {days} review."
+        - "{person} confirmed {account}'s commitment to onboard {amount} assisted living sites onto {product} within {days} calendar days."
+        - "{account} operations team chose to expand {product} integration into dietary services at all locations effective {date}."
+        - "Expansion decision by {account} includes {product} training for {amount} staff members across {vendor}'s platform by {date}."
+      usage:
+        - "{account} added {amount} {product} licenses on {date} to support new memory care unit expansion."
+        - "Integration of {product} with {vendor}'s billing module completed for {account} on {date} after {days} of configuration."
+        - "{person} from {account} requested {product} expansion to dietary departments at {amount} locations by {date}."
+        - "{vendor} deployed {product} to {account}'s third regional campus on {date}, completing {amount} new staff training in {days}."
+        - "Add-on module for {product} was activated at {account} on {date} to handle {amount} increased medication volume."
+  - event_type: commitment_made
+    weight: 1.1
+    claim_templates:
+      commitment:
+        - "{account} commits to utilizing {vendor}'s {product} for {days} days starting {date} to streamline medication management processes."
+        - "{vendor} secures a {amount} commitment from {account} for annual billing and dietary software integration by {date}."
+        - "{person} from {account} pledges to implement {vendor}'s staffing solution within {days} days, effective {date}, ensuring optimized shift scheduling."
+        - "{account} commits to adopting {vendor}'s family communication tools by {date}, with a {days}-day trial period."
+        - "{vendor} agrees to provide {account} with priority maintenance support for {product} for {days} days following the {date} implementation."
+        - "{vendor} commits to providing {account} {days} days of dedicated care-plan documentation training by {date}, ensuring full {product} adoption."
+        - "{account} commits to using {vendor}'s {product} for all care-plan documentation needs, ensuring compliance by {date} with a {days}-day rollout timeline."
+        - "{vendor} receives a commitment from {account} to fully integrate dietary and care-plan systems by {date}, allocating {amount} for staff training over {days} months."
+        - "{person} of {account} commits to a {days}-day evaluation of {vendor}'s staffing and scheduling software by {date}, with plans for full deployment after review."
+        - "{account} agrees to commit {amount} to {vendor}'s software solutions by {date}, focusing on {product} to improve billing and dietary efficiency."
+        - "{vendor} and {account} establish a {days}-month partnership to streamline care-plan workflows, with {vendor} providing ongoing {product} support and updates."
+        - "{account} commits to deploying {vendor}'s maintenance and scheduling modules across their facilities by {date}, with a {days}-day integration period."
+  - event_type: commitment_due
+    weight: 1.0
+    claim_templates:
+      commitment:
+        - "{account} commits to expanding {vendor}'s dietary software usage across {days} facilities by {date}, allocating {amount} for integration."
+        - "{vendor} finalizes a {days}-day implementation timeline with {account} to enhance billing accuracy via {product} by {date}."
+        - "{person} from {account} agrees to dedicate {days} hours of staff training on {vendor}'s eMAR system by {date}, funded at {amount}."
+        - "{account} pledges to allocate {amount} for {vendor}'s maintenance tools by {date}, covering {days} months of work-order automation."
+        - "{vendor} and {account} commit to co-developing a {product} module for family communication by {date}, with {days} days of testing."
+        - "{account} secures a {days}-month contract with {vendor} for staffing optimization, committing {amount} by {date} for platform access."
+      risk:
+        - "{account} risks missing {date} {product} renewal deadline due to unresolved billing discrepancies exceeding {days}."
+        - "{vendor} delays in {product} updates at {account} risk causing {days} compliance lag by {date}."
+        - "Failure to resolve {product} scheduling conflict by {date} risks {account} incurring {amount} in overtime costs."
+        - "Late {product} documentation submission by {date} risks {account} facing {days} of regulatory holdups."
+  - event_type: decision
+    weight: 0.9
+    claim_templates:
+      decision:
+        - "{account} opted to implement {product}'s medication management solution in {amount} additional facilities before {date}."
+        - "{person} from {vendor} recorded {account}'s decision to invest {amount} in {product} software upgrades by {date}."
+        - "{account} leadership authorized integration of {product} dietary module with billing systems on {date}."
+        - "{account} approved {vendor} to deliver {amount} training hours for {product} across staff by {date}."
+  - event_type: policy_change
+    weight: 0.6
+    claim_templates:
+      other:
+        - "{vendor} has updated its {product} system to streamline care-plan documentation for {account} starting {date}."
+        - "{person} from {vendor} confirmed a new staffing schedule policy for {account} will take effect in {days} days."
+        - "Effective {date}, {vendor} is introducing a revised billing process for {product} to improve transparency for {account}."
+        - "The dietary software for {account} now includes a new policy for menu planning updates every {days} days."
+        - "{vendor} notified {account} of a policy update affecting how communication tools are integrated into {product}."
+        - "Maintenance and work-order procedures for {account} were revised by {vendor} on {date} to enhance operational efficiency."
+        - "{vendor} has modified its {product} workflow to require dual authorization for medication adjustments after {date}."
+        - "Effective {date}, {vendor} will charge a {amount} fee for late-submitted dietary preference requests in {product}."
+        - "A new staffing compliance rule in {vendor}'s {product} mandates shift-trade approvals by supervisors starting {date}."
+        - "{person} from {vendor} informed {account} about updated family notification settings in {product} effective {days} days from now."
+        - "{vendor} is phasing out paper-based billing for {account} by {date}, requiring all transactions through {product}."
+        - "The {product} system for {account} now enforces {days}-day advance notice for care-plan template modifications."
+        - "{vendor} announced a policy to audit all maintenance work-order completions in {product} weekly, starting {date}."
+        - "New security protocols in {vendor}'s {product} restrict access to billing records after {date} without multi-factor authentication."
+        - "{account} must comply with {vendor}'s revised dietary portion-size logging policy in {product} by {date}."
+        - "Starting {date}, {vendor} requires {days}-day advance scheduling for staff training sessions via the {product} platform."
+        - "A policy change by {vendor} on {date} limits family message retention in {product} to {days} days for compliance purposes."
+        - "{vendor} updated its {product} software to flag unpaid invoices after {days} days, affecting billing workflows for {account}."
+      decision:
+        - "{account} updated its staffing policy to include {product}'s scheduling module by {date}."
+        - "{person} from {vendor} noted {account}'s adoption of {product}'s family communication tool on {date}."
+        - "{account} leadership mandated {product} integration into maintenance workflows effective {date}."
+        - "{vendor} documented {account}'s decision to revise billing processes using {product} by {date}."
+
+arcs:
+  - id: rocky_go_live_v1
+    arc_type: rocky_go_live
+    weight: 1.2
+    steps:
+      - {event_type: go_live, day_offset: 0}
+      - {event_type: incident, day_offset: 14}
+      - {event_type: escalation, day_offset: 30}
+      - {event_type: commitment_made, day_offset: 35}
+      - {event_type: commitment_due, day_offset: 60}
+      - {event_type: decision, day_offset: 75}
+  - id: renewal_price_pushback_v1
+    arc_type: renewal_price_pushback
+    weight: 1.3
+    steps:
+      - {event_type: renewal_step, day_offset: 0}
+      - {event_type: price_negotiation, day_offset: 10}
+      - {event_type: price_negotiation, day_offset: 20}
+      - {event_type: decision, day_offset: 35}
+  - id: competitive_eval_save_or_churn_v1
+    arc_type: competitive_eval_save_or_churn
+    weight: 1.0
+    steps:
+      - {event_type: competitive_eval, day_offset: 0}
+      - {event_type: escalation, day_offset: 15}
+      - {event_type: commitment_made, day_offset: 20}
+      - {event_type: decision, day_offset: 40}
+  - id: champion_transition_v1
+    arc_type: champion_transition
+    weight: 1.0
+    steps:
+      - {event_type: champion_departure, day_offset: 0}
+      - {event_type: qbr, day_offset: 20}
+      - {event_type: decision, day_offset: 30}
+  - id: expansion_v1
+    arc_type: expansion
+    weight: 1.0
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: expansion, day_offset: 20}
+      - {event_type: commitment_made, day_offset: 25}
+      - {event_type: decision, day_offset: 40}
+  - id: incident_escalation_exec_v1
+    arc_type: incident_escalation_exec
+    weight: 1.1
+    steps:
+      - {event_type: incident, day_offset: 0}
+      - {event_type: incident, day_offset: 7}
+      - {event_type: escalation, day_offset: 14}
+      - {event_type: commitment_made, day_offset: 18}
+      - {event_type: commitment_due, day_offset: 40}
+  - id: quiet_steady_v1
+    arc_type: quiet_steady
+    weight: 2.2
+    steps:
+      - {event_type: qbr, day_offset: 0}
+      - {event_type: release, day_offset: 30}
+      - {event_type: qbr, day_offset: 60}
+      - {event_type: policy_change, day_offset: 75}
+
+topic_tree:
+  - name: "Product"
+    children:
+      - name: "Care plan documentation"
+      - name: "Medication management"
+      - name: "Staffing and scheduling"
+  - name: "Account"
+    children:
+      - name: "Billing"
+      - name: "Renewal"
+      - name: "Expansion"
+  - name: "Support"
+    children:
+      - name: "Incidents"
+      - name: "Training"
+  - name: "Competitive"
+    children:
+      - name: "Evaluations"
+  - name: "People"
+    children:
+      - name: "Contacts"
+      - name: "Champions"
+
+# One shared generic directive list, aliased into every fact type (section 4,
+# "Phrasing": a phrasing-style vocabulary applied across types, not
+# type-specific content -- same pattern as medical_devices.yaml).
+fact_directives:
+  complaint: &directives
+    - hedged
+    - numbers_spelled_out
+    - colloquial
+    - embedded_mid_sentence
+    - passive
+    - through_an_alias
+    - corrected_mid_sentence
+    - list_item
+    - terse
+    - rambling
+    - formal
+    - via_quoted_reply
+    - second_language_phrasing
+  request: *directives
+  praise: *directives
+  risk: *directives
+  competitor_mention: *directives
+  commitment: *directives
+  decision: *directives
+  contact_change: *directives
+  pricing: *directives
+  usage: *directives
+  question: *directives
+  other: *directives
+
+persona_bank:
+  - id: terse_sl
+    speech_register: "care_management"
+    formality: neutral
+    typo_rate_range: [0.0, 0.01]
+    chat_style: short_fragments
+    signature_style: initials_only
+    hedging: false
+  - id: rambling_ops_sl
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.01, 0.03]
+    chat_style: long_threads
+    signature_style: full_name_title
+    hedging: true
+  - id: formal_executive_sl
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+  - id: typo_prone_frontline_sl
+    speech_register: "care_management"
+    formality: informal
+    typo_rate_range: [0.03, 0.06]
+    chat_style: emoji_light
+    signature_style: first_name_only
+    hedging: false
+  - id: emoji_chat_sl
+    speech_register: "care_management"
+    formality: informal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: emoji_heavy
+    signature_style: first_name_only
+    hedging: false
+  - id: second_language_procurement_sl
+    speech_register: "procurement"
+    formality: formal
+    typo_rate_range: [0.01, 0.02]
+    chat_style: measured
+    signature_style: full_block
+    hedging: true
+    second_language_features: ["article_drop", "present_tense_for_future"]
+  - id: formal_specialist_sl
+    speech_register: "care_management_specialist"
+    formality: formal
+    typo_rate_range: [0.0, 0.01]
+    chat_style: precise
+    signature_style: full_name_title
+    hedging: false
+  - id: casual_it_sl
+    speech_register: "operations"
+    formality: informal
+    typo_rate_range: [0.02, 0.04]
+    chat_style: short_fragments
+    signature_style: none
+    hedging: false
+  - id: hedging_manager_sl
+    speech_register: "operations"
+    formality: neutral
+    typo_rate_range: [0.0, 0.02]
+    chat_style: measured
+    signature_style: first_name_only
+    hedging: true
+  - id: direct_cfo_sl
+    speech_register: "executive"
+    formality: formal
+    typo_rate_range: [0.0, 0.0]
+    chat_style: rare_and_brief
+    signature_style: full_block
+    hedging: false
+
+decoy_classes:
+  - id: hypothetical_sl
+    near_type: risk
+    description: "A hypothetical framed as if it already happened."
+    example: "We considered adopting NexCare's all-in-one platform last year, but our directors decided to stick with our existing system since the integration with our dietary and billing modules was already running smoothly."
+  - id: negation_sl
+    near_type: request
+    description: "A customer uses a negation to dismiss an implicit request while hinting at future interest without stating needs, commitments, or status."
+    example: "I\u2019m not asking for anything else right now, but I\u2019m curious how the system handles updating care plans when resident preferences change mid-month."
+    forbidden_patterns: [competitor_evaluation]
+    text_source:
+      model: "qwen/qwen3-32b"
+      generated: "2026-09-23"
+      raw_response_sha256:
+        - "28eae1b02291a971e1c040806c050ce36c18cb5783fbe3ffc60928216db503c6"
+  - id: hearsay_other_company_sl
+    near_type: competitor_mention
+    description: "Something said to have happened to a different, unnamed customer."
+    example: "We heard NexCare had to roll back their eMAR update last quarter due to integration hiccups with a pharmacy system, so we\u2019re sticking with our current setup until their next release."
+  - id: generic_industry_talk_sl
+    near_type: other
+    description: "Industry chatter with no account-specific claim."
+    example: "Many communities are struggling with staff scheduling gaps as turnover rates hit record highs this year."
+  - id: rhetorical_question_sl
+    near_type: question
+    description: "A question asked for effect, not information, with no real open item."
+    example: "Who could blame them for wanting more visibility into their billing processes with these new regulations?"
+  - id: vendor_internal_speculation_sl
+    near_type: risk
+    description: "Vendor-side speculation about a customer, not a customer statement."
+    example: "We considered switching to Greenfield Health Systems' eMAR solution last quarter, but their staffing module didn't integrate as smoothly with our existing dietary workflows as we'd hoped."
+  - id: resolved_issue_as_history_sl
+    near_type: complaint
+    description: "An already-resolved issue retold as past history, not a live complaint."
+    example: "Last year's data migration issues were fully resolved after we worked with the vendor's support team for three weeks."
+  - id: commitment_decision_confusable_sl
+    near_type: decision
+    description: "A vendor commitment restated in decision-shaped language, or a customer decision restated as if it were still an open vendor promise -- easy to mistype as the other fact type."
+    example: "We promised to deliver the new module by Q3 and now the customer is treating it as a decision already made."
+
+name_pool_refs:
+  account_suffixes_system: ["Senior Living Group", "Senior Communities", "Retirement Network"]
+  account_suffixes_facility: ["Senior Living Community", "Assisted Living Community", "Memory Care Community"]
+  account_suffixes_standalone: ["Senior Care Partners", "Retirement Residence", "Life Plan Community"]
+  vendor_domain_tld: ".com"
+
+excluded_product_kinds: ["resident_fall_detection", "resident_fall_prevention", "resident_monitoring", "video_monitoring"]
+held_out: false
+
+# Coordinator review of 7f779a3, 2026-09-22: every claim template above and
+# every decoy_classes[].example was written by this open-weight model, curated
+# (filtered/deduped, dropped when invalid, never rephrased) by scripts/data/
+# v2_gen_pack_templates.py -- not Claude-written, since this text reaches
+# training data. raw_response_sha256 points at the exact, unedited model
+# responses under var/data/v2_packs/raw/ (gitignored, not committed).
+claim_templates_source:
+  model: "qwen/qwen3-32b"
+  generated: "2026-09-22"
+  raw_response_sha256:
+    - "adb3a186f0392df9242858cdcaa2488c7d885618cb6c41c33204661eb0db6bbd"
+    - "9f6e519e68ec890bd740cb9896767209e520746a31dac9040de7529fd8549aa9"
+    - "ca6e34aad466251497c13c1ce1c77e14e6750b693211bc9dbeeb666b18e9be14"
+    - "a28dded44b20aead7c02055abeb5dec8418bdf7b0ebb6dd8e1d78e9e676591b9"
+    - "8b67538b49b8de8d48348497ab90e23cdf81a951e5de2556277c45d6a8a47e95"
+    - "e59772d270be2903f1ad190418b5ab927c1e7c751256356813f7bbd23e63b3b7"
+    - "14b8a46ae66dfdc894cc9c75107c6a69e6e2c28b17cde09653ba66d0ad48d9e3"
+    - "1efbb3eba3e27adc7e3945b41eba789924d05d21b8c223cf4a4577df8af988f0"
+    - "1c737c06b2a6436856ccf30bb88452707ebe9bd26f1d6b6a63f678dbb1f48f59"
+    - "b61de146724b0d8257b65136e57bfdffe21c0c79bb7ff856896f252f1b3591ae"
+    - "9efd229dd0a2b2fa8351bead15dfb05d982d9751386bec71623917259f2db9c1"
+    - "5ce89d401dcc0f6bf008004a898d8782556818f9989b545fd8d4b68a7688d71b"
+    - "17c29fbad1c39caa63b4ac232c1f28561f921a5e7f43755438c749248cf0b646"
+    - "233eed077da391f928bd7963c51f9c329478ca7acd6176de703e600cb74d620c"
+    - "92d8cac53f857c1bcbf81add93a4740bee8d57dfaf7c0ee048a434e671157060"
+    - "7acaf90896491ad952f7549a0bad01d89e32383d1e0dea04da480ff562913208"
+    - "6b4acfb9a8c2852bad49d7f7e775263929d6be0db50141187b47d98ee0ef0c6b"
+    - "7f91c0542051d0ed6c5641a7362714c38c5a8597ed70b92de59ed277507d8982"
+    - "0f06287d454af459830a199fa47b1b045de3904f6560c642ffceaca25f7671b9"
+    - "1e2a21dc3898a804c1e981d3b2ec18b65c4f5e14927771d915c9d2ba5a5a2edd"
+    - "47c3662abc857afb22b930bfd62a84d4ebeffd96de8280a3b05630516b30a9e9"
+    - "da19edb9b874b357011af33d0782201cfea1d3b7219f80105a572c8f5ad6d368"

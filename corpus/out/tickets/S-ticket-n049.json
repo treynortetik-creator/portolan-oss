@@ -1,0 +1,24 @@
+{
+  "id": "S-ticket-n049",
+  "requester": "Marcus Diallo",
+  "account": "Wrenfield Medical Center",
+  "created": "2026-03-02",
+  "subject": "How do I run a self-test on a Tidewater T2 pump?",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Marcus Diallo",
+      "body": "New tech on our floor is asking how to run the built-in self-test. Where's that documented?"
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "It's in the quick-start card, section 3 \u2014 hold the check button for 3 seconds at power-on."
+    },
+    {
+      "number": 3,
+      "author": "Halvard Support",
+      "body": "Found it, thank you."
+    }
+  ]
+}

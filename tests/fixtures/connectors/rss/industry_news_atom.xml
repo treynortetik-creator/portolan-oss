@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Regional Health Industry News</title>
+  <id>urn:uuid:portolan-corpus-industry-news</id>
+  <updated>2026-08-25T00:00:00Z</updated>
+  <entry>
+    <title>Midwest hospital systems report continued staffing gains</title>
+    <link href="https://feeds.example-newswire.test/portolan-corpus/s-rss-201" />
+    <id>https://feeds.example-newswire.test/portolan-corpus/s-rss-201</id>
+    <published>2026-08-25T00:00:00Z</published>
+    <updated>2026-08-25T00:00:00Z</updated>
+    <summary>Several Midwest health systems, including Larkspur Regional Health, reported improved nurse retention in Q3 2026.</summary>
+  </entry>
+  <entry>
+    <title>Larkspur Regional Health names new CFO</title>
+    <link href="https://feeds.example-newswire.test/portolan-corpus/s-rss-006" />
+    <id>https://feeds.example-newswire.test/portolan-corpus/s-rss-006</id>
+    <published>2026-09-02T12:00:00Z</published>
+    <updated>2026-09-02T12:00:00Z</updated>
+    <summary>Duplicate of the LinkedIn post above, syndicated by the industry newswire — same link, should dedup.</summary>
+  </entry>
+</feed>

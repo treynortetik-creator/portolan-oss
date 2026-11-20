@@ -1,0 +1,345 @@
+[09:00:00] Paul Strand: Morning, Priya. Can you hear me all right?
+
+[09:00:08] Priya Natarajan: I can. Good morning, Paul. How are things on your end?
+
+[09:00:18] Paul Strand: Busy, as usual. We had a huddle that ran long, and then one of the units had a question about a dashboard that turned out not to be a dashboard question at all. It was permissions.
+
+[09:00:31] Priya Natarajan: Those are always fun.
+
+[09:00:34] Paul Strand: Exactly. You spend ten minutes looking at a chart, and the answer is that somebody can’t see the chart. Anyway, thanks for making time.
+
+[09:00:42] Priya Natarajan: Of course. I wanted to check in on the rollout, hear how the clinical teams are using the feed, and talk through the next planning steps. Nothing formal unless you want it to be.
+
+[09:00:56] Paul Strand: That works. I have about half an hour before another meeting, assuming that one starts on time, which is optimistic.
+
+[09:01:03] Priya Natarajan: I’ll keep us moving. Before we get into the details, is there anything changed on your side that would affect planning?
+
+[09:01:17] Paul Strand: Yes, and this is important for anything new we might discuss. Sable Valley Health froze new capital equipment purchases from 2026-07-01 through the end of 2026.
+
+[09:01:33] Priya Natarajan: Understood. Does that apply to software as well, or specifically equipment?
+
+[09:01:38] Paul Strand: The formal language is capital equipment, but our finance group is being cautious across the board. Existing contracts and work already approved are moving forward. New requests will need a different kind of review, and nobody is promising timing.
+
+[09:01:51] Priya Natarajan: That’s helpful. So we should separate operational support from anything that would require a new purchase request.
+
+[09:02:00] Paul Strand: Right. If it’s part of what we already have, we can evaluate it normally. If it means a new line item, we should probably not pretend there’s a quick path.
+
+[09:02:12] Priya Natarajan: Makes sense. Let’s focus today on what’s already live and what your team needs to get value from it.
+
+[09:02:20] Paul Strand: Good. The current integration is stable. The nursing teams are mostly past the “what is this?” stage and into “can we make it fit our workflow?” stage.
+
+[09:02:30] Priya Natarajan: That’s usually a good sign. What are they asking for most often?
+
+[09:02:37] Paul Strand: A little more flexibility around views. Different units care about different pieces of the same information. The intensive care nurses want a fairly dense screen. The ambulatory group wants something simpler. We’re trying not to create twelve versions of everything.
+
+[09:02:49] Priya Natarajan: Are the requests coming through your informatics team, or directly from unit leadership?
+
+[09:02:55] Paul Strand: Both. We have a central queue, but people still stop us in the hall. That is how we get most of our unofficial requirements.
+
+[09:03:04] Priya Natarajan: The hallway backlog.
+
+[09:03:07] Paul Strand: Exactly. No ticket number, no owner, just “while I have you here.”
+
+[09:03:16] Priya Natarajan: We can help you turn those into a short list. Maybe categorize them by display, alerting, and data timing.
+
+[09:03:25] Paul Strand: That would be useful. Data timing is the one I care about most. If a result is late, the screen can look polished and still be unhelpful.
+
+[09:03:35] Priya Natarajan: Have you seen any delays recently?
+
+[09:03:39] Paul Strand: Nothing that has caused an incident. There have been a few questions about when a change appears, but when we traced them, the source system was still processing the update.
+
+[09:03:49] Priya Natarajan: So no integration break, more an expectation issue.
+
+[09:03:53] Paul Strand: That’s my read. We’re documenting the normal timing so the units have something concrete to compare against.
+
+[09:04:02] Priya Natarajan: Good approach. Are the managers comfortable with the current process?
+
+[09:04:07] Paul Strand: Mostly. They want fewer surprises, which is fair. We’re also trying to make sure that every escalation has enough context before it gets sent to your support team.
+
+[09:04:17] Priya Natarajan: That helps everyone. A screenshot, patient-safe reference, timestamp, and the expected result can cut a lot of back-and-forth.
+
+[09:04:25] Paul Strand: We’ve added those fields to our internal intake form. Adoption is uneven, but it’s there.
+
+[09:04:33] Priya Natarajan: How many people are using the form?
+
+[09:04:38] Paul Strand: I don’t have a clean count. We’re still measuring that. I can give you a directional update next week.
+
+[09:04:44] Priya Natarajan: That’s fine. Directional is enough for now.
+
+[09:04:51] Paul Strand: The other thing is training. We did an initial session, but new staff keep arriving, and experienced staff forget the parts they don’t use every day.
+
+[09:05:01] Priya Natarajan: Would short recorded sessions be better than another long class?
+
+[09:05:07] Paul Strand: Probably. Ten minutes on finding the patient, ten on interpreting the status, and maybe a separate piece on what to do when something doesn’t look right.
+
+[09:05:17] Priya Natarajan: We can send over some outlines. I don’t want to assume your policies, but we can keep them focused on navigation and escalation.
+
+[09:05:23] Paul Strand: That would be appreciated. We need material that can sit in the learning system without becoming a major project.
+
+[09:05:31] Priya Natarajan: I’ll note that. Do you have a preferred format?
+
+[09:05:35] Paul Strand: Plain video or annotated screen capture. Nothing cinematic. People need to find the answer quickly.
+
+[09:05:42] Priya Natarajan: Understood. We can keep the production light.
+
+[09:05:48] Paul Strand: Also, if you send a draft, please give us editable captions. Our accessibility team will want to review them.
+
+[09:05:55] Priya Natarajan: Absolutely. We’ll include a transcript as well.
+
+[09:06:03] Paul Strand: Great. Let me check my notes. We had one question about the outbound messages and one about our test environment.
+
+[09:06:10] Priya Natarajan: Let’s take the outbound messages first.
+
+[09:06:15] Paul Strand: The concern is not that they’re failing. It’s that the nursing supervisors want to understand which events create a message and which changes are only visible when somebody opens the application.
+
+[09:06:26] Priya Natarajan: That’s a documentation question, then.
+
+[09:06:29] Paul Strand: Mostly. We need a clear matrix, preferably with examples that don’t use real patient information.
+
+[09:06:36] Priya Natarajan: We can provide that. I’ll ask our implementation specialist to make the examples generic and label the source event, resulting message, and expected timing.
+
+[09:06:43] Paul Strand: Good. That should reduce speculation.
+
+[09:06:49] Priya Natarajan: And the test environment?
+
+[09:06:53] Paul Strand: We want to make sure any future configuration review can happen there first. We don’t want somebody validating a change in production because the test data is stale.
+
+[09:07:03] Priya Natarajan: Is the issue refresh frequency or data coverage?
+
+[09:07:07] Paul Strand: Data coverage. Some of the scenarios we need for nursing workflows aren’t represented consistently. We can create synthetic examples, but we need to agree on the cases.
+
+[09:07:17] Priya Natarajan: That’s reasonable. We can schedule a working session with your analysts and our technical lead.
+
+[09:07:24] Paul Strand: Let’s do that after we inventory the gaps. Otherwise we’ll have a meeting where everyone discovers the same missing cases in real time.
+
+[09:07:32] Priya Natarajan: Fair. I’ll send a worksheet for the inventory.
+
+[09:07:38] Paul Strand: Thanks.
+
+[09:07:42] Priya Natarajan: How is adoption looking across the facilities?
+
+[09:07:48] Paul Strand: The main hospital is furthest along. The smaller sites are interested, but their staffing is thinner, so any workflow change has to be very obviously useful.
+
+[09:07:58] Priya Natarajan: That’s common. Are they asking for a separate launch plan?
+
+[09:08:02] Paul Strand: Not yet. They’re observing what happens at the main site. If we can show that the process saves people time, the conversation will be easier.
+
+[09:08:10] Priya Natarajan: Do you have a way to measure time saved?
+
+[09:08:16] Paul Strand: Not rigorously. We have anecdotal comments and some rough observations from charge nurses. I don’t want to turn that into a metric before we have a method.
+
+[09:08:26] Priya Natarajan: Sensible. We could start with a small observational sample rather than claim a systemwide number.
+
+[09:08:33] Paul Strand: Exactly. A limited baseline, then the same observation later. Nothing elaborate.
+
+[09:08:40] Priya Natarajan: I’ll add it as a possible improvement activity, not a commitment.
+
+[09:08:44] Paul Strand: That wording matters around here.
+
+[09:08:49] Priya Natarajan: I can imagine.
+
+[09:08:53] Paul Strand: You’ve worked with enough health systems to know every adjective gets reviewed.
+
+[09:08:59] Priya Natarajan: Every adjective and sometimes every comma.
+
+[09:09:03] Paul Strand: That sounds right.
+
+[09:09:08] Priya Natarajan: Let me ask about the integration itself. Has your team had any concerns with the messages since launch?
+
+[09:09:15] Paul Strand: I want to be precise here because this is one of the things I’ve been asked to comment on. On July 8, 2026, Sable Valley Health’s nursing informatics director called Tidewater Link’s HL7 feed “flawless since go-live.”
+
+[09:09:30] Priya Natarajan: That’s wonderful to hear. Thank you for saying it.
+
+[09:09:35] Paul Strand: It’s deserved. We’ve watched the feed closely, especially during the first several weeks, and the behavior has been consistent. The remaining questions are around how our staff interpret the information, not whether the messages are arriving correctly.
+
+[09:09:47] Priya Natarajan: That distinction is useful. We can make sure our internal team understands that the integration is performing well while the education work continues.
+
+[09:09:55] Paul Strand: Yes. I don’t want a request for training to be misread as a request to change the feed.
+
+[09:10:01] Priya Natarajan: I’ll separate those in the summary.
+
+[09:10:06] Paul Strand: Good. We’ve had a few cases where a workflow question gets escalated to technical support, and then the technical team spends time proving something that was never broken.
+
+[09:10:15] Priya Natarajan: We can create a routing guide. One path for user interpretation, one for access, and one for actual message behavior.
+
+[09:10:24] Paul Strand: That would help. It doesn’t need to be complicated.
+
+[09:10:28] Priya Natarajan: A one-page guide with examples?
+
+[09:10:32] Paul Strand: Exactly. If a nurse says, “I don’t see the update,” the first question should be whether the update exists in the source system and whether the user is looking at the right encounter.
+
+[09:10:42] Priya Natarajan: Then permissions and timing, before anything gets labeled an interface issue.
+
+[09:10:47] Paul Strand: Right.
+
+[09:10:51] Priya Natarajan: I’m taking notes. This is a good candidate for the supervisor packet.
+
+[09:10:57] Paul Strand: Put it there, but don’t bury it in a hundred-page manual.
+
+[09:11:00] Priya Natarajan: Point taken.
+
+[09:11:05] Paul Strand: The supervisors need quick reference material. They’re not going to read a long document during a shift.
+
+[09:11:11] Priya Natarajan: We can make the quick guide primary and link to the longer details for people who need them.
+
+[09:11:18] Paul Strand: That structure works.
+
+[09:11:22] Priya Natarajan: What about reporting? Are you getting the information you need to monitor the interface?
+
+[09:11:28] Paul Strand: We have enough for routine review. I’d like a simpler monthly view, though. Right now, the information is spread across several places.
+
+[09:11:37] Priya Natarajan: Which fields matter most?
+
+[09:11:41] Paul Strand: Volume, exceptions, resolution time, and anything that required manual intervention. Again, not necessarily a new report from scratch. It may just be a better arrangement of what already exists.
+
+[09:11:51] Priya Natarajan: We can look at the current reports before proposing anything new.
+
+[09:11:56] Paul Strand: That’s the right order.
+
+[09:12:00] Priya Natarajan: Do you review those monthly with operations?
+
+[09:12:04] Paul Strand: We do a broader review every few weeks, depending on the calendar. The clinical operations team joins when there’s a workflow question.
+
+[09:12:12] Priya Natarajan: Would it be useful for us to attend one?
+
+[09:12:16] Paul Strand: Maybe later. I’d rather first get our internal format settled so the meeting doesn’t become a vendor walkthrough.
+
+[09:12:25] Priya Natarajan: Completely fair.
+
+[09:12:30] Paul Strand: We value the partnership, but the review has to remain ours.
+
+[09:12:36] Priya Natarajan: Understood. We can support from the side and join when there’s a specific question.
+
+[09:12:41] Paul Strand: Good.
+
+[09:12:45] Priya Natarajan: I also wanted to ask whether your security group has any open items.
+
+[09:12:52] Paul Strand: Nothing open that I know of. They completed their review before launch. If anything changes in the architecture, they’ll want to see it, but we’re not discussing an architecture change today.
+
+[09:13:03] Priya Natarajan: That’s helpful. We’ll avoid creating unnecessary paperwork.
+
+[09:13:07] Paul Strand: Please do. We have enough necessary paperwork.
+
+[09:13:12] Priya Natarajan: I hear you.
+
+[09:13:16] Paul Strand: There is one general request from our governance group: keep release notes clear and early. They don’t need marketing language. They need to know what changed, who might notice, and whether action is required.
+
+[09:13:26] Priya Natarajan: We can use that format going forward.
+
+[09:13:31] Paul Strand: That would be better than a list of enhancements with no operational context.
+
+[09:13:36] Priya Natarajan: I’ll relay it to the product team.
+
+[09:13:41] Paul Strand: Thanks.
+
+[09:13:45] Priya Natarajan: Is there anything your team wants to see in the next release?
+
+[09:13:51] Paul Strand: I’d avoid calling it a next-release request until we’ve reviewed the options. The immediate needs are documentation, training, and clearer internal routing.
+
+[09:14:01] Priya Natarajan: Good distinction. Those are support activities, not necessarily product changes.
+
+[09:14:06] Paul Strand: Exactly.
+
+[09:14:10] Priya Natarajan: We can also look at the view preferences you mentioned, but we won’t assume they belong in the product roadmap.
+
+[09:14:16] Paul Strand: Correct. Some of that may be configuration. Some of it may be a local workflow decision.
+
+[09:14:22] Priya Natarajan: Would you like a configuration review?
+
+[09:14:26] Paul Strand: Yes, but after we collect the use cases. I want the team to describe the problem before anyone starts rearranging fields.
+
+[09:14:34] Priya Natarajan: That prevents solution-first meetings.
+
+[09:14:38] Paul Strand: We have enough of those already.
+
+[09:14:42] Priya Natarajan: We’ll start with use cases.
+
+[09:14:46] Paul Strand: Good.
+
+[09:14:50] Priya Natarajan: Let me recap what I have so far. We’ll send training outlines, a message-behavior matrix, a test-data inventory worksheet, and a draft routing guide.
+
+[09:15:00] Paul Strand: Add the monthly reporting review.
+
+[09:15:04] Priya Natarajan: Right, the monthly reporting review.
+
+[09:15:08] Paul Strand: And a possible observational baseline for time saved, but label that as exploratory.
+
+[09:15:13] Priya Natarajan: Exploratory only.
+
+[09:15:17] Paul Strand: Also, please send materials in a way that our accessibility group can edit and review.
+
+[09:15:23] Priya Natarajan: Captions and transcript included.
+
+[09:15:27] Paul Strand: Thanks.
+
+[09:15:31] Priya Natarajan: What should we target for the first package?
+
+[09:15:37] Paul Strand: Early next week would be fine. I’d rather have a coherent package than three partial emails tomorrow.
+
+[09:15:44] Priya Natarajan: I can send a single package Monday afternoon.
+
+[09:15:49] Paul Strand: That works.
+
+[09:15:53] Priya Natarajan: For the test-data session, should I include the analysts who support the smaller sites?
+
+[09:15:59] Paul Strand: Include them if they can attend. Their scenarios may be different, and it’s better to hear that before we settle the inventory.
+
+[09:16:07] Priya Natarajan: I’ll offer two times and ask for the people who need to be there.
+
+[09:16:13] Paul Strand: Good.
+
+[09:16:17] Priya Natarajan: Is Monday too soon for the routing guide, or can we include a first draft?
+
+[09:16:22] Paul Strand: A first draft is fine. We’ll mark it up internally.
+
+[09:16:27] Priya Natarajan: Great. I’ll make it deliberately short.
+
+[09:16:31] Paul Strand: One page, if possible.
+
+[09:16:34] Priya Natarajan: One page.
+
+[09:16:39] Paul Strand: And let’s avoid language that implies the staff did something wrong when they ask a question. The point is to route it efficiently, not discourage reporting.
+
+[09:16:47] Priya Natarajan: That’s an important point. We’ll use neutral language and make clear that questions are expected.
+
+[09:16:53] Paul Strand: Good.
+
+[09:16:57] Priya Natarajan: Anything else on the operational side?
+
+[09:17:02] Paul Strand: No, I think that covers it. The core service is doing what we need. Now we need to make the surrounding process less dependent on individual memory.
+
+[09:17:10] Priya Natarajan: That’s a good way to put it.
+
+[09:17:14] Paul Strand: If somebody is out sick, the workflow shouldn’t stop because they’re the only person who knows which document to open.
+
+[09:17:21] Priya Natarajan: We’ll keep that goal in mind with the materials.
+
+[09:17:26] Paul Strand: Thanks.
+
+[09:17:30] Priya Natarajan: Before we close, do you want me to include the finance constraint in the written recap?
+
+[09:17:36] Paul Strand: Yes, but accurately. Note that existing work continues and new capital requests are paused. I don’t want anyone reading it as a service issue.
+
+[09:17:44] Priya Natarajan: I’ll state it as a planning constraint and keep it separate from the integration status.
+
+[09:17:49] Paul Strand: Perfect.
+
+[09:17:53] Priya Natarajan: I’ll also call out the positive integration feedback, the documentation needs, and the follow-up owners.
+
+[09:17:59] Paul Strand: Good. That gives us something we can circulate internally.
+
+[09:18:03] Priya Natarajan: I’ll send the recap after this call, then the working package Monday afternoon.
+
+[09:18:08] Paul Strand: Sounds good.
+
+[09:18:12] Priya Natarajan: Thank you, Paul. I appreciate the detail today.
+
+[09:18:16] Paul Strand: Thank you, Priya. The check-in was useful.
+
+[09:18:20] Priya Natarajan: Enjoy the rest of your morning.
+
+[09:18:23] Paul Strand: You too. And good luck with the next meeting starting on time.
+
+[09:18:27] Priya Natarajan: I’ll remain cautiously optimistic.
+
+[09:18:30] Paul Strand: That’s all any of us can do. Take care.

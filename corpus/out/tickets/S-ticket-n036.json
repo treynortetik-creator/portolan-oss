@@ -1,0 +1,24 @@
+{
+  "id": "S-ticket-n036",
+  "requester": "Paul Strand",
+  "account": "Sable Valley Health",
+  "created": "2026-03-02",
+  "subject": "Password reset for the HalvardCare portal",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Paul Strand",
+      "body": "I'm locked out of the portal after too many failed logins. Can you reset it?"
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "Reset link sent to the account email on file. Let us know once you're back in."
+    },
+    {
+      "number": 3,
+      "author": "Halvard Support",
+      "body": "That worked, thanks \u2014 closing this out."
+    }
+  ]
+}

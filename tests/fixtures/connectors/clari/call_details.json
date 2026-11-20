@@ -1,0 +1,8 @@
+{
+  "callId": "conv-90001",
+  "turns": [
+    {"speakerName": "Priya Natarajan", "speakerEmail": "p.natarajan@halvardmedical.com", "startTime": 0, "text": "Hi Derek, thanks for making time today."},
+    {"speakerName": "Derek Hollis", "speakerEmail": "dhollis@northlakehs.org", "startTime": 2500, "text": "Of course, happy to be here."},
+    {"speakerName": "Derek Hollis", "speakerEmail": "dhollis@northlakehs.org", "startTime": 95000, "text": "We are still evaluating a Corvane pump for the new tower."}
+  ]
+}

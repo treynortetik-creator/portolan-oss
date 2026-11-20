@@ -1,0 +1,81 @@
+{# The Atlas left pane's own fragment -- rendered both inline (atlas.html's
+   first paint, `{% include %}`'d) and standalone (`GET /atlas/panel`, the
+   tree search box's own `hx-get` swap target, `routes.atlas.atlas_panel`).
+   Never renders the `<input>` itself (that lives in atlas.html, outside
+   this fragment, so an htmx swap never steals focus/cursor position out
+   of the box the reader is still typing in) -- only what's below it:
+   "Best matches" (fused search, only when `q` is set) then the folder
+   tree, filtered to keyword matches when `q` is set. #}
+
+{% if best_matches %}
+<div class="atlas-group atlas-best-matches">
+  <p class="eyebrow">Best matches</p>
+  <ul class="atlas-note-list">
+    {% for hit in best_matches %}
+      <li>
+        <a class="atlas-note-link{{ ' active' if hit.slug == active_slug else '' }}"
+           href="/atlas/{{ hit.slug }}{{ ('?q=' + q|urlencode) if q else '' }}">
+          <span class="atlas-note-title">{{ hit.title }}</span>
+          <span class="atlas-note-snippet muted small">{{ hit.best_chunk|search_snippet(hit.description, q, limit=140) }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{# Finding 7 (bug hunt 2026-09-18): this used to key off the ILIKE-
+   filtered tree alone, so a query with fused "Best matches" hits but no
+   exact substring hit in the tree showed "No notes match" directly above
+   a list of matches. Now only fires when BOTH groups are empty. #}
+{% if q and not groups and not best_matches %}
+  <p class="muted small atlas-empty-filter">No notes match &ldquo;{{ q }}&rdquo;.</p>
+{% endif %}
+
+{% for group in groups %}
+  <details class="atlas-folder" {% if q or group.type == active_type %}open{% endif %}>
+    <summary><span>{{ group.label }}</span><span class="mono muted small">{{ group.total }}</span></summary>
+
+    {% if group.subgroups %}
+      {% for sub in group.subgroups %}
+        <details class="atlas-subfolder" {% if q or sub.key == active_subgroup_key %}open{% endif %}>
+          <summary><span>{{ sub.label }}</span><span class="mono muted small">{{ sub.notes|length }}</span></summary>
+          <ul class="atlas-note-list">
+            {% for n in sub.notes %}
+              <li>
+                <a class="atlas-note-link{{ ' active' if n.slug == active_slug else '' }}"
+                   href="/atlas/{{ n.slug }}{{ ('?q=' + q|urlencode) if q else '' }}">{{ n.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </details>
+      {% endfor %}
+    {% else %}
+      <ul class="atlas-note-list">
+        {% for n in group.notes %}
+          <li>
+            <a class="atlas-note-link{{ ' active' if n.slug == active_slug else '' }}"
+               href="/atlas/{{ n.slug }}{{ ('?q=' + q|urlencode) if q else '' }}">{{ n.title }}</a>
+            {% if n.priority %}
+              {# Phase 3 (`01-spec/actions-and-owners-2026-09-19.md`): the
+                 same ranked "N accounts, $X ARR, regions, movement" line
+                 the weekly report's own "What needs attention" section
+                 prints for this theme -- `format_priority_stats`, plain
+                 text, code-computed. #}
+              <span class="atlas-note-snippet muted small">{{ n.priority }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if group.truncated %}
+      {# Finding 5 (bug hunt 2026-09-18): this used to drop `q` entirely,
+         so a filtered folder's own "Show all N" landed on the UNfiltered
+         `/notes?type=X` (a different, larger N than the one printed) --
+         carrying `q` through lands on the same filtered, paginated list
+         the tree itself is already narrowed to. #}
+      <a class="btn quiet small atlas-show-all" href="/notes?type={{ group.type }}{{ ('&q=' + q|urlencode) if q else '' }}">Show all {{ group.total }} &rarr;</a>
+    {% endif %}
+  </details>
+{% endfor %}

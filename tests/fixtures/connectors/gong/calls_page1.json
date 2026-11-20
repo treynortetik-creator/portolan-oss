@@ -1,0 +1,16 @@
+{
+  "calls": [
+    {
+      "id": "7782342871234567890",
+      "title": "Ashgrove Medical Center — QBR",
+      "started": "2026-08-04T14:00:00Z",
+      "duration": 1800
+    }
+  ],
+  "records": {
+    "totalRecords": 2,
+    "currentPageSize": 1,
+    "currentPageNumber": 0,
+    "cursor": "eyJwYWdlIjoxfQ=="
+  }
+}

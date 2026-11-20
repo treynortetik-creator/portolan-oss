@@ -1,0 +1,46 @@
+{# Action-note "Why" (follow-up build, 2026-09-20), shared by `note.html`
+   and the Atlas note pane (`atlas.html`, bug hunt 2026-09-22: Atlas still
+   showed the boilerplate "is an open action." synthesis and an empty
+   Claims card for a card-confirmed action). Expects `why` (`portolan.
+   report.action_why.build_why_context`) and `note_slug`. #}
+<div class="card">
+  <p class="eyebrow">Why</p>
+  {% for inf in why.inference %}
+    <p class="note-body">{{ inf.sentence }}</p>
+  {% endfor %}
+  {% if not why.inference %}
+    <p class="muted">The researcher drew no additional inference beyond the evidence below.</p>
+  {% endif %}
+
+  <p class="eyebrow" style="margin-top:20px;">Evidence</p>
+  {% for ev in why.evidence %}
+    <div class="claim">
+      <p class="claim-text">{{ ev.text|linkify_wikilinks }}</p>
+      {% if ev.quote %}<p class="claim-quote">&ldquo;{{ ev.quote }}&rdquo;</p>{% endif %}
+      <p class="claim-cite">{{ ev.source_slug }} @ {{ ev.locator }}</p>
+      <div class="claim-actions">
+        <a class="btn chip dig" href="/originals/{{ ev.source_slug }}?at={{ ev.locator|urlencode }}">Open the original at {{ ev.locator }} &rarr;</a>
+      </div>
+    </div>
+  {% endfor %}
+
+  <p class="eyebrow" style="margin-top:20px;">What the system checked</p>
+  {% if not why.findings %}
+    <p class="muted">No derived findings on this card.</p>
+  {% endif %}
+  <ul>
+    {% for f in why.findings %}
+      <li>{{ f.plain_text }}</li>
+    {% endfor %}
+  </ul>
+
+  <p class="muted small" style="margin-top:16px;">
+    Proposed by the researcher{% if why.proposed_at %} on {{ why.proposed_at|date }}{% endif %},
+    confirmed by {{ why.confirmed_by }} on {{ why.confirmed_at|date }}, confidence {{ why.confidence }}.
+  </p>
+
+  <div class="btn-row">
+    <a class="btn quiet" href="/notes/{{ note_slug }}/edit">Edit</a>
+    <a class="btn quiet" href="/notes/{{ note_slug }}.md">Download .md</a>
+  </div>
+</div>

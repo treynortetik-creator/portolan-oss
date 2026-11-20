@@ -1,0 +1,24 @@
+{
+  "id": "S-ticket-042",
+  "requester": "Aisha Bell",
+  "account": "Cobalt Ridge Medical Center",
+  "created": "2026-08-22",
+  "subject": "Tidewater T2 delivery delay",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Aisha Bell",
+      "body": "The latest Tidewater T2 shipment has arrived, but I need to report a serious delivery issue."
+    },
+    {
+      "number": 2,
+      "author": "Aisha Bell",
+      "body": "Cobalt Ridge Medical Center's second late Tidewater T2 delivery in three weeks arrived on 2026-08-22, four days behind schedule."
+    },
+    {
+      "number": 3,
+      "author": "Halvard Support",
+      "body": "We\u2019ve logged the delivery complaint for review and will follow up with the shipping team."
+    }
+  ]
+}

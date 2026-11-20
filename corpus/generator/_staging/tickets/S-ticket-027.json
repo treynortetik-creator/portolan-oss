@@ -1,0 +1,20 @@
+{
+  "subject": "Feature request: night-mode alarm volume for T3",
+  "comments": [
+    {
+      "number": 1,
+      "author": "Rob Tallis",
+      "body": "Following up on our call earlier — ⟦F19⟧our ICU would like a night-mode option that lowers the Tidewater T3's alarm volume during overnight hours⟦/F19⟧. Right now it's the same volume around the clock and it's rough on patients trying to sleep, especially in the step-down beds."
+    },
+    {
+      "number": 2,
+      "author": "Kenji Mori",
+      "body": "Thanks Rob, logging this as a formal product request on our side. It's not on the pump today, but I want this in front of the product team for the next roadmap review. Will update this ticket when I have a status."
+    },
+    {
+      "number": 3,
+      "author": "Rob Tallis",
+      "body": "Appreciate it. No rush on our end, just wanted it on record."
+    }
+  ]
+}

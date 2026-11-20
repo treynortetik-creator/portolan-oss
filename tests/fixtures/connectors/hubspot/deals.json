@@ -1,0 +1,17 @@
+{
+  "results": [
+    {
+      "id": "7001",
+      "properties": {
+        "dealname": "Ashgrove Health — HalvardCare renewal",
+        "dealstage": "negotiation",
+        "closedate": "2027-03-31T00:00:00.000Z",
+        "amount": "2350000"
+      },
+      "createdAt": "2026-01-05T00:00:00.000Z",
+      "updatedAt": "2026-08-10T08:30:00.000Z",
+      "archived": false,
+      "associations": {"companies": {"results": [{"id": "5001", "type": "deal_to_company"}]}}
+    }
+  ]
+}

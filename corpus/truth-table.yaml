@@ -1,0 +1,1010 @@
+# Portolan synthetic corpus — truth table v1.1
+# v0 written 2026-09-12 by the orchestrator session. This file is the ANSWER KEY.
+# v1.1 extension written 2026-09-13: window pushed out to 2026-09-11, three new accounts
+# (Wrenfield Health/two facilities, Driftwood Community Hospital, Anchor Bay Surgical
+# Partners), facts F37 onward. Every v0 fact id and placement is unchanged; nothing was
+# renumbered.
+# The corpus generator produces every source FROM this file; the bench scores extraction AGAINST it.
+# Everything here is fictional. Names were invented to avoid any real company, health system, or person.
+# Rule for the generator: never state a planted fact more plainly than the `phrasing` note allows.
+
+meta:
+  version: 1.1
+  schema_version: "0.1"
+  window: {start: 2026-03-02, end: 2026-09-11}
+  supplier:
+    name: Halvard Medical
+    domain: halvardmedical.com
+    what: infusion pumps and integration modules sold to hospitals and health systems
+  products:
+    - {id: tidewater, name: Tidewater, kind: product_family, aliases: [Tidewater consumables, Tidewater pumps, Tidewater line]}
+    - {id: tidewater-t2, name: Tidewater T2, aliases: [T2, the T2, Tidewater pump]}
+    - {id: tidewater-t3, name: Tidewater T3, aliases: [T3, the new pump, T3 pump]}
+    - {id: tidewater-link, name: Tidewater Link, aliases: [Link, the Link module, EHR bridge]}
+    - {id: halvardcare, name: HalvardCare service contract, aliases: [HalvardCare, the service plan]}
+  competitors:
+    - {id: corvane, name: Corvane Systems, aliases: [Corvane]}
+    - {id: brightline, name: Brightline Medical, aliases: [Brightline]}
+  internal_people:
+    - {id: sam-okafor, name: Sam Okafor, role: account rep, territory: Midwest, email: s.okafor@halvardmedical.com}
+    - {id: priya-natarajan, name: Priya Natarajan, role: account rep, territory: Northeast, email: p.natarajan@halvardmedical.com}
+    - {id: dana-whitlock, name: Dana Whitlock, role: customer success lead, email: d.whitlock@halvardmedical.com}
+    - {id: luis-ferreira, name: Luis Ferreira, role: operations manager, email: l.ferreira@halvardmedical.com}
+    - {id: kenji-mori, name: Kenji Mori, role: product manager, email: k.mori@halvardmedical.com}
+  branches:
+    - {id: dayton, name: Dayton distribution branch, serves: [ashgrove, larkspur, cobalt-ridge]}
+    - {id: columbus, name: Columbus distribution branch, serves: [northlake, meadowbrook]}
+    - {id: hartford, name: Hartford distribution branch, serves: [st-aldric, vireo, sable-valley]}
+
+# ---------------------------------------------------------------------------
+# ACCOUNTS. Hierarchy mirrors a CRM: parent → operator/system → facility.
+# crm_id is what the CRM export carries. arr is annual recurring revenue in USD.
+# ---------------------------------------------------------------------------
+accounts:
+  - {id: pinecrest, crm_id: A-1001, name: Pinecrest Health Partners, kind: capital_partner, parent: null, domain: pinecresthp.com, arr: 0, region: Midwest}
+  - {id: larkspur, crm_id: A-1002, name: Larkspur Regional Health, kind: system, parent: pinecrest, domain: larkspurhealth.org, arr: 1420000, region: Midwest, aliases: [Larkspur, Larkspur Regional]}
+  - {id: larkspur-memorial, crm_id: A-1003, name: Larkspur Memorial Hospital, kind: facility, parent: larkspur, domain: larkspurhealth.org, arr: 900000, region: Midwest, aliases: [Memorial, Larkspur Memorial]}
+  - {id: larkspur-north, crm_id: A-1004, name: Larkspur North Hospital, kind: facility, parent: larkspur, domain: larkspurhealth.org, arr: 520000, region: Midwest, aliases: [Larkspur North, North campus]}
+  - {id: ashgrove, crm_id: A-1010, name: Ashgrove Health, kind: system, parent: null, domain: ashgrovehealth.org, arr: 2350000, region: Midwest, aliases: [Ashgrove]}
+  - {id: ashgrove-medical, crm_id: A-1011, name: Ashgrove Medical Center, kind: facility, parent: ashgrove, domain: ashgrovehealth.org, arr: 1600000, region: Midwest, aliases: [AMC, Ashgrove Medical, the medical center]}
+  - {id: ashgrove-riverside, crm_id: A-1012, name: Ashgrove Riverside Hospital, kind: facility, parent: ashgrove, domain: ashgrovehealth.org, arr: 750000, region: Midwest, aliases: [Riverside, Ashgrove Riverside]}
+  - {id: cobalt-ridge, crm_id: A-1020, name: Cobalt Ridge Medical Center, kind: facility, parent: null, domain: cobaltridgemed.org, arr: 610000, region: Midwest, aliases: [Cobalt Ridge, CRMC]}
+  - {id: northlake, crm_id: A-1030, name: Northlake Health System, kind: system, parent: null, domain: northlakehs.org, arr: 1180000, region: Midwest, aliases: [Northlake]}
+  - {id: northlake-general, crm_id: A-1031, name: Northlake General Hospital, kind: facility, parent: northlake, domain: northlakehs.org, arr: 1180000, region: Midwest, aliases: [Northlake General, NGH]}
+  - {id: meadowbrook, crm_id: A-1040, name: Meadowbrook Community Hospital, kind: facility, parent: null, domain: meadowbrookch.org, arr: 340000, region: Midwest, aliases: [Meadowbrook]}
+  - {id: st-aldric, crm_id: A-1050, name: St. Aldric Health, kind: system, parent: null, domain: staldric.org, arr: 980000, region: Northeast, aliases: [St Aldric, Saint Aldric, Aldric]}
+  - {id: vireo, crm_id: A-1060, name: Vireo Surgical Group, kind: facility, parent: null, domain: vireosurgical.com, arr: 210000, region: Northeast, aliases: [Vireo]}
+  - {id: sable-valley, crm_id: A-1070, name: Sable Valley Health, kind: system, parent: null, domain: sablevalley.org, arr: 720000, region: Northeast, aliases: [Sable Valley]}
+  - {id: kestrel, crm_id: A-1080, name: Kestrel Medical Group, kind: facility, parent: null, domain: kestrelmed.com, arr: 0, region: Northeast, aliases: [Kestrel], status: churned_2026-02}
+  # --- v1.1 accounts (added 2026-09-13): one Northeast system with two facilities,
+  # one standalone Midwest hospital, one small surgical group. arr values feed the
+  # v1.1 theme linked_arr sums below (see the python-snippet comments in expectations.report).
+  - {id: wrenfield, crm_id: A-1090, name: Wrenfield Health, kind: system, parent: null, domain: wrenfieldhealth.org, arr: 1410000, region: Northeast, aliases: [Wrenfield]}
+  - {id: wrenfield-medical, crm_id: A-1091, name: Wrenfield Medical Center, kind: facility, parent: wrenfield, domain: wrenfieldhealth.org, arr: 980000, region: Northeast, aliases: [Wrenfield Medical]}
+  - {id: wrenfield-east, crm_id: A-1092, name: Wrenfield East Hospital, kind: facility, parent: wrenfield, domain: wrenfieldhealth.org, arr: 430000, region: Northeast, aliases: [Wrenfield East]}
+  - {id: driftwood, crm_id: A-1100, name: Driftwood Community Hospital, kind: facility, parent: null, domain: driftwoodch.org, arr: 450000, region: Midwest, aliases: [Driftwood]}
+  - {id: anchor-bay, crm_id: A-1110, name: Anchor Bay Surgical Partners, kind: facility, parent: null, domain: anchorbaysurgical.com, arr: 150000, region: Midwest, aliases: [Anchor Bay]}
+
+contacts:
+  - {id: maria-chen, crm_id: C-2001, name: Maria Chen, account: ashgrove, title: Director of Procurement, email: mchen@ashgrovehealth.org}
+  - {id: rob-tallis, crm_id: C-2002, name: Rob Tallis, account: ashgrove-medical, title: ICU Nurse Manager, email: rtallis@ashgrovehealth.org}
+  - {id: helen-ozoro, crm_id: C-2003, name: Helen Ozoro, account: ashgrove, title: CFO, email: hozoro@ashgrovehealth.org}
+  - {id: gwen-marsh, crm_id: C-2010, name: Gwen Marsh, account: larkspur, title: VP Supply Chain, email: gmarsh@larkspurhealth.org}
+  - {id: felix-arden, crm_id: C-2011, name: Felix Arden, account: larkspur-memorial, title: Biomed Engineering Lead, email: farden@larkspurhealth.org}
+  - {id: tom-ridley, crm_id: C-2020, name: Tom Ridley, account: cobalt-ridge, title: Materials Manager, email: tridley@cobaltridgemed.org, status: left_2026-07}
+  - {id: aisha-bell, crm_id: C-2021, name: Aisha Bell, account: cobalt-ridge, title: Materials Manager, email: abell@cobaltridgemed.org, status: added_2026-08}
+  - {id: derek-hollis, crm_id: C-2030, name: Derek Hollis, account: northlake, title: Director of Clinical Engineering, email: dhollis@northlakehs.org}
+  - {id: june-park, crm_id: C-2040, name: June Park, account: meadowbrook, title: Pharmacy Director, email: jpark@meadowbrookch.org}
+  - {id: owen-castellane, crm_id: C-2050, name: Owen Castellane, account: st-aldric, title: VP Operations, email: ocastellane@staldric.org}
+  - {id: nina-vale, crm_id: C-2060, name: Nina Vale, account: vireo, title: Practice Administrator, email: nvale@vireosurgical.com, status: left_2026-08}
+  - {id: paul-strand, crm_id: C-2070, name: Paul Strand, account: sable-valley, title: Director of Nursing Informatics, email: pstrand@sablevalley.org}
+  # --- v1.1 contacts (added 2026-09-13), for the three new accounts ---
+  - {id: yolanda-pierce, crm_id: C-2080, name: Yolanda Pierce, account: wrenfield, title: VP Supply Chain, email: ypierce@wrenfieldhealth.org}
+  - {id: marcus-diallo, crm_id: C-2081, name: Marcus Diallo, account: wrenfield-medical, title: Biomed Engineering Lead, email: mdiallo@wrenfieldhealth.org}
+  - {id: sophie-lund, crm_id: C-2082, name: Sophie Lund, account: wrenfield-east, title: Materials Manager, email: slund@wrenfieldhealth.org}
+  - {id: carlos-nunez, crm_id: C-2090, name: Carlos Nunez, account: driftwood, title: Director of Pharmacy, email: cnunez@driftwoodch.org}
+  - {id: renee-castillo, crm_id: C-2100, name: Renee Castillo, account: anchor-bay, title: Practice Administrator, email: rcastillo@anchorbaysurgical.com}
+  # Succeeds Nina Vale at Vireo (F60, contact_change) -- added to the CRM mid-window,
+  # same pattern as aisha-bell's status: added_2026-08 above.
+  - {id: diego-ramos, crm_id: C-2120, name: Diego Ramos, account: vireo, title: Practice Administrator, email: dramos@vireosurgical.com, status: added_2026-08}
+  # NOT in the CRM on purpose: tests the unknown-entity queue. Same person as maria-chen, personal address.
+  - {id: maria-chen-personal, crm_id: null, name: Maria Chen, account: ashgrove, email: maria.chen.ohio@gmail.com, note: not_in_crm}
+
+# ---------------------------------------------------------------------------
+# PLANTED FACTS. One row per atomic fact. `sources` lists where the generator must plant it.
+# `phrasing` constrains how plainly it may be stated. `tests` names what the fact exercises.
+# Types: complaint request praise risk competitor_mention commitment decision contact_change pricing usage question other
+# ---------------------------------------------------------------------------
+facts:
+  # --- The rising theme: late deliveries, Midwest, Dayton and Columbus branches, escalating through August 2026 ---
+  - id: F01
+    type: complaint
+    claim: 'Ashgrove Medical Center received two late Tidewater T2 consumable deliveries in the week of 2026-07-27.'
+    entities: [ashgrove-medical, tidewater-t2]
+    date: 2026-07-30
+    sources: [{id: S-call-007, type: call, speaker: rob-tallis, position: middle}]
+    phrasing: '"two shipments showed up days late"; do not say the branch name'
+    tests: [theme_week1, middle_of_transcript]
+  - id: F02
+    type: complaint
+    claim: 'Larkspur Memorial Hospital reported a Tidewater T2 consumable delivery arriving four days late on 2026-08-04.'
+    entities: [larkspur-memorial, tidewater-t2]
+    date: 2026-08-05
+    sources: [{id: S-ticket-031, type: ticket, speaker: felix-arden}, {id: S-call-009, type: call, speaker: felix-arden, position: early}]
+    phrasing: 'ticket says "4 days late"; the call says "that late order last week"'
+    tests: [theme_week2, cross_source_dedup]
+  - id: F03
+    type: complaint
+    claim: 'Cobalt Ridge Medical Center had a Tidewater T2 delivery arrive three days late on 2026-08-06 and had to borrow consumables from Larkspur Memorial.'
+    entities: [cobalt-ridge, larkspur-memorial, tidewater-t2]
+    date: 2026-08-07
+    sources: [{id: S-email-052, type: email, speaker: aisha-bell}]
+    phrasing: 'mentions "Larkspur" only, not "Memorial"'
+    tests: [theme_week2, ambiguous_alias_larkspur]
+  - id: F04
+    type: complaint
+    claim: 'Northlake General Hospital received a Tidewater T3 delivery two days late on 2026-08-11 and a second one three days late on 2026-08-13.'
+    entities: [northlake-general, tidewater-t3]
+    date: 2026-08-14
+    sources: [{id: S-call-011, type: call, speaker: derek-hollis, position: middle}]
+    phrasing: 'two separate mentions twenty minutes apart in the same call; extractor should produce ONE fact or two facts with the same locator window'
+    tests: [theme_week3, within_source_dedup]
+  - id: F05
+    type: complaint
+    claim: 'Meadowbrook Community Hospital''s Tidewater T2 consumable order of 2026-08-12 arrived five days late.'
+    entities: [meadowbrook, tidewater-t2]
+    date: 2026-08-18
+    sources: [{id: S-ticket-038, type: ticket, speaker: june-park}]
+    tests: [theme_week3]
+  - id: F06
+    type: risk
+    claim: 'Ashgrove Health''s CFO said on 2026-08-20 that continued late deliveries would be raised at the 2027 renewal.'
+    entities: [ashgrove, halvardcare]
+    date: 2026-08-20
+    sources: [{id: S-call-013, type: call, speaker: helen-ozoro, position: late}]
+    phrasing: '"this is going to come up when we talk about next year"'
+    tests: [theme_week4, risk_without_keyword]
+  - id: F07
+    type: other
+    claim: 'The Dayton distribution branch was short two drivers from 2026-07-27 through 2026-08-22, per Halvard''s operations manager.'
+    entities: [dayton]
+    date: 2026-08-22
+    sources: [{id: S-email-061, type: email, speaker: luis-ferreira, internal_only: true}]
+    phrasing: 'internal ops email, no customer and no product named'
+    tests: [excluded_stream_sample]   # the customer filter should EXCLUDE this; the sample audit should surface it
+  - id: F08
+    type: other
+    claim: 'The Columbus distribution branch''s carrier changed on 2026-08-03, per Halvard''s operations manager.'
+    entities: [columbus]
+    date: 2026-08-25
+    sources: [{id: S-email-062, type: email, speaker: luis-ferreira, internal_only: true}]
+    phrasing: 'mentions "Tidewater consumables" once, so the registry scan should catch it'
+    tests: [registry_scan_includes]
+  - id: F09
+    type: commitment
+    claim: 'Sam Okafor promised Ashgrove Health a written delivery root-cause summary by 2026-08-28.'
+    entities: [ashgrove, sam-okafor]
+    date: 2026-08-20
+    sources: [{id: S-call-013, type: call, speaker: sam-okafor, position: late}]
+    tests: [action_extraction, owner_internal]
+  - id: F10
+    type: praise
+    claim: 'Larkspur Memorial''s biomed lead said on 2026-08-05 that Halvard''s field engineer response to the July pump alarm issue was "the fastest we''ve had from any vendor".'
+    entities: [larkspur-memorial, tidewater-t2]
+    date: 2026-08-05
+    sources: [{id: S-call-009, type: call, speaker: felix-arden, position: middle}]
+    tests: [praise_in_same_call_as_complaint]
+
+  # --- Contract, pricing, renewal; includes a reversal for the two-clocks test ---
+  - id: F11
+    type: decision
+    claim: 'Ashgrove Health''s HalvardCare contract renews on 2027-03-31.'
+    entities: [ashgrove, halvardcare]
+    date: 2026-04-14
+    valid_from: 2026-04-14
+    sources: [{id: S-crm-opp-A1010, type: crm}, {id: S-call-003, type: call, speaker: maria-chen, position: early}]
+    tests: [crm_and_call_agree]
+  - id: F11b
+    type: decision
+    claim: 'Ashgrove Health''s HalvardCare renewal was moved to 2027-06-30 at Ashgrove''s request on 2026-08-20.'
+    entities: [ashgrove, halvardcare]
+    date: 2026-08-20
+    valid_from: 2026-08-20
+    supersedes: F11
+    sources: [{id: S-call-013, type: call, speaker: helen-ozoro, position: middle}, {id: S-crm-opp-A1010-v2, type: crm}]
+    tests: [two_clocks_supersession]
+  - id: F12
+    type: pricing
+    claim: 'Larkspur Regional Health expects a 12 percent volume discount on Tidewater T2 consumables at the 2027 renewal.'
+    entities: [larkspur, tidewater-t2]
+    date: 2026-06-09
+    sources: [{id: S-call-005, type: call, speaker: gwen-marsh, position: middle}]
+    phrasing: '"we''d be looking for something around twelve points off"'
+    tests: [pricing_without_keyword]
+  - id: F13
+    type: pricing
+    claim: 'St. Aldric Health''s 2026 HalvardCare invoice of 2026-05-01 was disputed for a duplicated line item of 4,800 dollars.'
+    entities: [st-aldric, halvardcare]
+    date: 2026-05-12
+    sources: [{id: S-ticket-019, type: ticket, speaker: owen-castellane}]
+    tests: [ticket_pricing]
+  - id: F14
+    type: risk
+    claim: 'Sable Valley Health froze new capital equipment purchases from 2026-07-01 through the end of 2026.'
+    entities: [sable-valley]
+    date: 2026-07-08
+    valid_from: 2026-07-01
+    valid_to: 2026-12-31
+    sources: [{id: S-call-006, type: call, speaker: paul-strand, position: early}]
+    tests: [validity_window]
+
+  # --- Competitors, including a reversal for the two-clocks test ---
+  - id: F15
+    type: competitor_mention
+    claim: 'Northlake Health System said on 2026-06-17 that it was not evaluating other pump vendors.'
+    entities: [northlake]
+    date: 2026-06-17
+    sources: [{id: S-call-004, type: call, speaker: derek-hollis, position: late}]
+    phrasing: '"we''re not shopping around"'
+    tests: [negative_competitor_mention]
+  - id: F15b
+    type: competitor_mention
+    claim: 'Northlake Health System began evaluating Corvane Systems pumps for Northlake General''s new tower in 2026-08.'
+    entities: [northlake, northlake-general, corvane]
+    date: 2026-08-14
+    supersedes: F15
+    sources: [{id: S-call-011, type: call, speaker: derek-hollis, position: late}]
+    phrasing: '"we''ve had Corvane in to demo for the tower"'
+    tests: [two_clocks_supersession, competitor_named]
+  - id: F16
+    type: competitor_mention
+    claim: 'Vireo Surgical Group received a Brightline Medical proposal in 2026-05 and considered it 15 percent cheaper than Halvard''s.'
+    entities: [vireo, brightline]
+    date: 2026-05-20
+    sources: [{id: S-email-030, type: email, speaker: nina-vale}]
+    tests: [competitor_with_price]
+  - id: F17
+    type: competitor_mention
+    claim: 'Meadowbrook Community Hospital''s pharmacy director said on 2026-07-15 that they had "been looking at some other options" for pumps.'
+    entities: [meadowbrook]
+    date: 2026-07-15
+    sources: [{id: S-call-008, type: call, speaker: june-park, position: middle}]
+    phrasing: 'no competitor named, no word "competitor"'
+    tests: [competitor_mention_paraphrased]
+  - id: F18
+    type: competitor_mention
+    claim: 'Corvane Systems issued a voluntary recall of its C-40 pump line on 2026-08-26, per an industry news feed.'
+    entities: [corvane]
+    date: 2026-08-26
+    sources: [{id: S-rss-004, type: rss}]
+    tests: [rss_industry_news]
+
+  # --- Requests and product feedback ---
+  - id: F19
+    type: request
+    claim: 'Ashgrove Medical Center''s ICU asked for a night-mode alarm volume on the Tidewater T3.'
+    entities: [ashgrove-medical, tidewater-t3]
+    date: 2026-07-30
+    sources: [{id: S-call-007, type: call, speaker: rob-tallis, position: late}, {id: S-ticket-027, type: ticket, speaker: rob-tallis}]
+    tests: [cross_source_dedup, request]
+  - id: F20
+    type: request
+    claim: 'Larkspur Regional Health asked for Tidewater Link integration with its Epic instance by 2027-01.'
+    entities: [larkspur, tidewater-link]
+    date: 2026-06-09
+    sources: [{id: S-call-005, type: call, speaker: gwen-marsh, position: late}]
+    tests: [request_with_date]
+  - id: F21
+    type: request
+    claim: 'St. Aldric Health asked for a Spanish-language quick-start card for the Tidewater T2.'
+    entities: [st-aldric, tidewater-t2]
+    date: 2026-04-22
+    sources: [{id: S-email-021, type: email, speaker: owen-castellane}]
+    tests: [request_email]
+  - id: F22
+    type: question
+    claim: 'Northlake Health System asked on 2026-06-17 whether the Tidewater T3 supports Cerner integration and did not receive an answer.'
+    entities: [northlake, tidewater-t3]
+    date: 2026-06-17
+    sources: [{id: S-call-004, type: call, speaker: derek-hollis, position: middle}]
+    phrasing: 'the rep says "let me check on that" and the call moves on'
+    tests: [unanswered_question]
+  - id: F23
+    type: complaint
+    claim: 'Larkspur North Hospital reported Tidewater T2 occlusion alarms triggering falsely on three pumps in 2026-07.'
+    entities: [larkspur-north, tidewater-t2]
+    date: 2026-07-09
+    sources: [{id: S-ticket-024, type: ticket, speaker: felix-arden}]
+    tests: [product_complaint_not_delivery]
+  - id: F24
+    type: praise
+    claim: 'Sable Valley Health''s nursing informatics director called Tidewater Link''s HL7 feed "flawless since go-live" on 2026-07-08.'
+    entities: [sable-valley, tidewater-link]
+    date: 2026-07-08
+    sources: [{id: S-call-006, type: call, speaker: paul-strand, position: middle}]
+    tests: [praise]
+
+  # --- Usage ---
+  - id: F25
+    type: usage
+    claim: 'Ashgrove Medical Center runs eleven Tidewater T3 pumps across two ICUs as of 2026-07-30.'
+    entities: [ashgrove-medical, tidewater-t3]
+    date: 2026-07-30
+    sources: [{id: S-call-007, type: call, speaker: rob-tallis, position: early}]
+    tests: [usage_count]
+  - id: F26
+    type: usage
+    claim: 'Larkspur Memorial Hospital has forty Tidewater T2 pumps and is trialling four T3 units as of 2026-08-05.'
+    entities: [larkspur-memorial, tidewater-t2, tidewater-t3]
+    date: 2026-08-05
+    sources: [{id: S-call-009, type: call, speaker: felix-arden, position: late}]
+    tests: [usage_two_products]
+  - id: F27
+    type: usage
+    claim: 'Vireo Surgical Group uses Tidewater T2 pumps in two operating rooms and none in recovery as of 2026-05-20.'
+    entities: [vireo, tidewater-t2]
+    date: 2026-05-20
+    sources: [{id: S-email-030, type: email, speaker: nina-vale}]
+    tests: [usage_negative]
+
+  # --- Contact changes, including one from the LinkedIn feed and one from a personal email ---
+  - id: F28
+    type: contact_change
+    claim: 'Tom Ridley left Cobalt Ridge Medical Center in 2026-07; Aisha Bell became Materials Manager.'
+    entities: [cobalt-ridge, tom-ridley, aisha-bell]
+    date: 2026-08-07
+    sources: [{id: S-email-052, type: email, speaker: aisha-bell}]
+    phrasing: 'Aisha introduces herself as "taking over from Tom"'
+    tests: [contact_change_email, new_contact_in_crm]
+  - id: F29
+    type: contact_change
+    claim: 'Larkspur Regional Health appointed a new Chief Financial Officer, Renata Solis, effective 2026-09-01.'
+    entities: [larkspur]
+    date: 2026-09-02
+    sources: [{id: S-rss-006, type: rss}]
+    tests: [rss_linkedin, unknown_entity_queue]
+  - id: F30
+    type: contact_change
+    claim: 'Maria Chen moved from Director of Procurement to Director of Clinical Operations at Ashgrove Health in 2026-08.'
+    entities: [ashgrove, maria-chen]
+    date: 2026-08-24
+    sources: [{id: S-email-058, type: email, speaker: maria-chen-personal}]
+    phrasing: 'sent from her personal gmail address, which is not in the CRM'
+    tests: [personal_email_unknown_entity, alias_resolution_by_name]
+
+  # --- Decisions and commitments ---
+  - id: F31
+    type: decision
+    claim: 'Larkspur Regional Health decided on 2026-06-09 to standardise both hospitals on the Tidewater T3 by 2027-06.'
+    entities: [larkspur, larkspur-memorial, larkspur-north, tidewater-t3]
+    date: 2026-06-09
+    sources: [{id: S-call-005, type: call, speaker: gwen-marsh, position: early}]
+    tests: [decision_hierarchy_rollup]
+  - id: F32
+    type: commitment
+    claim: 'Dana Whitlock committed to a quarterly business review with Northlake Health System starting 2026-10.'
+    entities: [northlake, dana-whitlock]
+    date: 2026-08-14
+    sources: [{id: S-call-011, type: call, speaker: dana-whitlock, position: early}]
+    tests: [commitment_internal]
+  - id: F33
+    type: commitment
+    claim: 'Cobalt Ridge Medical Center agreed to pilot two Tidewater T3 units in its emergency department from 2026-10-01.'
+    entities: [cobalt-ridge, tidewater-t3]
+    date: 2026-08-28
+    sources: [{id: S-call-014, type: call, speaker: aisha-bell, position: middle}]
+    tests: [commitment_customer]
+  - id: F34
+    type: decision
+    claim: 'Kestrel Medical Group ended its Halvard relationship in 2026-02 after moving to Brightline Medical.'
+    entities: [kestrel, brightline]
+    date: 2026-03-04
+    sources: [{id: S-crm-A1080, type: crm}, {id: S-email-005, type: email, speaker: priya-natarajan, internal_only: true}]
+    tests: [churned_account_history, internal_email_names_customer]
+
+  # --- Facts that exist ONLY in the CRM export ---
+  # 2026-09-18 sanity audit (`01-spec/sanity-audit-2026-09-18.md`, model-sweep
+  # finding folded in): this fact and F68 originally planted "as of
+  # 2026-09-01", a date `accounts.csv` cannot support (the row has no date
+  # column at all) and that does not match this source's own manifest/
+  # envelope date (2026-09-11, `corpus/out/manifest.json`'s `sources[].date`
+  # for S-crm-A1010) either -- no faithful reading of the source could ever
+  # have produced 2026-09-01. Corrected to 2026-09-11, the CRM export's own
+  # snapshot date, the only date this row's ARR figure can honestly be "as
+  # of". Wave 1A's truth-table review (`01-spec/harness-review-2026-09-18.md`
+  # section 1) passed the truth table clean; its own manual-read step
+  # checked the ARR *number* against `accounts.csv` but did not cross-check
+  # this *date* against the source's envelope date, which is why this
+  # slipped through that pass.
+  - id: F35
+    type: other
+    claim: 'Ashgrove Health''s annual recurring revenue with Halvard is 2,350,000 dollars as of 2026-09-11.'
+    entities: [ashgrove]
+    date: 2026-09-11
+    sources: [{id: S-crm-A1010, type: crm}]
+    tests: [crm_only, arr_rollup_source]
+  - id: F36
+    type: other
+    claim: 'Larkspur Regional Health is owned by Pinecrest Health Partners.'
+    entities: [larkspur, pinecrest]
+    date: 2026-03-02
+    sources: [{id: S-crm-A1002, type: crm}]
+    tests: [parent_chain]
+
+# ---------------------------------------------------------------------------
+# v1.1 FACTS (added 2026-09-13, F37 onward). Four consecutive weeks -- 2026-08-10,
+# 08-17, 08-24, 08-31 -- each carry 6-10 new facts. Three arcs:
+#   1. The late-deliveries theme (F01-F06) peaks the week of 08-17, then is resolved
+#      by 09-01 (F61: Dayton hires two drivers; F62-F65: praise about on-time delivery).
+#   2. A second theme rises in late August: three accounts (St. Aldric, Wrenfield,
+#      Driftwood) ask for Tidewater Link/Epic integration (F39, F40/F40b, F50, F56, F57,
+#      F58, F67).
+#   3. A pricing-pushback cluster in the week of 08-24: three accounts (Cobalt Ridge,
+#      Larkspur, Anchor Bay) ask for discounts (F52, F53, F54).
+# Plus: two more contact changes (F59, F60), two more actions with owner+due date
+# (F57, F58), and one more reversal for the two-clocks test (F40 -> F40b).
+# ---------------------------------------------------------------------------
+
+  # --- Week of 2026-08-10: delivery theme keeps building; the Epic-integration theme
+  # (theme 2) and its reversal-pair seed both start this week. ---
+  - id: F37
+    type: complaint
+    claim: 'Cobalt Ridge Medical Center''s second Tidewater T2 delivery of the month was four days overdue on 2026-08-11.'
+    entities: [cobalt-ridge, tidewater-t2]
+    date: 2026-08-11
+    sources: [{id: S-ticket-039, type: ticket, speaker: aisha-bell}]
+    phrasing: '"another late shipment, four days out"'
+    tests: [theme_week1_continued]
+  - id: F38
+    type: complaint
+    claim: 'Larkspur North Hospital''s Tidewater T2 consumable order placed 2026-08-08 arrived three days late.'
+    entities: [larkspur-north, tidewater-t2]
+    date: 2026-08-11
+    sources: [{id: S-email-063, type: email, speaker: felix-arden}]
+    tests: [theme_week1_continued]
+  - id: F39
+    type: request
+    claim: 'St. Aldric Health asked whether Tidewater Link could integrate with its Epic instance, the first of three such requests.'
+    entities: [st-aldric, tidewater-link]
+    date: 2026-08-12
+    sources: [{id: S-call-015, type: call, speaker: owen-castellane, position: early}]
+    phrasing: '"could the Link module talk to our Epic instance?"'
+    tests: [theme2_new, request_with_date]
+  - id: F40
+    # type: request (not decision) -- deliberately the SAME fact type as F39/F50/F56,
+    # the other two Tidewater Link/Epic asks, so all three accounts' claims share
+    # portolan/report/themes.py's dominant_fact_type hard gate and can cluster into
+    # one theme (a fact-type mismatch here would silently split Wrenfield out of the
+    # "three accounts" theme into its own unclustered claim -- not this project's file
+    # to edit, so the truth table works around it instead).
+    type: request
+    claim: 'Wrenfield Health told Halvard on 2026-08-10 that it would defer any Tidewater Link/Epic integration discussion until 2027, effectively asking to shelve the request.'
+    entities: [wrenfield, tidewater-link]
+    date: 2026-08-10
+    valid_from: 2026-08-10
+    sources: [{id: S-call-016, type: call, speaker: yolanda-pierce, position: early}]
+    phrasing: '"let''s revisit that in 2027"'
+    tests: [two_clocks_supersession_setup]
+  - id: F40b
+    type: request
+    claim: 'Wrenfield Health reversed course on 2026-08-24 and asked Halvard to begin Tidewater Link integration with its Epic instance immediately.'
+    entities: [wrenfield, tidewater-link]
+    date: 2026-08-24
+    valid_from: 2026-08-24
+    supersedes: F40
+    sources: [{id: S-call-020, type: call, speaker: yolanda-pierce, position: middle}]
+    phrasing: '"we need to move on the Epic integration now, not next year"'
+    tests: [two_clocks_supersession, theme2_rising]
+  - id: F41
+    type: usage
+    claim: 'Wrenfield Medical Center runs eighteen Tidewater T2 pumps across its ICU and med-surg floors as of 2026-08-11.'
+    entities: [wrenfield-medical, tidewater-t2]
+    date: 2026-08-11
+    sources: [{id: S-call-016, type: call, speaker: yolanda-pierce, position: middle}]
+    tests: [usage_count]
+  - id: F42
+    type: competitor_mention
+    claim: 'Driftwood Community Hospital said on 2026-08-13 that it had briefly compared Corvane Systems pumps last year but it "never went anywhere."'
+    entities: [driftwood, corvane]
+    date: 2026-08-13
+    sources: [{id: S-call-017, type: call, speaker: carlos-nunez, position: middle}]
+    phrasing: '"never went anywhere"'
+    tests: [competitor_with_price]
+  - id: F43
+    type: praise
+    claim: 'Driftwood Community Hospital''s pharmacy director called the Tidewater T2''s dosing accuracy "spot on every time" on 2026-08-13.'
+    entities: [driftwood, tidewater-t2]
+    date: 2026-08-13
+    sources: [{id: S-call-017, type: call, speaker: carlos-nunez, position: late}]
+    tests: [praise]
+
+  # --- Week of 2026-08-17: the late-deliveries theme PEAKS. ---
+  - id: F44
+    # entities/product: tidewater-t2, not t3 (changed 2026-09-13) -- keeps this
+    # complaint in the SAME emergent product family as the theme's other
+    # founding members for portolan/report/themes.py's clustering (a second
+    # T3 complaint alongside F49/northlake-general split "Late deliveries,
+    # Midwest" into two emergent clusters instead of one; see
+    # tests/test_report_themes.py's REQUIRED_ACCOUNTS note).
+    type: complaint
+    claim: 'Ashgrove Riverside Hospital''s Tidewater T2 consumable delivery arrived five days late on 2026-08-18.'
+    entities: [ashgrove-riverside, tidewater-t2]
+    date: 2026-08-19
+    sources: [{id: S-ticket-040, type: ticket, speaker: maria-chen}]
+    tests: [theme_week2_peak]
+  - id: F45
+    type: complaint
+    claim: 'Meadowbrook Community Hospital had a second late Tidewater T2 delivery, four days behind schedule, on 2026-08-19.'
+    entities: [meadowbrook, tidewater-t2]
+    date: 2026-08-20
+    sources: [{id: S-email-064, type: email, speaker: june-park}]
+    tests: [theme_week2_peak]
+  - id: F46
+    type: other
+    claim: 'The Dayton distribution branch''s on-time delivery rate fell to 61 percent for the two weeks ending 2026-08-20, per Halvard''s operations manager.'
+    entities: [dayton]
+    date: 2026-08-21
+    sources: [{id: S-email-065, type: email, speaker: luis-ferreira, internal_only: true}]
+    phrasing: 'internal ops email, no customer and no product named'
+    tests: [excluded_stream_sample, theme_peak_internal_metric]
+  - id: F47
+    type: risk
+    claim: 'Larkspur Memorial Hospital''s biomed lead said on 2026-08-19 that if deliveries did not stabilize by September, he would recommend Larkspur pilot a second consumables supplier.'
+    entities: [larkspur-memorial, tidewater-t2]
+    date: 2026-08-19
+    sources: [{id: S-call-018, type: call, speaker: felix-arden, position: late}]
+    phrasing: '"we''d need to look at a second supplier for consumables"'
+    tests: [theme_week2_peak, risk_without_keyword]
+  - id: F48
+    type: commitment
+    claim: 'Sam Okafor committed to a joint call with Halvard''s operations team and Larkspur Memorial by 2026-08-27 to review the delivery root cause.'
+    entities: [larkspur-memorial, sam-okafor]
+    date: 2026-08-19
+    sources: [{id: S-call-018, type: call, speaker: sam-okafor, position: late}]
+    tests: [commitment_internal]
+  - id: F49
+    type: complaint
+    claim: 'Northlake General Hospital''s Tidewater T3 order of 2026-08-15 arrived three days late, the third late delivery in three weeks.'
+    entities: [northlake-general, tidewater-t3]
+    date: 2026-08-18
+    sources: [{id: S-ticket-041, type: ticket, speaker: derek-hollis}]
+    tests: [theme_week2_peak]
+  - id: F50
+    type: request
+    claim: 'St. Aldric Health followed up on 2026-08-21 asking for a firm timeline on the Tidewater Link Epic integration, the second of three such requests.'
+    entities: [st-aldric, tidewater-link]
+    date: 2026-08-21
+    sources: [{id: S-email-066, type: email, speaker: owen-castellane}]
+    tests: [theme2_rising]
+  - id: F51
+    type: complaint
+    claim: 'Cobalt Ridge Medical Center''s second late Tidewater T2 delivery in three weeks arrived on 2026-08-22, four days behind schedule.'
+    entities: [cobalt-ridge, tidewater-t2]
+    date: 2026-08-22
+    sources: [{id: S-ticket-042, type: ticket, speaker: aisha-bell}]
+    tests: [theme_week2_peak]
+
+  # --- Week of 2026-08-24: pricing-pushback cluster (theme 3); Epic-integration
+  # theme keeps rising, including its reversal (F40b, above) and the third account. ---
+  - id: F52
+    type: pricing
+    claim: 'Cobalt Ridge Medical Center''s materials manager said on 2026-08-24 that "after last month" the account expects a delivery-delay credit on its next HalvardCare invoice.'
+    entities: [cobalt-ridge, halvardcare]
+    date: 2026-08-24
+    sources: [{id: S-call-019, type: call, speaker: aisha-bell, position: early}]
+    phrasing: '"we''d expect some kind of credit on the account"'
+    tests: [theme3_pricing_cluster]
+  - id: F53
+    type: pricing
+    claim: 'Larkspur Regional Health''s VP Supply Chain reiterated on 2026-08-25 that the 12 percent volume discount "isn''t optional anymore" given the delivery issues.'
+    entities: [larkspur, tidewater-t2]
+    date: 2026-08-25
+    sources: [{id: S-email-067, type: email, speaker: gwen-marsh}]
+    tests: [theme3_pricing_cluster, pricing_escalation]
+  - id: F54
+    type: pricing
+    claim: 'Anchor Bay Surgical Partners'' practice administrator asked on 2026-08-26 for a small-volume discount on Tidewater T2 consumables, citing budget pressure.'
+    entities: [anchor-bay, tidewater-t2]
+    date: 2026-08-26
+    sources: [{id: S-ticket-043, type: ticket, speaker: renee-castillo}]
+    tests: [theme3_pricing_cluster]
+  - id: F56
+    type: request
+    claim: 'Driftwood Community Hospital''s pharmacy director asked on 2026-08-27 for a Tidewater Link connection to its Epic instance, the third of three such requests.'
+    entities: [driftwood, tidewater-link]
+    date: 2026-08-27
+    sources: [{id: S-email-068, type: email, speaker: carlos-nunez}]
+    tests: [theme2_rising, three_accounts_epic]
+  - id: F57
+    type: commitment
+    claim: 'Priya Natarajan promised Wrenfield Health a Tidewater Link/Epic integration test plan by 2026-09-10.'
+    entities: [wrenfield, priya-natarajan]
+    date: 2026-08-24
+    sources: [{id: S-call-020, type: call, speaker: priya-natarajan, position: late}]
+    tests: [action_extraction, owner_internal, action_with_due_date]
+  - id: F58
+    type: commitment
+    claim: 'Dana Whitlock committed to sending Driftwood Community Hospital a formal Tidewater Link project timeline by 2026-09-05.'
+    entities: [driftwood, dana-whitlock]
+    date: 2026-08-28
+    sources: [{id: S-email-069, type: email, speaker: dana-whitlock}]
+    tests: [action_extraction, owner_internal, action_with_due_date]
+  - id: F59
+    type: contact_change
+    claim: 'Northlake Health System''s Derek Hollis was promoted from Director of Clinical Engineering to VP of Facilities effective 2026-08-24.'
+    entities: [northlake, derek-hollis]
+    date: 2026-08-25
+    sources: [{id: S-rss-007, type: rss}]
+    tests: [rss_linkedin, contact_change_title_only]
+  - id: F60
+    type: contact_change
+    claim: 'Vireo Surgical Group''s practice administrator Nina Vale left in 2026-08; Diego Ramos succeeded her.'
+    entities: [vireo, nina-vale, diego-ramos]
+    date: 2026-08-29
+    sources: [{id: S-email-070, type: email, speaker: diego-ramos}]
+    phrasing: 'Diego introduces himself as "stepping in for Nina"'
+    tests: [contact_change_email, new_contact_in_crm]
+
+  # --- Week of 2026-08-31: late-deliveries theme RESOLVED (Dayton hires two drivers,
+  # then praise about on-time delivery). ---
+  - id: F61
+    type: decision
+    claim: 'Halvard''s operations manager confirmed on 2026-08-31 that the Dayton distribution branch hired two additional drivers, effective 2026-08-25.'
+    entities: [dayton]
+    date: 2026-08-31
+    sources: [{id: S-call-021, type: call, speaker: sam-okafor, position: early}]
+    phrasing: '"we brought on two more drivers out of Dayton"'
+    tests: [theme_resolution]
+  - id: F62
+    type: praise
+    claim: 'Ashgrove Medical Center''s ICU nurse manager said on 2026-08-31 that the last two Tidewater T2 deliveries "came in right on schedule."'
+    entities: [ashgrove-medical, tidewater-t2]
+    date: 2026-08-31
+    sources: [{id: S-call-021, type: call, speaker: rob-tallis, position: late}]
+    tests: [theme_resolution, praise]
+  - id: F63
+    type: praise
+    claim: 'Larkspur Memorial Hospital''s biomed lead confirmed on 2026-09-02 that deliveries had been on time for two straight weeks and he was "dropping the second-supplier idea for now."'
+    entities: [larkspur-memorial, tidewater-t2]
+    date: 2026-09-02
+    sources: [{id: S-email-071, type: email, speaker: felix-arden}]
+    tests: [theme_resolution, praise, risk_walked_back]
+  - id: F64
+    type: praise
+    claim: 'Cobalt Ridge Medical Center''s materials manager said on 2026-09-03 that its last Tidewater T2 order "showed up exactly when promised."'
+    entities: [cobalt-ridge, tidewater-t2]
+    date: 2026-09-03
+    sources: [{id: S-ticket-044, type: ticket, speaker: aisha-bell}]
+    tests: [theme_resolution, praise]
+  - id: F65
+    type: praise
+    claim: 'Meadowbrook Community Hospital''s pharmacy director said on 2026-09-04 that the delivery issues from August "seem to be behind us."'
+    entities: [meadowbrook, tidewater-t2]
+    date: 2026-09-04
+    sources: [{id: S-email-072, type: email, speaker: june-park}]
+    tests: [theme_resolution, praise]
+  - id: F66
+    type: usage
+    claim: 'Anchor Bay Surgical Partners uses six Tidewater T2 pumps across two operating rooms as of 2026-09-01.'
+    entities: [anchor-bay, tidewater-t2]
+    date: 2026-09-01
+    sources: [{id: S-ticket-045, type: ticket, speaker: renee-castillo}]
+    tests: [usage_count]
+  - id: F67
+    type: question
+    claim: 'Wrenfield East Hospital asked on 2026-09-05 whether the Tidewater Link integration timeline applied to its facility too, and did not receive an answer in the same thread.'
+    entities: [wrenfield-east, tidewater-link]
+    date: 2026-09-05
+    sources: [{id: S-email-073, type: email, speaker: sophie-lund}]
+    phrasing: 'the thread ends without a reply from Halvard'
+    tests: [unanswered_question]
+
+  # --- Facts that exist ONLY in the CRM export (v1.1) ---
+  # 2026-09-18 sanity audit: same fix as F35 above, same reason -- "as of
+  # 2026-09-01" corrected to this source's own manifest/envelope date,
+  # 2026-09-11 (S-crm-A1090).
+  - id: F68
+    type: other
+    claim: 'Wrenfield Health''s annual recurring revenue with Halvard is 1,410,000 dollars as of 2026-09-11.'
+    entities: [wrenfield]
+    date: 2026-09-11
+    sources: [{id: S-crm-A1090, type: crm}]
+    tests: [crm_only, arr_rollup_source]
+  - id: F69
+    type: other
+    claim: 'Wrenfield Medical Center is owned by Wrenfield Health.'
+    entities: [wrenfield-medical, wrenfield]
+    date: 2026-08-01
+    sources: [{id: S-crm-A1091, type: crm}]
+    tests: [parent_chain]
+
+  # --- More requests / competitor color (v1.1), not tied to a specific week bucket ---
+  - id: F70
+    type: competitor_mention
+    claim: 'Anchor Bay Surgical Partners mentioned on 2026-08-15 that a Brightline Medical rep had reached out but "we haven''t taken a meeting."'
+    entities: [anchor-bay, brightline]
+    date: 2026-08-15
+    sources: [{id: S-email-074, type: email, speaker: renee-castillo}]
+    tests: [competitor_mention_paraphrased]
+  - id: F71
+    type: request
+    claim: 'Driftwood Community Hospital asked on 2026-08-06 for a review of its bulk-consumables reorder threshold.'
+    entities: [driftwood, tidewater-t2]
+    date: 2026-08-06
+    sources: [{id: S-ticket-046, type: ticket, speaker: carlos-nunez}]
+    tests: [request]
+
+  # --- Distractors: things that look like facts and must NOT be extracted as customer facts ---
+  - id: D01
+    type: distractor
+    claim: 'An industry newsletter item about a "Riverside Clinic" in Oregon adopting a competitor''s pump. Not our Ashgrove Riverside.'
+    sources: [{id: S-rss-002, type: rss}]
+    tests: [alias_false_positive_riverside]
+  - id: D02
+    type: distractor
+    claim: 'An out-of-office auto-reply from Owen Castellane.'
+    sources: [{id: S-email-040, type: email}]
+    tests: [junk_filter]
+  - id: D03
+    type: distractor
+    claim: 'A ten-reply email thread where the original message (F21) is quoted in full in every reply.'
+    sources: [{id: S-email-021-thread, type: email}]
+    tests: [quoted_text_dedup]
+  - id: D04
+    type: distractor
+    claim: 'A call transcript with no planted facts: a routine check-in with Vireo about scheduling a training date.'
+    sources: [{id: S-call-002, type: call}]
+    tests: [empty_source_no_invention]
+
+# ---------------------------------------------------------------------------
+# SOURCES the generator must produce. Facts reference these ids. `noise` are extra sources with nothing planted.
+# Calls: 15k-25k tokens each with timestamps every line ([HH:MM:SS]). Tickets: 200-1,500 tokens with a ticket id and comment numbers.
+# Emails: 200-800 tokens with a message id header. CRM: one CSV per object (accounts, contacts, opportunities) plus a second
+# opportunities export dated 2026-08-21 reflecting F11b. RSS: a JSON feed with dated items.
+# ---------------------------------------------------------------------------
+sources:
+  calls:
+    items:
+      - {id: S-call-002, date: 2026-03-19, account: vireo, participants: [nina-vale, priya-natarajan], facts: [], length_tokens: 12000}
+      - {id: S-call-003, date: 2026-04-14, account: ashgrove, participants: [maria-chen, sam-okafor], facts: [F11], length_tokens: 15000}
+      - {id: S-call-004, date: 2026-06-17, account: northlake, participants: [derek-hollis, sam-okafor], facts: [F15, F22], length_tokens: 18000}
+      - {id: S-call-005, date: 2026-06-09, account: larkspur, participants: [gwen-marsh, felix-arden, sam-okafor, kenji-mori], facts: [F12, F20, F31], length_tokens: 22000}
+      - {id: S-call-006, date: 2026-07-08, account: sable-valley, participants: [paul-strand, priya-natarajan], facts: [F14, F24], length_tokens: 14000}
+      - {id: S-call-007, date: 2026-07-30, account: ashgrove-medical, participants: [rob-tallis, sam-okafor, dana-whitlock], facts: [F01, F19, F25], length_tokens: 20000}
+      - {id: S-call-008, date: 2026-07-15, account: meadowbrook, participants: [june-park, sam-okafor], facts: [F17], length_tokens: 13000}
+      - {id: S-call-009, date: 2026-08-05, account: larkspur-memorial, participants: [felix-arden, sam-okafor], facts: [F02, F10, F26], length_tokens: 17000}
+      - {id: S-call-011, date: 2026-08-14, account: northlake, participants: [derek-hollis, sam-okafor, dana-whitlock], facts: [F04, F15b, F32], length_tokens: 24000}
+      - {id: S-call-013, date: 2026-08-20, account: ashgrove, participants: [helen-ozoro, maria-chen, sam-okafor], facts: [F06, F09, F11b], length_tokens: 19000}
+      - {id: S-call-014, date: 2026-08-28, account: cobalt-ridge, participants: [aisha-bell, sam-okafor], facts: [F33], length_tokens: 15000}
+      # --- v1.1 calls (added 2026-09-13) ---
+      - {id: S-call-015, date: 2026-08-12, account: st-aldric, participants: [owen-castellane, priya-natarajan], facts: [F39], length_tokens: 16000}
+      - {id: S-call-016, date: 2026-08-10, account: wrenfield, participants: [yolanda-pierce, priya-natarajan], facts: [F40, F41], length_tokens: 15000}
+      - {id: S-call-017, date: 2026-08-13, account: driftwood, participants: [carlos-nunez, sam-okafor], facts: [F42, F43], length_tokens: 14000}
+      - {id: S-call-018, date: 2026-08-19, account: larkspur-memorial, participants: [felix-arden, sam-okafor], facts: [F47, F48], length_tokens: 18000}
+      - {id: S-call-019, date: 2026-08-24, account: cobalt-ridge, participants: [aisha-bell, sam-okafor], facts: [F52], length_tokens: 13000}
+      - {id: S-call-020, date: 2026-08-24, account: wrenfield, participants: [yolanda-pierce, priya-natarajan], facts: [F40b, F57], length_tokens: 17000}
+      - {id: S-call-021, date: 2026-08-31, account: ashgrove-medical, participants: [rob-tallis, sam-okafor], facts: [F61, F62], length_tokens: 16000}
+    noise: {count: 6, note: 'routine calls with existing accounts, no planted facts, 10k-15k tokens each'}
+  tickets:
+    items:
+      - {id: S-ticket-019, date: 2026-05-12, account: st-aldric, requester: owen-castellane, facts: [F13]}
+      - {id: S-ticket-024, date: 2026-07-09, account: larkspur-north, requester: felix-arden, facts: [F23]}
+      - {id: S-ticket-027, date: 2026-07-31, account: ashgrove-medical, requester: rob-tallis, facts: [F19]}
+      - {id: S-ticket-031, date: 2026-08-05, account: larkspur-memorial, requester: felix-arden, facts: [F02]}
+      - {id: S-ticket-038, date: 2026-08-18, account: meadowbrook, requester: june-park, facts: [F05]}
+      # --- v1.1 tickets (added 2026-09-13) ---
+      - {id: S-ticket-039, date: 2026-08-11, account: cobalt-ridge, requester: aisha-bell, facts: [F37]}
+      - {id: S-ticket-040, date: 2026-08-19, account: ashgrove-riverside, requester: maria-chen, facts: [F44]}
+      - {id: S-ticket-041, date: 2026-08-18, account: northlake-general, requester: derek-hollis, facts: [F49]}
+      - {id: S-ticket-042, date: 2026-08-22, account: cobalt-ridge, requester: aisha-bell, facts: [F51]}
+      - {id: S-ticket-043, date: 2026-08-26, account: anchor-bay, requester: renee-castillo, facts: [F54]}
+      - {id: S-ticket-044, date: 2026-09-03, account: cobalt-ridge, requester: aisha-bell, facts: [F64]}
+      - {id: S-ticket-045, date: 2026-09-01, account: anchor-bay, requester: renee-castillo, facts: [F66]}
+      - {id: S-ticket-046, date: 2026-08-06, account: driftwood, requester: carlos-nunez, facts: [F71]}
+    noise: {count: 50, note: 'password resets, how-to questions, resolved alarm tickets; no planted facts'}
+  emails:
+    items:
+      - {id: S-email-005, date: 2026-03-04, internal_only: true, from: priya-natarajan, to: [dana-whitlock], facts: [F34]}
+      - {id: S-email-021, date: 2026-04-22, from: owen-castellane, to: [priya-natarajan], facts: [F21]}
+      - {id: S-email-021-thread, date: 2026-04-23, from: priya-natarajan, to: [owen-castellane], facts: [], distractor: D03, replies: 10}
+      - {id: S-email-030, date: 2026-05-20, from: nina-vale, to: [priya-natarajan], facts: [F16, F27]}
+      - {id: S-email-040, date: 2026-06-30, from: owen-castellane, to: [priya-natarajan], facts: [], distractor: D02}
+      - {id: S-email-052, date: 2026-08-07, from: aisha-bell, to: [sam-okafor], facts: [F03, F28]}
+      - {id: S-email-058, date: 2026-08-24, from: maria-chen-personal, to: [sam-okafor], facts: [F30]}
+      - {id: S-email-061, date: 2026-08-22, internal_only: true, from: luis-ferreira, to: [dana-whitlock, sam-okafor], facts: [F07]}
+      - {id: S-email-062, date: 2026-08-25, internal_only: true, from: luis-ferreira, to: [dana-whitlock], facts: [F08]}
+      # --- v1.1 emails (added 2026-09-13) ---
+      - {id: S-email-063, date: 2026-08-11, from: felix-arden, to: [sam-okafor], facts: [F38]}
+      - {id: S-email-064, date: 2026-08-20, from: june-park, to: [sam-okafor], facts: [F45]}
+      - {id: S-email-065, date: 2026-08-21, internal_only: true, from: luis-ferreira, to: [dana-whitlock, sam-okafor], facts: [F46]}
+      - {id: S-email-066, date: 2026-08-21, from: owen-castellane, to: [priya-natarajan], facts: [F50]}
+      - {id: S-email-067, date: 2026-08-25, from: gwen-marsh, to: [sam-okafor], facts: [F53]}
+      - {id: S-email-068, date: 2026-08-27, from: carlos-nunez, to: [sam-okafor], facts: [F56]}
+      - {id: S-email-069, date: 2026-08-28, from: dana-whitlock, to: [carlos-nunez], facts: [F58]}
+      - {id: S-email-070, date: 2026-08-29, from: diego-ramos, to: [priya-natarajan], facts: [F60]}
+      - {id: S-email-071, date: 2026-09-02, from: felix-arden, to: [sam-okafor], facts: [F63]}
+      - {id: S-email-072, date: 2026-09-04, from: june-park, to: [sam-okafor], facts: [F65]}
+      - {id: S-email-073, date: 2026-09-05, from: sophie-lund, to: [priya-natarajan], facts: [F67]}
+      - {id: S-email-074, date: 2026-08-15, from: renee-castillo, to: [sam-okafor], facts: [F70]}
+    noise: {count: 65, note: 'scheduling, newsletters, internal chatter with no customer named, calendar invites'}
+  crm:
+    items:
+      - {id: S-crm-A1002, object: account, facts: [F36]}
+      - {id: S-crm-A1010, object: account, facts: [F35]}
+      - {id: S-crm-A1080, object: account, facts: [F34]}
+      - {id: S-crm-opp-A1010, object: opportunity, export_date: 2026-04-15, facts: [F11]}
+      - {id: S-crm-opp-A1010-v2, object: opportunity, export_date: 2026-08-21, facts: [F11b]}
+      # --- v1.1 CRM sources (added 2026-09-13) ---
+      - {id: S-crm-A1090, object: account, facts: [F68]}
+      - {id: S-crm-A1091, object: account, facts: [F69]}
+    note: full account, contact and opportunity CSVs for every entity above; contacts CSV must NOT include maria-chen-personal
+  rss:
+    items:
+      - {id: S-rss-002, date: 2026-06-02, feed: industry-news, facts: [], distractor: D01}
+      - {id: S-rss-004, date: 2026-08-26, feed: industry-news, facts: [F18]}
+      - {id: S-rss-006, date: 2026-09-02, feed: linkedin-larkspur, facts: [F29]}
+      # --- v1.1 rss (added 2026-09-13); filed under the same linkedin-larkspur feed
+      # file (structured.py routes any non-industry-news feed there) ---
+      - {id: S-rss-007, date: 2026-08-25, feed: linkedin-larkspur, facts: [F59]}
+    noise: {count: 25, note: 'generic industry items and customer LinkedIn posts with no facts'}
+
+# ---------------------------------------------------------------------------
+# EXPECTED OUTCOMES the bench and the report tests check.
+# ---------------------------------------------------------------------------
+expectations:
+  extraction:
+    # planted_facts: python -c "print(38 + 35)" -> 73
+    # (v0's 38 F01..F36/F11b/F15b, plus v1.1's 35 F37..F71: F37-F54, F40b, F56-F71)
+    planted_facts: 73
+    distractors_must_not_yield_facts: [D01, D02, D03, D04]
+    quote_required_types_have_quotes: true
+    every_fact_has_locator: true
+  merge:
+    cross_source_single_claim: {F02: 2, F19: 2, F11: 2, F11b: 2, F34: 2}   # fact → number of citations on ONE claim
+    supersessions: [{old: F11, new: F11b}, {old: F15, new: F15b}, {old: F40, new: F40b}]
+    unknown_entity_queue_contains: [maria-chen-personal, "Renata Solis"]
+    ambiguous_resolution: {F03: larkspur}   # "Larkspur" alone attaches to the parent with a flag, or resolves to memorial via the borrowing context
+    # Two INDEPENDENT hierarchies, not one chain: Wrenfield Health is its
+    # own root account (`parent: null` in `accounts:` above), not a child
+    # of Larkspur Memorial. v1.1 (2026-09-13) first landed this as one
+    # flat list appended onto the v0 chain -- `[pinecrest, larkspur,
+    # larkspur-memorial, wrenfield, wrenfield-medical]` -- which
+    # `portolan/bench/graph.py`'s `_check_parent_chain` reads as a single
+    # ordered child->parent walk, requiring wrenfield.parent_id ==
+    # larkspur-memorial's id. That contradicts this very file's own
+    # `accounts:` block and can never pass. Fixed 2026-09-13 by splitting
+    # into `parent_chains` (a list of chains); `score_graph` now checks
+    # each independently.
+    parent_chains:
+      - [pinecrest, larkspur, larkspur-memorial]
+      - [wrenfield, wrenfield-medical]
+  filter:
+    excluded_by_customer_filter: [S-email-061]
+    included_by_registry_scan: [S-email-062]
+    sample_audit_should_find: [F07]
+    junk_filtered: [S-email-040]
+    quoted_text_stripped: S-email-021-thread
+  report:
+    # v1.2 (theme review fix wave, 2026-09-13, "Wave-based themes"
+    # recommendation, 01-spec/reviews/review-theme-fix-wave.md): pricing_
+    # pushback moved OUT of `themes:` (below) and into `waves:` (below
+    # `themes_by_week:`) -- it is a temporal-proximity pattern (three
+    # accounts pushing back on price the same week), not a content-
+    # similarity one, per the review's own pairwise-cosine measurement
+    # (Cobalt Ridge's invoice-credit complaint scores 0.780 against an
+    # UNRELATED St. Aldric invoice dispute and only 0.550/0.554 against
+    # its own two truth-table partners).
+    #
+    # v1.1 (2026-09-13): two themes tracked across the four weeks ending the
+    # window (2026-08-10, 08-17, 08-24, 08-31). `themes` gives each theme's full
+    # shape; `themes_by_week` gives the per-week state (new/rising/peak/falling/
+    # resolved/quiet) the weekly report's own theme narrative should match.
+    themes:
+      late_deliveries:
+        name: "Late deliveries, Midwest"
+        first_seen: 2026-07-30
+        rising_in_week_of: 2026-08-17
+        peaked_week_of: 2026-08-17
+        # Nit 18 (`01-spec/reviews/review-theme-fix-wave-3.md`): this used
+        # to say `2026-09-01`, a date no single fact below actually
+        # carries -- F61/F62 are 2026-08-31, F63 is 09-02, F64 is 09-03,
+        # F65 is 09-04, all in the SAME ISO week (`week_start` -> 08-31).
+        #
+        # Decisions log 2026-09-14 ("withdraw content-based automatic
+        # resolution"): automatic resolution BY CONTENT is withdrawn --
+        # this theme is now PROPOSED in the week of 2026-08-31 (any member
+        # of `resolution_facts` the resolution judge accepts first, still
+        # not tuned to prefer one over another) and CONFIRMED only when a
+        # human does so via `/review` -- `portolan.report.themes.
+        # _check_theme_resolutions` writes the proposal, `confirm_theme_
+        # resolution` is the human step the bench has to perform (or
+        # simulate) before this theme reads `resolved` rather than
+        # `"resolution proposed"`.
+        resolved_week_of: 2026-08-31  # the week it is PROPOSED; resolved only after a human confirms
+        accounts: [ashgrove-medical, larkspur-memorial, cobalt-ridge, northlake-general, meadowbrook]
+        # linked_arr: python -c "print(1600000+900000+610000+1180000+340000)" -> 4630000
+        # (accounts unchanged from v0; corrected 2026-09-12, reconfirmed 2026-09-13)
+        linked_arr: 4630000
+        linked_facts: [F01, F02, F03, F04, F05, F06, F37, F44, F45, F47, F48, F49, F51, F61, F62, F63, F64, F65]
+        # F61 = the Dayton hire decision (a `decision`-type resolution
+        # candidate, not itself required to clear the gate); F62-F65 =
+        # the praise wave -- the theme is PROPOSED once ANY member of this
+        # set clears the mechanical prefilter and the resolution judge
+        # (`portolan.report.themes._check_theme_resolutions`), not a
+        # specific one; a human confirming that proposal is what makes it
+        # RESOLVED.
+        resolution_facts: [F61, F62, F63, F64, F65]
+      tidewater_link_epic:
+        name: "Tidewater Link / Epic integration requests"
+        first_seen: 2026-08-12
+        rising_in_week_of: 2026-08-24
+        accounts: [st-aldric, wrenfield, driftwood]   # three accounts, per the task
+        # linked_arr: python -c "print(980000 + (980000+430000) + 450000)" -> 2840000
+        linked_arr: 2840000
+        linked_facts: [F39, F40, F40b, F50, F56, F57, F58, F67]
+    themes_by_week:
+      - week_of: 2026-08-10
+        late_deliveries: rising
+        tidewater_link_epic: new
+      - week_of: 2026-08-17
+        late_deliveries: peak
+        tidewater_link_epic: rising
+      - week_of: 2026-08-24
+        late_deliveries: falling
+        tidewater_link_epic: rising
+      - week_of: 2026-08-31
+        # Decisions log 2026-09-14: PROPOSED, not resolved, until a human
+        # confirms it -- `portolan.report.models.Movement`'s own
+        # `"resolution proposed"` value. The bench checks the proposal
+        # (theme, claim, evidence) here; a separate confirm step is what
+        # would make this `resolved` in a later week's report.
+        late_deliveries: resolution proposed
+        tidewater_link_epic: rising
+    # waves (v1.2, theme review fix wave): portolan.report.waves.compute_
+    # waves -- a mechanical GROUP BY fact_type, product family, and
+    # calendar week, with an account-count floor (WAVE_MIN_ACCOUNTS = 3),
+    # zero model calls, zero clustering. pricing_pushback was the
+    # motivating example (see the v1.2 note above `themes:`), but it does
+    # NOT actually clear the floor in this corpus once product family is
+    # required, and that is the mechanically honest answer, not a defect
+    # to work around:
+    #   - F53 (larkspur-regional-health) and F54 (anchor-bay-surgical-
+    #     partners), both dated 2026-08-2[5-6], both `pricing`, both
+    #     resolve to product family `tidewater` -- 2 accounts.
+    #   - F52 (cobalt-ridge-medical-center, 2026-08-24) is ALSO `pricing`
+    #     the same week, but resolves to product family `halvardcare`
+    #     (a delivery-delay credit on a HalvardCare invoice), not
+    #     `tidewater` -- a genuinely different ask, not a paraphrase of
+    #     the other two. It correctly does not join their group.
+    #   - F12 (larkspur-regional-health, 2026-06-09) is `pricing`/
+    #     `tidewater` too, but ten weeks earlier -- a different
+    #     calendar-week group entirely, so it was never really part of a
+    #     "week of 08-24" pattern in the first place (the old `themes:`
+    #     entry's own `linked_facts: [F12, F52, F53, F54]` folded a June
+    #     fact into an "August" theme by construction, which a
+    #     mechanical week-bucketed wave cannot do).
+    # So `waves` expects NO pricing wave for the week of 2026-08-24 in
+    # this corpus -- 2 accounts on `tidewater`, one short of
+    # WAVE_MIN_ACCOUNTS. Confirmed against a real refresh_themes-built
+    # graph: `compute_waves` over 2026-03-01..2026-09-10 produces three
+    # waves total (complaint/tidewater weeks of 08-10 and 08-17, each
+    # already covered by the late_deliveries theme's own membership, and
+    # a praise/tidewater wave the week of 08-31) and no pricing wave at
+    # any point -- those three are now recorded below (should-fix 10),
+    # not just the negative pricing case.
+    waves:
+      expected_min_accounts: 3
+      pricing_week_of_2026_08_24:
+        product_family: tidewater
+        accounts: [larkspur, anchor-bay]   # 2 -- below the floor, no wave expected
+        excluded: {cobalt-ridge: "F52 resolves to product family halvardcare, not tidewater"}
+      # Should-fix 10 (`01-spec/reviews/review-theme-fix-wave-2.md` finding
+      # 10): the three waves this corpus's own `compute_waves` actually
+      # DOES produce, recorded with the facts that plant them -- the
+      # review's own complaint was that only the negative case (above) was
+      # ever written down. `facts` lists the truth-table facts known to
+      # plant each wave's own accounts; `compute_waves` may pick up a few
+      # additional generator-synthesized filler claims from the same
+      # account/product/week that carry no F-number of their own (the same
+      # "not a complete enumeration" caveat `themes.late_deliveries.
+      # linked_facts` already carries) -- `tests/test_report_waves.py`'s
+      # own bench checks `>= len(facts)` accounts/claims, not `==`, for
+      # exactly that reason.
+      complaint_week_of_2026_08_10:
+        product_family: tidewater
+        accounts: [northlake-general, cobalt-ridge, larkspur-north]
+        facts: [F04, F37, F38]
+      complaint_week_of_2026_08_17:
+        product_family: tidewater
+        accounts: [ashgrove-riverside, cobalt-ridge, meadowbrook, northlake-general]
+        facts: [F44, F45, F49, F51]
+      praise_week_of_2026_08_31:
+        product_family: tidewater
+        accounts: [ashgrove-medical, cobalt-ridge, larkspur-memorial, meadowbrook]
+        facts: [F62, F63, F64, F65]
+    # theme: kept for backward compatibility with anything still reading the v0 singular
+    # key -- identical to themes.late_deliveries minus the v1.1 resolution/rising facts.
+    theme: {name: "Late deliveries, Midwest", first_seen: 2026-07-30, rising_in_week_of: 2026-08-17, accounts: [ashgrove-medical, larkspur-memorial, cobalt-ridge, northlake-general, meadowbrook], linked_arr: 4630000, linked_facts: [F01, F02, F03, F04, F05, F06]}
+    actions_open: [{from: F09, owner: sam-okafor, due: 2026-08-28}, {from: F32, owner: dana-whitlock}, {from: F33, owner: null}, {from: F57, owner: priya-natarajan, due: 2026-09-10}, {from: F58, owner: dana-whitlock, due: 2026-09-05}]
+    quiet_accounts_as_of_2026-09-11: [sable-valley, kestrel]   # v1.1 activity (F39/F50, F60) pulls st-aldric and vireo off this list
+    contact_changes: [F28, F29, F30, F59, F60]

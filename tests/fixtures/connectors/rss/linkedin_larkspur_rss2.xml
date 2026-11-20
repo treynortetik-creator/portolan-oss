@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Larkspur Regional Health | LinkedIn</title>
+    <link>https://www.linkedin.com/company/larkspur-regional-health/posts</link>
+    <description>RSS.app feed of Larkspur Regional Health's LinkedIn posts</description>
+    <item>
+      <title>Larkspur Regional Health names new CFO</title>
+      <link>https://feeds.example-newswire.test/portolan-corpus/s-rss-006</link>
+      <pubDate>Wed, 02 Sep 2026 12:00:00 GMT</pubDate>
+      <guid>https://feeds.example-newswire.test/portolan-corpus/s-rss-006</guid>
+      <description>Larkspur Regional Health announced Renata Solis as its new Chief Financial Officer, effective September 1, 2026.</description>
+    </item>
+    <item>
+      <title>Larkspur Regional Health posts about a nurse appreciation event</title>
+      <link>https://feeds.example-newswire.test/portolan-corpus/s-rss-n002</link>
+      <pubDate>Mon, 02 Mar 2026 09:00:00 GMT</pubDate>
+      <guid>https://feeds.example-newswire.test/portolan-corpus/s-rss-n002</guid>
+      <description>No material developments reported beyond routine community engagement.</description>
+    </item>
+  </channel>
+</rss>

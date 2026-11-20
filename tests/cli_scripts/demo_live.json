@@ -1,0 +1,16 @@
+{
+  "name": "Live demo: the ten questions in scripts/demo_questions.txt, in one conversation (the orchestrator runs this against live; never CI)",
+  "steps": [
+    {"do": "health", "expect": {"status": "ok", "auth": "ok"}},
+    {"do": "ask \"Which hospital accounts had late deliveries in August, and what did they say?\"", "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"Are the delivery problems over?\"", "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"When does Ashgrove Health's HalvardCare contract renew?\"", "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"Is Wrenfield Health ready to start the Epic integration?\"", "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"What did Sam Okafor promise Ashgrove, and when was it due?\"", "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"Is any account looking at Corvane, and has anything happened with Corvane lately?\"", "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"Which accounts have asked for Tidewater Link to work with Epic?\"", "expect": {"outcome": "answered", "citations": ">=2", "cited_notes": "contains signal-", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"What has changed at Larkspur Regional Health since September 1?\"", "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"Which customers are pushing on price?\"", "expect": {"outcome": "answered", "citations": ">=1", "broken_citations": "==0", "latency_ms": "<120000"}},
+    {"do": "ask \"What is our NPS with Ashgrove Health?\"", "expect": {"outcome": "nothing_recorded", "citations": "==0", "latency_ms": "<120000"}}
+  ]
+}

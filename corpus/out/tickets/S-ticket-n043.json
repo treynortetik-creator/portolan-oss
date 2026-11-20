@@ -1,0 +1,19 @@
+{
+  "id": "S-ticket-n043",
+  "requester": "June Park",
+  "account": "Meadowbrook Community Hospital",
+  "created": "2026-03-02",
+  "subject": "Confirming a scheduled preventive-maintenance visit",
+  "comments": [
+    {
+      "number": 1,
+      "author": "June Park",
+      "body": "Wanted to flag this for tracking, nothing urgent."
+    },
+    {
+      "number": 2,
+      "author": "Halvard Support",
+      "body": "Checking with our biomed team and will circle back."
+    }
+  ]
+}

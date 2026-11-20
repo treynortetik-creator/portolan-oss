@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}{{ source.slug }} — Portolan{% endblock %}
+{% block content %}
+<p class="eyebrow">Source</p>
+<h1 style="margin-top:0;" class="mono">{{ source.slug }}</h1>
+<div class="meta-row">
+  <span class="badge">{{ source.source_type }}</span>
+  <span class="badge">{{ source.extraction_status }}</span>
+  {% if source.source_date %}
+    <span class="sep" aria-hidden="true">·</span>
+    <span class="updated">source date: {{ source.source_date }}</span>
+  {% endif %}
+  <span class="sep" aria-hidden="true">·</span>
+  <span class="updated">ingested: {{ source.ingested_at[:10] }}</span>
+</div>
+{% if source.summary %}<p>{{ source.summary }}</p>{% endif %}
+{% if source.filter_reason %}<p class="muted">Filter reason: {{ source.filter_reason }}</p>{% endif %}
+{% if source.last_error %}<div class="flag">Error ({{ source.attempts }} attempts): {{ source.last_error }}</div>{% endif %}
+{% if source.content_hash %}
+  {# UX eval 2026-09-12, punch item 15: the full 64-char sha256 used to be
+     the widest thing on the page. Truncated for display; the complete
+     value is still there in `title=` for anyone who needs to copy it. #}
+  <p class="mono muted small" title="{{ source.content_hash }}">sha256: {{ source.content_hash[:12] }}&hellip;</p>
+{% endif %}
+
+<a class="btn primary" style="margin-bottom:20px;display:inline-block;" href="/originals/{{ source.slug }}">Open original</a>
+
+{% if source.participants %}
+<div class="card">
+  <p class="eyebrow">Participants</p>
+  <ul>
+    {% for p in source.participants %}
+      <li>{{ p.name }}{% if p.role %} — {{ p.role }}{% endif %}{% if p.email %} <span class="mono muted">{{ p.email }}</span>{% endif %}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{# UX eval 2026-09-12, punch item 15: a source used to be a dead end in
+   the provenance chain -- it showed its extracted notes but not which
+   claims cite it or at which locators, so link 3 (source -> the original)
+   couldn't hand you link 4 without going back through a note first. #}
+<div class="card">
+  <p class="eyebrow">Cited from</p>
+  {% if not citing_claims %}
+    <div class="empty"><p>No claims cite this source yet.</p></div>
+  {% else %}
+    {% for c in citing_claims %}
+      <div class="claim">
+        <p class="claim-text" style="font-size:14px;">
+          <a href="/notes/{{ c.note_slug }}">{{ c.note_slug }}</a> — {{ c.claim_text|linkify_wikilinks }}
+        </p>
+        <div class="claim-actions">
+          <a class="btn chip dig" href="/originals/{{ source.slug }}?at={{ c.locator|urlencode }}">@ {{ c.locator }}</a>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="card">
+  <p class="eyebrow">Notes extracted from this source</p>
+  {% if not source.notes_extracted %}
+    <div class="empty"><p>None yet.</p></div>
+  {% endif %}
+  <ul>
+    {% for slug in source.notes_extracted %}
+      {% set meta = note_summaries.get(slug) %}
+      <li>
+        <a href="/notes/{{ slug }}">{{ meta.title if meta else slug }}</a>
+        {% if meta %}<span class="updated">updated: {{ meta.updated|date }}</span>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

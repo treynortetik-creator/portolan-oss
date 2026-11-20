@@ -1,0 +1,851 @@
+[09:00:00] Sam Okafor: Good morning, Helen, Maria. Thanks for making time. Can you both hear me all right?
+
+[09:00:08] Helen Ozoro: We can. Morning, Sam.
+
+[09:00:11] Maria Chen: Yes, loud and clear. Sorry, we joined a minute late. We were just coming out of another meeting.
+
+[09:00:18] Sam Okafor: No problem at all. I appreciate it. How are things on your side?
+
+[09:00:24] Helen Ozoro: Busy, as usual. We are closing out the month, and procurement has several supplier reviews stacked up.
+
+[09:00:31] Maria Chen: That is putting it mildly. I have three category reviews today, and this one was the one we wanted to give proper attention to.
+
+[09:00:39] Sam Okafor: Understood. I will keep us focused. I sent around the agenda yesterday: delivery performance, the open service items, and the timing for the renewal discussion. Is there anything you want to add before we start?
+
+[09:00:50] Helen Ozoro: No, that covers it. I would like to begin with delivery performance, because that is the point creating the most internal noise.
+
+[09:00:57] Maria Chen: Agreed. We have been comparing the expected dates against the actual receipt dates, and the pattern is not isolated anymore.
+
+[09:01:05] Sam Okafor: I saw the spreadsheet Maria sent. I have it open here.
+
+[09:01:09] Maria Chen: Good. Then you will have seen the sequence. We had the March shipment arrive late, then May, then the July order. Each time, we were told the next cycle would be stable.
+
+[09:01:18] Sam Okafor: Yes, I have seen those notes. Let me pull up our internal record as well.
+
+[09:01:24] Helen Ozoro: Before we get into explanations, I want to be clear about the business effect. Our clinical operations group plans around those dates. When an order moves, they have to reshuffle work, and that is not something they can do indefinitely.
+
+[09:01:33] Sam Okafor: I understand. The July order in particular took longer than it should have, and I am sorry that the update was not more useful while it was happening.
+
+[09:01:40] Maria Chen: The update was part of the problem. We did not receive a clear exception notice until after the expected delivery date had passed.
+
+[09:01:48] Sam Okafor: That is fair. I can see a status change recorded internally, but it did not reach your team in a timely way.
+
+[09:01:53] Helen Ozoro: And that is exactly why we need more than a general apology. We need to know what failed in the process.
+
+[09:02:01] Sam Okafor: We are tracing that now. The preliminary view is that the order moved through more than one handoff, and the confirmation did not stay attached to the original request.
+
+[09:02:12] Maria Chen: “Preliminary view” is not enough for us. We have heard versions of that before.
+
+[09:02:18] Sam Okafor: I understand the concern. I am not trying to present that as the final answer.
+
+[09:02:23] Helen Ozoro: What is the final answer supposed to contain?
+
+[09:02:27] Sam Okafor: It should identify the points where the order information changed, the team responsible at each step, why the delivery date was not corrected earlier, and what we will change so the same sequence does not repeat.
+
+[09:02:36] Maria Chen: And it needs to cover the customer-facing communication, not only the warehouse or transport side.
+
+[09:02:42] Sam Okafor: Yes. The communication path is included.
+
+[09:02:46] Helen Ozoro: Good. Because from our perspective, a late shipment is one issue, but learning about it late is another.
+
+[09:02:51] Sam Okafor: That makes sense.
+
+[09:02:55] Maria Chen: There is also the question of ownership. We had one person answering on the first order, another on the second, and a shared mailbox on the third. We should not have to reconstruct the story from three different places.
+
+[09:03:05] Sam Okafor: I agree that a single owner would make this easier. I can coordinate that on our side.
+
+[09:03:12] Helen Ozoro: Coordinate is a broad word. Who is accountable for making sure the next delivery is on track?
+
+[09:03:18] Sam Okafor: For the next order, I will be the commercial point, and I will bring in our operations lead for the shipment checks.
+
+[09:03:24] Maria Chen: Will operations contact us directly, or will everything still pass through you?
+
+[09:03:28] Sam Okafor: I would prefer that you have one channel through me, with operations copied where their input is needed. That should avoid parallel messages.
+
+[09:03:37] Helen Ozoro: Fine, provided the internal handoff does not become an excuse for slower answers.
+
+[09:03:42] Sam Okafor: Understood.
+
+[09:03:47] Maria Chen: Let us go line by line on the spreadsheet. The March order was due on the fourteenth and received on the nineteenth. The May order was due on the ninth and received on the sixteenth. The July order was due on the third and received on the twelfth.
+
+[09:04:00] Sam Okafor: I have those dates.
+
+[09:04:03] Helen Ozoro: The gap is getting longer, which is why we are not treating this as an occasional slip.
+
+[09:04:09] Sam Okafor: Looking at the records, the March order appears to have been held while a quantity confirmation was checked. The May order was affected by a routing change. The July order had a confirmation issue before dispatch.
+
+[09:04:19] Maria Chen: That is three different causes.
+
+[09:04:21] Sam Okafor: They are different immediate causes, yes, but there may be a common control issue underneath them.
+
+[09:04:26] Helen Ozoro: Such as?
+
+[09:04:28] Sam Okafor: The controls for confirming the committed date do not appear to be consistent across the order path.
+
+[09:04:34] Maria Chen: That is closer to what we need. If the committed date is not controlled consistently, then every downstream team is working from a different version.
+
+[09:04:39] Sam Okafor: Exactly.
+
+[09:04:44] Helen Ozoro: Why was that not identified after March?
+
+[09:04:48] Sam Okafor: The March event was reviewed as a single order exception. We did not connect it to the later cases quickly enough.
+
+[09:04:56] Maria Chen: So the review process looked at events individually rather than looking for a pattern.
+
+[09:05:00] Sam Okafor: That is my understanding.
+
+[09:05:04] Helen Ozoro: That is not reassuring.
+
+[09:05:06] Sam Okafor: I know.
+
+[09:05:09] Maria Chen: We also need to discuss the advance notice threshold. If you know a delivery will miss its date, how much notice will we receive?
+
+[09:05:16] Sam Okafor: We are reviewing the threshold, but my recommendation is that you receive a notice as soon as the committed date becomes doubtful, rather than waiting for a confirmed miss.
+
+[09:05:24] Helen Ozoro: “Doubtful” needs a measurable definition.
+
+[09:05:28] Sam Okafor: We can define it around a missed internal checkpoint or a required confirmation not being completed by the agreed time.
+
+[09:05:33] Maria Chen: Put that in writing. The people managing the orders need something they can apply without interpreting it differently each time.
+
+[09:05:37] Sam Okafor: I will include it in the follow-up.
+
+[09:05:42] Helen Ozoro: Maria, do we have any unresolved invoice issue connected to these shipments?
+
+[09:05:46] Maria Chen: No invoice dispute. There was one receipt mismatch, but finance cleared it after the packing information was corrected.
+
+[09:05:52] Sam Okafor: I have that note. It was not the reason for the late delivery, but it did add another round of messages.
+
+[09:05:58] Helen Ozoro: Another example of the process being harder than it needs to be.
+
+[09:06:02] Sam Okafor: Yes.
+
+[09:06:06] Maria Chen: On the July order, we were told the item had left the facility. Then the tracking page did not update for two days.
+
+[09:06:14] Sam Okafor: That was tied to the handoff between the dispatch record and the carrier record.
+
+[09:06:19] Helen Ozoro: Again, that may explain the symptom, but not why no one noticed.
+
+[09:06:23] Sam Okafor: The alert did not trigger because the dispatch status was still showing as active.
+
+[09:06:29] Maria Chen: Then the alert logic is part of the problem.
+
+[09:06:32] Sam Okafor: Yes, I would agree with that.
+
+[09:06:35] Helen Ozoro: Are you able to change that, or does it require a larger systems project?
+
+[09:06:40] Sam Okafor: I need to confirm the technical scope. Some parts should be operational changes, while the alert itself may require a systems adjustment.
+
+[09:06:48] Maria Chen: We do not need a perfect platform before the next order. We need a manual check if that is what it takes.
+
+[09:06:53] Sam Okafor: That is reasonable. A manual checkpoint can be used while the longer-term change is assessed.
+
+[09:06:57] Helen Ozoro: Who will perform it?
+
+[09:06:59] Sam Okafor: Our operations coordinator, with me copied on the confirmation.
+
+[09:07:04] Maria Chen: And when will we receive the confirmation?
+
+[09:07:08] Sam Okafor: At dispatch, and again if the carrier status does not update within the expected window.
+
+[09:07:13] Helen Ozoro: That is more concrete.
+
+[09:07:17] Sam Okafor: I am glad.
+
+[09:07:20] Maria Chen: The other issue is the forecast. We have been asking for a reliable view of the next two quarters, but the dates keep moving.
+
+[09:07:27] Sam Okafor: We can provide a rolling view, although I want to be careful not to present a forecast as a guarantee.
+
+[09:07:33] Helen Ozoro: We know the difference. What we need is visibility into assumptions and changes.
+
+[09:07:38] Sam Okafor: Then we should show the requested date, the currently committed date, the confidence status, and any dependency that could move it.
+
+[09:07:44] Maria Chen: Include the date the forecast was last refreshed.
+
+[09:07:48] Sam Okafor: Yes.
+
+[09:07:51] Helen Ozoro: And indicate who owns the next action. Otherwise we will have another table that looks informative but does not help anyone act.
+
+[09:07:57] Sam Okafor: Agreed.
+
+[09:08:00] Maria Chen: We also want the updates sent to the procurement group rather than only to the individual requester.
+
+[09:08:06] Sam Okafor: I can add the shared procurement address, assuming you confirm which one should be used.
+
+[09:08:10] Maria Chen: I will send that after the call.
+
+[09:08:14] Helen Ozoro: Good. Let us move to the service items. There are still two open tickets, correct?
+
+[09:08:18] Sam Okafor: Two open, and one recently closed. The first open item concerns the reporting export. The second concerns user access for the regional team.
+
+[09:08:27] Maria Chen: The reporting export is the more urgent one. The file we received had missing fields.
+
+[09:08:34] Sam Okafor: The missing fields came from a mapping issue in the export template.
+
+[09:08:40] Helen Ozoro: Has that been corrected?
+
+[09:08:42] Sam Okafor: A corrected template is in testing.
+
+[09:08:46] Maria Chen: Testing with whose data?
+
+[09:08:48] Sam Okafor: A sample set that mirrors your account structure, but not your live records.
+
+[09:08:53] Helen Ozoro: We need a validation step using a representative Ashgrove file before you call it done.
+
+[09:08:58] Sam Okafor: That can be arranged.
+
+[09:09:02] Maria Chen: And the access ticket?
+
+[09:09:05] Sam Okafor: That is waiting for confirmation of the regional administrator.
+
+[09:09:09] Helen Ozoro: We already provided that name.
+
+[09:09:11] Maria Chen: Twice.
+
+[09:09:14] Sam Okafor: I see the name in the ticket. The issue is that the approval was attached to the older request rather than the current one.
+
+[09:09:20] Helen Ozoro: Then please link it internally. We should not have to send the same approval a third time.
+
+[09:09:23] Sam Okafor: I will have that linked.
+
+[09:09:27] Maria Chen: What is the expected completion date?
+
+[09:09:29] Sam Okafor: I need to check with the access team before giving you a date. I do not want to make another estimate that shifts.
+
+[09:09:34] Helen Ozoro: That is the right answer, but please come back promptly.
+
+[09:09:38] Sam Okafor: I will.
+
+[09:09:42] Maria Chen: There was also a question about support coverage outside our normal business hours.
+
+[09:09:46] Sam Okafor: Yes. Your current service arrangement has standard-hours coverage, with escalation for defined critical incidents.
+
+[09:09:53] Helen Ozoro: And a late delivery does not qualify as a critical incident under that arrangement, I assume.
+
+[09:09:57] Sam Okafor: Not automatically. The escalation path is primarily for service availability and certain operational failures.
+
+[09:10:03] Maria Chen: We are not asking to redefine every delay as critical. We are asking whether there is a contact who can confirm status when an order is already moving.
+
+[09:10:08] Sam Okafor: We can clarify that contact path separately from the formal escalation categories.
+
+[09:10:13] Helen Ozoro: Put that in the operating note as well.
+
+[09:10:17] Sam Okafor: Will do.
+
+[09:10:20] Maria Chen: I want to come back to the renewal. The current paperwork has the date set earlier than our planning cycle allows.
+
+[09:10:25] Sam Okafor: I had noted that your team wanted to revisit the timing.
+
+[09:10:29] Helen Ozoro: We do. Our budget approval for this area is now aligned to the second half of next year, and we need the renewal window to reflect that.
+
+[09:10:34] Maria Chen: The procurement calendar also requires more lead time than the current date gives us.
+
+[09:10:39] Sam Okafor: We can discuss an amendment to the renewal date.
+
+[09:10:43] Helen Ozoro: I do not want this left as an informal understanding. It needs to be reflected in the account record and the commercial documents.
+
+[09:10:49] Sam Okafor: Understood.
+
+[09:10:52] Maria Chen: Is there any impact on the current service period if the date moves?
+
+[09:10:56] Sam Okafor: I will confirm the contractual mechanics, but moving the renewal date should not interrupt the current service period.
+
+[09:11:02] Helen Ozoro: That is important. We are asking for more time to review, not asking for a break in coverage.
+
+[09:11:07] Sam Okafor: I understand.
+
+[09:11:10] Maria Chen: We also want the renewal proposal to separate the base service from optional modules. The previous version bundled them together.
+
+[09:11:16] Sam Okafor: I can have the proposal laid out in separate sections.
+
+[09:11:20] Helen Ozoro: Include the assumptions behind any price change.
+
+[09:11:24] Sam Okafor: Yes.
+
+[09:11:27] Maria Chen: And show the implementation or transition effort separately if there is any.
+
+[09:11:31] Sam Okafor: I will ask our commercial team to make that clear.
+
+[09:11:36] Helen Ozoro: We should decide the date now rather than circulate another draft with an unresolved placeholder.
+
+[09:11:41] Sam Okafor: What date would work for your planning cycle?
+
+[09:11:45] Maria Chen: June thirtieth, 2027.
+
+[09:11:48] Helen Ozoro: Yes, that is the date we are requesting.
+
+[09:11:52] Sam Okafor: I will take that request back and confirm the amendment process.
+
+[09:11:56] Helen Ozoro: No, let us be precise: Ashgrove Health's HalvardCare renewal was moved to 2027-06-30 at Ashgrove's request on 2026-08-20.
+
+[09:12:04] Sam Okafor: Understood. I will record June thirtieth, 2027, as the agreed renewal date and send the confirmation.
+
+[09:12:09] Maria Chen: Thank you. That removes one uncertainty.
+
+[09:12:12] Helen Ozoro: It removes one uncertainty, but it does not resolve the delivery concern.
+
+[09:12:16] Sam Okafor: I appreciate that.
+
+[09:12:19] Maria Chen: We should also discuss governance between now and then. A quarterly meeting is not enough if the operational issues continue between meetings.
+
+[09:12:25] Sam Okafor: We can set up a monthly operational check-in and keep the quarterly commercial review separate.
+
+[09:12:31] Helen Ozoro: Monthly is reasonable for now. The meeting should have a short scorecard, open actions, and changes since the previous meeting.
+
+[09:12:37] Maria Chen: Include delivery dates, notice timing, open service items, and owners.
+
+[09:12:43] Sam Okafor: I can prepare that format.
+
+[09:12:46] Helen Ozoro: Keep it to one page where possible. I do not want a large report that no one reads.
+
+[09:12:51] Sam Okafor: One page with a supporting detail tab if needed.
+
+[09:12:55] Maria Chen: That works.
+
+[09:12:58] Helen Ozoro: Who attends from your side?
+
+[09:13:00] Sam Okafor: I would attend, along with the operations coordinator. We can bring in a service lead when the agenda requires it.
+
+[09:13:06] Maria Chen: From our side it will be me and the category manager. Helen can join the commercial reviews.
+
+[09:13:12] Helen Ozoro: Correct.
+
+[09:13:15] Sam Okafor: Should we schedule the first monthly check-in for early September?
+
+[09:13:18] Maria Chen: The first week is difficult. Second week is better.
+
+[09:13:21] Helen Ozoro: Put something in for the second week, and Maria can adjust once we see the invitations.
+
+[09:13:26] Sam Okafor: I will send options.
+
+[09:13:30] Maria Chen: Before we move on, I want to ask about the account team. We have had several changes this year.
+
+[09:13:35] Sam Okafor: There have been changes, yes. I remain the account representative, and the operations contact is being confirmed.
+
+[09:13:41] Helen Ozoro: Stability matters here. Every change means we have to explain the history again.
+
+[09:13:45] Sam Okafor: I understand, and I will make sure the account notes are complete.
+
+[09:13:49] Maria Chen: We need a current contact list with roles, not just names.
+
+[09:13:52] Sam Okafor: I can send that with the follow-up.
+
+[09:13:56] Helen Ozoro: Include escalation levels and response expectations.
+
+[09:14:00] Sam Okafor: Yes.
+
+[09:14:04] Maria Chen: Does your operations coordinator have authority to make a shipping correction, or do they only pass messages?
+
+[09:14:09] Sam Okafor: They can coordinate corrections and escalate decisions that require approval. I will clarify the boundaries in the contact list.
+
+[09:14:14] Helen Ozoro: Good. We need to know when a decision can be made without another round trip.
+
+[09:14:18] Sam Okafor: Agreed.
+
+[09:14:21] Maria Chen: Let us go back to the root cause work. When will the review be complete?
+
+[09:14:25] Sam Okafor: We have internal interviews this week and a review of the order records. I expect to have the findings assembled next week.
+
+[09:14:31] Helen Ozoro: “Expect” again.
+
+[09:14:34] Sam Okafor: Fair point. I can give you a firm date once I confirm the remaining internal interviews.
+
+[09:14:39] Maria Chen: Please do that today if possible.
+
+[09:14:42] Sam Okafor: I will check immediately after this call.
+
+[09:14:46] Helen Ozoro: The summary should distinguish confirmed facts from assumptions. We have had too many explanations presented as if they were settled.
+
+[09:14:53] Sam Okafor: That is a good requirement. I will structure it that way.
+
+[09:14:56] Maria Chen: Also include the chronology. Someone reading it later should be able to follow the order from request through receipt.
+
+[09:15:01] Sam Okafor: Yes.
+
+[09:15:04] Helen Ozoro: And include corrective actions with owners and dates.
+
+[09:15:08] Sam Okafor: Yes.
+
+[09:15:11] Maria Chen: Are you planning to share the draft before it is finalized?
+
+[09:15:15] Sam Okafor: I can share a draft for factual checking, then issue a final version after your comments.
+
+[09:15:20] Helen Ozoro: That would be useful, as long as the draft does not become a substitute for a completed answer.
+
+[09:15:25] Sam Okafor: Understood.
+
+[09:15:28] Maria Chen: We should probably discuss the next scheduled order while we have you.
+
+[09:15:32] Sam Okafor: Yes, I have it on the list. The current requested delivery window is the last week of September.
+
+[09:15:37] Helen Ozoro: Is that date still achievable?
+
+[09:15:40] Sam Okafor: The current record shows it as achievable, but I need the operations confirmation before treating it as firm.
+
+[09:15:46] Maria Chen: When will that confirmation be available?
+
+[09:15:49] Sam Okafor: I will ask for it today.
+
+[09:15:52] Helen Ozoro: Again, we need an answer before the order is too close to the date to make alternatives possible.
+
+[09:15:56] Sam Okafor: I understand.
+
+[09:15:59] Maria Chen: What is the earliest point at which you can tell us there is a problem?
+
+[09:16:03] Sam Okafor: Once the internal confirmation checkpoint is missed, we should notify you immediately rather than waiting for the final dispatch status.
+
+[09:16:09] Helen Ozoro: That is the principle. Now make sure the process actually follows it.
+
+[09:16:13] Sam Okafor: I will.
+
+[09:16:16] Maria Chen: There is another practical point. Our receiving team has limited capacity on Fridays.
+
+[09:16:21] Sam Okafor: I did not know that.
+
+[09:16:23] Helen Ozoro: It has been mentioned to the logistics contacts, but perhaps not in the current account notes.
+
+[09:16:27] Sam Okafor: I will add it.
+
+[09:16:30] Maria Chen: If a delivery is likely to arrive on a Friday, we need notice early enough to arrange coverage or ask for another slot.
+
+[09:16:34] Sam Okafor: I will include that as a receiving constraint.
+
+[09:16:37] Helen Ozoro: Do not treat it as a request to hold shipments automatically. We want the choice, not an assumption.
+
+[09:16:41] Sam Okafor: Understood.
+
+[09:16:44] Maria Chen: And for urgent orders, the receiving team needs the tracking details in the same message as the dispatch notice.
+
+[09:16:49] Sam Okafor: That is straightforward.
+
+[09:16:52] Helen Ozoro: Straightforward things have been missed, so please write it down.
+
+[09:16:56] Sam Okafor: I will.
+
+[09:16:59] Maria Chen: On the reporting export, what fields were missing?
+
+[09:17:02] Sam Okafor: The regional identifier and the service-status field were not populated correctly.
+
+[09:17:07] Helen Ozoro: Were those absent at the source or lost in the export?
+
+[09:17:10] Sam Okafor: They were present in the source data but dropped during the mapping step.
+
+[09:17:16] Maria Chen: Then the validation should compare source and output, not merely check whether the file opens.
+
+[09:17:20] Sam Okafor: Agreed.
+
+[09:17:23] Helen Ozoro: Who is responsible for signing off the corrected template?
+
+[09:17:27] Sam Okafor: Our product support lead will sign off internally, and we need your team to validate the resulting file.
+
+[09:17:33] Maria Chen: I can nominate someone from reporting.
+
+[09:17:35] Helen Ozoro: Please do. We need someone who knows how the file is used, not only someone checking column names.
+
+[09:17:40] Maria Chen: I will send the name.
+
+[09:17:43] Sam Okafor: Thank you.
+
+[09:17:46] Helen Ozoro: What is the status of the recent closed item?
+
+[09:17:49] Sam Okafor: That was the notification setting. It was closed after the setting was corrected.
+
+[09:17:54] Maria Chen: We have not seen the issue again, but it has only been a short period.
+
+[09:17:58] Sam Okafor: We can keep it under observation for the next reporting cycle.
+
+[09:18:02] Helen Ozoro: Fine, but do not remove it from the history.
+
+[09:18:05] Sam Okafor: It will remain in the record.
+
+[09:18:08] Maria Chen: I want to talk about documentation. We have several separate documents: the service guide, the order instructions, and the escalation note.
+
+[09:18:13] Sam Okafor: We can consolidate the operational sections into one customer-specific guide.
+
+[09:18:18] Helen Ozoro: That would help, provided the guide is kept current.
+
+[09:18:21] Maria Chen: And versioned. We need to know which copy is the current one.
+
+[09:18:25] Sam Okafor: I will include a version date and an owner.
+
+[09:18:29] Helen Ozoro: Add a change log, even if it is brief.
+
+[09:18:33] Sam Okafor: Yes.
+
+[09:18:36] Maria Chen: How quickly can that be done?
+
+[09:18:40] Sam Okafor: I can provide a first consolidated version with the follow-up materials.
+
+[09:18:45] Helen Ozoro: That sounds like a lot for one follow-up.
+
+[09:18:47] Sam Okafor: It is a fair amount. I can separate the urgent actions from the longer-term documentation.
+
+[09:18:52] Maria Chen: Please do. The root-cause summary and the next-order confirmation come first.
+
+[09:18:56] Sam Okafor: Agreed.
+
+[09:18:59] Helen Ozoro: Then the account guide and the proposal format.
+
+[09:19:03] Sam Okafor: Yes.
+
+[09:19:06] Maria Chen: And the renewal amendment confirmation.
+
+[09:19:09] Sam Okafor: Yes.
+
+[09:19:12] Helen Ozoro: Let us make sure the dates are not all “to be confirmed.”
+
+[09:19:16] Sam Okafor: I will provide dates for each item.
+
+[09:19:19] Maria Chen: We also want an explanation of how the next shipment will be monitored differently.
+
+[09:19:23] Sam Okafor: That can be included in the shipment confirmation and the operating note.
+
+[09:19:26] Helen Ozoro: Good.
+
+[09:19:29] Sam Okafor: I have a question on the renewal proposal. Do you want pricing in your local budget currency, or should we keep the current format?
+
+[09:19:35] Maria Chen: Keep the current currency, but show the assumptions clearly.
+
+[09:19:39] Helen Ozoro: And do not include an automatic increase without identifying what drives it.
+
+[09:19:43] Sam Okafor: Understood.
+
+[09:19:46] Maria Chen: If there are volume assumptions, show the baseline and the sensitivity.
+
+[09:19:50] Sam Okafor: I will ask for that breakdown.
+
+[09:19:53] Helen Ozoro: We are not asking for a long financial model. A simple table will do.
+
+[09:19:57] Sam Okafor: A simple table, noted.
+
+[09:20:00] Maria Chen: We also need time to circulate the proposal internally before the commercial review.
+
+[09:20:04] Sam Okafor: How much time would you need?
+
+[09:20:08] Maria Chen: At least two weeks, assuming the proposal is complete.
+
+[09:20:11] Helen Ozoro: Two weeks is the minimum. If it arrives with open assumptions, the review takes longer.
+
+[09:20:16] Sam Okafor: Then I will plan to send it with enough lead time before the review.
+
+[09:20:19] Helen Ozoro: Good.
+
+[09:20:22] Maria Chen: Returning to the deliveries, can you tell us whether the issue is specific to our account or broader?
+
+[09:20:27] Sam Okafor: I do not want to speculate before the review is complete. Some of the process points may be broader, but I need evidence before saying that.
+
+[09:20:33] Helen Ozoro: That is acceptable. Just do not omit the answer if the review shows it is broader.
+
+[09:20:38] Sam Okafor: I will not.
+
+[09:20:41] Maria Chen: If the review identifies a broader process issue, what happens next?
+
+[09:20:44] Sam Okafor: We would assign an internal owner, define corrective steps, and track progress through the monthly meeting.
+
+[09:20:50] Helen Ozoro: We should not have to wait for the monthly meeting to learn about a material change.
+
+[09:20:55] Sam Okafor: We can use the agreed contact path for material updates between meetings.
+
+[09:20:59] Maria Chen: Define material.
+
+[09:21:02] Sam Okafor: A change to the committed delivery date, a failure of the dispatch checkpoint, or an issue that could affect the receiving plan.
+
+[09:21:08] Helen Ozoro: That is a useful starting point.
+
+[09:21:11] Maria Chen: Add a change in the responsible owner as well.
+
+[09:21:15] Sam Okafor: Yes.
+
+[09:21:18] Helen Ozoro: We have about twenty minutes left. I want to ensure we leave with clear actions.
+
+[09:21:23] Sam Okafor: I have been making notes.
+
+[09:21:27] Maria Chen: Let us review the September order first. We need the operations confirmation, the committed date, and the monitoring steps.
+
+[09:21:33] Sam Okafor: I will request all three today.
+
+[09:21:36] Helen Ozoro: What does “today” mean in practice?
+
+[09:21:39] Sam Okafor: Before close of business in my time zone.
+
+[09:21:43] Maria Chen: And when do we hear back?
+
+[09:21:46] Sam Okafor: By tomorrow afternoon, unless the operations team identifies an unresolved dependency.
+
+[09:21:52] Helen Ozoro: If there is an unresolved dependency, tell us that rather than waiting for a complete answer.
+
+[09:21:56] Sam Okafor: I will send an interim update.
+
+[09:21:59] Maria Chen: Good.
+
+[09:22:02] Helen Ozoro: Next, the root-cause review.
+
+[09:22:05] Sam Okafor: I will confirm the completion date today and provide the written summary once the review is complete.
+
+[09:22:10] Maria Chen: We need the final version, not just slides from an internal meeting.
+
+[09:22:14] Sam Okafor: Understood.
+
+[09:22:17] Helen Ozoro: Include the chronology, confirmed causes, contributing conditions, corrective actions, owners, and dates.
+
+[09:22:23] Sam Okafor: I have that.
+
+[09:22:26] Maria Chen: And the communication failure.
+
+[09:22:28] Sam Okafor: Yes.
+
+[09:22:31] Helen Ozoro: Next, the open service tickets.
+
+[09:22:34] Sam Okafor: I will link the approval to the current access ticket, confirm the access completion date, and send the corrected export template for validation.
+
+[09:22:40] Maria Chen: Add the comparison against the source data.
+
+[09:22:43] Sam Okafor: I will.
+
+[09:22:46] Helen Ozoro: Renewal documentation.
+
+[09:22:49] Sam Okafor: I will send confirmation of the June thirtieth, 2027 date, and request the commercial proposal with separate base and optional sections.
+
+[09:22:54] Maria Chen: Include assumptions and transition effort.
+
+[09:22:57] Sam Okafor: Yes.
+
+[09:23:00] Helen Ozoro: Governance.
+
+[09:23:03] Sam Okafor: I will send options for the second week of September and a proposed one-page scorecard.
+
+[09:23:07] Maria Chen: Include the contact list.
+
+[09:23:09] Sam Okafor: Yes.
+
+[09:23:12] Helen Ozoro: And the consolidated operating guide, but after the urgent items.
+
+[09:23:15] Sam Okafor: Understood.
+
+[09:23:18] Maria Chen: I want to add one action for us. We will send the shared procurement address, the receiving constraint, and the reporting validation contact.
+
+[09:23:24] Helen Ozoro: Good.
+
+[09:23:27] Sam Okafor: That will help.
+
+[09:23:30] Maria Chen: We should also confirm the order reference for the September shipment so there is no confusion.
+
+[09:23:34] Sam Okafor: Please include that in your note, and I will match it to our record.
+
+[09:23:37] Helen Ozoro: Do not make Maria do the matching if the reference is already in the materials.
+
+[09:23:41] Sam Okafor: Fair point. I will check the record first and only ask if something is missing.
+
+[09:23:44] Maria Chen: Thank you.
+
+[09:23:47] Helen Ozoro: One question on the renewal date: does moving it require a new signature from our side?
+
+[09:23:50] Sam Okafor: I need to confirm whether it is an amendment or an administrative update.
+
+[09:23:54] Maria Chen: Please find out before sending the proposal. Our legal team will want to know.
+
+[09:23:57] Sam Okafor: I will include that answer.
+
+[09:24:00] Helen Ozoro: We also need the existing service terms carried forward clearly. We do not want a date change to introduce ambiguity elsewhere.
+
+[09:24:05] Sam Okafor: I will ask the commercial team to identify any related changes explicitly.
+
+[09:24:08] Maria Chen: Good.
+
+[09:24:11] Helen Ozoro: Sam, I want to return to the seriousness of the delivery pattern. We have been patient, but patience is not an operating model.
+
+[09:24:16] Sam Okafor: I understand.
+
+[09:24:19] Helen Ozoro: We need to see evidence that the process is changing, not just hear that a review is under way.
+
+[09:24:23] Sam Okafor: The next-order monitoring and the written review should give you that evidence.
+
+[09:24:27] Maria Chen: Provided the monitoring is visible to us.
+
+[09:24:30] Sam Okafor: I will make the checkpoints visible.
+
+[09:24:33] Helen Ozoro: And provided the summary arrives when promised.
+
+[09:24:36] Sam Okafor: Yes.
+
+[09:24:39] Maria Chen: What date can you commit to for that summary?
+
+[09:24:42] Sam Okafor: I have just received confirmation from our review lead while we have been speaking. I can commit to Friday, August twenty-eighth.
+
+[09:24:48] Helen Ozoro: That is the date we need.
+
+[09:24:51] Sam Okafor: I will make sure it is complete.
+
+[09:24:54] Maria Chen: Send it to both of us, and copy the procurement address once we provide it.
+
+[09:24:57] Sam Okafor: I will.
+
+[09:25:00] Helen Ozoro: Use a clear subject line so it does not get buried.
+
+[09:25:03] Sam Okafor: Understood.
+
+[09:25:06] Maria Chen: Is the summary going to include the July shipment only, or all three late deliveries?
+
+[09:25:09] Sam Okafor: All three, with the July shipment receiving the most detail because it is the latest case.
+
+[09:25:13] Helen Ozoro: Good. We need the pattern, not a single incident report.
+
+[09:25:17] Sam Okafor: Agreed.
+
+[09:25:20] Maria Chen: Then let us state the commitment clearly in the notes.
+
+[09:25:24] Sam Okafor: I promise Ashgrove Health a written delivery root-cause summary by 2026-08-28.
+
+[09:25:29] Helen Ozoro: Thank you.
+
+[09:25:32] Maria Chen: That is clear.
+
+[09:25:35] Sam Okafor: I will stand behind that date.
+
+[09:25:38] Helen Ozoro: I want one more point recorded. If the next shipment begins to slip, we need to know before the scheduled date, not after.
+
+[09:25:42] Sam Okafor: Yes.
+
+[09:25:45] Maria Chen: And if there is no confirmed issue, we still need the checkpoint confirmation.
+
+[09:25:48] Sam Okafor: Understood.
+
+[09:25:51] Helen Ozoro: That is the difference between active monitoring and retrospective explanation.
+
+[09:25:55] Sam Okafor: I agree.
+
+[09:25:58] Maria Chen: We can work with that if the updates are concise.
+
+[09:26:01] Sam Okafor: They will be concise.
+
+[09:26:04] Helen Ozoro: Let us discuss how the monthly scorecard will be measured. I want the delivery date variance shown in days.
+
+[09:26:09] Sam Okafor: We can show requested date, committed date, actual receipt date, and variance.
+
+[09:26:13] Maria Chen: Add notice lead time.
+
+[09:26:16] Sam Okafor: Yes.
+
+[09:26:18] Helen Ozoro: Add whether the exception was identified before or after the internal checkpoint.
+
+[09:26:22] Sam Okafor: That can be included.
+
+[09:26:25] Maria Chen: Do not make the scorecard so detailed that it takes an hour to maintain.
+
+[09:26:29] Sam Okafor: We can keep the headline metrics on the first page and put detail behind them.
+
+[09:26:33] Helen Ozoro: Fine.
+
+[09:26:36] Maria Chen: What do you need from us to make the process work?
+
+[09:26:39] Sam Okafor: A single procurement contact, the receiving constraints, and prompt confirmation if an order detail changes.
+
+[09:26:45] Helen Ozoro: We can provide those.
+
+[09:26:48] Maria Chen: We also need you to tell us when a change on our side affects the delivery plan.
+
+[09:26:52] Sam Okafor: Yes, that should be part of the same process.
+
+[09:26:55] Helen Ozoro: No one is pretending all delays originate with one party. But we need a complete view.
+
+[09:26:59] Sam Okafor: That is fair.
+
+[09:27:02] Maria Chen: For example, if the quantity changes, the committed date should be re-confirmed rather than assumed to remain unchanged.
+
+[09:27:06] Sam Okafor: Agreed.
+
+[09:27:09] Helen Ozoro: Put that in the order instructions.
+
+[09:27:12] Sam Okafor: I will.
+
+[09:27:15] Maria Chen: Are there any changes to your internal approval steps that could affect the September order?
+
+[09:27:19] Sam Okafor: I am not aware of any, but I will confirm with operations.
+
+[09:27:23] Helen Ozoro: Again, confirm rather than assume.
+
+[09:27:25] Sam Okafor: Yes.
+
+[09:27:28] Maria Chen: We are nearly at time.
+
+[09:27:31] Helen Ozoro: Before we close, I want to make the commercial implication explicit without overstating it. If the delivery pattern continues, this is going to come up when we talk about next year.
+
+[09:27:39] Sam Okafor: I hear you, Helen.
+
+[09:27:42] Maria Chen: That is why the next few weeks matter. We are not looking for promises without evidence.
+
+[09:27:46] Sam Okafor: Understood.
+
+[09:27:49] Helen Ozoro: We have moved the renewal date to give both sides a proper planning window. That time needs to be used productively.
+
+[09:27:54] Sam Okafor: It will be.
+
+[09:27:57] Maria Chen: Let us recap the immediate deadlines.
+
+[09:28:00] Sam Okafor: Today: I confirm the root-cause completion date, request the September shipment confirmation, and begin the renewal-date and amendment check.
+
+[09:28:06] Helen Ozoro: Tomorrow afternoon: you send the September order status, or an interim note if something is still unresolved.
+
+[09:28:10] Sam Okafor: Correct.
+
+[09:28:13] Maria Chen: August twenty-eighth: the written delivery summary.
+
+[09:28:16] Sam Okafor: Correct.
+
+[09:28:19] Helen Ozoro: Second week of September: the first monthly operational check-in.
+
+[09:28:22] Sam Okafor: I will send calendar options.
+
+[09:28:25] Maria Chen: We will send the shared address, receiving constraint, reporting validator, and any other details you need.
+
+[09:28:29] Sam Okafor: Thank you.
+
+[09:28:32] Helen Ozoro: The follow-up should list owners and dates in a table.
+
+[09:28:35] Sam Okafor: I will include that.
+
+[09:28:38] Maria Chen: And please attach the current delivery spreadsheet so we are all working from the same version.
+
+[09:28:42] Sam Okafor: I will attach it and note any differences between your copy and ours.
+
+[09:28:45] Helen Ozoro: Good.
+
+[09:28:48] Maria Chen: One final question: who should we contact if Sam is unavailable?
+
+[09:28:51] Sam Okafor: I will include a named backup in the contact list.
+
+[09:28:54] Helen Ozoro: Not a generic mailbox?
+
+[09:28:56] Sam Okafor: A named backup, with the shared address included for visibility.
+
+[09:28:59] Maria Chen: That works.
+
+[09:29:02] Helen Ozoro: Sam, is there anything you need clarified from us before you leave?
+
+[09:29:05] Sam Okafor: No, I have the actions. I may need the procurement address and validation contact, but Maria will send those.
+
+[09:29:09] Maria Chen: Correct.
+
+[09:29:12] Helen Ozoro: Then send the follow-up by end of day.
+
+[09:29:15] Sam Okafor: I will send it by end of day.
+
+[09:29:18] Maria Chen: Thanks for taking the time.
+
+[09:29:20] Sam Okafor: Thank you both for being direct. I know the delivery history has not met expectations, and I will focus on the concrete steps we discussed.
+
+[09:29:25] Helen Ozoro: We appreciate the direct response. We will look for the written actions and the first status update.
+
+[09:29:29] Maria Chen: And the summary on the twenty-eighth.
+
+[09:29:32] Sam Okafor: Yes, on August twenty-eighth.
+
+[09:29:35] Helen Ozoro: All right. We will leave it there.
+
+[09:29:37] Maria Chen: Thank you, everyone.
+
+[09:29:39] Sam Okafor: Thanks, Helen. Thanks, Maria. Speak soon.
+
+[09:29:42] Helen Ozoro: Goodbye.
+
+[09:29:44] Maria Chen: Bye.

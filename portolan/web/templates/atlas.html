@@ -1,0 +1,402 @@
+{% extends "base.html" %}
+{% block title %}{% if note %}{{ note.note.title }} — Atlas — Portolan{% else %}Atlas — Portolan{% endif %}{% endblock %}
+{% block head %}
+<style>
+  /* Atlas wave 2026-09-18: an Obsidian-style two-pane note browser --
+     a folder tree on the left (grouped by note type, collapsible,
+     keyword-filterable), a note's Properties/body/Edges on the right.
+     Replaces the old plain `/search` page (owner instruction: "that does
+     fuck all anyway"). Widened past the shell's own 1100px `main.wrap`
+     (same `:has()` breakout `graph.html` already uses) -- a fixed
+     280px tree plus prose-width content needs more room than the rest
+     of the app's single-column pages. */
+  main.wrap:has(.atlas-wrap) { max-width: 1400px; }
+
+  .atlas-wrap { display: flex; align-items: flex-start; gap: 24px; }
+  .atlas-tree-toggle { display: none; margin-bottom: 12px; }
+
+  .atlas-tree {
+    flex: 0 0 280px; max-width: 280px; min-width: 0;
+    border: 1px solid var(--pl-line); border-radius: 4px; padding: 12px;
+    max-height: calc(100vh - 140px); overflow-y: auto;
+    position: sticky; top: 16px;
+  }
+  .atlas-main { flex: 1 1 auto; min-width: 0; }
+
+  .atlas-tree-search { margin-bottom: 10px; position: relative; }
+  .atlas-tree-search input[type=search] { min-height: 36px; font-size: 14px; }
+  #atlas-search-indicator { position: absolute; right: 8px; top: 9px; }
+
+  /* Plain <details>/<summary> for every folder -- collapsible with no JS
+     required (progressive enhancement, same reasoning `nav.site`'s
+     mobile toggle gets a JS enhancement on TOP of working markup, not
+     instead of it). A custom triangle glyph replaces the UA marker so it
+     rotates on [open] the same way everywhere (Safari/Firefox draw the
+     native one differently otherwise). */
+  .atlas-folder { border-bottom: 1px solid var(--pl-line); padding: 4px 0; }
+  .atlas-folder:last-child { border-bottom: none; }
+  /* Demo-polish fix (app checklist 2026-09-18, P0 item 5): this row has
+     THREE flex children -- the arrow glyph (a `::before` pseudo-element
+     on `summary` itself, so it counts as the first flex item), the label
+     span, and the count span. `justify-content: space-between` spreads
+     all three evenly across the row, which lands the label -- the
+     middle child -- dead centre instead of left-aligned right after the
+     arrow, the "centred tree label" the design-partner screenshot
+     caught. `flex-start` plus `margin-left: auto` on just the count
+     span (below) keeps the arrow+label hugging the left, file-tree
+     style, with only the count pushed to the right. */
+  .atlas-folder > summary, .atlas-subfolder > summary {
+    cursor: pointer; list-style: none; display: flex; justify-content: flex-start;
+    align-items: baseline; gap: 8px; font-family: var(--pl-display); font-size: 13px;
+    padding: 6px 4px; border-radius: 3px;
+  }
+  .atlas-folder > summary > span:last-child,
+  .atlas-subfolder > summary > span:last-child {
+    margin-left: auto;
+  }
+  .atlas-folder > summary::-webkit-details-marker,
+  .atlas-subfolder > summary::-webkit-details-marker { display: none; }
+  .atlas-folder > summary::before, .atlas-subfolder > summary::before {
+    content: "\25B8"; display: inline-block; width: 1em; color: var(--pl-muted);
+    transition: transform 120ms ease; flex: 0 0 auto;
+  }
+  .atlas-folder[open] > summary::before, .atlas-subfolder[open] > summary::before {
+    transform: rotate(90deg);
+  }
+  .atlas-folder > summary:hover, .atlas-subfolder > summary:hover { background: var(--pl-line); }
+  .atlas-subfolder { margin: 2px 0 2px 16px; }
+  .atlas-subfolder > summary { font-size: 12px; color: var(--pl-muted); }
+
+  .atlas-note-list { list-style: none; margin: 2px 0 6px; padding: 0 0 0 18px; }
+  .atlas-note-link {
+    display: block; padding: 4px 6px; border-radius: 3px; font-size: 13px;
+    text-decoration: none; color: var(--pl-ink);
+  }
+  .atlas-note-link:hover, .atlas-note-link:focus-visible {
+    background: var(--pl-line); color: var(--pl-ink); text-decoration: none;
+  }
+  /* The current note, highlighted -- a quiet ink-tinted background, not
+     the brand accent (base.html's own comment reserves that for exactly
+     four things app-wide and this isn't one of them). */
+  .atlas-note-link.active {
+    background: color-mix(in srgb, var(--pl-ink) 8%, transparent); font-weight: 600;
+  }
+
+  .atlas-best-matches { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--pl-line); }
+  .atlas-best-matches .atlas-note-list { padding-left: 0; }
+  .atlas-best-matches .atlas-note-link { padding: 6px; }
+  .atlas-note-title { display: block; font-weight: 600; }
+  .atlas-note-snippet { display: block; margin-top: 2px; }
+
+  .atlas-show-all { margin: 4px 0 4px 18px; }
+  .atlas-empty-filter { padding: 8px 4px; }
+
+  .atlas-breadcrumb a { text-decoration: none; }
+
+  /* Properties block: label above value, one row per frontmatter field
+     (build instructions: "every frontmatter field as label/value rows
+     ... long values wrapped"). Stacked, not side-by-side -- the same
+     shape Obsidian's own properties panel uses, and it wraps a long
+     description with no flex-basis fighting. */
+  .atlas-properties { margin: 8px 0 0; }
+  .atlas-properties > div { padding: 6px 0; border-bottom: 1px solid var(--pl-line); }
+  .atlas-properties > div:last-child { border-bottom: none; }
+  .atlas-properties dt {
+    font-family: var(--pl-display); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--pl-muted); margin: 0 0 3px;
+  }
+  .atlas-properties dd { margin: 0; font-size: 14px; overflow-wrap: anywhere; }
+  .atlas-properties dd.mono { font-family: var(--pl-mono); font-size: 13px; }
+  .atlas-properties dd.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .atlas-edge-group { margin-bottom: 14px; }
+  .atlas-edge-group:last-child { margin-bottom: 0; }
+  .atlas-edge-kind {
+    margin: 0 0 4px; text-transform: uppercase; letter-spacing: .06em;
+    font-family: var(--pl-display); font-size: 11px;
+  }
+  .atlas-edge-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+
+  .atlas-folder-counts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+  @media (max-width: 800px) {
+    .atlas-tree-toggle { display: inline-flex; }
+    .atlas-wrap { flex-direction: column; }
+    .atlas-tree {
+      position: static; max-height: none; width: 100%; max-width: none; display: none;
+    }
+    .atlas-tree.open { display: block; }
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="atlas-wrap">
+  <button type="button" id="atlas-tree-toggle" class="btn quiet atlas-tree-toggle"
+          aria-expanded="false" aria-controls="atlas-tree">&#9776; Notes</button>
+
+  <aside class="atlas-tree" id="atlas-tree" aria-label="Note tree">
+    <div class="atlas-tree-search">
+      <label class="sr-only" for="atlas-q">Search notes by title or body</label>
+      <input type="search" id="atlas-q" name="q" value="{{ q }}" placeholder="Search notes…"
+             autocomplete="off"
+             hx-get="/atlas/panel" hx-trigger="input changed delay:300ms, search"
+             hx-target="#atlas-panel-body" hx-swap="innerHTML"
+             hx-include="#atlas-active" hx-indicator="#atlas-search-indicator">
+      <input type="hidden" id="atlas-active" name="active" value="{{ note.note.slug if note else '' }}">
+      <span id="atlas-search-indicator" class="htmx-indicator mono muted small">Searching…</span>
+    </div>
+    <div id="atlas-panel-body" class="atlas-panel-body">
+      {% include "_atlas_panel.html" %}
+    </div>
+  </aside>
+
+  <section class="atlas-main">
+    {% if note %}
+      {% set n = note.note %}
+      <p class="eyebrow atlas-breadcrumb">
+        <a href="/atlas{{ ('?q=' + q|urlencode) if q else '' }}">Atlas</a>
+        / <a href="/notes?type={{ n.type.value }}">{{ note.folder_label }}</a>
+        / <span class="mono">{{ n.slug }}</span>
+      </p>
+      <h1 style="margin-top:0;">{{ n.title }}</h1>
+
+      <div class="card">
+        <p class="eyebrow">Properties</p>
+        <dl class="atlas-properties">
+          {% for row in note.properties %}
+            <div>
+              <dt>{{ row.label }}</dt>
+              {% if row.kind == 'badge' %}
+                <dd class="chips"><span class="badge {{ row.badge_class }}">{{ row.value }}</span></dd>
+              {% elif row.kind == 'date' %}
+                <dd class="updated {{ row.extra_class or '' }}">{{ row.value|date }}</dd>
+              {% elif row.kind == 'mono' %}
+                <dd class="mono">{{ row.value }}</dd>
+              {% elif row.kind == 'link' %}
+                {# Finding 9 (bug hunt 2026-09-18): `links.to_slug` carries
+                   no foreign key, so a `parent_slug`/`superseded_by`
+                   pointer at a note that's since been deleted (or never
+                   existed) is a real, reachable shape -- `row.href` is
+                   only set (`note_properties`) when the target note
+                   actually exists; otherwise this renders as plain text,
+                   never a link to a 404. #}
+                {% if row.href %}
+                  <dd><a href="{{ row.href }}">{{ row.value }}</a></dd>
+                {% else %}
+                  <dd>{{ row.value }}</dd>
+                {% endif %}
+              {% elif row.kind == 'source_links' %}
+                <dd class="chips">
+                  {% for s in row.value %}
+                    {% if s.exists %}
+                      <a class="citation-link" href="/originals/{{ s.slug }}">{{ s.slug }}</a>
+                    {% else %}
+                      <span class="citation-link muted">{{ s.slug }}</span>
+                    {% endif %}
+                  {% endfor %}
+                </dd>
+              {% elif row.kind == 'wrap' %}
+                {# Finding 3: `[[slug]]` wikilinks in a note's description
+                   (or in the plain-text fallback above) resolve to a real
+                   link into the graph, matching claim text elsewhere on
+                   this page, instead of printing the raw `[[slug]]`.
+                   Demo-polish fix (app checklist 2026-09-18, P0 item 5):
+                   `row.wiki_targets`, when set (Description only --
+                   `atlas_data.note_properties`), is the set of slugs this
+                   value actually references that really exist; a
+                   dangling `[[slug]]` renders as plain text instead of a
+                   link to a 404. `default(none)` covers every other
+                   `wrap` row (the Parent account/Superseded by fallback
+                   below), whose plain-slug `value` has no `[[...]]` in it
+                   at all -- `wiki_targets` unset there is a no-op. #}
+                <dd>{{ row.value|linkify_wikilinks(row.wiki_targets|default(none)) }}</dd>
+              {% else %}
+                <dd>{{ row.value }}</dd>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </dl>
+      </div>
+
+      {% with actions_note=n, actions_rows=note.note_actions, link_base="/atlas" %}
+      {% include "_note_actions.html" %}
+      {% endwith %}
+
+      {# Bug hunt 2026-09-22: a card-confirmed action shows its Why here
+         too (the same partial `note.html` uses), and its Claims card
+         lists the evidence claims -- the action note owns none itself. #}
+      {% if note.why %}
+      {% set why = note.why %}
+      {% set note_slug = n.slug %}
+      {% include "_action_why.html" %}
+      {% else %}
+      <div class="card">
+        <p class="eyebrow">Synthesis</p>
+        <div class="note-body">{{ note.body_html }}</div>
+        <div class="btn-row">
+          <a class="btn quiet" href="/notes/{{ n.slug }}/edit">Edit</a>
+          <a class="btn quiet" href="/notes/{{ n.slug }}.md">Download .md</a>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if note.done %}
+      {% set done = note.done %}
+      {% include "_action_done.html" %}
+      {% endif %}
+
+      {% set atlas_claims = note.claims_to_show %}
+      {% if atlas_claims %}
+      <div class="card">
+        <p class="eyebrow">Claims</p>
+        {% for claim in atlas_claims %}
+          <div id="claim-{{ claim.id }}" class="claim">
+            <p class="claim-text">{{ claim.claim_text|linkify_wikilinks }}</p>
+            <p class="claim-cite">
+              {{ claim.fact_type }} ·
+              <a href="/sources/{{ claim.source_slug }}">{{ claim.source_slug }}</a>
+              @ {{ claim.locator }} · recorded {{ claim.recorded|date }}
+              {% if claim.superseded_at %}
+                <span class="badge superseded">superseded <del>{{ claim.superseded_at|date }}</del></span>
+              {% else %}
+                <span class="badge fresh">fresh</span>
+              {% endif %}
+            </p>
+            {% if claim.quote %}<p class="claim-quote">&ldquo;{{ claim.quote }}&rdquo;</p>{% endif %}
+            <div class="claim-actions">
+              <a class="btn chip dig" href="/originals/{{ claim.source_slug }}?at={{ claim.locator|urlencode }}">Open the original at {{ claim.locator }} &rarr;</a>
+              <a class="btn quiet" href="/notes/{{ claim.note_slug }}/edit?claim_id={{ claim.id }}">Edit</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# Edges (build instructions): outgoing links grouped by relation
+         kind, then backlinks with an explicit "N notes link here" count
+         -- every entry links within Atlas (`/atlas/<slug>`) so the tree
+         stays put. #}
+      <div class="card">
+        <p class="eyebrow">Edges</p>
+        {% for group in note.edges %}
+          <div class="atlas-edge-group">
+            <p class="atlas-edge-kind muted">{{ group.label }}</p>
+            <ul class="atlas-edge-list">
+              {% for entry in group.entries %}
+                {# Finding 9: an outgoing edge to a note (or source) that
+                   no longer exists -- `links.to_slug` carries no foreign
+                   key -- renders as plain text, never a link into a 404.
+                   `entry.href` is only set when the target was actually
+                   found (`note_edges`). #}
+                <li>
+                  {% if entry.href %}<a href="{{ entry.href }}">{{ entry.title }}</a>{% else %}{{ entry.title }}{% endif %}
+                  {%- if entry.updated %} <span class="updated">updated: {{ entry.updated|date }}</span>{% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+        <div class="atlas-edge-group">
+          {# Finding 8 (bug hunt 2026-09-18): the noun ("note"/"notes") and
+             the verb ("links"/"link") need OPPOSITE conditions -- a
+             singular subject takes the verb's own "-s" ("1 note links
+             here"), a plural subject doesn't ("2 notes link here"). The
+             old markup pluralised both off the same condition, so it
+             read as "2 notes links here" (and "1 note link here"). #}
+          <p class="atlas-edge-kind muted">
+            {{ note.backlinks|length }} note{{ 's' if note.backlinks|length != 1 else '' }} link{{ 's' if note.backlinks|length == 1 else '' }} here
+          </p>
+          {% if note.backlinks %}
+            <ul class="atlas-edge-list">
+              {% for b in note.backlinks %}
+                <li><a href="/atlas/{{ b.slug }}">{{ b.title }}</a> <span class="badge">{{ b.kind }}</span> <span class="updated">updated: {{ b.updated|date }}</span></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if note.versions %}
+      <details class="card">
+        <summary class="eyebrow" style="cursor:pointer;">Version history</summary>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Version history">
+        <table>
+          <tr><th>Version</th><th>Changed</th><th>By</th><th>Reason</th></tr>
+          {% for v in note.versions %}
+            <tr>
+              <td class="mono" data-label="Version">{{ v.version }}</td>
+              <td class="updated" data-label="Changed">{{ v.changed_at|date('%Y-%m-%d %H:%M') }}</td>
+              <td data-label="By">{{ v.changed_by or '' }}</td>
+              <td data-label="Reason">{{ v.reason or '' }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+        </div>
+      </details>
+      {% endif %}
+
+    {% elif search %}
+      {% set result = search.result %}
+      <p class="eyebrow">Search results</p>
+      <h1 style="margin-top:0;">&ldquo;{{ q }}&rdquo;</h1>
+      {% if not result.hits %}
+        <div class="card empty">
+          {% if result.control_ok %}
+            <p class="eyebrow">Nothing recorded</p>
+            <p>No results. The index looks healthy — this is a genuine “nothing recorded,” not a
+            broken search.</p>
+          {% else %}
+            <p class="eyebrow">Index looks broken</p>
+            <div class="flag">Error: no results, and the control query also found nothing — the
+            index looks broken or empty, not merely lacking an answer.</div>
+          {% endif %}
+        </div>
+      {% else %}
+        <p class="mono muted small">{{ result.hits|length }} result{{ 's' if result.hits|length != 1 else '' }}</p>
+        {% for hit in result.hits %}
+          {% set meta = search.note_summaries.get(hit.note_slug) %}
+          <div class="card note-card">
+            <p class="note-card-title"><a href="/atlas/{{ hit.note_slug }}?q={{ q|urlencode }}"><strong>{{ hit.title }}</strong></a>
+              <span class="updated">updated: {{ hit.updated|date }}</span></p>
+            <p class="note-card-body muted">{{ hit.best_chunk|search_snippet(meta.description if meta else none, q) }}</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% if result.query_terms_unmatched %}
+        <p class="muted">Unmatched query terms: {{ result.query_terms_unmatched|join(', ') }}</p>
+      {% endif %}
+
+    {% else %}
+      <div class="empty">
+        {% if spyglass_svg %}
+        <div class="empty-mascot" aria-hidden="true">{{ spyglass_svg|safe }}</div>
+        {% endif %}
+        <p class="eyebrow">Atlas</p>
+        <h1 style="margin-top:0;">Browse the graph</h1>
+        <p>Pick a note from the tree on the left, or search it by keyword above. Every note shows
+        its properties, its written-up synthesis, and the edges that link it to the rest of the
+        graph — outgoing links and who links back to it.</p>
+        <div class="atlas-folder-counts">
+          {% for c in counts %}
+            <a class="btn chip" href="/notes?type={{ c.type }}">{{ c.label }} <span class="mono muted">{{ c.total }}</span></a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </section>
+</div>
+<script nonce="{{ csp_nonce(request) }}">
+(function () {
+  // Mobile (under 800px, matching this file's own @media rule): the
+  // tree is a toggle, not a permanent column (build instructions).
+  var toggle = document.getElementById('atlas-tree-toggle');
+  var tree = document.getElementById('atlas-tree');
+  if (toggle && tree) {
+    toggle.addEventListener('click', function () {
+      var open = tree.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+})();
+</script>
+{% endblock %}
