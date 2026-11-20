@@ -35,6 +35,7 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from portolan.extract.prompt import build_user_message
 from portolan.extract.schema import FACT_TYPES, FactType, SourceEnvelope
 from portolan.metering import Surface
+from portolan.util.prompt_safety import clean
 
 if TYPE_CHECKING:
     from portolan.bench.extraction import ProducedFactRecord
@@ -291,8 +292,10 @@ def _render_pass1_facts(facts: list[_Pass1FactLike] | list[ProducedFactRecord]) 
         return "(pass 1 produced no facts for this source)"
     lines = []
     for f in facts:
-        quote_part = f' Quote: "{f.quote}"' if f.quote else " Quote: (none)"
-        lines.append(f"- fact_id={f.id} type={f.type} locator={f.locator}: {f.claim}{quote_part}")
+        quote_part = f' Quote: "{clean(f.quote)}"' if f.quote else " Quote: (none)"
+        lines.append(
+            f"- fact_id={f.id} type={f.type} locator={f.locator}: {clean(f.claim)}{quote_part}"
+        )
     return "\n".join(lines)
 
 

@@ -57,9 +57,7 @@ SOURCE_FRAMING = (
 # zero-width and bidi marks and embeddings; invisible operators; bidi isolates;
 # variation selectors; BOM; Unicode TAG block.
 INVISIBLE_RE = re.compile(
-    "[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f­͏؜ᅟᅠ᠎"
-    "​-‏‪-‮⁠-⁤⁦-⁩ㅤ︀-️﻿ﾠ"
-    "\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
+    "[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f­͏؜ᅟᅠ᠎​-‏‪-‮⁠-⁤⁦-⁩ㅤ︀-️﻿ﾠ\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
 )
 
 _PLAIN_TAGS = (
@@ -87,7 +85,7 @@ _TAG_NAMES = (
     "|".join(re.sub(r"[-_]", "[-_]", name) for name in _PLAIN_TAGS)
     + r"|(?:scheduled|command|local[-_]command)[-_][\w-]+|antml:[\w:.-]+|[\w-]*[-_]hook"
 )
-_TAG_RE = re.compile(r"<(?=\s*/?\s*(?:%s)(?=[\s/>]|$))" % _TAG_NAMES, re.I)
+_TAG_RE = re.compile(r"<(?=\s*/?\s*(?:" + _TAG_NAMES + r")(?=[\s/>]|$))", re.I)
 # Chat-template tokens: <|im_start|>, <|system|>, <|endoftext|>.
 _TEMPLATE_RE = re.compile(r"<(?=\|[^|<>\n]{1,40}\|>)")
 # Llama-style markers.
