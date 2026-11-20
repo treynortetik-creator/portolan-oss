@@ -1,6 +1,9 @@
 """The candidate gate and the compare call (`01-spec/build-contracts.md`
 "Merge": "no candidate above threshold -> new note, no model call").
 
+The compare call answers `same | extends | contradicts | different`;
+`different` means the gate paired two unrelated claims.
+
 One threshold, `GATE_SKIP_THRESHOLD = 0.45`: a best score below it is `new`
 with no model call; at or above it, one compare call. The contract's 0.80
 describes a strong candidate; it is not a second branch.
@@ -13,6 +16,7 @@ from __future__ import annotations
 
 import difflib
 import re
+from datetime import date
 
 import psycopg
 
@@ -26,13 +30,28 @@ from portolan.search.query import search
 GATE_SKIP_THRESHOLD = 0.45
 
 COMPARE_SYSTEM = (
-    "You compare one existing recorded claim about a customer to one newly "
-    "extracted fact about the same customer. Decide whether the new fact "
-    "is the SAME underlying fact already on file (same event, possibly "
-    "reworded or from a different source), EXTENDS it with new detail "
-    "about the same event, or CONTRADICTS it (the new fact states "
-    "something that cannot both be true alongside the existing claim). "
-    "Reply with your verdict and a one-line reason."
+    "You compare one claim already recorded about a customer with one newly "
+    "extracted fact filed on the same note. The two were paired by text "
+    "similarity alone, so they may have nothing to do with each other. "
+    "Choose exactly one verdict:\n"
+    "- same: both state the same underlying fact about the same event or "
+    "state, possibly reworded or reported by a different source. The new "
+    "fact adds nothing.\n"
+    "- extends: the same event or state, and the new fact adds detail the "
+    "existing claim lacks (a figure, a date, a cause, a consequence).\n"
+    "- contradicts: both are about the same subject and the same attribute, "
+    "and the new fact replaces or reverses the existing claim, so the "
+    "existing claim is no longer the current truth (a renewal date moved, a "
+    "decision reversed, a count changed).\n"
+    "- different: they are about different events, subjects or attributes, "
+    "even when they share an account, a product or most of their words. Two "
+    "separate complaints, two separate requests, or the same kind of event "
+    "on two dates are different.\n"
+    "Use the dates and the verbatim quotes to tell one event from another. "
+    "When unsure between same and different, or between contradicts and "
+    "different, answer different: a wrong `same` loses the new fact and a "
+    "wrong `contradicts` retires a true one. Reply with your verdict and a "
+    "one-line reason."
 )
 
 
@@ -132,12 +151,26 @@ def gate(
     return _score_against(embedder, plain_new, new_vec, candidate_pool, vector_cache)
 
 
-def build_compare_prompt(*, candidate: Claim, fact: Fact) -> str:
+def _quote_line(quote: str | None) -> str:
+    """`\nVerbatim quote: "..."` on one line, or nothing."""
+    if not quote or not quote.strip():
+        return ""
+    return f'\nVerbatim quote: "{" ".join(quote.split())}"'
+
+
+def build_compare_prompt(*, candidate: Claim, fact: Fact, source_date: date | None = None) -> str:
+    """Both sides with what tells one event from another: each one's world
+    date when it has one, the new fact's source date, and each verbatim
+    quote. `portolan.fake_extractor._COMPARE_PROMPT_RE` parses this shape."""
+    existing_dated = f", dated {candidate.valid_from:%Y-%m-%d}" if candidate.valid_from else ""
+    new_source = f"from a source dated {source_date:%Y-%m-%d}, " if source_date else ""
+    new_dated = f", dated {fact.valid_from:%Y-%m-%d}" if fact.valid_from else ""
     return (
-        f"Existing claim on file, recorded {candidate.recorded:%Y-%m-%d}, "
+        f"Existing claim on file, recorded {candidate.recorded:%Y-%m-%d}{existing_dated}, "
         f"cited to {candidate.source_slug} @ {candidate.locator}:\n"
-        f"{re.sub(r'~~|→ superseded.*$', '', candidate.claim_text)}\n\n"
-        f"New fact, locator {fact.locator}"
-        f"{f', dated {fact.valid_from:%Y-%m-%d}' if fact.valid_from else ''}:\n"
+        f"{re.sub(r'~~|→ superseded.*$', '', candidate.claim_text)}"
+        f"{_quote_line(candidate.quote)}\n\n"
+        f"New fact, {new_source}locator {fact.locator}{new_dated}:\n"
         f"{fact.claim}"
+        f"{_quote_line(fact.quote)}"
     )

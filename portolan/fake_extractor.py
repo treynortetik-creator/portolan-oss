@@ -412,7 +412,7 @@ def _extract_source_id(user_message: str) -> str | None:
 #     <new fact claim text>
 #
 # and asks (`portolan.merge.gate.COMPARE_SYSTEM`) for a `CompareVerdict`
-# (`{"verdict": "same"|"extends"|"contradicts", "reason": str}`). Rather
+# (`{"verdict": "same"|"extends"|"contradicts"|"different", "reason": str}`). Rather
 # than guess blindly, this parses the two claim texts back out of that
 # fixed shape and compares them:
 #
@@ -430,11 +430,12 @@ def _extract_source_id(user_message: str) -> str | None:
 #   possibly from a different source -- exactly the truth-table's planted
 #   cross-source duplicates, e.g. F02 in both `S-call-009` and
 #   `S-ticket-031`) verdicts "same"; anything less similar verdicts
-#   "extends".
+#   "different" (two planted facts that merely share words).
 # --------------------------------------------------------------------------
 
 _COMPARE_PROMPT_RE = re.compile(
-    r"cited to [^\n]*:\n(?P<existing>.*?)\n\nNew fact, locator[^\n]*:\n(?P<new>.*)",
+    r"cited to [^\n]*:\n(?P<existing>.*?)(?:\nVerbatim quote: [^\n]*)?"
+    r"\n\nNew fact, [^\n]*:\n(?P<new>.*?)(?:\nVerbatim quote: [^\n]*)?\Z",
     re.DOTALL,
 )
 
@@ -472,7 +473,8 @@ def _compare_verdict_for(user_message: str, placements: FakePlacements) -> dict[
         }
 
     ratio = SequenceMatcher(None, existing, new).ratio()
-    verdict = "same" if ratio >= _SAME_SIMILARITY_THRESHOLD else "extends"
+    # Not the same planted fact and not a planted supersession: unrelated.
+    verdict = "same" if ratio >= _SAME_SIMILARITY_THRESHOLD else "different"
     return {"verdict": verdict, "reason": f"fake responder: text similarity {ratio:.2f}"}
 
 

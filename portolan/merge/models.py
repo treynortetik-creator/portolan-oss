@@ -41,7 +41,11 @@ class CompareVerdict(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    verdict: Literal["same", "extends", "contradicts"]
+    # `different`: the two were paired by text similarity alone and are not
+    # about the same event or state. Without it a model had to force such a
+    # pair into `same` (the new fact became a citation on an unrelated claim)
+    # or `contradicts` (a wrongful supersession, or a review row to dismiss).
+    verdict: Literal["same", "extends", "contradicts", "different"]
     reason: str
 
     @field_validator("verdict", mode="before")
@@ -73,6 +77,9 @@ class MergeOutcome(BaseModel):
     already_recorded: bool = False
     reason: str | None = None
 
+    # What the compare call said, before the graph rules were applied
+    # (`different` is filed as `new`; an undatable `contradicts` as `extends`).
+    compare_verdict: str | None = None
     compare_calls: int = 0
     compare_input_tokens: int = 0
     compare_output_tokens: int = 0
@@ -122,6 +129,7 @@ class MergeReport(BaseModel):
     compare_calls: int = 0
     compare_input_tokens: int = 0
     compare_output_tokens: int = 0
+    compare_verdicts: dict[str, int] = Field(default_factory=dict)
     placements: list[FactPlacement] = Field(default_factory=list)
     actions_new: int = 0
     actions_deduped: int = 0

@@ -14,7 +14,8 @@ The pipeline, per fact:
 4. The candidate gate (`portolan.merge.gate.gate`) against the home note's
    live claims; below threshold -> `new`, no LLM call; otherwise one
    compare call.
-5. Apply the verdict. `new`/`extends` insert a claim. `same` never writes a
+5. Apply the verdict. `different` (the gate paired two unrelated claims) is
+   filed as `new`. `new`/`extends` insert a claim. `same` never writes a
    second `claims` row: the sighting becomes a `claim_citations` row on the
    existing claim, whose own `source_slug`/`locator` stay the first
    sighting's (`01-spec/provenance-chain.md`). `contradicts` inserts and
@@ -168,9 +169,9 @@ def _explicit_supersession_date(fact: Fact, candidate: Claim):
 
     Requires both claims to carry an explicit `valid_from` and the new one
     to be strictly later. There is deliberately no fallback to the source's
-    date: the compare schema has no "unrelated" verdict, so two unrelated
-    claims that gate together often come back `contradicts`, and source
-    dates would let those retire each other.
+    date: a model can still call two unrelated claims that gate together
+    `contradicts` (it has `different` for that, but nothing forces it), and
+    source dates would let those retire each other.
     """
     if fact.valid_from is None or candidate.valid_from is None:
         return None
@@ -547,6 +548,8 @@ def merge_fact(
 
     compare_calls = 0
     compare_in = compare_out = 0
+    compare_verdict: str | None = None
+    compare_reason: str | None = None
     status: str
 
     if candidate is None or score < GATE_SKIP_THRESHOLD:
@@ -554,7 +557,9 @@ def merge_fact(
     else:
         result = llm.complete(
             system=COMPARE_SYSTEM,
-            user=build_compare_prompt(candidate=candidate, fact=fact),
+            user=build_compare_prompt(
+                candidate=candidate, fact=fact, source_date=source.source_date
+            ),
             json_schema=compare_verdict_json_schema(),
             surface="merge",
         )
@@ -562,7 +567,10 @@ def merge_fact(
         compare_calls = 1
         compare_in = result.input_tokens
         compare_out = result.output_tokens
-        status = verdict.verdict
+        compare_verdict = verdict.verdict
+        compare_reason = verdict.reason
+        # `different`: the gate paired two unrelated claims; the fact is new.
+        status = "new" if verdict.verdict == "different" else verdict.verdict
 
     queue_rows = queue_rows_from_resolution
     claim_id: int | None = None
@@ -648,6 +656,8 @@ def merge_fact(
         claim_id=claim_id,
         claim_inserted=claim_inserted,
         citation_inserted=citation_inserted,
+        reason=compare_reason,
+        compare_verdict=compare_verdict,
         compare_calls=compare_calls,
         compare_input_tokens=compare_in,
         compare_output_tokens=compare_out,

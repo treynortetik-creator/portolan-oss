@@ -121,6 +121,10 @@ def merge_extraction(
                 report.compare_input_tokens += outcome.compare_input_tokens
                 report.compare_output_tokens += outcome.compare_output_tokens
                 report.queue_rows += outcome.queue_rows
+                if outcome.compare_verdict is not None:
+                    report.compare_verdicts[outcome.compare_verdict] = (
+                        report.compare_verdicts.get(outcome.compare_verdict, 0) + 1
+                    )
                 if outcome.claim_inserted:
                     report.claims_inserted += 1
                 if outcome.citation_inserted:
