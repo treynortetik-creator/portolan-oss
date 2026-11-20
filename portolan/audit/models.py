@@ -56,6 +56,10 @@ class DiffCandidate(BaseModel):
     best_match_claim_id: int | None = None
     best_match_claim_text: str | None = None
     best_similarity: float = 0.0
+    # For a miss: every first-pass claim on file for the source, as (id,
+    # text). The judge reads all of them: a paraphrase is worded unlike the
+    # claim it restates, so the closest by wording is often the wrong one.
+    on_file: list[tuple[int, str]] = Field(default_factory=list)
 
 
 class FactDiff(BaseModel):

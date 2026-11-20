@@ -53,21 +53,51 @@ class JudgeVerdict(BaseModel):
     reason: str = ""
 
 
+# Claims listed to the judge per candidate; a source with more keeps the
+# closest by wording first and says how many were left out.
+ON_FILE_LIMIT = 80
+
+
 def _user_message(candidate: DiffCandidate) -> str:
     matched = (
-        "Closest existing claim on file"
+        "Closest existing claim on file by wording"
         + (f" (id {candidate.best_match_claim_id})" if candidate.best_match_claim_id else "")
         + f":\n{candidate.best_match_claim_text or '(nothing close on file)'}"
     )
-    return (
+    message = (
         f"Second-pass fact ({candidate.fact_type}), source {candidate.source_slug} "
         f"@ {candidate.locator}:\n{candidate.claim_text}\n\n{matched}"
     )
+    if candidate.on_file:
+        shown = candidate.on_file[:ON_FILE_LIMIT]
+        lines = [f"- (id {claim_id}) {text}" for claim_id, text in shown]
+        left_out = len(candidate.on_file) - len(shown)
+        if left_out:
+            lines.append(f"({left_out} more claims on file are not shown.)")
+        message += (
+            "\n\nEvery claim on file for this source (a paraphrase may be worded quite "
+            "unlike the fact; name its id if one of these already says it):\n" + "\n".join(lines)
+        )
+    return message
+
+
+def _names_a_claim_on_file(candidate: DiffCandidate, claim_id: int | None) -> bool:
+    known = {cid for cid, _text in candidate.on_file}
+    if candidate.best_match_claim_id is not None:
+        known.add(candidate.best_match_claim_id)
+    return claim_id is not None and claim_id in known
 
 
 def judge(llm: JudgeClient, candidates: list[DiffCandidate]) -> list[Judgement]:
     """One structured judge call per candidate (`surface="audit"`,
-    `json_schema=JudgeVerdict.model_json_schema()`)."""
+    `json_schema=JudgeVerdict.model_json_schema()`).
+
+    The judge reads every first-pass claim on file for the candidate's source
+    (`DiffCandidate.on_file`), not only the closest by wording. A
+    `paraphrase_of_existing` verdict takes a miss off the count, so it stands
+    only when it names a claim the judge was shown; one that names any other
+    id, or none, returns no `Judgement` for that candidate, and the report
+    counts the candidate as unjudged."""
     out: list[Judgement] = []
     for candidate in candidates:
         result = llm.complete(
@@ -77,6 +107,10 @@ def judge(llm: JudgeClient, candidates: list[DiffCandidate]) -> list[Judgement]:
             surface="audit",
         )
         verdict = JudgeVerdict.model_validate(result.data)
+        if verdict.verdict == "paraphrase_of_existing" and not _names_a_claim_on_file(
+            candidate, verdict.matched_claim_id
+        ):
+            continue
         out.append(
             Judgement(
                 candidate=candidate,

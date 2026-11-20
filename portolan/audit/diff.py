@@ -198,6 +198,7 @@ def diff_facts(
         matched_claims.add(ci)
         matched_facts.add(fi)
 
+    on_file = [(c.id, c.claim_text) for c in first if c.id is not None]
     misses: list[DiffCandidate] = []
     for fi, fact in enumerate(facts):
         if fi in matched_facts:
@@ -219,6 +220,7 @@ def diff_facts(
                 best_match_claim_id=best_claim.id if best_claim else None,
                 best_match_claim_text=best_claim.claim_text if best_claim else None,
                 best_similarity=best_similarity,
+                on_file=on_file,
             )
         )
 

@@ -420,9 +420,11 @@ def render_markdown(report: AuditReport) -> str:
         f"kept for comparison only."
     )
     lines.append(
-        f"**Invention rate**: {_fmt_pct(report.invention_rate_overall)} "
+        f"**Candidate inventions (not judged)**: {_fmt_pct(report.invention_rate_overall)} "
         f"({report.inventions_total} of {report.first_pass_claims_total} "
-        f"first-pass claims)."
+        f"first-pass claims) -- claims on file the second pass did not restate, matched "
+        f"by wording alone. Nothing has read them against the source, so this is a list "
+        f"to check, not a rate of invented facts."
     )
     if report.unjudged_misses_total:
         # Review finding 12: a genuine gap in the judge call (never a

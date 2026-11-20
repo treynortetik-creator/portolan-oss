@@ -24,7 +24,7 @@ import portolan.audit.report as report_module
 from portolan import db as db_module
 from portolan.audit.diff import CLAIM_SIMILARITY_THRESHOLD, diff_facts
 from portolan.audit.judge import judge
-from portolan.audit.models import DiffCandidate, FactDiff, Judgement
+from portolan.audit.models import AuditReport, DiffCandidate, FactDiff, Judgement
 from portolan.audit.report import _claims_for_source, render_markdown, run_audit
 from portolan.audit.sample import sample_sources
 from portolan.audit.second_pass import AuditBackend, second_pass
@@ -685,3 +685,82 @@ def test_run_audit_report_renders_and_miss_rate_is_right(graph):
     markdown = render_markdown(report)
     assert "Production audit" in markdown
     assert "Miss rate" in markdown
+
+
+# --------------------------------------------------------------------
+# Read-path review 2026-11-20: what the judge is shown, and what its
+# verdict is allowed to take off the miss count.
+# --------------------------------------------------------------------
+
+
+def _miss_with_claims_on_file() -> DiffCandidate:
+    return DiffCandidate(
+        kind="miss",
+        source_slug="S-call-test",
+        fact_type="pricing",
+        claim_text="The buyer wants twelve points off consumables at renewal.",
+        locator="00:08:54",
+        # the closest by wording is not the claim that says the same thing
+        best_match_claim_id=7,
+        best_match_claim_text="The buyer wants a quieter alarm at night.",
+        on_file=[
+            (7, "The buyer wants a quieter alarm at night."),
+            (9, "A 12 percent volume discount is expected in 2027."),
+        ],
+    )
+
+
+def test_the_judge_reads_every_claim_on_file_for_the_source_not_only_the_closest():
+    """A paraphrase is worded unlike the claim it restates, so the claim
+    nearest by string similarity is often the wrong one to show."""
+    seen: list[str] = []
+
+    def reply(*, user, **_kwargs):
+        seen.append(user)
+        return {"verdict": "paraphrase_of_existing", "matched_claim_id": 9, "reason": "same ask"}
+
+    llm = FakeLLMClient(reply, model_key="claude-sonnet-5")
+    (result,) = judge(llm, [_miss_with_claims_on_file()])
+
+    (user,) = seen
+    assert "(id 7) The buyer wants a quieter alarm at night." in user
+    assert "(id 9) A 12 percent volume discount is expected in 2027." in user
+    assert (result.verdict, result.matched_claim_id) == ("paraphrase_of_existing", 9)
+
+
+def test_a_paraphrase_verdict_naming_a_claim_that_is_not_on_file_is_no_verdict():
+    """The verdict takes a miss off the count; an id the judge made up must
+    not. The candidate is left unjudged, which the report counts apart."""
+    llm = FakeLLMClient(
+        [{"verdict": "paraphrase_of_existing", "matched_claim_id": 4242, "reason": "?"}],
+        model_key="claude-sonnet-5",
+    )
+    assert judge(llm, [_miss_with_claims_on_file()]) == []
+
+
+def test_diff_facts_hands_the_judge_the_sources_claims(graph):
+    conn, _store, placements = graph
+    source_slug, source_type = _busiest_call_source(conn)
+    first_claims = _claims_for_source(conn, source_slug)
+    second = placements.extraction_result_for(source_slug)
+    second = second.model_copy(update={"facts": [*second.facts, _extra_fact()]})
+
+    diff = diff_facts(first_claims, second, source_type, Registry.load(conn))
+
+    (miss,) = diff.misses
+    assert miss.on_file == [(c.id, c.claim_text) for c in first_claims]
+
+
+def test_the_report_calls_unjudged_inventions_candidates():
+    report = AuditReport(
+        note_slug="audit-2026-w37",
+        since=date(2026, 9, 1),
+        rate=0.02,
+        seed="audit",
+        first_pass_claims_total=10,
+        inventions_total=3,
+        invention_rate_overall=0.3,
+    )
+    text = render_markdown(report)
+    assert "**Candidate inventions (not judged)**: 30.0% (3 of 10 first-pass claims)" in text
+    assert "**Invention rate**" not in text
