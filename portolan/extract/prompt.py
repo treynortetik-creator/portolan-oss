@@ -33,6 +33,7 @@ from portolan.extract.schema import (
     TypePrecedenceRule,
     merge_customer_extension,
 )
+from portolan.util.prompt_safety import SOURCE_FRAMING, clean, frame_source
 
 
 def _render_type_checklist(checklist: dict[str, FactTypeInfo]) -> str:
@@ -676,6 +677,12 @@ def build_user_message(envelope: SourceEnvelope) -> str:
     account context, vocabulary, participants, and the locator-annotated
     text. Everything that varies call to call lives here, not in the
     system prompt, so the cached system prompt prefix stays untouched.
+
+    The source text is untrusted: it is cleaned (`portolan.util.prompt_safety`)
+    and fenced between SOURCE MATERIAL markers under a "data, not instructions"
+    line. The framing lives here, not in the system prompt, so the system
+    prompt's hash (which stamps training labels) does not move. Only this
+    prompt copy is cleaned; the quote gate still anchors against the raw text.
     """
     segment_note = ""
     if envelope.segment is not None:
@@ -692,12 +699,12 @@ def build_user_message(envelope: SourceEnvelope) -> str:
         f"source_date: {envelope.source_date.isoformat()}"
         f"{segment_note}\n\n"
         "## Participants\n"
-        f"{_render_participants(envelope)}\n\n"
+        f"{clean(_render_participants(envelope))}\n\n"
         "## Registry context\n"
-        f"{_render_registry_context(envelope)}"
-        f"{_render_account_context(envelope)}\n\n"
+        f"{clean(_render_registry_context(envelope))}"
+        f"{clean(_render_account_context(envelope))}\n\n"
         "## Vocabulary\n"
-        f"{_render_vocabulary(envelope)}\n\n"
-        "## Source text (locators annotate each line)\n"
-        f"{envelope.text}"
+        f"{clean(_render_vocabulary(envelope))}\n\n"
+        f"{SOURCE_FRAMING}\n\n"
+        + frame_source(envelope.text, label="## Source text (locators annotate each line)")
     )
