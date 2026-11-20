@@ -819,3 +819,199 @@ def test_has_errors_reflects_error_severity_findings(db):
 
     clean_report = run_lint(db, FakeStore())
     assert clean_report.has_errors is False
+
+
+# --------------------------------------------------------------------
+# Read-path review 2026-11-20: findings a clean graph should not raise,
+# findings nobody can clear, and citations that name no claim.
+# --------------------------------------------------------------------
+
+
+def test_thin_links_counts_links_into_a_note_as_well(db):
+    """An entity note (a product, a competitor) is linked *to*: three signals
+    naming it make it well connected, whatever its own body links out to."""
+    with db.cursor() as cur:
+        insert_note(cur, "tidewater-t2", type="product", crm_id=None, title="Tidewater T2")
+        for n in range(3):
+            insert_note(cur, f"signal-{n}", type="signal", crm_id=None, title=f"Signal {n}")
+            insert_link(cur, f"signal-{n}", "tidewater-t2", "body")
+
+    report = run_lint(db, FakeStore())
+    assert "tidewater-t2" not in {r.note_slug for r in findings_for(report, "thin_links")}
+    # each signal has one link in all, so it is still thin
+    assert "signal-0" in {r.note_slug for r in findings_for(report, "thin_links")}
+
+
+def test_stale_after_on_a_note_that_is_no_longer_living_is_not_an_error(db):
+    """Nobody can clear it: the note was superseded or archived, not left to rot."""
+    today = date(2026, 9, 12)
+    with db.cursor() as cur:
+        insert_note(cur, "ashgrove", crm_id="A-1010")
+        insert_note(
+            cur,
+            "ashgrove-old",
+            crm_id="A-1011",
+            status="superseded",
+            superseded_by="ashgrove",
+            stale_after=datetime(2026, 8, 1, tzinfo=UTC),
+        )
+        insert_note(
+            cur,
+            "ashgrove-shelved",
+            crm_id="A-1012",
+            status="archived",
+            stale_after=datetime(2026, 8, 1, tzinfo=UTC),
+        )
+
+    report = run_lint(db, FakeStore(), today=today)
+    assert findings_for(report, "stale") == []
+
+
+def test_relative_time_catches_the_common_phrases_the_first_list_missed(db):
+    with db.cursor() as cur:
+        insert_source(cur, "ashgrove-qbr-2026-08-14")
+        insert_note(cur, "ashgrove", crm_id="A-1010")
+        flagged = {
+            insert_claim(cur, "ashgrove", claim_text=text, source_slug="ashgrove-qbr-2026-08-14")
+            for text in (
+                "The renewal slipped last quarter.",
+                "They plan to decide next month.",
+                "Three pumps failed two weeks ago.",
+                "Budget is frozen this year.",
+                "A pilot starts later this month.",
+            )
+        }
+        clean = {
+            insert_claim(cur, "ashgrove", claim_text=text, source_slug="ashgrove-qbr-2026-08-14")
+            for text in (
+                "The renewal slipped in 2026-Q2.",
+                "The last quarter of 2026 is the renewal window.",
+                "Deliveries were late for the week of 2026-07-27.",
+            )
+        }
+
+    rows = findings_for(run_lint(db, FakeStore()), "relative_time")
+    assert {r.claim_id for r in rows} == flagged
+    assert not ({r.claim_id for r in rows} & clean)
+
+
+def test_relative_time_leaves_a_speakers_quoted_words_in_a_claim_alone(db):
+    with db.cursor() as cur:
+        insert_source(cur, "ashgrove-qbr-2026-08-14")
+        insert_note(cur, "ashgrove", crm_id="A-1010")
+        insert_claim(
+            cur,
+            "ashgrove",
+            claim_text='The materials manager said on 2026-08-24 that "after last month" '
+            "the account expects a credit.",
+            source_slug="ashgrove-qbr-2026-08-14",
+        )
+
+    assert findings_for(run_lint(db, FakeStore()), "relative_time") == []
+
+
+def test_relative_time_skips_reports_and_notes_that_are_no_longer_living(db):
+    """A weekly report is dated by what it is; a superseded note is history."""
+    with db.cursor() as cur:
+        insert_note(cur, "ashgrove", crm_id="A-1010")
+        insert_note(
+            cur,
+            "weekly-2026-w37",
+            type="report",
+            crm_id=None,
+            body_md="Recently three accounts raised deliveries.",
+        )
+        insert_note(
+            cur,
+            "ashgrove-old",
+            crm_id="A-1011",
+            status="superseded",
+            superseded_by="ashgrove",
+            body_md="Currently in renewal talks.",
+        )
+
+    assert findings_for(run_lint(db, FakeStore()), "relative_time") == []
+
+
+def test_a_citation_marker_that_no_claim_on_the_note_backs_is_a_warning(db):
+    """The source exists, but nothing on this note was recorded from it at that
+    place: the sentence carries a citation its own claims do not support."""
+    with db.cursor() as cur:
+        insert_source(cur, "ashgrove-qbr-2026-08-14")
+        insert_note(
+            cur,
+            "ashgrove",
+            crm_id="A-1010",
+            body_md=(
+                "Late deliveries were reported ^[ashgrove-qbr-2026-08-14 @ 00:14:32]. "
+                "A credit was promised ^[ashgrove-qbr-2026-08-14 @ 00:41:07]."
+            ),
+        )
+        insert_claim(cur, "ashgrove", source_slug="ashgrove-qbr-2026-08-14", locator="00:14:32")
+
+    rows = findings_for(run_lint(db, FakeStore()), "unresolved_citation")
+    assert [(r.note_slug, r.severity) for r in rows] == [("ashgrove", "warning")]
+    assert "00:41:07" in rows[0].message
+
+
+def test_a_citation_marker_backed_by_a_corroborating_citation_is_clean(db):
+    with db.cursor() as cur:
+        insert_source(cur, "ashgrove-qbr-2026-08-14")
+        insert_source(cur, "ashgrove-call-2026-09-01")
+        insert_note(
+            cur,
+            "ashgrove",
+            crm_id="A-1010",
+            body_md="Late deliveries were reported ^[ashgrove-call-2026-09-01 @ 00:03:10].",
+        )
+        claim_id = insert_claim(
+            cur, "ashgrove", source_slug="ashgrove-qbr-2026-08-14", locator="00:14:32"
+        )
+        cur.execute(
+            "INSERT INTO claim_citations (claim_id, source_slug, locator) VALUES (%s, %s, %s)",
+            (claim_id, "ashgrove-call-2026-09-01", "00:03:10"),
+        )
+
+    assert findings_for(run_lint(db, FakeStore()), "unresolved_citation") == []
+
+
+def test_a_later_claim_that_was_itself_superseded_or_archived_no_longer_warns(db):
+    """Superseding or archiving the later claim is how a person settles the
+    conflict; the warning has to clear when they do."""
+    with db.cursor() as cur:
+        insert_note(cur, "ashgrove", crm_id="A-1010")
+        insert_source(cur, "ashgrove-qbr-2026-08-14")
+        insert_source(cur, "ashgrove-call-2026-09-01")
+        insert_link(cur, "ashgrove", "ashgrove-qbr-2026-08-14", "provenance")
+        insert_link(cur, "ashgrove", "ashgrove-call-2026-09-01", "provenance")
+        edit_id = insert_edit_record(cur, "ashgrove")
+        insert_claim(
+            cur,
+            "ashgrove",
+            fact_type="pricing",
+            claim_text="Renewal price is locked at last year's rate.",
+            source_slug="ashgrove-qbr-2026-08-14",
+            human_edit_id=edit_id,
+            recorded=datetime(2026, 8, 14, tzinfo=UTC),
+        )
+        insert_claim(
+            cur,
+            "ashgrove",
+            fact_type="pricing",
+            claim_text="Renewal price increases 4% this cycle.",
+            source_slug="ashgrove-call-2026-09-01",
+            recorded=datetime(2026, 9, 1, tzinfo=UTC),
+            archived=True,
+        )
+        superseded = insert_claim(
+            cur,
+            "ashgrove",
+            fact_type="pricing",
+            claim_text="Renewal price increases 6% this cycle.",
+            source_slug="ashgrove-call-2026-09-01",
+            locator="00:02:00",
+            recorded=datetime(2026, 9, 1, tzinfo=UTC),
+        )
+        cur.execute("UPDATE claims SET superseded_at = now() WHERE id = %s", (superseded,))
+
+    assert findings_for(run_lint(db, FakeStore()), "human_edit_contradiction") == []

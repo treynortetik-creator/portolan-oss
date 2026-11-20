@@ -10,8 +10,13 @@ Severity map (two tiers, `portolan/lint/models.py`):
             missing_original, and the `stale_after`-in-the-past half of
             `stale`
     warning thin_links, relative_time, ambiguity, human_edit_contradiction,
-            growth_guard, and the `updated`-older-than-90-days half of
-            `stale`
+            growth_guard, the `updated`-older-than-90-days half of `stale`,
+            and a citation marker no claim on its note backs
+            (`unresolved_citation`)
+
+A finding is something a person can act on and then see gone: no check
+reports a note that is no longer living for a defect only a living note can
+be fixed for, and none stays raised after the thing it names was settled.
 """
 
 from __future__ import annotations
@@ -123,18 +128,30 @@ def check_orphan(conn: psycopg.Connection) -> list[LintFinding]:
 
 
 def check_thin_links(conn: psycopg.Connection) -> list[LintFinding]:
-    """A living note with fewer than 2 outbound body links (warning)."""
+    """A living note joined to fewer than 2 other notes by body or parent
+    links, in either direction (warning).
+
+    Counting only links out of a note flagged every entity note that others
+    point at: a product ten signals name has no reason to link back to them.
+    On the demo graph that was 31 warnings on 93 notes, none of them a note
+    anyone would call poorly connected."""
     findings: list[LintFinding] = []
 
     with conn.cursor() as cur:
         cur.execute(
             """
-            SELECT n.slug, COUNT(l.to_slug) AS n_links
+            SELECT n.slug, count(DISTINCT x.other) AS n_links
             FROM notes n
-            LEFT JOIN links l ON l.from_slug = n.slug AND l.kind = 'body'
+            LEFT JOIN LATERAL (
+                SELECT l.to_slug AS other FROM links l
+                WHERE l.from_slug = n.slug AND l.kind IN ('body', 'parent')
+                UNION
+                SELECT l.from_slug FROM links l
+                WHERE l.to_slug = n.slug AND l.kind IN ('body', 'parent')
+            ) x ON x.other <> n.slug
             WHERE n.status = 'living'
             GROUP BY n.slug
-            HAVING COUNT(l.to_slug) < 2
+            HAVING count(DISTINCT x.other) < 2
             ORDER BY n.slug
             """
         )
@@ -144,7 +161,7 @@ def check_thin_links(conn: psycopg.Connection) -> list[LintFinding]:
                     check="thin_links",
                     severity="warning",
                     note_slug=slug,
-                    message=f"only {n_links} outbound body link(s); at least 2 expected",
+                    message=f"linked to or from only {n_links} other note(s); at least 2 expected",
                 )
             )
 
@@ -157,11 +174,12 @@ def check_thin_links(conn: psycopg.Connection) -> list[LintFinding]:
 
 
 def check_stale(conn: psycopg.Connection, *, today: date) -> list[LintFinding]:
-    """`stale_after` in the past (error); or a living note with `updated`
-    older than 90 days (warning). The two clocks are independent (spec sec
-    2), so both conditions are checked independently rather than one
+    """A living note whose `stale_after` is in the past (error), or whose
+    `updated` is older than 90 days (warning). The two clocks are independent
+    (spec sec 2), so both conditions are checked independently rather than one
     shadowing the other — a note can be both declared-overdue and merely
-    old."""
+    old. A superseded or archived note is neither: it was retired, and its
+    old `stale_after` is an error nobody could clear."""
     findings: list[LintFinding] = []
     ninety_days_ago = today - timedelta(days=90)
 
@@ -170,7 +188,7 @@ def check_stale(conn: psycopg.Connection, *, today: date) -> list[LintFinding]:
             """
             SELECT slug, stale_after
             FROM notes
-            WHERE stale_after IS NOT NULL AND stale_after < %s
+            WHERE status = 'living' AND stale_after IS NOT NULL AND stale_after < %s
             ORDER BY slug
             """,
             (today,),
@@ -326,8 +344,10 @@ def check_bad_header(conn: psycopg.Connection) -> list[LintFinding]:
 # (`02-reference-implementation/wiki-tooling/wiki-lint.py`) plus this month,
 # next quarter, currently.
 _RELATIVE_TIME_RE = re.compile(
-    r"\b(yesterday|today|tomorrow|recently|last week|next week|this morning"
-    r"|this month|next quarter|currently)\b",
+    r"\b(yesterday|today|tomorrow|tonight|recently|lately|currently|right now|this morning"
+    r"|(?:last|next|this|earlier this|later this) (?:week|month|quarter|year)(?! of\b)"
+    r"|(?:\d+|a|an|one|two|three|four|five|six|several|a few|a couple of)"
+    r" (?:days?|weeks?|months?|quarters?|years?) ago)\b",
     re.IGNORECASE,
 )
 
@@ -342,12 +362,18 @@ def _mask(text: str, pattern: re.Pattern[str]) -> str:
 
 
 def check_relative_time(conn: psycopg.Connection) -> list[LintFinding]:
-    """Relative-time language in `notes.body_md` or `claims.claim_text`
-    (warning) — a durable graph should read the same in six months."""
+    """Relative-time language in a living note's `body_md` or a live claim's
+    `claim_text` (warning) — a durable graph should read the same in six
+    months. Quoted speech is masked in both: "after last month" in a
+    speaker's own words is evidence, not the note's undated claim. A report
+    note is dated by what it is (the week it covers), so it is not read."""
     findings: list[LintFinding] = []
 
     with conn.cursor() as cur:
-        cur.execute("SELECT slug, body_md FROM notes ORDER BY slug")
+        cur.execute(
+            "SELECT slug, body_md FROM notes "
+            "WHERE status = 'living' AND type <> 'report' ORDER BY slug"
+        )
         for slug, body_md in cur.fetchall():
             prose = _mask(_mask(body_md or "", _CODE_RE), _QUOTE_RE)
             hits = sorted({m.group(0).lower() for m in _RELATIVE_TIME_RE.finditer(prose)})
@@ -361,11 +387,18 @@ def check_relative_time(conn: psycopg.Connection) -> list[LintFinding]:
                     )
                 )
 
-        cur.execute("SELECT id, note_slug, claim_text FROM claims ORDER BY id")
+        cur.execute(
+            """
+            SELECT c.id, c.note_slug, c.claim_text
+            FROM claims c JOIN notes n ON n.slug = c.note_slug
+            WHERE c.archived = false AND c.superseded_at IS NULL
+              AND n.status = 'living' AND n.type <> 'report'
+            ORDER BY c.id
+            """
+        )
         for claim_id, note_slug, claim_text in cur.fetchall():
-            hits = sorted(
-                {m.group(0).lower() for m in _RELATIVE_TIME_RE.finditer(claim_text or "")}
-            )
+            prose = _mask(claim_text or "", _QUOTE_RE)
+            hits = sorted({m.group(0).lower() for m in _RELATIVE_TIME_RE.finditer(prose)})
             if hits:
                 findings.append(
                     LintFinding(
@@ -388,19 +421,40 @@ def check_relative_time(conn: psycopg.Connection) -> list[LintFinding]:
 _CITATION_RE = re.compile(r"\^\[\s*([^\]@]+?)\s*@\s*([^\]]*)\]")
 
 
+def _squash(text: str | None) -> str:
+    return " ".join((text or "").split())
+
+
 def check_unresolved_citation(conn: psycopg.Connection) -> list[LintFinding]:
     """Every `^[slug @ locator]` marker in `notes.body_md` must name a slug
-    present in `sources`; a claim whose `locator` is blank is an error.
-    (`claims.source_slug` is a NOT NULL foreign key to `sources.slug`, so a
-    claim citing an unknown source cannot exist.)"""
+    present in `sources` (error), and, on a living note that has claims, the
+    place a claim or one of its corroborating citations on that same note
+    was recorded from (warning): a marker naming a real source at a locator
+    no claim of the note holds is a citation the note cannot back. A claim
+    whose `locator` is blank is an error. (`claims.source_slug` is a NOT NULL
+    foreign key to `sources.slug`, so a claim citing an unknown source cannot
+    exist.)"""
     findings: list[LintFinding] = []
 
     with conn.cursor() as cur:
         cur.execute("SELECT slug FROM sources")
         known_sources = {row[0] for row in cur.fetchall()}
 
-        cur.execute("SELECT slug, body_md FROM notes ORDER BY slug")
-        for slug, body_md in cur.fetchall():
+        cur.execute(
+            """
+            SELECT c.note_slug, c.source_slug, c.locator FROM claims c
+            UNION
+            SELECT c.note_slug, cc.source_slug, cc.locator
+            FROM claim_citations cc JOIN claims c ON c.id = cc.claim_id
+            """
+        )
+        backed: dict[str, set[tuple[str, str]]] = {}
+        for note_slug, source_slug, locator in cur.fetchall():
+            backed.setdefault(note_slug, set()).add((source_slug, _squash(locator)))
+
+        cur.execute("SELECT slug, status, body_md FROM notes ORDER BY slug")
+        for slug, status, body_md in cur.fetchall():
+            unbacked: list[str] = []
             for match in _CITATION_RE.finditer(body_md or ""):
                 cited_slug = match.group(1).strip()
                 if cited_slug not in known_sources:
@@ -412,7 +466,21 @@ def check_unresolved_citation(conn: psycopg.Connection) -> list[LintFinding]:
                             message=f"citation marker ^[{cited_slug} @ ...] names no known source",
                         )
                     )
-
+                    continue
+                locator = _squash(match.group(2))
+                if status == "living" and slug in backed:
+                    marker = f"^[{cited_slug} @ {locator}]"
+                    if (cited_slug, locator) not in backed[slug] and marker not in unbacked:
+                        unbacked.append(marker)
+            for marker in unbacked:
+                findings.append(
+                    LintFinding(
+                        check="unresolved_citation",
+                        severity="warning",
+                        note_slug=slug,
+                        message=f"citation marker {marker} matches no claim on this note",
+                    )
+                )
         cur.execute(
             """
             SELECT id, note_slug FROM claims
@@ -544,9 +612,14 @@ def check_ambiguity(conn: psycopg.Connection) -> list[LintFinding]:
 
 
 def check_human_edit_contradiction(conn: psycopg.Connection) -> list[LintFinding]:
-    """A claim with `human_edit_id` set that has a later claim on the same
-    note, with the same `fact_type` and overlapping entities, whose text
-    differs (warning).
+    """A live claim with `human_edit_id` set that has a later live claim on
+    the same note, with the same `fact_type` and overlapping entities, whose
+    text differs (warning). Live means not archived and not superseded, on
+    both sides: superseding or archiving the later claim is how a person
+    settles the conflict, and the warning clears when they do.
+
+    "Text differs" is all this check can see. It says the two should be read
+    together, not that they disagree; the message says so.
 
     Entity overlap is approximated: two claims overlap when the notes with a
     'provenance' link to claim A's source and to claim B's source intersect.
@@ -561,6 +634,7 @@ def check_human_edit_contradiction(conn: psycopg.Connection) -> list[LintFinding
             SELECT id, note_slug, fact_type, claim_text, source_slug, recorded
             FROM claims
             WHERE human_edit_id IS NOT NULL
+              AND archived = false AND superseded_at IS NULL
             ORDER BY id
             """
         )
@@ -583,6 +657,7 @@ def check_human_edit_contradiction(conn: psycopg.Connection) -> list[LintFinding
                   AND id != %s
                   AND recorded > %s
                   AND claim_text != %s
+                  AND archived = false AND superseded_at IS NULL
                 ORDER BY id
                 """,
                 (note_slug, fact_type, edited_id, edited_recorded, edited_text),
@@ -603,9 +678,9 @@ def check_human_edit_contradiction(conn: psycopg.Connection) -> list[LintFinding
                             note_slug=note_slug,
                             claim_id=later_id,
                             message=(
-                                f"claim #{later_id} ('{later_text}') contradicts "
+                                f"claim #{later_id} ('{later_text}') may contradict "
                                 f"human-edited claim #{edited_id} ('{edited_text}'), "
-                                f"same fact_type '{fact_type}'"
+                                f"same fact_type '{fact_type}': read them together"
                             ),
                         )
                     )
