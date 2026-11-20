@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 
-from portolan.extract.schema import EntityCoercion, ExtractionResult, Fact, RejectedFact
+from portolan.extract.schema import (
+    Coverage,
+    EntityCoercion,
+    ExtractionResult,
+    Fact,
+    RejectedFact,
+)
 from portolan.extract.segment import merge_segment_results, segment
 
 
@@ -365,3 +371,78 @@ def test_merge_segment_results_falls_back_to_max_without_an_explicit_total() -> 
     merged = merge_segment_results([result1, result2, result3])
 
     assert merged.coverage.segments_total == 3
+
+
+# ---------------------------------------------------------------------------
+# Two facts one extraction call wrote are two facts.
+# ---------------------------------------------------------------------------
+
+
+def _alike_fact(fid: str, language: str, locator: str) -> Fact:
+    return Fact(
+        id=fid,
+        type="request",
+        claim=f"Ferrowick Bottling asked for a {language}-language troubleshooting guide.",
+        entities=["A-1"],
+        locator=locator,
+        sentiment=0,
+        confidence=0.9,
+    )
+
+
+def _one_result(facts: list[Fact]) -> ExtractionResult:
+    return ExtractionResult(
+        source_id="S-1",
+        summary="s",
+        facts=facts,
+        coverage=Coverage(segments_read=1, segments_total=1),
+    )
+
+
+def test_similar_facts_from_one_call_are_not_folded_together():
+    result = merge_segment_results(
+        [_one_result([_alike_fact("f1", "Vietnamese", "p2"), _alike_fact("f2", "Spanish", "p4")])]
+    )
+    assert [f.locator for f in result.facts] == ["p2", "p4"]
+
+
+def test_an_exact_repeat_within_one_call_is_still_collapsed():
+    result = merge_segment_results(
+        [
+            _one_result(
+                [_alike_fact("f1", "Vietnamese", "p2"), _alike_fact("f2", "Vietnamese", "p2")]
+            )
+        ]
+    )
+    assert len(result.facts) == 1
+
+
+def test_the_same_fact_from_two_passes_is_one_fact():
+    first = _one_result([_alike_fact("f1", "Vietnamese", "p2")])
+    reworded = _alike_fact("f1", "Vietnamese", "p2").model_copy(
+        update={
+            "claim": "Ferrowick Bottling requested a Vietnamese-language troubleshooting guide."
+        }
+    )
+    result = merge_segment_results([first, _one_result([reworded])])
+    assert len(result.facts) == 1
+
+
+def test_a_merged_fact_keeps_its_quote_with_the_locator_it_came_from():
+    late = Fact(
+        id="f1",
+        type="complaint",
+        claim="Quenby's cartridge order arrived three days late.",
+        entities=["A-1"],
+        locator="00:06:40",
+        quote="three days behind schedule",
+        sentiment=-1,
+        confidence=0.9,
+    )
+    early = late.model_copy(update={"locator": "00:06:05", "quote": "that late order last week"})
+    result = merge_segment_results([_one_result([late]), _one_result([early])])
+    assert len(result.facts) == 1
+    assert (result.facts[0].locator, result.facts[0].quote) == (
+        "00:06:05",
+        "that late order last week",
+    )

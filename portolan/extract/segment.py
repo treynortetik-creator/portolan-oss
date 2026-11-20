@@ -268,25 +268,86 @@ def _merge_entities(all_entities: list[EntityMention]) -> list[EntityMention]:
     return list(merged.values())
 
 
-def _merge_facts(all_facts: list[Fact]) -> list[Fact]:
+def _exact_duplicate(a: Fact, b: Fact) -> bool:
+    """The same fact emitted twice: same type, same locator, same words."""
+    return (
+        a.type == b.type
+        and a.locator.strip() == b.locator.strip()
+        and " ".join(a.claim.lower().split()) == " ".join(b.claim.lower().split())
+    )
+
+
+def _quotes_disagree(a: Fact, b: Fact) -> bool:
+    """Both facts carry a quote, from different places, sharing almost no
+    words: two statements, however alike their claims read."""
+    if not a.quote or not b.quote or a.locator.strip() == b.locator.strip():
+        return False
+    words_a = set(re.findall(r"[a-z0-9]+", a.quote.lower()))
+    words_b = set(re.findall(r"[a-z0-9]+", b.quote.lower()))
+    if not words_a or not words_b:
+        return False
+    return len(words_a & words_b) / len(words_a | words_b) < 0.3
+
+
+def _merge_facts(fact_groups: list[list[Fact]]) -> list[Fact]:
+    """Union the facts of several extraction results (one group per segment
+    or per sampling pass), collapsing repeats.
+
+    The fuzzy rule (`_facts_match`) only ever joins facts from DIFFERENT
+    results: overlap between segments and repeats between passes are where
+    one fact is legitimately written twice. Two facts one call wrote side by
+    side are two facts (fact rule 1, "one claim per fact"), and that rule
+    used to fold them together whenever their wording was alike: "asked for
+    a Vietnamese guide" and "asked for a Spanish guide", two paragraphs
+    apart, became one fact and the other was gone. Within one result only an
+    exact repeat is collapsed. Across results, two facts whose quotes come
+    from different places and share almost no words need near-identical
+    claims to count as one.
+    """
     accepted: list[Fact] = []
-    for fact in all_facts:
-        match_idx = next(
-            (i for i, existing in enumerate(accepted) if _facts_match(existing, fact)), None
-        )
-        if match_idx is None:
-            accepted.append(fact)
-            continue
-        existing = accepted[match_idx]
-        merged_entities = list(dict.fromkeys([*existing.entities, *fact.entities]))
-        accepted[match_idx] = existing.model_copy(
-            update={
-                "entities": merged_entities,
-                "locator": _earlier_locator(existing.locator, fact.locator),
-                "quote": existing.quote or fact.quote,
-                "confidence": max(existing.confidence, fact.confidence),
-            }
-        )
+    origins: list[set[int]] = []
+    for group_index, group in enumerate(fact_groups):
+        for fact in group:
+            match_idx = None
+            for i, existing in enumerate(accepted):
+                if group_index in origins[i]:
+                    if _exact_duplicate(existing, fact):
+                        match_idx = i
+                        break
+                    continue
+                if not _facts_match(existing, fact):
+                    continue
+                if (
+                    _quotes_disagree(existing, fact)
+                    and _claim_similarity(existing.claim, fact.claim) < 0.85
+                ):
+                    continue
+                match_idx = i
+                break
+            if match_idx is None:
+                accepted.append(fact)
+                origins.append({group_index})
+                continue
+            existing = accepted[match_idx]
+            origins[match_idx].add(group_index)
+            merged_entities = list(dict.fromkeys([*existing.entities, *fact.entities]))
+            earliest = _earlier_locator(existing.locator, fact.locator)
+            # A quote travels with its own locator: one fact's quote under
+            # the other's locator would cite words to the wrong place.
+            if existing.quote and fact.quote:
+                keep = existing if earliest == existing.locator else fact
+            elif existing.quote or fact.quote:
+                keep = existing if existing.quote else fact
+            else:
+                keep = None
+            accepted[match_idx] = existing.model_copy(
+                update={
+                    "entities": merged_entities,
+                    "locator": keep.locator if keep is not None else earliest,
+                    "quote": keep.quote if keep is not None else None,
+                    "confidence": max(existing.confidence, fact.confidence),
+                }
+            )
     # Each segment's extractor call restarts its own "f1", "f2", ... ids, so
     # ids collide across segments once merged. Renumber sequentially here.
     return [fact.model_copy(update={"id": f"f{i}"}) for i, fact in enumerate(accepted, start=1)]
@@ -338,7 +399,6 @@ def merge_segment_results(
         raise ValueError("merge_segment_results requires at least one ExtractionResult")
 
     all_entities = [e for r in results for e in r.entities]
-    all_facts = [f for r in results for f in r.facts]
     all_actions = [a for r in results for a in r.actions]
     unknown_entities = list(dict.fromkeys(u for r in results for u in r.unknown_entities))
     # Bug hunt 2026-09-18, finding 6: each segment's own `parse_lenient`
@@ -368,7 +428,7 @@ def merge_segment_results(
         source_id=results[0].source_id,
         summary=summary,
         entities=_merge_entities(all_entities),
-        facts=_merge_facts(all_facts),
+        facts=_merge_facts([list(r.facts) for r in results]),
         actions=_merge_actions(all_actions),
         unknown_entities=unknown_entities,
         coverage=coverage,
