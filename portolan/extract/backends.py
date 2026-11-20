@@ -30,7 +30,12 @@ from typing import TYPE_CHECKING, Any, Protocol
 from pydantic import ValidationError
 
 from portolan.extract.prompt import build_user_message
-from portolan.extract.schema import ExtractionResult, SourceEnvelope, extraction_result_json_schema
+from portolan.extract.schema import (
+    EffectiveSchema,
+    ExtractionResult,
+    SourceEnvelope,
+    extraction_result_json_schema,
+)
 from portolan.metering import UsageSink, metered
 
 if TYPE_CHECKING:
@@ -425,9 +430,15 @@ class LLMClientBackend:
         model: str | None = None,
         surface: str = "extract",
         max_tokens: int | None = None,
+        effective_schema: EffectiveSchema | None = None,
     ) -> None:
         self.client = client
         self.model = model
+        # The customer extension merged into the base schema
+        # (`merge_customer_extension`). Without it a fact typed with one of
+        # the customer's own `extra_types` (which the prompt advertises)
+        # fails validation, costs a retry and is then dropped.
+        self.effective_schema = effective_schema
         self.surface = surface
         # None keeps the client's own default; a reasoning model at high effort spends
         # reasoning tokens from the same cap, so it needs room for the answer too.
@@ -460,47 +471,69 @@ class LLMClientBackend:
                     f"LLMClientBackend: no JSON data returned for source_id={envelope.source_id!r}"
                 )
 
-            # Group 3: one strict attempt; on validation failure, one retry
-            # with the errors appended; only if that retry ALSO fails strict
-            # validation does parse_lenient salvage what it can.
+            # One strict attempt. When it fails, salvage first: a reply
+            # whose only faults are ones `parse_lenient` can correct without
+            # losing a fact (a null sentiment, a confidence word, an extra
+            # key) is accepted as is, with no second paid call. Only a reply
+            # that loses a fact or action gets the one retry, with the
+            # errors appended; then whichever attempt kept more is used.
+            context = (
+                {"effective_schema": self.effective_schema}
+                if self.effective_schema is not None
+                else None
+            )
             try:
-                return ExtractionResult.model_validate(data)
+                return ExtractionResult.model_validate(data, context=context)
             except ValidationError as exc:
-                retry_message = _build_retry_message(user_message, exc)
-                retry_result = self._complete(system_prompt, retry_message, schema)
-                retry_data = retry_result.data if retry_result.data is not None else data
+                first_error: ValidationError = exc
+            first = self._salvage(data, envelope)
+            if first is not None and not first.rejected:
+                self._meter_salvage(sink, tenant, result.model, first)
+                return first
 
-            try:
-                return ExtractionResult.model_validate(retry_data)
-            except ValidationError:
-                # default_source_id gives parse_lenient something to fill
-                # a missing top-level source_id with (see its docstring) --
-                # the envelope this backend was handed is the one place
-                # that id is known; parse_lenient itself has no envelope.
-                result_obj, rejected = ExtractionResult.parse_lenient(
-                    retry_data, default_source_id=envelope.source_id
-                )
-                if result_obj.coercions or rejected:
-                    # A separate, zero-token metering event carrying the
-                    # coercion count and, bug hunt 2026-09-18 finding 6,
-                    # `rejected_facts` too (same key `BedrockConverseBackend`/
-                    # `AnthropicBedrockBackend` set on their own metering
-                    # event, above): the two real model-call events above
-                    # are already recorded (`client.complete()`'s own
-                    # metering, finished and immutable by the time control
-                    # returns here -- see class docstring), so this is the
-                    # only way this backend can get a rejected-fact count
-                    # into the ledger at all, rather than leaving it
-                    # visible solely on `result.rejected` -- which fact
-                    # rule 4 ("a rejected fact is counted in the coverage
-                    # report") requires and which, before this fix, was
-                    # true only for the Bedrock backends.
-                    with metered(sink, tenant, self.surface, retry_result.model) as usage:
-                        usage.extra["coercions"] = len(result_obj.coercions)
-                        usage.extra["rejected_facts"] = [
-                            r.model_dump(mode="json") for r in rejected
-                        ]
-                return result_obj
+            retry_message = _build_retry_message(user_message, first_error)
+            retry_result = self._complete(system_prompt, retry_message, schema)
+            retry_data = retry_result.data
+            second: ExtractionResult | None = None
+            if retry_data is not None:
+                try:
+                    return ExtractionResult.model_validate(retry_data, context=context)
+                except ValidationError:
+                    second = self._salvage(retry_data, envelope)
+
+            candidates = [c for c in (second, first) if c is not None]
+            if not candidates:
+                raise first_error
+            # The retry wins a tie: it was written with the errors in view.
+            best = max(candidates, key=lambda c: len(c.facts) + len(c.actions))
+            self._meter_salvage(sink, tenant, retry_result.model, best)
+            return best
+
+    def _salvage(self, data: dict[str, Any], envelope: SourceEnvelope) -> ExtractionResult | None:
+        """`parse_lenient` on one reply; `None` when even that cannot build
+        a result. `default_source_id` fills a missing top-level `source_id`
+        from the envelope, the one place that id is known."""
+        try:
+            salvaged, _rejected = ExtractionResult.parse_lenient(
+                data,
+                effective_schema=self.effective_schema,
+                default_source_id=envelope.source_id,
+            )
+        except ValidationError:
+            return None
+        return salvaged
+
+    def _meter_salvage(
+        self, sink: UsageSink, tenant: str, model: str, salvaged: ExtractionResult
+    ) -> None:
+        """A zero-token metering event carrying the coercion count and the
+        rejected facts (fact rule 4: "a rejected fact is counted"). The
+        model calls themselves are already metered by the client."""
+        if not (salvaged.coercions or salvaged.rejected):
+            return
+        with metered(sink, tenant, self.surface, model) as usage:
+            usage.extra["coercions"] = len(salvaged.coercions)
+            usage.extra["rejected_facts"] = [r.model_dump(mode="json") for r in salvaged.rejected]
 
     def _complete(self, system_prompt: str, user_message: str, schema: dict[str, Any]):
         kwargs: dict[str, Any] = {

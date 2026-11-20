@@ -778,6 +778,9 @@ class EntityCoercion(BaseModel):
         "entities",
         "sentiment",
         "severity",
+        # A quote over the forty-word limit, cut to its first forty words
+        # (still verbatim) instead of rejecting the fact it supports.
+        "quote",
         "coverage",
         "summary",
         "source_id",
@@ -792,6 +795,9 @@ class EntityCoercion(BaseModel):
     original: Any = None
     applied: Any
 
+
+# Fact rule 5: "Verbatim, forty words or fewer."
+_MAX_QUOTE_WORDS = 40
 
 _YEAR_MONTH_RE = re.compile(r"^\d{4}-\d{2}$")
 _YEAR_ONLY_RE = re.compile(r"^\d{4}$")
@@ -1345,6 +1351,20 @@ class ExtractionResult(BaseModel):
                         field="confidence",
                         original=original_confidence,
                         applied=confidence,
+                    )
+                )
+
+            raw_quote = candidate.get("quote")
+            if isinstance(raw_quote, str) and len(raw_quote.split()) > _MAX_QUOTE_WORDS:
+                trimmed = " ".join(raw_quote.split()[:_MAX_QUOTE_WORDS])
+                candidate["quote"] = trimmed
+                coercions.append(
+                    EntityCoercion(
+                        index=index,
+                        mention=fact_label,
+                        field="quote",
+                        original=raw_quote,
+                        applied=trimmed,
                     )
                 )
 

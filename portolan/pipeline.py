@@ -1364,7 +1364,10 @@ def run(
         variant=prompt_variant,
     )
     company_context_updated_at = company_context.updated if company_context else None
-    vocabulary = merge_customer_extension(customer_extension).vocabulary
+    effective_schema = merge_customer_extension(customer_extension)
+    vocabulary = effective_schema.vocabulary
+    # Only when the customer has an extension: the base schema needs no context.
+    backend_schema = effective_schema if customer_extension is not None else None
     extraction_model = settings.extraction_model
 
     effective_sink: UsageSink = sink if sink is not None else PostgresSink(conn)
@@ -1378,7 +1381,9 @@ def run(
     if warm_json_strategy is not None:
         warm_json_strategy(settings.extraction_model)
 
-    backend: Backend = LLMClientBackend(llm, model=settings.extraction_model)
+    backend: Backend = LLMClientBackend(
+        llm, model=settings.extraction_model, effective_schema=backend_schema
+    )
 
     events = _sink_events(llm)
     usage_start = len(events) if events is not None else 0
@@ -1425,7 +1430,9 @@ def run(
             )
         else:
             worker_llm = llm
-        cached = LLMClientBackend(worker_llm, model=settings.extraction_model)
+        cached = LLMClientBackend(
+            worker_llm, model=settings.extraction_model, effective_schema=backend_schema
+        )
         thread_local.backend = cached
         return cached
 
@@ -1622,14 +1629,19 @@ def redrive(
         variant=prompt_variant,
     )
     company_context_updated_at = company_context.updated if company_context else None
-    vocabulary = merge_customer_extension(customer_extension).vocabulary
+    effective_schema = merge_customer_extension(customer_extension)
+    vocabulary = effective_schema.vocabulary
 
     # Prime the JSON strategy once, as `run()` does.
     warm_json_strategy = getattr(llm, "warm_json_strategy", None)
     if warm_json_strategy is not None:
         warm_json_strategy(settings.extraction_model)
 
-    backend: Backend = LLMClientBackend(llm, model=settings.extraction_model)
+    backend: Backend = LLMClientBackend(
+        llm,
+        model=settings.extraction_model,
+        effective_schema=effective_schema if customer_extension is not None else None,
+    )
 
     refs_by_source_id = {ref.source_id: ref for ref in connector.list_sources(None)}
 

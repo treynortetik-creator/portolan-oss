@@ -385,7 +385,9 @@ def test_llm_client_backend_reaches_parse_lenient_for_repeated_top_level_extras(
     assert len(result.facts) == 1
     assert result.facts[0].type == "complaint"
     assert result.rejected == []
-    assert client._call_count == 2  # strict attempt + one retry, no more
+    # An extra top-level key loses no fact: salvaged from the first reply,
+    # with no second paid call.
+    assert client._call_count == 1
 
 
 def _dict_with_entity_needing_coercion(source_id: str) -> dict:
