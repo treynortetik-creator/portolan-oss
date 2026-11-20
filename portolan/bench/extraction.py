@@ -42,6 +42,7 @@ from portolan.extract.schema import (
     QUOTE_REQUIRED_TYPES,
     Coverage,
     EntityKind,
+    EntityMention,
     ExtractionResult,
     Fact,
     RegistryContextEntry,
@@ -710,6 +711,21 @@ class ProducedFactRecord(BaseModel):
     locator: str
     quote: str | None = None
     confidence: float
+
+
+class EntityMentionRecord(BaseModel):
+    """One entry of an extractor's top-level `entities` list, kept on the
+    saved score so entity accuracy can be read mention by mention and
+    recomputed by `rescore_full` instead of carried forward as a bare
+    rate."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source_id: str
+    mention: str
+    kind: str
+    registry_id: str | None = None
+    confidence: float = 0.0
 
 
 def _produced_record(fact: Fact) -> ProducedFactRecord:
@@ -1431,6 +1447,9 @@ class ExtractionScore(BaseModel):
     # mentions whose registry_id matched the truth table's own, alongside
     # the existing `entity_accuracy_checked` denominator.
     entity_accuracy_correct: int = 0
+    # Every mention the extractor listed, resolved or not. Empty on a
+    # report saved before this field existed.
+    entity_mentions: list[EntityMentionRecord] = Field(default_factory=list)
 
 
 def _type_credit(planted_type: str, produced_type: str) -> tuple[bool, float]:
@@ -1617,6 +1636,7 @@ def score_extraction(
 
     entity_checked = 0
     entity_correct = 0
+    entity_mentions: list[EntityMentionRecord] = []
 
     distractor_source_ids = truth.distractor_source_ids()
 
@@ -1689,6 +1709,15 @@ def score_extraction(
 
         # -- entity accuracy: a resolved registry_id against the truth ----
         for mention in result.entities:
+            entity_mentions.append(
+                EntityMentionRecord(
+                    source_id=source_id,
+                    mention=mention.mention,
+                    kind=mention.kind.value,
+                    registry_id=mention.registry_id,
+                    confidence=mention.confidence,
+                )
+            )
             if mention.registry_id is None:
                 continue
             expected = truth.identify_entity(mention.mention)
@@ -1919,6 +1948,7 @@ def score_extraction(
         matched_instance_count=len(matched),
         fact_type_correct_count=fact_type_correct_count,
         entity_accuracy_correct=entity_correct,
+        entity_mentions=entity_mentions,
         distractor_leakage=distractor_leakage,
         quote_presence_rate=(
             quote_present_total / quote_required_total if quote_required_total else None
@@ -2084,11 +2114,23 @@ def rescore_full(
     attempt to: `tokens_input`/`tokens_output`/`tokens_cached`/
     `cost_estimate`/`wall_time_s` (no raw `UsageEvent`s are persisted) and
     `entity_accuracy`/`entity_accuracy_checked`/`entity_accuracy_correct`
-    (no raw `EntityMention` list is persisted, only the collapsed rate and
-    its numerator/denominator). All three are carried forward from
-    `score` unchanged, same convention `rescore_unplanted_
-    classifications` already uses for what it can't recompute either.
+    on a report saved before `entity_mentions` existed (only the collapsed
+    rate and its numerator/denominator were kept). Those are carried
+    forward from `score` unchanged, same convention `rescore_unplanted_
+    classifications` already uses for what it can't recompute either. A
+    report that does carry `entity_mentions` has its entity numbers
+    recomputed like everything else.
     """
+    mentions_by_source: dict[str, list[EntityMention]] = {}
+    for rec in score.entity_mentions:
+        mentions_by_source.setdefault(rec.source_id, []).append(
+            EntityMention(
+                mention=rec.mention,
+                kind=rec.kind,
+                registry_id=rec.registry_id,
+                confidence=rec.confidence,
+            )
+        )
     source_texts: dict[str, str] = {}
     results: dict[str, ExtractionResult] = {}
     for source_id, records in score.produced_by_source.items():
@@ -2102,7 +2144,7 @@ def rescore_full(
         results[source_id] = ExtractionResult(
             source_id=source_id,
             summary="",
-            entities=[],
+            entities=mentions_by_source.get(source_id, []),
             facts=[_fact_from_record(r) for r in records],
             actions=[],
             coverage=Coverage(segments_read=1, segments_total=1),
@@ -2117,24 +2159,20 @@ def rescore_full(
         source_texts=source_texts,
     )
     rescored = score_extraction(truth, run_result, judge=judge)
-    return rescored.model_copy(
-        update={
-            "tokens_input": score.tokens_input,
-            "tokens_output": score.tokens_output,
-            "tokens_cached": score.tokens_cached,
-            "cost_estimate": score.cost_estimate,
-            "wall_time_s": score.wall_time_s,
-            "entity_accuracy": score.entity_accuracy,
-            "entity_accuracy_checked": score.entity_accuracy_checked,
-            # `entity_accuracy_correct` is the numerator behind those two
-            # -- equally unrecomputable here (no raw `EntityMention` list
-            # persisted; `_fact_from_record` never sets `entities` on the
-            # rebuilt `ExtractionResult`, so a fresh `score_extraction`
-            # call above found 0 entities to check), so it's carried
-            # forward from the saved score exactly like its two siblings.
-            "entity_accuracy_correct": score.entity_accuracy_correct,
-        }
-    )
+    carried: dict[str, Any] = {
+        "tokens_input": score.tokens_input,
+        "tokens_output": score.tokens_output,
+        "tokens_cached": score.tokens_cached,
+        "cost_estimate": score.cost_estimate,
+        "wall_time_s": score.wall_time_s,
+    }
+    if not score.entity_mentions:
+        carried.update(
+            entity_accuracy=score.entity_accuracy,
+            entity_accuracy_checked=score.entity_accuracy_checked,
+            entity_accuracy_correct=score.entity_accuracy_correct,
+        )
+    return rescored.model_copy(update=carried)
 
 
 def _run_judge_and_promote(

@@ -26,7 +26,15 @@ from portolan.bench.extraction import (
 from portolan.bench.fixtures import lossy_results, perfect_results
 from portolan.bench.truth import Truth
 from portolan.extract.backends import FakeBackend, LLMClientBackend
-from portolan.extract.schema import Coverage, EntityCoercion, ExtractionResult, Fact, FactType
+from portolan.extract.schema import (
+    Coverage,
+    EntityCoercion,
+    EntityKind,
+    EntityMention,
+    ExtractionResult,
+    Fact,
+    FactType,
+)
 from portolan.llm.base import LLMResult
 from portolan.metering import InMemorySink, metered
 
@@ -1553,3 +1561,59 @@ def test_rescore_full_picks_up_the_rss_locator_fix_from_saved_output() -> None:
     rescored = rescore_full(saved_like, truth.manifest, truth, corpus_root=CORPUS_ROOT)
     assert rescored.recall == 1.0
     assert "F29" in {m.fact_id for m in rescored.matched}
+
+
+def test_score_keeps_every_entity_mention_for_later_reading() -> None:
+    truth = _truth()
+    mentions = [
+        EntityMention(
+            mention="Ashgrove Health",
+            kind=EntityKind.ACCOUNT,
+            registry_id="ashgrove",
+            confidence=0.9,
+        ),
+        EntityMention(mention="some vendor", kind=EntityKind.OTHER, confidence=0.4),
+    ]
+    results = {
+        sid: r.model_copy(update={"entities": []}) for sid, r in perfect_results(truth).items()
+    }
+    results["S-call-003"] = results["S-call-003"].model_copy(update={"entities": mentions})
+    score = score_extraction(truth, results)
+
+    kept = [(m.source_id, m.mention, m.kind, m.registry_id) for m in score.entity_mentions]
+    assert kept == [
+        ("S-call-003", "Ashgrove Health", "account", "ashgrove"),
+        ("S-call-003", "some vendor", "other", None),
+    ]
+
+
+def test_rescore_full_recomputes_entity_accuracy_from_saved_mentions() -> None:
+    truth = _truth()
+    results = {
+        sid: r.model_copy(update={"entities": []}) for sid, r in perfect_results(truth).items()
+    }
+    results["S-call-003"] = results["S-call-003"].model_copy(
+        update={
+            "entities": [
+                EntityMention(
+                    mention="Ashgrove Health",
+                    kind=EntityKind.ACCOUNT,
+                    registry_id="ashgrove",
+                    confidence=0.9,
+                ),
+                EntityMention(
+                    mention="Vireo", kind=EntityKind.ACCOUNT, registry_id="ashgrove", confidence=0.9
+                ),
+            ]
+        }
+    )
+    original = score_extraction(truth, results)
+    assert (original.entity_accuracy_correct, original.entity_accuracy_checked) == (1, 2)
+
+    # A saved report whose stored rate is stale: the mentions win.
+    stale = original.model_copy(update={"entity_accuracy": 0.0, "entity_accuracy_correct": 0})
+    rescored = rescore_full(stale, truth.manifest, truth, corpus_root=CORPUS_ROOT)
+
+    assert (rescored.entity_accuracy_correct, rescored.entity_accuracy_checked) == (1, 2)
+    assert rescored.entity_accuracy == 0.5
+    assert len(rescored.entity_mentions) == 2
