@@ -289,7 +289,7 @@ def _quotes_disagree(a: Fact, b: Fact) -> bool:
     return len(words_a & words_b) / len(words_a | words_b) < 0.3
 
 
-def _merge_facts(fact_groups: list[list[Fact]]) -> list[Fact]:
+def _merge_facts(fact_groups: list[list[Fact]] | list[Fact]) -> list[Fact]:
     """Union the facts of several extraction results (one group per segment
     or per sampling pass), collapsing repeats.
 
@@ -304,6 +304,9 @@ def _merge_facts(fact_groups: list[list[Fact]]) -> list[Fact]:
     from different places and share almost no words need near-identical
     claims to count as one.
     """
+    # A flat list of facts (`portolan.bench.review_bench`) is facts of
+    # unknown origin: each is its own group, so the fuzzy rule applies to all.
+    fact_groups = [[item] if isinstance(item, Fact) else item for item in fact_groups]
     accepted: list[Fact] = []
     origins: list[set[int]] = []
     for group_index, group in enumerate(fact_groups):

@@ -53,14 +53,17 @@ def replay_parked_facts(
     embedder: Embedder,
     registry: Registry,
     row_id: int,
+    *,
+    commit: bool = True,
 ) -> ReplayReport:
     """Merge every blocking fact parked on `review_queue` row `row_id` that
     has not been merged yet. `registry` must already hold the person's
     answer (load it after `add_alias`). Each merged entry is marked
     `replayed` on the row, so a second call writes nothing.
 
-    Works inside a caller's open transaction or outside one. Changes no
-    row status: closing the row stays the caller's decision.
+    `commit=False` from inside a caller's `conn.transaction()` block, where
+    psycopg refuses a manual commit. Changes no row status: closing the row
+    stays the caller's decision.
     """
     report = ReplayReport()
     with conn.cursor() as cur:
@@ -124,6 +127,6 @@ def replay_parked_facts(
                 "UPDATE review_queue SET payload = %s::jsonb WHERE id = %s",
                 (json.dumps(current), row_id),
             )
-        if conn.info.transaction_status == psycopg.pq.TransactionStatus.INTRANS:
+        if commit and conn.info.transaction_status == psycopg.pq.TransactionStatus.INTRANS:
             conn.commit()
     return report

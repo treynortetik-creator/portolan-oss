@@ -36,7 +36,6 @@ from portolan.extract.schema import (
     SourceEnvelope,
     extraction_result_json_schema,
 )
-from portolan.llm.base import claude_takes_forced_tool_choice
 from portolan.metering import UsageSink, metered
 
 if TYPE_CHECKING:
@@ -621,6 +620,9 @@ class AnthropicBedrockBackend:
         # shape (Group 3 of the review fix wave) -- identical here, just
         # over the Anthropic Bedrock Mantle client's request/response shape.
         client = self._get_client()
+        # Imported here: `portolan.llm` imports this module (see `LLMClientBackend`).
+        from portolan.llm.base import claude_takes_forced_tool_choice
+
         force_tool = claude_takes_forced_tool_choice(self.model_id)
         request = build_anthropic_bedrock_request(
             envelope, system_prompt, max_tokens=self.max_tokens, force_tool=force_tool
