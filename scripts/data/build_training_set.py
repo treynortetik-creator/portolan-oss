@@ -1036,6 +1036,12 @@ def _write_jsonl_dicts(path: Path, entries: list[dict]) -> None:
             f.write("\n")
 
 
+def _default_prompt_variant() -> str:
+    from portolan.extract.prompt import DEFAULT_PROMPT_VARIANT
+
+    return DEFAULT_PROMPT_VARIANT
+
+
 def _prompt_hashes() -> dict[str, str]:
     """sha256 of the teacher system prompt for each corpus context, as
     this commit builds it (records do not store the prompt they were
@@ -1359,7 +1365,8 @@ def write_data_card(
         add(f"| `{key}` | {count} |")
     add("")
     add(
-        "A labeling run at this commit stamps `portolan.extract.prompt.build_system_prompt(company_context=CORPUS_CONTEXTS[corpus])` (variant `v6-type-precision`, production's default). First 16 hex of its sha256, per corpus context:"
+        "A labeling run at this commit stamps `portolan.extract.prompt.build_system_prompt(company_context=CORPUS_CONTEXTS[corpus])` "
+        f"(variant `{_default_prompt_variant()}`, production's default). First 16 hex of its sha256, per corpus context:"
     )
     add("")
     add("| corpus | system prompt sha256[:16] |")

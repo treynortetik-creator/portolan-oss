@@ -25,6 +25,7 @@ import pytest
 
 from corpus.generator.v2 import export as wp7
 from corpus.generator.v2.completeness import (
+    PROMPT_VARIANT,
     SHIPPED_STATUSES,
     TEACHER_MODEL,
     CompletenessContext,
@@ -59,7 +60,6 @@ from corpus.generator.v2.writer import (
 from portolan.bench.world_v2 import load_world
 from portolan.extract.backends import LLMClientBackend
 from portolan.extract.prompt import (
-    DEFAULT_PROMPT_VARIANT,
     build_system_prompt,
     build_user_message,
     system_prompt_sha256,
@@ -399,7 +399,9 @@ def test_training_records_round_trip_through_the_sft_formatter_and_production_pa
     assert manifest["training"]["sft_ready"] == len(records)
     assert any(r.facts for r in records) and any(not r.facts for r in records)
     context = world_company_context(world)
-    system_prompt = build_system_prompt(company_context=context, variant=DEFAULT_PROMPT_VARIANT)
+    # The teacher's own pinned variant, which the labels were made with; it
+    # does not follow production's default.
+    system_prompt = build_system_prompt(company_context=context, variant=PROMPT_VARIANT)
     for r in records:
         assert (r.corpus, r.world_id, r.world_split) == ("synthetic_v2", world.id, "train")
         assert r.company_context == context

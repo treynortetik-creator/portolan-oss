@@ -210,6 +210,9 @@ _ENTITY_NAMES_TEXT = (
     "prefix included."
 )
 
+_CRM_EXAMPLE_NAMED = "annual recurring revenue with Veltrona is"
+_CRM_EXAMPLE_UNNAMED = "annual recurring revenue with the vendor is"
+
 # v1-other-example, second half (the first half is FACT_TYPE_OTHER_V1 in
 # schema.py): CRM rows, RSS locators, and email paragraphs each need a
 # different reading strategy than "find a sentence to quote". The RSS
@@ -666,7 +669,13 @@ def build_system_prompt(
     if _PER_TYPE_SWEEP in features:
         sections.append(_PER_TYPE_SWEEP_INSTRUCTIONS)
 
-    return "\n\n".join(sections)
+    prompt = "\n\n".join(sections)
+    if _ENTITY_NAMES in features:
+        # A CRM row never says who the seller is, and the two CRM examples
+        # spelled the made-up vendor out; models copied the sentence, name
+        # and all. The examples now follow the rule the block above states.
+        prompt = prompt.replace(_CRM_EXAMPLE_NAMED, _CRM_EXAMPLE_UNNAMED)
+    return prompt
 
 
 def system_prompt_sha256(system_prompt: str) -> str:

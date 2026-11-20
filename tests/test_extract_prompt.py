@@ -506,7 +506,12 @@ def test_v7_entity_names_is_v6_plus_one_block_after_entity_kinds() -> None:
     assert heading not in v6
     start = v7.index(heading)
     end = v7.index("\n\n## ", start)
-    assert v7[:start] + v7[end + 2 :] == v6
+    # The only other difference: the two CRM examples no longer spell out a
+    # seller that a CRM row never names.
+    named = "annual recurring revenue with Veltrona is"
+    unnamed = "annual recurring revenue with the vendor is"
+    assert v6.count(named) == 2 and named not in v7
+    assert v7[:start] + v7[end + 2 :] == v6.replace(named, unnamed)
     assert v7.index("## Entity kinds") < start < v7.index("## Worked examples")
 
     block = v7[start:end]
