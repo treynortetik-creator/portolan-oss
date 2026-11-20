@@ -238,3 +238,108 @@ def test_a_title_change_through_write_note_refreshes_the_title_chunk(db):
         )
         (title_chunk,) = cur.fetchone()
     assert title_chunk.startswith("New Title")
+
+
+class _RecordingEmbedder(FakeEmbedder):
+    def __init__(self) -> None:
+        self.seen: list[str] = []
+
+    def embed(self, texts: list[str]) -> list[list[float]]:
+        self.seen.extend(texts)
+        return super().embed(texts)
+
+
+_RENDERED = (
+    "---\n"
+    'title: "Pricing — Ashgrove Health"\n'
+    "status: living\n"
+    "---\n\n"
+    "## Synthesis\n\nAshgrove wants a volume discount.\n\n"
+    "## Related\n\n- [[ashgrove-health]]\n\n"
+    "## Claims\n\n"
+    "- **2026-06-09** | pricing | It expects 12 percent off. ^[S-call-005 @ 00:08:54]\n"
+)
+
+
+def test_a_rendered_note_has_no_header_or_link_only_chunk(db):
+    embedder = _RecordingEmbedder()
+    with db.cursor() as cur:
+        _insert_note(cur, "pricing-ashgrove", _RENDERED, title="Pricing — Ashgrove Health")
+
+    index_note(db, embedder, "pricing-ashgrove")
+
+    assert not any("status: living" in text for text in embedder.seen)
+    with db.cursor() as cur:
+        cur.execute(
+            "SELECT heading, text FROM chunks WHERE note_slug = 'pricing-ashgrove' ORDER BY id"
+        )
+        rows = cur.fetchall()
+    assert [heading for heading, _ in rows] == [None, "Synthesis", "Claims"]
+    # What was embedded is what is stored, and what a citation quotes.
+    assert embedder.seen == [text for _, text in rows]
+    assert rows[2][1].endswith("^[S-call-005 @ 00:08:54]")
+
+
+def test_a_changed_note_embeds_only_the_chunks_that_changed(db):
+    embedder = _RecordingEmbedder()
+    with db.cursor() as cur:
+        _insert_note(cur, "pricing-ashgrove", _RENDERED, title="Pricing — Ashgrove Health")
+    index_note(db, embedder, "pricing-ashgrove")
+    with db.cursor() as cur:
+        cur.execute(
+            "SELECT heading, embedding::text FROM chunks WHERE note_slug = 'pricing-ashgrove'"
+        )
+        before = dict(cur.fetchall())
+    embedder.seen.clear()
+
+    with db.cursor() as cur:
+        cur.execute(
+            "UPDATE notes SET body_md = body_md || %s WHERE slug = 'pricing-ashgrove'",
+            ("- **2026-08-25** | pricing | It repeated the ask. ^[S-email-067 @ p2]\n",),
+        )
+    written = index_note(db, embedder, "pricing-ashgrove")
+
+    assert written == 3  # title, synthesis, claims: every row is rewritten in order
+    assert len(embedder.seen) == 1 and "It repeated the ask." in embedder.seen[0]
+    with db.cursor() as cur:
+        cur.execute(
+            "SELECT heading, embedding::text FROM chunks "
+            "WHERE note_slug = 'pricing-ashgrove' ORDER BY id"
+        )
+        rows = cur.fetchall()
+    assert [heading for heading, _ in rows] == [None, "Synthesis", "Claims"]
+    after = dict(rows)
+    assert after[None] == before[None] and after["Synthesis"] == before["Synthesis"]
+    assert after["Claims"] != before["Claims"]
+
+
+def test_a_note_indexed_in_an_older_format_embeds_every_chunk_again(db):
+    embedder = _RecordingEmbedder()
+    with db.cursor() as cur:
+        _insert_note(cur, "pricing-ashgrove", _RENDERED, title="Pricing — Ashgrove Health")
+    index_note(db, embedder, "pricing-ashgrove")
+    embedder.seen.clear()
+    with db.cursor() as cur:
+        cur.execute("UPDATE note_index_state SET body_hash = 'an-older-formats-hash'")
+
+    index_note(db, embedder, "pricing-ashgrove")
+
+    assert len(embedder.seen) == 3
+
+
+def test_a_note_indexed_in_an_older_format_is_pending_again(db):
+    embedder = FakeEmbedder()
+    with db.cursor() as cur:
+        _insert_note(cur, "note-a", "Body A about late deliveries.")
+    index_pending(db, embedder)
+    with db.cursor() as cur:
+        # What the first index format stored: the bare sha256 of the body.
+        cur.execute(
+            "UPDATE note_index_state SET body_hash = "
+            "encode(sha256(convert_to('Body A about late deliveries.', 'UTF8')), 'hex')"
+        )
+
+    report = index_pending(db, embedder)
+
+    assert report.notes_considered == 1 and report.notes_reindexed == 1
+    assert index_pending(db, embedder).notes_considered == 0

@@ -28,7 +28,6 @@ Three things this module enforces rather than documents:
 
 from __future__ import annotations
 
-import hashlib
 import json
 import math
 import os
@@ -59,6 +58,7 @@ from portolan.bench.erb import (
     invent_number,
 )
 from portolan.search.chunk import chunk_note
+from portolan.search.index import _body_hash
 from portolan.training.spend import SpendMeter
 from portolan.util.redact import redact_dsn
 
@@ -551,8 +551,7 @@ def _write_batch(
                 "COPY note_index_state (note_slug, body_hash, indexed_at) FROM STDIN"
             ) as copy:
                 for doc, _chunks, _vecs in batch:
-                    body_hash = hashlib.sha256(doc.content.encode("utf-8")).hexdigest()
-                    copy.write_row((doc.dsid, body_hash, updated))
+                    copy.write_row((doc.dsid, _body_hash(doc.content), updated))
     return chunks_written
 
 

@@ -6,6 +6,12 @@ Spec: 01-spec/portolan-spec-v2.md sec 9. "What needs re-embedding" keys off
 and description into `body_md`'s frontmatter, so a change to either
 re-indexes the title chunk too (`tests/test_search_index.py`).
 
+The stored hash carries `INDEX_FORMAT` in front, so a change to what a
+chunk is (`portolan.search.chunk`) makes every note pending once, with no
+migration. A note whose body changed embeds only
+the chunks that changed: a note that gains one claim does not pay for its
+whole body again, which on a CPU embedding model is most of a write's time.
+
 `reindex_all` is a full pass behind a `pg_try_advisory_lock` single-flight
 guard. `index_pending` is the incremental path: it finds changed-or-new
 notes in SQL, so it never pulls every body into Python.
@@ -18,7 +24,7 @@ import hashlib
 import psycopg
 from pydantic import BaseModel
 
-from portolan.search.chunk import chunk_note
+from portolan.search.chunk import Chunk, chunk_note
 from portolan.search.embed import Embedder
 
 # Arbitrary fixed key for reindex_all's single-flight advisory lock.
@@ -33,8 +39,15 @@ class IndexReport(BaseModel):
     skipped_lock: bool = False
 
 
+# Bump when `chunk_note` changes what is stored for the same body.
+# 2: no YAML-header or link-only chunks, lists split between items.
+# (1 had no prefix.)
+INDEX_FORMAT = "2"
+_HASH_PREFIX = f"v{INDEX_FORMAT}:"
+
+
 def _body_hash(body_md: str) -> str:
-    return hashlib.sha256(body_md.encode("utf-8")).hexdigest()
+    return _HASH_PREFIX + hashlib.sha256(body_md.encode("utf-8")).hexdigest()
 
 
 def _stored_hash(conn: psycopg.Connection, note_slug: str) -> str | None:
@@ -63,22 +76,33 @@ def index_note(conn: psycopg.Connection, embedder: Embedder, note_slug: str) -> 
     body_md = body_md or ""
     new_hash = _body_hash(body_md)
 
-    if _stored_hash(conn, note_slug) == new_hash:
+    stored_hash = _stored_hash(conn, note_slug)
+    if stored_hash == new_hash:
         return 0
 
     chunks = chunk_note(body_md, title=title, description=description)
-    texts = [c.text for c in chunks]
-    embeddings = embedder.embed(texts) if texts else []
+    embedded: dict[str, object] = dict(_stored_embeddings(conn, note_slug, chunks, stored_hash))
+    fresh = list(dict.fromkeys(c.text for c in chunks if c.text not in embedded))
+    if fresh:
+        embedded.update(zip(fresh, embedder.embed(fresh), strict=True))
 
     with conn.transaction(), conn.cursor() as cur:
+        # Every row is rewritten, kept embedding or new, so `ORDER BY id` stays
+        # the order of the body (the title chunk first).
         cur.execute("DELETE FROM chunks WHERE note_slug = %s", (note_slug,))
-        for chunk, embedding in zip(chunks, embeddings, strict=True):
+        for chunk in chunks:
             cur.execute(
                 """
                     INSERT INTO chunks (note_slug, heading, text, token_count, embedding)
-                    VALUES (%s, %s, %s, %s, %s)
+                    VALUES (%s, %s, %s, %s, %s::vector)
                     """,
-                (note_slug, chunk.heading, chunk.text, chunk.token_estimate, embedding),
+                (
+                    note_slug,
+                    chunk.heading,
+                    chunk.text,
+                    chunk.token_estimate,
+                    _vector_literal(embedded[chunk.text]),
+                ),
             )
         cur.execute(
             """
@@ -91,6 +115,31 @@ def index_note(conn: psycopg.Connection, embedder: Embedder, note_slug: str) -> 
         )
 
     return len(chunks)
+
+
+def _vector_literal(vector: object) -> str:
+    """A pgvector input literal: a stored embedding read back as text is one
+    already; a fresh one is a sequence of floats."""
+    if isinstance(vector, str):
+        return vector
+    return "[" + ",".join(repr(float(x)) for x in vector) + "]"  # type: ignore[attr-defined]
+
+
+def _stored_embeddings(
+    conn: psycopg.Connection, note_slug: str, chunks: list[Chunk], stored_hash: str | None
+) -> dict[str, str]:
+    """`{text: stored embedding}` for the chunks of `chunks` whose text is
+    already indexed for this note. Empty unless the note was last indexed in
+    this format: an older format's rows are all written again."""
+    if stored_hash is None or not stored_hash.startswith(_HASH_PREFIX):
+        return {}
+    with conn.cursor() as cur:
+        cur.execute(
+            "SELECT text, embedding::text FROM chunks "
+            "WHERE note_slug = %s AND embedding IS NOT NULL AND text = ANY(%s)",
+            (note_slug, [c.text for c in chunks]),
+        )
+        return dict(cur.fetchall())
 
 
 def reindex_all(conn: psycopg.Connection, embedder: Embedder) -> IndexReport:
@@ -150,11 +199,12 @@ def index_pending(conn: psycopg.Connection, embedder: Embedder) -> IndexReport:
             FROM notes n
             LEFT JOIN note_index_state s ON s.note_slug = n.slug
             WHERE s.note_slug IS NULL
-               OR s.body_hash IS DISTINCT FROM encode(
+               OR s.body_hash IS DISTINCT FROM %s || encode(
                       sha256(convert_to(coalesce(n.body_md, ''), 'UTF8')), 'hex'
                   )
             ORDER BY n.slug
-            """
+            """,
+            (_HASH_PREFIX,),
         )
         slugs = [row[0] for row in cur.fetchall()]
 

@@ -16,6 +16,14 @@ Optional `title`/`description` keyword args add a synthetic chunk 0 holding
 the title (and description), marked `is_title=True` with sentinel offsets
 `(-1, -1)`, so the title gets its own embedding and full-text row.
 `index_note` passes them from the `notes` row.
+
+Three things in a rendered note are not chunks, because nobody retrieves
+them and each one took a place among the vector leg's nearest chunks: the
+YAML header `write_note` renders at the top of `body_md` (the title chunk
+already holds the title and description), a chunk with no words of its own
+(a "Related" section's list of `[[links]]`), and HTML comments. A list
+longer than `max_chars` (a note's claims) splits between items, so a
+passage never starts or ends inside a claim.
 """
 
 from __future__ import annotations
@@ -28,6 +36,17 @@ _HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
 # A "sentence" ends at .!? followed by whitespace or end of string; DOTALL so
 # one can span lines.
 _SENTENCE_RE = re.compile(r".+?(?:(?<=[.!?])(?=\s|\Z)|\Z)", re.DOTALL)
+
+
+# The YAML header at the very top of a rendered note: a `---` line, then
+# non-blank lines up to the next `---` line. Anchored at offset 0 and closed
+# before any blank line, so a rule further down the body is text.
+_FRONTMATTER_RE = re.compile(r"\A---[ \t]*\n(?:[^\n]+\n)*?---[ \t]*(?:\n|\Z)")
+_HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+_WIKILINK_RE = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]*))?\]\]")
+_WORD_RE = re.compile(r"[^\W_]{2,}")
+# A list item, a numbered item or a table row: a line that is a unit of its own.
+_ITEM_LINE_RE = re.compile(r"^[ \t]*(?:[-*+][ \t]|\d+[.)][ \t]|\|)")
 
 
 class Chunk(BaseModel):
@@ -93,6 +112,30 @@ def _iter_sections(body_md: str) -> list[tuple[str | None, str, int]]:
     return out
 
 
+def _item_units(text: str) -> list[tuple[str, int, int]] | None:
+    """`text` as list items, each with the lines that continue it, when its
+    first line is an item line and it holds more than one item; else None."""
+    lines = text.splitlines(keepends=True)
+    if len(lines) < 2 or not _ITEM_LINE_RE.match(lines[0]):
+        return None
+    units: list[tuple[str, int, int]] = []
+    pos = 0
+    for line in lines:
+        if _ITEM_LINE_RE.match(line) or not units:
+            units.append((line, pos, pos + len(line)))
+        else:
+            item, start, _end = units[-1]
+            units[-1] = (item + line, start, pos + len(line))
+        pos += len(line)
+    return units if len(units) > 1 else None
+
+
+def _has_words(text: str) -> bool:
+    """False for text that is only links, comments and punctuation."""
+    bare = _WIKILINK_RE.sub(" ", _HTML_COMMENT_RE.sub(" ", text))
+    return _WORD_RE.search(bare) is not None
+
+
 def _pack(
     parts: list[tuple[str, int, int]],
     max_chars: int,
@@ -103,10 +146,11 @@ def _pack(
     """Greedily pack consecutive (text, rel_start, rel_end) parts into
     chunks no longer than `max_chars`, never splitting a part across two
     chunks unless the part alone exceeds `max_chars`. In that case, when
-    `hard_fallback` is False (packing paragraphs) it recurses into sentence
-    splitting; when True (already packing sentences) it falls back to a
-    raw character split -- the true last resort, only reached for a single
-    run-on sentence with no punctuation to split on.
+    `hard_fallback` is False (packing paragraphs or list items) a list is
+    packed item by item and anything else sentence by sentence; when True
+    (already packing sentences) it falls back to a raw character split --
+    the true last resort, only reached for a single run-on sentence with no
+    punctuation to split on.
     """
     out: list[tuple[str, int, int]] = []
     cur: list[tuple[str, int, int]] = []
@@ -140,6 +184,10 @@ def _pack(
                                 base_start + rel_start + min(i + max_chars, part_len),
                             )
                         )
+                continue
+            items = _item_units(part_text)
+            if items is not None:
+                out.extend(_pack(items, max_chars, base_start + rel_start))
             else:
                 sentences = [
                     (m.group(0), m.start(), m.end()) for m in _SENTENCE_RE.finditer(part_text)
@@ -150,6 +198,7 @@ def _pack(
             flush()
         cur.append((part_text, rel_start, rel_end))
         cur_len += part_len
+
     flush()
     return out
 
@@ -185,9 +234,15 @@ def chunk_note(
     if not body_md:
         return chunks
 
-    for heading, content, content_start in _iter_sections(body_md):
-        paragraphs = _iter_paragraphs(content)
-        for text, start, end in _pack(paragraphs, max_chars, content_start):
+    header = _FRONTMATTER_RE.match(body_md)
+    offset = header.end() if header else 0
+    for heading, content, content_start in _iter_sections(body_md[offset:]):
+        paragraphs = [
+            p for p in _iter_paragraphs(content) if _HTML_COMMENT_RE.sub("", p[0]).strip()
+        ]
+        for text, start, end in _pack(paragraphs, max_chars, offset + content_start):
+            if not _has_words(text):
+                continue
             chunks.append(
                 Chunk(
                     text=text,

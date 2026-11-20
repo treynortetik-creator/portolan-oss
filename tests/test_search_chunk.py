@@ -114,3 +114,82 @@ def test_chunk_note_is_pure_and_deterministic():
     first = chunk_note(body, title="T", description="D")
     second = chunk_note(body, title="T", description="D")
     assert [c.model_dump() for c in first] == [c.model_dump() for c in second]
+
+
+# ---------------------------------------------------------------------
+# What a note body holds that is not something to retrieve: the YAML
+# header `write_note` renders, link-only sections, HTML comments.
+# ---------------------------------------------------------------------
+
+NOTE_BODY = (
+    "---\n"
+    'title: "Pricing — Ashgrove Health"\n'
+    "type: signal\n"
+    "status: living\n"
+    "source:\n"
+    "  - S-call-005\n"
+    "---\n"
+    "\n"
+    "## Synthesis\n"
+    "\n"
+    "Ashgrove wants a volume discount.\n"
+    "\n"
+    "## Related\n"
+    "\n"
+    "- [[ashgrove-health]]\n"
+    "- [[tidewater-t2]]\n"
+    "\n"
+    "<!-- CLAIMS:APPEND-ONLY -->\n"
+    "\n"
+    "## Claims\n"
+    "\n"
+    "- **2026-06-09** | pricing | Ashgrove expects a 12 percent discount. "
+    "([[ashgrove-health]]) ^[S-call-005 @ 00:08:54]\n"
+)
+
+
+def test_the_yaml_header_is_not_a_chunk():
+    chunks = chunk_note(NOTE_BODY, title="Pricing — Ashgrove Health", description="Pricing.")
+    assert chunks[0].is_title
+    assert not any("status: living" in c.text or c.text.startswith("---") for c in chunks)
+
+
+def test_a_section_holding_only_links_and_comments_is_not_a_chunk():
+    chunks = chunk_note(NOTE_BODY)
+    assert [c.heading for c in chunks] == ["Synthesis", "Claims"]
+    assert not any("CLAIMS:APPEND-ONLY" in c.text for c in chunks)
+
+
+def test_offsets_still_point_into_the_body_after_the_header_is_skipped():
+    for c in chunk_note(NOTE_BODY):
+        assert " ".join(NOTE_BODY[c.start : c.end].split()) == " ".join(c.text.split())
+
+
+def test_a_rule_line_in_the_body_is_not_mistaken_for_a_header():
+    body = "First paragraph.\n\n---\n\nkey: value\n\n---\n\nLast paragraph."
+    text = " ".join(c.text for c in chunk_note(body))
+    assert "First paragraph." in text and "key: value" in text and "Last paragraph." in text
+
+
+def test_an_unclosed_header_is_kept_as_text():
+    chunks = chunk_note("---\ntitle: x\n\nBody text with no closing rule.")
+    assert any("Body text" in c.text for c in chunks)
+    assert any("title: x" in c.text for c in chunks)
+
+
+def test_a_long_list_splits_between_items_never_inside_one():
+    items = [
+        f"- **2026-06-{day:02d}** | pricing | Account {day} asked for a discount. It said "
+        f'"we need twelve points off. No less." ^[S-call-{day:03d} @ 00:01:00]'
+        for day in range(1, 13)
+    ]
+    chunks = chunk_note("## Claims\n\n" + "\n".join(items) + "\n", max_chars=400)
+    assert len(chunks) > 1
+    seen: list[str] = []
+    for c in chunks:
+        assert len(c.text) <= 400
+        lines = c.text.splitlines()
+        assert all(line.startswith("- **2026-06-") for line in lines)
+        assert all(line.endswith("]") for line in lines)
+        seen.extend(lines)
+    assert seen == items

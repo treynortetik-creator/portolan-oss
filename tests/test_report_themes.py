@@ -5331,13 +5331,13 @@ def test_refresh_themes_end_to_end_merge_drops_absorbed_slug_from_the_report(
     # Nit 13 (review-theme-fix-wave.md): the absorbed note is re-indexed
     # AFTER the merge -- its search-index row must reflect the archived,
     # "merged into [[...]]"-pointered body, not the pre-merge one.
-    import hashlib
+    from portolan.search.index import _body_hash
 
     with conn.cursor() as cur:
         cur.execute("SELECT body_hash FROM note_index_state WHERE note_slug = %s", (newer_slug,))
         stored_hash = cur.fetchone()
     assert stored_hash is not None, "absorbed note was never (re-)indexed at all"
-    assert stored_hash[0] == hashlib.sha256(newer_note.body_md.encode("utf-8")).hexdigest()
+    assert stored_hash[0] == _body_hash(newer_note.body_md)
 
 
 def test_merge_carries_the_absorbed_themes_resolution_row(full_graph: FullGraph) -> None:
