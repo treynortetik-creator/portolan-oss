@@ -178,7 +178,7 @@ def test_user_message_handles_empty_context_gracefully() -> None:
 # --------------------------------------------------------------------------
 
 
-def test_v6_type_precision_is_the_default_and_baseline_omits_every_variant_addition() -> None:
+def test_v7_entity_names_is_the_default_and_baseline_omits_every_variant_addition() -> None:
     # Default flipped from "baseline" to "v4-two-step" on 2026-09-18 after the
     # prompt A/B (prompt-ab-2026-09-18.md): Kimi K2 recall 74.7 to 89.7 percent,
     # invented 2 to 0. The baseline stays selectable for re-scoring old runs.
@@ -186,7 +186,9 @@ def test_v6_type_precision_is_the_default_and_baseline_omits_every_variant_addit
     # Flipped again to "v6-type-precision" on 2026-09-18 after wave 4A
     # (facttype-4a-2026-09-18.md): fact-type accuracy 90.4 to 96.5 percent on
     # Nova Lite and 93.8 to 98.4 on Haiku, recall flat, invented still zero.
-    assert default_call == build_system_prompt(None, variant="v6-type-precision")
+    # Flipped to "v7-entity-names" on 2026-11-20 (docs/reviews/REVIEW-write-path.md,
+    # "Entity accuracy"): v6 plus one block on where a name may come from.
+    assert default_call == build_system_prompt(None, variant="v7-entity-names")
     explicit_baseline = build_system_prompt(None, variant="baseline")
     assert default_call != explicit_baseline
     for marker in (
@@ -494,3 +496,25 @@ def test_example_names_are_the_prompts_own_and_never_the_exams() -> None:
         p.read_text(encoding="utf-8", errors="ignore") for p in _EXAM_ROOT.rglob("*") if p.is_file()
     )
     assert [n for n in PROMPT_EXAMPLE_NAMES if n in exam] == []
+
+
+def test_v7_entity_names_is_v6_plus_one_block_after_entity_kinds() -> None:
+    v6 = build_system_prompt(None, variant="v6-type-precision")
+    v7 = build_system_prompt(None, variant="v7-entity-names")
+    heading = "## Names: only the ones this source gives you"
+
+    assert heading not in v6
+    start = v7.index(heading)
+    end = v7.index("\n\n## ", start)
+    assert v7[:start] + v7[end + 2 :] == v6
+    assert v7.index("## Entity kinds") < start < v7.index("## Worked examples")
+
+    block = v7[start:end]
+    assert len(block) < 900
+    # The three things it says: example names are made up, the fallback
+    # word for an unnamed seller, and what goes in `mention`.
+    assert "made up" in block
+    assert '"the vendor"' in block
+    assert "never goes in `mention`" in block
+    # It names no example company itself, so it cannot teach the leak.
+    assert "Veltrona" not in block

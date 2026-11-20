@@ -145,6 +145,8 @@ _TWO_STEP = "two_step"
 _PER_TYPE_SWEEP = "per_type_sweep"
 _TYPE_PRECISION = "type_precision"
 
+_ENTITY_NAMES = "entity_names"
+
 _V4_FEATURES: frozenset[str] = frozenset(
     {_OTHER_EXAMPLE, _DECISION_PRECEDENCE, _QUOTE_ALWAYS, _TWO_STEP}
 )
@@ -160,11 +162,12 @@ PROMPT_VARIANTS: tuple[str, ...] = (
     "v4-two-step",
     "v5-per-type-sweep",
     "v6-type-precision",
+    "v7-entity-names",
 )
 
 # Production's variant: `portolan.pipeline.run()`, the bench CLI and silver
 # labeling all default to it.
-DEFAULT_PROMPT_VARIANT = "v6-type-precision"
+DEFAULT_PROMPT_VARIANT = "v7-entity-names"
 
 _VARIANT_FEATURES: dict[str, frozenset[str]] = {
     "baseline": frozenset(),
@@ -174,6 +177,7 @@ _VARIANT_FEATURES: dict[str, frozenset[str]] = {
     "v4-two-step": _V4_FEATURES,
     "v5-per-type-sweep": _V4_FEATURES | {_PER_TYPE_SWEEP},
     "v6-type-precision": _V4_FEATURES | {_TYPE_PRECISION},
+    "v7-entity-names": _V4_FEATURES | {_TYPE_PRECISION, _ENTITY_NAMES},
 }
 
 
@@ -185,6 +189,26 @@ def _variant_features(variant: str) -> frozenset[str]:
             f"unknown prompt variant {variant!r}; choose one of {list(PROMPT_VARIANTS)}"
         ) from exc
 
+
+# v7-entity-names (2026-11-20, docs/reviews/REVIEW-write-path.md "Entity
+# accuracy"). Two things seen on a live run: 1 to 10 percent of facts named
+# this prompt's made-up vendor as the seller, because the source never said
+# who the seller was and the CRM example spells one out; and about 5
+# percent of top-level mentions carried an id in `mention`. The block names
+# no example company, so it cannot teach the first one itself.
+_ENTITY_NAMES_TEXT = (
+    "## Names: only the ones this source gives you\n"
+    "Every company, person and product named in this prompt's examples is "
+    "made up to show the format. A name belongs in a claim or an "
+    "`entities` list only when the source you are reading, its registry "
+    "context or the company context contains it. When none of them names "
+    'the company doing the selling, write "the vendor" in the claim; do '
+    "not borrow a name from an example.\n"
+    "In the top-level `entities` list, `mention` is the name the way the "
+    "source writes it and `registry_id` holds the id. An id never goes in "
+    "`mention`. Copy a registry id exactly as registry context prints it, "
+    "prefix included."
+)
 
 # v1-other-example, second half (the first half is FACT_TYPE_OTHER_V1 in
 # schema.py): CRM rows, RSS locators, and email paragraphs each need a
@@ -502,8 +526,9 @@ def build_system_prompt(
     campaign (`01-spec/prompt-ab-2026-09-18.md`, `PROMPT_VARIANTS` above)
     — one of `"baseline"`, `"v1-other-example"`,
     `"v2-decision-tightening"`, `"v3-quote-always"`, `"v4-two-step"`,
-    `"v5-per-type-sweep"`, or `"v6-type-precision"` (the default,
-    `DEFAULT_PROMPT_VARIANT`). `v1` through `v4` are
+    `"v5-per-type-sweep"`, `"v6-type-precision"`, or `"v7-entity-names"`
+    (the default, `DEFAULT_PROMPT_VARIANT`: v6 plus one block on where a
+    name may come from). `v1` through `v4` are
     CUMULATIVE — `"v3-quote-always"` includes v1's and v2's additions too
     — per the campaign's "build cumulatively, measure each step"
     instruction. `v5-per-type-sweep` and `v6-type-precision` both build on
@@ -602,6 +627,9 @@ def build_system_prompt(
         "`registry_context`; an unresolved entity is a plain name, not a "
         "guess at what its id might be."
     )
+
+    if _ENTITY_NAMES in features:
+        sections.append(_ENTITY_NAMES_TEXT)
 
     has_vocabulary = (
         effective.vocabulary.products
