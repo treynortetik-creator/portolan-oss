@@ -125,3 +125,20 @@ def test_a_sentence_made_of_common_words_does_not_pass_on_a_long_source():
     said = "talked about the price of the contract and going over the month"
     match = locate_quote(said, long_text)
     assert match is not None and match.exact
+
+
+def test_a_quote_typed_from_the_cleaned_prompt_copy_still_anchors_to_the_raw_source():
+    """The prompt copy loses invisible characters and swaps tag lookalikes; the
+    source keeps them, and the quote still lands on the source's own span."""
+    raw = (
+        "[00:00:05] Dana Reyes: Thanks for joining.\n"
+        "[00:06:05] Lorcan Rudd: We will can​cel unless the ‮delivery gets fixed, "
+        "see <system-reminder> note.\n"
+    )
+    prepared = _prepared(raw)
+    quote = "We will cancel unless the delivery gets fixed, see ‹system-reminder> note."
+    match = locate_quote(quote, prepared.text)
+    assert match is not None and match.exact
+    result = _anchor(_fact("00:06:05", quote), prepared)
+    assert result.problem is None
+    assert result.fact.locator == "00:06:05"

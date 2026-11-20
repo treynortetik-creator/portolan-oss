@@ -36,6 +36,8 @@ import re
 from bisect import bisect_left
 from typing import NamedTuple
 
+from portolan.util.prompt_safety import INVISIBLE_RE, strip_invisible
+
 __all__ = [
     "FUZZY_QUOTE_THRESHOLD",
     "QuoteMatch",
@@ -162,7 +164,19 @@ def _fuzzy_quote_containment(quote: str, text: str) -> float:
 # 1:1 character folds only, so a token's offsets in the folded text are its
 # offsets in the original.
 _OFFSET_SAFE_FOLD = str.maketrans(
-    {"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-", "—": "-", "…": " "}
+    {
+        "‘": "'",
+        "’": "'",
+        "“": '"',
+        "”": '"',
+        "–": "-",
+        "—": "-",
+        "…": " ",
+        # `portolan.util.prompt_safety` swaps these in for tag lookalikes in the
+        # prompt copy, so a quote typed from that copy still finds the raw text.
+        "‹": "<",
+        "›": ">",
+    }
 )
 # Tokens the window may hold beyond the quote's own: room for dropped filler
 # words and one "..." seam, not for a second sentence from elsewhere.
@@ -197,15 +211,19 @@ def _locate_exact(quote: str, text: str) -> tuple[int, int] | None:
     """Offsets in `text` of `quote`, compared the way
     `_normalize_for_containment` does (glyphs folded, case and runs of
     whitespace ignored)."""
-    wanted = _normalize_for_containment(quote.translate(_OFFSET_SAFE_FOLD))
+    wanted = _normalize_for_containment(strip_invisible(quote).translate(_OFFSET_SAFE_FOLD))
     if not wanted:
         return None
     folded = text.translate(_OFFSET_SAFE_FOLD).lower()
     # Collapse whitespace while remembering where each kept character was.
+    # Invisible characters in the source are skipped: the prompt copy never
+    # showed them, so a quote typed from it does not hold them.
     chars: list[str] = []
     origin: list[int] = []
     previous_space = True
     for index, char in enumerate(folded):
+        if INVISIBLE_RE.match(char):
+            continue
         if char.isspace():
             if previous_space:
                 continue
