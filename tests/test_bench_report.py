@@ -421,3 +421,25 @@ def test_headline_gives_recalls_interval_and_says_what_invented_counts() -> None
         f"(n = {extraction_score.planted_total} planted facts) |"
     ) in headline
     assert "has no footing in its source" in headline
+
+
+def test_report_prints_the_old_entity_number_beside_the_new_one() -> None:
+    from portolan.bench.extraction import EntityMentionRecord
+    from portolan.bench.report import _render_extraction_section
+
+    score = _synthetic_half_credit_score().model_copy(
+        update={
+            "entity_accuracy_exact_id_correct": 1,
+            "entity_mentions": [
+                EntityMentionRecord(source_id="S-call-001", mention="x", kind="account")
+            ],
+        }
+    )
+    text = "\n".join(_render_extraction_section(score))
+
+    assert "| entity accuracy | 75.0% (3/4 checked) |" in text
+    assert "exact id string (scorer before 2026-11-20) | 25.0% (1/4 checked) |" in text
+    # A report saved before mentions were kept has no old-scorer line to show.
+    assert "exact id string" not in "\n".join(
+        _render_extraction_section(_synthetic_half_credit_score())
+    )

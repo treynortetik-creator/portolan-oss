@@ -16,6 +16,7 @@ from portolan.bench.extraction import (
     _fuzzy_quote_containment,
     _plausible_in_source,
     _quote_supported_by_text,
+    _registry_context_for,
     _salient_claim_fragments,
     _window_supported,
     evidence_context_for_source,
@@ -1617,3 +1618,85 @@ def test_rescore_full_recomputes_entity_accuracy_from_saved_mentions() -> None:
     assert (rescored.entity_accuracy_correct, rescored.entity_accuracy_checked) == (1, 2)
     assert rescored.entity_accuracy == 0.5
     assert len(rescored.entity_mentions) == 2
+
+
+def _score_with_mentions(source_id: str, mentions: list[EntityMention]):
+    truth = _truth()
+    results = {
+        sid: r.model_copy(update={"entities": []}) for sid, r in perfect_results(truth).items()
+    }
+    results[source_id] = results[source_id].model_copy(update={"entities": mentions})
+    return score_extraction(truth, results)
+
+
+def test_internal_person_id_the_bench_hands_out_is_a_correct_resolution() -> None:
+    """The bench's own registry context lists an internal person as
+    `internal:<id>`; the truth table's id is the bare `<id>`. Returning the
+    id exactly as given is right, and was scored wrong."""
+    truth = _truth()
+    source = truth.manifest.source("S-call-003")
+    issued = {
+        e.registry_id for e in _registry_context_for(source, truth) if e.kind == "internal_person"
+    }
+    assert issued == {"internal:sam-okafor"}
+
+    score = _score_with_mentions(
+        "S-call-003",
+        [
+            EntityMention(
+                mention="Sam Okafor",
+                kind=EntityKind.INTERNAL_PERSON,
+                registry_id="internal:sam-okafor",
+                confidence=0.9,
+            ),
+            EntityMention(
+                mention="Ashgrove Health",
+                kind=EntityKind.ACCOUNT,
+                registry_id="ashgrove",
+                confidence=0.9,
+            ),
+        ],
+    )
+
+    assert (score.entity_accuracy_correct, score.entity_accuracy_checked) == (2, 2)
+    assert score.entity_accuracy == 1.0
+    # The old scorer's numerator (raw string equality) stays readable.
+    assert score.entity_accuracy_exact_id_correct == 1
+    assert score.entity_wrong == []
+
+
+def test_a_wrong_entity_is_still_wrong_and_is_listed() -> None:
+    score = _score_with_mentions(
+        "S-call-003",
+        [
+            # Another internal person's id: the prefix is no free pass.
+            EntityMention(
+                mention="Sam Okafor",
+                kind=EntityKind.INTERNAL_PERSON,
+                registry_id="internal:priya-natarajan",
+                confidence=0.9,
+            ),
+            # A prefix the bench never hands out.
+            EntityMention(
+                mention="Ashgrove Health",
+                kind=EntityKind.ACCOUNT,
+                registry_id="account:ashgrove",
+                confidence=0.9,
+            ),
+            # A child account is not its parent.
+            EntityMention(
+                mention="Ashgrove Health",
+                kind=EntityKind.ACCOUNT,
+                registry_id="ashgrove-medical",
+                confidence=0.9,
+            ),
+        ],
+    )
+
+    assert (score.entity_accuracy_correct, score.entity_accuracy_checked) == (0, 3)
+    assert score.entity_accuracy_exact_id_correct == 0
+    assert [(w.mention, w.registry_id, w.expected) for w in score.entity_wrong] == [
+        ("Sam Okafor", "internal:priya-natarajan", "sam-okafor"),
+        ("Ashgrove Health", "account:ashgrove", "ashgrove"),
+        ("Ashgrove Health", "ashgrove-medical", "ashgrove"),
+    ]

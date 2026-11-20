@@ -217,6 +217,13 @@ def _render_extraction_section(score: ExtractionScore) -> list[str]:
         f"| entity accuracy | {_pct(score.entity_accuracy)} "
         f"({score.entity_accuracy_correct}/{score.entity_accuracy_checked} checked) |"
     )
+    if score.entity_mentions:
+        exact = score.entity_accuracy_exact_id_correct
+        checked = score.entity_accuracy_checked
+        lines.append(
+            f"| entity accuracy, exact id string (scorer before 2026-11-20) | "
+            f"{_pct(exact / checked if checked else None)} ({exact}/{checked} checked) |"
+        )
     lines.append(
         f"| fact-type accuracy | {_pct(score.fact_type_accuracy)} "
         f"({score.fact_type_correct_count}/{score.matched_instance_count} matched instances) |"

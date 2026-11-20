@@ -17,7 +17,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from portolan.bench.corpus_loader import DEFAULT_CORPUS_ROOT, load_prepared_source
 from portolan.bench.locators import locator_matches_any
-from portolan.bench.truth import Manifest, PlantedFact, Truth
+from portolan.bench.truth import INTERNAL_ID_PREFIX, Manifest, PlantedFact, Truth
 from portolan.extract.backends import Backend
 from portolan.extract.prompt import build_system_prompt
 
@@ -311,7 +311,7 @@ def _contact_registry_entries(manifest_source: Any, truth: Truth) -> list[Regist
                 RegistryContextEntry(
                     name=internal["name"],
                     kind=EntityKind.INTERNAL_PERSON,
-                    registry_id=f"internal:{internal['id']}",
+                    registry_id=f"{INTERNAL_ID_PREFIX}{internal['id']}",
                 )
             )
     return entries
@@ -726,6 +726,18 @@ class EntityMentionRecord(BaseModel):
     kind: str
     registry_id: str | None = None
     confidence: float = 0.0
+
+
+class EntityWrongRecord(BaseModel):
+    """A resolved mention whose `registry_id` is not the entity the truth
+    table says that name is."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source_id: str
+    mention: str
+    registry_id: str
+    expected: str
 
 
 def _produced_record(fact: Fact) -> ProducedFactRecord:
@@ -1447,6 +1459,13 @@ class ExtractionScore(BaseModel):
     # mentions whose registry_id matched the truth table's own, alongside
     # the existing `entity_accuracy_checked` denominator.
     entity_accuracy_correct: int = 0
+    # The numerator the scorer used before 2026-11-20: raw string equality
+    # between the resolved id and the truth table's id. It counted every
+    # internal person wrong, because the bench hands those out as
+    # `internal:<id>` and the truth table keys them by `<id>`.
+    # `entity_accuracy_correct` compares `Truth.canonical_entity_id`.
+    entity_accuracy_exact_id_correct: int = 0
+    entity_wrong: list[EntityWrongRecord] = Field(default_factory=list)
     # Every mention the extractor listed, resolved or not. Empty on a
     # report saved before this field existed.
     entity_mentions: list[EntityMentionRecord] = Field(default_factory=list)
@@ -1636,6 +1655,8 @@ def score_extraction(
 
     entity_checked = 0
     entity_correct = 0
+    entity_exact_id_correct = 0
+    entity_wrong: list[EntityWrongRecord] = []
     entity_mentions: list[EntityMentionRecord] = []
 
     distractor_source_ids = truth.distractor_source_ids()
@@ -1725,7 +1746,18 @@ def score_extraction(
                 continue  # not in the truth table's index; not checkable
             entity_checked += 1
             if expected == mention.registry_id:
+                entity_exact_id_correct += 1
+            if expected == truth.canonical_entity_id(mention.registry_id):
                 entity_correct += 1
+            else:
+                entity_wrong.append(
+                    EntityWrongRecord(
+                        source_id=source_id,
+                        mention=mention.mention,
+                        registry_id=mention.registry_id,
+                        expected=expected,
+                    )
+                )
 
         # -- bipartite match, planted facts vs. produced facts -------------
         pair_scores: list[tuple[bool, float, float, PlantedFact, int, list[str]]] = []
@@ -1948,6 +1980,8 @@ def score_extraction(
         matched_instance_count=len(matched),
         fact_type_correct_count=fact_type_correct_count,
         entity_accuracy_correct=entity_correct,
+        entity_accuracy_exact_id_correct=entity_exact_id_correct,
+        entity_wrong=entity_wrong,
         entity_mentions=entity_mentions,
         distractor_leakage=distractor_leakage,
         quote_presence_rate=(
@@ -2171,6 +2205,8 @@ def rescore_full(
             entity_accuracy=score.entity_accuracy,
             entity_accuracy_checked=score.entity_accuracy_checked,
             entity_accuracy_correct=score.entity_accuracy_correct,
+            entity_accuracy_exact_id_correct=score.entity_accuracy_exact_id_correct,
+            entity_wrong=score.entity_wrong,
         )
     return rescored.model_copy(update=carried)
 

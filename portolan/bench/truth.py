@@ -242,6 +242,10 @@ def _norm_loose(s: str) -> str:
     return _norm(re.sub(r"[-_:]+", " ", s))
 
 
+# How the bench names an internal person in `registry_context`.
+INTERNAL_ID_PREFIX = "internal:"
+
+
 def _contains_phrase(haystack: str, phrase: str) -> bool:
     """Whole-word-bounded substring search: does `phrase` (already `_norm`-
     or `_norm_loose`-normalized) appear as a contiguous run of words inside
@@ -348,6 +352,9 @@ class Truth:
         self.manifest = manifest
         self._fact_by_id: dict[str, TruthFact] = {fact.id: fact for fact in table.facts}
         self._entity_variants = _build_entity_variants(table)
+        self._internal_ids = frozenset(
+            p["id"] for p in (table.meta or {}).get("internal_people", []) or []
+        )
         self._variant_to_ids = _build_reverse_index(self._entity_variants)
         self._planted_by_source = _build_planted_index(table, manifest, self._fact_by_id)
 
@@ -433,6 +440,19 @@ class Truth:
                 if any(_contains_phrase(m, loose_name) for m in loose_mentions):
                     return True
         return False
+
+    def canonical_entity_id(self, registry_id: str) -> str:
+        """The truth-table id a resolved `registry_id` stands for. The
+        bench hands an internal person to the extractor as
+        `internal:<id>` (the prompt's own form for the vendor's
+        directory) while the truth table keys the same person by the bare
+        `<id>`, so that one form is unwrapped. Anything else, including a
+        prefix the bench never issues, comes back unchanged."""
+        if registry_id.startswith(INTERNAL_ID_PREFIX):
+            bare = registry_id[len(INTERNAL_ID_PREFIX) :]
+            if bare in self._internal_ids:
+                return bare
+        return registry_id
 
     def identify_entity(self, mention: str) -> str | None:
         """Reverse-lookup a mention string to a truth-table entity id, only
