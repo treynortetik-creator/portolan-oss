@@ -35,6 +35,31 @@ from portolan.extract.schema import (
 )
 from portolan.util.prompt_safety import SOURCE_FRAMING, clean, frame_source
 
+# The made-up names the examples in this prompt use: the vendor, its
+# accounts, people and products. `portolan.bench.extraction` counts a
+# produced fact that carries one of them into a source that never says it.
+PROMPT_EXAMPLE_NAMES: tuple[str, ...] = (
+    "Veltrona",
+    "Brackenholt",
+    "Harrowfield",
+    "Quenby",
+    "Pembrake",
+    "Glenmoss",
+    "Duncarron",
+    "Pellworth",
+    "Ferrowick",
+    "Vantrell",
+    "Rillfold",
+    "Tarnwick",
+    "Rudderham",
+    "Brenneck",
+    "Sandqvist",
+    "Ondrell",
+    "Sorvald",
+    "Olufsen",
+    "Achterberg",
+)
+
 
 def _render_type_checklist(checklist: dict[str, FactTypeInfo]) -> str:
     """Render the signal-type checklist: definition, example, counter-example

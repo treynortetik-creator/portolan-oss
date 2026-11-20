@@ -19,7 +19,7 @@ from portolan.bench.corpus_loader import DEFAULT_CORPUS_ROOT, load_prepared_sour
 from portolan.bench.locators import locator_matches_any
 from portolan.bench.truth import INTERNAL_ID_PREFIX, Manifest, PlantedFact, Truth
 from portolan.extract.backends import Backend
-from portolan.extract.prompt import build_system_prompt
+from portolan.extract.prompt import PROMPT_EXAMPLE_NAMES, build_system_prompt
 
 # The containment logic (glyph folding, exact containment, fuzzy token-
 # subsequence containment, the 0.75 threshold) moved to `portolan.extract.
@@ -752,6 +752,7 @@ def _produced_record(fact: Fact) -> ProducedFactRecord:
     )
 
 
+_EXAMPLE_NAME_RE = re.compile("|".join(re.escape(n) for n in PROMPT_EXAMPLE_NAMES))
 _PROPER_NOUN_RE = re.compile(r"\b[A-Z][a-zA-Z']+(?:\s+[A-Z][a-zA-Z']+){0,3}\b")
 _NUMBER_LITERAL_RE = re.compile(r"\d[\d,.$%]*")
 
@@ -1459,6 +1460,12 @@ class ExtractionScore(BaseModel):
     # mentions whose registry_id matched the truth table's own, alongside
     # the existing `entity_accuracy_checked` denominator.
     entity_accuracy_correct: int = 0
+    # Produced facts whose claim or entities carry a name from the
+    # prompt's own worked examples (`PROMPT_EXAMPLE_NAMES`) that the source
+    # never says, as "<source_id>:<fact id>: <name>". The quote check
+    # cannot see these: the quote is real, the company named beside it is
+    # not.
+    example_name_leaks: list[str] = Field(default_factory=list)
     # The numerator the scorer used before 2026-11-20: raw string equality
     # between the resolved id and the truth table's id. It counted every
     # internal person wrong, because the bench hands those out as
@@ -1656,6 +1663,7 @@ def score_extraction(
     entity_checked = 0
     entity_correct = 0
     entity_exact_id_correct = 0
+    example_name_leaks: list[str] = []
     entity_wrong: list[EntityWrongRecord] = []
     entity_mentions: list[EntityMentionRecord] = []
 
@@ -1716,7 +1724,13 @@ def score_extraction(
                 source_type = "unknown"
 
         # -- locator / quote presence, over every produced fact -----------
+        source_text = source_texts.get(source_id, "")
         for produced in produced_list:
+            written = " ".join([produced.claim, *produced.entities])
+            for name in _EXAMPLE_NAME_RE.findall(written):
+                if name not in source_text:
+                    example_name_leaks.append(f"{source_id}:{produced.id}: {name}")
+                    break
             if produced.locator and produced.locator.strip():
                 locator_present_total += 1
             else:
@@ -1983,6 +1997,7 @@ def score_extraction(
         entity_accuracy_exact_id_correct=entity_exact_id_correct,
         entity_wrong=entity_wrong,
         entity_mentions=entity_mentions,
+        example_name_leaks=example_name_leaks,
         distractor_leakage=distractor_leakage,
         quote_presence_rate=(
             quote_present_total / quote_required_total if quote_required_total else None

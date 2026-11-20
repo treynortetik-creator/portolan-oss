@@ -1700,3 +1700,45 @@ def test_a_wrong_entity_is_still_wrong_and_is_listed() -> None:
         ("Ashgrove Health", "account:ashgrove", "ashgrove"),
         ("Ashgrove Health", "ashgrove-medical", "ashgrove"),
     ]
+
+
+def test_a_name_borrowed_from_the_prompts_examples_is_counted() -> None:
+    """The prompt's worked examples name a made-up vendor. A fact that
+    carries that name into a claim about a source that never says it has
+    the wrong company in it, quote or no quote."""
+    truth = _truth()
+    results = dict(perfect_results(truth))
+    result = results["S-call-003"]
+    borrowed = result.facts[0].model_copy(
+        update={"id": "fx", "claim": "Ashgrove Health asked Veltrona for monthly account notes."}
+    )
+    in_entities = result.facts[0].model_copy(
+        update={"id": "fy", "claim": "Ashgrove Health wants a recap.", "entities": ["Rillfold R4"]}
+    )
+    results["S-call-003"] = result.model_copy(
+        update={"facts": [*result.facts, borrowed, in_entities]}
+    )
+
+    score = score_extraction(truth, results)
+
+    assert score.example_name_leaks == ["S-call-003:fx: Veltrona", "S-call-003:fy: Rillfold"]
+    assert score_extraction(truth, perfect_results(truth)).example_name_leaks == []
+
+
+def test_an_example_name_the_source_itself_says_is_not_a_leak() -> None:
+    truth = _truth()
+    results = dict(perfect_results(truth))
+    result = results["S-call-003"]
+    fact = result.facts[0].model_copy(
+        update={"id": "fx", "claim": "Ashgrove Health asked Veltrona for monthly account notes."}
+    )
+    results["S-call-003"] = result.model_copy(update={"facts": [*result.facts, fact]})
+    run = ExtractionRunResult(
+        results,
+        wall_time_s={},
+        sink=InMemorySink(),
+        total_wall_time_s=0.0,
+        source_texts={"S-call-003": "[09:10:02] Maria Chen: we also buy from Veltrona."},
+    )
+
+    assert score_extraction(truth, run).example_name_leaks == []

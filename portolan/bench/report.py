@@ -210,6 +210,10 @@ def _render_extraction_section(score: ExtractionScore) -> list[str]:
             for basis in ("exact_quote", "fuzzy_quote", "fragments", "none")
         )
         lines.append(f"| unplanted (non-leak) — evidence basis | {basis_line} |")
+    lines.append(
+        f"| facts naming a company or person from the prompt's examples | "
+        f"{len(score.example_name_leaks)} |"
+    )
     lines.append(f"| quote presence (required types) | {_pct(score.quote_presence_rate)} |")
     lines.append(f"| locator presence | {_pct(score.locator_presence_rate)} |")
     lines.append(f"| coerced sentiment (null/string -> int) | {score.coerced_sentiment} |")
