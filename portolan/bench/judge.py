@@ -63,7 +63,7 @@ from portolan.llm.base import LLMError
 JudgeMode = Literal["off", "cached", "live"]
 
 DEFAULT_VERDICTS_PATH = Path("corpus/verdicts.yaml")
-DEFAULT_JUDGE_MODEL = "claude-sonnet-5"
+DEFAULT_JUDGE_MODEL = "claude-sonnet-5-5"
 
 # How much of a claim's own content words the sentences the judge cites
 # must together contain for a `supported` verdict to be accepted outright

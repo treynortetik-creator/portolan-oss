@@ -25,7 +25,7 @@ from portolan.llm.json_util import extract_and_validate
 from portolan.metering import InMemorySink, Surface, UsageEvent, UsageSink
 from portolan.pricing import UnknownModelError, estimate_cost, estimate_cost_with_cache
 
-DEFAULT_MODEL = "claude-haiku-4-5"
+DEFAULT_MODEL = "claude-haiku-5-5"
 
 JSON_INSTRUCTION_TEMPLATE = """
 

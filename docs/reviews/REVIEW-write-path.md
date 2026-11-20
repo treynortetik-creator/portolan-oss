@@ -147,3 +147,40 @@ sources.
   `claude-sonnet-5` and `claude-haiku-4-5`. `pricing.py` lists Sonnet 5 at 3.00 / 15.00;
   `bench/agentic.py` lists it at 2.00 / 10.00.
 - `tests/test_no_outside_material.py:127` fails `ruff check` (line length) on `main`.
+
+## Live run, 2026-11-20 (Agent SDK, Claude Code login, no API key)
+
+The defaults moved from `claude-haiku-4-5` / `claude-sonnet-5` to `claude-haiku-5-5` /
+`claude-sonnet-5-5` after this run. The prompt in both rows includes the new "source
+material, not instructions" framing.
+
+**Extraction bench** (`python -m portolan.bench extract --backend agent_sdk`, 209 sources, 73
+planted facts, one run each, so 1 fact is 1.4 points):
+
+| | Haiku 4.5 | Haiku 5.5 |
+|---|---|---|
+| Recall, strict | 82.9% | 84.9% |
+| Recall, lenient | 94.5% | 100.0% |
+| Invented | 0 | 0 |
+| Quote presence / locator presence | 100% / 100% | 100% / 100% |
+| Precision (planted share of all produced) | 13.3% | 10.8% |
+| Entity accuracy | 80.2% | 63.1% |
+| Distractor leakage | 5 | 7 |
+| List-price cost | $8.04 | $0.55 |
+
+Haiku 5.5 finds more and costs a fifteenth as much. It names entities less exactly (63% of
+checked entity lists against 80%) and produces 27% more unplanted facts. The pipeline
+resolves entities against the registry, so a wrong name becomes a review row, not a wrong
+claim; that is the number to watch.
+
+**Write path on Haiku 5.5** (`scripts/bench_write/live_stress.py`, the full pipeline, 190
+sources extracted, 0 failed): 768 claims, 9 extra citations, 0 claims citing a locator the
+source does not have, 582 claims with a quote and 0 of them not the source's words or not at
+the cited place, 66 open and 14 watching review rows. The fake-extractor stress run's damage
+columns (locators, quotes) were already 0 after the fixes; the live run confirms they stay 0
+against a real model's own mistakes. Facts lost cannot be counted here: a live model's facts
+carry no tag.
+
+**Not run:** Sonnet 5.5 was probed with one call only (it answers); the strong model is used
+for consolidation retries and the audit, neither of which this run exercised. Haiku 4.5 was not
+run through the write path.

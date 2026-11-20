@@ -86,7 +86,7 @@ __all__ = [
 ]
 
 RESEARCHER_SURFACE = "researcher"
-RESEARCHER_MODEL = "claude-sonnet-5"
+RESEARCHER_MODEL = "claude-sonnet-5-5"
 
 # The circuit breaker (spec, verbatim): "300 tool calls or 15 minutes,
 # whichever first ... high enough never to shape an investigation ...

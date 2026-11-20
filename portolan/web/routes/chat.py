@@ -74,7 +74,7 @@ MAX_CONVERSATIONS_PER_OWNER = 500
 
 # The Agent SDK client talks only to Claude, so an OpenRouter-style
 # "vendor/model" `CHAT_MODEL` falls back to this under `agent_sdk`.
-DEFAULT_AGENT_SDK_CHAT_MODEL = "claude-sonnet-5"
+DEFAULT_AGENT_SDK_CHAT_MODEL = "claude-sonnet-5-5"
 
 
 def resolve_chat_model(settings) -> str:  # noqa: ANN001 - portolan.config.Settings

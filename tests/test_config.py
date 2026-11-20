@@ -56,9 +56,9 @@ def test_settings_defaults_match_the_contract() -> None:
     assert settings.tenant == "dev"
     assert str(settings.store_root) == "var/store"
     assert settings.llm_provider == "agent_sdk"
-    assert settings.extraction_model == "claude-haiku-4-5"
-    assert settings.compare_model == "claude-haiku-4-5"
-    assert settings.strong_model == "claude-sonnet-5"
+    assert settings.extraction_model == "claude-haiku-5-5"
+    assert settings.compare_model == "claude-haiku-5-5"
+    assert settings.strong_model == "claude-sonnet-5-5"
     assert settings.embed_provider == "fastembed"
     assert settings.aws_region == "us-east-1"
     assert settings.chat_question_max_chars == 32_000

@@ -611,3 +611,11 @@ def test_the_real_door_feeds_the_ledger_and_the_gate(small_graph, db, db_url, tm
     assert feedback["dropped"] == [{"sentence": 1, "reason": "numerals"}]
     assert NOTE in session.opened and NOTE in session.citable
     assert session.research_calls == 5
+
+
+def test_bench_prices_agree_with_the_meters_price_table():
+    from portolan.bench.agentic import BENCH_PRICES
+    from portolan.pricing import PRICING
+
+    for model, (inp, out) in BENCH_PRICES.items():
+        assert (inp, out) == (PRICING[model].input_per_million, PRICING[model].output_per_million)

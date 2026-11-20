@@ -54,9 +54,9 @@ class Settings(BaseSettings):
     tenant: str = Field(default="dev", validation_alias="PORTOLAN_TENANT")
     store_root: Path = Path("var/store")
     llm_provider: Literal["agent_sdk", "bedrock", "anthropic", "openrouter", "fake"] = "agent_sdk"
-    extraction_model: str = "claude-haiku-4-5"  # or a Bedrock model id when llm_provider="bedrock"
-    compare_model: str = "claude-haiku-4-5"
-    strong_model: str = "claude-sonnet-5"
+    extraction_model: str = "claude-haiku-5-5"  # or a Bedrock model id when llm_provider="bedrock"
+    compare_model: str = "claude-haiku-5-5"
+    strong_model: str = "claude-sonnet-5-5"
 
     # Chat's own model, so chat does not ride the batch extraction model.
     # Resolved by `portolan.web.routes.chat.resolve_chat_model`: unset falls back

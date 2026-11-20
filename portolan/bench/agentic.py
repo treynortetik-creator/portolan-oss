@@ -36,6 +36,7 @@ import psycopg
 
 from portolan.extract.quote_gate import quote_is_supported
 from portolan.notes.render import parse_synthesis
+from portolan.pricing import PRICING
 from portolan.report.numbers import unsupported_cited_numerals
 
 __all__ = [
@@ -660,13 +661,20 @@ def agent_system_prompt(door_instructions: str, max_calls: int) -> str:
 # ---------------------------------------------------------------------
 
 
-# List prices, dollars per million tokens (input, output), from the claude-api skill's
-# model table (cached 2026-06-24), read 2026-09-23. `portolan.pricing` has no Opus 5.5
-# row and lists Sonnet 5 at $3 / $15; the write-up flags that difference.
+# List prices, dollars per million tokens (input, output), read from
+# `portolan.pricing.PRICING` so the bench and the meter cannot disagree. (Until
+# 2026-11-20 this table listed "claude-sonnet-5" at $2 / $10 while PRICING had
+# $3 / $15; $2 / $10 is Sonnet 5.5's price, now under its own id.)
 BENCH_PRICES: dict[str, tuple[float, float]] = {
-    "claude-haiku-4-5": (1.00, 5.00),
-    "claude-sonnet-5": (2.00, 10.00),
-    "claude-opus-5-5": (4.00, 20.00),
+    model: (PRICING[model].input_per_million, PRICING[model].output_per_million)
+    for model in (
+        "claude-haiku-4-5",
+        "claude-haiku-5-5",
+        "claude-sonnet-5",
+        "claude-sonnet-5-5",
+        "claude-opus-5",
+        "claude-opus-5-5",
+    )
 }
 CACHE_READ_MULTIPLIER = 0.1
 CACHE_WRITE_MULTIPLIER = 1.25  # five-minute cache writes

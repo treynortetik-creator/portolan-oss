@@ -27,7 +27,7 @@ __all__ = [
     "make_llm_support_judge",
 ]
 
-SUPPORT_JUDGE_MODEL = "claude-haiku-4-5"
+SUPPORT_JUDGE_MODEL = "claude-haiku-5-5"
 
 SUPPORT_JUDGE_SYSTEM = (
     "You are grading whether a sentence a researcher wrote about a customer account is "
