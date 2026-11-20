@@ -49,7 +49,7 @@ import threading
 import time
 from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
@@ -65,9 +65,9 @@ from portolan.connectors.base import Connector, SourceRef
 from portolan.context import build_account_context, load_company_context
 from portolan.crm.changes import refresh_crm_changes
 from portolan.crm.snapshots import record_snapshot
+from portolan.extract.anchor import PROBLEM_REASONS, anchor_fact
 from portolan.extract.backends import Backend, LLMClientBackend
 from portolan.extract.prompt import DEFAULT_PROMPT_VARIANT, build_system_prompt
-from portolan.extract.quote_gate import quote_is_supported
 from portolan.extract.schema import (
     QUOTE_REQUIRED_TYPES,
     CustomerExtension,
@@ -87,11 +87,12 @@ from portolan.extract.segment import segment as segment_text
 from portolan.ingest.filter import apply_filter_decision, customer_filter
 from portolan.ingest.intake import intake
 from portolan.ingest.ledger import record as record_coverage
-from portolan.ingest.models import RawSource, SourceRow
+from portolan.ingest.models import LocatorSpan, RawSource, SourceRow
 from portolan.ingest.prepare import prepare_text
 from portolan.lint.report import render_markdown, run_lint, write_changelog_row
 from portolan.llm.base import LLMClient
 from portolan.merge import merge_extraction
+from portolan.merge.util import fact_payload
 from portolan.metering import InMemorySink, PostgresSink, UsageSink
 from portolan.notes import append_changelog
 from portolan.registry import Registry
@@ -172,6 +173,11 @@ class RunReport(BaseModel):
     wall_time_seconds: float = 0.0
     dead_letter_count: int = 0
     index_chunks_written: int = 0
+    # Mechanical provenance work, summed over sources (`portolan.extract.anchor`):
+    # `locator_repaired`, `quote_snapped`, `quote_dropped`, facts held for a
+    # person (`held_quote_not_in_source`, `held_locator_not_in_source`), and
+    # `schema_rejected`, facts the model emitted that failed the schema.
+    provenance_counts: dict[str, int] = Field(default_factory=dict)
     # CRM changes between snapshots, written as claims by code (`portolan.crm`).
     crm_changes_written: int = 0
 
@@ -194,6 +200,8 @@ class _SourceOutcome:
     status: str  # "filtered" | "done" | "partial" | "failed" | "skipped"
     facts_count: int = 0
     merge_report: Any = None
+    # What anchoring corrected or held back, and facts the schema rejected.
+    provenance_counts: dict[str, int] = field(default_factory=dict)
 
 
 class _DeadLettered(Exception):
@@ -215,6 +223,9 @@ class _PreparedSource:
     source_row: SourceRow
     envelopes: list[SourceEnvelope]
     text: str
+    # The source's locator index (`PreparedText.locators`): what a fact's
+    # locator is checked and repaired against (`portolan.extract.anchor`).
+    locators: list[LocatorSpan] = field(default_factory=list)
 
 
 @dataclass
@@ -878,7 +889,12 @@ def _prepare_one(
         )
         raise _DeadLettered from exc
     return _PreparedSource(
-        ref=ref, raw=raw, source_row=source_row, envelopes=envelopes, text=prepared.text
+        ref=ref,
+        raw=raw,
+        source_row=source_row,
+        envelopes=envelopes,
+        text=prepared.text,
+        locators=list(prepared.locators),
     )
 
 
@@ -925,56 +941,73 @@ def _extract_segments(
 
 
 # --------------------------------------------------------------------------
-# Mechanical quote gate (01-spec/extraction-final-2026-09-18.md)
+# Mechanical provenance gate (`portolan.extract.anchor`)
 #
-# A quote-requiring fact whose quote is not in the source text is kept out of
-# `merge_extraction` and parked in `review_queue` (`kind='quote_unsupported'`)
-# for a human: facts are never dropped (migration 0001's `review_queue` comment).
+# Every fact is tied to its place in the source before merge: its quote is
+# located, a re-typed quote is replaced by the source's words, and a locator
+# that disagrees with the quote or is not in the source is repaired. A fact
+# that cannot be tied to a place is kept out of `merge_extraction` and parked
+# in `review_queue` (`kind='quote_unsupported'`) for a person: facts are never
+# dropped (migration 0001's `review_queue` comment).
 # --------------------------------------------------------------------------
 
 
-def _gate_quotes(facts: list[Fact], *, source_text: str) -> tuple[list[Fact], list[dict[str, Any]]]:
-    """Split `facts` into `(kept, gated)`, keeping order. A fact whose `type` is
-    not in `QUOTE_REQUIRED_TYPES` is always kept; a quote-requiring fact is
-    kept only when `quote_gate.quote_is_supported` finds its quote in
-    `source_text`.
+def _gate_quotes(
+    facts: list[Fact],
+    *,
+    source_text: str,
+    locators: list[LocatorSpan] | None = None,
+    counts: dict[str, int] | None = None,
+) -> tuple[list[Fact], list[dict[str, Any]]]:
+    """Split `facts` into `(kept, gated)`, keeping order; kept facts come
+    back anchored (`anchor_fact`), so a kept fact's quote and locator may
+    differ from the model's.
 
-    `gated` is one dict per dropped fact, shaped as `review_queue.payload
-    ["fact"]`; the caller writes the row."""
+    `gated` is one dict per held fact, shaped as `review_queue.payload
+    ["fact"]` plus a `"reason"` key the caller moves onto the row. `counts`,
+    when given, is incremented per correction and per held fact."""
     kept: list[Fact] = []
     gated: list[dict[str, Any]] = []
+
+    def _count(key: str) -> None:
+        if counts is not None:
+            counts[key] = counts.get(key, 0) + 1
+
     for fact in facts:
-        if fact.type not in QUOTE_REQUIRED_TYPES or quote_is_supported(fact.quote, source_text):
-            kept.append(fact)
-            continue
-        gated.append(
-            {
-                "id": fact.id,
-                "type": fact.type,
-                "entities": list(fact.entities),
-                "claim": fact.claim,
-                "quote": fact.quote,
-                "locator": fact.locator,
-                "speaker": fact.speaker,
-                "valid_from": fact.valid_from.isoformat() if fact.valid_from else None,
-                "valid_to": fact.valid_to.isoformat() if fact.valid_to else None,
-                "severity": fact.severity,
-                "sentiment": fact.sentiment,
-                "confidence": fact.confidence,
-            }
+        anchored = anchor_fact(
+            fact,
+            text=source_text,
+            spans=locators or [],
+            quote_required=fact.type in QUOTE_REQUIRED_TYPES,
         )
+        if anchored.problem is None:
+            for change in anchored.changes:
+                _count(change)
+            kept.append(anchored.fact)
+            continue
+        _count(f"held_{anchored.problem}")
+        gated.append({**fact_payload(fact), "reason": PROBLEM_REASONS[anchored.problem]})
     return kept, gated
 
 
 def _queue_quote_unsupported(
     conn: psycopg.Connection, *, source_slug: str, fact_payload: dict[str, Any]
 ) -> None:
+    fact_payload = dict(fact_payload)
+    reason = fact_payload.pop("reason", None) or PROBLEM_REASONS["quote_not_in_source"]
+    _queue_held_fact(conn, source_slug=source_slug, fact_payload=fact_payload, reason=reason)
+
+
+def _queue_held_fact(
+    conn: psycopg.Connection, *, source_slug: str, fact_payload: dict[str, Any], reason: str
+) -> None:
     """One `review_queue` row (`kind='quote_unsupported'`) for a gated fact:
     `reason` is the one-line explanation shown on the review card; `fact` is
     the full fact, for "Keep as claim" to rebuild a `Fact` from.
 
-    Deduped by `(source_slug, locator, quote)`: a redriven source re-extracts
-    from scratch and a deterministic model gates the same quote again.
+    Deduped by `(source_slug, locator, quote)`, or by claim for a fact with
+    no quote: a redriven source re-extracts from scratch and a deterministic
+    model gates the same fact again.
 
     Commits on its own: it runs before `merge_extraction`'s transaction opens."""
     with conn.cursor() as cur:
@@ -987,20 +1020,24 @@ def _queue_quote_unsupported(
             """,
             (source_slug, fact_payload["locator"], fact_payload["quote"]),
         )
+        if fact_payload["quote"] is None:
+            # `->> 'quote' = NULL` matches nothing: dedup a quoteless fact by its claim.
+            cur.execute(
+                """
+                SELECT id FROM review_queue
+                WHERE kind = 'quote_unsupported' AND source_slug = %s
+                  AND payload -> 'fact' ->> 'locator' = %s
+                  AND payload -> 'fact' ->> 'claim' = %s
+                """,
+                (source_slug, fact_payload["locator"], fact_payload["claim"]),
+            )
         if cur.fetchone() is not None:
             return
         cur.execute(
             "INSERT INTO review_queue (kind, payload, source_slug) VALUES (%s, %s, %s)",
             (
                 "quote_unsupported",
-                Jsonb(
-                    {
-                        "reason": (
-                            "The model's quote for this fact was not found in the source text."
-                        ),
-                        "fact": fact_payload,
-                    }
-                ),
+                Jsonb({"reason": reason, "fact": fact_payload}),
                 source_slug,
             ),
         )
@@ -1083,13 +1120,32 @@ def _finish_one(
 
         # The quote gate runs on the unioned facts before any reach
         # `merge_extraction`, so a gated fact never becomes a claim.
-        kept_facts, gated_facts = _gate_quotes(merged.facts, source_text=prepared.text)
-        if gated_facts:
-            merged.facts = kept_facts
-            for fact_payload in gated_facts:
-                _queue_quote_unsupported(
-                    conn, source_slug=source_row.slug, fact_payload=fact_payload
-                )
+        provenance_counts: dict[str, int] = {}
+        kept_facts, gated_facts = _gate_quotes(
+            merged.facts,
+            source_text=prepared.text,
+            locators=prepared.locators,
+            counts=provenance_counts,
+        )
+        # Always the anchored facts: a kept fact may carry a repaired locator
+        # or the source's own wording for its quote.
+        merged.facts = kept_facts
+        for held in gated_facts:
+            _queue_quote_unsupported(conn, source_slug=source_row.slug, fact_payload=held)
+        # Facts the model emitted that failed the schema (`parse_lenient`)
+        # cannot become claims; say so where a person can see it, once.
+        if merged.rejected:
+            provenance_counts["schema_rejected"] = len(merged.rejected)
+            append_changelog(
+                conn,
+                "extract_rejected",
+                f"{len(merged.rejected)} fact(s) or action(s) from {source_row.slug} failed "
+                "the extraction schema and were not merged",
+                {
+                    "source_slug": source_row.slug,
+                    "rejected": [r.model_dump(mode="json") for r in merged.rejected],
+                },
+            )
     except Exception as exc:
         _fail_source(
             conn,
@@ -1170,7 +1226,12 @@ def _finish_one(
             attempt=1,
         )
         raise _DeadLettered from exc
-    return _SourceOutcome(status=status, facts_count=len(merged.facts), merge_report=merge_report)
+    return _SourceOutcome(
+        status=status,
+        facts_count=len(merged.facts),
+        merge_report=merge_report,
+        provenance_counts=provenance_counts,
+    )
 
 
 def _process_one(
@@ -1379,6 +1440,8 @@ def run(
         )
 
     def _count_outcome(outcome: _SourceOutcome) -> None:
+        for key, value in outcome.provenance_counts.items():
+            report.provenance_counts[key] = report.provenance_counts.get(key, 0) + value
         if outcome.status == "failed":
             report.sources_failed += 1
         elif outcome.status == "filtered":

@@ -309,11 +309,11 @@ def test_a_quote_gate_failure_dead_letters_the_source(db, tmp_path, monkeypatch)
     real_gate = pipeline_module._gate_quotes
     calls = {"n": 0}
 
-    def _gate(facts, *, source_text):
+    def _gate(facts, *, source_text, **kwargs):
         calls["n"] += 1
         if calls["n"] == 1:
             raise RuntimeError("quote gate broke")
-        return real_gate(facts, source_text=source_text)
+        return real_gate(facts, source_text=source_text, **kwargs)
 
     monkeypatch.setattr(pipeline_module, "_gate_quotes", _gate)
 

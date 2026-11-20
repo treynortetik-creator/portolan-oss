@@ -33,9 +33,13 @@ doesn't.
 from __future__ import annotations
 
 import re
+from bisect import bisect_left
+from typing import NamedTuple
 
 __all__ = [
     "FUZZY_QUOTE_THRESHOLD",
+    "QuoteMatch",
+    "locate_quote",
     "quote_is_supported",
 ]
 
@@ -143,22 +147,158 @@ def _fuzzy_quote_containment(quote: str, text: str) -> float:
     return matched / len(quote_tokens)
 
 
+# ---------------------------------------------------------------------------
+# Locating a quote: where in the text it sits, not only whether it is there.
+#
+# `_fuzzy_quote_containment` scans the whole text, so on a long source it
+# passes almost any sentence made of common words: the tokens of "we are
+# going to cancel the contract with you next month because the price is too
+# high" are found in order somewhere across a 20,000-word transcript (score
+# 0.88) although nobody said it. `locate_quote` requires the matched tokens
+# to sit together: one bounded window, with a cap on the gap between
+# neighbours. That is what "near-verbatim" meant in the first place.
+# ---------------------------------------------------------------------------
+
+# 1:1 character folds only, so a token's offsets in the folded text are its
+# offsets in the original.
+_OFFSET_SAFE_FOLD = str.maketrans(
+    {"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-", "—": "-", "…": " "}
+)
+# Tokens the window may hold beyond the quote's own: room for dropped filler
+# words and one "..." seam, not for a second sentence from elsewhere.
+_WINDOW_SLACK_TOKENS = 20
+_MAX_TOKEN_GAP = 15
+_MAX_ANCHORS_PER_TOKEN = 400
+
+
+class QuoteMatch(NamedTuple):
+    """Where a quote sits in a text: `text[start:end]` is the source's own
+    wording. `exact` is glyph- and whitespace-folded containment; otherwise
+    `score` is the share of the quote's tokens found, in order, inside one
+    window."""
+
+    start: int
+    end: int
+    exact: bool
+    score: float
+
+
+def _tokens_with_offsets(text: str) -> tuple[list[str], list[tuple[int, int]]]:
+    folded = text.translate(_OFFSET_SAFE_FOLD).lower()
+    tokens: list[str] = []
+    offsets: list[tuple[int, int]] = []
+    for match in _QUOTE_TOKEN_RE.finditer(folded):
+        tokens.append(match.group(0))
+        offsets.append((match.start(), match.end()))
+    return tokens, offsets
+
+
+def _locate_exact(quote: str, text: str) -> tuple[int, int] | None:
+    """Offsets in `text` of `quote`, compared the way
+    `_normalize_for_containment` does (glyphs folded, case and runs of
+    whitespace ignored)."""
+    wanted = _normalize_for_containment(quote.translate(_OFFSET_SAFE_FOLD))
+    if not wanted:
+        return None
+    folded = text.translate(_OFFSET_SAFE_FOLD).lower()
+    # Collapse whitespace while remembering where each kept character was.
+    chars: list[str] = []
+    origin: list[int] = []
+    previous_space = True
+    for index, char in enumerate(folded):
+        if char.isspace():
+            if previous_space:
+                continue
+            chars.append(" ")
+            origin.append(index)
+            previous_space = True
+        else:
+            chars.append(char)
+            origin.append(index)
+            previous_space = False
+    found = "".join(chars).find(wanted)
+    if found == -1:
+        return None
+    return origin[found], origin[found + len(wanted) - 1] + 1
+
+
+def locate_quote(quote: str | None, text: str) -> QuoteMatch | None:
+    """The best place `quote` sits in `text`, or `None` when it is neither
+    there verbatim nor near-verbatim (module comment above).
+
+    Near-verbatim: at least `FUZZY_QUOTE_THRESHOLD` of the quote's tokens,
+    in order, inside one window of the quote's length plus
+    `_WINDOW_SLACK_TOKENS`, no two neighbours more than `_MAX_TOKEN_GAP`
+    tokens apart."""
+    if not text or not quote or not quote.strip():
+        return None
+    exact = _locate_exact(quote, text)
+    if exact is not None:
+        return QuoteMatch(exact[0], exact[1], True, 1.0)
+
+    quote_tokens = _quote_tokens(quote)
+    if not quote_tokens:
+        return None
+    text_tokens, offsets = _tokens_with_offsets(text)
+    positions: dict[str, list[int]] = {}
+    for index, token in enumerate(text_tokens):
+        positions.setdefault(token, []).append(index)
+
+    needed = FUZZY_QUOTE_THRESHOLD * len(quote_tokens)
+    if sum(1 for token in quote_tokens if token in positions) < needed:
+        return None
+
+    window = len(quote_tokens) + _WINDOW_SLACK_TOKENS
+    # Anchor on the quote's rarest words: a real quote's window holds them.
+    present = sorted({t for t in quote_tokens if t in positions}, key=lambda t: len(positions[t]))
+    best: tuple[int, int, int] | None = None  # (matched, first index, last index)
+    seen_starts: set[int] = set()
+    for anchor_token in present[:5]:
+        first_use = quote_tokens.index(anchor_token)
+        for anchor in positions[anchor_token][:_MAX_ANCHORS_PER_TOKEN]:
+            start = max(0, anchor - first_use - _WINDOW_SLACK_TOKENS // 2)
+            if start in seen_starts:
+                continue
+            seen_starts.add(start)
+            limit = start + window
+            cursor = start
+            matched = 0
+            first = last = -1
+            for token in quote_tokens:
+                where = positions.get(token)
+                if not where:
+                    continue
+                slot = bisect_left(where, cursor)
+                if slot == len(where):
+                    continue
+                index = where[slot]
+                if index >= limit or (last != -1 and index - last > _MAX_TOKEN_GAP):
+                    continue
+                matched += 1
+                if first == -1:
+                    first = index
+                last = index
+                cursor = index + 1
+            if matched and (best is None or matched > best[0]):
+                best = (matched, first, last)
+                if matched == len(quote_tokens):
+                    break
+    if best is None or best[0] < needed:
+        return None
+    matched, first, last = best
+    return QuoteMatch(offsets[first][0], offsets[last][1], False, matched / len(quote_tokens))
+
+
 def quote_is_supported(quote: str | None, text: str) -> bool:
     """The gate: `True` when `quote` is verbatim (glyph-folded exact
-    containment) or near-verbatim (fuzzy token-subsequence containment at
-    or above `FUZZY_QUOTE_THRESHOLD`) present in `text`; `False` for a
-    missing/blank quote, empty `text`, or a quote that clears neither bar.
+    containment) or near-verbatim (`locate_quote`: enough of its tokens, in
+    order, together in one place) in `text`; `False` for a missing/blank
+    quote, empty `text`, or a quote that clears neither bar.
 
-    This is exactly `_evidence_basis`'s first two checks (the bench's own
-    `exact_quote`/`fuzzy_quote` verdicts), exposed standalone so a caller
-    that only needs the yes/no gate -- not the bench's full five-way
-    evidence classification -- doesn't have to import the bench module or
-    build an `EvidenceContext` it has no use for. Callers must only call
+    Stricter than the bench's `fuzzy_quote` verdict, which still scores
+    with the whole-text `_fuzzy_quote_containment`: on a long source that
+    one passes sentences nobody said (see the comment above `locate_quote`). Callers must only call
     this for a fact whose type actually requires a quote (`portolan.
     extract.schema.QUOTE_REQUIRED_TYPES`); it has no opinion on whether a
     quote was required in the first place."""
-    if not text or not quote or not quote.strip():
-        return False
-    if _quote_supported_by_text(quote, text):
-        return True
-    return _fuzzy_quote_containment(quote, text) >= FUZZY_QUOTE_THRESHOLD
+    return locate_quote(quote, text) is not None
